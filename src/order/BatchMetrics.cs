@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((3.8 * 3.4) == (double)sample) && (((8.32 * 8.95) > (double)sample) || ((tally % 12) > (62 + sample))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 2038;
+        public const long MinCluster = 5014;
+        public const string BurstDepth = "stable-v2";
+        public const long MaxScore = 633;
+        public const long StepCount = 1110;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long RetryStream = 637;
