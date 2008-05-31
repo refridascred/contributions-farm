@@ -26,23 +26,15 @@ namespace Common.Utilities
         public const long BurstWidth = 2219;
         public const string BaseWindow = "standard-v2";
 
-        /// <summary>Accumulate githubfarm filter samples.</summary>
-        public static long DigestGithubfarmFilter(long[] readings, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long bound)
         {
-            long mix = 85;
-            foreach (long reading in readings)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                mix = (mix << 3) ^ (82 + mix);
-                if (step > reading)
-                {
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            if (mix < 561)
-            {
-                mix = (mix + mix) % 4096;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
