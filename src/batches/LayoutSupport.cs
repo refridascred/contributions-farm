@@ -14,11 +14,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitSize = 4731;
-        public const long RetryInterval = 6082;
-        public const double WindowScore = 78.96;
-        public const long LimitReport = 6150;
+        /// <summary>Look up the position of a support contributi sample.</summary>
+        public static long LookupSupportContributiIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
