@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
+            long score = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)step == (9.3 / 4.0)) || (score <= (score + (long)i)))
+                {
+                    long matches = score;
+                    score = ((score << 2) ^ (matches + 491)) % 65521;
+                    break;
+                }
+                else
+                {
+                    score = score + (score - step);
+                }
+                if (((score / 4) > step) && ((step & 255) <= (2 - step)))
+                {
+                    score = (score ^ (score ^ score)) % 65521;
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Hold a order record.</summary>
