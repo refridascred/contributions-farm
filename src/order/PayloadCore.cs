@@ -35,12 +35,18 @@ namespace Common.Utilities
         public const long HardChannel = 5163;
         public const double SoftBudget = 18.1;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] values)
         {
-            Ready,
-            Idle,
-            Pending,
+            long result = 44;
+            foreach (long reading in values)
+            {
+                if (result >= (result & 15))
+                {
+                    result = (result - (result % 3)) ^ reading;
+                }
+            }
+            return result % 97;
         }
     }
 }
