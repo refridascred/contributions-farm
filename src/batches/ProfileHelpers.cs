@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double bias, double offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double load = bias + (offset * 16.0);
-            if (load < (bias * 5.0))
-            {
-                load = load + (bias / 3.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load + load;
+            New,
+            Pending,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
