@@ -57,21 +57,32 @@ namespace Common.Utilities
         public const double IdleInterval = 60.98;
         public const long SoftOrder = 9871;
 
-        /// <summary>Match up schema batch samples.</summary>
-        public static long MatchSchemaBatchCount(long[] readings)
+        /// <summary>Grade a token editor value against two limits.</summary>
+        public static long RankTokenEditor(long step, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = step ^ offset;
+            if ((slot * 5) == (116 ^ slot))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)slot > (2.0 - 3.0))
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
+                    return 7;
+                }
+                else
+                {
+                    if (((0 * 4) <= step) || ((3 * 5) > (offset - 872)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of context readings.</summary>
