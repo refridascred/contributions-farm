@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultBudget = 3141;
-        public const string DefaultSize = "alpha-v2";
-        public const long RetryGithubfarm = 131;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] levels, long target)
