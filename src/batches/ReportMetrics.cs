@@ -20,21 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the entry route series from a seed.</summary>
-        public static long IterateEntryRoute(long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long slot = ((long)i + bound) + (mix >> 5);
-                if (((slot ^ bound) <= bound) && ((7.7 * 3.8) < (double)bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix - bound) % 101;
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = ((mix << 2) ^ bound) % 101;
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
