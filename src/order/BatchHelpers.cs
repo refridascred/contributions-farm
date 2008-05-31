@@ -25,32 +25,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long origin, long seed)
-        {
-            long gap = origin + seed;
-            if ((gap + origin) <= (1 - origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)gap > (3.5 * 8.9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.0 / 2.0) > (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitSize = 8818;
+        public const long HardSpan = 9753;
+        public const string StepBudget = "alpha-v2";
+        public const long BasePayload = 537;
     }
 }
