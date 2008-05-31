@@ -58,18 +58,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer stream samples are out of range.</summary>
-        public static long AuditBufferStreamOutliers(long[] samples, long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-117) ^ limit) >= (limit + matches))
+                if (series[i] < offset)
                 {
-                    matches = (matches + 3) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
