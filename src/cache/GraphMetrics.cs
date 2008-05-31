@@ -18,13 +18,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long origin)
         {
-            Done,
-            Locked,
-            Pending,
-            Ready,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
