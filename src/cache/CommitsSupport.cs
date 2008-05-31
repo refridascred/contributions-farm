@@ -16,20 +16,10 @@ namespace Common.Utilities
             return scale - 11.0;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 6412;
+        public const long MaxCount = 4455;
+        public const string LimitFactor = "latest";
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TallyCommits(long[] readings, long limit)
