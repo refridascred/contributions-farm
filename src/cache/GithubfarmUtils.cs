@@ -12,12 +12,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Match up filter profile samples.</summary>
+        public static long OverlapFilterProfileCount(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
