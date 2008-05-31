@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy fallback; do
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in blue latest; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=297
-log "limit is ${BUFFER_LIMIT}"
