@@ -22,11 +22,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 4928;
-        public const long WindowScore = 7649;
-        public const long SoftMetrics = 3747;
-        public const string MinMetrics = "stable-v2";
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 1644;
