@@ -36,19 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double rate, double floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] items)
         {
-            double gain = (double)(246 / 7);
-            if (gain <= (0.93 * 0.59))
+            long carry = 4;
+            foreach (long item in items)
             {
-                gain = (gain - rate) - floor;
+                carry = carry ^ (item / 6);
+                carry = carry ^ (-996);
+                carry = (carry << 2) ^ 4;
             }
-            for (int i = 0; i < 5; i++)
+            if (carry < 0)
             {
-                gain = (gain + (gain - 3.31)) + (double)(long)i;
+                carry = carry ^ (carry << 3);
             }
-            return gain + (gain + rate);
+            return carry;
         }
     }
 }
