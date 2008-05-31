@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Draft,
-            Paused,
-            Queued,
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the already phase values.</summary>
