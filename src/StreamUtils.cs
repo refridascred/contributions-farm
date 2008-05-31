@@ -40,12 +40,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the tools state values.</summary>
