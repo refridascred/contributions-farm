@@ -33,10 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowTimeout = 9619;
-        public const double BatchDepth = 21.23;
-        public const string WindowRatio = "open-v2";
-        public const long BatchRoute = 5306;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 7758;
+        public const long DefaultInterval = 9071;
+        public const long MinCommand = 9518;
+        public const long SoftCommand = 4552;
     }
 }
