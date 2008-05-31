@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const string LimitWidth = "primary-edge";
         public const double MinBudget = 75.81;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate batches tools samples.</summary>
