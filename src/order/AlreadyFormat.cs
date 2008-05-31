@@ -57,18 +57,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((target - (long)data.Length) < 7)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepInterval = 8303;
+        public const double IdleCounter = 79.48;
+        public const string SoftTimeout = "staging";
     }
 }
