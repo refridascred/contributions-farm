@@ -1,9 +1,6 @@
-id,level,rank,score
-1,latest,blue,79.05
-2,298,43.4,76.75
-3,91.22,96.67,latest
-4,78.99,standard,699
-5,79.23,primary,local
-6,698,70.88,89
-7,165,stable,220
-8,509,edge,519
+id,label,active,ratio
+1,353,52.43,407
+2,69.51,staging,997
+3,981,479,legacy
+4,edge,389,87.54
+5,507,883,73.07
