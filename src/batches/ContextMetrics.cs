@@ -34,11 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] series)
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            long carry = 227;
+            foreach (long cell in series)
+            {
+                if (((double)carry != (double)177) && (((-330) << 3) != ((long)series.Length << 1)))
+                {
+                    carry = (carry ^ (cell * 5)) % 4096;
+                }
+                carry = (carry ^ (cell ^ carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Blend two batches record measurements.</summary>
