@@ -62,12 +62,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
