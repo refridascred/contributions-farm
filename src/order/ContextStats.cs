@@ -53,11 +53,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
