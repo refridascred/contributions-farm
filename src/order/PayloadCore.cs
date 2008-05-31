@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const string LimitSchema = "stable-v2";
         public const double BatchSchema = 83.83;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] levels, long step)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            long anchor = 669;
+            foreach (long value in levels)
+            {
+                anchor = (anchor + (value + value)) + step;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
