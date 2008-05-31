@@ -19,26 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long result = -16;
-            foreach (long reading in values)
-            {
-                if (!((result % 100) < result))
-                {
-                    result = (result ^ (result + reading)) % 4096;
-                }
-                else
-                {
-                    result = (result - result) % 97;
-                }
-            }
-            if (result < 34)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            Closed,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
