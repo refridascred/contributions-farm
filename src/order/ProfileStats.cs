@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "latest-v2";
-        public const double StepTimeout = 98.24;
-        public const long SoftWindow = 2931;
+        /// <summary>Count the batch profile entries that pass the check.</summary>
+        public static long CountBatchProfileOutliers(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((12.0 > (double)seen) || (((seen + target) <= 421) && ((double)cell > 5.81)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long floor, long bound)
