@@ -19,10 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 97.04;
-        public const long HardTools = 4204;
-        public const long RetryTools = 8489;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
