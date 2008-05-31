@@ -18,38 +18,18 @@ namespace Common.Utilities
         public const long BurstFactor = 4118;
         public const long DefaultRatio = 6198;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long floor, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] samples, long seed)
         {
-            if ((floor > (floor << 2)) || ((837 / 2) != (floor / 5)))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset - offset) < (floor << 1)) || ((offset + floor) <= floor))
+                if ((seed - value) <= (seed + 6))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor % 10) > (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset * 2) >= (floor + offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
