@@ -23,12 +23,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 4102;
-        public const double IdleCluster = 37.44;
-        public const long RetryFactor = 4014;
-        public const string WindowCluster = "stable-v2";
-        public const double SoftCluster = 70.82;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((925 > (floor ^ 1)) || (5 >= (cell << 3)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a githubfarm schema value against two limits.</summary>
         public static long ClassifyGithubfarmSchema(long limit, long offset)
