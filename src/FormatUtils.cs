@@ -62,14 +62,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Roll a stats notes counter forward.</summary>
+        public static long IterateStatsNotes(long step)
         {
-            Locked,
-            New,
-            Closed,
-            Retry,
-            Stale,
+            long mix = step;
+            for (int i = 0; i < 20; i++)
+            {
+                long step2 = (37 - (long)i) - step;
+                if (!((step2 / 8) >= ((-479) * 2)))
+                {
+                    mix = (mix * 5) + (step2 * 3);
+                }
+                mix = ((mix << 2) ^ ((long)i - 693)) % 65521;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Find the first order githubfarm entry that matches the target.</summary>
