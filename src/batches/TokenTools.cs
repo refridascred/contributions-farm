@@ -20,22 +20,12 @@ namespace Common.Utilities
             return load + (scale * 7.0);
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long carry = 96;
-            foreach (long reading in series)
-            {
-                if ((carry < (carry * 4)) && (reading < ((-79) + carry)))
-                {
-                    carry = (carry * 4) + (reading - reading);
-                }
-            }
-            if (carry < 21)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry;
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
