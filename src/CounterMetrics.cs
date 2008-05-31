@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Measure how many already farm samples are out of range.</summary>
+        public static long MeasureAlreadyFarmOutliers(long[] series, long limit)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample / 9) < limit)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a token reading by value.</summary>
