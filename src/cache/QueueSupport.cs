@@ -27,19 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout payload readings against a bound.</summary>
-        public static bool GuardLayoutPayloadRange(long[] series, long seed)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double bias = offset;
+            if (bias >= (scale * 9.31))
             {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias + scale;
             }
-            return ok;
+            return bias - offset;
         }
     }
 }
