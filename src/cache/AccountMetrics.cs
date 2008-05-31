@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Derive the next report support value from a seed.</summary>
+        public static long IterateReportSupport(long seed)
         {
-            Stale,
-            Dropped,
-            Failed,
-            Retry,
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
