@@ -49,17 +49,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long target)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long floor, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((limit % 12) == (floor >> 5)) || ((double)floor >= (5.2 / 5.0)))
             {
-                if (readings[i] >= target)
+                return 2;
+            }
+            else
+            {
+                if ((limit % 97) <= (floor + 680))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a account snapshot.</summary>
