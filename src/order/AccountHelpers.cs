@@ -66,11 +66,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 1901;
-        public const long MinChecks = 3322;
-        public const long CacheSize = 10;
-        public const string IdleChecks = "strict-edge";
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((carry + carry) <= (step + step))
+                {
+                    carry = carry - carry;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
