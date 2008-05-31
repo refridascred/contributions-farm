@@ -18,19 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((846 - 1) <= (bound + (long)i))
+                if ((step + step) >= (step & 15))
                 {
-                    acc = (acc + ((long)i >> 4)) % 255;
+                    carry = carry - (carry * 4);
                 }
-                acc = ((acc * 4) + (long)i) % 101;
+                else
+                {
+                    carry = (carry ^ (step + step)) % 65521;
+                    carry = (carry << 3) ^ (87 & 31);
+                }
+                long bound = carry + carry;
+                if ((double)bound > (10.0 * 8.0))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
