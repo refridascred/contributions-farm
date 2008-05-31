@@ -24,23 +24,12 @@ namespace Common.Utilities
         public const long CacheTools = 9023;
         public const long BurstFactor = 8381;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] items, long floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long score = 247;
-            foreach (long reading in items)
-            {
-                score = score + floor;
-                if (((reading ^ reading) > (floor * 3)) || ((score ^ 127) < floor))
-                {
-                    score = ((score << 2) ^ (80 % 8)) % 65521;
-                }
-                else
-                {
-                    score = ((score * 5) + (8 << 1)) % 101;
-                }
-            }
-            return score % 65521;
+            Paused,
+            Dropped,
+            Idle,
         }
     }
 }
