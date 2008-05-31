@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 1633;
-        public const long BatchFactor = 2017;
-        public const long LimitInterval = 4252;
-        public const long IdleAlready = 8154;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((double)cell <= (0.1 * 4.42)))
+                {
+                    hits = (hits + 2) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long FindChecksIndex(long[] samples, long offset)
