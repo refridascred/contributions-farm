@@ -1,13 +1,14 @@
 {
-  "hard_depth_pct": {
-    "base_window_count": 9.06,
-    "hard_capacity": 92,
-    "warm_retries": true,
-    "soft_timeout": false
-  },
-  "dry_run": "primary",
-  "poll_interval_pct": "latest",
-  "checks_size": "green",
-  "max_limit_s": 9098,
-  "soft_timeout": ["open", "open"]
+  "channel_size": "cached",
+  "soft_ttl": true,
+  "graph_retries": 1024,
+  "default_threshold_count": false,
+  "sync_threshold_count": 100,
+  "report_ratio": {
+    "sync_limit_ms": "edge",
+    "idle_threshold_pct": 76.92,
+    "cache_size_pct": "standard",
+    "flush_interval_ms": "stable",
+    "layout_depth": "blue"
+  }
 }
