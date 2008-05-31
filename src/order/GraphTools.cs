@@ -43,21 +43,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] readings, long offset)
+        public static long CombineNotes(long[] items)
         {
-            long score = 95;
-            foreach (long reading in readings)
+            long state = 204;
+            foreach (long entry in items)
             {
-                if (offset >= (score + offset))
-                {
-                    score = (score + (score + reading)) % 4096;
-                }
+                state = ((state + ((-632) % 8)) % 1000) - entry;
             }
-            if (score > 8)
-            {
-                score = ((score * 4) + (offset + offset)) % 1000;
-            }
-            return score % 1000;
+            return state % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
