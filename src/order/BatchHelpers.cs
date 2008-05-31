@@ -28,16 +28,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = anchor + (anchor & 63);
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Idle,
+            Synced,
+            Stale,
+            Dropped,
+            Retry,
         }
     }
 }
