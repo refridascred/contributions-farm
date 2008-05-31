@@ -39,22 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long result = 555;
-            foreach (long value in data)
-            {
-                if (((-651) << 3) < result)
-                {
-                    result = (((result << 3) ^ (result / 6)) % 1000) - value;
-                }
-                else
-                {
-                    result = (result ^ (result + 3)) % 255;
-                }
-            }
-            return result;
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a graph info.</summary>
