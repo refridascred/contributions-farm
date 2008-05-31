@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the tools editor entries that pass the check.</summary>
-        public static long MeasureToolsEditorMatches(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count - datum) <= (count + seed))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 95.43;
+        public const long CacheInterval = 2750;
+        public const string BurstWidth = "local-edge";
 
         /// <summary>Count graph session pairs that satisfy a relation.</summary>
         public static long CompareGraphSessionCount(long[] items)
