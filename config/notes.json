@@ -1,7 +1,8 @@
 {
-  "persist": "fallback",
-  "session_delay": 63,
-  "token_limit": ["latest", "primary", "edge", "edge"],
-  "retry_size_s": 94,
-  "report_delay": [389, 371, 188, 269]
+  "report_capacity": 558,
+  "readonly": "open",
+  "burst_interval_pct": "eu-west",
+  "base_delay_count": "strict",
+  "already_delay": false,
+  "hard_interval_ms": 11.32
 }
