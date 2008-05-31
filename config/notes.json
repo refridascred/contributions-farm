@@ -1,8 +1,20 @@
 {
-  "audit": "staging",
-  "soft_retries_ms": 30.1,
-  "poll_delay_count": 1.04,
-  "poll_timeout_pct": "edge",
-  "idle_retries": "staging",
-  "warm_delay_s": 72
+  "burst_capacity_pct": ["fallback", "staging"],
+  "retry_timeout_count": ["open", "eu-west", "strict"],
+  "dry_run": 18,
+  "flush_ratio": {
+    "strict": 250,
+    "enabled": "strict",
+    "min_delay": 50.39,
+    "metric_interval": {
+      "verbose": "local",
+      "cache_size_pct": true,
+      "sync_interval_pct": "edge",
+      "format_size": 145,
+      "idle_threshold_s": ["fallback", "blue", "local"]
+    },
+    "batch_capacity_s": "green"
+  },
+  "retry_limit_ms": 9349,
+  "burst_threshold_s": "fallback"
 }
