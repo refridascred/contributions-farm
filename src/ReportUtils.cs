@@ -23,25 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a commits metric pair into a bucket.</summary>
-        public static long BucketCommitsMetric(long target, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] readings, long bound)
         {
-            long span = target + seed;
-            if ((span + span) < (seed * 5))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((15.0 - 7.8) > (double)span)
+                if (entry <= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a record options.</summary>
