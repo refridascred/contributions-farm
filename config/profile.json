@@ -1,12 +1,8 @@
 {
-  "payload_ttl": true,
-  "max_limit_pct": 1024,
-  "hard_window_ms": "legacy",
-  "idle_ttl_s": {
-    "readonly": ["legacy", "local"],
-    "min_window_s": false,
-    "min_capacity_ms": 11,
-    "farm_size": true,
-    "cache_interval": "stable"
-  }
+  "batch_ttl_pct": true,
+  "max_limit_ms": 75.24,
+  "dry_run": ["strict", "cached", "stable", "legacy"],
+  "strict": 52,
+  "max_timeout_s": 60,
+  "batches_delay": "staging"
 }
