@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stream farm readings against a rule.</summary>
-        public static long CountStreamFarmGaps(long[] samples)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (((matches <= item) || ((double)matches >= (7.2 - 5.0))) && (matches > (item ^ 127)))
+                if (entry <= offset)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a tools summary.</summary>
