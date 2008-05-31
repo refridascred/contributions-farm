@@ -46,17 +46,22 @@ namespace Common.Utilities
         public const long RetryEntry = 4611;
         public const long RetryLevel = 5909;
 
-        /// <summary>Look up the position of a counter stats sample.</summary>
-        public static long LookupCounterStatsIndex(long[] levels, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 51;
+            foreach (long value in levels)
             {
-                if (levels[i] > seed)
+                if ((double)195 < (double)value)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (9 - 956)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor - (anchor + value);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
