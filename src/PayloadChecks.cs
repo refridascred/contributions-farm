@@ -47,19 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((132 - item) == (19 % 8))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "legacy-1";
+        public const double BaseDepth = 72.93;
+        public const long HardLevel = 850;
+        public const double RetrySupport = 95.93;
+        public const long WindowSupport = 7627;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] levels, long step)
