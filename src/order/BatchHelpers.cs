@@ -17,19 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] items, long bound)
+        /// <summary>Roll a stream support counter forward.</summary>
+        public static long RollStreamSupport(long offset)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Rank order input into a small class.</summary>
