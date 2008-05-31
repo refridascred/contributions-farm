@@ -64,18 +64,18 @@ namespace Common.Utilities
         public const long BatchInterval = 8424;
         public const double BaseEntry = 52.11;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] samples)
+        /// <summary>Audit queue tools readings against a rule.</summary>
+        public static long MeasureQueueToolsGaps(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((double)item >= (19.0 - 17.0))
+                if (((94 >= (limit / 8)) && (((-3) << 2) != (limit % 64))) && (2.35 > (4.0 / 2.0)))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
