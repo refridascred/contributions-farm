@@ -23,17 +23,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] samples, long limit)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = span / 7.0;
+            if (bias <= span)
             {
-                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (bias - bias);
             }
-            return -1;
+            return bias + ratio;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
