@@ -23,22 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double bias)
         {
-            long anchor = -19;
-            foreach (long reading in samples)
+            double drift = weight;
+            for (int i = 0; i < 4; i++)
             {
-                if ((long)samples.Length >= (anchor & 63))
-                {
-                    anchor = ((anchor * 4) + (anchor - reading)) % 65521;
-                }
+                drift = ((drift + (weight / 8.0)) + (double)(long)i) - bias;
             }
-            if (anchor > 1)
-            {
-                anchor = (anchor * 5) + (anchor & 127);
-            }
-            return anchor;
+            return drift + (double)65;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
