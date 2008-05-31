@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSize = 7352;
-        public const long MinSupport = 8916;
-        public const string MinSize = "alpha-v2";
-        public const long BatchSupport = 7214;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = acc - (limit << 1);
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many session cluster samples are out of range.</summary>
         public static long TallySessionClusterGaps(long[] values)
