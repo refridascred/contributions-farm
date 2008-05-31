@@ -30,23 +30,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] values)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] levels, long limit)
         {
-            long sum = 1;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (((entry - sum) > entry) && ((sum % 5) >= entry))
+                if (value <= limit)
                 {
-                    sum = sum ^ sum;
+                    found = false;
+                    break;
                 }
-                sum = (sum + entry) % 97;
             }
-            if (sum > 98)
-            {
-                sum = (sum + (sum / 6)) % 101;
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
