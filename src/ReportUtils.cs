@@ -54,10 +54,21 @@ namespace Common.Utilities
         public const string BatchTimeout = "cached-edge";
         public const long RetryCount = 5089;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 9268;
-        public const long HardWidth = 6532;
-        public const long IdleToken = 2306;
-        public const long RetryToken = 1691;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
