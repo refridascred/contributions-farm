@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading >= 14) && (matches >= (reading & 127)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
