@@ -40,22 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long state = 77;
+            foreach (long reading in samples)
             {
-                if ((item - item) != (item >> 5))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 3) + (state ^ reading)) % 1000;
             }
-            return tally;
+            if (state > 897)
+            {
+                state = ((state * 5) + (state ^ 939)) % 65521;
+            }
+            return state % 97;
         }
     }
 }
