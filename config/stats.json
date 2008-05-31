@@ -1,14 +1,9 @@
 {
-  "cache_window_pct": 38.45,
-  "flush_depth_count": {
-    "readonly": 62.29,
-    "audit": false,
-    "max_capacity_count": true,
-    "idle_timeout_s": false,
-    "soft_interval_s": 14,
-    "soft_ttl": 79.68
-  },
-  "min_limit_ms": false,
-  "base_window": 863,
-  "idle_timeout_pct": ["strict", "eu-west", "primary"]
+  "burst_threshold_pct": 47,
+  "queue_ratio": false,
+  "flush_window_count": {
+    "idle_interval": 38.04,
+    "sync_ttl_pct": "standard",
+    "persist": "standard"
+  }
 }
