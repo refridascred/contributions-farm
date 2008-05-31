@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long bound, long bound2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] readings, long offset)
         {
-            if ((bound2 - 347) <= bound2)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound ^ bound2) <= bound2)
+                if ((offset * 3) >= item)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound2 >> 2) < (bound2 - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)21 == (double)bound2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a entry info.</summary>
