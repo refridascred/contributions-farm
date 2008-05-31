@@ -1,5 +1,7 @@
 {
-  "buffer_delay": 250,
-  "hard_retries_s": 72.05,
-  "persist": 23
+  "default_retries_pct": 1024,
+  "batch_ttl_s": "latest",
+  "warm_depth_pct": ["blue", "primary", "green", "latest"],
+  "cache_size_ms": [493, 277, 335, 123],
+  "stats_size": "legacy"
 }
