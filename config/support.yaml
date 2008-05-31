@@ -1,11 +1,17 @@
 # support settings
-burst_ttl: stable
-command_ratio: eu-west
-hard_ttl:
-  - primary
-  - stable
-default_limit:
-  - staging
-  - primary
-verbose: edge
-contributi_size: 17.29
+idle_limit_count: cached
+tools_retries: 4487
+max_ratio_pct:
+  channel_threshold:
+    dry_run: 93.42
+    persist: standard
+    layout_retries: edge
+    warm_delay: green
+    already_threshold: open
+    stats_threshold:
+      - 8
+      - 71
+  burst_capacity_s: 45.53
+  cache_threshold: false
+cache_delay_pct: 54
+queue_retries: 0.31
