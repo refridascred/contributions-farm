@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Idle,
-            Stale,
+            Pending,
+            Active,
+            Draft,
             Failed,
-            Queued,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
