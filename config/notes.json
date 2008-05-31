@@ -1,5 +1,17 @@
 {
-  "idle_capacity_ms": ["strict", "green", "staging", "primary"],
-  "burst_size": 250,
-  "sync_limit_count": 8015
+  "cache_window": 85,
+  "command_depth": {
+    "default_ttl": "staging",
+    "warm_interval": true,
+    "hard_timeout_count": false
+  },
+  "checks_size": {
+    "editor_delay": 250,
+    "support_delay": "primary",
+    "strict": 48.84,
+    "persist": 100
+  },
+  "poll_window": false,
+  "stats_limit": "stable",
+  "githubfarm_ratio": [85, 214, 177, 216]
 }
