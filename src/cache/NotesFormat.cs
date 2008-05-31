@@ -22,31 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long target, long bound)
+        /// <summary>Fold a list of buffer layout readings.</summary>
+        public static long FoldBufferLayout(long[] levels)
         {
-            if ((14.0 / 8.0) >= (double)target)
+            long anchor = 98;
+            foreach (long item in levels)
             {
-                return 6;
+                anchor = (((anchor * 4) + (82 & 3)) % 1000) + item;
             }
-            else
+            if (anchor > (-6))
             {
-                if ((87 >> 1) < (bound ^ target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound ^ 345) > (bound / 8)) && ((target + 0) > 671))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                anchor = (anchor ^ (-49)) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
