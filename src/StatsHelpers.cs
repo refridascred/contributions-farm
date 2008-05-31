@@ -22,19 +22,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine route session values into a single score.</summary>
-        public static long TotalRouteSession(long[] values, long offset)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long acc = 486;
-            foreach (long item in values)
-            {
-                acc = (acc - item) % 101;
-                if ((offset >> 5) < 94)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a schema entry.</summary>
