@@ -23,15 +23,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            Dropped,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
