@@ -1,21 +1,4 @@
 # githubfarm settings
-min_capacity_count: 30
-strict:
-  record_ratio: open
-  retry_capacity_ms: 4795
-  buffer_threshold:
-    - 461
-    - 94
-    - 487
-  soft_retries_count: stable
-  window_retries: stable
-  poll_retries_pct: 30
-idle_size:
-  enabled:
-    - green
-    - standard
-  base_delay_s: 55.09
-  readonly: cached
-  cache_ttl_pct: false
-  batches_delay: cached
-  farm_ttl: 64
+strict: standard
+entry_ttl: false
+flush_delay_s: eu-west
