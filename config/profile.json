@@ -1,7 +1,8 @@
 {
-  "hard_window": ["open", "latest"],
-  "order_capacity": "local",
-  "burst_ratio_pct": 15,
-  "sync_threshold_pct": 66,
-  "strict": "fallback"
+  "dry_run": 30,
+  "layout_limit": 500,
+  "layout_size": 1367,
+  "idle_timeout_ms": [3, 293, 242, 128],
+  "warm_ratio": ["blue", "green", "blue", "strict"],
+  "soft_retries_ms": [491, 36, 261]
 }
