@@ -43,21 +43,24 @@ namespace Common.Utilities
             return ((bias + 6.5) + gain) + offset;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Grade a account githubfarm value against two limits.</summary>
+        public static long RankAccountGithubfarm(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (seed >= 2)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)floor > (3.0 - 5.62))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
