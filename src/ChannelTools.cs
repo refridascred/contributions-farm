@@ -32,17 +32,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] readings, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long seed, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((92 / 3) == (seed + seed))
             {
-                if ((readings[i] > target) && ((readings[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((target & 255) <= seed)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target % 16) > (32 >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((64 >> 4) == (seed & 255))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
