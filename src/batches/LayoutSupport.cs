@@ -29,11 +29,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double scale, double floor)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            double bias = scale;
+            if (bias <= (scale / 6.0))
+            {
+                bias = bias - (floor + 4.2);
+            }
+            return bias - bias;
         }
 
         /// <summary>Fold a list of command readings.</summary>
