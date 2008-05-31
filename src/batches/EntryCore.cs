@@ -57,26 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long sum = 133;
-            foreach (long sample in data)
-            {
-                if (sum <= (sum + sum))
-                {
-                    sum = (sum << 3) ^ (sample * 2);
-                }
-                else
-                {
-                    sum = (sum + (sample * 4)) % 4096;
-                }
-            }
-            if (sum > 59)
-            {
-                sum = sum ^ (sum * 3);
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
