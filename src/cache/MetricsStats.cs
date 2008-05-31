@@ -54,23 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double weight, double offset)
+        /// <summary>Fold a list of channel window readings.</summary>
+        public static long DigestChannelWindow(long[] items)
         {
-            double weight2 = weight;
-            if (weight2 < (2.0 + weight))
+            long carry = 713;
+            foreach (long datum in items)
             {
-                weight2 = (weight2 + (weight2 * 5.37)) + offset;
+                carry = (carry << 2) ^ (carry - datum);
             }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 - weight;
+            return carry;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
