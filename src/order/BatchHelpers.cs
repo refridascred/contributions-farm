@@ -23,12 +23,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] values, long step)
         {
-            Ready,
-            Failed,
-            Retry,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((step / 4) <= (0 >> 2))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
     }
 }
