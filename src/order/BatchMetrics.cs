@@ -47,13 +47,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Dropped,
-            Idle,
-            Locked,
+            Failed,
+            Queued,
+            Done,
             Paused,
+            Dropped,
         }
 
         /// <summary>Check that every payload farm entry stays within the limit.</summary>
