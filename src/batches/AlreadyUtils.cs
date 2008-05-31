@@ -67,23 +67,12 @@ namespace Common.Utilities
         public const long DefaultScore = 8556;
         public const long BurstTimeout = 9039;
 
-        /// <summary>Accumulate stats metrics samples.</summary>
-        public static long ScoreStatsMetrics(long[] readings, long origin)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long acc = 463;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = (acc - (origin >> 2)) - (long)i;
-                }
-                acc = acc - datum;
-            }
-            if (acc < (-28))
-            {
-                acc = (acc * 5) + (acc + origin);
-            }
-            return acc % 65521;
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
