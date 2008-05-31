@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long WindowSchema = 4066;
         public const string BatchSchema = "alpha-edge";
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] samples, long origin)
+        /// <summary>Count the batches order entries that pass the check.</summary>
+        public static long MeasureBatchesOrderGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (cell >= origin)
+                if ((datum << 2) < (datum % 24))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
