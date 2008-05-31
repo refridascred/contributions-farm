@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 7183;
         public const string RetryRatio = "cached-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 411;
-        public const double BaseFactor = 63.82;
-        public const long BatchInterval = 2021;
-        public const long StepFactor = 8615;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
