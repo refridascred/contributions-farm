@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 7730;
-        public const long MaxRatio = 6436;
-        public const string HardAccount = "staging-1";
-        public const long WindowTimeout = 236;
-        public const long StepAccount = 1620;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public double Stamp { get; set; }
+            public double Token { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
