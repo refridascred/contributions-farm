@@ -70,17 +70,18 @@ namespace Common.Utilities
         public const long BatchInterval = 8424;
         public const double BaseEntry = 52.11;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] values, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (values[i] < origin)
+                if ((double)item >= (19.0 - 17.0))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
