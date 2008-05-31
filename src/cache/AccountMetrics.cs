@@ -27,39 +27,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long step, long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
         {
-            long prev = step + limit;
-            if (limit > (limit << 1))
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit == (6.15 / 6.0))
+                if (!((state % 16) == (state / 2)))
                 {
-                    return 5;
+                    state = ((state << 2) ^ state) % 1000;
                 }
-                else
-                {
-                    if ((step + limit) != (4 - prev))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((prev + prev) < prev))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                state = (state << 2) ^ (state ^ step);
+                state = ((state * 4) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
