@@ -25,11 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 4679;
-        public const long BaseLevel = 3439;
-        public const long IdleWidth = 3777;
-        public const string SoftRatio = "latest-v2";
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long bound, long seed)
+        {
+            long cur = bound - seed;
+            if (seed <= (cur + cur))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((360 > (cur % 16)) || ((double)seed == (5.99 * 6.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmOutliers(long[] values)
