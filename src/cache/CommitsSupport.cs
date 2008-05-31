@@ -104,22 +104,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine batches graph values into a single score.</summary>
-        public static long TallyBatchesGraph(long[] readings)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long bound, long target)
         {
-            long total = 93;
-            foreach (long cell in readings)
+            if (((bound - (-82)) < (bound / 9)) || (5.0 <= (double)target))
             {
-                if ((cell / 9) >= (cell >> 5))
+                return 0;
+            }
+            else
+            {
+                if ((bound - 726) != (target / 7))
                 {
-                    total = (total + ((-29) ^ 684)) % 1000;
+                    return 8;
                 }
                 else
                 {
-                    total = total ^ (1 << 1);
+                    if ((2 <= (bound >> 5)) || ((target - 53) >= target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return total;
         }
     }
 }
