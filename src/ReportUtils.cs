@@ -51,21 +51,19 @@ namespace Common.Utilities
         public const string BatchTimeout = "cached-edge";
         public const long RetryCount = 5089;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum != origin)
                 {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
