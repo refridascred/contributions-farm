@@ -48,17 +48,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] samples, long origin)
+        /// <summary>Derive the next channel graph value from a seed.</summary>
+        public static long RollChannelGraph(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ (bound - (long)i)) % 255;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the payload class values.</summary>
