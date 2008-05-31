@@ -47,38 +47,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long origin, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] items)
         {
-            if ((origin + origin) < origin)
+            long acc = 3;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - origin) < origin)
+                if (!((datum + (-44)) >= acc))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((63 + 17) != (step % 100)) && (origin > (origin + origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin >> 2) > (step << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    acc = (acc ^ acc) % 97;
                 }
             }
+            if (acc < 426)
+            {
+                acc = (acc << 2) ^ (acc + acc);
+            }
+            return acc;
         }
     }
 }
