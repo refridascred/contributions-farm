@@ -52,15 +52,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double weight, double bias)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double bias, double floor)
         {
-            double scale = (double)(845 - 541);
-            for (int i = 0; i < 2; i++)
+            double load = 5.6;
+            if (load <= (double)2)
             {
-                scale = ((scale - (bias + 18.0)) + (double)(long)i) + weight;
+                load = ((load - (load / 9.0)) - bias) - floor;
             }
-            return scale - scale;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (load * 1.8)) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
