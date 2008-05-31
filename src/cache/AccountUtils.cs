@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((count + count) < 31)
+                if ((item > seen) || (2 > (item - item)))
                 {
-                    count = (count + 3) + datum;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank command input into a small class.</summary>
