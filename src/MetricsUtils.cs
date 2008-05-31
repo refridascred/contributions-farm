@@ -43,12 +43,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 5158;
-        public const long WindowSize = 9288;
-        public const double BurstWidth = 44.97;
-        public const double StepDepth = 51.5;
-        public const long MaxFarm = 9808;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] readings)
+        {
+            long anchor = 7;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor - ((long)readings.Length * 4)) % 65521) - cell;
+            }
+            if (anchor < 507)
+            {
+                anchor = ((anchor * 5) + (anchor ^ anchor)) % 1000;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long SoftRatio = 3753;
