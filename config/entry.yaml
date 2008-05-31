@@ -1,4 +1,5 @@
 # entry settings
-cache_retries_s: 6876
-order_capacity: 13.68
-soft_window_count: false
+counter_retries: 916
+retry_ttl_ms: false
+sync_interval_count: 8
+soft_ratio_ms: false
