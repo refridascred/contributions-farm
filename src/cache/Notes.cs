@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Locked,
-            Synced,
-            Retry,
-            Active,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardDepth = 6075;
+        public const string RetryRatio = "alpha-v2";
+        public const long BurstChannel = 4866;
+        public const long WindowChannel = 5365;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string DefaultDepth = "cached-v2";
