@@ -23,25 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long origin, long step)
+        /// <summary>Count graph session pairs that satisfy a relation.</summary>
+        public static long CompareGraphSessionCount(long[] items)
         {
-            long delta = origin + step;
-            if ((step ^ delta) != (origin + delta))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + origin) != (8 + origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many report stream samples are out of range.</summary>
