@@ -1,7 +1,20 @@
 # entry settings
-burst_size: strict
-enabled: 80.08
-default_threshold_ms:
-  - latest
-  - fallback
-  - standard
+dry_run: 50.96
+readonly: 2
+retry_ratio_pct: local
+max_ttl_ms:
+  cache_delay: 349
+  window_size: 60
+  idle_size_count: 4208
+  cache_delay_count: 29.82
+  readonly:
+    - 153
+    - 376
+persist:
+  idle_window_pct: 80
+  cache_limit_s: 9
+  metric_window: local
+  session_depth:
+    - legacy
+    - open
+  flush_retries_s: 7043
