@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] data, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)step != (14.0 * 0.19))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
