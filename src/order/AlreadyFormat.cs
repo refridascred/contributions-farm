@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Measure how many already order samples are out of range.</summary>
+        public static long MeasureAlreadyOrderGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)count != (4.2 + 8.0))
                 {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
