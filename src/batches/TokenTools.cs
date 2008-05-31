@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every stream cluster entry stays within the limit.</summary>
-        public static bool ValidateStreamClusterBounds(long[] items, long step)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale2 = (double)(43 ^ 168);
+            return ((scale2 + 5.0) + scale) + span;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
