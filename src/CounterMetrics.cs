@@ -39,18 +39,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many schema batch samples are out of range.</summary>
-        public static long AuditSchemaBatchGaps(long[] data, long step)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (entry > (187 ^ entry))
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
