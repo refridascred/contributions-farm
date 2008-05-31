@@ -21,22 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long score = 37;
-            foreach (long value in data)
-            {
-                if (!((value * 3) < value))
-                {
-                    score = score - value;
-                }
-                else
-                {
-                    score = (score + (value + score)) % 255;
-                }
-            }
-            return score;
+            Draft,
+            Locked,
+            Active,
+            Closed,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
