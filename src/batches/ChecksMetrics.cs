@@ -50,10 +50,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepScore = 3519;
-        public const string RetryReport = "alpha-v2";
-        public const long LimitScore = 4951;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiHits(long[] readings, long step)
