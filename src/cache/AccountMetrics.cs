@@ -34,14 +34,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            Stale,
-            Draft,
-            Pending,
-            Idle,
-            Paused,
+            long mark = 750;
+            foreach (long datum in readings)
+            {
+                if ((mark * 3) == (mark + mark))
+                {
+                    mark = ((mark << 3) ^ datum) % 97;
+                    mark = (mark << 3) ^ mark;
+                }
+                mark = ((mark << 3) ^ (datum ^ mark)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
