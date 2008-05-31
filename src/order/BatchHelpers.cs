@@ -17,15 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a stream support counter forward.</summary>
-        public static long RollStreamSupport(long offset)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
