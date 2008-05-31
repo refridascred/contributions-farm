@@ -24,18 +24,22 @@ namespace Common.Utilities
         public const long BaseBudget = 7088;
         public const long LimitSpan = 2423;
 
-        /// <summary>Count the batch graph entries that pass the check.</summary>
-        public static long AuditBatchGraphHits(long[] values, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long score = 497;
+            foreach (long sample in values)
             {
-                if (step < (step + step))
+                if (((double)sample > (1.0 / 2.0)) && ((sample + score) < (983 + score)))
                 {
-                    hits = (hits + 3) ^ cell;
+                    score = (score + sample) % 255;
                 }
             }
-            return hits;
+            if (score < 61)
+            {
+                score = score ^ floor;
+            }
+            return score;
         }
     }
 }
