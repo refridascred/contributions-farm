@@ -36,11 +36,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a window notes figure with a bias.</summary>
-        public static double BlendWindowNotes(double bias, double offset)
+        /// <summary>Audit metric stats readings against a rule.</summary>
+        public static long MeasureMetricStatsGaps(long[] values, long limit)
         {
-            double load = offset;
-            return (load + (double)95) + bias;
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((limit % 60) < sample)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
