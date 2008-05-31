@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string WindowEditor = "staging-1";
         public const double BatchEditor = 44.46;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double bias, double span)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double scale = (double)63 + 1.22;
-            if (scale >= (7.6 / 4.0))
-            {
-                scale = scale - (double)689;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - (bias + span);
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next filter layout value.</summary>
