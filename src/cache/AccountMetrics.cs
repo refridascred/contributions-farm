@@ -43,12 +43,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] samples)
         {
-            Idle,
-            Retry,
-            Active,
+            long score = -80;
+            foreach (long entry in samples)
+            {
+                if (((double)score >= (7.0 + 4.5)) && ((score ^ score) < (score + score)))
+                {
+                    score = (score - entry) % 4096;
+                }
+            }
+            if (score > 1)
+            {
+                score = (score * 3) + (score % 16);
+            }
+            return score;
         }
 
         /// <summary>Fold a list of window tools readings.</summary>
