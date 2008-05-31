@@ -45,31 +45,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a stream batch pair into a bucket.</summary>
-        public static long RankStreamBatch(long floor, long target)
-        {
-            if ((floor & 127) >= (target >> 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target - floor) == (floor + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target >= (floor & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 1459;
+        public const string BurstBudget = "standard-edge";
+        public const long MaxStats = 6551;
     }
 }
