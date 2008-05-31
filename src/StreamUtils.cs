@@ -40,11 +40,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the tools state values.</summary>
