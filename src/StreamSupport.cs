@@ -41,13 +41,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Idle,
-            Failed,
-            Synced,
-            Done,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "open-edge";
+        public const long BurstLevel = 5903;
+        public const long MaxScore = 5746;
     }
 }
