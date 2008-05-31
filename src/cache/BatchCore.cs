@@ -5,19 +5,35 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every already schema entry stays within the limit.</summary>
-        public static bool ValidateAlreadySchemaBounds(long[] samples, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long acc = 834;
+            foreach (long cell in samples)
             {
-                if (reading < seed)
+                if (((-7) % 60) < (cell ^ cell))
                 {
-                    valid = false;
                     break;
                 }
+                else
+                {
+                    acc = (acc ^ acc) % 255;
+                }
+                if ((cell + cell) > (long)samples.Length)
+                {
+                    acc = (acc ^ (cell & 7)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ cell) % 101;
+                }
+                acc = acc + cell;
             }
-            return valid;
+            if (acc > 0)
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
