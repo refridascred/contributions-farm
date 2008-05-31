@@ -1,7 +1,19 @@
 {
-  "audit": "green",
-  "notes_ratio": 4183,
-  "dry_run": 39,
-  "max_ratio": "local",
-  "profile_window": "local"
+  "max_capacity_count": "blue",
+  "dry_run": {
+    "base_timeout_s": {
+      "hard_interval": 250,
+      "hard_limit": "open",
+      "max_threshold_ms": true,
+      "support_limit": true,
+      "idle_ttl_count": 30,
+      "route_ratio": 38.88
+    },
+    "record_delay": "local",
+    "strict": 778,
+    "notes_delay": [295, 36, 345],
+    "min_depth": [481, 345, 144, 181],
+    "flush_timeout_s": "cached"
+  },
+  "idle_timeout": 51
 }
