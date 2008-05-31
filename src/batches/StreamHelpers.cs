@@ -10,17 +10,38 @@ namespace Common.Utilities
         public const string DefaultCache = "cached-1";
         public const string LimitCache = "strict-1";
 
-        /// <summary>Look up the position of a profile counter sample.</summary>
-        public static long LocateProfileCounterIndex(long[] levels, long limit)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((44 + step) > seed) || (seed > (step ^ seed)))
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((step << 1) != (seed % 5))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((seed + seed) < (65 & 255)) && ((4.2 / 8.0) < (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + step) > (67 + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
