@@ -1,5 +1,20 @@
 {
-  "persist": "cached",
-  "enabled": 57,
-  "editor_timeout": "standard"
+  "batch_ttl": 3568,
+  "default_limit_s": "primary",
+  "burst_interval_pct": "eu-west",
+  "poll_ttl_ms": {
+    "metrics_threshold": 42.17,
+    "command_ratio": "blue",
+    "enabled": 60,
+    "burst_window_count": 62,
+    "flush_capacity": "local",
+    "commits_ratio": {
+      "default_interval_pct": "stable",
+      "min_window_ms": true,
+      "burst_capacity_s": 25.08,
+      "dry_run": "stable",
+      "hard_ratio_ms": 39.21
+    }
+  },
+  "base_delay": "local"
 }
