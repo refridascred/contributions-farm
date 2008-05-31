@@ -47,19 +47,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long sum = 51;
-            foreach (long datum in items)
-            {
-                sum = (sum * 4) + (datum << 1);
-                if (!((-852) <= (datum >> 5)))
-                {
-                    sum = ((sum << 3) ^ 50) % 65521;
-                }
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a cache summary.</summary>
