@@ -47,16 +47,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total << 2) ^ (bound + total)) % 4096;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 9869;
+        public const long MinBudget = 8257;
+        public const long SoftTimeout = 922;
     }
 }
