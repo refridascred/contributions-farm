@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const string LimitWidth = "primary-edge";
         public const double MinBudget = 75.81;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] data)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (((double)value < (double)hits) || ((value % 16) < hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Closed,
+            New,
+            Draft,
+            Queued,
         }
 
         /// <summary>Derive the next checks session value from a seed.</summary>
