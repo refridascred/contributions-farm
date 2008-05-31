@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long RetryLevel = 4786;
         public const double CacheFactor = 5.25;
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double weight, double offset)
-        {
-            double gain = (weight / 2.0) + (weight + weight);
-            if (gain < (double)902)
-            {
-                gain = gain - (gain - offset);
-            }
-            return gain - weight;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "latest-v2";
+        public const double StepTimeout = 98.24;
+        public const long SoftWindow = 2931;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
