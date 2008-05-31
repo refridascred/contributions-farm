@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= offset)
                 {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Count the batch profile entries that pass the check.</summary>
