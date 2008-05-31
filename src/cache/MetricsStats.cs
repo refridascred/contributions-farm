@@ -54,15 +54,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double weight, double offset)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            double weight2 = weight;
+            if (weight2 < (2.0 + weight))
             {
-                state = ((state * 3) + (long)i) % 65521;
+                weight2 = (weight2 + (weight2 * 5.37)) + offset;
             }
-            return state;
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - weight2) + (double)(long)i;
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
