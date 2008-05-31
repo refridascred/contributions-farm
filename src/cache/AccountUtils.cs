@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] items)
         {
-            long cur = limit ^ offset;
-            if ((cur ^ cur) <= limit)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4.39 * 2.89) != (double)offset)
+                if ((count + count) < 31)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit >= (double)cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(limit <= (offset + cur)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = (count + 3) + datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
