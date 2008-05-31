@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double gain, double bias)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            double scale = (bias * 8.0) + bias;
-            if (scale < bias)
-            {
-                scale = (scale - 6.0) - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - bias;
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
