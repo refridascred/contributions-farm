@@ -84,13 +84,9 @@ namespace Common.Utilities
         public const string RetryWidth = "fallback";
         public const long HardContributi = 9982;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Done,
-            Closed,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "primary-v2";
+        public const long HardScore = 4461;
+        public const long HardMetrics = 351;
     }
 }
