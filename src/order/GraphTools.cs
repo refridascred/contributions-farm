@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double bias, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            double scale = (double)63 + 1.22;
+            if (scale >= (7.6 / 4.0))
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                scale = scale - (double)689;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - (bias + span);
         }
 
         /// <summary>Project the next filter layout value.</summary>
