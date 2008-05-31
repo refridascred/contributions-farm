@@ -18,30 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((step + step) >= (step & 15))
-                {
-                    carry = carry - (carry * 4);
-                }
-                else
-                {
-                    carry = (carry ^ (step + step)) % 65521;
-                    carry = (carry << 3) ^ (87 & 31);
-                }
-                long bound = carry + carry;
-                if ((double)bound > (10.0 * 8.0))
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 3249;
+        public const double CacheCluster = 50.97;
+        public const long DefaultBudget = 1088;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long IterateLayout(long offset)
