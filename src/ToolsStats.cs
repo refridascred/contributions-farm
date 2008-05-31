@@ -52,12 +52,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Pending,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitScore = 8297;
+        public const long BurstCluster = 3453;
+        public const double WindowCount = 71.82;
     }
 }
