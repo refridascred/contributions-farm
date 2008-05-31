@@ -23,20 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((state % 16) == (state / 2)))
-                {
-                    state = ((state << 2) ^ state) % 1000;
-                }
-                state = (state << 2) ^ (state ^ step);
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Dropped,
+            Draft,
+            Closed,
+            Done,
+            Stale,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
