@@ -41,13 +41,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
