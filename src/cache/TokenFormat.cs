@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] data, long floor)
         {
-            long carry = 294;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (64 >= item)
+                if (sample >= floor)
                 {
-                    carry = (carry * 5) + (carry + (long)readings.Length);
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
