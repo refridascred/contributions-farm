@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Audit token already readings against a rule.</summary>
+        public static long CountTokenAlreadyGaps(long[] levels, long target)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (9.9 > (double)count)
+                {
+                    count = ((count + 2) ^ entry) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a token reading by value.</summary>
