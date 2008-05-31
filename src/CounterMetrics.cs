@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first filter farm entry that matches the target.</summary>
-        public static long LookupFilterFarmIndex(long[] series, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long bound, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((seed + bound) >= seed)
             {
-                if ((series[i] == floor) && ((series[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((3.0 * 4.5) == (double)seed)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)(-84) <= (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed >> 5) > seed) || ((414 % 8) <= bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cluster level values.</summary>
