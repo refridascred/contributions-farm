@@ -50,18 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] samples)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)count < (5.1 * 8.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) ^ value;
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
