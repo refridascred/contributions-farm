@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseSpan = 21.27;
+        public const long IdleRatio = 2066;
+        public const double BatchDepth = 27.26;
+        public const double SoftBudget = 44.2;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] samples, long origin)
