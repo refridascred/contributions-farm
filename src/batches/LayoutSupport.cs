@@ -19,17 +19,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            New,
+            Idle,
         }
 
         /// <summary>Describe the format status values.</summary>
