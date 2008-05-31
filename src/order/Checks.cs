@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many cluster checks samples are out of range.</summary>
-        public static long TallyClusterChecksGaps(long[] data)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long floor, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long cur = floor - step;
+            if ((3.5 + 13.0) <= (double)floor)
             {
-                if ((double)value <= (11.0 - 6.6))
+                return 3;
+            }
+            else
+            {
+                if ((step + cur) > floor)
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
