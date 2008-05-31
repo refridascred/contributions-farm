@@ -21,32 +21,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long origin, long origin2)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] levels)
         {
-            long lane = origin - origin2;
-            if ((origin - origin2) < (779 - lane))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (719 <= (origin ^ lane))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (lane < (origin % 12))
+                    if ((levels[i] + levels[j]) < 3)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a window reading by value.</summary>
