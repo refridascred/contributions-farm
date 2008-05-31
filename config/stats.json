@@ -1,10 +1,7 @@
 {
-  "readonly": 500,
-  "filter_retries": {
-    "burst_capacity_s": ["primary", "blue"],
-    "token_limit": true,
-    "base_retries": "local"
-  },
-  "default_limit_pct": "green",
-  "token_size": false
+  "token_window": [33, 272, 495],
+  "hard_threshold_count": true,
+  "max_ratio_ms": ["cached", "staging", "open"],
+  "flush_timeout_pct": [91, 303, 374, 300],
+  "flush_limit": "stable"
 }
