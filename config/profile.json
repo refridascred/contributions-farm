@@ -1,7 +1,5 @@
 {
-  "account_ratio": "legacy",
-  "readonly": true,
-  "layout_capacity": 250,
-  "compress": "blue",
-  "burst_ttl_pct": 27.29
+  "readonly": 30,
+  "max_delay_s": true,
+  "default_size_count": "edge"
 }
