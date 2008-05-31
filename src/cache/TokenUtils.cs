@@ -41,18 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((39 * 2) >= (long)levels.Length)
+                if ((seed - value) <= (value & 63))
                 {
-                    tally = (tally + 3) + entry;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
