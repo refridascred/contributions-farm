@@ -34,15 +34,39 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long offset, long floor)
         {
-            long acc = 9;
-            foreach (long cell in values)
+            long step = offset - floor;
+            if ((double)step > (6.0 / 3.0))
             {
-                acc = (acc ^ acc) - cell;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (((step << 3) <= (step ^ floor)) || ((step ^ (-378)) > step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((0 & 15) <= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset < (20.0 - 3.2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
