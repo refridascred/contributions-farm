@@ -42,17 +42,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            long carry = -2;
+            foreach (long entry in series)
             {
-                total = (total << 2) ^ (limit / 5);
-                total = ((total * 4) + (limit ^ total)) % 101;
-                total = ((total * 3) + (long)i) % 1000;
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = (((carry << 3) ^ 0) % 255) ^ (long)i;
+                }
+                carry = (carry << 3) ^ carry;
+                carry = (carry << 2) ^ (6 - entry);
             }
-            return total;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many tools cache samples are out of range.</summary>
