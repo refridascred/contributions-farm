@@ -25,39 +25,14 @@ namespace Common.Utilities
         public const long CacheSupport = 278;
         public const long IdleRatio = 2373;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long offset, long step)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long prev = offset ^ step;
-            if ((double)step < 4.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((86 & 1) != (offset & 255)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (prev < (8 >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (981 < (prev - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Audit contributi format readings against a rule.</summary>
