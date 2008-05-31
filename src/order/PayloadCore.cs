@@ -11,28 +11,21 @@ namespace Common.Utilities
         public const double MaxCounter = 33.66;
         public const long BaseCounter = 3375;
 
-        /// <summary>Digest a series of metrics payload entries.</summary>
-        public static long DigestMetricsPayload(long[] series, long target)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long carry = 989;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long bound = reading & 7;
-                if ((carry * 3) == (bound - reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    bound = ((bound * 3) + 29) % 4096;
-                    break;
-                }
-                else
-                {
-                    carry = (carry - (target % 97)) % 255;
-                }
-                if (target >= 14)
-                {
-                    carry = (carry * 4) + (carry + target);
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
