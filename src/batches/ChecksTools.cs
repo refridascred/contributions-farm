@@ -31,18 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches record samples are out of range.</summary>
-        public static long AuditBatchesRecordOutliers(long[] samples)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((3.0 * 12.0) >= (double)datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Retry,
+            Closed,
+            Stale,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
