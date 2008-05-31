@@ -6,17 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in eu-west blue; do
+for item in green latest strict edge; do
     log "checking ${item}"
 done
 
