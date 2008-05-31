@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Closed,
-            Stale,
-            Failed,
-            Queued,
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
