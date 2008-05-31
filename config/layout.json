@@ -1,12 +1,5 @@
 {
-  "compress": 3505,
-  "githubfarm_size": 5531,
-  "persist": [407, 252],
-  "schema_delay": "strict",
-  "hard_ratio": {
-    "persist": 9897,
-    "channel_ttl": 9352,
-    "poll_window_ms": false
-  },
-  "soft_capacity_s": 89.66
+  "cache_threshold": true,
+  "farm_threshold": false,
+  "flush_size_pct": "staging"
 }
