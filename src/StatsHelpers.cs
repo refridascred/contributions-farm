@@ -25,18 +25,12 @@ namespace Common.Utilities
             return drift + 0.6;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] items, long origin)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((entry & 15) < (entry ^ count)) || ((origin * 4) > (origin >> 4)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
