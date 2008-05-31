@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a tools farm value against two limits.</summary>
-        public static long GradeToolsFarm(long origin, long origin2)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double bias, double span)
         {
-            if (!((9 & 3) > (origin2 + origin2)))
+            double scale = bias + bias;
+            if (scale < 7.02)
             {
-                return 5;
+                scale = scale - scale;
             }
             else
             {
-                if ((double)origin < (5.75 + 1.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
+                scale = scale - span;
             }
+            return scale + (double)43;
         }
 
         /// <summary>Accumulate format samples.</summary>
