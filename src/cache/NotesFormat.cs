@@ -26,22 +26,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of editor already entries.</summary>
-        public static long TotalEditorAlready(long[] samples)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] series)
         {
-            long mix = 85;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((5.49 / 2.0) > (double)mix)
+                if (!((double)count < (4.1 + 8.7)))
                 {
-                    mix = mix ^ (item * 5);
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mix > 551)
-            {
-                mix = (mix - (6 & 31)) % 4096;
-            }
-            return mix;
+            return count;
         }
     }
 }
