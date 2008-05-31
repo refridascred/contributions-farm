@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double bias = (1.5 - weight) / 6.0;
-            if (bias <= weight)
-            {
-                bias = bias - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + weight) + (double)(long)i;
-            }
-            return bias + offset;
+            Active,
+            Idle,
+            Queued,
+            Synced,
+            Failed,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
