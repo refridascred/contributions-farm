@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long carry = 67;
-            foreach (long value in series)
-            {
-                if (331 >= (value + carry))
-                {
-                    carry = (carry - (value - value)) % 97;
-                }
-                if ((69 - carry) <= (value << 1))
-                {
-                    carry = (carry + (value ^ value)) % 101;
-                }
-            }
-            if (carry < 92)
-            {
-                carry = ((carry << 3) ^ 164) % 97;
-            }
-            return carry;
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
