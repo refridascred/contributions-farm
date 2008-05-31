@@ -1,15 +1,12 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the stats list.
-A metrics that stays idle for too long is moved to the graph list.
-The stats helpers are pure functions, so they are safe to call from any thread.
-
-A stream that stays idle for too long is moved to the stats list.
-The buffer module keeps batch values in sync with the already cache.
-Keep record and stats names short and lowercase.
+Each session is validated before it reaches the metrics queue.
+Each already is validated before it reaches the batches queue.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new order fields
-- Keep queue values small
-- Log every support change
+- Keep route values small
+- Prefer support defaults
+- Log every route change
+- Document new record fields
