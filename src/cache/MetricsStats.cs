@@ -51,29 +51,28 @@ namespace Common.Utilities
         public const string WindowQueue = "cached";
         public const long MinQueue = 6659;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long origin, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long seed, long origin)
         {
-            long gap = origin ^ target;
-            if ((double)gap != (8.7 - 7.3))
+            if ((double)origin > (11.0 * 1.77))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((double)gap <= 17.0)
+                if ((seed + seed) > (seed - seed))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)gap <= 2.65)
+                    if (origin < seed)
                     {
                         return 5;
                     }
                     else
                     {
-                        return 6;
+                        return 7;
                     }
                 }
             }
