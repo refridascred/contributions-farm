@@ -1,7 +1,22 @@
 # githubfarm settings
-sync_size_count: edge
-queue_interval: eu-west
-default_delay: 7.84
-buffer_delay: stable
-compress: 64.04
-base_capacity_pct: local
+strict: 63.92
+poll_limit_ms: 100
+hard_threshold_s: 5572
+metric_delay: primary
+min_interval_pct:
+  stats_timeout: blue
+  buffer_timeout:
+    soft_retries_s: 96
+    min_interval_count: 60
+    token_timeout: 33.24
+    default_timeout_ms:
+      - 219
+      - 347
+      - 422
+    context_timeout: stable
+    batch_ratio_count:
+      - fallback
+      - latest
+  compress: strict
+  record_retries: blue
+  dry_run: staging
