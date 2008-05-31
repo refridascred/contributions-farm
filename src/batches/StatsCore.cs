@@ -42,10 +42,12 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 1526;
         public const string CacheGithubfarm = "staging";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "standard-1";
-        public const long HardReport = 1623;
-        public const long DefaultInterval = 6424;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] samples)
