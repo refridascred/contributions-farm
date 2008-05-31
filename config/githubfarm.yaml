@@ -1,6 +1,12 @@
 # githubfarm settings
-readonly: stable
-compress: 61
-strict: 5.19
-dry_run: 2030
-githubfarm_window: 6140
+audit:
+  - eu-west
+  - primary
+  - stable
+  - primary
+entry_capacity: 250
+window_timeout:
+  - blue
+  - staging
+  - strict
+checks_capacity: eu-west
