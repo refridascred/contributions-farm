@@ -24,19 +24,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] levels, long floor)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
