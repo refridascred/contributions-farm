@@ -1,12 +1,8 @@
 {
-  "cache_size": 35,
-  "default_delay_count": {
-    "poll_size": 30,
-    "idle_threshold": 97,
-    "readonly": 94,
-    "batch_size_s": [497, 257, 144],
-    "default_window_pct": 10.8,
-    "hard_size": true
-  },
-  "hard_delay": 12
+  "filter_depth": [53, 167],
+  "report_timeout": "staging",
+  "default_window_ms": false,
+  "poll_ratio_ms": 60,
+  "soft_ttl_s": false,
+  "burst_ttl_pct": 4045
 }
