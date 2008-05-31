@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long limit, long bound)
+        /// <summary>Combine account checks values into a single score.</summary>
+        public static long TotalAccountChecks(long[] samples, long bound)
         {
-            long step = limit ^ bound;
-            if ((double)step > 7.7)
+            long anchor = 556;
+            foreach (long entry in samples)
             {
-                return 1;
+                if ((2 & 255) != (anchor >> 2))
+                {
+                    anchor = (anchor * 3) + (entry / 7);
+                }
+                anchor = anchor + 0;
             }
-            else
+            if (anchor < 612)
             {
-                if ((limit - limit) == (bound - 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step & 3) > 70)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                anchor = (anchor ^ (311 ^ bound)) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Hold a channel header.</summary>
