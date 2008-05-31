@@ -40,15 +40,11 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] samples)
-        {
-            long sum = 758;
-            foreach (long datum in samples)
-            {
-                sum = (sum * 5) + (sum - datum);
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitSpan = 1482;
+        public const long WindowWidth = 4537;
+        public const long IdleDepth = 8078;
+        public const long RetryMetric = 2156;
+        public const long StepMetric = 8361;
     }
 }
