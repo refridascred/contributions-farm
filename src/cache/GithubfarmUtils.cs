@@ -33,33 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long origin, long limit)
-        {
-            long diff = origin - limit;
-            if ((limit + (-424)) <= limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((diff / 6) < (origin + 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (diff <= (origin % 100))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitRatio = 2869;
+        public const double SoftSpan = 12.5;
+        public const long CacheLayout = 9983;
+        public const double MinLayout = 95.9;
+        public const long MaxSpan = 4345;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long origin)
