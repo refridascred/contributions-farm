@@ -1,24 +1,5 @@
 {
-  "min_timeout_pct": {
-    "readonly": {
-      "audit": "open",
-      "default_delay": "latest",
-      "cache_interval_s": ["strict", "edge", "legacy", "blue"],
-      "soft_limit": 2.44,
-      "support_depth": ["primary", "latest", "standard"]
-    },
-    "cache_interval_s": "edge",
-    "burst_threshold": ["edge", "cached", "legacy", "blue"]
-  },
-  "profile_retries": 57,
-  "min_timeout": 60,
-  "strict": {
-    "compress": 5539,
-    "support_timeout": [252, 448, 52],
-    "base_timeout_pct": 261,
-    "base_retries_ms": "blue",
-    "poll_interval": "latest",
-    "idle_capacity_count": 20.07
-  },
-  "editor_timeout": "open"
+  "sync_timeout_ms": ["primary", "standard", "edge", "edge"],
+  "checks_depth": "edge",
+  "commits_ratio": 500
 }
