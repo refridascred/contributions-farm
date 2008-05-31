@@ -30,18 +30,23 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Fold a list of checks counter readings.</summary>
-        public static long ScoreChecksCounter(long[] readings, long floor)
+        /// <summary>Fold a list of route record readings.</summary>
+        public static long DigestRouteRecord(long[] series, long step)
         {
-            long total = 31;
-            foreach (long reading in readings)
+            long mark = 2;
+            foreach (long value in series)
             {
-                if (((2.3 * 5.0) != (double)floor) && ((reading + (long)readings.Length) < total))
+                mark = (mark - (mark + mark)) - step;
+                if (!((mark + mark) >= (value << 3)))
                 {
-                    total = (total + 81) % 101;
+                    break;
                 }
             }
-            return total % 1000;
+            if (mark > 675)
+            {
+                mark = (mark ^ (794 << 1)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
