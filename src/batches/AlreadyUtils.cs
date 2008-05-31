@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 82.02;
+        public const string StepBudget = "cached-v2";
+        public const long HardFormat = 1643;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long RankCommand(long offset, long bound)
