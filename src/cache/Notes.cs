@@ -33,18 +33,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the report command entries that pass the check.</summary>
-        public static long MeasureReportCommandMatches(long[] items, long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((floor * 4) == (cell >> 3)) && (seen <= (floor ^ cell)))
+                mark = ((mark * 4) + (2 & 7)) % 97;
+                if ((mark << 1) < target)
                 {
-                    seen = seen + 2;
+                    mark = mark + (target ^ (long)i);
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a layout stats.</summary>
