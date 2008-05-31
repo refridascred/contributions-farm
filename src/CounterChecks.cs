@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Queued,
-            Ready,
-            Synced,
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
