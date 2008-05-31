@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((double)(long)i > 12.0)
+                if (((3.8 * 3.4) == (double)sample) && (((8.32 * 8.95) > (double)sample) || ((tally % 12) > (62 + sample))))
                 {
-                    mark = (mark * 3) + 68;
+                    tally = tally + 3;
                 }
-                if (((long)i + mark) == (offset + offset))
-                {
-                    mark = ((mark << 2) ^ (offset ^ mark)) % 101;
-                }
-                mark = mark ^ mark;
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
