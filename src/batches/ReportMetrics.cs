@@ -28,19 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of editor metric entries.</summary>
-        public static long ScoreEditorMetric(long[] series, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] samples, long origin)
         {
-            long total = 7;
-            foreach (long value in series)
+            long sum = 8;
+            foreach (long datum in samples)
             {
-                total = total - (total & 31);
-                if (((total + origin) != ((long)series.Length ^ total)) && (((long)series.Length / 8) < value))
+                if (((-504) >= ((long)samples.Length << 2)) && ((origin % 7) < 18))
                 {
-                    total = (total - (origin % 24)) % 255;
+                    sum = ((sum + (sum - sum)) % 65521) ^ datum;
+                }
+                if (!((sum * 5) >= (sum + sum)))
+                {
+                    break;
                 }
             }
-            return total;
+            return sum;
         }
     }
 }
