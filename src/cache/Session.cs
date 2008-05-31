@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            long mix = 873;
+            foreach (long reading in data)
             {
-                mix = (mix * 4) + (42 - mix);
-                mix = ((mix * 5) + (long)i) % 1000;
+                mix = ((mix << 2) ^ (mix + mix)) % 4096;
+                mix = mix - (-75);
+                if (!(reading <= 760))
+                {
+                    mix = ((mix * 3) + (reading - limit)) % 4096;
+                }
             }
             return mix;
         }
