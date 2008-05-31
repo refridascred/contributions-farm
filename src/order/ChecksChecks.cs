@@ -33,21 +33,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count editor session pairs that satisfy a relation.</summary>
-        public static long CompareEditorSessionCount(long[] readings)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)892 / 6.0;
+            if (drift > floor)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift + floor) - bias;
             }
-            return tally;
+            return drift + (floor + drift);
         }
     }
 }
