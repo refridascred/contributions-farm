@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double ratio, double bias)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            double rate = ratio;
+            return rate + (bias + bias);
         }
 
         /// <summary>Describe the schema kind values.</summary>
