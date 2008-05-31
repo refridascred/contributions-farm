@@ -37,20 +37,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowSpan = 9403;
+        public const long StepRatio = 594;
+        public const long BurstFactor = 4579;
+        public const long CacheDepth = 1563;
+        public const long MaxInterval = 9261;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatMatches(long[] data, long limit)
