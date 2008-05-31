@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] items)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((4.9 / 5.0) != (double)count)
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a buffer payload reading by value.</summary>
