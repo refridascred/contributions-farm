@@ -16,20 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] levels, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] samples)
         {
-            long mark = 589;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                mark = ((mark << 2) ^ sample) % 101;
-                if ((mark < target) && ((816 + 9) <= (mark + mark)))
+                if ((tally % 64) != (entry + 3))
                 {
-                    mark = mark ^ (79 + 1);
+                    tally = tally + 2;
                 }
-                mark = ((mark * 3) + (target + target)) % 255;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the route status values.</summary>
