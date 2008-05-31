@@ -21,22 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long score = 37;
+            foreach (long value in data)
             {
-                if ((tally / 5) != (tally ^ 2))
+                if (!((value * 3) < value))
                 {
-                    tally = (tally + 2) ^ value;
+                    score = score - value;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score + (value + score)) % 255;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the filter payload entries that pass the check.</summary>
