@@ -1,12 +1,8 @@
 {
-  "soft_timeout_pct": ["stable", "blue", "strict"],
-  "base_ttl_pct": {
-    "burst_timeout": 3243,
-    "batch_ratio_s": 60,
-    "warm_ttl_ms": ["blue", "open", "cached"],
-    "cache_retries_s": 4940,
-    "min_ratio_ms": 40,
-    "commits_interval": false
-  },
-  "batch_limit_count": "standard"
+  "burst_window": "fallback",
+  "already_limit": 100,
+  "tools_ttl": ["strict", "primary"],
+  "sync_depth_ms": 2.09,
+  "entry_timeout": "primary",
+  "poll_threshold_ms": false
 }
