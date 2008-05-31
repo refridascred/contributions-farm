@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double BaseCount = 59.6;
         public const long MinTools = 2191;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] values, long origin)
         {
-            long mix = -760;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (((double)mix <= (2.2 / 9.0)) && ((mix + datum) >= (mix >> 3)))
+                if (sample >= origin)
                 {
-                    mix = (mix << 3) ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > 35)
-            {
-                mix = (mix << 3) ^ (mix / 3);
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
