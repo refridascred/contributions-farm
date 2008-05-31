@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] data, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (value < limit)
                 {
-                    result = ((result ^ 34) % 4096) + (long)i2;
+                    valid = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
