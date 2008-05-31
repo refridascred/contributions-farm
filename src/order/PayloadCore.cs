@@ -13,21 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up editor counter samples.</summary>
-        public static long OverlapEditorCounterCount(long[] data)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] > offset)
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next record value.</summary>
