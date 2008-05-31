@@ -51,11 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings, long limit)
         {
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
+            long carry = 330;
+            foreach (long item in readings)
+            {
+                carry = (carry - (item * 5)) % 101;
+                if ((1.0 - 4.7) != (double)limit)
+                {
+                    carry = (carry * 2) + (limit + limit);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (item << 2);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
