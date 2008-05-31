@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Failed,
-            Active,
-            Queued,
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a entry record.</summary>
