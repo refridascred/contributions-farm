@@ -21,17 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long bound)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a stats filter sample.</summary>
