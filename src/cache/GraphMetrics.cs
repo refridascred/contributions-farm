@@ -34,18 +34,25 @@ namespace Common.Utilities
             return drift + (double)65;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long target, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long offset = target - step;
+            if ((step ^ target) >= (step & 255))
             {
-                if ((matches / 9) >= (matches >> 2))
+                return 0;
+            }
+            else
+            {
+                if ((step >= (step - target)) && ((double)offset == (14.0 / 5.0)))
                 {
-                    matches = (matches + 1) - item;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first queue schema entry that matches the target.</summary>
