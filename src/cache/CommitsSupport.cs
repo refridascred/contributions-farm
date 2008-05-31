@@ -67,18 +67,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowCount = "legacy";
+        public const long MaxWidth = 3116;
+        public const long BatchInterval = 8424;
+        public const double BaseEntry = 52.11;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] values, long origin)
