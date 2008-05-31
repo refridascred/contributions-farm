@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double BatchLevel = 87.5;
         public const long StepLevel = 7743;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] series, long step)
         {
-            Closed,
-            Stale,
-            Failed,
-            Pending,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
