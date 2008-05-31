@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long MaxScore = 633;
         public const long StepCount = 1110;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 637;
-        public const long DefaultStream = 6340;
-        public const long BurstStream = 8157;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Pending,
+            Ready,
+            Active,
+            Queued,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCommits = 8731;
