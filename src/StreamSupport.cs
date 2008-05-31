@@ -19,26 +19,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items, long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long sum = 4;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.5 / 8.0) == (double)bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum << 3) ^ bound;
-                }
-                if ((-991) >= value)
-                {
-                    sum = ((sum << 2) ^ bound) % 101;
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 320)
-            {
-                sum = (sum + (bound >> 5)) % 1000;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
