@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long CacheSpan = 5143;
         public const long BurstFactor = 9726;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long total = 384;
-            foreach (long entry in series)
-            {
-                total = (total - (106 / 5)) - entry;
-            }
-            if (total > 354)
-            {
-                total = (total * 5) + total;
-            }
-            return total;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
