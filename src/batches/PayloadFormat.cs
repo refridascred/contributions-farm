@@ -26,15 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches tools samples.</summary>
-        public static long WeighBatchesTools(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long total = 52;
-            foreach (long sample in items)
+            long carry = 139;
+            foreach (long entry in items)
             {
-                total = ((total << 2) ^ sample) % 1000;
+                if ((carry >> 2) != ((-7) * 4))
+                {
+                    carry = ((carry << 2) ^ (carry + 562)) + entry;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry >> 1)) % 255;
+                }
             }
-            return total % 97;
+            return carry;
         }
 
         /// <summary>Check that every route checks entry stays within the limit.</summary>
