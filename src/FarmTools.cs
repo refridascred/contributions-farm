@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record editor value against two limits.</summary>
-        public static long SortRecordEditor(long bound, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long diff = bound ^ target;
-            if ((double)diff < 9.6)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((diff + bound) > (diff / 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
