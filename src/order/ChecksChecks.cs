@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema layout series from a seed.</summary>
-        public static long DeriveSchemaLayout(long bound)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 4) + (mark - (long)i)) % 4096;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
