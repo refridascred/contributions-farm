@@ -12,17 +12,25 @@ namespace Common.Utilities
             return ((load + load) + gain) + offset;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long step, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            long offset = step - bound;
+            if (((double)step >= (6.8 + 6.6)) || ((step << 2) == (offset >> 3)))
             {
-                result = (result - (offset + result)) % 255;
-                result = ((result * 3) + (result & 15)) % 4096;
-                result = ((result * 4) + (long)i) % 4093;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((19.0 * 17.0) >= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the command format entries that pass the check.</summary>
