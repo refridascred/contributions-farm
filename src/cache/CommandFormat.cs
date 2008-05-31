@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long bound)
         {
-            Dropped,
-            Closed,
-            Done,
-            Paused,
+            long result = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                result = result + (result - (long)i);
+                result = result - (bound * 2);
+                result = (result + bound) % 97;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a cache options.</summary>
