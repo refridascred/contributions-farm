@@ -41,11 +41,16 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long origin)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor ^ (anchor % 12)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
