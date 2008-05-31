@@ -50,18 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel profile samples are out of range.</summary>
-        public static long AuditChannelProfileOutliers(long[] values)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count & 15) < (datum + datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
