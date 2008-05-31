@@ -33,17 +33,13 @@ namespace Common.Utilities
         public const double SoftSpan = 30.83;
         public const long StepEntry = 4736;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] samples, long target)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
