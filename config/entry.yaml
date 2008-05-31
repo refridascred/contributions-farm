@@ -1,5 +1,4 @@
 # entry settings
-stats_size: false
-sync_ttl_pct: green
-hard_timeout_s: 35.35
-burst_interval: 30
+cache_retries_s: 6876
+order_capacity: 13.68
+soft_window_count: false
