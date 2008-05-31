@@ -1,6 +1,6 @@
 {
-  "farm_depth": 49.27,
-  "compress": 250,
-  "stream_threshold": 39,
-  "strict": "latest"
+  "contributi_capacity": [188, 145],
+  "flush_size": false,
+  "default_interval_pct": [112, 350, 287, 138],
+  "compress": 27.83
 }
