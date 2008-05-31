@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the layout githubfarm entries that pass the check.</summary>
-        public static long AuditLayoutGithubfarmHits(long[] readings)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((5.38 * 9.0) < (double)seen)
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
