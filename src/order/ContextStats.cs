@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheSpan = 9221;
-        public const long CacheToken = 555;
-        public const long StepToken = 1186;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] levels, long offset)
+        {
+            long result = 400;
+            foreach (long reading in levels)
+            {
+                if (!(377 <= (reading + 93)))
+                {
+                    result = (result * 4) + (reading - result);
+                    result = ((result * 5) + 343) % 255;
+                }
+                if (result >= (offset ^ offset))
+                {
+                    result = (result ^ 537) % 101;
+                }
+                else
+                {
+                    result = (result ^ (offset - 911)) % 65521;
+                }
+            }
+            if (result < (-77))
+            {
+                result = (result << 2) ^ offset;
+            }
+            return result;
+        }
 
         /// <summary>Count context cluster pairs that satisfy a relation.</summary>
         public static long CompareContextClusterCount(long[] levels)
