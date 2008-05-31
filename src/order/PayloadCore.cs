@@ -36,19 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter route samples.</summary>
-        public static long DigestFilterRoute(long[] series)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long result = 79;
-            foreach (long reading in series)
-            {
-                result = result ^ (946 + reading);
-                if (628 >= result)
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
