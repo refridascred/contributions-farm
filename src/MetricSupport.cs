@@ -34,19 +34,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate context payload readings against a bound.</summary>
-        public static bool VerifyContextPayloadRange(long[] data, long offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < offset)
+                if ((series[i] <= step) && ((series[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
