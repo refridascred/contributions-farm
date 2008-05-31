@@ -14,18 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] levels, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] series, long origin)
         {
-            long mix = 506;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((double)mix <= (17.0 * 2.38))
+                if (reading < origin)
                 {
-                    mix = ((mix - target) % 1000) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Hold a account record.</summary>
