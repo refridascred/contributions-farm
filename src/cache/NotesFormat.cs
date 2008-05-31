@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] data, long target)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] > target) && ((data[i] % 2) != 0))
+                if ((items[i] >= origin) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
