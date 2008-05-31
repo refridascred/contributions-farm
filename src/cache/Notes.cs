@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool ValidateFarmProfileLimits(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 4343;
+        public const long DefaultSpan = 3063;
+        public const long IdleChecks = 5933;
+        public const double BaseChecks = 8.55;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BurstDepth = "cached-edge";
