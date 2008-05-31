@@ -46,11 +46,21 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepRatio = 84;
-        public const long DefaultFilter = 2800;
-        public const long RetryFilter = 880;
-        public const string StepScore = "standard-1";
-        public const long MinWidth = 2037;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
