@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 43.82;
-        public const long DefaultFilter = 8122;
-        public const double RetryFilter = 91.17;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
