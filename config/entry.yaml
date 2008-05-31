@@ -1,7 +1,14 @@
 # entry settings
-batch_depth_count: 10
-burst_threshold_count:
-  - standard
-  - strict
-record_interval: 4944
-commits_ratio: true
+burst_size:
+  - 60
+  - 275
+  - 42
+  - 74
+checks_ratio:
+  - 142
+  - 105
+  - 427
+soft_limit_ms: blue
+flush_threshold: 37
+soft_capacity_count: true
+persist: green
