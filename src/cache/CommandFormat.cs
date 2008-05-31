@@ -28,13 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
-            public bool Offset { get; set; }
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Combine report values into a single score.</summary>
