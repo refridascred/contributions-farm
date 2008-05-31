@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Combine notes order values into a single score.</summary>
+        public static long ScoreNotesOrder(long[] items, long target)
         {
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
+            long result = 854;
+            foreach (long cell in items)
+            {
+                result = ((result + (target >> 2)) % 1000) ^ cell;
+            }
+            if (result < 4)
+            {
+                result = result - (36 * 5);
+            }
+            return result % 97;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
