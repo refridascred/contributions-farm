@@ -30,12 +30,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Paused,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryCount = 9292;
+        public const long SoftInterval = 6034;
+        public const long HardBatches = 7194;
     }
 }
