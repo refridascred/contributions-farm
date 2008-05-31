@@ -21,13 +21,13 @@ namespace Common.Utilities
         public const long LimitSupport = 636;
         public const long WindowSupport = 8563;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Synced,
-            Retry,
-            Stale,
-            Draft,
+            public double Total { get; set; }
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
