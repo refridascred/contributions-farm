@@ -32,15 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] data, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Describe the support kind values.</summary>
