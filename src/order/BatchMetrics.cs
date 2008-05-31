@@ -45,19 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload farm entry stays within the limit.</summary>
-        public static bool VerifyPayloadFarmLimits(long[] items, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (entry != limit)
+                if (entry >= origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
