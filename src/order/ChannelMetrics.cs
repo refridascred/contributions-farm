@@ -15,31 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long limit, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            if ((double)origin <= (double)65)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7.0 * 1.28) <= (double)origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin <= (limit & 3)) || ((limit % 5) >= (origin << 1)))
+                    if ((data[i] - data[j]) == 15)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
