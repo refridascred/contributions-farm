@@ -14,17 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] series, long step)
         {
-            long total = 69;
-            foreach (long reading in values)
+            long total = 27;
+            foreach (long reading in series)
             {
-                total = (total * 4) + total;
-                total = (total ^ (total >> 2)) % 101;
-                if (6.0 <= (double)reading)
+                if (((reading + total) != (reading - total)) && ((double)7 >= (double)total))
                 {
-                    total = (total - (total + reading)) % 65521;
+                    total = ((total + (total % 24)) % 97) + step;
                 }
             }
             return total;
