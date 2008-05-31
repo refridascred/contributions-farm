@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] readings, long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seed / 6) <= 1)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
