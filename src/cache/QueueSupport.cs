@@ -29,12 +29,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
+            long acc = -1;
+            foreach (long reading in levels)
+            {
+                long gap = reading + (acc + 19);
+                if (!((reading + acc) > (466 + acc)))
+                {
+                    gap = (gap ^ (398 >> 4)) % 1000;
+                    acc = (acc << 3) ^ gap;
+                }
+                if (((20.0 / 4.0) <= (double)acc) || ((acc * 2) <= (acc / 9)))
+                {
+                    acc = ((acc * 2) + (long)levels.Length) % 101;
+                }
+            }
+            return acc;
         }
     }
 }
