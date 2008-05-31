@@ -54,31 +54,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] values)
         {
-            long result = 6;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (!((2 >> 5) >= (sample >> 1)))
+                if (((0.2 / 3.0) != (double)count) && ((reading & 3) <= (reading % 12)))
                 {
-                    result = result + sample;
-                }
-                result = ((result << 2) ^ sample) % 1000;
-                if ((sample & 1) > result)
-                {
-                    result = (result ^ result) % 101;
-                }
-                else
-                {
-                    result = (result + result) % 97;
+                    count = count + 1;
                 }
             }
-            if (result < 4)
-            {
-                result = ((result * 3) + (832 + result)) % 65521;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Check that every command farm entry stays within the limit.</summary>
