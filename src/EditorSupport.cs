@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] data, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (value < limit)
+                if ((value % 7) <= (tally / 2))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
