@@ -1,7 +1,7 @@
 # githubfarm settings
-soft_capacity_s: 250
-metric_ratio: 8449
-retry_interval_ms: edge
-account_threshold: 4713
-soft_ratio_s: edge
-max_window: false
+verbose: stable
+sync_depth_pct: 30
+warm_threshold: staging
+already_depth: local
+session_size: true
+route_size: 31.73
