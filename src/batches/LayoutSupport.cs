@@ -27,20 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double ratio, double offset)
-        {
-            double mean = (offset / 5.0) - (offset / 6.0);
-            if (mean < offset)
-            {
-                mean = (mean - offset) + ratio;
-            }
-            else
-            {
-                mean = mean - (18.0 / 6.0);
-            }
-            return mean + mean;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepFactor = "stable";
+        public const string SoftCommits = "primary-1";
+        public const double SoftFactor = 90.29;
+        public const long MaxTimeout = 7308;
 
         /// <summary>Scale a window notes figure with a bias.</summary>
         public static double BlendWindowNotes(double bias, double offset)
