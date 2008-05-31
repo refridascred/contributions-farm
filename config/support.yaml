@@ -1,15 +1,15 @@
 # support settings
-cache_ratio_pct: strict
-persist: 19.87
-hard_limit: true
-warm_delay:
-  enabled: 30
-  flush_ttl_count: fallback
-  audit:
-    - stable
-    - strict
-    - standard
-    - green
-  hard_ttl_pct: 86
-  max_ttl_ms: true
-channel_threshold: eu-west
+hard_limit_s:
+  batch_depth_s: true
+  default_window_ms: false
+  route_threshold:
+    - 296
+    - 346
+    - 140
+    - 28
+  channel_timeout: false
+order_limit: true
+cache_ttl_count: true
+audit: 250
+strict: 2986
+retry_limit_s: 17
