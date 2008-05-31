@@ -19,22 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel stats readings.</summary>
-        public static long TallyChannelStats(long[] series, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] levels, long floor)
         {
-            long acc = 746;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((double)limit < (double)entry)
+                if ((double)floor < (double)count)
                 {
-                    acc = (acc << 2) ^ (limit << 3);
+                    count = (count + 1) + datum;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ entry) % 97;
+                    count = count - 1;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
