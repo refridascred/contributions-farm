@@ -1,7 +1,6 @@
 # githubfarm settings
-cache_window: 7263
-batch_capacity_count:
-  - fallback
-  - green
-min_retries_count: open
-warm_threshold_s: false
+notes_size: 500
+audit: 60
+base_timeout: 1024
+max_capacity: 97
+base_ttl: 7.67
