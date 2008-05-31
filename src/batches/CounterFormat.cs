@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Done,
-            New,
-            Draft,
-            Active,
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
