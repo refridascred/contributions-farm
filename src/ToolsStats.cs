@@ -41,18 +41,18 @@ namespace Common.Utilities
         public const string CacheLevel = "fallback";
         public const long HardCount = 4248;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] data, long floor)
+        /// <summary>Measure how many command metrics samples are out of range.</summary>
+        public static long TallyCommandMetricsGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (datum >= floor)
+                if (!((double)entry != (double)tally) || (((double)tally <= (2.4 * 0.7)) && ((tally * 2) < (entry + tally))))
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the metrics state values.</summary>
