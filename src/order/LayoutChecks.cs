@@ -63,11 +63,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a stats batches reading by value.</summary>
