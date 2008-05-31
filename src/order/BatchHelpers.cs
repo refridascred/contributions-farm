@@ -23,10 +23,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitSize = 8818;
-        public const long HardSpan = 9753;
-        public const string StepBudget = "alpha-v2";
-        public const long BasePayload = 537;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+        }
     }
 }
