@@ -28,24 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long floor, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] readings, long offset)
         {
-            if (bound < (bound / 5))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor % 2) <= (4 << 3))
+                if ((matches + value) != (value % 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 1) - offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
