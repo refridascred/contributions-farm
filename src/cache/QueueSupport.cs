@@ -29,19 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] samples, long offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Active,
+            Paused,
+            Idle,
         }
     }
 }
