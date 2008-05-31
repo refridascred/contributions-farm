@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long floor)
         {
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(((long)i - floor) < (acc & 63)))
+                {
+                    acc = acc ^ (floor * 5);
+                }
+                if (!((acc >> 3) >= (acc - acc)))
+                {
+                    acc = (acc - (acc << 1)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
