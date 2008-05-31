@@ -41,17 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Closed,
         }
     }
 }
