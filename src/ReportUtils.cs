@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] series, long floor)
+        /// <summary>Audit stats support readings against a rule.</summary>
+        public static long AuditStatsSupportOutliers(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (reading < floor)
+                if (((double)floor >= (10.0 - 9.0)) || (sample < floor))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
