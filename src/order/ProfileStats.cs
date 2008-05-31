@@ -58,14 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] data)
         {
-            Stale,
-            Draft,
-            Active,
-            Ready,
-            Dropped,
+            long mark = 154;
+            foreach (long datum in data)
+            {
+                mark = (((mark * 2) + (158 + 9)) % 97) - datum;
+            }
+            return mark;
         }
     }
 }
