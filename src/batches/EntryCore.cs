@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] readings, long target)
+        /// <summary>Fold a list of layout notes readings.</summary>
+        public static long ScoreLayoutNotes(long[] readings)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long acc = -62;
+            foreach (long reading in readings)
             {
-                if (((0.06 * 1.91) >= (double)target) && ((943 + value) >= value))
+                if ((acc % 7) < (47 + 9))
                 {
-                    count = count + 1;
+                    acc = ((acc - (52 & 1)) % 255) - reading;
                 }
-                else
+                if ((9 + 530) >= (acc * 4))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Count graph session pairs that satisfy a relation.</summary>
