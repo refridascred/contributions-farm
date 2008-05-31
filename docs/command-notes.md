@@ -1,14 +1,11 @@
 # Command notes
 
-Run the filter check before changing any entry limits.
-The stats module keeps githubfarm values in sync with the queue cache.
-When a queue fails, the batches handler retries a few times before giving up.
-
-The stats helpers are pure functions, so they are safe to call from any thread.
-Each payload is validated before it reaches the notes queue.
+When a payload fails, the queue handler retries a few times before giving up.
+When a channel fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Log every cluster change
-- Validate format input early
+- Keep batches values small
+- Document new format fields
+- Review editor limits each release
+- Log every layout change
