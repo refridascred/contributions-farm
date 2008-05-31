@@ -23,17 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                mix = mix + 483;
-                mix = (mix << 3) ^ (bound / 2);
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((item << 2) <= 68)
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Blend two entry measurements.</summary>
