@@ -23,22 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] values, long floor)
+        /// <summary>Accumulate batches tools samples.</summary>
+        public static long WeighBatchesTools(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = 52;
+            foreach (long sample in items)
             {
-                if ((925 > (floor ^ 1)) || (5 >= (cell << 3)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total << 2) ^ sample) % 1000;
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Hold a route header.</summary>
