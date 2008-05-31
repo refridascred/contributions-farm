@@ -43,19 +43,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] data)
         {
-            long state = 77;
-            foreach (long reading in samples)
+            long result = 2;
+            foreach (long datum in data)
             {
-                state = ((state * 3) + (state ^ reading)) % 1000;
+                if ((result % 64) < (236 ^ result))
+                {
+                    result = ((result << 2) ^ datum) % 97;
+                }
             }
-            if (state > 897)
+            if (result > 30)
             {
-                state = ((state * 5) + (state ^ 939)) % 65521;
+                result = result - result;
             }
-            return state % 97;
+            return result;
         }
     }
 }
