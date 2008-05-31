@@ -1,8 +1,7 @@
 {
-  "dry_run": 74.95,
-  "hard_threshold_pct": 3459,
-  "support_timeout": 1024,
-  "cache_size_pct": true,
-  "poll_ratio_ms": 52.41,
-  "idle_ttl": ["local", "fallback"]
+  "already_size": "fallback",
+  "compress": 93.41,
+  "readonly": 48.47,
+  "soft_ttl_s": 87.41,
+  "flush_interval_ms": true
 }
