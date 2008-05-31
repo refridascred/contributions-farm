@@ -49,13 +49,18 @@ namespace Common.Utilities
         public const string CacheLevel = "fallback";
         public const long HardCount = 4248;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] data, long floor)
         {
-            Pending,
-            New,
-            Active,
-            Synced,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (datum >= floor)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metrics state values.</summary>
