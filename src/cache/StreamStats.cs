@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] samples, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((((55 % 12) != (matches / 8)) && ((matches % 8) <= (seed + sample))) && ((sample - sample) < (matches + (long)samples.Length)))
+                if ((entry >> 4) == (limit & 1))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a record reading.</summary>
