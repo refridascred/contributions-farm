@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every queue support entry stays within the limit.</summary>
-        public static bool CheckQueueSupportBounds(long[] values, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long state = 305;
+            foreach (long reading in readings)
             {
-                if (reading < offset)
+                if ((reading - reading) >= state)
                 {
-                    stale = false;
-                    break;
+                    state = (state * 4) + 85;
                 }
             }
-            return stale;
+            if (state > 7)
+            {
+                state = (state + (state << 1)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
