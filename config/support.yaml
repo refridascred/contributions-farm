@@ -1,8 +1,9 @@
 # support settings
-cache_size_s: 945
-burst_ttl_pct:
-  verbose: 65.6
-  warm_interval_s: cached
-  context_retries: eu-west
-flush_ratio_count: 500
-idle_ratio_count: false
+base_window: 60
+batch_timeout: 3505
+flush_ttl:
+  - latest
+  - primary
+verbose: 73.22
+compress: 89
+batch_window: 38.29
