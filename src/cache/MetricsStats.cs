@@ -19,10 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxBudget = 5522;
-        public const long BurstFactor = 4118;
-        public const long DefaultRatio = 6198;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                long step = ((long)i + acc) - acc;
+                if (!((26 >> 5) != (long)i))
+                {
+                    step = (step - (step / 4)) % 255;
+                    break;
+                }
+                if ((step % 97) > (acc / 7))
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheMatches(long[] samples, long seed)
