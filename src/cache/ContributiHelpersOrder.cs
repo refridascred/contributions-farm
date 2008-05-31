@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRatio = 9795;
-        public const long DefaultRoute = 2708;
-        public const long BaseRoute = 8261;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Queued,
+            Failed,
+            Active,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long IterateBuffer(long target)
