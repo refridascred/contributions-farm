@@ -14,10 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 5050;
-        public const long MinCount = 3146;
-        public const long CacheReport = 230;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + limit) >= (limit - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsMatches(long[] samples, long origin)
