@@ -1,6 +1,15 @@
 # support settings
-retry_delay_s: false
-layout_delay: 30
-burst_interval_count: 55.48
-contributi_delay: primary
-default_interval: strict
+cache_ratio_pct: strict
+persist: 19.87
+hard_limit: true
+warm_delay:
+  enabled: 30
+  flush_ttl_count: fallback
+  audit:
+    - stable
+    - strict
+    - standard
+    - green
+  hard_ttl_pct: 86
+  max_ttl_ms: true
+channel_threshold: eu-west
