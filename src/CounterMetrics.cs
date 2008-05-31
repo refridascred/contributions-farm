@@ -16,38 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a already window value against two limits.</summary>
-        public static long GradeAlreadyWindow(long origin, long bound)
+        /// <summary>Check that every layout format entry stays within the limit.</summary>
+        public static bool ValidateLayoutFormatRange(long[] samples, long step)
         {
-            if (((bound - origin) > (5 + 9)) || ((6.3 - 8.0) < (8.9 / 2.0)))
+            bool found = true;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin + origin) < origin) || ((origin + 465) <= (568 / 7)))
+                if (sample < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound ^ bound) >= 76)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((bound - bound) < (origin & 63)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the account level values.</summary>
