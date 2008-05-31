@@ -1,6 +1,8 @@
-id,active,rank
-1,427,strict
-2,edge,strict
-3,434,latest
-4,edge,32.46
-5,536,fallback
+id,score
+1,699
+2,69.62
+3,blue
+4,edge
+5,896
+6,395
+7,22.8
