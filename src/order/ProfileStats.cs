@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long RetryLevel = 4786;
         public const double CacheFactor = 5.25;
 
-        /// <summary>Measure how many schema account samples are out of range.</summary>
-        public static long TallySchemaAccountMatches(long[] data)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double gain = (weight / 2.0) + (weight + weight);
+            if (gain < (double)902)
             {
-                if ((matches + (-106)) > (matches >> 1))
-                {
-                    matches = (matches + 1) - cell;
-                }
+                gain = gain - (gain - offset);
             }
-            return matches;
+            return gain - weight;
         }
 
         /// <summary>Hold a route snapshot.</summary>
