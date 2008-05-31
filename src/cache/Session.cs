@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] samples, long origin)
+        /// <summary>Find the first channel format entry that matches the target.</summary>
+        public static long LookupChannelFormatIndex(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] > origin)
+                if ((values[i] > bound) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
