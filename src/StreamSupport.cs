@@ -20,11 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long bound, long seed)
         {
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
+            long edge = bound ^ seed;
+            if ((seed >= (bound + 4)) || (seed >= (edge % 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound <= (edge - edge))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + bound) <= (seed & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
