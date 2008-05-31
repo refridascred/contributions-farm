@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the session counter entries that pass the check.</summary>
-        public static long MeasureSessionCounterMatches(long[] series, long seed)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double ratio = weight;
+            if (ratio <= offset)
             {
-                if ((cell / 8) > (8 - seed))
-                {
-                    matches = matches + 3;
-                }
+                ratio = ratio - 8.2;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + 9.44;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (weight + ratio)) - (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Describe the entry mode values.</summary>
