@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Audit stream farm readings against a rule.</summary>
+        public static long CountStreamFarmGaps(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((matches <= item) || ((double)matches >= (7.2 - 5.0))) && (matches > (item ^ 127)))
                 {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a tools summary.</summary>
