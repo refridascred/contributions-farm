@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] values, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (datum >= floor)
+                if ((double)step != (14.0 * 0.19))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) + datum;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the metric status values.</summary>
