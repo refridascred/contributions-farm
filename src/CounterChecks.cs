@@ -50,19 +50,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] data, long origin)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            New,
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Digest a series of session entries.</summary>
