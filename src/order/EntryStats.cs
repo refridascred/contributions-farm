@@ -59,22 +59,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry counter values into a single score.</summary>
-        public static long FoldEntryCounter(long[] samples, long bound)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long sum = -82;
-            foreach (long reading in samples)
-            {
-                if ((sum - 6) <= (70 << 1))
-                {
-                    sum = (((sum ^ sum) % 4096) ^ reading) + bound;
-                }
-                else
-                {
-                    sum = sum + (5 / 4);
-                }
-            }
-            return sum;
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
