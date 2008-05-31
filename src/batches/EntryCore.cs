@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long CacheInterval = 2750;
         public const string BurstWidth = "local-edge";
 
-        /// <summary>Count graph session pairs that satisfy a relation.</summary>
-        public static long CompareGraphSessionCount(long[] items)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = 4.85;
+            if (mean < 7.9)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + 3.4) + weight;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
