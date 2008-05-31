@@ -23,14 +23,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long origin, long step)
         {
-            Stale,
-            Ready,
-            Retry,
-            Queued,
-            Active,
+            long delta = origin + step;
+            if ((step ^ delta) != (origin + delta))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + origin) != (8 + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many report stream samples are out of range.</summary>
