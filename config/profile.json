@@ -1,13 +1,10 @@
 {
-  "account_interval": "blue",
-  "idle_threshold_ms": false,
-  "default_ratio_pct": "standard",
-  "audit": false,
-  "sync_timeout_ms": {
-    "max_interval_s": 87,
-    "window_capacity": "open",
-    "max_retries_count": "primary",
-    "audit": true,
-    "cache_capacity_ms": "fallback"
-  }
+  "poll_ttl_s": 5096,
+  "dry_run": true,
+  "strict": {
+    "retry_depth_count": 22,
+    "default_capacity_pct": 52,
+    "hard_size_count": [8, 37, 112, 278]
+  },
+  "sync_interval_count": true
 }
