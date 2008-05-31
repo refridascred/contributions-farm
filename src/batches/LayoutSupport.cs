@@ -27,11 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepFactor = "stable";
-        public const string SoftCommits = "primary-1";
-        public const double SoftFactor = 90.29;
-        public const long MaxTimeout = 7308;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Failed,
+            Done,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Scale a window notes figure with a bias.</summary>
         public static double BlendWindowNotes(double bias, double offset)
