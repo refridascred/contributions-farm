@@ -44,31 +44,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long seed, long origin)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            if ((double)origin > (11.0 * 1.77))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed + seed) > (seed - seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin < seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
