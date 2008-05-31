@@ -23,10 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstBudget = "stable";
-        public const long DefaultPayload = 6801;
-        public const long RetryLevel = 8036;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long PairEntryCount(long[] items)
