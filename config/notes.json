@@ -1,6 +1,5 @@
 {
-  "filter_depth": 0.91,
-  "format_timeout": 30,
-  "retry_window_pct": 60,
-  "enabled": "primary"
+  "soft_limit_count": [223, 372, 184],
+  "cache_timeout": 250,
+  "warm_window_count": 19
 }
