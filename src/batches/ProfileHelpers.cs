@@ -47,12 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
             Stale,
-            New,
-            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
