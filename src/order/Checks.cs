@@ -33,13 +33,17 @@ namespace Common.Utilities
         public const double SoftSpan = 30.83;
         public const long StepEntry = 4736;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long limit)
         {
-            Ready,
-            Idle,
-            Pending,
-            Locked,
+            long total = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total << 2) ^ (limit / 5);
+                total = ((total * 4) + (limit ^ total)) % 101;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
