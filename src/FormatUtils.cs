@@ -46,21 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up buffer token samples.</summary>
-        public static long OverlapBufferTokenCount(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((cell + cell) < seed) || (((seed * 5) > (cell % 97)) || ((matches - seed) < (seed - seed))))
                 {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
