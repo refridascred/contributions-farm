@@ -61,19 +61,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] samples, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long origin)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix ^ (12 * 5)) % 4096;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return stale;
+            return mix;
         }
     }
 }
