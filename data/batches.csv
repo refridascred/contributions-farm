@@ -1,8 +1,7 @@
-id,count
-1,48.87
-2,626
-3,legacy
-4,standard
-5,75.32
-6,314
-7,60.06
+id,state,weight
+1,42,cached
+2,41.81,standard
+3,79.95,green
+4,cached,81.22
+5,76.79,36.1
+6,42.99,15.89
