@@ -47,22 +47,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the cluster entry series from a seed.</summary>
-        public static long SeriesClusterEntry(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((2.9 * 4.27) <= (double)(long)i))
-                {
-                    mix = (mix - (mix + origin)) % 65521;
-                    mix = (mix - ((long)i - mix)) % 101;
-                }
-                mix = mix + (mix * 3);
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 87.06;
+        public const long BatchSpan = 2996;
+        public const long LimitDepth = 8514;
+        public const long HardPayload = 834;
+        public const double SoftCount = 67.47;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
