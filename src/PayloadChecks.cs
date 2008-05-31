@@ -62,21 +62,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of metrics metric readings.</summary>
-        public static long CompareMetricsMetricCount(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell - 7) < cell)
                 {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
