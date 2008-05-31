@@ -72,20 +72,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] series, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((3.0 / 4.0) == (double)(long)i)
+                if ((offset ^ offset) <= (sample % 100))
                 {
-                    total = total + (total * 2);
+                    tally = tally + 1;
                 }
-                total = (total ^ (long)i) % 1000;
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
     }
 }
