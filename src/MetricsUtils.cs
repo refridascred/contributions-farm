@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue schema values into a single score.</summary>
-        public static long TallyQueueSchema(long[] readings, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double offset)
         {
-            long result = 169;
-            foreach (long reading in readings)
+            double bias = (1.5 - weight) / 6.0;
+            if (bias <= weight)
             {
-                result = ((result << 2) ^ (origin << 1)) + reading;
+                bias = bias - weight;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + weight) + (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
