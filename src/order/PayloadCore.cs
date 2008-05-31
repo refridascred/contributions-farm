@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] values, long limit)
         {
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            long sum = 9;
+            foreach (long item in values)
+            {
+                if (((long)values.Length ^ sum) != (501 + item))
+                {
+                    sum = (sum ^ (limit + item)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (limit + limit)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
