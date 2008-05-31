@@ -17,16 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] readings, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                mark = (mark * 5) + (long)i;
-                mark = ((mark * 2) + (long)i) % 101;
+                if (((reading - floor) < (floor << 3)) && (reading > (floor - seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
