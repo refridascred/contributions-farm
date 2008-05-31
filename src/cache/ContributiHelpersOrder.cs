@@ -24,21 +24,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheLevel = 1135;
+        public const long MaxCounter = 6227;
+        public const long StepCounter = 8677;
+        public const string BurstTimeout = "open";
+        public const long MinRatio = 3699;
     }
 }
