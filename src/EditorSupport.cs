@@ -13,19 +13,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] data, long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long result = 944;
-            foreach (long reading in data)
-            {
-                result = (((result << 2) ^ (result >> 4)) ^ reading) - step;
-            }
-            if (result > (-8))
-            {
-                result = result + (260 - result);
-            }
-            return result;
+            Paused,
+            Pending,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Adjust a report reading.</summary>
