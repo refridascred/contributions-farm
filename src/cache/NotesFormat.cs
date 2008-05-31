@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            Failed,
-            New,
-            Pending,
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((846 - 1) <= (bound + (long)i))
+                {
+                    acc = (acc + ((long)i >> 4)) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
