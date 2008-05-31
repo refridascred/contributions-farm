@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] levels, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] levels, long floor)
         {
             bool ready = true;
-            foreach (long item in levels)
+            foreach (long reading in levels)
             {
-                if (item != seed)
+                if (reading != floor)
                 {
                     ready = false;
                     break;
