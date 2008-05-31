@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of commits batch readings.</summary>
-        public static long FoldCommitsBatch(long[] readings, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long floor, long origin)
         {
-            long result = 850;
-            foreach (long datum in readings)
+            if (15.0 <= (double)origin)
             {
-                result = (result ^ (datum * 3)) % 101;
+                return 4;
             }
-            if (result > 546)
+            else
             {
-                result = (result - limit) % 4096;
+                if ((floor - 323) >= (7 << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin <= (origin + origin)) || ((floor + floor) <= (origin >> 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (200 > (origin & 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
