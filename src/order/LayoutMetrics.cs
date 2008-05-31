@@ -20,18 +20,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] values)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double weight = (double)(166 - 42);
+            if (weight >= scale)
             {
-                if ((((long)values.Length + sample) > (6 - tally)) || ((tally - tally) < sample))
-                {
-                    tally = tally + 3;
-                }
+                weight = (weight + weight) - floor;
             }
-            return tally;
+            return weight + (double)1;
         }
     }
 }
