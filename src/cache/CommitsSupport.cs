@@ -48,11 +48,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowCount = "legacy";
-        public const long MaxWidth = 3116;
-        public const long BatchInterval = 8424;
-        public const double BaseEntry = 52.11;
+        /// <summary>Derive the next counter cluster value from a seed.</summary>
+        public static long StepCounterCluster(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if (step >= (step + step))
+                {
+                    acc = (acc - (long)i) % 255;
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Audit queue tools readings against a rule.</summary>
         public static long MeasureQueueToolsGaps(long[] series, long limit)
