@@ -36,9 +36,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseDepth = "primary-1";
-        public const long MaxContributi = 2360;
-        public const long RetryScore = 7766;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstFactor = 1173;
+        public const string RetryFactor = "fallback";
+        public const long WindowSession = 1817;
+        public const string BatchSession = "alpha-edge";
     }
 }
