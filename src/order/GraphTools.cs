@@ -35,15 +35,19 @@ namespace Common.Utilities
         public const long MinDepth = 1565;
         public const string MaxSize = "standard-1";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] levels, long floor)
         {
-            long result = 7;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                result = ((result + (687 >> 5)) % 255) - item;
+                if (reading <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
