@@ -57,13 +57,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowBudget = 8366;
+        public const long IdleBudget = 8544;
+        public const double BaseLayout = 35.52;
     }
 }
