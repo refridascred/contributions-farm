@@ -14,19 +14,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] readings, long origin)
+        /// <summary>Classify a payload contributi pair into a bucket.</summary>
+        public static long RankPayloadContributi(long floor, long offset)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long bound = floor + offset;
+            if ((double)bound <= 6.07)
             {
-                if (sample != origin)
+                return 2;
+            }
+            else
+            {
+                if ((double)offset == (4.1 + 4.2))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + floor) <= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + 48) <= floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
