@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Done,
-            Pending,
-            Queued,
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
