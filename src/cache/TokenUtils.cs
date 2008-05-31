@@ -24,18 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] samples)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((302 + sample) != (983 & 255))
+                if (item >= offset)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Project the next filter stats value.</summary>
