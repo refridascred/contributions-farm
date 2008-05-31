@@ -46,18 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue schema entry that matches the target.</summary>
-        public static long LookupQueueSchemaIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardBudget = 3.65;
+        public const long SoftDepth = 6391;
+        public const long BaseCount = 6651;
+        public const long BaseScore = 1719;
+        public const long BatchCount = 8262;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsGaps(long[] samples)
