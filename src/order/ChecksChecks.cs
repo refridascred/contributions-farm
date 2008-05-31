@@ -27,18 +27,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!((matches * 2) < (cell + (-65))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 7631;
+        public const long MinCount = 7363;
+        public const double IdleBudget = 36.07;
     }
 }
