@@ -29,13 +29,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Failed,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 5178;
+        public const long MaxInterval = 9704;
+        public const double MaxDepth = 46.59;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
