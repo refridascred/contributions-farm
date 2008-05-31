@@ -17,11 +17,22 @@ namespace Common.Utilities
         public const double StepTimeout = 98.24;
         public const long SoftWindow = 2931;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit metrics batches readings against a rule.</summary>
+        public static long CountMetricsBatchesGaps(long[] data, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((long)data.Length == (count + limit))
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
