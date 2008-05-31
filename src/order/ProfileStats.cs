@@ -23,19 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] items, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (item != offset)
+                if ((tally - value) > (tally % 10))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
