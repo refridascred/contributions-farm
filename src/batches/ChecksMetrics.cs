@@ -55,14 +55,18 @@ namespace Common.Utilities
         public const string RetryReport = "alpha-v2";
         public const long LimitScore = 4951;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] readings, long step)
         {
-            New,
-            Failed,
-            Active,
-            Locked,
-            Synced,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((20.0 * 10.0) == (double)item)
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a payload info.</summary>
