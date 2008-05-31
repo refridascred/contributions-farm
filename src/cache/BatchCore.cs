@@ -29,17 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] readings, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = scale;
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - ratio) - (double)(long)i) - offset;
             }
-            return -1;
+            return ratio + (scale + scale);
         }
 
         /// <summary>Rank route input into a small class.</summary>
