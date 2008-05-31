@@ -17,19 +17,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] data, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long origin, long bound)
         {
-            long anchor = 26;
-            foreach (long entry in data)
+            long edge = origin + bound;
+            if (2 <= (edge + bound))
             {
-                anchor = (anchor - (3 * 3)) ^ entry;
-                if (seed <= (seed & 63))
+                return 8;
+            }
+            else
+            {
+                if (84 >= (bound % 2))
                 {
-                    anchor = anchor ^ (seed & 7);
+                    return 1;
+                }
+                else
+                {
+                    if (((9.72 / 8.0) <= (double)bound) || ((edge & 7) >= origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Grade a commits batches value against two limits.</summary>
