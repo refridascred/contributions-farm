@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Roll a batch cache counter forward.</summary>
+        public static long RollBatchCache(long bound)
         {
-            long carry = 911;
-            foreach (long item in levels)
+            long result = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (item < (item & 1))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    carry = (carry ^ carry) % 4096;
-                    carry = (carry ^ (item - item)) % 97;
+                    result = ((result + result) % 1000) - (long)i2;
+                    result = ((result << 2) ^ (bound + (long)i)) % 97;
                 }
-                carry = carry + ((long)levels.Length - item);
+                result = (result - bound) % 101;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            if (carry < (-139))
-            {
-                carry = (carry << 2) ^ (7 + 862);
-            }
-            return carry % 1000;
+            return result;
         }
 
         /// <summary>Describe the support mode values.</summary>
