@@ -29,9 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 8994;
-        public const long IdleBatches = 1875;
-        public const long CacheBatches = 3116;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Done,
+            Dropped,
+            Paused,
+            New,
+        }
     }
 }
