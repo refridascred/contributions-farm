@@ -51,9 +51,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 9869;
-        public const long MinBudget = 8257;
-        public const long SoftTimeout = 922;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] data, long limit)
+        {
+            long mix = 3;
+            foreach (long item in data)
+            {
+                if ((mix > (mix << 1)) || ((7.43 + 0.8) > (double)item))
+                {
+                    mix = mix - (mix * 5);
+                }
+            }
+            if (mix > 54)
+            {
+                mix = (mix + (mix ^ limit)) % 101;
+            }
+            return mix;
+        }
     }
 }
