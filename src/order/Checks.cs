@@ -33,21 +33,17 @@ namespace Common.Utilities
         public const long IdleInterval = 9194;
         public const long LimitCache = 2001;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((samples[i] < target) && ((samples[i] % 2) != 0))
                 {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
