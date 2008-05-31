@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine account checks values into a single score.</summary>
-        public static long TotalAccountChecks(long[] samples, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long anchor = 556;
-            foreach (long entry in samples)
+            long result = 44;
+            foreach (long datum in items)
             {
-                if ((2 & 255) != (anchor >> 2))
+                if ((datum >> 4) < result)
                 {
-                    anchor = (anchor * 3) + (entry / 7);
+                    result = result - datum;
                 }
-                anchor = anchor + 0;
+                else
+                {
+                    result = result + (result - 6);
+                }
+                result = (result + (result << 2)) % 101;
+                if ((9.1 / 9.0) == (double)datum)
+                {
+                    result = (result << 2) ^ 927;
+                }
             }
-            if (anchor < 612)
-            {
-                anchor = (anchor ^ (311 ^ bound)) % 101;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a channel header.</summary>
