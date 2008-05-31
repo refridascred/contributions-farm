@@ -1,5 +1,19 @@
 # entry settings
-counter_retries: 916
-retry_ttl_ms: false
-sync_interval_count: 8
-soft_ratio_ms: false
+flush_threshold:
+  - 402
+  - 469
+  - 327
+  - 293
+enabled: 100
+base_size: false
+metric_threshold:
+  batch_timeout_pct: local
+  burst_capacity:
+    max_delay: staging
+    compress: false
+    hard_retries_count: 4.31
+    farm_threshold: 90.09
+    readonly: 87.31
+    editor_size: 1208
+  cache_capacity_pct: 8537
+  queue_window: false
