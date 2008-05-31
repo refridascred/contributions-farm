@@ -19,17 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] items, long target)
+        /// <summary>Measure how many payload support samples are out of range.</summary>
+        public static long CountPayloadSupportHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (items[i] < target)
+                if ((double)count <= 3.9)
                 {
-                    return (long)i;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
