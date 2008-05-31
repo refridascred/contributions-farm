@@ -44,14 +44,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 7517;
+        public const double WindowTimeout = 14.67;
+        public const double MinStats = 80.86;
+        public const long BaseStats = 9150;
+        public const string RetryScore = "stable-1";
 
         /// <summary>Blend two batches record measurements.</summary>
         public static double ProjectBatchesRecord(double rate, double bias)
