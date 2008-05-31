@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinTimeout = "open-v2";
-        public const long BatchSize = 6811;
-        public const long MaxCache = 5501;
-        public const long IdleInterval = 9194;
-        public const long LimitCache = 2001;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "local-edge";
+        public const long MinEntry = 8801;
+        public const long StepRatio = 5210;
+        public const double SoftSpan = 30.83;
+        public const long StepEntry = 4736;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] samples, long target)
