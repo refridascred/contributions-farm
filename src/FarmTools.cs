@@ -44,15 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double scale, double span)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] levels, long origin)
         {
-            double drift = 3.0;
-            if (drift >= (double)85)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = ((drift - (double)61) - scale) + span;
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (drift * 20.0);
+            return -1;
         }
     }
 }
