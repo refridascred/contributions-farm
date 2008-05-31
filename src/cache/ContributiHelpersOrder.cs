@@ -29,19 +29,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] series, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Synced,
+            New,
+            Dropped,
         }
     }
 }
