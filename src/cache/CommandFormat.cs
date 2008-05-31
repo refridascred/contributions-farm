@@ -31,18 +31,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine queue report values into a single score.</summary>
-        public static long TotalQueueReport(long[] series, long step)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long mix = 768;
-            foreach (long item in series)
-            {
-                if ((8 + 67) > (mix - mix))
-                {
-                    mix = ((mix << 2) ^ item) + step;
-                }
-            }
-            return mix % 97;
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
