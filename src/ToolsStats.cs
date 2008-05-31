@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] samples, long limit)
+        /// <summary>Derive the next order payload value from a seed.</summary>
+        public static long SeriesOrderPayload(long seed)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark - (mark << 2)) % 65521;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
