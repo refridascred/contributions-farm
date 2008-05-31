@@ -53,14 +53,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Locked,
-            New,
-            Dropped,
-            Stale,
-            Active,
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every command farm entry stays within the limit.</summary>
