@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 2912;
-        public const double BurstLayout = 7.12;
-        public const double HardLayout = 37.17;
-        public const string WindowFactor = "strict-1";
-        public const long BatchLayout = 7903;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((38 - reading) <= (count / 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] values)
