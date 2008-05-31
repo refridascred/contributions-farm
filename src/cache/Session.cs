@@ -46,20 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data, long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] samples, long origin)
         {
-            long mix = 873;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix << 2) ^ (mix + mix)) % 4096;
-                mix = mix - (-75);
-                if (!(reading <= 760))
+                if (samples[i] > origin)
                 {
-                    mix = ((mix * 3) + (reading - limit)) % 4096;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
