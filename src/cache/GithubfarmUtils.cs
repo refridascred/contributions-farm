@@ -20,19 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every already report entry stays within the limit.</summary>
-        public static bool CheckAlreadyReportRange(long[] samples, long bound)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Match up record order samples.</summary>
