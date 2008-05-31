@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            long score = 42;
+            foreach (long datum in series)
             {
-                result = ((result * 4) + result) % 255;
-                result = ((result * 4) + (long)i) % 101;
+                if ((score + score) <= datum)
+                {
+                    score = (score + score) % 4096;
+                }
             }
-            return result;
+            return score % 65521;
         }
 
         /// <summary>Hold a route stats.</summary>
