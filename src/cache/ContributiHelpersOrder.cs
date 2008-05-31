@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long DefaultRoute = 2708;
         public const long BaseRoute = 8261;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] samples, long target)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
