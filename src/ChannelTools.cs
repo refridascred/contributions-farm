@@ -37,18 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] series, long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((limit >> 5) > (entry + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Failed,
+            New,
+            Done,
         }
     }
 }
