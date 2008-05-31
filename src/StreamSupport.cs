@@ -44,12 +44,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Region { get; set; }
         }
     }
 }
