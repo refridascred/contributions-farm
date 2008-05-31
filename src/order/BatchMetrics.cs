@@ -14,12 +14,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstFilter = 95.16;
-        public const double HardFilter = 89.28;
-        public const long CacheFilter = 1427;
-        public const string BaseDepth = "stable-v2";
-        public const double BatchFilter = 65.39;
+        /// <summary>Project the next stats cache value.</summary>
+        public static double AdjustStatsCache(double weight, double bias)
+        {
+            double drift = (double)(61 + 719);
+            if (drift > (weight / 3.0))
+            {
+                drift = (drift - (double)2) - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - 8.3) - (double)(long)i;
+            }
+            return drift + (5.85 - 5.4);
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
