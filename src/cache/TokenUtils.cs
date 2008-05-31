@@ -41,13 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] items)
         {
-            Stale,
-            Synced,
-            Locked,
-            Failed,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((datum < ((-6) ^ datum)) || ((datum * 4) < datum)) && ((2.9 / 4.0) >= (double)datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
