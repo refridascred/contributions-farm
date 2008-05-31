@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long bound, long seed)
+        /// <summary>Roll a order entry counter forward.</summary>
+        public static long DeriveOrderEntry(long offset)
         {
-            if ((seed + bound) >= seed)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 6;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((3.0 * 4.5) == (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)(-84) <= (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed >> 5) > seed) || ((414 % 8) <= bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Blend two token measurements.</summary>
