@@ -1,5 +1,12 @@
 {
-  "sync_retries": 100,
-  "soft_window_count": 85.48,
-  "batches_size": 13
+  "warm_depth": ["open", "staging"],
+  "soft_ratio": {
+    "compress": 23.13,
+    "flush_limit": "eu-west",
+    "poll_capacity_s": 2788,
+    "persist": 1024,
+    "soft_size_count": ["legacy", "primary", "cached"],
+    "max_ttl_s": "blue"
+  },
+  "batch_window_pct": [46, 235, 493, 65]
 }
