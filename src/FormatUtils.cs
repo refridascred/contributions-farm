@@ -79,17 +79,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order githubfarm entry that matches the target.</summary>
-        public static long FindOrderGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
