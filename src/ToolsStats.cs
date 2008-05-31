@@ -56,10 +56,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseSpan = 1827;
-        public const long DefaultAlready = 8010;
-        public const double MaxDepth = 98.73;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Pending,
+            New,
+            Active,
+            Synced,
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
