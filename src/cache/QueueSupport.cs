@@ -13,19 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] data, long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] series)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long cell in series)
             {
-                if ((5.4 * 3.3) >= (double)sample)
+                if ((0.3 <= (double)count) || (((double)cell != (7.0 * 4.1)) && (((-79) / 6) != (count - cell))))
                 {
-                    count = (count + 3) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 2;
                 }
             }
             return count;
