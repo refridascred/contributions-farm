@@ -26,14 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Digest a series of editor metric entries.</summary>
+        public static long ScoreEditorMetric(long[] series, long origin)
         {
-            Idle,
-            Done,
-            Closed,
-            Synced,
-            Paused,
+            long total = 7;
+            foreach (long value in series)
+            {
+                total = total - (total & 31);
+                if (((total + origin) != ((long)series.Length ^ total)) && (((long)series.Length / 8) < value))
+                {
+                    total = (total - (origin % 24)) % 255;
+                }
+            }
+            return total;
         }
     }
 }
