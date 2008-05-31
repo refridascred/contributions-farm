@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mix = 1;
+            foreach (long reading in samples)
             {
-                if ((0.3 <= (double)count) || (((double)cell != (7.0 * 4.1)) && (((-79) / 6) != (count - cell))))
-                {
-                    count = count + 2;
-                }
+                mix = (mix - mix) ^ reading;
             }
-            return count;
+            if (mix < 250)
+            {
+                mix = (mix - (mix ^ floor)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
