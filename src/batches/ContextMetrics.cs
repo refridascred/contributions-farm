@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Classify a support profile pair into a bucket.</summary>
