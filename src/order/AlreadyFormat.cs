@@ -55,20 +55,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next schema contributi value from a seed.</summary>
-        public static long SeriesSchemaContributi(long limit)
+        /// <summary>Accumulate layout buffer samples.</summary>
+        public static long ScoreLayoutBuffer(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            long carry = 532;
+            foreach (long cell in levels)
             {
-                mix = (mix - (limit + mix)) % 255;
-                if (!((20 - mix) <= mix))
-                {
-                    mix = mix + ((long)i & 63);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                carry = (((carry << 3) ^ (5 / 5)) % 1000) - cell;
             }
-            return mix;
+            return carry;
         }
     }
 }
