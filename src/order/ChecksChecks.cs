@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheLevel = 608;
-        public const long WindowCount = 7221;
-        public const long BaseFactor = 5240;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long ScoreReport(long[] samples, long step)
