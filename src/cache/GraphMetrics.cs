@@ -51,12 +51,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long limit)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            long total = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                long hits = (total ^ limit) & 3;
+                if ((158 + hits) == (limit & 255))
+                {
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
