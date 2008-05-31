@@ -87,13 +87,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] items)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (18.0 <= (double)sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
