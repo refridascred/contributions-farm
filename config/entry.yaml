@@ -1,14 +1,6 @@
 # entry settings
-burst_size:
-  - 60
-  - 275
-  - 42
-  - 74
-checks_ratio:
-  - 142
-  - 105
-  - 427
-soft_limit_ms: blue
-flush_threshold: 37
-soft_capacity_count: true
-persist: green
+retry_delay:
+  - blue
+  - edge
+burst_delay_pct: false
+layout_ratio: 46.74
