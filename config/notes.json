@@ -1,17 +1,7 @@
 {
-  "cache_window": 85,
-  "command_depth": {
-    "default_ttl": "staging",
-    "warm_interval": true,
-    "hard_timeout_count": false
-  },
-  "checks_size": {
-    "editor_delay": 250,
-    "support_delay": "primary",
-    "strict": 48.84,
-    "persist": 100
-  },
-  "poll_window": false,
-  "stats_limit": "stable",
-  "githubfarm_ratio": [85, 214, 177, 216]
+  "persist": "fallback",
+  "session_delay": 63,
+  "token_limit": ["latest", "primary", "edge", "edge"],
+  "retry_size_s": 94,
+  "report_delay": [389, 371, 188, 269]
 }
