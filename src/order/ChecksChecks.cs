@@ -37,32 +37,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a schema record pair into a bucket.</summary>
-        public static long BucketSchemaRecord(long bound, long target)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            long cur = bound ^ target;
-            if (target > (target + cur))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (target <= 479)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound ^ cur) != (target ^ target))
+                    if ((values[i] ^ values[j]) > 1)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
