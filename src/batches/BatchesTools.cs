@@ -29,12 +29,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Look up the position of a stats filter sample.</summary>
-        public static long LocateStatsFilterIndex(long[] readings, long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] < offset)
+                if (samples[i] == limit)
                 {
                     return (long)i;
                 }
