@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((value % 7) <= (tally / 2))
+                if (value < step)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
