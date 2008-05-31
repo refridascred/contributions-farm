@@ -1,7 +1,7 @@
 {
-  "batch_capacity_count": "legacy",
-  "queue_threshold": 91.14,
-  "readonly": 255,
-  "layout_size": 2130,
-  "already_ttl": 15.69
+  "account_ratio": "legacy",
+  "readonly": true,
+  "layout_capacity": 250,
+  "compress": "blue",
+  "burst_ttl_pct": 27.29
 }
