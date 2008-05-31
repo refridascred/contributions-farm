@@ -81,9 +81,17 @@ namespace Common.Utilities
         public const string RetryWidth = "fallback";
         public const long HardContributi = 9982;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "primary-v2";
-        public const long HardScore = 4461;
-        public const long HardMetrics = 351;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
