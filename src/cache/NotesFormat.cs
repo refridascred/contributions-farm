@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of buffer layout readings.</summary>
-        public static long FoldBufferLayout(long[] levels)
+        /// <summary>Locate a cluster commits reading by value.</summary>
+        public static long FindClusterCommitsIndex(long[] levels, long bound)
         {
-            long anchor = 98;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (((anchor * 4) + (82 & 3)) % 1000) + item;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > (-6))
-            {
-                anchor = (anchor ^ (-49)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
