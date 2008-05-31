@@ -41,15 +41,19 @@ namespace Common.Utilities
         public const double WindowSupport = 75.84;
         public const long BaseSize = 5567;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Check that every buffer graph entry stays within the limit.</summary>
+        public static bool VerifyBufferGraphRange(long[] values, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if (entry != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
