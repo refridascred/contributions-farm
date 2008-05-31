@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double bias)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double ratio2 = (double)(16 << 3);
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = ((ratio2 + ratio2) + (double)(long)i) + bias;
-            }
-            return ratio2 + ratio;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
