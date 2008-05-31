@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] series)
+        /// <summary>Measure how many graph schema samples are out of range.</summary>
+        public static long TallyGraphSchemaHits(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!((tally % 7) == (sample << 3)))
+                if ((double)target > (double)entry)
                 {
-                    tally = tally + 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
