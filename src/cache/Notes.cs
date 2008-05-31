@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Validate token channel readings against a bound.</summary>
+        public static bool GuardTokenChannelRange(long[] readings, long limit)
         {
-            public double Region { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the commits class values.</summary>
