@@ -1,7 +1,19 @@
 {
-  "persist": 4967,
-  "base_delay_ms": 9701,
-  "flush_delay": 1584,
-  "hard_size_ms": true,
-  "enabled": 42
+  "dry_run": {
+    "poll_delay": {
+      "batches_interval": false,
+      "queue_interval": 27.04,
+      "cache_depth_ms": true,
+      "cache_threshold_s": "local",
+      "editor_capacity": 97
+    },
+    "burst_retries": "blue",
+    "burst_window_ms": 9905,
+    "sync_threshold": false,
+    "compress": "local",
+    "burst_limit_count": true
+  },
+  "hard_size_ms": "green",
+  "payload_window": "latest",
+  "warm_ttl_count": 250
 }
