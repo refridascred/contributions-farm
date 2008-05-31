@@ -19,24 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two payload already measurements.</summary>
-        public static double ProjectPayloadAlready(double bias, double span)
-        {
-            double load = span + span;
-            if (load <= (9.85 + bias))
-            {
-                load = load - 5.11;
-            }
-            else
-            {
-                load = load - (span + span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load - bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 411;
+        public const double BaseFactor = 63.82;
+        public const long BatchInterval = 2021;
+        public const long StepFactor = 8615;
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
