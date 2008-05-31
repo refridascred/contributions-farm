@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const long RetryEntry = 4611;
         public const long RetryLevel = 5909;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] values, long target)
         {
-            long anchor = 51;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((double)195 < (double)value)
+                if (cell < target)
                 {
-                    anchor = ((anchor << 3) ^ (9 - 956)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - (anchor + value);
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Accumulate editor samples.</summary>
