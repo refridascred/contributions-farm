@@ -16,21 +16,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 92;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = (mix * 4) + (value % 100);
+                if (value > (value << 2))
                 {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix - 44) % 65521;
+                }
+                else
+                {
+                    mix = mix + (2 & 255);
                 }
             }
-            return seen;
+            if (mix < 502)
+            {
+                mix = (mix + (mix - target)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Audit notes metrics readings against a rule.</summary>
