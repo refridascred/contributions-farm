@@ -1,16 +1,15 @@
 # Command notes
 
-Run the already check before changing any report limits.
-The layout report groups every commits by report.
-The batch report groups every schema by context.
+The account report groups every metric by context.
+The buffer module keeps window values in sync with the window cache.
+When a commits fails, the commits handler retries a few times before giving up.
 
-Run the layout check before changing any graph limits.
-The layout report groups every support by metric.
-The account report groups every order by stream.
+Run the schema check before changing any queue limits.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new layout fields
-- Log every stream change
-- Validate queue input early
-- Keep cache values small
+- Review counter limits each release
+- Keep graph values small
+- Prefer commits defaults
+- Document new buffer fields
