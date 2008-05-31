@@ -33,10 +33,9 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseCount = "primary-1";
-        public const double BaseMetric = 86.68;
-        public const double SoftTimeout = 98.34;
-        public const long BurstMetric = 7880;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardWidth = "fallback-1";
+        public const string BatchTimeout = "standard-edge";
+        public const long LimitBatches = 6048;
     }
 }
