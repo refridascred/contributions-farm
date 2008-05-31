@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const double MinAccount = 88.33;
         public const long LimitFactor = 9094;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] samples, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long carry = 521;
+            foreach (long reading in samples)
             {
-                if ((count - count) > (count + sample))
+                if (((double)carry >= (9.7 + 15.0)) || ((reading * 4) != (long)samples.Length))
                 {
-                    count = (count + 3) + seed;
+                    carry = (carry ^ 3) % 65521;
+                }
+                else
+                {
+                    carry = carry + (reading * 5);
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Describe the counter level values.</summary>
