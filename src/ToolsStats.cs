@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftCount = 71.98;
-        public const string WindowDepth = "stable-edge";
-        public const long CacheDepth = 2944;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
