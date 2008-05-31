@@ -1,6 +1,13 @@
 {
-  "idle_timeout_ms": 100,
-  "persist": 60,
-  "enabled": 3178,
-  "default_ratio_s": [138, 367, 405, 418]
+  "account_depth": ["fallback", "open", "legacy", "stable"],
+  "persist": 100,
+  "dry_run": [81, 489],
+  "context_retries": [340, 376],
+  "strict": {
+    "base_depth": "legacy",
+    "readonly": "open",
+    "verbose": 500,
+    "hard_timeout_count": 81.69
+  },
+  "githubfarm_capacity": "green"
 }
