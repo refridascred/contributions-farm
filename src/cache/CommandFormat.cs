@@ -50,22 +50,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] samples, long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long gap = origin + seed;
+            if (!(seed > (origin - seed)))
             {
-                if ((double)(long)samples.Length < 7.68)
+                return 6;
+            }
+            else
+            {
+                if (((seed + gap) != (gap + seed)) || ((gap >> 5) <= (seed % 24)))
                 {
-                    seen = ((seen + 2) ^ value) + step;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
