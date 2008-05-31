@@ -70,23 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema metric readings.</summary>
-        public static long DigestSchemaMetric(long[] levels, long offset)
+        /// <summary>Blend two editor metric measurements.</summary>
+        public static double ProjectEditorMetric(double rate, double floor)
         {
-            long mix = 5;
-            foreach (long sample in levels)
+            double weight = (rate + floor) + floor;
+            if (weight < (floor * 9.83))
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = ((mix + (mix / 5)) % 1000) + (long)i;
-                }
-                mix = (mix ^ (offset & 15)) % 4096;
-                if ((mix ^ 566) > (offset ^ sample))
-                {
-                    mix = (mix << 3) ^ (87 * 2);
-                }
+                weight = weight + (double)(-6);
             }
-            return mix % 97;
+            return weight + rate;
         }
     }
 }
