@@ -19,27 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] values, long target)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double ratio, double bias)
         {
-            long mix = 92;
-            foreach (long value in values)
+            double ratio2 = (double)(16 << 3);
+            for (int i = 0; i < 5; i++)
             {
-                mix = (mix * 4) + (value % 100);
-                if (value > (value << 2))
-                {
-                    mix = (mix - 44) % 65521;
-                }
-                else
-                {
-                    mix = mix + (2 & 255);
-                }
+                ratio2 = ((ratio2 + ratio2) + (double)(long)i) + bias;
             }
-            if (mix < 502)
-            {
-                mix = (mix + (mix - target)) % 1000;
-            }
-            return mix;
+            return ratio2 + ratio;
         }
 
         /// <summary>Fold a list of checks counter readings.</summary>
