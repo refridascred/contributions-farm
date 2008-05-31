@@ -86,13 +86,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] data, long origin)
         {
-            Retry,
-            Stale,
-            Locked,
-            Done,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
