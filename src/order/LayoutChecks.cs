@@ -77,18 +77,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long acc = 747;
-            foreach (long reading in samples)
-            {
-                if (3.6 < (double)offset)
-                {
-                    acc = ((acc * 2) + (reading >> 2)) % 101;
-                }
-            }
-            return acc;
+            Synced,
+            Idle,
+            Ready,
         }
     }
 }
