@@ -43,18 +43,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many stream editor samples are out of range.</summary>
-        public static long MeasureStreamEditorMatches(long[] values, long floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((double)4 <= (double)datum)
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two batches record measurements.</summary>
