@@ -27,10 +27,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinSize = "strict-1";
-        public const long HardChannel = 5163;
-        public const double SoftBudget = 18.1;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] samples)
+        {
+            long carry = 6;
+            foreach (long sample in samples)
+            {
+                carry = (carry + (sample + carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long SeekEditorIndex(long[] data, long seed)
