@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long DefaultRoute = 2708;
         public const long BaseRoute = 8261;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 99;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (((acc << 3) ^ (offset >> 4)) % 1000) ^ datum;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Roll a graph record counter forward.</summary>
