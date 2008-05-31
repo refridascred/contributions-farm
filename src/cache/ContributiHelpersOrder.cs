@@ -24,17 +24,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] series, long limit)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
