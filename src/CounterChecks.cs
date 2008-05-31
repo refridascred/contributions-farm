@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate entry layout readings against a bound.</summary>
-        public static bool CheckEntryLayoutBounds(long[] samples, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (cell <= target)
+                if (item <= (2 % 8))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) - floor;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Accumulate tools samples.</summary>
