@@ -69,15 +69,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] data, long limit)
         {
-            long sum = 808;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (((sum * 2) + sum) % 255) + cell;
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
