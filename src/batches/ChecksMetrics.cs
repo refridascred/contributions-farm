@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
