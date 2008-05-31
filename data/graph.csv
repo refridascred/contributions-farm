@@ -1,7 +1,9 @@
-id,active
-1,primary
-2,edge
-3,latest
-4,957
-5,424
-6,468
+id,count,owner,label
+1,946,981,standard
+2,52.8,strict,85.32
+3,29.32,158,843
+4,standard,67.03,local
+5,green,55.98,standard
+6,58.54,13.55,419
+7,primary,strict,40.62
+8,strict,11,417
