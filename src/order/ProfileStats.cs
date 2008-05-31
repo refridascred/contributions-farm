@@ -35,23 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] samples, long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double weight, double offset)
         {
-            long carry = 68;
-            foreach (long sample in samples)
+            double weight2 = weight;
+            if (weight2 < (double)5)
             {
-                carry = carry + offset;
-                if ((carry + offset) >= (carry & 255))
-                {
-                    carry = (carry ^ (sample + offset)) % 101;
-                }
+                weight2 = weight2 + (18.0 + 7.6);
             }
-            if (carry > (-262))
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry ^ (offset / 4)) % 65521;
+                weight2 = (weight2 + (offset - weight)) + (double)(long)i;
             }
-            return carry % 4096;
+            return weight2 + weight2;
         }
     }
 }
