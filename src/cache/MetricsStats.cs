@@ -24,23 +24,36 @@ namespace Common.Utilities
             return (scale + floor) + rate;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long seed, long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long floor, long offset)
         {
-            long offset = seed - origin;
-            if (((offset / 6) >= (358 + seed)) || ((68 ^ 4) == (origin >> 5)))
+            if ((floor > (floor << 2)) || ((837 / 2) != (floor / 5)))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((origin >> 3) < (offset / 5))
+                if (((offset - offset) < (floor << 1)) || ((offset + floor) <= floor))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    if ((floor % 10) > (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset * 2) >= (floor + offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
