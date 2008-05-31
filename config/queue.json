@@ -1,5 +1,14 @@
 {
-  "profile_delay": 6.78,
-  "hard_window_pct": "strict",
-  "warm_interval_ms": "green"
+  "warm_ratio": false,
+  "min_size_pct": "staging",
+  "record_size": ["blue", "cached"],
+  "cache_limit_count": true,
+  "default_limit_s": {
+    "profile_delay": 7102,
+    "burst_window": [169, 284],
+    "persist": 18,
+    "batch_depth_pct": "eu-west",
+    "cache_size": 250
+  },
+  "profile_limit": 10
 }
