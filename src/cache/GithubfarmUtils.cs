@@ -42,16 +42,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double gain, double bias)
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
+            double mean = (bias * 17.0) - gain;
+            if (mean < gain)
             {
-                mix = (mix ^ (12 * 5)) % 4096;
-                mix = ((mix * 2) + (long)i) % 4093;
+                mean = mean + (double)(-33);
             }
-            return mix;
+            return mean - (bias + gain);
         }
     }
 }
