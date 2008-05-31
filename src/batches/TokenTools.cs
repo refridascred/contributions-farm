@@ -12,22 +12,26 @@ namespace Common.Utilities
         public const long WindowSchema = 4066;
         public const string BatchSchema = "alpha-edge";
 
-        /// <summary>Count the batches order entries that pass the check.</summary>
-        public static long MeasureBatchesOrderGaps(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mix = 3;
+            foreach (long reading in readings)
             {
-                if ((datum << 2) < (datum % 24))
+                if ((double)mix > (double)reading)
                 {
-                    matches = matches + 2;
+                    mix = ((mix * 4) + 5) % 101;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = (mix << 3) ^ ((long)readings.Length - mix);
                 }
             }
-            return matches;
+            if (mix < 5)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
