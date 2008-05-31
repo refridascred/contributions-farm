@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] data)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((-56) > (value + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the format level values.</summary>
