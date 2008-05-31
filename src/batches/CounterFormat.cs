@@ -22,12 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 6497;
-        public const long DefaultContext = 2877;
-        public const long IdleSize = 7346;
-        public const long SoftContext = 1015;
-        public const string DefaultTimeout = "staging";
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (!!((origin - origin) > (origin * 5)))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileRange(long[] values, long bound)
