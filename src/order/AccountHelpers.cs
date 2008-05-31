@@ -55,13 +55,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxSpan = 9260;
+        public const long MinOrder = 1074;
+        public const long BaseFactor = 3765;
+        public const double MinTimeout = 21.24;
+        public const long IdleOrder = 7011;
     }
 }
