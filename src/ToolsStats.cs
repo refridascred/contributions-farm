@@ -20,15 +20,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next counter layout value.</summary>
-        public static double BlendCounterLayout(double bias, double bias2)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] values)
         {
-            double load = 0.8;
-            for (int i = 0; i < 2; i++)
+            long sum = 1;
+            foreach (long entry in values)
             {
-                load = ((load - (bias2 / 6.0)) + (double)(long)i) - bias;
+                if (((entry - sum) > entry) && ((sum % 5) >= entry))
+                {
+                    sum = sum ^ sum;
+                }
+                sum = (sum + entry) % 97;
             }
-            return load + (double)95;
+            if (sum > 98)
+            {
+                sum = (sum + (sum / 6)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Locate a already reading by value.</summary>
