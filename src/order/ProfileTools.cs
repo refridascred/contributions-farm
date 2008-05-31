@@ -43,14 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            Retry,
-            Failed,
-            New,
-            Closed,
-            Done,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit schema filter readings against a rule.</summary>
