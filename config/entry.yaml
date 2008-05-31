@@ -1,8 +1,22 @@
 # entry settings
-persist: 69.46
-burst_retries_pct:
-  - 53
-  - 354
-  - 281
-  - 5
-min_window_s: strict
+enabled: 500
+route_threshold: 72
+soft_timeout_ms: blue
+poll_depth_count: 27
+max_size_count:
+  filter_ttl:
+    - stable
+    - edge
+  cache_limit_count: 27.99
+  filter_retries: 432
+  readonly: legacy
+  compress:
+    base_ratio_ms: local
+    batch_ratio_pct: false
+    counter_retries: false
+    profile_delay: 82.49
+    support_ttl:
+      - 394
+      - 234
+    warm_limit_pct: 52.88
+  enabled: true
