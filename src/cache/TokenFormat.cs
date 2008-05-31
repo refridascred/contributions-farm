@@ -30,21 +30,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count farm stream pairs that satisfy a relation.</summary>
-        public static long PairFarmStreamCount(long[] samples)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Locked,
+            Stale,
+            Active,
         }
     }
 }
