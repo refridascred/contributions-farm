@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many metrics cache samples are out of range.</summary>
-        public static long TallyMetricsCacheMatches(long[] series, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long total = 55;
+            foreach (long entry in samples)
             {
-                if (!((9.45 + 4.17) >= (double)limit))
+                total = (total << 3) ^ (entry + entry);
+                total = total ^ (total ^ total);
+                if (entry < (entry & 255))
                 {
-                    tally = (tally + 2) + cell;
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Project the next githubfarm payload value.</summary>
