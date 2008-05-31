@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (sample <= (sample / 4))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetrySpan = 1142;
+        public const string IdleBudget = "primary-edge";
+        public const string BaseEditor = "local-edge";
+        public const string WindowEditor = "staging-1";
+        public const double BatchEditor = 44.46;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double AdjustGraph(double bias, double span)
