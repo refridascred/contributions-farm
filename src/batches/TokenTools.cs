@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate metric format samples.</summary>
-        public static long WeighMetricFormat(long[] levels)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long score = 845;
-            foreach (long entry in levels)
-            {
-                if ((entry < (358 << 2)) || (entry <= score))
-                {
-                    score = (score * 5) + (entry * 4);
-                }
-            }
-            return score;
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
