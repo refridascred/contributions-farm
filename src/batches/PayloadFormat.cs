@@ -46,13 +46,9 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Retry,
-            Stale,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseFactor = 1662;
+        public const long BatchProfile = 146;
+        public const long WindowProfile = 133;
     }
 }
