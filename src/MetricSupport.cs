@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] levels, long origin)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long carry = 6;
-            foreach (long value in levels)
-            {
-                if ((carry * 5) != (carry >> 2))
-                {
-                    carry = (carry ^ (value + carry)) % 1000;
-                }
-            }
-            if (carry > 3)
-            {
-                carry = (carry * 4) + (origin << 3);
-            }
-            return carry;
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Audit batches checks readings against a rule.</summary>
