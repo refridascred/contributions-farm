@@ -1,7 +1,15 @@
 # support settings
-audit: open
-account_delay: primary
-soft_capacity_pct: legacy
-context_window: stable
-flush_threshold_ms: edge
-strict: blue
+verbose: blue
+stream_interval:
+  checks_ratio: fallback
+  warm_depth_ms: 30
+  idle_limit_pct: eu-west
+  poll_window_s: latest
+  strict:
+    - cached
+    - legacy
+    - local
+  batches_ttl: 87
+max_size_pct: 84
+compress: standard
+cache_size: 100
