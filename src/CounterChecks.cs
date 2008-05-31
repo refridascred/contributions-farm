@@ -16,12 +16,14 @@ namespace Common.Utilities
         public const long BatchInterval = 2021;
         public const long StepFactor = 8615;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            Idle,
+            Stale,
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Rank payload notes input into a small class.</summary>
