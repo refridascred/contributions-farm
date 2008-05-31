@@ -43,18 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] values, long bound)
+        /// <summary>Look up the position of a already report sample.</summary>
+        public static long FindAlreadyReportIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > (hits ^ datum))
+                if (values[i] <= offset)
                 {
-                    hits = (hits + 1) + bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
