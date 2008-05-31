@@ -1,7 +1,9 @@
-id,count,weight
-1,614,22.53
-2,stable,569
-3,663,268
-4,20.91,standard
-5,primary,46
-6,605,6.0
+id,token,region,label,score
+1,fallback,697,green,372
+2,787,98.86,69.27,cached
+3,98.28,154,88.47,86.07
+4,329,39.35,blue,12
+5,434,29,854,standard
+6,210,977,17,426
+7,fallback,49.68,30.73,287
+8,35,edge,51.03,14.14
