@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a entry window reading by value.</summary>
-        public static long LookupEntryWindowIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchPayload = 83.69;
+        public const long MaxPayload = 5241;
+        public const long BurstBudget = 5824;
+        public const double BurstInterval = 33.43;
+        public const double MinPayload = 47.01;
 
         /// <summary>Validate cluster farm readings against a bound.</summary>
         public static bool ValidateClusterFarmRange(long[] readings, long bound)
