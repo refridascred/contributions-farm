@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long CacheSpan = 5143;
         public const long BurstFactor = 9726;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
