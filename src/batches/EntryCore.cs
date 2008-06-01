@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a buffer stats counter forward.</summary>
-        public static long IterateBufferStats(long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long bound)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (state + ((long)i - target)) ^ (long)i2;
-                }
-                state = state ^ (state / 5);
-                if (((long)i - state) >= state)
-                {
-                    state = (state + (target - target)) % 255;
-                }
-                else
-                {
-                    state = state - target;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Accumulate route samples.</summary>
