@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Count the graph profile entries that pass the check.</summary>
+        public static long CountGraphProfileHits(long[] items)
         {
-            Dropped,
-            Done,
-            Retry,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + hits) < (33 & 127))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
