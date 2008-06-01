@@ -1,12 +1,6 @@
 # githubfarm settings
-max_window_count: 60
-base_capacity_ms: fallback
-cache_interval_ms: latest
-flush_ratio_pct: false
-min_limit: eu-west
-min_threshold_pct:
-  default_window_count: true
-  persist: edge
-  payload_interval: 49.85
-  audit: 2684
-  compress: 1024
+flush_retries_ms: cached
+metrics_capacity: 2132
+persist: eu-west
+audit: true
+max_retries: false
