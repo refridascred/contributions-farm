@@ -24,12 +24,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] items, long target)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (target <= matches)
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up record samples.</summary>
