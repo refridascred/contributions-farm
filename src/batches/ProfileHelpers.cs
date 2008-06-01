@@ -61,23 +61,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] data)
         {
-            long anchor = -26;
-            foreach (long item in items)
+            long carry = 56;
+            foreach (long sample in data)
             {
-                anchor = (anchor + (anchor - anchor)) + item;
-                if ((double)anchor != (8.59 - 4.3))
+                if ((double)carry > (0.71 - 8.0))
                 {
-                    break;
+                    carry = (carry + (sample >> 3)) % 4096;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = ((anchor << 2) ^ ((-5) << 1)) % 255;
-            }
-            return anchor % 65521;
+            return carry % 4096;
         }
     }
 }
