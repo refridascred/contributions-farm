@@ -50,11 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchWidth = 6991;
-        public const long StepCount = 6789;
-        public const long MaxContributi = 1246;
-        public const string IdleCount = "standard-1";
-        public const string HardLevel = "cached-edge";
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
