@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double bias, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
+            double bias2 = span;
+            if (bias2 > (double)220)
             {
-                acc = (acc << 3) ^ (long)i;
-                acc = ((acc * 3) + (long)i) % 1000;
+                bias2 = (bias2 - (bias2 / 2.0)) - bias;
             }
-            return acc;
+            else
+            {
+                bias2 = bias2 - (double)5;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (3.6 * 9.0);
         }
 
         /// <summary>Find the first cache format entry that matches the target.</summary>
