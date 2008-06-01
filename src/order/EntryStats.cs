@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] samples, long target)
         {
-            Closed,
-            Queued,
-            Failed,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
