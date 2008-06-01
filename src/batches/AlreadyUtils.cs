@@ -53,14 +53,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double bias, double offset)
         {
-            Paused,
-            Active,
-            Retry,
-            Synced,
-            Ready,
+            double ratio = offset;
+            if (ratio >= (8.7 - offset))
+            {
+                ratio = ratio + (7.2 * 5.2);
+            }
+            else
+            {
+                ratio = ratio + (bias / 4.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio + (double)87;
         }
 
         /// <summary>Combine batch checks values into a single score.</summary>
