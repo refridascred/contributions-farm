@@ -1,5 +1,12 @@
 {
-  "cache_depth": 500,
-  "window_depth": false,
-  "retry_window_pct": "legacy"
+  "burst_interval_ms": {
+    "sync_retries_s": 45.22,
+    "idle_ttl_ms": true,
+    "batch_size_count": 79.49,
+    "hard_threshold": 3586
+  },
+  "poll_size": [443, 264, 246],
+  "flush_ratio": ["open", "staging", "local"],
+  "readonly": true,
+  "retry_depth_ms": 83.43
 }
