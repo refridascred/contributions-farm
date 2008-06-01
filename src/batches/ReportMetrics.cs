@@ -23,18 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] values)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)matches > (1.52 * 9.3))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    matches = (matches + 3) ^ cell;
+                    sum = ((sum << 2) ^ (sum << 3)) ^ (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
