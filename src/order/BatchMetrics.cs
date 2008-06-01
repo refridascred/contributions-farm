@@ -67,39 +67,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank tools editor input into a small class.</summary>
-        public static long SortToolsEditor(long offset, long target)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double gain, double span)
         {
-            long prev = offset + target;
-            if ((prev << 2) >= prev)
+            double scale = 4.24;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                scale = (((scale + scale) - (double)(long)i) - gain) + span;
             }
-            else
-            {
-                if ((51 * 4) == (offset - prev))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target ^ offset) < (offset - 0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)prev > 4.0)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return scale + (scale * 14.0);
         }
     }
 }
