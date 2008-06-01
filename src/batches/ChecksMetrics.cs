@@ -24,18 +24,18 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Count the batch metrics entries that pass the check.</summary>
-        public static long MeasureBatchMetricsMatches(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((item - seen) <= (item << 3))
+                if ((((tally & 15) == (24 + tally)) && ((tally - tally) < tally)) || !((datum + 193) <= (datum & 127)))
                 {
-                    seen = seen + 2;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the route level values.</summary>
