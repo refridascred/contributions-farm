@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Active,
-            Done,
-            Failed,
-            Paused,
-            Pending,
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
