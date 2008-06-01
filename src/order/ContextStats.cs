@@ -37,32 +37,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a githubfarm batches pair into a bucket.</summary>
-        public static long RankGithubfarmBatches(long step, long floor)
-        {
-            long cur = step + floor;
-            if ((floor + step) == (floor + 937))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((cur + 62) <= (floor + cur))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + (-8)) == (cur % 10))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 9013;
+        public const long MaxGithubfarm = 9823;
+        public const long LimitScore = 1741;
     }
 }
