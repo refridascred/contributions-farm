@@ -70,15 +70,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] levels)
+        /// <summary>Project the next stats route value.</summary>
+        public static double ProjectStatsRoute(double weight, double offset)
         {
-            long result = 4;
-            foreach (long sample in levels)
+            double bias = 4.8;
+            if (bias < weight)
             {
-                result = ((result + (result & 63)) % 65521) - sample;
+                bias = bias - (offset - weight);
             }
-            return result;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (offset * 11.0)) - (double)(long)i;
+            }
+            return bias + 2.3;
         }
     }
 }
