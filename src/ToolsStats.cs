@@ -78,18 +78,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] series)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(matches >= (value & 7)))
-                {
-                    matches = matches + 1;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
     }
 }
