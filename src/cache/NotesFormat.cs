@@ -23,10 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 3249;
-        public const double CacheCluster = 50.97;
-        public const long DefaultBudget = 1088;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches * 3) < 2)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long CombineBatches(long[] levels, long seed)
