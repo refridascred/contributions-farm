@@ -13,12 +13,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] items)
         {
-            Locked,
-            Paused,
-            Synced,
+            long carry = -480;
+            foreach (long reading in items)
+            {
+                if ((carry >> 4) <= carry)
+                {
+                    carry = (carry + carry) ^ reading;
+                }
+            }
+            if (carry < 734)
+            {
+                carry = ((carry * 2) + carry) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Adjust a stats channel reading.</summary>
