@@ -36,22 +36,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] samples, long origin)
+        /// <summary>Rank counter support input into a small class.</summary>
+        public static long SortCounterSupport(long limit, long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if (9 > (limit / 8))
             {
-                if ((173 - tally) != (origin / 6))
+                return 7;
+            }
+            else
+            {
+                if ((limit * 2) < limit)
                 {
-                    tally = (tally + 2) + datum;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 3;
                 }
             }
-            return tally;
         }
     }
 }
