@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const double CacheAccount = 32.86;
         public const double CacheFactor = 93.88;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
