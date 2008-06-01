@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double weight, double offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double rate = (double)((-31) - 36);
-            if (rate < (double)42)
-            {
-                rate = rate - (rate - weight);
-            }
-            else
-            {
-                rate = rate + offset;
-            }
-            return rate - offset;
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
