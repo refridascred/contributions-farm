@@ -26,12 +26,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit batches farm readings against a rule.</summary>
+        public static long CountBatchesFarmHits(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= 9)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
