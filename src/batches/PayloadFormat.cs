@@ -13,12 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] levels, long floor)
         {
-            Done,
-            Closed,
-            Dropped,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
