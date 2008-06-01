@@ -18,14 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] levels, long seed)
         {
-            Pending,
-            New,
-            Synced,
-            Locked,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a account counter forward.</summary>
