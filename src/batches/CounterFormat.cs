@@ -33,16 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm tools counter forward.</summary>
-        public static long StepFarmTools(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 1601;
+        public const long BurstWindow = 9983;
+        public const long CacheSpan = 9334;
+        public const double BurstDepth = 55.39;
+        public const string CacheWindow = "legacy-v2";
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
