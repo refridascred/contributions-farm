@@ -28,23 +28,10 @@ namespace Common.Utilities
             return rate - 2.6;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] data, long origin)
-        {
-            long sum = 666;
-            foreach (long datum in data)
-            {
-                if (!((datum % 2) <= sum))
-                {
-                    sum = (((sum * 4) + (sum & 1)) % 4096) - origin;
-                }
-            }
-            if (sum < 29)
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleQueue = 77.19;
+        public const long SoftQueue = 8137;
+        public const long LimitLevel = 9436;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] data)
