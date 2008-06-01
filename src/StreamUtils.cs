@@ -71,11 +71,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double rate, double span)
-        {
-            double load = rate;
-            return (load + (19.0 * 2.9)) + span;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryInterval = 1465;
+        public const long BurstDepth = 1467;
+        public const double BurstStream = 28.3;
+        public const double HardStream = 79.19;
     }
 }
