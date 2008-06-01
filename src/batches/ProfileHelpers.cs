@@ -68,18 +68,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long carry = 56;
-            foreach (long sample in data)
-            {
-                if ((double)carry > (0.71 - 8.0))
-                {
-                    carry = (carry + (sample >> 3)) % 4096;
-                }
-            }
-            return carry % 4096;
+            Draft,
+            Pending,
+            Active,
+            Queued,
         }
     }
 }
