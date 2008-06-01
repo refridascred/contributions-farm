@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Measure how many githubfarm token samples are out of range.</summary>
+        public static long CountGithubfarmTokenOutliers(long[] samples, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (!(((origin + 256) < (long)samples.Length) || ((double)origin <= (7.4 + 4.9))))
+                {
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Accumulate route samples.</summary>
