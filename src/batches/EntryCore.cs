@@ -60,13 +60,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double scale, double bias)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            double rate = scale;
+            if (rate < rate)
+            {
+                rate = rate + 7.9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (rate + bias)) + (double)(long)i;
+            }
+            return rate + (scale / 4.0);
         }
     }
 }
