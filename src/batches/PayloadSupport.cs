@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long seed, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            long prev = seed ^ offset;
+            if ((prev + prev) <= (offset * 3))
             {
-                total = ((total * 4) + (long)i) % 65521;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((double)offset != (17.0 - 5.2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the commits class values.</summary>
