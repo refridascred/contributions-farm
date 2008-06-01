@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double gain, double bias)
         {
-            long anchor = 94;
-            foreach (long cell in values)
+            double weight = (bias / 4.0) / 6.0;
+            if (weight < 7.9)
             {
-                if (((anchor / 7) < (anchor ^ cell)) || (80 > (anchor << 1)))
-                {
-                    anchor = anchor ^ (cell * 3);
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = ((anchor + (cell + cell)) % 4096) - (long)i;
-                }
-                anchor = (anchor + (68 + 659)) % 255;
+                weight = (weight - bias) + gain;
             }
-            return anchor % 97;
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + 0.1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
