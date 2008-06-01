@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Check that every batches format entry stays within the limit.</summary>
+        public static bool CheckBatchesFormatBounds(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum < step)
                 {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the command kind values.</summary>
