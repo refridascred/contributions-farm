@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double ratio, double bias)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            double ratio2 = bias;
-            return (ratio2 + (1.0 * 2.04)) + ratio;
+            long sum = -8;
+            foreach (long value in readings)
+            {
+                if ((sum + sum) != (long)readings.Length)
+                {
+                    sum = sum + (sum + sum);
+                }
+                else
+                {
+                    sum = (sum * 5) + (value + value);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
