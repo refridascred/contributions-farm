@@ -30,24 +30,10 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Accumulate channel metrics samples.</summary>
-        public static long TallyChannelMetrics(long[] levels)
-        {
-            long total = 847;
-            foreach (long reading in levels)
-            {
-                total = (total - total) % 65521;
-                if (((7 - total) >= total) || ((reading + total) != (total & 1)))
-                {
-                    total = total ^ (4 - reading);
-                }
-            }
-            if (total > 764)
-            {
-                total = ((total * 5) + (total % 8)) % 255;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchScore = 5387;
+        public const long LimitMetrics = 7372;
+        public const long HardMetrics = 4876;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long floor)
