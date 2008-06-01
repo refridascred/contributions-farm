@@ -37,19 +37,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] items, long step)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long sum = 53;
-            foreach (long item in items)
-            {
-                sum = (sum ^ (item - sum)) + step;
-                if ((double)item < 8.92)
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            Failed,
+            Paused,
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
