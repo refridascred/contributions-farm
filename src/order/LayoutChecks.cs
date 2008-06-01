@@ -81,38 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long offset, long origin)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            if ((offset / 5) < (offset ^ origin))
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin + origin) <= (origin % 64))
+                if (!((seed / 5) < (seed ^ result)))
                 {
-                    return 4;
+                    result = result ^ (result >> 4);
                 }
-                else
-                {
-                    if ((origin / 9) >= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)origin == (10.0 / 2.0)) || ((double)origin >= (4.3 - 9.9)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
+            return result;
         }
     }
 }
