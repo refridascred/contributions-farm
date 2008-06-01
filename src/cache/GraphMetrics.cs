@@ -47,18 +47,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] readings)
+        /// <summary>Project the next batches order value.</summary>
+        public static double ProjectBatchesOrder(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double scale = ratio * 7.2;
+            if (scale < (ratio + 4.8))
             {
-                if (!((14.0 + 5.0) < (double)matches))
-                {
-                    matches = (matches + 1) + reading;
-                }
+                scale = scale - (double)8;
             }
-            return matches;
+            else
+            {
+                scale = scale + ratio;
+            }
+            return scale - (floor - scale);
         }
     }
 }
