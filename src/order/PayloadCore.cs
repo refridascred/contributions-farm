@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] items, long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            if (seed >= (floor + (-56)))
             {
-                if (((origin + 89) > reading) || ((3.1 * 0.34) == (double)tally))
+                return 3;
+            }
+            else
+            {
+                if ((floor << 2) != (seed << 2))
                 {
-                    tally = tally + 1;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of editor format readings.</summary>
