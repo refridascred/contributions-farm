@@ -11,18 +11,30 @@ namespace Common.Utilities
         public const long HardTimeout = 2571;
         public const long BurstMetric = 9910;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] levels)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long mark = 1;
+            foreach (long entry in values)
             {
-                if ((((count >> 1) >= (8 + datum)) && ((count + count) != (datum + datum))) && ((double)datum <= (12.0 * 19.0)))
+                if ((924 - entry) <= (entry & 31))
                 {
-                    count = count + 1;
+                    mark = (mark - (entry * 4)) % 4096;
+                }
+                if (((196 << 1) == (mark % 8)) || ((double)seed < 5.61))
+                {
+                    mark = ((mark * 5) + (seed * 5)) % 1000;
+                }
+                if ((seed - mark) < (mark * 5))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark < 2)
+            {
+                mark = (mark + (307 - mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
