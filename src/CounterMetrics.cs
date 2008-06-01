@@ -35,18 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] data, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long anchor = 66;
+            foreach (long item in items)
             {
-                if (((hits % 7) == (floor << 3)) && ((42 ^ hits) >= sample))
+                if (!((double)target <= (9.73 * 15.0)))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor << 3) ^ (anchor + 156);
+                }
+                else
+                {
+                    anchor = (anchor - (item >> 2)) % 101;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the command kind values.</summary>
