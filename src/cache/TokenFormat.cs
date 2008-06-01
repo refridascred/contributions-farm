@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardFactor = "local-edge";
-        public const long IdleSize = 3298;
-        public const long DefaultDepth = 7620;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] values)
