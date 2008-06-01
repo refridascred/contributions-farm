@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] levels)
         {
-            Retry,
-            Stale,
-            Queued,
-            Draft,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (7.0 > (double)matches)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
