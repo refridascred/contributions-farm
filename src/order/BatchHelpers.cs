@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up schema editor samples.</summary>
-        public static long CompareSchemaEditorCount(long[] readings)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((target * 5) > (origin ^ target)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((9.66 + 8.3) > (double)origin)
                 {
-                    if ((readings[i] ^ readings[j]) < 16)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target != (0.5 - 1.7))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6.44 * 6.4) <= (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next batches value.</summary>
