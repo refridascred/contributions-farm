@@ -12,15 +12,31 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] items, long target)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long origin, long seed)
         {
-            long anchor = 0;
-            foreach (long reading in items)
+            if (origin <= (948 + 224))
             {
-                anchor = ((((anchor << 3) ^ (anchor << 2)) % 65521) ^ reading) + target;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (((double)origin > 8.17) && ((seed / 7) > 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin >= (seed << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account record.</summary>
