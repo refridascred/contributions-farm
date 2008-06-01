@@ -33,37 +33,22 @@ namespace Common.Utilities
             return (mean - (bias + 6.3)) + span;
         }
 
-        /// <summary>Grade a report account value against two limits.</summary>
-        public static long GradeReportAccount(long target, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long floor, long target)
         {
-            long delta = target ^ floor;
-            if ((double)floor < (7.0 * 2.5))
+            if (((target % 100) != (target + target)) || ((floor / 7) <= 3))
             {
                 return 4;
             }
             else
             {
-                if ((4.05 < (double)floor) && (63 < (floor & 127)))
+                if (!(2 <= (676 + floor)))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)35 < (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)delta == (3.08 + 8.9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
