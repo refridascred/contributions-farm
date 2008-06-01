@@ -25,24 +25,17 @@ namespace Common.Utilities
         public const long CacheChecks = 9608;
         public const long BaseChecks = 1787;
 
-        /// <summary>Classify a format session pair into a bucket.</summary>
-        public static long BucketFormatSession(long offset, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] data, long floor)
         {
-            if ((offset ^ offset) < step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((6.06 - 0.3) == (double)offset))
+                if ((data[i] > floor) && ((data[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
