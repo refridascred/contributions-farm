@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
