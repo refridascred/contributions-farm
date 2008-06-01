@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long origin, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            if ((origin - origin) < 2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin << 2) >= (floor << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.9 + 17.0) > (15.0 - 16.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((floor ^ floor) != (floor ^ origin)) || ((floor + 5) == (origin + origin)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
