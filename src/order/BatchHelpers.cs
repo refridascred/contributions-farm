@@ -36,12 +36,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long origin)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                long count = 1;
+                result = ((result * 5) + (count & 255)) % 65521;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
