@@ -37,13 +37,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] readings, long seed)
         {
-            Stale,
-            Failed,
-            Dropped,
-            Paused,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((-93) + sample) != (sample ^ tally))
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
         }
     }
 }
