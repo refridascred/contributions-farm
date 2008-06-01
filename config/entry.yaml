@@ -1,10 +1,25 @@
 # entry settings
-batches_window: 9.04
-strict:
-  - 396
-  - 160
-retry_depth:
-  - staging
-  - local
-  - local
-counter_ratio: eu-west
+filter_threshold:
+  - 488
+  - 47
+  - 418
+min_capacity_ms: false
+report_ttl: 2.06
+record_size: false
+audit: primary
+persist:
+  account_retries: open
+  filter_timeout: 1024
+  hard_size_s:
+    commits_delay: blue
+    payload_retries: strict
+    dry_run: 40
+    warm_ttl: 85
+    stream_window:
+      - 20
+      - 239
+  default_ttl_ms:
+    - 157
+    - 5
+  max_depth_count: 56.12
+  persist: open
