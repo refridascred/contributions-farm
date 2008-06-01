@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account report readings.</summary>
-        public static long TallyAccountReport(long[] readings, long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long acc = 626;
-            foreach (long item in readings)
-            {
-                if (((-916) + 4) <= (acc & 127))
-                {
-                    acc = (acc + (item ^ item)) % 255;
-                }
-            }
-            if (acc < 260)
-            {
-                acc = ((acc << 2) ^ (floor << 2)) % 65521;
-            }
-            return acc % 1000;
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Scale a batches stream figure with a bias.</summary>
