@@ -24,12 +24,23 @@ namespace Common.Utilities
         public const long LimitDepth = 6166;
         public const double BurstPayload = 84.11;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinCount = "open";
-        public const double LimitNotes = 77.92;
-        public const long RetryNotes = 9873;
-        public const long DefaultNotes = 3611;
-        public const long BurstScore = 2404;
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] data, long origin)
+        {
+            long sum = 666;
+            foreach (long datum in data)
+            {
+                if (!((datum % 2) <= sum))
+                {
+                    sum = (((sum * 4) + (sum & 1)) % 4096) - origin;
+                }
+            }
+            if (sum < 29)
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] data)
