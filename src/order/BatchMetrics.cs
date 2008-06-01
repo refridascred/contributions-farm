@@ -44,18 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] items)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)seen < 1.8)
-                {
-                    seen = (seen + 1) + datum;
-                }
+                long edge = bound;
+                result = ((result << 2) ^ (edge >> 1)) % 255;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a commits summary.</summary>
