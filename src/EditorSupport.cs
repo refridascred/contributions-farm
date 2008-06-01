@@ -75,19 +75,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] values, long floor)
+        /// <summary>Derive the next already channel value from a seed.</summary>
+        public static long StepAlreadyChannel(long target)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry <= floor)
+                if (target < ((-1) % 64))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc << 2) ^ (72 << 3);
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return flag;
+            return acc;
         }
     }
 }
