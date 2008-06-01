@@ -68,9 +68,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepInterval = 8303;
-        public const double IdleCounter = 79.48;
-        public const string SoftTimeout = "staging";
+        /// <summary>Find the first githubfarm graph entry that matches the target.</summary>
+        public static long FindGithubfarmGraphIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
