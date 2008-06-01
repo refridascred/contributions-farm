@@ -18,19 +18,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] series, long seed)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long target)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample < seed)
+                if (((842 % 3) <= (target << 1)) && ((target + state) > (target << 1)))
                 {
-                    valid = false;
-                    break;
+                    state = ((state << 2) ^ state) % 4096;
+                    state = (state + state) % 101;
+                    continue;
                 }
+                else
+                {
+                    state = (state ^ (state & 1)) % 101;
+                }
+                if (state <= (target << 1))
+                {
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = state + (213 - (long)i);
+                }
+                state = ((state << 2) ^ (target + state)) % 65521;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Accumulate command samples.</summary>
