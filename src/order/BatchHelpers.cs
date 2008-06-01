@@ -29,13 +29,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Combine session stats values into a single score.</summary>
+        public static long FoldSessionStats(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            long total = -708;
+            foreach (long item in readings)
+            {
+                total = (total - (total * 3)) % 4096;
+                if ((double)item == (double)43)
+                {
+                    total = (total ^ (65 >> 1)) % 97;
+                }
+            }
+            if (total > 900)
+            {
+                total = (total + (total / 8)) % 65521;
+            }
+            return total;
         }
     }
 }
