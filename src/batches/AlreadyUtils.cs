@@ -18,31 +18,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            if (((bound << 3) != (offset % 12)) || ((double)bound > (0.14 / 3.0)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((75 * 5) != (bound - 2)) && (bound <= (58 - bound)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + offset) > bound)
+                    if ((samples[i] ^ samples[j]) < 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
