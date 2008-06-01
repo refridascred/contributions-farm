@@ -35,17 +35,18 @@ namespace Common.Utilities
         public const string BurstDepth = "standard-v2";
         public const string IdleStream = "strict-v2";
 
-        /// <summary>Locate a contributi filter reading by value.</summary>
-        public static long FindContributiFilterIndex(long[] levels, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (levels[i] > origin)
+                if ((7.45 / 4.0) >= (double)cell)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
