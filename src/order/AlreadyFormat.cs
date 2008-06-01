@@ -30,12 +30,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double scale, double floor)
         {
-            Queued,
-            Idle,
-            Done,
+            double drift = (scale * 2.6) - (scale + scale);
+            if (drift < (double)895)
+            {
+                drift = (drift - scale) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (17.0 / 2.0)) + (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Audit entry checks readings against a rule.</summary>
