@@ -39,18 +39,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a stats schema sample.</summary>
-        public static long LookupStatsSchemaIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 98.1;
+        public const string StepSize = "alpha-edge";
+        public const long StepCache = 8636;
 
         /// <summary>Classify a stream counter pair into a bucket.</summary>
         public static long BucketStreamCounter(long bound, long seed)
