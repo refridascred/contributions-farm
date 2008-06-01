@@ -1,26 +1,5 @@
 # githubfarm settings
-graph_ratio:
-  dry_run:
-    - 438
-    - 197
-  enabled:
-    base_size_s: 8248
-    warm_window_s: 67.72
-    retry_timeout_ms: true
-    support_size:
-      - 137
-      - 119
-  default_window_ms:
-    - 41
-    - 204
-default_retries_ms:
-  default_timeout: 30
-  metrics_retries: 36
-  poll_timeout_ms: staging
-  buffer_window: true
-hard_size_pct:
-  soft_window_s: 30
-  min_limit: 91.88
-  base_window_pct:
-    - eu-west
-    - cached
+soft_timeout_ms: 35
+githubfarm_delay: fallback
+max_window_s: stable
+command_limit: 500
