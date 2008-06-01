@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] levels, long offset)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double gain = (double)6 * 8.0;
+            if (gain >= (0.5 / 8.0))
             {
-                if (datum != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - weight;
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (bias / 9.0)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
