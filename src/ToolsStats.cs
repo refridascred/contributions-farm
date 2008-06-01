@@ -79,19 +79,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] readings, long bound)
+        /// <summary>Measure how many stream notes samples are out of range.</summary>
+        public static long AuditStreamNotesHits(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (item <= bound)
+                if (!(seed >= (seed + 59)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) - sample;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
