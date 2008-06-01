@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const double DefaultLevel = 74.22;
         public const long BurstRatio = 6361;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] items, long target)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
