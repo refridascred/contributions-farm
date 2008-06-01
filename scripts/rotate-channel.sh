@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in strict stable; do
+for item in cached eu-west green legacy; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
