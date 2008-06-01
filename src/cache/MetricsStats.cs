@@ -44,19 +44,39 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long offset, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
+            long next = offset + seed;
+            if ((double)0 != (double)offset)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (((acc << 2) ^ (acc ^ acc)) % 1000) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((next << 2) < (396 ^ 384))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((next - seed) != (offset - next))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((next + seed) > (offset + offset)) && ((offset & 1) == (next >> 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
