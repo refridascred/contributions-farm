@@ -15,19 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] items, long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            New,
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
