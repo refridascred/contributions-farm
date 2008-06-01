@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double weight, double bias)
-        {
-            double gain = (double)6 * 8.0;
-            if (gain >= (0.5 / 8.0))
-            {
-                gain = gain - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (bias / 9.0)) + (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 97.54;
+        public const long IdleScore = 1236;
+        public const long WindowRecord = 4370;
+        public const long HardRecord = 5973;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TallyProfile(long[] series, long seed)
