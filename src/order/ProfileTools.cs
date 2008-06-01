@@ -41,11 +41,19 @@ namespace Common.Utilities
         public const long BaseContext = 4386;
         public const long LimitDepth = 3626;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] items, long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
