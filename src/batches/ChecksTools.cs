@@ -14,19 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            double mean = bias;
-            if (mean < (mean * 11.0))
-            {
-                mean = mean - (mean - offset);
-            }
-            else
-            {
-                mean = mean + (double)767;
-            }
-            return mean - (7.2 - mean);
+            public double Owner { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
