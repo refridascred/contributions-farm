@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
+            Active,
+            Done,
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Fold a list of format readings.</summary>
