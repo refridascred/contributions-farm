@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] series, long floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((floor << 1) != (datum << 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Active,
+            Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Fold a list of token readings.</summary>
