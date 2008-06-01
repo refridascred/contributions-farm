@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard stable legacy; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=85
+CHANNEL_LIMIT=32
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-edge}"
+mode="${1:-blue}"
 case "${mode}" in
-    fallback)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in eu-west latest green staging; do
+    log "checking ${item}"
+done
