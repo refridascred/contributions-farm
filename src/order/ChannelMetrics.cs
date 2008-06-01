@@ -33,15 +33,13 @@ namespace Common.Utilities
         public const long CacheCluster = 8380;
         public const double StepBudget = 68.03;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mix = 940;
-            foreach (long reading in levels)
-            {
-                mix = (mix + (8 / 6)) ^ reading;
-            }
-            return mix % 4096;
+            New,
+            Failed,
+            Done,
+            Retry,
         }
     }
 }
