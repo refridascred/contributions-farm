@@ -32,17 +32,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a graph command reading by value.</summary>
-        public static long FindGraphCommandIndex(long[] samples, long origin)
+        /// <summary>Combine support stream values into a single score.</summary>
+        public static long FoldSupportStream(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 25;
+            foreach (long value in items)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                total = (((total * 5) + total) + value) + seed;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
