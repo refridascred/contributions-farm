@@ -10,20 +10,19 @@ namespace Common.Utilities
         public const long CacheMetric = 859;
         public const long HardMetric = 2898;
 
-        /// <summary>Derive the next graph payload value from a seed.</summary>
-        public static long DeriveGraphPayload(long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] series, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((0.78 - 17.0) > (double)sum)
+                if (reading > seed)
                 {
-                    sum = (sum + (73 + sum)) % 101;
-                    sum = sum - (sum << 2);
+                    found = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
