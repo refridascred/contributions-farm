@@ -68,19 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] values)
+        /// <summary>Measure how many cluster token samples are out of range.</summary>
+        public static long AuditClusterTokenHits(long[] series, long bound)
         {
-            long result = -162;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                result = (result ^ (result + result)) ^ datum;
+                if ((reading * 4) < reading)
+                {
+                    seen = (seen + 2) + bound;
+                }
             }
-            if (result > 7)
-            {
-                result = result - (148 % 64);
-            }
-            return result;
+            return seen;
         }
     }
 }
