@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long offset)
         {
-            Idle,
-            New,
-            Synced,
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
