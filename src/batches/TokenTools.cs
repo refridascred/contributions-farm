@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Ready,
             Synced,
-            Paused,
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
