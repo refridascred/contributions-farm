@@ -1,18 +1,10 @@
 # githubfarm settings
-max_timeout: 40
-sync_window_pct: blue
-command_capacity: 30
-warm_capacity_ms:
-  persist:
-    batch_ratio_ms: 250
-    counter_capacity: 80.82
-    soft_depth: green
-    readonly: false
-    buffer_ratio: cached
-    enabled: 1964
-  min_ratio_s: 71
-  metric_timeout: 76.57
-  verbose: staging
-  profile_retries: staging
-  burst_delay_s: eu-west
-soft_window_pct: cached
+base_ratio_count: eu-west
+base_depth_s: blue
+buffer_capacity: 29.98
+burst_retries_ms:
+  readonly: legacy
+  poll_delay_ms: false
+  counter_window: 61
+  burst_capacity: latest
+warm_timeout_ms: false
