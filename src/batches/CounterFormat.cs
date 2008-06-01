@@ -33,18 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record notes entries that pass the check.</summary>
-        public static long CountRecordNotesMatches(long[] samples)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((item + (-5)) > matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the checks state values.</summary>
