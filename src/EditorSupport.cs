@@ -70,22 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long AuditChecksTokenGaps(long[] series)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((entry << 2) >= (hits + entry))
+                if (entry <= floor)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
