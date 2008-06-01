@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public double Label { get; set; }
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
