@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] levels, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (cell >= origin)
+                if ((8.97 * 9.0) <= (double)hits)
                 {
-                    flag = false;
-                    break;
+                    hits = ((hits + 3) - sample) - floor;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the support phase values.</summary>
