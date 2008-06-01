@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats cluster series from a seed.</summary>
-        public static long DeriveStatsCluster(long origin)
+        /// <summary>Audit stats batches readings against a rule.</summary>
+        public static long MeasureStatsBatchesOutliers(long[] values, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((offset / 5) < (offset - 89))
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Digest a series of route entries.</summary>
