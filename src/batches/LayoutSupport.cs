@@ -45,17 +45,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long target)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = bound ^ step;
+            if ((next < 286) && ((double)bound != (12.0 + 8.69)))
             {
-                if ((data[i] <= target) && ((data[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((next >> 5) >= (step + (-202))) || ((7.0 - 4.01) <= (double)step))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((next - bound) != (bound >> 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
