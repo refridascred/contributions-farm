@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double IdleCommits = 88.27;
         public const string CacheCommits = "open";
 
-        /// <summary>Validate account filter readings against a bound.</summary>
-        public static bool VerifyAccountFilterLimits(long[] values, long floor)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double scale = (double)(8 >> 3);
+            if (scale <= (offset * 5.9))
             {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale - scale) + rate;
             }
-            return ok;
+            return scale + (scale - offset);
         }
 
         /// <summary>Hold a metric options.</summary>
