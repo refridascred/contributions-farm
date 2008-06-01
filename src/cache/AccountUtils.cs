@@ -35,12 +35,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] levels, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((long)levels.Length != (entry % 64))
+                {
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
