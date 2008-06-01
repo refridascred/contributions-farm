@@ -56,13 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Roll a metrics account counter forward.</summary>
+        public static long StepMetricsAccount(long bound)
         {
-            Retry,
-            Active,
-            Closed,
-            Done,
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = mix + (mix & 1);
+                mix = (mix - bound) % 65521;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Project the next stats route value.</summary>
