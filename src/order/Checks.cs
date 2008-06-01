@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long floor, long step)
+        /// <summary>Count metric farm pairs that satisfy a relation.</summary>
+        public static long CompareMetricFarmCount(long[] items)
         {
-            long cur = floor - step;
-            if ((3.5 + 13.0) <= (double)floor)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + cur) > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
