@@ -44,17 +44,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format buffer entry that matches the target.</summary>
-        public static long FindFormatBufferIndex(long[] items, long step)
+        /// <summary>Combine notes batch values into a single score.</summary>
+        public static long DigestNotesBatch(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 43;
+            foreach (long cell in data)
             {
-                if ((items[i] > step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result ^ result) ^ cell;
+                result = (result * 2) + result;
             }
-            return -1;
+            if (result < 944)
+            {
+                result = result ^ seed;
+            }
+            return result % 4096;
         }
     }
 }
