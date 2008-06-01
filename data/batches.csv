@@ -1,6 +1,9 @@
-id,score,weight
-1,64.87,170
-2,42.29,679
-3,green,cached
-4,818,strict
-5,285,761
+id,level,score,ratio
+1,21.19,77.24,standard
+2,4.86,856,fallback
+3,87.18,latest,674
+4,cached,18.59,eu-west
+5,24.43,standard,943
+6,780,726,785
+7,407,34.17,924
+8,staging,886,open
