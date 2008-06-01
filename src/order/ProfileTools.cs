@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two stream graph measurements.</summary>
-        public static double BlendStreamGraph(double bias, double offset)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double load = (double)(849 - 7);
-            if (load >= 9.0)
-            {
-                load = ((load + (load * 9.58)) - bias) + offset;
-            }
-            else
-            {
-                load = load + (double)182;
-            }
-            return load - (double)65;
+            Dropped,
+            Active,
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the checks kind values.</summary>
