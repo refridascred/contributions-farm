@@ -1,5 +1,6 @@
 # githubfarm settings
-min_interval_s: true
-persist: 79.01
-idle_window_count: primary
-min_interval_ms: 3671
+session_size: 16.47
+hard_depth: 29.23
+verbose: true
+batch_timeout: 75.38
+dry_run: legacy
