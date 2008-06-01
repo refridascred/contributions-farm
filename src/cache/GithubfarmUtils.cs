@@ -46,11 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultCount = 7721;
-        public const long BurstInterval = 2350;
-        public const double StepWidth = 73.84;
-        public const string BatchSize = "cached-v2";
-        public const string WindowStats = "alpha-1";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((4.0 / 8.0) == (double)(long)data.Length) || ((value <= (seen * 4)) && ((1.0 / 2.0) <= (double)value)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
