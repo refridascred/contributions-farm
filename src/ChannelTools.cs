@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Pending,
-            Dropped,
             Draft,
+            New,
+            Paused,
+            Locked,
         }
 
         /// <summary>Measure how many payload entry samples are out of range.</summary>
