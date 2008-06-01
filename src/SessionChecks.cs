@@ -19,17 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] series, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 4;
+            foreach (long datum in samples)
             {
-                if (series[i] <= bound)
+                acc = ((acc * 4) + (acc << 2)) ^ datum;
+                if ((acc ^ 2) == (acc + 545))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc + (long)samples.Length)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc - acc)) % 65521;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
