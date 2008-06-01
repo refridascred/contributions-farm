@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long acc = 8;
-            foreach (long value in values)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc * 3) + (-1);
-                if (((6.23 * 4.17) < (double)value) || ((value * 3) != (acc + value)))
-                {
-                    break;
-                }
+                total = total ^ (total % 2);
+                total = ((total * 5) + (total ^ (-714))) % 4096;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
