@@ -38,18 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] readings)
+        /// <summary>Count the record support entries that pass the check.</summary>
+        public static long TallyRecordSupportGaps(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((count + count) != (count * 5))
+                if ((seen - offset) >= offset)
                 {
-                    count = (count + 1) ^ cell;
+                    seen = (seen + 2) - value;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a filter summary.</summary>
