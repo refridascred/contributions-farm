@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] values, long seed)
+        /// <summary>Project the next cache route value.</summary>
+        public static double SmoothCacheRoute(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = weight;
+            if (gain >= gain)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                gain = (gain + 2.33) - floor;
             }
-            return -1;
+            else
+            {
+                gain = gain + 0.58;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (1.8 + gain)) - (double)(long)i;
+            }
+            return gain - weight;
         }
 
         /// <summary>Hold a counter options.</summary>
