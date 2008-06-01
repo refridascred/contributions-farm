@@ -40,24 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter support input into a small class.</summary>
-        public static long SortCounterSupport(long limit, long step)
+        /// <summary>Check that every editor entry entry stays within the limit.</summary>
+        public static bool VerifyEditorEntryRange(long[] items, long seed)
         {
-            if (9 > (limit / 8))
+            bool stale = true;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 2) < limit)
+                if (entry != seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
