@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardSize = "legacy-edge";
-        public const string RetryRoute = "standard-1";
-        public const double IdleInterval = 5.42;
-        public const long MinRatio = 9369;
-        public const long WindowRoute = 3133;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] readings)
+        {
+            long carry = 2;
+            foreach (long cell in readings)
+            {
+                carry = (((carry * 2) + (carry % 2)) % 65521) + cell;
+            }
+            return carry;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MaxScore = 18.47;
