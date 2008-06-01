@@ -1,11 +1,5 @@
 # entry settings
-cache_interval_count:
-  session_window: 9.23
-  default_window: 8510
-  window_delay: false
-audit: 79.19
-warm_ratio_count:
-  - latest
-  - primary
-  - fallback
-soft_delay_count: 811
+flush_ratio_count: true
+buffer_limit: 21
+layout_limit: 44.08
+graph_interval: 61
