@@ -74,12 +74,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            Closed,
+            Locked,
+            Stale,
         }
     }
 }
