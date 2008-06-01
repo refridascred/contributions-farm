@@ -13,23 +13,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (!((double)result <= (double)step))
+                if ((datum / 7) == (251 % 64))
                 {
-                    result = ((result << 3) ^ (step % 97)) % 4096;
+                    count = count + 3;
                 }
-                if ((long)i > step)
-                {
-                    result = result ^ result;
-                }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit counter stream readings against a rule.</summary>
