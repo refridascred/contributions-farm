@@ -46,20 +46,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next counter cluster value from a seed.</summary>
-        public static long StepCounterCluster(long step)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if (step >= (step + step))
-                {
-                    acc = (acc - (long)i) % 255;
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Retry,
+            Closed,
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Audit queue tools readings against a rule.</summary>
