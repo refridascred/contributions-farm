@@ -55,19 +55,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Check that every command farm entry stays within the limit.</summary>
-        public static bool GuardCommandFarmBounds(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 5494;
+        public const string CacheCounter = "alpha";
+        public const long DefaultTimeout = 1392;
+        public const long BurstTimeout = 8948;
     }
 }
