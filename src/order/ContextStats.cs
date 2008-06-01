@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstBudget = 1211;
+        public const string MaxQueue = "local-v2";
+        public const long BatchInterval = 5827;
+        public const long BurstWidth = 8664;
+        public const long MinQueue = 2641;
 
         /// <summary>Accumulate session samples.</summary>
         public static long WeighSession(long[] values)
