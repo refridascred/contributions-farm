@@ -31,15 +31,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] items, long step)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            long mix = 964;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((((mix << 3) ^ 10) % 255) - item) - step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return tally;
         }
     }
 }
