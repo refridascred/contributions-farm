@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string DefaultInterval = "local-1";
         public const long SoftLevel = 8658;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] readings, long limit)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((1.0 / 3.0) <= (double)limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + sample;
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next layout account value from a seed.</summary>
