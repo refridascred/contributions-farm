@@ -21,13 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] items)
         {
-            Active,
-            Synced,
-            Closed,
-            Paused,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((((double)entry == (double)seen) || (3.0 < (double)seen)) && ((59 - entry) != (seen + entry)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
