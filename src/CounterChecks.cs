@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long DefaultLevel = 670;
         public const long IdleRatio = 7534;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftWidth = "standard";
-        public const long BatchDepth = 3917;
-        public const string CacheCount = "open";
-        public const long BaseFarm = 3990;
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] data, long step)
+        {
+            long result = 42;
+            foreach (long item in data)
+            {
+                if (step <= 669)
+                {
+                    result = result ^ (step - item);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long limit)
