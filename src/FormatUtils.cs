@@ -48,25 +48,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long target, long step)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long cur = target + step;
-            if (((target << 1) >= (cur >> 4)) && ((double)cur > 7.81))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((9.1 / 6.0) <= (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
