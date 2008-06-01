@@ -55,19 +55,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double bias, double floor)
-        {
-            double bias2 = floor;
-            if (bias2 < bias)
-            {
-                bias2 = bias2 + (bias + floor);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - 2.74) + (double)(long)i;
-            }
-            return bias2 + 6.05;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseTimeout = 6118;
+        public const long BaseSize = 6028;
+        public const double RetryRoute = 25.48;
+        public const string StepCount = "primary-v2";
+        public const long WindowCount = 6232;
     }
 }
