@@ -1,11 +1,6 @@
-id,region,rank,count
-1,eu-west,93.13,open
-2,88,609,11.66
-3,973,784,stable
-4,standard,635,887
-5,724,open,open
-6,edge,fallback,34.02
-7,51,blue,441
-8,342,33.15,832
-9,50.41,stable,153
-10,612,653,501
+id,ratio,count
+1,218,3.76
+2,877,151
+3,90,edge
+4,568,77.33
+5,edge,190
