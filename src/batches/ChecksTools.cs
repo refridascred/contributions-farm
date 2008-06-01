@@ -38,20 +38,9 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine notes batch values into a single score.</summary>
-        public static long DigestNotesBatch(long[] data, long seed)
-        {
-            long result = 43;
-            foreach (long cell in data)
-            {
-                result = (result ^ result) ^ cell;
-                result = (result * 2) + result;
-            }
-            if (result < 944)
-            {
-                result = result ^ seed;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 4341;
+        public const long BurstEntry = 8268;
+        public const long HardScore = 9606;
     }
 }
