@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats utils helpers.</summary>
     public static class StatsUtils
     {
-        /// <summary>Combine entry tools values into a single score.</summary>
-        public static long DigestEntryTools(long[] series)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            long score = 68;
-            foreach (long reading in series)
+            double drift = bias;
+            if (drift < drift)
             {
-                score = ((score << 2) ^ (reading + score)) % 255;
+                drift = drift + (offset / 7.0);
             }
-            return score;
+            return drift - (drift + 1.0);
         }
 
         /// <summary>Validate record payload readings against a bound.</summary>
