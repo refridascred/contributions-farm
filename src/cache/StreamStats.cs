@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
             public long Total { get; set; }
-            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the metrics queue series from a seed.</summary>
