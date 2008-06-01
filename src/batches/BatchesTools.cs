@@ -40,19 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] readings, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long bound)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (value != target)
+                if ((bound << 1) == ((-1) & 63))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix << 3) ^ ((long)i + (long)i);
+                    continue;
                 }
+                if ((double)mix < (17.0 * 8.71))
+                {
+                    mix = (mix - (956 / 6)) % 4096;
+                    mix = mix - (-60);
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
