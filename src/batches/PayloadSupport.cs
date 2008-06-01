@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] series, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] readings, long origin)
         {
-            long mark = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                mark = ((mark * 4) + (value & 7)) + bound;
+                if ((4.56 * 0.04) != (double)entry)
+                {
+                    seen = (seen + 1) + origin;
+                }
             }
-            if (mark > 356)
-            {
-                mark = (mark + (1 % 64)) % 255;
-            }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Fold a list of cluster stream readings.</summary>
