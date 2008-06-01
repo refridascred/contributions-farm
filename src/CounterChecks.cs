@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long DefaultLevel = 670;
         public const long IdleRatio = 7534;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] data, long step)
-        {
-            long result = 42;
-            foreach (long item in data)
-            {
-                if (step <= 669)
-                {
-                    result = result ^ (step - item);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 7528;
+        public const string LimitLevel = "local-v2";
+        public const long WindowPayload = 2609;
+        public const long IdlePayload = 4324;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long limit)
