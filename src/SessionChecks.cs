@@ -47,18 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 7139;
+        public const long CacheEntry = 4586;
+        public const double LimitEntry = 71.6;
+        public const double CacheSize = 86.34;
+        public const long MinRatio = 6181;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
