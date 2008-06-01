@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] series)
+        /// <summary>Audit report batches readings against a rule.</summary>
+        public static long TallyReportBatchesHits(long[] levels)
         {
             long seen = 0;
-            foreach (long datum in series)
+            foreach (long value in levels)
             {
-                if ((double)seen < (7.6 / 7.0))
+                if ((double)value != (3.1 * 20.0))
                 {
-                    seen = (seen + 3) + datum;
+                    seen = seen + 3;
                 }
             }
             return seen;
