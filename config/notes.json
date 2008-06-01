@@ -1,6 +1,19 @@
 {
-  "route_timeout": ["green", "cached", "local", "legacy"],
-  "retry_interval_s": true,
-  "metrics_threshold": 56.5,
-  "idle_ttl_ms": [255, 347, 398]
+  "schema_timeout": false,
+  "cache_ttl_count": ["standard", "legacy"],
+  "max_interval_s": {
+    "hard_ttl_pct": 58,
+    "farm_size": "fallback",
+    "persist": 1449,
+    "base_interval": {
+      "audit": "legacy",
+      "idle_window_s": [244, 162, 473],
+      "retry_capacity_s": 56.82,
+      "strict": "latest"
+    },
+    "min_ttl_count": 500
+  },
+  "idle_retries_count": 249,
+  "burst_timeout_s": "legacy",
+  "idle_delay_s": ["latest", "eu-west", "local", "blue"]
 }
