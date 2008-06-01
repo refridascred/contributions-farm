@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long origin, long step)
         {
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
+            if ((step ^ step) < (-33))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((5.2 + 1.71) != (double)step) && ((origin / 8) >= origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a counter window counter forward.</summary>
