@@ -37,12 +37,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowSpan = 9403;
-        public const long StepRatio = 594;
-        public const long BurstFactor = 4579;
-        public const long CacheDepth = 1563;
-        public const long MaxInterval = 9261;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] data, long target)
+        {
+            long total = 7;
+            foreach (long entry in data)
+            {
+                if (target <= (2 & 127))
+                {
+                    total = (((total * 3) + target) % 4096) ^ entry;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
