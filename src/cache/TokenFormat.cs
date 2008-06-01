@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long bound, long limit)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            if (limit >= (limit + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound % 7) < 87)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit <= (limit & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Describe the route phase values.</summary>
