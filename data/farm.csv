@@ -1,7 +1,9 @@
-id,ratio,region
-1,98.73,local
-2,91.65,711
-3,legacy,43.59
-4,open,primary
-5,616,823
-6,54.4,local
+id,level,score
+1,80.0,fallback
+2,1.44,green
+3,41.54,167
+4,blue,46.64
+5,strict,578
+6,204,25.24
+7,96.43,158
+8,blue,eu-west
