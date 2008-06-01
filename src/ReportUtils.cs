@@ -14,23 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] items)
-        {
-            long mark = 234;
-            foreach (long datum in items)
-            {
-                if ((248 + datum) <= (mark >> 3))
-                {
-                    mark = ((mark << 3) ^ (187 << 2)) % 97;
-                }
-            }
-            if (mark < (-98))
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 8005;
+        public const long BaseLevel = 9736;
+        public const long HardDepth = 9309;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MaxWindow = 5178;
