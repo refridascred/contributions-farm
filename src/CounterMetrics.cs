@@ -46,20 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values, long floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long score = 52;
-            foreach (long datum in values)
-            {
-                score = ((score + (-2)) % 1000) + floor;
-                score = ((score * 4) + (datum >> 3)) % 4096;
-            }
-            if (score < 1)
-            {
-                score = (score - 7) % 101;
-            }
-            return score;
+            Pending,
+            Locked,
+            Dropped,
         }
     }
 }
