@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Locate a queue metric reading by value.</summary>
+        public static long FindQueueMetricIndex(long[] values, long seed)
         {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the counter mode values.</summary>
