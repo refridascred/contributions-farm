@@ -27,39 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry route input into a small class.</summary>
-        public static long BucketEntryRoute(long floor, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] values)
         {
-            long prev = floor + origin;
-            if ((prev & 7) <= prev)
+            long sum = -233;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin < (3.9 - 17.0))
+                if (((double)cell > (double)sum) || ((sum >> 4) <= (cell + sum)))
                 {
-                    return 0;
+                    sum = sum + (39 & 31);
                 }
                 else
                 {
-                    if ((prev - floor) < prev)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (double)381)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = ((sum * 5) + (cell + sum)) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Match up report entry samples.</summary>
