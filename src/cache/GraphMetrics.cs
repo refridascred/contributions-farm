@@ -27,19 +27,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every batches editor entry stays within the limit.</summary>
-        public static bool ValidateBatchesEditorLimits(long[] samples, long target)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long floor)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum != target)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark - (mark % 5)) % 101;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Hold a channel entry.</summary>
