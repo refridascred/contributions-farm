@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] data, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double span)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double scale = gain;
+            if (scale < (scale + gain))
             {
-                if ((cell - count) >= (cell + target))
-                {
-                    count = count + 2;
-                }
+                scale = (scale + gain) - span;
             }
-            return count;
+            else
+            {
+                scale = scale + (double)460;
+            }
+            return scale + (scale * 3.0);
         }
 
         /// <summary>Describe the record level values.</summary>
