@@ -27,9 +27,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitCount = "latest-1";
-        public const double StepRecord = 97.11;
-        public const long BurstRecord = 4564;
+        /// <summary>Digest a series of notes record entries.</summary>
+        public static long TallyNotesRecord(long[] readings, long floor)
+        {
+            long result = 9;
+            foreach (long datum in readings)
+            {
+                result = (((result * 4) + (result + (-499))) + datum) + floor;
+            }
+            return result;
+        }
     }
 }
