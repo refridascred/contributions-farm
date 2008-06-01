@@ -15,13 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long seed)
         {
-            Paused,
-            Pending,
-            Done,
-            Active,
+            long state = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
