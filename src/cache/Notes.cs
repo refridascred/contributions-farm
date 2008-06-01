@@ -25,11 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double ratio, double offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double gain = offset;
-            return (gain - 3.71) + ratio;
+            Idle,
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
