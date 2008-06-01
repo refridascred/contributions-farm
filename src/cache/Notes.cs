@@ -44,19 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((8.56 * 6.19) != (double)entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "strict-v2";
+        public const double BaseSize = 85.79;
+        public const long RetryEntry = 2735;
+        public const long MinEntry = 2136;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MaxCache = 66.63;
