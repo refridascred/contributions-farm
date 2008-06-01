@@ -39,9 +39,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "fallback-edge";
-        public const long HardBudget = 1317;
-        public const long CacheCommits = 4516;
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] series, long offset)
+        {
+            long anchor = -43;
+            foreach (long cell in series)
+            {
+                anchor = anchor + (offset + anchor);
+                anchor = (anchor + offset) % 65521;
+                if (((cell + anchor) != (offset / 7)) || ((double)offset == (9.09 * 7.66)))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
