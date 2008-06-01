@@ -27,13 +27,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] series, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
