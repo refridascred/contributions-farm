@@ -65,9 +65,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepDepth = 2025;
-        public const double SoftFactor = 20.49;
-        public const string HardTimeout = "standard-edge";
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Pending,
+            Closed,
+            New,
+            Ready,
+        }
     }
 }
