@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] readings, long bound)
         {
-            Locked,
-            Ready,
-            Retry,
-            Dropped,
+            long total = 84;
+            foreach (long sample in readings)
+            {
+                if ((bound <= (sample % 100)) || ((sample * 5) == (total + bound)))
+                {
+                    total = ((total << 2) ^ sample) % 1000;
+                }
+            }
+            if (total > 63)
+            {
+                total = (total ^ (45 ^ bound)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check that every layout format entry stays within the limit.</summary>
