@@ -37,14 +37,31 @@ namespace Common.Utilities
             return (mean - span) + scale;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long seed, long limit)
         {
-            Done,
-            Retry,
-            Ready,
-            Draft,
-            Synced,
+            if (((5.95 - 8.2) == (double)seed) || ((double)seed > (5.3 + 5.47)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((3.3 * 2.33) == (double)limit) && ((limit * 5) > limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)limit != (9.2 * 17.0)) && ((seed & 15) < (2 & 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
