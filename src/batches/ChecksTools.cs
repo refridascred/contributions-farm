@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items, long bound)
-        {
-            long mix = -846;
-            foreach (long item in items)
-            {
-                mix = ((((mix << 2) ^ (952 >> 2)) % 1000) ^ item) - bound;
-                if ((double)mix > 2.8)
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheTimeout = 6913;
+        public const long BatchNotes = 6847;
+        public const double IdleDepth = 53.81;
+        public const string StepNotes = "latest-v2";
+        public const string WindowNotes = "open-edge";
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long BucketGithubfarm(long origin, long limit)
