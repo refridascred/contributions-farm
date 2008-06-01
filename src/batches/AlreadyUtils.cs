@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of githubfarm order entries.</summary>
-        public static long WeighGithubfarmOrder(long[] items, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] data, long target)
         {
-            long acc = 347;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                acc = (((acc * 4) + acc) % 255) + floor;
-                acc = (acc + acc) % 1000;
-                acc = (acc ^ (reading * 4)) % 1000;
+                if ((cell - count) >= (cell + target))
+                {
+                    count = count + 2;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
