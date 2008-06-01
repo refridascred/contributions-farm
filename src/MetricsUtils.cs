@@ -55,13 +55,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Fold a list of window metric readings.</summary>
