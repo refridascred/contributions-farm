@@ -32,13 +32,16 @@ namespace Common.Utilities
         public const long BurstProfile = 8649;
         public const double MaxInterval = 42.75;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples, long bound)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = 5;
+            foreach (long entry in samples)
+            {
+                result = ((result ^ (0 + result)) % 97) + entry;
+                result = ((result * 2) + bound) % 101;
+            }
+            return result;
         }
     }
 }
