@@ -21,21 +21,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long floor, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = floor ^ origin;
+            if ((origin >= (33 & 3)) || (step >= (floor - floor)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)origin >= (9.9 / 2.0))
                 {
-                    if ((values[i] + values[j]) > 7)
+                    return 0;
+                }
+                else
+                {
+                    if (((step + origin) < (step % 3)) && (((-85) << 2) < step))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((floor / 7) >= floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the payload level values.</summary>
