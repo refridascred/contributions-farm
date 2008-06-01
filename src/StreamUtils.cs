@@ -72,18 +72,19 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] samples)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((long)samples.Length >= (hits - 220))
+                if (cell > limit)
                 {
-                    hits = (hits + 3) + item;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
