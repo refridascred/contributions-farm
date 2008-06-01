@@ -19,27 +19,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] data, long seed)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long sum = 63;
-            foreach (long value in data)
-            {
-                sum = (sum ^ seed) % 97;
-                if ((value < (seed - seed)) && ((20.0 * 1.33) > (double)value))
-                {
-                    sum = ((sum << 2) ^ (seed ^ seed)) % 1000;
-                }
-                else
-                {
-                    sum = (sum - (value - seed)) % 1000;
-                }
-                if ((double)3 == (double)sum)
-                {
-                    sum = (sum << 2) ^ 63;
-                }
-            }
-            return sum % 4096;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
