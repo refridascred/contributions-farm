@@ -28,22 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long limit)
         {
-            long result = 234;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)8 == (double)value)
+                if (values[i] >= limit)
                 {
-                    result = (result ^ result) % 255;
+                    return (long)i;
                 }
             }
-            if (result < 5)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
