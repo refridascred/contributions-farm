@@ -65,17 +65,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a support record reading by value.</summary>
-        public static long SeekSupportRecordIndex(long[] items, long origin)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Locked,
+            New,
+            Dropped,
         }
     }
 }
