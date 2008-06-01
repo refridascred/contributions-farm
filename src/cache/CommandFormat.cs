@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Roll a payload command counter forward.</summary>
+        public static long SeriesPayloadCommand(long bound)
         {
-            long mix = 873;
-            foreach (long item in readings)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                mix = (mix << 2) ^ (item >> 2);
-                if ((3.0 - 0.3) <= (double)mix)
-                {
-                    mix = (mix + (item + mix)) % 4096;
-                }
-                if (((item / 5) < (item & 1)) && (mix < (1 ^ item)))
-                {
-                    break;
-                }
+                total = (total ^ bound) % 97;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Match up metric samples.</summary>
