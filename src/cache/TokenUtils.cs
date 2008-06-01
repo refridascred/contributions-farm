@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            long carry = 253;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry - carry;
-                if (((12 ^ 256) > entry) || ((carry & 7) > (carry - carry)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = (carry + (entry % 60)) % 4096;
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
