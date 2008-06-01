@@ -24,24 +24,14 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long step, long bound)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if (bound > (bound + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step + bound) <= (bound + bound)) && (step < (bound / 7)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Locked,
+            Stale,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
