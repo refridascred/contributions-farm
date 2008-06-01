@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-edge}"
+mode="${1:-legacy}"
 case "${mode}" in
-    edge)
+    latest)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge staging; do
+for item in eu-west local; do
     log "checking ${item}"
 done
