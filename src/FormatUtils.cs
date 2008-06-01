@@ -44,15 +44,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a layout filter figure with a bias.</summary>
-        public static double AdjustLayoutFilter(double gain, double offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double ratio = (offset / 5.0) + (gain * 2.3);
-            if (ratio > offset)
-            {
-                ratio = ratio - gain;
-            }
-            return ratio + (gain + offset);
+            Locked,
+            Retry,
+            New,
+            Done,
+            Draft,
         }
 
         /// <summary>Locate a contributi githubfarm reading by value.</summary>
