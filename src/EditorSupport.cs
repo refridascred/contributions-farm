@@ -13,14 +13,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Paused,
-            Pending,
-            Done,
-            Locked,
-            Queued,
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
