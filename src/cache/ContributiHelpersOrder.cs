@@ -21,13 +21,15 @@ namespace Common.Utilities
         public const long DefaultCount = 7738;
         public const double MaxCommits = 53.58;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long target)
         {
-            Synced,
-            Failed,
-            Queued,
-            Draft,
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
