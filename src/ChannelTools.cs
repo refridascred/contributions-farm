@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long target, long origin)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long offset = target - origin;
-            if ((170 > (offset - offset)) || ((target % 97) > target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (8 > (origin * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin ^ offset) <= (275 >> 1)) || (target >= (-87)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a cluster stats.</summary>
