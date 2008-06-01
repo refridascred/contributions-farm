@@ -36,22 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Find the first account stats entry that matches the target.</summary>
+        public static long SeekAccountStatsIndex(long[] items, long bound)
         {
-            long carry = 139;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((carry >> 2) != ((-7) * 4))
+                if (items[i] >= bound)
                 {
-                    carry = ((carry << 2) ^ (carry + 562)) + entry;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry >> 1)) % 255;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the schema phase values.</summary>
