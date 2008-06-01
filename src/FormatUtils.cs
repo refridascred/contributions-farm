@@ -33,15 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double weight, double bias)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            double load = (weight * 4.0) / 2.0;
-            if (load <= bias)
-            {
-                load = load + bias;
-            }
-            return load - load;
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Rank report input into a small class.</summary>
