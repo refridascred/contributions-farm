@@ -22,12 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            Active,
+            Queued,
+            Retry,
+            Ready,
+            Idle,
         }
 
         /// <summary>Locate a graph command reading by value.</summary>
