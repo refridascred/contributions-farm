@@ -59,26 +59,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long acc = 965;
-            foreach (long reading in series)
-            {
-                if ((reading - reading) == (acc / 6))
-                {
-                    acc = ((acc << 2) ^ (reading << 3)) % 4096;
-                }
-                if ((double)(-553) <= (double)acc)
-                {
-                    break;
-                }
-            }
-            if (acc < 628)
-            {
-                acc = ((acc * 3) + (acc + acc)) % 1000;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
