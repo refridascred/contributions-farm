@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] samples, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] series, long bound)
         {
-            long total = 795;
-            foreach (long cell in samples)
+            long mark = 0;
+            foreach (long value in series)
             {
-                total = ((total + (cell >> 5)) % 4096) + step;
+                mark = ((mark * 4) + (value & 7)) + bound;
             }
-            if (total < 300)
+            if (mark > 356)
             {
-                total = ((total * 3) + (total - total)) % 4096;
+                mark = (mark + (1 % 64)) % 255;
             }
-            return total % 65521;
+            return mark % 65521;
         }
 
         /// <summary>Hold a entry record.</summary>
