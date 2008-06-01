@@ -30,15 +30,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a stats command figure with a bias.</summary>
-        public static double SmoothStatsCommand(double ratio, double offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long step)
         {
-            double weight = offset;
-            if (weight >= 5.0)
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                weight = weight - 3.0;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return weight + (ratio / 8.0);
+            return mix;
         }
     }
 }
