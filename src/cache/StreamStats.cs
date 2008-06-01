@@ -26,19 +26,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the metrics queue series from a seed.</summary>
-        public static long SeriesMetricsQueue(long bound)
+        /// <summary>Count the account profile entries that pass the check.</summary>
+        public static long AuditAccountProfileMatches(long[] readings, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((5.9 / 9.0) >= (double)state)
+                if (!((floor * 2) <= (cell / 4)) || ((double)18 < (double)hits))
                 {
-                    state = (state * 4) + (bound + (long)i);
+                    hits = hits + 3;
                 }
-                state = ((state * 5) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
