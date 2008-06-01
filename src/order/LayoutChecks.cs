@@ -23,11 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] series, long limit)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the context phase values.</summary>
