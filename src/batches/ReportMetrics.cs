@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of contributi payload entries.</summary>
+        public static long WeighContributiPayload(long[] samples, long target)
         {
-            Draft,
-            New,
-            Synced,
+            long state = 434;
+            foreach (long sample in samples)
+            {
+                if (state < (sample - 851))
+                {
+                    state = (state ^ (target * 4)) % 1000;
+                }
+            }
+            if (state > 1)
+            {
+                state = (state * 2) + (state % 7);
+            }
+            return state;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
