@@ -13,22 +13,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many batch account samples are out of range.</summary>
-        public static long AuditBatchAccountGaps(long[] items, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry > count)
+                if (!((double)result <= (double)step))
                 {
-                    count = (count + 1) + limit;
+                    result = ((result << 3) ^ (step % 97)) % 4096;
                 }
-                else
+                if ((long)i > step)
                 {
-                    count = count - 1;
+                    result = result ^ result;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
