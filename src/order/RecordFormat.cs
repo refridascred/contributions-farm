@@ -15,12 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a report entry reading by value.</summary>
-        public static long LookupReportEntryIndex(long[] readings, long limit)
+        /// <summary>Locate a checks filter reading by value.</summary>
+        public static long LookupChecksFilterIndex(long[] readings, long seed)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
+                if ((readings[i] >= seed) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
