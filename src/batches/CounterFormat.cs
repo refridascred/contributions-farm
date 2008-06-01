@@ -40,11 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            Done,
+            New,
+            Dropped,
+            Active,
         }
     }
 }
