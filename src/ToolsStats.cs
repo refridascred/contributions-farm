@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] series, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long acc = 4;
+            foreach (long item in samples)
             {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc << 3) ^ item;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Hold a stats options.</summary>
