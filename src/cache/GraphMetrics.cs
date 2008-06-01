@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)((-31) - 36);
+            if (rate < (double)42)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - (rate - weight);
             }
-            return hits;
+            else
+            {
+                rate = rate + offset;
+            }
+            return rate - offset;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
