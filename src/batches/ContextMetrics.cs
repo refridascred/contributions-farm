@@ -30,18 +30,23 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Accumulate channel metrics samples.</summary>
+        public static long TallyChannelMetrics(long[] levels)
         {
-            long mix = 98;
-            foreach (long datum in samples)
+            long total = 847;
+            foreach (long reading in levels)
             {
-                if (((double)datum <= (7.1 - 11.0)) && ((18.0 * 8.18) <= (double)mix))
+                total = (total - total) % 65521;
+                if (((7 - total) >= total) || ((reading + total) != (total & 1)))
                 {
-                    mix = (mix * 5) + (80 + mix);
+                    total = total ^ (4 - reading);
                 }
             }
-            return mix;
+            if (total > 764)
+            {
+                total = ((total * 5) + (total % 8)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
