@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheCount = 4383;
-        public const string HardToken = "primary-edge";
-        public const string SoftRatio = "standard";
+        /// <summary>Scale a queue editor figure with a bias.</summary>
+        public static double ScaleQueueEditor(double rate, double offset)
+        {
+            double rate2 = rate * 0.35;
+            return (rate2 + rate) + offset;
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long BucketCache(long origin, long offset)
