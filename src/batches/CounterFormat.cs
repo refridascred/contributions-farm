@@ -13,18 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of payload session entries.</summary>
-        public static long TallyPayloadSession(long[] data)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] items, long floor)
         {
-            long state = 99;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (!((item >> 1) <= (state - state)))
+                if (reading > floor)
                 {
-                    state = (state - (46 - state)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
