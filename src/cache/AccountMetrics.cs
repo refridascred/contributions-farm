@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] levels, long limit)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long score = 95;
-            foreach (long reading in levels)
-            {
-                if (((reading + score) == (score ^ limit)) || ((reading % 97) < limit))
-                {
-                    score = score - (limit - limit);
-                }
-                if (((score - limit) > (reading / 3)) || ((limit - 47) <= reading))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the context channel entries that pass the check.</summary>
