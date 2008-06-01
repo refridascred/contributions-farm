@@ -23,14 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Validate profile cache readings against a bound.</summary>
+        public static bool GuardProfileCacheRange(long[] data, long offset)
         {
-            Idle,
-            Ready,
-            Synced,
-            Failed,
-            Locked,
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
