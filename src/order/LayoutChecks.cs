@@ -23,19 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] series)
         {
-            long carry = -6;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                carry = ((carry << 2) ^ (carry + carry)) - item;
+                if (datum > 65)
+                {
+                    seen = seen + 2;
+                }
             }
-            if (carry < 5)
-            {
-                carry = ((carry * 2) + carry) % 65521;
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
