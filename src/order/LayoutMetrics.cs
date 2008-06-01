@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 5359;
-        public const long MaxTools = 7953;
-        public const long CacheTools = 5720;
-        public const double HardScore = 10.69;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Failed,
+            Pending,
+            Queued,
+            New,
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricOutliers(long[] data)
