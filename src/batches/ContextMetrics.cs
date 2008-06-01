@@ -54,13 +54,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            New,
-            Draft,
+            Failed,
             Queued,
             Closed,
+            Dropped,
         }
     }
 }
