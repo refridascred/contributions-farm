@@ -1,13 +1,7 @@
 # githubfarm settings
-context_window:
-  flush_retries_count: 69
-  soft_ratio: stable
-  cache_depth_count:
-    - 326
-    - 309
-    - 250
-    - 405
-  warm_window: 42.98
-dry_run: open
-idle_threshold_ms: 45
-hard_ratio_s: 92.63
+enabled:
+  - 99
+  - 162
+  - 158
+max_size_count: blue
+compress: legacy
