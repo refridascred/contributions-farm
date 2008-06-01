@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 8853;
         public const long MaxSpan = 3011;
 
-        /// <summary>Fold a list of cache token readings.</summary>
-        public static long CombineCacheToken(long[] readings)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long mix = 87;
-            foreach (long datum in readings)
-            {
-                if ((88 ^ datum) != (8 + mix))
-                {
-                    mix = ((mix << 3) ^ (mix + datum)) % 65521;
-                }
-                else
-                {
-                    mix = mix + (15 + 7);
-                }
-            }
-            return mix % 4096;
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
