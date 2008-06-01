@@ -1,5 +1,8 @@
 {
-  "flush_threshold_s": 23.93,
-  "already_limit": [108, 417, 293, 17],
-  "soft_ttl_ms": 4300
+  "sync_retries": "strict",
+  "persist": 1024,
+  "soft_ratio": 83.95,
+  "graph_window": 42,
+  "batch_window_count": ["edge", "primary"],
+  "commits_timeout": false
 }
