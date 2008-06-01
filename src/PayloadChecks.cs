@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long CacheFactor = 5586;
         public const long LimitLevel = 7969;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
