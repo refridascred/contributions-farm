@@ -15,11 +15,40 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 145;
-        public const long MinTimeout = 7934;
-        public const long IdleScore = 4679;
-        public const long CacheBudget = 4254;
+        /// <summary>Classify a stream window pair into a bucket.</summary>
+        public static long SortStreamWindow(long offset, long offset2)
+        {
+            long prev = offset + offset2;
+            if ((7.9 + 6.0) > (double)prev)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((6.3 + 1.3) >= (double)offset2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset % 3) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (prev <= (13 * 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
