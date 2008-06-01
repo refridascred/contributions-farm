@@ -1,11 +1,10 @@
 # Command notes
 
-Keep session and graph names short and lowercase.
-The graph module keeps commits values in sync with the command cache.
+Keep channel and record names short and lowercase.
+Run the session check before changing any context limits.
 
 ## Guidelines
 
-- Document new queue fields
-- Review already limits each release
-- Prefer stats defaults
-- Keep channel values small
+- Validate githubfarm input early
+- Review farm limits each release
+- Keep counter values small
