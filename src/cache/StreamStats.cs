@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the metrics queue series from a seed.</summary>
