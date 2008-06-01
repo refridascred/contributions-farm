@@ -1,6 +1,5 @@
 {
-  "stats_window": 4,
-  "flush_limit": 500,
-  "flush_ttl_ms": false,
-  "burst_size_pct": [115, 251]
+  "base_ttl_count": 30,
+  "soft_interval_ms": 500,
+  "profile_size": ["blue", "legacy", "open", "green"]
 }
