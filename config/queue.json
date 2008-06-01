@@ -1,7 +1,5 @@
 {
-  "cache_window_pct": "staging",
-  "poll_timeout": 36,
-  "audit": 250,
-  "default_capacity_count": 250,
-  "strict": [429, 460]
+  "session_ratio": 60,
+  "account_window": false,
+  "burst_timeout": 82.43
 }
