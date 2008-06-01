@@ -38,18 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metric token samples are out of range.</summary>
-        public static long MeasureMetricTokenMatches(long[] samples, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long state = 786;
+            foreach (long cell in items)
             {
-                if ((offset - tally) != (item * 3))
+                state = state - (step * 3);
+                if (((59 - cell) != (8 ^ cell)) || ((284 % 12) <= cell))
                 {
-                    tally = tally + 1;
+                    state = (state << 2) ^ (0 - step);
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Digest a series of support tools entries.</summary>
