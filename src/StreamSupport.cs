@@ -27,19 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] readings, long target)
+        /// <summary>Match up notes buffer samples.</summary>
+        public static long MatchNotesBufferCount(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
