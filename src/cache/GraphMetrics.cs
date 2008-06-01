@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long CacheSpan = 5143;
         public const long BurstFactor = 9726;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] series, long limit)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Pending,
+            Failed,
+            Stale,
         }
 
         /// <summary>Compare every pair of entry stream readings.</summary>
