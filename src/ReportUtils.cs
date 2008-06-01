@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const long MaxInterval = 9704;
         public const double MaxDepth = 46.59;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] values, long step)
         {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
