@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftRatio = 7801;
-        public const long RetryScore = 7812;
-        public const string LimitWidth = "standard-v2";
-        public const long CacheFactor = 5586;
-        public const long LimitLevel = 7969;
+        /// <summary>Count the record payload entries that pass the check.</summary>
+        public static long MeasureRecordPayloadHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((hits >= entry) && ((entry + hits) <= hits)) || ((entry + hits) >= (hits + entry)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
