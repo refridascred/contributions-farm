@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleScore = 9299;
-        public const double WindowEditor = 7.28;
-        public const long MinRatio = 9876;
-        public const string BurstCount = "alpha";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (value <= (3 << 1))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
