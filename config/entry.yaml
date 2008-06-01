@@ -1,22 +1,15 @@
 # entry settings
-metric_retries: 2
-readonly:
-  burst_depth_ms: 14.78
-  audit: 1798
-  min_ttl_pct: open
-  flush_capacity_count:
-    compress: primary
-    max_timeout: local
-    poll_threshold: latest
-    warm_retries_ms: 64
-    report_interval: 82
-    notes_threshold: true
-  compress:
-    dry_run: 1639
-    soft_capacity: true
-    hard_capacity_count: true
-    sync_ratio_s: 500
-    base_delay_count: 52
-base_threshold: fallback
-editor_depth: true
-base_interval: 6836
+schema_ttl: 25.12
+idle_threshold_pct: blue
+hard_ratio_count:
+  burst_threshold: 27
+  cache_interval: 65
+  dry_run: standard
+  audit: 500
+  persist:
+    sync_ratio: false
+    strict: 30
+    soft_depth: local
+    report_limit: 100
+    soft_window: edge
+sync_ttl: primary
