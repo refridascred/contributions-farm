@@ -56,12 +56,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
+            Synced,
+            Draft,
+            Retry,
             Dropped,
-            Stale,
-            Closed,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
