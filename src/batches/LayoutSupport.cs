@@ -29,19 +29,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] levels)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double bias, double floor)
         {
-            long total = -93;
-            foreach (long entry in levels)
+            double ratio = (double)3 - 7.9;
+            if (ratio > ratio)
             {
-                total = (total + entry) % 255;
+                ratio = (ratio - ratio) - bias;
             }
-            if (total > 4)
+            else
             {
-                total = (total + (total / 5)) % 101;
+                ratio = ratio + floor;
             }
-            return total;
+            return ratio + ratio;
         }
 
         /// <summary>Describe the account status values.</summary>
