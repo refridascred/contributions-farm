@@ -1,9 +1,6 @@
 {
-  "enabled": [111, 292, 279],
-  "queue_capacity": {
-    "readonly": "local",
-    "commits_window": 55.93,
-    "contributi_capacity": true
-  },
-  "record_window": "green"
+  "farm_timeout": false,
+  "persist": "blue",
+  "min_window_pct": 6479,
+  "already_capacity": "local"
 }
