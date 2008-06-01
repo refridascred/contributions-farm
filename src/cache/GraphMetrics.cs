@@ -27,22 +27,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of entry stream readings.</summary>
-        public static long CompareEntryStreamCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultDepth = "standard";
+        public const long DefaultCount = 8975;
+        public const string HardSupport = "fallback-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string BaseEntry = "cached-v2";
