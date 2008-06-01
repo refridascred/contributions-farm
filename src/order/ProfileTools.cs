@@ -40,11 +40,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 43.99;
-        public const double RetryRatio = 80.0;
-        public const double RetryInterval = 40.09;
-        public const long SoftGithubfarm = 4524;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] series)
+        {
+            long score = 65;
+            foreach (long datum in series)
+            {
+                score = score - (score - score);
+                score = (score ^ (datum << 1)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchContext = 4316;
