@@ -72,19 +72,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] series, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (item < offset)
+                if (reading >= origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
