@@ -38,18 +38,25 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] series, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long target, long offset)
         {
-            long score = 806;
-            foreach (long reading in series)
+            long slot = target + offset;
+            if (!(offset <= (slot + target)))
             {
-                if (232 <= (reading + (-46)))
+                return 5;
+            }
+            else
+            {
+                if ((double)slot > (6.41 * 3.52))
                 {
-                    score = ((score * 5) + (score - origin)) % 255;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Digest a series of checks entry entries.</summary>
