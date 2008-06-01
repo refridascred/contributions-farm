@@ -16,13 +16,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long step, long offset)
         {
-            Pending,
-            Ready,
-            Active,
-            Queued,
+            long span = step ^ offset;
+            if (((offset - offset) == (151 - offset)) && ((step % 60) > (step / 7)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((82 / 5) != (step >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((span - offset) >= (offset - span))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a contributi queue reading by value.</summary>
