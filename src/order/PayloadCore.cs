@@ -40,32 +40,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long floor, long floor2)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] data, long bound)
         {
-            long lane = floor - floor2;
-            if ((double)lane > (8.35 - 5.9))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane - floor2) < (floor2 - floor))
+                if (((reading + reading) > count) && ((8 * 3) >= (bound ^ reading)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor >> 3) <= (lane & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
