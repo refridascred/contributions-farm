@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftSize = 7283;
-        public const long BatchEntry = 6473;
-        public const long BurstWidth = 6277;
-        public const long MaxEntry = 3873;
-        public const long LimitRatio = 4537;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Locked,
+            Failed,
+            Done,
+            New,
+            Paused,
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] levels, long target)
