@@ -1,16 +1,8 @@
 {
-  "sync_limit": false,
-  "schema_threshold": ["primary", "eu-west", "open"],
-  "burst_retries_s": 5436,
-  "soft_interval": 100,
-  "min_limit_count": [331, 76, 256, 134],
-  "idle_retries_s": {
-    "farm_threshold": 53,
-    "flush_interval_count": "blue",
-    "filter_retries": {
-      "base_limit_s": 500,
-      "batch_ttl": 42,
-      "hard_retries": 3584
-    }
-  }
+  "batch_retries": 83.8,
+  "audit": 85.6,
+  "readonly": false,
+  "buffer_retries": 7934,
+  "warm_timeout_s": false,
+  "poll_ttl_count": ["legacy", "open"]
 }
