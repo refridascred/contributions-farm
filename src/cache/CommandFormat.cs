@@ -60,11 +60,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double weight, double floor)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            double bias = (floor * 8.7) * 18.0;
-            return (bias - floor) + weight;
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
