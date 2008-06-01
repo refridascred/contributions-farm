@@ -73,17 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report context entry that matches the target.</summary>
-        public static long FindReportContextIndex(long[] items, long origin)
+        /// <summary>Validate order metrics readings against a bound.</summary>
+        public static bool GuardOrderMetricsLimits(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                if (reading > offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
