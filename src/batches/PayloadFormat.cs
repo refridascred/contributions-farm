@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long SoftRoute = 1267;
         public const double LimitTimeout = 46.93;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] series, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                mark = (mark + (51 % 5)) % 97;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (((sample >> 2) == (long)series.Length) || (((double)seen >= (double)sample) && ((seen >> 3) > sample)))
+                {
+                    seen = (seen + 3) + offset;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
