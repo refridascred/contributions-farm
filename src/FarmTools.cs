@@ -27,15 +27,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Fold a list of entry checks readings.</summary>
+        public static long TotalEntryChecks(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long sum = 727;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (entry > (entry / 5))
+                {
+                    sum = sum + (sum - sum);
+                }
             }
-            return anchor;
+            return sum;
         }
     }
 }
