@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((bound & 127) != (bound ^ state))
-                {
-                    continue;
-                }
-                state = ((state << 2) ^ (long)i) % 97;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Ready,
+            Active,
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
