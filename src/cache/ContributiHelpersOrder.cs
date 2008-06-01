@@ -14,33 +14,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long target, long seed)
-        {
-            long slot = target - seed;
-            if ((double)slot > (double)883)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot & 31) == (seed * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + slot) > (slot << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 6925;
+        public const long StepCommits = 4271;
+        public const long BaseCommits = 3343;
+        public const long DefaultCount = 7738;
+        public const double MaxCommits = 53.58;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
