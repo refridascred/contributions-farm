@@ -28,23 +28,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] values, long limit)
         {
-            double bias = 7.5 * 9.0;
-            if (bias > (double)44)
+            long anchor = 9;
+            foreach (long cell in values)
             {
-                bias = (bias + (bias * 19.0)) + ratio;
+                anchor = (anchor << 3) ^ cell;
             }
-            else
+            if (anchor < 4)
             {
-                bias = bias - floor;
+                anchor = (anchor - (limit & 7)) % 4096;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (double)550) - (double)(long)i;
-            }
-            return bias - bias;
+            return anchor;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
