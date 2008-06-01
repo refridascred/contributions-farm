@@ -46,19 +46,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
-        public static bool ValidateClusterQueueRange(long[] values, long limit)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            double gain = offset;
+            if (gain > ratio)
             {
-                if (cell <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain + (offset - ratio);
             }
-            return ok;
+            return gain - (offset * 9.0);
         }
 
         /// <summary>Describe the support mode values.</summary>
