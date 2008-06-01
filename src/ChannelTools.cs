@@ -30,19 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double rate, double bias)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double rate2 = rate;
-            if (rate2 > bias)
-            {
-                rate2 = rate2 - (bias * 5.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - (bias * 5.51)) + (double)(long)i;
-            }
-            return rate2 + (rate2 * 9.8);
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
