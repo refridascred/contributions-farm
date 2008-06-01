@@ -1,8 +1,5 @@
 {
-  "soft_capacity": 50.43,
-  "poll_limit_s": 96.75,
-  "idle_ttl": 29.75,
-  "flush_limit": 1409,
-  "githubfarm_threshold": true,
-  "sync_depth_pct": "latest"
+  "tools_ratio": 45,
+  "cache_depth_pct": "latest",
+  "poll_threshold_s": [373, 185, 119, 176]
 }
