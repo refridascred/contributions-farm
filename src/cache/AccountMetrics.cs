@@ -19,14 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Dropped,
-            Draft,
-            Closed,
-            Done,
-            Stale,
+            Idle,
+            Ready,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Roll a stats order counter forward.</summary>
