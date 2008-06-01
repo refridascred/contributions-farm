@@ -1,17 +1,17 @@
 {
-  "support_retries": {
-    "compress": "eu-west",
-    "record_ttl": {
-      "farm_timeout": 4.78,
-      "idle_window": "open",
-      "readonly": 1024,
-      "command_delay": 100,
-      "idle_capacity_s": 93
+  "base_ratio_count": {
+    "format_depth": {
+      "default_timeout_pct": "strict",
+      "idle_limit_ms": [494, 90, 86],
+      "default_limit_count": ["staging", "cached", "local"],
+      "min_interval_count": 19.63,
+      "max_capacity_ms": 4775
     },
-    "stream_capacity": 31.74
+    "notes_ttl": "latest",
+    "batch_retries_count": [486, 40, 58, 376],
+    "base_ratio_ms": false,
+    "default_depth": "legacy"
   },
-  "window_size": "open",
-  "queue_size": [478, 452],
-  "poll_ratio_count": true,
-  "persist": true
+  "enabled": [362, 293, 158],
+  "idle_delay": 26
 }
