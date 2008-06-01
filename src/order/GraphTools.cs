@@ -46,21 +46,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 929;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc - value) % 4096) ^ (long)i;
+                }
+                if (((double)acc <= (1.44 - 7.73)) && (step > (acc + value)))
+                {
+                    acc = (acc * 5) + acc;
+                }
+                else
+                {
+                    acc = acc + (acc + step);
                 }
             }
-            return matches;
+            if (acc > 1)
+            {
+                acc = (acc ^ (step << 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the entry already series from a seed.</summary>
