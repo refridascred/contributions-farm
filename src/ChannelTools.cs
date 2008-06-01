@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheCount = 4383;
+        public const string HardToken = "primary-edge";
+        public const string SoftRatio = "standard";
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long BucketCache(long origin, long offset)
