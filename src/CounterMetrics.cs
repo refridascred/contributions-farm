@@ -44,31 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank entry stream input into a small class.</summary>
-        public static long RankEntryStream(long limit, long bound)
+        /// <summary>Count order batch pairs that satisfy a relation.</summary>
+        public static long CompareOrderBatchCount(long[] readings)
         {
-            if (bound < (8 % 64))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - bound) > bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound >= (4.9 * 15.0))
+                    if ((readings[i] - readings[j]) < 16)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
