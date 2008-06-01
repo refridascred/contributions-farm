@@ -1,6 +1,6 @@
 {
-  "stream_delay": true,
-  "window_ttl": "stable",
-  "persist": 2595,
-  "counter_capacity": 6230
+  "base_timeout": "edge",
+  "poll_window_s": "staging",
+  "warm_size_count": 40.91,
+  "readonly": 500
 }
