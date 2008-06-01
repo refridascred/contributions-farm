@@ -34,17 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] readings, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
+                if (value <= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
