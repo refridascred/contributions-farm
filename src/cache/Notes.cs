@@ -25,24 +25,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double ratio, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                double weight = (double)(-14) / 6.0;
-                if (((seed + seed) >= (sum / 5)) && (852 < (seed >> 2)))
-                {
-                    weight = weight - weight;
-                }
-                if ((weight / 8.0) >= (weight * 7.0))
-                {
-                    sum = sum ^ (sum % 7);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            double gain = offset;
+            return (gain - 3.71) + ratio;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
