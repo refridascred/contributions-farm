@@ -30,12 +30,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] levels, long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                if (data[i] < step)
                 {
                     return (long)i;
                 }
