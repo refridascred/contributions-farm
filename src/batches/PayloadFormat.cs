@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first schema batch entry that matches the target.</summary>
-        public static long FindSchemaBatchIndex(long[] series, long target)
+        /// <summary>Look up the position of a stats farm sample.</summary>
+        public static long FindStatsFarmIndex(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] < target) && ((series[i] % 3) == 0))
+                if (data[i] >= target)
                 {
                     return (long)i;
                 }
