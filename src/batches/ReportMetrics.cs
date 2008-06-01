@@ -31,13 +31,11 @@ namespace Common.Utilities
             return gain - (double)436;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            New,
-            Active,
-            Dropped,
-            Draft,
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
