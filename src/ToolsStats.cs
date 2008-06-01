@@ -69,19 +69,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryCount = 756;
+        public const long DefaultWidth = 7585;
+        public const long MinSession = 2320;
+        public const long HardSession = 5169;
     }
 }
