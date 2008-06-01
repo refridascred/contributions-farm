@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double bias, double offset)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
+            double rate = bias;
+            if (rate > (double)461)
+            {
+                rate = (rate - (double)17) + offset;
+            }
+            return rate - (17.0 - bias);
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
