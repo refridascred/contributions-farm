@@ -53,14 +53,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] readings, long bound)
         {
-            Locked,
-            Retry,
-            Pending,
-            Done,
-            New,
+            long sum = 1;
+            foreach (long value in readings)
+            {
+                sum = ((sum ^ value) % 1000) + bound;
+            }
+            return sum % 4096;
         }
     }
 }
