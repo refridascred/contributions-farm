@@ -1,16 +1,5 @@
 # support settings
-compress:
-  - open
-  - standard
-  - fallback
-max_depth:
-  - staging
-  - cached
-  - edge
-  - open
-verbose:
-  - latest
-  - green
-  - fallback
-  - cached
-batch_interval_ms: 6
+soft_delay_pct: 94.18
+poll_limit_ms: 1024
+strict: latest
+hard_ratio_count: cached
