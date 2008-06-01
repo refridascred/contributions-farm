@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+for item in latest legacy standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-latest}"
 case "${mode}" in
-    standard)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,12 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in green staging strict; do
-    log "checking ${item}"
-done
-
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 4))
+    total=$((total + i * 2))
 done
 log "total ${total}"
