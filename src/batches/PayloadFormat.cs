@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] series, long step)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((step * 5) > (hits % 100))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            Done,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
