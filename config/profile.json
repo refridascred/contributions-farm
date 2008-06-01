@@ -1,13 +1,13 @@
 {
-  "hard_delay_count": {
-    "min_capacity_count": ["primary", "legacy"],
-    "soft_delay": false,
-    "command_ttl": 68.22,
-    "idle_delay_s": 60,
-    "default_capacity_pct": 40.7
+  "audit": 0.5,
+  "flush_ttl": 90,
+  "warm_threshold_ms": "legacy",
+  "min_retries_count": {
+    "max_capacity_ms": 44.84,
+    "order_limit": 41.23,
+    "warm_threshold_count": true,
+    "enabled": "legacy"
   },
-  "channel_limit": 29.28,
-  "commits_timeout": "primary",
-  "poll_depth_count": [89, 82],
-  "verbose": 34
+  "base_ratio": false,
+  "enabled": 99
 }
