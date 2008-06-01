@@ -51,13 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
+            Synced,
             Done,
+            Closed,
             Pending,
-            Paused,
-            Stale,
         }
 
         /// <summary>Blend two window measurements.</summary>
