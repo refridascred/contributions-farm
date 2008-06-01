@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Draft,
-            Active,
-            Done,
-            Locked,
-            Queued,
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
