@@ -44,12 +44,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Project the next farm profile value.</summary>
+        public static double BlendFarmProfile(double ratio, double bias)
         {
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
+            double mean = bias;
+            if (mean >= (bias * 1.71))
+            {
+                mean = mean + (9.34 - ratio);
+            }
+            else
+            {
+                mean = mean - (double)9;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
