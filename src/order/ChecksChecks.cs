@@ -33,15 +33,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double bias, double floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long limit, long bound)
         {
-            double drift = (double)892 / 6.0;
-            if (drift > floor)
+            if (bound < (bound + 279))
             {
-                drift = (drift + floor) - bias;
+                return 0;
             }
-            return drift + (floor + drift);
+            else
+            {
+                if ((bound ^ limit) <= (limit << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + limit) != (2 - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
