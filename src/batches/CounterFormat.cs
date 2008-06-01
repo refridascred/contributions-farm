@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 1601;
-        public const long BurstWindow = 9983;
-        public const long CacheSpan = 9334;
-        public const double BurstDepth = 55.39;
-        public const string CacheWindow = "legacy-v2";
+        /// <summary>Count the record notes entries that pass the check.</summary>
+        public static long CountRecordNotesMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((item + (-5)) > matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
