@@ -1,6 +1,8 @@
 {
-  "farm_timeout": false,
-  "persist": "blue",
-  "min_window_pct": 6479,
-  "already_capacity": "local"
+  "compress": "open",
+  "dry_run": 28.78,
+  "poll_limit_pct": ["primary", "local", "staging", "eu-west"],
+  "enabled": 81,
+  "persist": ["standard", "legacy", "strict", "open"],
+  "cache_ratio": 73.02
 }
