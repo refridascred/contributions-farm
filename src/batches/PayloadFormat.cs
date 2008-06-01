@@ -60,12 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
         }
     }
 }
