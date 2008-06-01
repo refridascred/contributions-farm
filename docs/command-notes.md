@@ -1,11 +1,14 @@
 # Command notes
 
-The contributi module keeps githubfarm values in sync with the editor cache.
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Each order is validated before it reaches the cluster queue.
+The context report groups every command by buffer.
+Keep report and tools names short and lowercase.
+
+Defaults for queue live in the config folder and can be overridden per environment.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every counter change
-- Keep farm values small
-- Document new githubfarm fields
+- Document new record fields
+- Log every notes change
+- Keep payload values small
+- Review graph limits each release
