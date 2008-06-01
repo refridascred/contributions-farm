@@ -74,38 +74,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long floor, long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] readings, long bound)
         {
-            if ((5.0 + 19.0) >= (double)bound)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 97) > 74)
+                if (readings[i] >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor % 12) < (bound >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor + bound) < bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
