@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitLevel = 6306;
-        public const long StepDepth = 2550;
-        public const double WindowChannel = 43.18;
-        public const long StepCount = 8499;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Retry,
+            Synced,
+            Done,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
