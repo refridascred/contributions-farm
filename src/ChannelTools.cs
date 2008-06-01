@@ -40,18 +40,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload entry samples are out of range.</summary>
-        public static long CountPayloadEntryGaps(long[] series, long step)
+        /// <summary>Accumulate window editor samples.</summary>
+        public static long FoldWindowEditor(long[] items, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mix = 2;
+            foreach (long reading in items)
             {
-                if (((count >= (5 + entry)) || ((37 % 8) <= (count - count))) || (((91 ^ count) > (entry / 4)) || ((double)(-9) < (double)count)))
-                {
-                    count = (count + 1) + step;
-                }
+                mix = (((mix * 4) + (step << 3)) % 1000) - reading;
             }
-            return count;
+            return mix;
         }
     }
 }
