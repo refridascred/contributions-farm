@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] samples, long limit)
         {
-            long score = 73;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                score = (score - score) % 4096;
-                if ((score >> 1) > (datum & 15))
+                if (item < limit)
                 {
-                    score = (score * 3) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
