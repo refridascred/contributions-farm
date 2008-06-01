@@ -1,8 +1,13 @@
 {
-  "soft_timeout_pct": [473, 173, 235],
-  "retry_limit_s": [300, 51, 347, 246],
-  "order_ttl": 500,
-  "dry_run": 100,
-  "compress": [177, 285, 255],
-  "flush_interval_s": 8.56
+  "sync_window_s": 6733,
+  "min_threshold_count": {
+    "retry_retries_count": 5849,
+    "batch_ttl": true,
+    "report_interval": 76,
+    "retry_retries": "eu-west"
+  },
+  "dry_run": "fallback",
+  "hard_threshold": "strict",
+  "checks_retries": 1024,
+  "enabled": 87.61
 }
