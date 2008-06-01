@@ -33,17 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleFactor = "legacy-1";
+        public const string CacheTools = "latest";
+        public const long DefaultTools = 1292;
+        public const long MaxTools = 3326;
+        public const long StepWidth = 7666;
     }
 }
