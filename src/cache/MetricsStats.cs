@@ -54,21 +54,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Validate cache queue readings against a bound.</summary>
+        public static bool CheckCacheQueueRange(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= step)
                 {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
