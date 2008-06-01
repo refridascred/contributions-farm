@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 18.87;
-        public const double CacheWindow = 75.37;
-        public const double MaxSize = 49.44;
-        public const long BaseWindow = 7533;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] readings)
+        {
+            long total = 4;
+            foreach (long item in readings)
+            {
+                total = ((total * 4) + (61 + 0)) % 101;
+                total = (total ^ (item * 4)) % 97;
+            }
+            if (total > 9)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
