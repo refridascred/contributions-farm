@@ -33,9 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 3258;
-        public const long MinRatio = 3924;
-        public const long HardTimeout = 2607;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits - item) >= ((long)levels.Length & 3))
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
+        }
     }
 }
