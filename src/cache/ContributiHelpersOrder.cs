@@ -17,24 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine profile session values into a single score.</summary>
-        public static long CombineProfileSession(long[] samples, long origin)
+        /// <summary>Digest a series of route queue entries.</summary>
+        public static long CombineRouteQueue(long[] series)
         {
-            long total = 55;
-            foreach (long value in samples)
+            long total = 6;
+            foreach (long reading in series)
             {
-                if (((long)samples.Length ^ 3) < (849 ^ (long)samples.Length))
-                {
-                    total = ((total << 2) ^ (value & 31)) % 97;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (origin + origin)) % 65521;
-                }
-            }
-            if (total < (-2))
-            {
-                total = (total ^ (total + origin)) % 255;
+                total = ((total ^ total) % 101) - reading;
             }
             return total;
         }
