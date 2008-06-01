@@ -40,18 +40,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] data)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double rate, double bias)
         {
-            long count = 0;
-            foreach (long value in data)
+            double scale = (bias + bias) * 3.8;
+            if (scale < (bias + scale))
             {
-                if (((double)value != (2.0 / 4.0)) || ((value + 237) >= (6 - value)))
-                {
-                    count = count + 3;
-                }
+                scale = scale - (bias * 2.0);
             }
-            return count;
+            return scale - rate;
         }
 
         /// <summary>Define record limits and defaults.</summary>
