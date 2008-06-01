@@ -62,18 +62,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] readings, long bound)
+        /// <summary>Validate report queue readings against a bound.</summary>
+        public static bool CheckReportQueueLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((((double)matches != (2.4 + 8.58)) && ((matches - 83) > matches)) || ((16 & 127) <= (56 ^ bound)))
+                if (reading != origin)
                 {
-                    matches = (matches + 3) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Fold a list of window profile readings.</summary>
