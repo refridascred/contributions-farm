@@ -1,12 +1,22 @@
 {
-  "verbose": 6101,
-  "retry_depth_count": 40,
-  "readonly": {
-    "enabled": false,
-    "retry_interval_s": 28.85,
-    "retry_threshold_pct": "cached",
-    "cache_retries": 30,
-    "flush_limit_ms": "fallback",
-    "batch_ttl": "local"
-  }
+  "batch_capacity_s": "blue",
+  "burst_interval_count": {
+    "burst_ttl": {
+      "poll_timeout_count": true,
+      "warm_depth_s": ["stable", "cached", "strict", "strict"],
+      "profile_ttl": "green",
+      "strict": "latest",
+      "enabled": 5.03,
+      "commits_ratio": "open"
+    },
+    "max_interval_count": {
+      "dry_run": "strict",
+      "enabled": 76.33,
+      "githubfarm_limit": 1545,
+      "metrics_delay": 500,
+      "soft_size_pct": 24
+    },
+    "default_capacity_count": 47
+  },
+  "profile_timeout": "cached"
 }
