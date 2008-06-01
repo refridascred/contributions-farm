@@ -63,16 +63,19 @@ namespace Common.Utilities
         public const string MinWidth = "latest-1";
         public const long MaxChecks = 3906;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] items, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                sum = sum ^ (sum & 7);
-                sum = ((sum * 4) + (long)i) % 101;
+                if (reading <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
