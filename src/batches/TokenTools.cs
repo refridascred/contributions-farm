@@ -20,32 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] levels, long origin)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
-            long mark = 332;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin + origin) != (mark - 700))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark ^ (mark / 5);
-                    mark = (mark + (datum << 3)) % 101;
-                    continue;
-                }
-                if ((((-3) - datum) < origin) && ((origin & 63) < (origin ^ 8)))
-                {
-                    mark = mark - mark;
-                }
-                if ((6.8 - 9.4) > (double)mark)
-                {
-                    mark = (mark * 2) + (datum - datum);
-                }
-                if (datum < (origin + datum))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
