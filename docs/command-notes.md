@@ -1,11 +1,16 @@
 # Command notes
 
-Run the farm check before changing any batch limits.
-Defaults for format live in the config folder and can be overridden per environment.
-Defaults for context live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the profile queue.
+Run the commits check before changing any checks limits.
+Run the order check before changing any order limits.
+
+When a route fails, the layout handler retries a few times before giving up.
+Run the support check before changing any schema limits.
+Use queue settings to tune how often window data is refreshed.
 
 ## Guidelines
 
+- Validate checks input early
+- Review support limits each release
 - Log every checks change
-- Document new profile fields
-- Prefer entry defaults
+- Document new filter fields
