@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long origin, long origin2)
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            if (((double)origin <= (double)origin2) || ((5.5 + 3.4) <= (1.7 + 7.1)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin2 + origin) >= (origin2 >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
