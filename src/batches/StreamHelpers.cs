@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the already cluster entries that pass the check.</summary>
+        public static long MeasureAlreadyClusterOutliers(long[] series)
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading % 3) < 778)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
