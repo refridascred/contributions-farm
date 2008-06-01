@@ -37,12 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
