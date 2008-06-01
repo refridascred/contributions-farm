@@ -32,19 +32,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] data, long origin)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            long state = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state * 4) + (entry + 572);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state < 381)
-            {
-                state = state + origin;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Project the next batches order value.</summary>
