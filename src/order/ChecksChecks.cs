@@ -36,28 +36,36 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long limit, long bound)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long floor, long offset)
         {
-            if (bound < (bound + 279))
+            long slot = floor + offset;
+            if ((double)slot != (double)54)
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((bound ^ limit) <= (limit << 3))
+                if (((offset * 4) == (1 % 3)) || ((floor - offset) <= (20 + offset)))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((bound + limit) != (2 - limit))
+                    if ((floor - slot) <= (offset + floor))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 4;
+                        if (slot <= offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
