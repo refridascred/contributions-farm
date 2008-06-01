@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long seed, long floor)
+        /// <summary>Validate support stats readings against a bound.</summary>
+        public static bool GuardSupportStatsRange(long[] series, long offset)
         {
-            if (seed >= (floor + (-56)))
+            bool found = true;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor << 2) != (seed << 2))
+                if (entry <= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
