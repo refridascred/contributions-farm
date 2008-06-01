@@ -12,12 +12,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the tools buffer entries that pass the check.</summary>
+        public static long MeasureToolsBufferOutliers(long[] values)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((long)values.Length < (seen ^ 8))
+                {
+                    seen = (seen + 2) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
