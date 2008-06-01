@@ -42,13 +42,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] series, long step)
         {
-            Synced,
-            Draft,
-            Failed,
-            New,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((hits % 24) == (3 & 31))
+                {
+                    hits = ((hits + 3) ^ value) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the notes mode values.</summary>
