@@ -19,12 +19,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Locate a report entry reading by value.</summary>
+        public static long LookupReportEntryIndex(long[] readings, long limit)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph state values.</summary>
