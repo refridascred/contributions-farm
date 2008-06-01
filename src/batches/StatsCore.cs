@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] series)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((cell << 2) <= (cell + tally)) && ((cell + 3) >= (cell % 97)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
