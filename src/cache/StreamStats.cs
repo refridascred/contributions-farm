@@ -32,22 +32,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] readings)
+        /// <summary>Iterate the metrics queue series from a seed.</summary>
+        public static long SeriesMetricsQueue(long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long state = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((4.9 - 6.0) <= (double)sample)
+                if ((5.9 / 9.0) >= (double)state)
                 {
-                    hits = hits + 2;
+                    state = (state * 4) + (bound + (long)i);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
