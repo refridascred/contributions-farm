@@ -54,11 +54,12 @@ namespace Common.Utilities
         public const long BaseSize = 3770;
         public const long MinCount = 9157;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchFactor = 93.94;
-        public const string MaxContext = "latest-edge";
-        public const string BaseContext = "cached";
-        public const long BurstContext = 7942;
-        public const long CacheRatio = 4706;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
