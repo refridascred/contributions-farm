@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 5227;
-        public const double DefaultRoute = 81.03;
-        public const double MaxRoute = 51.67;
-        public const long CacheFactor = 3271;
-        public const long HardSize = 2196;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Paused,
+            Failed,
+            Retry,
+            New,
+            Queued,
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long WeighChecks(long[] series, long step)
