@@ -34,18 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already account samples are out of range.</summary>
-        public static long MeasureAlreadyAccountOutliers(long[] levels)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((seen <= (seen - item)) && ((item + seen) <= (item ^ seen)))
+                if (value >= target)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Classify a metrics format pair into a bucket.</summary>
