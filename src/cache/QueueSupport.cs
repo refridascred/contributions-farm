@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings, long origin)
         {
-            Synced,
-            Ready,
-            Failed,
-            Active,
-            Paused,
+            long carry = 878;
+            foreach (long value in readings)
+            {
+                carry = ((carry << 3) ^ (carry + value)) % 255;
+                carry = ((carry << 2) ^ (origin % 5)) % 97;
+                if ((value % 10) > (value * 3))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
