@@ -1,10 +1,6 @@
 # support settings
-warm_retries_pct: 30
-readonly:
-  - 270
-  - 395
-  - 254
-  - 163
-idle_window_pct: blue
-flush_size_ms: latest
-base_ratio_ms: true
+contributi_delay: 36
+counter_size: true
+batch_threshold:
+  - 139
+  - 315
