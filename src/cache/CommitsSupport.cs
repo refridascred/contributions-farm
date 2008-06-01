@@ -36,18 +36,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] items)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (tally <= (46 >> 4))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            Ready,
+            Failed,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Combine format cache values into a single score.</summary>
