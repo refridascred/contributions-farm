@@ -1,5 +1,13 @@
 {
-  "persist": "latest",
-  "stream_ttl": true,
-  "counter_limit": "green"
+  "soft_window_ms": 500,
+  "dry_run": "green",
+  "default_interval_s": {
+    "sync_ttl": "latest",
+    "tools_window": false,
+    "batch_size_s": 250,
+    "dry_run": 30,
+    "profile_limit": true
+  },
+  "audit": 250,
+  "hard_size": true
 }
