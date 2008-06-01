@@ -67,39 +67,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long floor, long bound)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            long prev = floor - bound;
-            if (((3.0 / 3.0) <= (double)floor) || ((floor >> 1) <= (floor & 127)))
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                sum = sum ^ (sum & 7);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (6.67 >= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)prev <= (9.1 + 6.98))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((301 * 4) != (bound << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
