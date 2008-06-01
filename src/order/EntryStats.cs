@@ -40,19 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double ratio, double span)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] data)
         {
-            double gain = (ratio * 15.0) * 4.92;
-            if (gain <= ratio)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                gain = gain - ratio;
+                if ((102 + cell) < (matches - cell))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                gain = gain - ratio;
-            }
-            return gain + span;
+            return matches;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
