@@ -38,22 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] series, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double gain = (ratio * 15.0) * 4.92;
+            if (gain <= ratio)
             {
-                if ((origin ^ matches) <= reading)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain - ratio;
             }
-            return matches;
+            else
+            {
+                gain = gain - ratio;
+            }
+            return gain + span;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
