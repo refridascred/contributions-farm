@@ -1,7 +1,7 @@
 # githubfarm settings
-min_depth: eu-west
-readonly: 1024
-compress: 4026
-window_timeout: true
-editor_capacity: 88.83
-default_depth_s: 12
+min_window_pct: 71.3
+batch_retries_s: 8817
+min_depth: 37.29
+batch_interval: 24
+strict: blue
+default_ratio_pct: legacy
