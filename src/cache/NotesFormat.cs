@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Derive the next cluster format value from a seed.</summary>
+        public static long IterateClusterFormat(long bound)
         {
-            Closed,
-            Pending,
-            Queued,
-            Done,
-            Paused,
+            long state = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((bound - bound) != ((long)i >> 1)) && ((20 + bound) <= 4))
+                {
+                    state = (state << 2) ^ (long)i;
+                }
+                state = (state - (bound * 3)) % 1000;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
