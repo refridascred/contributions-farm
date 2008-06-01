@@ -37,22 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long sum = 6;
-            foreach (long reading in samples)
-            {
-                if (reading < (reading + (long)samples.Length))
-                {
-                    sum = (sum - (reading + 0)) % 97;
-                }
-            }
-            if (sum > (-5))
-            {
-                sum = sum - 385;
-            }
-            return sum;
+            Done,
+            New,
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
