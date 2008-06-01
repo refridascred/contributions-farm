@@ -38,10 +38,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheBudget = 6898;
-        public const long SoftChecks = 2745;
-        public const long SoftBudget = 3293;
-        public const string CacheChecks = "latest-1";
+        /// <summary>Audit entry checks readings against a rule.</summary>
+        public static long MeasureEntryChecksMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > (9.2 * 19.0))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
