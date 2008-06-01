@@ -1,6 +1,6 @@
 {
-  "order_depth": 74,
-  "default_window_s": 30,
-  "session_depth": 70.48,
-  "base_window": "strict"
+  "verbose": ["strict", "eu-west"],
+  "idle_retries_s": 43.23,
+  "context_limit": [466, 37, 380],
+  "enabled": "green"
 }
