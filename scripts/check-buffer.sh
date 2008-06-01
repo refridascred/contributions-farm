@@ -6,21 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=328
+BUFFER_LIMIT=360
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-primary}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
