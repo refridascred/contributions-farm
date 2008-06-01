@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
