@@ -19,13 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] samples, long bound)
         {
-            Done,
-            Failed,
-            Closed,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
