@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a stream channel sample.</summary>
-        public static long SeekStreamChannelIndex(long[] samples, long bound)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] == bound)
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
