@@ -1,24 +1,9 @@
 # support settings
-githubfarm_ttl: primary
-retry_limit: green
-compress: blue
-burst_delay_ms: 2825
-min_interval_pct:
-  default_timeout_count:
-    - 158
-    - 73
-    - 128
-    - 249
-  warm_depth:
-    base_timeout_ms: 58.42
-    hard_depth: standard
-    idle_interval: 80.85
-    burst_capacity_pct: 55
-    cache_interval: 7
-    retry_size:
-      - 275
-      - 349
-  idle_limit: 8323
-  retry_ttl_s: 9556
-  hard_window_count: 4
-  default_window_s: fallback
+retry_ttl_count:
+  metrics_limit: cached
+  soft_ttl_count: open
+  hard_threshold: green
+batch_capacity: 33
+sync_retries_s: 92.84
+idle_window_count: blue
+audit: false
