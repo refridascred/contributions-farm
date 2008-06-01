@@ -23,19 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every layout format entry stays within the limit.</summary>
-        public static bool ValidateLayoutFormatRange(long[] samples, long step)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
