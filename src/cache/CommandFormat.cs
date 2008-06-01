@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -651;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = (mark - (entry ^ mark)) % 101;
+                mark = (mark ^ (mark * 5)) % 97;
+                if (((7.0 * 17.0) > (double)mark) && (mark >= ((long)data.Length + entry)))
                 {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Audit checks editor readings against a rule.</summary>
