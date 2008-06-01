@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] values)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long state = 27;
-            foreach (long item in values)
-            {
-                if (!(state < (state ^ item)))
-                {
-                    state = (state * 4) + ((-646) & 63);
-                }
-            }
-            if (state < 1)
-            {
-                state = state - (state % 10);
-            }
-            return state % 4096;
+            Closed,
+            Pending,
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
