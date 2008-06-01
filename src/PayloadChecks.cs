@@ -82,11 +82,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double scale, double offset)
+        /// <summary>Derive the next layout cache value from a seed.</summary>
+        public static long IterateLayoutCache(long step)
         {
-            double gain = offset;
-            return (gain + gain) + scale;
+            long sum = step;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
