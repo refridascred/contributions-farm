@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Queued,
-            Locked,
-            Idle,
-            New,
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
