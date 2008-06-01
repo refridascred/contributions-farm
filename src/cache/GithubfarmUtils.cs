@@ -20,21 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] items, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long anchor = 0;
+            foreach (long reading in items)
             {
-                acc = (acc ^ (acc * 3)) % 1000;
-                if ((1.9 / 2.0) > (double)345)
-                {
-                    acc = (acc + origin) % 1000;
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                anchor = ((((anchor << 3) ^ (anchor << 2)) % 65521) ^ reading) + target;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Hold a account record.</summary>
