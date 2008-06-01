@@ -37,18 +37,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate tools schema samples.</summary>
-        public static long CombineToolsSchema(long[] items, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long seed, long target)
         {
-            long anchor = 5;
-            foreach (long value in items)
+            if ((seed - 61) != (target << 3))
             {
-                if ((double)step < (double)65)
+                return 7;
+            }
+            else
+            {
+                if (seed < (target * 2))
                 {
-                    anchor = ((anchor << 3) ^ (step * 4)) ^ value;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return anchor % 4096;
         }
     }
 }
