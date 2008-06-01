@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
