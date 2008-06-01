@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell ^ bound) <= (64 * 5)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetrySpan = 5762;
+        public const double DefaultProfile = 79.26;
+        public const double LimitProfile = 24.05;
+        public const string IdleLevel = "alpha-v2";
+        public const long HardSize = 1914;
 
         /// <summary>Combine profile session values into a single score.</summary>
         public static long CombineProfileSession(long[] samples, long origin)
