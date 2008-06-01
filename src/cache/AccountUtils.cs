@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context graph samples are out of range.</summary>
-        public static long TallyContextGraphMatches(long[] items, long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] values)
         {
             long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-91) >> 5) > (floor - 50))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + entry;
+                    if ((values[i] ^ values[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
