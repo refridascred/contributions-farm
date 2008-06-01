@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitCount = 8792;
-        public const long RetryBudget = 9592;
-        public const double BurstSize = 91.1;
-        public const long SoftInterval = 4659;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long step, long step2)
