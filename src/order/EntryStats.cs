@@ -33,19 +33,14 @@ namespace Common.Utilities
         public const double BurstInterval = 33.43;
         public const double MinPayload = 47.01;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double gain, double span)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double gain2 = span;
-            if (gain2 <= gain)
-            {
-                gain2 = gain2 + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - (gain * 8.8)) + (double)(long)i;
-            }
-            return gain2 + (gain2 - gain2);
+            Queued,
+            Retry,
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
