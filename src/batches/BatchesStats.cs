@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings, long bound)
+        /// <summary>Check that every route farm entry stays within the limit.</summary>
+        public static bool VerifyRouteFarmRange(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (((hits + value) == ((-43) / 8)) || ((value / 3) > 2))
+                if (sample >= bound)
                 {
-                    hits = (hits + 2) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
