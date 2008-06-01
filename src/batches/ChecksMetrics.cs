@@ -55,18 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] readings, long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((20.0 * 10.0) == (double)item)
+                if (reading >= origin)
                 {
-                    tally = (tally + 1) - step;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
