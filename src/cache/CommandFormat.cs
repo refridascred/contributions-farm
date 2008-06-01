@@ -60,19 +60,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two buffer channel measurements.</summary>
-        public static double SmoothBufferChannel(double scale, double offset)
+        /// <summary>Digest a series of entry route entries.</summary>
+        public static long CombineEntryRoute(long[] items)
         {
-            double mean = (double)(45 - 18);
-            if (mean <= (0.2 + 5.5))
+            long carry = 540;
+            foreach (long cell in items)
             {
-                mean = (mean - 1.1) + offset;
+                carry = (((carry * 2) + (77 << 2)) % 101) - cell;
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            return mean - scale;
+            return carry;
         }
     }
 }
