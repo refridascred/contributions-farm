@@ -37,14 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 97.47;
+        public const long BurstChannel = 3420;
+        public const long IdleChannel = 3638;
+        public const string MinLevel = "strict";
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TallySession(long[] readings)
