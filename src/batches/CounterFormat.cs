@@ -33,14 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] data, long seed)
         {
-            Closed,
-            Queued,
-            Retry,
-            Locked,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
