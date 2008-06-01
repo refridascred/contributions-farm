@@ -35,10 +35,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleQueue = 77.19;
-        public const long SoftQueue = 8137;
-        public const long LimitLevel = 9436;
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] samples, long offset)
+        {
+            long mix = 87;
+            foreach (long entry in samples)
+            {
+                mix = (mix << 2) ^ (offset >> 4);
+                if ((mix - entry) >= (entry ^ offset))
+                {
+                    mix = mix ^ (long)samples.Length;
+                }
+            }
+            if (mix > 57)
+            {
+                mix = (mix + (28 + 51)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a githubfarm batches pair into a bucket.</summary>
         public static long RankGithubfarmBatches(long step, long floor)
