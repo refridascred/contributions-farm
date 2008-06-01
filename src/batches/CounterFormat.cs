@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
             Pending,
-            Ready,
-            Queued,
+            Retry,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
