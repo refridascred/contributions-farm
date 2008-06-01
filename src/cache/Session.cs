@@ -27,19 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long anchor = 17;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = (((anchor + ((long)samples.Length & 255)) % 4096) + (long)i) - cell;
-                }
-                anchor = (anchor - 42) % 101;
-            }
-            return anchor;
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
