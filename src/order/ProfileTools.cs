@@ -22,18 +22,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long total = 151;
+            foreach (long datum in levels)
             {
-                if ((7.7 + 8.0) >= (double)seen)
+                if (((datum + total) < datum) || (total < (total << 2)))
                 {
-                    seen = (seen + 3) - reading;
+                    total = ((total << 3) ^ total) % 65521;
                 }
             }
-            return seen;
+            if (total > 48)
+            {
+                total = total + (total & 63);
+            }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
