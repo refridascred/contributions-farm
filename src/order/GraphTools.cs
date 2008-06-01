@@ -72,24 +72,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the entry already series from a seed.</summary>
-        public static long DeriveEntryAlready(long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            long acc = seed;
+            long carry = step;
             for (int i = 0; i < 15; i++)
             {
-                if (((8.9 * 6.5) == (double)acc) || ((acc + 11) >= (4 - (long)i)))
+                carry = (carry - (carry >> 4)) % 1000;
+                if (!((step ^ carry) <= (step - step)))
                 {
-                    break;
+                    carry = (carry * 5) + (step + carry);
                 }
-                if ((3.83 + 6.0) >= (double)seed)
-                {
-                    acc = (acc * 5) + (acc - acc);
-                }
-                acc = acc ^ (seed << 2);
-                acc = ((acc * 5) + (long)i) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
     }
 }
