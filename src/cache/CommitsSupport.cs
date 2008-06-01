@@ -65,12 +65,32 @@ namespace Common.Utilities
             return load - 7.1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long bound, long limit)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long span = bound + limit;
+            if (((bound ^ span) <= span) || ((double)bound >= 20.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.1 * 3.1) >= (double)(-451))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (span <= (bound >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
