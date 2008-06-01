@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double rate, double offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double rate2 = (double)((-28) - 987);
-            if (rate2 >= (1.6 / 2.0))
-            {
-                rate2 = rate2 + (rate / 6.0);
-            }
-            else
-            {
-                rate2 = rate2 + (offset * 4.98);
-            }
-            return rate2 - rate2;
+            Stale,
+            Ready,
+            Done,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
