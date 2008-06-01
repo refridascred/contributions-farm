@@ -40,19 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next layout account value from a seed.</summary>
-        public static long IterateLayoutAccount(long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((double)target == (8.4 * 7.37))
-                {
-                    mark = mark ^ ((-9) % 5);
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Paused,
+            Draft,
+            Ready,
+            Failed,
         }
     }
 }
