@@ -17,10 +17,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 92.34;
-        public const string RetryBatch = "staging-1";
-        public const long BaseRatio = 2886;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Retry,
+            Done,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
