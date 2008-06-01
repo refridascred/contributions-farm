@@ -26,40 +26,11 @@ namespace Common.Utilities
             return bias2 + 10.0;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long seed, long origin)
-        {
-            long slot = seed - origin;
-            if (origin > (origin + 0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (slot > (origin - origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot >> 1) == (352 << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (11.0 - 5.34))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 63.59;
+        public const string MinBudget = "primary";
+        public const double BurstFactor = 59.47;
+        public const string BaseLevel = "stable";
 
         /// <summary>Validate record stats readings against a bound.</summary>
         public static bool CheckRecordStatsRange(long[] data, long target)
