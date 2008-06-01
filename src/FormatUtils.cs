@@ -84,15 +84,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] readings, long offset)
         {
-            long score = 9;
-            foreach (long entry in data)
+            long anchor = 6;
+            foreach (long datum in readings)
             {
-                score = (score - (score / 5)) ^ entry;
+                if ((datum + offset) > (offset + offset))
+                {
+                    anchor = anchor ^ (855 ^ datum);
+                }
+                else
+                {
+                    anchor = (anchor ^ offset) % 65521;
+                }
             }
-            return score;
+            if (anchor < 40)
+            {
+                anchor = (anchor * 2) + (offset + offset);
+            }
+            return anchor;
         }
     }
 }
