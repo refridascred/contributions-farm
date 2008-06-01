@@ -14,12 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] values)
         {
-            Ready,
-            Done,
-            Pending,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)seen != (double)cell)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the checks state values.</summary>
