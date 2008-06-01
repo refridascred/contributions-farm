@@ -48,15 +48,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double ratio, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] series, long origin)
         {
-            double weight = floor / 9.0;
-            if (weight < weight)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                weight = (weight + (double)7) - ratio;
+                if ((origin ^ matches) <= reading)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return weight + 3.56;
+            return matches;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
