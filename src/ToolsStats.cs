@@ -53,30 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm route readings.</summary>
-        public static long CombineGithubfarmRoute(long[] data, long step)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long floor, long bound)
         {
-            long total = 52;
-            foreach (long item in data)
+            long prev = floor - bound;
+            if (((3.0 / 3.0) <= (double)floor) || ((floor >> 1) <= (floor & 127)))
             {
-                if (!((item - 7) > (step / 9)))
+                return 8;
+            }
+            else
+            {
+                if (6.67 >= (double)floor)
                 {
-                    total = (total + (item / 2)) % 65521;
-                }
-                if (12.0 > (double)step)
-                {
-                    total = ((total << 2) ^ item) % 101;
+                    return 2;
                 }
                 else
                 {
-                    total = (total << 2) ^ (total + step);
+                    if ((double)prev <= (9.1 + 6.98))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((301 * 4) != (bound << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (total > 4)
-            {
-                total = ((total * 2) + step) % 255;
-            }
-            return total;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
