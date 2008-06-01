@@ -70,10 +70,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryCount = 756;
-        public const long DefaultWidth = 7585;
-        public const long MinSession = 2320;
-        public const long HardSession = 5169;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!(matches >= (value & 7)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
