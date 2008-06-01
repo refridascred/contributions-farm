@@ -19,10 +19,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstInterval = "stable";
-        public const double LimitLayout = 5.43;
-        public const long BurstLayout = 3927;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            New,
+            Synced,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Project the next farm profile value.</summary>
         public static double BlendFarmProfile(double ratio, double bias)
