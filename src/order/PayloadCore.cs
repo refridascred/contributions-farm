@@ -20,39 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a editor filter pair into a bucket.</summary>
-        public static long ClassifyEditorFilter(long limit, long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            long cur = limit - floor;
-            if (cur <= (floor + 787))
+            long acc = 90;
+            foreach (long cell in levels)
             {
-                return 3;
+                acc = (acc + (acc * 5)) + cell;
             }
-            else
-            {
-                if ((floor % 2) <= (92 % 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)cur != (double)810)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((1.4 * 19.0) < (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
