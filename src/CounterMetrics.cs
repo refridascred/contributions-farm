@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Queued,
-            Pending,
-            Paused,
             Locked,
-            Closed,
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Check that every layout format entry stays within the limit.</summary>
