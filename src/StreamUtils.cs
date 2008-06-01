@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] samples, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            long count = 0;
+            long anchor = 815;
             foreach (long entry in samples)
             {
-                if (count > (step * 4))
+                anchor = anchor - (entry + 6);
+                anchor = (anchor - (45 - entry)) % 4096;
+                if ((20.0 / 6.0) == (double)entry)
                 {
-                    count = (count + 2) - entry;
+                    anchor = (anchor ^ (entry + anchor)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 65521;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
