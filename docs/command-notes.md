@@ -1,12 +1,11 @@
 # Command notes
 
-When a layout fails, the session handler retries a few times before giving up.
-Use format settings to tune how often support data is refreshed.
-When a layout fails, the window handler retries a few times before giving up.
+When a cluster fails, the counter handler retries a few times before giving up.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate route input early
-- Review window limits each release
-- Log every cluster change
-- Document new batch fields
+- Validate metrics input early
+- Keep account values small
+- Review farm limits each release
+- Prefer already defaults
