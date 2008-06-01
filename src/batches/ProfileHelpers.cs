@@ -52,15 +52,26 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double ratio, double offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels, long target)
         {
-            double gain = offset;
-            if (gain > ratio)
+            long carry = 2;
+            foreach (long item in levels)
             {
-                gain = gain + (offset - ratio);
+                if ((item > carry) || ((carry & 15) <= item))
+                {
+                    carry = carry - (carry + target);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (carry + target)) % 1000;
+                }
+                if (!((809 + carry) > carry))
+                {
+                    break;
+                }
             }
-            return gain - (offset * 9.0);
+            return carry;
         }
 
         /// <summary>Describe the support mode values.</summary>
