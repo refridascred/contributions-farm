@@ -45,39 +45,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long offset, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] data, long origin)
         {
-            long next = offset + seed;
-            if ((double)0 != (double)offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((next << 2) < (396 ^ 384))
+                if (data[i] >= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((next - seed) != (offset - next))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((next + seed) > (offset + offset)) && ((offset & 1) == (next >> 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
