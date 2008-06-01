@@ -37,19 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels, long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long acc = 337;
-            foreach (long item in levels)
-            {
-                acc = ((acc + acc) % 1000) ^ item;
-            }
-            if (acc < 458)
-            {
-                acc = acc ^ (seed + (-312));
-            }
-            return acc;
+            New,
+            Stale,
+            Closed,
+            Active,
         }
     }
 }
