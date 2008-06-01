@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double bias, double span)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            double bias2 = span;
-            if (bias2 > (double)220)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                bias2 = (bias2 - (bias2 / 2.0)) - bias;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                bias2 = bias2 - (double)5;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + (3.6 * 9.0);
+            return total;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
