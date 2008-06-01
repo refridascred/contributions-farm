@@ -64,18 +64,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] readings, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] items)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long anchor = -26;
+            foreach (long item in items)
             {
-                if (item > (393 % 12))
+                anchor = (anchor + (anchor - anchor)) + item;
+                if ((double)anchor != (8.59 - 4.3))
                 {
-                    tally = (tally + 2) - bound;
+                    break;
                 }
             }
-            return tally;
+            if (anchor > 1)
+            {
+                anchor = ((anchor << 2) ^ ((-5) << 1)) % 255;
+            }
+            return anchor % 65521;
         }
     }
 }
