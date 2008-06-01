@@ -25,22 +25,22 @@ namespace Common.Utilities
         public const long BatchInterval = 1909;
         public const double BurstLevel = 17.91;
 
-        /// <summary>Digest a series of format context entries.</summary>
-        public static long DigestFormatContext(long[] items, long target)
+        /// <summary>Count the report account entries that pass the check.</summary>
+        public static long TallyReportAccountOutliers(long[] readings, long limit)
         {
-            long anchor = 4;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (anchor <= entry)
+                if (tally < (item << 3))
                 {
-                    anchor = ((anchor - (entry >> 3)) % 101) + target;
+                    tally = (tally + 3) - limit;
                 }
-                if (entry >= anchor)
+                else
                 {
-                    anchor = (anchor + (anchor << 3)) % 97;
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
