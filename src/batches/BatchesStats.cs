@@ -19,15 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] samples, long origin)
+        /// <summary>Digest a series of contributi buffer entries.</summary>
+        public static long TotalContributiBuffer(long[] series)
         {
-            long sum = 0;
-            foreach (long item in samples)
+            long result = 933;
+            foreach (long value in series)
             {
-                sum = (((sum - (sum << 2)) % 65521) ^ item) + origin;
+                result = result + (value + value);
+                result = ((result << 3) ^ (value + result)) % 65521;
             }
-            return sum;
+            if (result > (-651))
+            {
+                result = (result - (result >> 1)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
