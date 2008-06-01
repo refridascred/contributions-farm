@@ -18,21 +18,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] samples)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                double weight = 5.7 / 6.0;
+                if ((7.6 + 12.0) >= (weight + 8.4))
                 {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    weight = weight + weight;
+                    sum = ((sum << 3) ^ (sum + limit)) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Validate record stats readings against a bound.</summary>
