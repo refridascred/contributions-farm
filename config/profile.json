@@ -1,5 +1,8 @@
 {
-  "tools_ratio": 45,
-  "cache_depth_pct": "latest",
-  "poll_threshold_s": [373, 185, 119, 176]
+  "soft_window": 11,
+  "metrics_timeout": "latest",
+  "cache_depth": "blue",
+  "hard_timeout": 1328,
+  "verbose": "edge",
+  "counter_interval": true
 }
