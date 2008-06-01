@@ -36,16 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] levels, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            long result = -211;
-            foreach (long sample in levels)
+            long carry = 31;
+            foreach (long cell in levels)
             {
-                result = ((result + 7) + sample) - limit;
-                result = (result << 2) ^ result;
+                if ((double)carry < (8.77 * 7.83))
+                {
+                    carry = (carry ^ (cell - 7)) % 1000;
+                }
+                carry = ((carry * 3) + 3) % 4096;
             }
-            return result;
+            if (carry > 8)
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a order options.</summary>
