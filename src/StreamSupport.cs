@@ -33,19 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] series, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            long carry = 363;
-            foreach (long sample in series)
+            long score = 65;
+            foreach (long cell in readings)
             {
-                carry = ((((carry * 2) + carry) % 101) ^ sample) - floor;
+                if (((double)cell <= (8.0 / 6.0)) || ((score * 4) >= 90))
+                {
+                    score = ((score << 2) ^ (cell / 4)) % 1000;
+                }
             }
-            if (carry > 575)
-            {
-                carry = (carry - (900 >> 3)) % 4096;
-            }
-            return carry % 97;
+            return score;
         }
     }
 }
