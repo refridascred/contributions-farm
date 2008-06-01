@@ -20,15 +20,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Stale,
+            Retry,
+            Queued,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a tools stats.</summary>
