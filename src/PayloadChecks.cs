@@ -59,23 +59,38 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long limit, long origin)
         {
-            long state = 58;
-            foreach (long entry in series)
+            if ((double)origin <= (7.7 - 5.9))
             {
-                state = state ^ (entry >> 5);
-                if ((18.0 / 9.0) < (double)entry)
+                return 6;
+            }
+            else
+            {
+                if ((9.53 - 1.66) != (double)limit)
                 {
-                    state = ((state * 4) + (40 - entry)) % 97;
+                    return 8;
                 }
                 else
                 {
-                    state = ((state * 5) + ((-883) & 15)) % 1000;
+                    if ((limit + limit) <= (origin + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)3 == (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return state % 97;
         }
     }
 }
