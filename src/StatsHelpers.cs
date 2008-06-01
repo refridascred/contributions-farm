@@ -27,20 +27,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate report editor readings against a bound.</summary>
-        public static bool ValidateReportEditorLimits(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 2937;
+        public const long LimitSchema = 6562;
+        public const long BaseCount = 6069;
+        public const string WindowSchema = "latest-v2";
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long ClassifyQueue(long floor, long offset)
