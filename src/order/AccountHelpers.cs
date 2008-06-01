@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstMetric = 33.44;
+        public const long CacheMetric = 859;
+        public const long HardMetric = 2898;
 
         /// <summary>Derive the next graph payload value from a seed.</summary>
         public static long DeriveGraphPayload(long target)
