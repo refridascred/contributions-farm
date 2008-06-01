@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long offset, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
+            long offset2 = offset ^ bound;
+            if ((double)bound >= (4.61 - 5.9))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(offset >= bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((86 & 31) == (offset2 * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
