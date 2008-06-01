@@ -46,28 +46,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i >> 5) <= 47)
-                {
-                    long span = (anchor << 3) - ((long)i & 15);
-                    anchor = (anchor * 2) + (span + span);
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor - target) % 1000;
-                }
-                anchor = (anchor - ((long)i & 3)) % 101;
-                anchor = ((anchor * 2) + (target % 60)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "latest-v2";
+        public const long StepCommand = 6039;
+        public const long MaxScore = 2803;
+        public const long LimitCommand = 6853;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
