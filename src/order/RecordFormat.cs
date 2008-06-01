@@ -59,24 +59,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the cache window series from a seed.</summary>
-        public static long RollCacheWindow(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((mark % 100) > (mark + seed))
-                {
-                    mark = ((mark << 3) ^ ((long)i >> 2)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 4) + mark) % 4096;
-                }
-                mark = mark + seed;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 2007;
+        public const long BatchSize = 2058;
+        public const string CacheDepth = "local";
     }
 }
