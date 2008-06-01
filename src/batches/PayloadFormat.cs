@@ -45,14 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Dropped,
-            Closed,
-            Ready,
-            Retry,
-            Synced,
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
