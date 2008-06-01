@@ -13,22 +13,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] data, long origin)
+        /// <summary>Locate a context stats reading by value.</summary>
+        public static long LookupContextStatsIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin ^ reading) != (reading - 1))
+                if (series[i] == floor)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
