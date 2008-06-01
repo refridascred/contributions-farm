@@ -49,18 +49,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] items, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long offset, long offset2)
         {
-            long mix = 965;
-            foreach (long cell in items)
+            if ((offset + offset2) <= (offset2 >> 3))
             {
-                if ((mix ^ mix) != (mix & 255))
+                return 0;
+            }
+            else
+            {
+                if ((5 / 5) > (offset2 ^ 235))
                 {
-                    mix = (((mix ^ ((long)items.Length & 255)) % 1000) - cell) - limit;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)offset > 17.0) || ((offset2 >> 3) == (offset + offset2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mix;
         }
     }
 }
