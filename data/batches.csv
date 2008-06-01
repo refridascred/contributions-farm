@@ -1,6 +1,11 @@
-id,region,active
-1,77.81,72.4
-2,green,80.25
-3,79.68,eu-west
-4,706,397
-5,243,1.01
+id,active,level,rank
+1,stable,699,264
+2,711,eu-west,959
+3,259,103,fallback
+4,edge,standard,127
+5,local,852,931
+6,fallback,407,20.7
+7,14.36,890,primary
+8,160,36.44,543
+9,fallback,49.26,primary
+10,131,592,55.02
