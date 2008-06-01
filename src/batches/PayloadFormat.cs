@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Rank entry route input into a small class.</summary>
