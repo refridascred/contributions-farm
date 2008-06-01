@@ -51,11 +51,23 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 9881;
-        public const double SoftRecord = 22.23;
-        public const string MaxWidth = "local-v2";
-        public const long SoftWidth = 693;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (sample > (seen << 2))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of record session readings.</summary>
         public static long CompareRecordSessionCount(long[] samples)
