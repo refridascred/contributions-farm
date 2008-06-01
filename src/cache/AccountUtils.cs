@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double gain, double floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double load = (7.0 + floor) + (gain * 9.6);
-            if (load < (gain / 7.0))
-            {
-                load = load - (14.0 * 0.83);
-            }
-            return load - (double)321;
+            Idle,
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
