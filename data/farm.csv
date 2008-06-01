@@ -1,6 +1,9 @@
-id,rank,ratio
-1,699,open
-2,primary,blue
-3,52.96,53.72
-4,stable,staging
-5,cached,green
+id,token,score,level
+1,116,264,64.53
+2,95.64,46.24,legacy
+3,46.93,strict,354
+4,682,78,768
+5,414,93.47,40.78
+6,primary,13.17,721
+7,stable,670,550
+8,810,10,55.93
