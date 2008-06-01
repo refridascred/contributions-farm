@@ -16,19 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double scale, double floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            double gain = floor;
+            if (gain <= floor)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum << 2) ^ (sum << 3)) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                gain = gain + (double)26;
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (scale + gain)) + (double)(long)i;
+            }
+            return gain - (double)436;
         }
 
         /// <summary>Describe the token mode values.</summary>
