@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = (mark - (mark + (long)i)) % 65521;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
