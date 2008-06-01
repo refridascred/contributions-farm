@@ -22,14 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit checks editor readings against a rule.</summary>
+        public static long TallyChecksEditorOutliers(long[] values)
         {
-            Closed,
-            Done,
-            Pending,
-            Paused,
-            Active,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((3 ^ entry) != (tally / 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
