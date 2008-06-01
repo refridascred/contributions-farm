@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double LimitCache = 44.11;
         public const double LimitCount = 77.66;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] samples, long limit)
+        /// <summary>Find the first payload batch entry that matches the target.</summary>
+        public static long FindPayloadBatchIndex(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                if ((series[i] < step) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
