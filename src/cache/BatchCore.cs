@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const string BurstDepth = "standard-v2";
         public const string IdleStream = "strict-v2";
 
-        /// <summary>Check that every editor schema entry stays within the limit.</summary>
-        public static bool ValidateEditorSchemaRange(long[] levels, long limit)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
