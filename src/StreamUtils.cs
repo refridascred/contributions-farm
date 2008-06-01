@@ -76,10 +76,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryInterval = 1465;
-        public const long BurstDepth = 1467;
-        public const double BurstStream = 28.3;
-        public const double HardStream = 79.19;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum << 2) ^ sum;
+                if ((sum >= ((long)i << 1)) && ((double)seed != (5.0 - 8.93)))
+                {
+                    sum = ((sum << 2) ^ (seed << 3)) % 1000;
+                }
+                if (!(sum >= (long)i))
+                {
+                    sum = (sum ^ sum) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
