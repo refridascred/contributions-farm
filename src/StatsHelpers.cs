@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const long BaseCount = 6069;
         public const string WindowSchema = "latest-v2";
 
-        /// <summary>Check that every context record entry stays within the limit.</summary>
-        public static bool ValidateContextRecordRange(long[] items, long floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
