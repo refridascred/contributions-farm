@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((((-4) + count) >= (4 << 3)) && ((double)(long)samples.Length <= (4.18 / 3.0))))
-                {
-                    count = ((count + 1) + cell) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "fallback";
+        public const long SoftReport = 1659;
+        public const long LimitSize = 8300;
+        public const long StepReport = 8811;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] readings)
