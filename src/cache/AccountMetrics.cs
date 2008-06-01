@@ -53,19 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] series, long seed)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            long mix = -34;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (((mix << 2) ^ 24) % 65521) + cell;
-                if ((double)mix != (8.0 - 2.8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix + (seed % 60)) % 1000;
+                    if ((series[i] ^ series[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
