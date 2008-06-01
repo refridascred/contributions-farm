@@ -49,10 +49,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 7705;
-        public const double LimitGithubfarm = 17.88;
-        public const long SoftInterval = 7296;
-        public const long WindowGithubfarm = 9978;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
