@@ -27,22 +27,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long score = -69;
-            foreach (long item in readings)
-            {
-                if (!((item + score) <= item))
-                {
-                    score = (score << 3) ^ (score ^ score);
-                }
-                if (!((item * 5) <= (item & 1)))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Match up record samples.</summary>
