@@ -44,18 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi queue reading by value.</summary>
-        public static long SeekContributiQueueIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 14.32;
+        public const long LimitDepth = 4526;
+        public const long MaxBatches = 6019;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
