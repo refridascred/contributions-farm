@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Stale,
-            New,
-            Idle,
-            Active,
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
