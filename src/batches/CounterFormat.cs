@@ -26,14 +26,12 @@ namespace Common.Utilities
         public const long StepWidth = 8773;
         public const long RetryDepth = 3702;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Failed,
-            Queued,
-            Active,
+            Synced,
             Draft,
-            Retry,
+            Failed,
         }
     }
 }
