@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] series, long limit)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            double scale = bias;
+            if (scale > (6.5 - scale))
             {
-                if (cell < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale + ratio;
             }
-            return ok;
+            else
+            {
+                scale = scale + (ratio + scale);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale + (double)(-695);
         }
 
         /// <summary>Describe the already level values.</summary>
