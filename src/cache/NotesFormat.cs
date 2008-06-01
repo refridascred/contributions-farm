@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] values)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((11.0 * 7.04) < (double)item)
+                if (readings[i] >= bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
