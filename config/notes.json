@@ -1,6 +1,6 @@
 {
-  "hard_capacity": 70,
-  "strict": "edge",
-  "readonly": 1024,
-  "cache_ratio_pct": ["standard", "green"]
+  "min_ttl_count": 250,
+  "account_size": 27,
+  "warm_ttl_pct": 250,
+  "verbose": "strict"
 }
