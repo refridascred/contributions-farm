@@ -64,20 +64,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            long anchor = 516;
+            foreach (long sample in levels)
             {
-                if (!((carry + target) > (target - target)))
-                {
-                    carry = carry ^ (long)i;
-                    carry = ((carry << 3) ^ (target << 1)) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                anchor = anchor ^ (sample + anchor);
             }
-            return carry;
+            return anchor;
         }
     }
 }
