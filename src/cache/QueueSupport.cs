@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double weight, double floor)
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
+            double mean = weight;
+            if (mean < (double)7)
+            {
+                mean = mean + floor;
+            }
+            else
+            {
+                mean = mean - 3.1;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (0.8 * 1.0);
         }
 
         /// <summary>Describe the filter phase values.</summary>
