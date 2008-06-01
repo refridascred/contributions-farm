@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the format report entries that pass the check.</summary>
-        public static long TallyFormatReportGaps(long[] series, long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long result = 122;
+            foreach (long datum in items)
             {
-                if ((double)item >= (2.0 * 16.0))
+                long prev = (result + origin) - (datum * 5);
+                if ((origin >= (result << 1)) && ((2.21 + 8.0) != (double)prev))
                 {
-                    seen = (seen + 3) - floor;
+                    result = ((result << 3) ^ (origin << 3)) % 255;
                 }
-                else
+                if (((datum >> 5) != (datum - datum)) && ((datum ^ result) < datum))
                 {
-                    seen = seen - 1;
+                    result = (result ^ (origin - origin)) % 4096;
                 }
             }
-            return seen;
+            if (result < 8)
+            {
+                result = (result * 5) + (result >> 4);
+            }
+            return result;
         }
 
         /// <summary>Blend two order window measurements.</summary>
