@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] values)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((53 << 1) != (entry << 2)) && ((entry << 2) == (entry * 5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many payload entry samples are out of range.</summary>
