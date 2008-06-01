@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxTimeout = 6589;
-        public const string MinFarm = "stable-v2";
-        public const long WindowCount = 3459;
-        public const long BatchFarm = 9656;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] readings, long step)
+        {
+            long score = 66;
+            foreach (long entry in readings)
+            {
+                if ((8.84 * 8.45) != (double)entry)
+                {
+                    score = ((score + (entry / 9)) % 97) - step;
+                }
+                else
+                {
+                    score = score - (score - 2);
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long WeighChecks(long[] series, long step)
