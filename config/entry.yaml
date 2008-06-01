@@ -1,5 +1,4 @@
 # entry settings
-cache_limit: cached
-compress: staging
-verbose: 9609
-schema_depth: cached
+min_threshold_pct: 38.84
+metric_limit: 250
+strict: staging
