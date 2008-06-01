@@ -35,19 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] data, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long limit)
         {
-            long anchor = -680;
-            foreach (long reading in data)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = ((anchor - ((-212) % 7)) % 101) - reading;
+                if (((limit * 3) == (score >> 3)) && (((long)i & 63) <= (score << 2)))
+                {
+                    score = (score << 3) ^ (limit & 127);
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (anchor < 847)
-            {
-                anchor = ((anchor << 2) ^ (floor ^ (-921))) % 4096;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
