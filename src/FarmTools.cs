@@ -20,18 +20,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            long anchor = 63;
-            foreach (long value in items)
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((2.69 * 18.0) < (double)value)
-                {
-                    anchor = anchor ^ (anchor + value);
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Hold a tools stats.</summary>
