@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] series, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 3) + (step + (long)i)) % 101;
-                state = ((state * 4) + (long)i) % 101;
+                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
