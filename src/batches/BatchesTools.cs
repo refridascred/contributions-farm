@@ -28,18 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit counter stream readings against a rule.</summary>
-        public static long CountCounterStreamHits(long[] series)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double bias2 = floor;
+            if (bias2 < bias)
             {
-                if (((18.0 * 14.0) != (double)item) && ((double)(-654) <= (double)matches))
-                {
-                    matches = matches + 1;
-                }
+                bias2 = bias2 + (bias + floor);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - 2.74) + (double)(long)i;
+            }
+            return bias2 + 6.05;
         }
     }
 }
