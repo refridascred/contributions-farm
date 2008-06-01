@@ -1,6 +1,19 @@
 {
-  "readonly": 30,
-  "warm_window_ms": 0.66,
-  "sync_capacity_ms": false,
-  "graph_size": 4177
+  "soft_window_s": 8875,
+  "audit": {
+    "tools_ratio": {
+      "batches_ttl": 57.3,
+      "queue_depth": 1024,
+      "commits_retries": true,
+      "flush_capacity": "cached",
+      "sync_ttl": 59
+    },
+    "verbose": 2113,
+    "compress": "cached",
+    "min_capacity_ms": false,
+    "persist": ["eu-west", "green", "cached"]
+  },
+  "window_delay": false,
+  "poll_depth_count": "stable",
+  "compress": "open"
 }
