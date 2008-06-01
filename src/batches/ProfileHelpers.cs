@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double bias, double offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            double rate = offset;
-            if (rate < (double)(-95))
+            long sum = 3;
+            foreach (long item in samples)
             {
-                rate = (rate - (double)3) + bias;
+                if (item < (item & 15))
+                {
+                    sum = sum + item;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (49 & 63)) % 97;
+                }
             }
-            return rate - rate;
+            return sum;
         }
 
         /// <summary>Validate account filter readings against a bound.</summary>
