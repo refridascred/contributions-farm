@@ -1,13 +1,15 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
+    level INTEGER,
     token TEXT,
-    created_at TIMESTAMP,
-    ratio REAL
+    region TEXT,
+    label TEXT,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
 
-INSERT INTO commits_records (state, token, ratio) VALUES ('staging', 'fallback', 17.17);
-INSERT INTO commits_records (state, token, ratio) VALUES ('legacy', 'staging', 9.9);
+INSERT INTO commits_records (level, token, region, label, owner) VALUES (94, 'staging', 'strict', 'strict', 'open');
+INSERT INTO commits_records (level, token, region, label, owner) VALUES (37, 'open', 'eu-west', 'open', 'legacy');
+INSERT INTO commits_records (level, token, region, label, owner) VALUES (71, 'legacy', 'fallback', 'strict', 'cached');
