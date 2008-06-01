@@ -23,21 +23,19 @@ namespace Common.Utilities
         public const double CacheCluster = 50.97;
         public const long DefaultBudget = 1088;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 32;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = (sum ^ (item << 1)) % 65521;
+                if ((item < (item - origin)) || ((origin + item) >= 678))
                 {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return sum % 4096;
         }
     }
 }
