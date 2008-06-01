@@ -36,13 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Done,
-            New,
-            Dropped,
-            Active,
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
