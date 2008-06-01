@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] series, long floor)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long mark = 30;
-            foreach (long reading in series)
-            {
-                if ((33 % 100) >= (floor & 3))
-                {
-                    mark = (((mark * 3) + floor) % 101) ^ reading;
-                }
-            }
-            if (mark > 96)
-            {
-                mark = (mark ^ (floor << 1)) % 97;
-            }
-            return mark;
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many batch account samples are out of range.</summary>
