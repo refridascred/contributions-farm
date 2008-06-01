@@ -19,11 +19,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepWidth = 1685;
-        public const double MaxChecks = 18.35;
-        public const long CacheChecks = 9608;
-        public const long BaseChecks = 1787;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] data, long floor)
