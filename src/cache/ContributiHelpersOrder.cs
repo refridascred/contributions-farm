@@ -20,31 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long offset, long offset2)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            if ((offset2 << 1) > (offset2 + offset2))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset2 << 3) > (99 & 127)) && ((offset2 << 2) != (offset2 >> 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset <= (offset2 / 6))
+                    if ((samples[i] - samples[j]) < 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
