@@ -15,18 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] levels, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = 1;
+            foreach (long entry in readings)
             {
-                if ((bound << 2) > (matches + 8))
+                if ((double)step > (2.3 - 1.0))
                 {
-                    matches = (matches + 3) + value;
+                    sum = (sum + (step + sum)) + entry;
+                }
+                else
+                {
+                    sum = (sum - sum) % 101;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Combine session stats values into a single score.</summary>
