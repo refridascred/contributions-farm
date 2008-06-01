@@ -49,15 +49,11 @@ namespace Common.Utilities
         public const long BaseRatio = 3778;
         public const long MinStream = 5766;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Idle,
-            New,
-            Queued,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxDepth = 1302;
+        public const long HardLevel = 4631;
+        public const long BaseAlready = 13;
+        public const string RetryDepth = "strict";
 
         /// <summary>Match up token samples.</summary>
         public static long PairTokenCount(long[] samples)
