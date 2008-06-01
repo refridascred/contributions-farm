@@ -1,5 +1,5 @@
 {
-  "batch_interval_count": 60,
-  "batch_capacity_s": true,
-  "dry_run": 30
+  "idle_interval": "standard",
+  "metric_depth": ["edge", "strict"],
+  "base_threshold": 50
 }
