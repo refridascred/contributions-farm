@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long result = 482;
-            foreach (long entry in levels)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((entry >> 4) < entry)
-                {
-                    result = result + 889;
-                }
-            }
-            if (result > 7)
-            {
-                result = ((result * 2) + (result + (-368))) % 1000;
+                result = (result * 4) + ((long)i * 3);
+                result = ((result * 2) + (long)i) % 4093;
             }
             return result;
         }
