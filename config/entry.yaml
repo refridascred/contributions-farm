@@ -1,19 +1,10 @@
 # entry settings
-entry_retries:
+batches_window: 9.04
+strict:
+  - 396
+  - 160
+retry_depth:
   - staging
-  - eu-west
-  - legacy
-  - latest
-max_retries_ms: green
-min_timeout_ms:
-  default_window_count:
-    - 333
-    - 249
-  burst_interval_s:
-    - cached
-    - stable
-    - latest
-  readonly: blue
-queue_interval: fallback
-editor_timeout: 500
-record_delay: legacy
+  - local
+  - local
+counter_ratio: eu-west
