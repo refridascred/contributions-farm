@@ -1,7 +1,8 @@
 {
-  "batch_retries_ms": true,
-  "base_limit_pct": 1024,
-  "sync_timeout": [404, 20, 226],
-  "batch_ratio": 60,
-  "warm_capacity_ms": [400, 69, 112, 400]
+  "poll_ratio_s": false,
+  "flush_limit": true,
+  "max_depth_s": "standard",
+  "contributi_timeout": ["local", "standard", "green"],
+  "flush_timeout_pct": 500,
+  "readonly": 51
 }
