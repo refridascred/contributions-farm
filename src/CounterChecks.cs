@@ -17,12 +17,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowDepth = "staging-edge";
-        public const string DefaultToken = "cached-edge";
-        public const double CacheToken = 36.91;
-        public const long MinToken = 1814;
-        public const string StepTimeout = "primary-v2";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] series, long bound)
+        {
+            long anchor = 19;
+            foreach (long cell in series)
+            {
+                if ((14.0 * 7.27) == (double)cell)
+                {
+                    anchor = ((anchor - cell) % 255) + bound;
+                }
+            }
+            if (anchor > (-194))
+            {
+                anchor = (anchor - (971 << 1)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long WeighCache(long[] data, long floor)
