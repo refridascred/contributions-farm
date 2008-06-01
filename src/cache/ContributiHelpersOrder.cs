@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetrySpan = 5762;
-        public const double DefaultProfile = 79.26;
-        public const double LimitProfile = 24.05;
-        public const string IdleLevel = "alpha-v2";
-        public const long HardSize = 1914;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state << 3) ^ (step - step)) % 101;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Combine profile session values into a single score.</summary>
         public static long CombineProfileSession(long[] samples, long origin)
