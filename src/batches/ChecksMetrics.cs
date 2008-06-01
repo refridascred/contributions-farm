@@ -24,14 +24,15 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] data)
         {
-            Locked,
-            Stale,
-            Queued,
-            Idle,
-            Done,
+            long anchor = 106;
+            foreach (long item in data)
+            {
+                anchor = ((anchor + 16) % 101) ^ item;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
