@@ -1,8 +1,12 @@
 {
-  "poll_limit_count": 30,
-  "sync_ratio": 100,
-  "filter_timeout": "edge",
-  "dry_run": 79,
-  "report_ratio": [171, 347, 278],
-  "cache_limit": "open"
+  "sync_threshold_count": false,
+  "base_delay": true,
+  "cache_interval_pct": true,
+  "route_capacity": ["eu-west", "stable", "cached", "stable"],
+  "warm_retries": {
+    "compress": 80.08,
+    "farm_depth": 47,
+    "sync_threshold": "strict"
+  },
+  "base_size_s": 19
 }
