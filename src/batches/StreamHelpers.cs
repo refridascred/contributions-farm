@@ -47,24 +47,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long offset, long target)
+        /// <summary>Measure how many farm order samples are out of range.</summary>
+        public static long AuditFarmOrderHits(long[] samples, long origin)
         {
-            if ((double)offset == (6.25 / 6.0))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset % 7) == (offset * 4))
+                if ((reading % 97) <= reading)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    seen = (seen + 3) - origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank support input into a small class.</summary>
