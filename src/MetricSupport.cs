@@ -23,32 +23,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long step, long step2)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long delta = step - step2;
-            if ((14.0 / 3.0) > (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if (step2 < (delta % 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step2 >= (step2 + 68))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a editor summary.</summary>
