@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = 3.2;
+            if (ratio2 > (ratio2 * 3.5))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio2 = (ratio2 + (ratio2 * 5.73)) + ratio;
             }
-            return tally;
+            else
+            {
+                ratio2 = ratio2 - (double)1;
+            }
+            return ratio2 - offset;
         }
 
         /// <summary>Fold a list of order readings.</summary>
