@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Stale,
             Ready,
-            Done,
+            Draft,
+            Failed,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
