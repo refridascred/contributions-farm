@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc << 3) ^ (offset / 2);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Dropped,
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a route record.</summary>
