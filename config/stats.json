@@ -1,8 +1,7 @@
 {
-  "cache_retries_count": "eu-west",
-  "cluster_retries": 59,
-  "base_interval_ms": 1024,
-  "audit": ["local", "staging", "local"],
-  "readonly": 45.4,
-  "soft_ratio_s": 23.11
+  "flush_window_s": false,
+  "readonly": false,
+  "cache_depth_s": 65.18,
+  "account_retries": 8671,
+  "batch_window": "edge"
 }
