@@ -50,14 +50,18 @@ namespace Common.Utilities
         public const long IdleFactor = 3422;
         public const long MinWidth = 2785;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Audit window queue readings against a rule.</summary>
+        public static long CountWindowQueueMatches(long[] items, long step)
         {
-            Failed,
-            New,
-            Queued,
-            Done,
-            Retry,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((double)hits < (double)step)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
