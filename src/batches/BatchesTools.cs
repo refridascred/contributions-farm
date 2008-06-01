@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchTimeout = 97.12;
-        public const string BaseSupport = "cached-v2";
-        public const double BaseScore = 0.58;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Pending,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Derive the next order graph value from a seed.</summary>
         public static long RollOrderGraph(long target)
