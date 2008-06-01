@@ -61,19 +61,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] readings, long offset)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Level { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every command farm entry stays within the limit.</summary>
