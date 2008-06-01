@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading / 7) > (reading ^ reading)) || ((reading + reading) != (88 + reading)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next batches value.</summary>
