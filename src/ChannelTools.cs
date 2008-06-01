@@ -30,13 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double rate, double bias)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            double rate2 = rate;
+            if (rate2 > bias)
+            {
+                rate2 = rate2 - (bias * 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - (bias * 5.51)) + (double)(long)i;
+            }
+            return rate2 + (rate2 * 9.8);
         }
     }
 }
