@@ -19,10 +19,18 @@ namespace Common.Utilities
         public const long CacheCluster = 8380;
         public const double StepBudget = 68.03;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstDepth = 8240;
-        public const long MinGithubfarm = 4979;
-        public const long HardGithubfarm = 2028;
-        public const double WindowGithubfarm = 13.35;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((9.6 + 10.0) <= (double)datum) && ((double)datum >= (8.8 / 2.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
