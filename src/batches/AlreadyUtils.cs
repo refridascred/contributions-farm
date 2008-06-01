@@ -46,18 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] items)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (((datum > (datum - 16)) && (count > datum)) && (datum < (datum ^ count)))
-                {
-                    count = count + 1;
-                }
+                score = ((score << 2) ^ (target % 8)) % 65521;
+                score = (score - target) % 4096;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a format record.</summary>
