@@ -43,20 +43,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate stream already readings against a bound.</summary>
-        public static bool GuardStreamAlreadyRange(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 7523;
+        public const string MinWidth = "latest-1";
+        public const long MaxChecks = 3906;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long IterateSchema(long floor)
