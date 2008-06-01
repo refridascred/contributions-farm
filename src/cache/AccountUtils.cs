@@ -39,21 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 13;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = ((score * 4) + (score & 1)) + sample;
+                if ((0 & 127) == (floor % 7))
                 {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (score > 7)
+            {
+                score = (score << 3) ^ (score << 3);
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of context entries.</summary>
