@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] data, long origin)
+        /// <summary>Measure how many already support samples are out of range.</summary>
+        public static long TallyAlreadySupportGaps(long[] items)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (sample != origin)
+                if (((-16) + reading) < count)
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate context samples.</summary>
