@@ -32,18 +32,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] data, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] items)
         {
-            long total = 3;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((83 - value) > (64 % 12)) || ((7.0 * 5.8) < (double)total))
+                if ((7.7 + 8.0) >= (double)seen)
                 {
-                    total = ((total * 2) + 155) + floor;
+                    seen = (seen + 3) - reading;
                 }
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Hold a metric header.</summary>
