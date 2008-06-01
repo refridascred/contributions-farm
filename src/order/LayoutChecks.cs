@@ -18,18 +18,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] series)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (datum > 65)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
