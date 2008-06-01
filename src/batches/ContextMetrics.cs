@@ -71,15 +71,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long sum = 937;
-            foreach (long datum in levels)
-            {
-                sum = (sum + (83 - (-92))) - datum;
-            }
-            return sum;
+            New,
+            Draft,
+            Queued,
+            Closed,
         }
     }
 }
