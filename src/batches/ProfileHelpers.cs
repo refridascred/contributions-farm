@@ -26,11 +26,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinRatio = 9971;
-        public const double DefaultDepth = 77.21;
-        public const double IdleBatch = 37.6;
-        public const long RetryLevel = 3266;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] levels, long seed)
+        {
+            long acc = 591;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = ((((acc * 4) + (seed << 3)) % 255) ^ (long)i) + value;
+                }
+                if (seed >= (seed - 857))
+                {
+                    acc = (acc + (seed << 3)) % 1000;
+                }
+                else
+                {
+                    acc = acc + (seed * 5);
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
