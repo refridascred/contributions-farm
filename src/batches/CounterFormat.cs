@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of window support readings.</summary>
-        public static long FoldWindowSupport(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] samples)
         {
-            long total = -13;
+            long seen = 0;
             foreach (long reading in samples)
             {
-                if (total >= (total - total))
+                if (seen <= (432 - 129))
                 {
-                    total = (((total << 2) ^ (total % 5)) % 1000) - reading;
+                    seen = (seen + 3) + reading;
                 }
             }
-            if (total < 379)
-            {
-                total = (total + (total << 2)) % 255;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
