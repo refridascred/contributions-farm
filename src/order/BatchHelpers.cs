@@ -33,18 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long origin)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.04 / 2.0) < (double)value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) - origin;
+                    if ((items[i] + items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
