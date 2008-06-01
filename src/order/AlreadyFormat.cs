@@ -33,32 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long floor, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] readings, long seed)
         {
-            long cur = floor ^ seed;
-            if ((cur >> 2) < (seed % 60))
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((cur + seed) == (floor - seed))
+                if (sample > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((9 + cur) >= (cur - cur))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Iterate the counter cluster series from a seed.</summary>
