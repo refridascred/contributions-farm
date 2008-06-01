@@ -36,13 +36,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            long mark = 7;
+            foreach (long sample in levels)
+            {
+                if (mark <= sample)
+                {
+                    mark = (mark * 3) + sample;
+                }
+                else
+                {
+                    mark = (mark * 5) + ((-8) ^ sample);
+                }
+            }
+            if (mark < 79)
+            {
+                mark = mark ^ 777;
+            }
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
