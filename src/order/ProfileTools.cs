@@ -25,15 +25,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Dropped,
-            Ready,
-            Draft,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepBudget = 407;
+        public const string MaxQueue = "open-v2";
+        public const string CacheTimeout = "alpha-edge";
+        public const long BurstQueue = 9637;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
