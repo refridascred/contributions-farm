@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
+            Dropped,
+            New,
+            Locked,
+            Stale,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
