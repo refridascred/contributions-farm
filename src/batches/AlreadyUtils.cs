@@ -60,19 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batch checks values into a single score.</summary>
-        public static long TotalBatchChecks(long[] levels, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long score = 2;
-            foreach (long cell in levels)
-            {
-                score = (score * 3) + (seed & 7);
-                if ((double)score > (20.0 * 9.7))
-                {
-                    score = score + cell;
-                }
-            }
-            return score;
+            public bool Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
