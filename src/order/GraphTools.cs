@@ -62,15 +62,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Iterate the entry already series from a seed.</summary>
+        public static long DeriveEntryAlready(long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (((8.9 * 6.5) == (double)acc) || ((acc + 11) >= (4 - (long)i)))
+                {
+                    break;
+                }
+                if ((3.83 + 6.0) >= (double)seed)
+                {
+                    acc = (acc * 5) + (acc - acc);
+                }
+                acc = acc ^ (seed << 2);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
     }
 }
