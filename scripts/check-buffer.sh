@@ -12,12 +12,9 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-for item in stable cached primary; do
+for item in latest standard edge; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=422
+log "limit is ${BUFFER_LIMIT}"
