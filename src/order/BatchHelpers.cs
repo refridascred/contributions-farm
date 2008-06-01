@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double rate, double offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            double mean = rate * 13.0;
-            if (mean <= (double)465)
+            long score = 229;
+            foreach (long cell in readings)
             {
-                mean = mean - offset;
+                if ((cell >= (score + cell)) || ((cell - score) <= cell))
+                {
+                    score = ((score << 3) ^ (score & 31)) % 255;
+                }
             }
-            else
-            {
-                mean = mean - offset;
-            }
-            return mean - offset;
+            return score % 4096;
         }
 
         /// <summary>Hold a batch options.</summary>
