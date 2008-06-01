@@ -32,17 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long floor)
+        /// <summary>Count the filter account entries that pass the check.</summary>
+        public static long MeasureFilterAccountMatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((data[i] > floor) && ((data[i] % 3) == 0))
+                if ((((double)cell >= (double)56) || ((double)matches <= (16.0 + 5.7))) && (((cell >> 4) <= cell) || (cell < (cell << 2))))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
