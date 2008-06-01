@@ -63,10 +63,17 @@ namespace Common.Utilities
         public const string MaxWidth = "local-v2";
         public const long SoftWidth = 693;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 5494;
-        public const string CacheCounter = "alpha";
-        public const long DefaultTimeout = 1392;
-        public const long BurstTimeout = 8948;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
