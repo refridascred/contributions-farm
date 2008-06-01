@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate graph checks readings against a bound.</summary>
-        public static bool VerifyGraphChecksLimits(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 18.87;
+        public const double CacheWindow = 75.37;
+        public const double MaxSize = 49.44;
+        public const long BaseWindow = 7533;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
