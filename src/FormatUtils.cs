@@ -20,14 +20,15 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double weight, double bias)
         {
-            Done,
-            Synced,
-            Paused,
-            Draft,
-            Pending,
+            double load = (weight * 4.0) / 2.0;
+            if (load <= bias)
+            {
+                load = load + bias;
+            }
+            return load - load;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
