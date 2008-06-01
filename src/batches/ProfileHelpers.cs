@@ -41,18 +41,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items, long bound)
+        /// <summary>Count tools payload pairs that satisfy a relation.</summary>
+        public static long MatchToolsPayloadCount(long[] values)
         {
-            long mix = 8;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)mix == (3.8 * 7.31))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (((mix << 3) ^ (28 % 24)) + sample) + bound;
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
