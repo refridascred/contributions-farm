@@ -41,22 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] readings, long seed)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)item == (6.0 * 4.0))
+                if ((894 + 8) < (origin & 15))
                 {
-                    seen = (seen + 3) - seed;
+                    score = ((score * 2) + (origin % 64)) % 97;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
