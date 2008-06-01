@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a buffer layout pair into a bucket.</summary>
-        public static long GradeBufferLayout(long bound, long origin)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long target)
         {
-            if ((bound - origin) < (origin % 64))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin & 7) <= bound) || ((origin * 5) >= (origin - 170)))
+                if ((samples[i] > target) && ((samples[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)18 < (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
