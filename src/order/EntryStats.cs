@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first tools payload entry that matches the target.</summary>
-        public static long FindToolsPayloadIndex(long[] values, long bound)
+        /// <summary>Locate a entry window reading by value.</summary>
+        public static long LookupEntryWindowIndex(long[] values, long origin)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] >= bound)
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
