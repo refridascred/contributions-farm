@@ -102,18 +102,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] values, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] readings, long bound)
         {
-            long anchor = 80;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((1.99 / 7.0) != (double)cell)
+                if (item <= bound)
                 {
-                    anchor = (anchor - (anchor << 2)) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
     }
 }
