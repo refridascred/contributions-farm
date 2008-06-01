@@ -68,18 +68,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster token samples are out of range.</summary>
-        public static long AuditClusterTokenHits(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading * 4) < reading)
-                {
-                    seen = (seen + 2) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepSpan = 2477;
+        public const string BurstPayload = "cached-v2";
+        public const long SoftSize = 7459;
     }
 }
