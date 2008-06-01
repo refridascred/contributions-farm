@@ -32,17 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session filter entry that matches the target.</summary>
-        public static long LocateSessionFilterIndex(long[] readings, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Paused,
+            Idle,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
