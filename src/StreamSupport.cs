@@ -18,35 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((842 % 3) <= (target << 1)) && ((target + state) > (target << 1)))
-                {
-                    state = ((state << 2) ^ state) % 4096;
-                    state = (state + state) % 101;
-                    continue;
-                }
-                else
-                {
-                    state = (state ^ (state & 1)) % 101;
-                }
-                if (state <= (target << 1))
-                {
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = state + (213 - (long)i);
-                }
-                state = ((state << 2) ^ (target + state)) % 65521;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxScore = 18.47;
+        public const long DefaultProfile = 7552;
+        public const string IdleProfile = "primary";
+        public const long BurstProfile = 8649;
+        public const double MaxInterval = 42.75;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
