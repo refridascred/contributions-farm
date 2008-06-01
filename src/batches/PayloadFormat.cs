@@ -15,19 +15,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many metrics already samples are out of range.</summary>
-        public static long AuditMetricsAlreadyOutliers(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (entry >= (entry & 15))
-                {
-                    tally = (tally + 1) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleInterval = 95.03;
+        public const long WindowBudget = 8640;
+        public const long IdleWidth = 9313;
 
         /// <summary>Find the first account stats entry that matches the target.</summary>
         public static long SeekAccountStatsIndex(long[] items, long bound)
