@@ -46,13 +46,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Match up schema tools samples.</summary>
+        public static long CompareSchemaToolsCount(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
