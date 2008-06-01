@@ -81,9 +81,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 91.42;
-        public const long CacheTimeout = 6746;
-        public const string LimitDepth = "strict-1";
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
