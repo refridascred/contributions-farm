@@ -1,6 +1,7 @@
 {
-  "max_ttl": 15,
-  "entry_threshold": "edge",
-  "tools_threshold": "stable",
-  "min_capacity_ms": "stable"
+  "enabled": "green",
+  "readonly": 50,
+  "cache_window_pct": "stable",
+  "hard_capacity_s": 8944,
+  "max_interval_s": "strict"
 }
