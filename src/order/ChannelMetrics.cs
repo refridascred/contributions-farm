@@ -44,10 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinSpan = 81.04;
-        public const double BatchScore = 90.03;
-        public const string RetryRoute = "latest";
-        public const long HardLevel = 8273;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 7971;
+        public const long IdleDepth = 1562;
+        public const long BurstWidth = 7455;
+        public const long StepDepth = 4817;
     }
 }
