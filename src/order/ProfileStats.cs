@@ -39,21 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum != step)
                 {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
