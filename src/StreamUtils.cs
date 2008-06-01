@@ -45,20 +45,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate metric graph readings against a bound.</summary>
-        public static bool ValidateMetricGraphBounds(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 89.17;
+        public const long IdleFactor = 3422;
+        public const long MinWidth = 2785;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportOutliers(long[] items)
