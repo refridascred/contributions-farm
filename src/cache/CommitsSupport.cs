@@ -41,19 +41,11 @@ namespace Common.Utilities
         public const long BurstEntry = 8290;
         public const long LimitSize = 7931;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = ((score + (origin + score)) % 97) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
