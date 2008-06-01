@@ -27,13 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the layout queue entries that pass the check.</summary>
+        public static long MeasureLayoutQueueHits(long[] series, long bound)
         {
-            Closed,
-            Ready,
-            Pending,
-            Stale,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches >= sample) && ((matches << 1) < 1))
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
