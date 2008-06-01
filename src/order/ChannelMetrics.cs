@@ -47,23 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] values, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] samples)
         {
-            long mark = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mark = (mark << 3) ^ (151 ^ datum);
-                if (((datum >> 3) != (bound / 4)) || (datum > (mark & 31)))
+                if ((entry - count) != (long)samples.Length)
                 {
-                    mark = (mark << 2) ^ (mark + 2);
-                }
-                else
-                {
-                    mark = mark + (28 + 397);
+                    count = count + 1;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
