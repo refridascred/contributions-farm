@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxRatio = 94.91;
-        public const double MaxSize = 78.59;
-        public const double CacheInterval = 2.22;
-        public const double RetryDepth = 77.77;
-        public const long DefaultGraph = 3506;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] levels, long floor)
