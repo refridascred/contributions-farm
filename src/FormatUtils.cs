@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] levels, long seed)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (gain - gain) + (gain / 6.0);
+            if (weight <= weight)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (gain / 4.0);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
