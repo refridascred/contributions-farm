@@ -1,6 +1,8 @@
 {
-  "idle_capacity_count": false,
-  "max_ratio_s": 18.68,
-  "hard_ratio": 4566,
-  "schema_capacity": 1024
+  "profile_threshold": "green",
+  "session_ratio": 60,
+  "idle_threshold": "local",
+  "session_depth": "green",
+  "profile_window": 70,
+  "batch_size_count": 7
 }
