@@ -38,19 +38,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] items, long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] levels, long floor)
         {
-            long state = 786;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state - (step * 3);
-                if (((59 - cell) != (8 ^ cell)) || ((284 % 12) <= cell))
+                if (levels[i] <= floor)
                 {
-                    state = (state << 2) ^ (0 - step);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of support tools entries.</summary>
