@@ -13,13 +13,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double ratio, double offset)
         {
-            Draft,
-            Stale,
-            Active,
-            Paused,
+            double mean = offset * 20.0;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (double)(long)i) - ratio;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a tools stats.</summary>
