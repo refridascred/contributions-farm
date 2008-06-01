@@ -1,8 +1,5 @@
 {
-  "compress": "open",
-  "dry_run": 28.78,
-  "poll_limit_pct": ["primary", "local", "staging", "eu-west"],
-  "enabled": 81,
-  "persist": ["standard", "legacy", "strict", "open"],
-  "cache_ratio": 73.02
+  "idle_size": 3033,
+  "cache_timeout": "fallback",
+  "support_timeout": "standard"
 }
