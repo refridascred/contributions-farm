@@ -29,12 +29,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Failed,
-            Ready,
-            Paused,
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
