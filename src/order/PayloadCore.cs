@@ -48,9 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxScore = 699;
-        public const string WindowScore = "alpha-v2";
-        public const string DefaultNotes = "local";
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Region { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
