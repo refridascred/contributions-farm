@@ -15,19 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate commits layout readings against a bound.</summary>
-        public static bool VerifyCommitsLayoutLimits(long[] series, long step)
+        /// <summary>Scale a checks report figure with a bias.</summary>
+        public static double AdjustChecksReport(double gain, double span)
         {
-            bool stale = true;
-            foreach (long item in series)
+            double ratio = 4.88;
+            for (int i = 0; i < 3; i++)
             {
-                if (item <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ((ratio - (span - 17.0)) - (double)(long)i) - gain;
             }
-            return stale;
+            return ratio + span;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
