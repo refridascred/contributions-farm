@@ -20,19 +20,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double gain, double floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] levels, long target)
         {
-            double drift = (1.91 - floor) + (double)788;
-            if (drift >= (gain / 4.0))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                drift = drift + (7.2 + drift);
+                if (reading <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (gain + gain);
-            }
-            return drift + (7.2 / 6.0);
+            return found;
         }
     }
 }
