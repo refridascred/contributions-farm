@@ -1,13 +1,7 @@
 {
-  "audit": 0.5,
-  "flush_ttl": 90,
-  "warm_threshold_ms": "legacy",
-  "min_retries_count": {
-    "max_capacity_ms": 44.84,
-    "order_limit": 41.23,
-    "warm_threshold_count": true,
-    "enabled": "legacy"
-  },
-  "base_ratio": false,
-  "enabled": 99
+  "audit": 59.96,
+  "counter_window": "local",
+  "default_interval": "stable",
+  "sync_threshold_pct": 236,
+  "payload_depth": "primary"
 }
