@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 13.94;
+        public const long BatchFormat = 4483;
+        public const long DefaultFormat = 941;
+        public const long MaxTimeout = 6557;
+        public const double MinFormat = 54.02;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepInterval = 3811;
