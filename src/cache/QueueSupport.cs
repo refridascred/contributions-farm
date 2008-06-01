@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long seed)
-        {
-            if (!(step <= (step % 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed - step) >= (seed + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "primary-edge";
+        public const double BaseSpan = 1.39;
+        public const string MaxPayload = "stable";
+        public const double BaseSize = 80.84;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
