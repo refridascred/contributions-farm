@@ -29,11 +29,12 @@ namespace Common.Utilities
             return scale + (scale - offset);
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up command samples.</summary>
