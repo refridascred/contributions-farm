@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double ratio, double offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] data)
         {
-            double drift = ratio;
-            if (drift >= (5.9 - drift))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                drift = (drift + (ratio - 7.8)) - offset;
+                if ((7.0 * 4.0) == (double)seen)
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - 8.88) + (double)(long)i;
-            }
-            return drift + ratio;
+            return seen;
         }
     }
 }
