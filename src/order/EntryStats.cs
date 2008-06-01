@@ -25,20 +25,12 @@ namespace Common.Utilities
         public const double BurstInterval = 33.43;
         public const double MinPayload = 47.01;
 
-        /// <summary>Validate cluster farm readings against a bound.</summary>
-        public static bool ValidateClusterFarmRange(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryDepth = 424;
+        public const long WindowBudget = 258;
+        public const long CacheInterval = 406;
+        public const double DefaultDepth = 95.27;
+        public const long BatchSize = 6973;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsOutliers(long[] data)
