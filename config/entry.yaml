@@ -1,15 +1,16 @@
 # entry settings
-schema_ttl: 25.12
-idle_threshold_pct: blue
-hard_ratio_count:
-  burst_threshold: 27
-  cache_interval: 65
-  dry_run: standard
-  audit: 500
-  persist:
-    sync_ratio: false
-    strict: 30
-    soft_depth: local
-    report_limit: 100
-    soft_window: edge
-sync_ttl: primary
+batches_ratio: 4938
+retry_ratio:
+  - 449
+  - 412
+  - 367
+  - 198
+verbose:
+  enabled: staging
+  cache_size: eu-west
+  min_ttl_count: open
+  queue_depth: 1098
+  cache_ratio_count: true
+base_interval: local
+poll_timeout_pct: 100
+max_limit: 10.66
