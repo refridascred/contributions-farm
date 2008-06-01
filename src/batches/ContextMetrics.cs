@@ -54,12 +54,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmBufferCount(long[] series)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
