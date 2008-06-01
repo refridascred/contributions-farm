@@ -39,39 +39,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long step, long origin)
+        /// <summary>Look up the position of a stats schema sample.</summary>
+        public static long LookupStatsSchemaIndex(long[] levels, long offset)
         {
-            long delta = step + origin;
-            if (1.02 <= (double)step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((delta / 8) <= (5 % 5))
+                if (levels[i] <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin > (14.0 / 6.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((delta >> 2) != (186 % 3)) && ((origin - 357) >= (delta + step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a stream counter pair into a bucket.</summary>
