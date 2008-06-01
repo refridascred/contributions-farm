@@ -48,15 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 7705;
+        public const double LimitGithubfarm = 17.88;
+        public const long SoftInterval = 7296;
+        public const long WindowGithubfarm = 9978;
     }
 }
