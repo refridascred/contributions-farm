@@ -60,17 +60,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] samples, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate order metrics readings against a bound.</summary>
