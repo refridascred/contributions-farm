@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 808;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((6.8 * 8.24) > (double)carry) || (carry <= (carry << 3)))
                 {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 3) ^ (item + carry)) % 65521;
+                }
+                if (((double)(long)series.Length >= (1.0 * 0.77)) || (carry <= (carry - carry)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a command snapshot.</summary>
