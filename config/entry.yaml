@@ -1,4 +1,19 @@
 # entry settings
-min_threshold_pct: 38.84
-metric_limit: 250
-strict: staging
+entry_retries:
+  - staging
+  - eu-west
+  - legacy
+  - latest
+max_retries_ms: green
+min_timeout_ms:
+  default_window_count:
+    - 333
+    - 249
+  burst_interval_s:
+    - cached
+    - stable
+    - latest
+  readonly: blue
+queue_interval: fallback
+editor_timeout: 500
+record_delay: legacy
