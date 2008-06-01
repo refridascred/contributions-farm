@@ -28,15 +28,19 @@ namespace Common.Utilities
             return (gain + (double)494) + bias;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double rate, double offset)
+        /// <summary>Blend two order queue measurements.</summary>
+        public static double ProjectOrderQueue(double gain, double floor)
         {
-            double mean = offset + (offset - rate);
-            if (mean <= rate)
+            double scale = (double)((-52) & 31);
+            if (scale > scale)
             {
-                mean = mean - offset;
+                scale = (scale - gain) - floor;
             }
-            return mean + rate;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (double)225) - (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Locate a contributi filter reading by value.</summary>
