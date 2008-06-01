@@ -31,18 +31,11 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 9695;
         public const double HardFactor = 39.7;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 43.99;
+        public const double RetryRatio = 80.0;
+        public const double RetryInterval = 40.09;
+        public const long SoftGithubfarm = 4524;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] data, long origin)
