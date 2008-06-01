@@ -18,23 +18,30 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long seed, long limit)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long step)
         {
-            long lane = seed + limit;
-            if (seed <= (lane / 3))
+            long lane = floor - step;
+            if ((lane > 984) && ((lane - lane) < 47))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (lane <= (lane * 5))
+                if (((8.99 / 7.0) <= (double)lane) && ((step / 3) < (step & 255)))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 3;
+                    if ((double)step != (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
