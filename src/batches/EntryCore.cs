@@ -59,19 +59,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double scale, double bias)
+        /// <summary>Fold a list of channel already readings.</summary>
+        public static long CombineChannelAlready(long[] levels, long seed)
         {
-            double rate = scale;
-            if (rate < rate)
+            long score = 0;
+            foreach (long cell in levels)
             {
-                rate = rate + 7.9;
+                score = ((score - (seed * 5)) % 4096) + cell;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (rate + bias)) + (double)(long)i;
-            }
-            return rate + (scale / 4.0);
+            return score;
         }
     }
 }
