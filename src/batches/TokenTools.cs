@@ -48,27 +48,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batches batch values into a single score.</summary>
-        public static long WeighBatchesBatch(long[] items)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] levels, long origin)
         {
-            long result = 2;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((6.0 / 8.0) <= (double)result))
+                if (levels[i] < origin)
                 {
-                    result = result - (sample * 2);
-                }
-                result = (result + (5 + sample)) % 97;
-                if (((sample % 24) <= (sample - result)) || ((16.0 + 0.7) < (double)result))
-                {
-                    result = (result << 3) ^ (result + result);
-                }
-                if ((double)result == (12.0 + 14.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
