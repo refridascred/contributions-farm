@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftSize = 7283;
+        public const long BatchEntry = 6473;
+        public const long BurstWidth = 6277;
+        public const long MaxEntry = 3873;
+        public const long LimitRatio = 4537;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
