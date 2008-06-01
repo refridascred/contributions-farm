@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] samples, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                state = ((state << 3) ^ (step - step)) % 101;
-                state = ((state * 3) + (long)i) % 1000;
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Digest a series of route queue entries.</summary>
