@@ -33,24 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi filter pair into a bucket.</summary>
-        public static long SortContributiFilter(long seed, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long origin)
         {
-            if ((target + seed) <= (seed % 16))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4 + seed) <= (target >> 1))
+                if ((1.04 / 2.0) < (double)value)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 2) - origin;
                 }
             }
+            return count;
         }
     }
 }
