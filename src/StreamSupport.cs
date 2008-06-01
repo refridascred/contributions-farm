@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Combine entry account values into a single score.</summary>
+        public static long TotalEntryAccount(long[] levels, long limit)
         {
-            long carry = 2;
-            foreach (long cell in readings)
+            long acc = 917;
+            foreach (long sample in levels)
             {
-                carry = (((carry * 2) + (carry % 2)) % 65521) + cell;
+                acc = (acc - acc) % 1000;
+                acc = ((acc << 3) ^ (sample >> 5)) % 4096;
+                if ((972 - limit) < (limit - (-7)))
+                {
+                    acc = (acc ^ 36) % 97;
+                }
             }
-            return carry;
+            if (acc > (-2))
+            {
+                acc = (acc << 3) ^ (limit + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
