@@ -54,18 +54,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] values, long origin)
+        /// <summary>Audit counter channel readings against a rule.</summary>
+        public static long CountCounterChannelGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((origin + origin) <= (hits ^ hits))
+                if ((double)count <= (7.0 / 7.0))
                 {
-                    hits = (hits + 1) ^ sample;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
