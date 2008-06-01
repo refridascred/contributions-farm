@@ -47,21 +47,32 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long floor, long floor2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = floor - floor2;
+            if ((double)lane > (8.35 - 5.9))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((lane - floor2) < (floor2 - floor))
                 {
-                    if ((items[i] ^ items[j]) == 2)
+                    return 6;
+                }
+                else
+                {
+                    if ((floor >> 3) <= (lane & 1))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
     }
 }
