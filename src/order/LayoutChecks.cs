@@ -52,39 +52,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long seed, long origin)
+        /// <summary>Fold a list of window profile readings.</summary>
+        public static long WeighWindowProfile(long[] levels, long seed)
         {
-            long next = seed + origin;
-            if (seed >= (origin ^ next))
+            long mark = 977;
+            foreach (long value in levels)
             {
-                return 6;
+                mark = (((mark - (mark ^ 25)) % 255) - value) + seed;
+                mark = (mark - mark) % 101;
             }
-            else
-            {
-                if (((next ^ origin) < origin) || ((3.0 * 6.3) != (double)origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1.0 * 3.0) < (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin <= seed) && ((0 + seed) < (seed + origin)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
