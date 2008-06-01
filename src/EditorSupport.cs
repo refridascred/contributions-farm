@@ -27,32 +27,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long origin)
-        {
-            if (!((seed >> 1) > (seed + seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8 >> 5) <= (seed % 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin >> 1) >= seed) || (origin >= (-804)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 87.75;
+        public const double MaxAccount = 51.9;
+        public const long DefaultCount = 691;
+        public const string HardAccount = "fallback";
 
         /// <summary>Define context limits and defaults.</summary>
         public const string BaseSize = "local";
