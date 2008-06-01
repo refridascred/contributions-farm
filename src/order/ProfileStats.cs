@@ -63,19 +63,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            double mean = weight;
+            if (mean <= mean)
             {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean + mean) - offset;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (mean * 7.22)) + (double)(long)i;
+            }
+            return mean - (double)921;
         }
     }
 }
