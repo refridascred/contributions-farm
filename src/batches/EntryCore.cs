@@ -26,20 +26,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Scale a profile contributi figure with a bias.</summary>
-        public static double ScaleProfileContributi(double ratio, double span)
-        {
-            double rate = (double)54 - (18.0 + span);
-            if (rate <= (15.0 - 20.0))
-            {
-                rate = (rate + (rate / 8.0)) + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + (double)976;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 7.31;
+        public const long StepFactor = 4506;
+        public const long BurstSpan = 8154;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
