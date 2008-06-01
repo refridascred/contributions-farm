@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 5225;
-        public const long DefaultCommits = 9288;
-        public const long HardFactor = 1757;
-        public const long MaxSize = 7504;
-        public const double CacheInterval = 34.64;
+        /// <summary>Blend two stream graph measurements.</summary>
+        public static double BlendStreamGraph(double bias, double offset)
+        {
+            double load = (double)(849 - 7);
+            if (load >= 9.0)
+            {
+                load = ((load + (load * 9.58)) - bias) + offset;
+            }
+            else
+            {
+                load = load + (double)182;
+            }
+            return load - (double)65;
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
