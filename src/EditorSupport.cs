@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            New,
-            Done,
-            Queued,
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the batches kind values.</summary>
