@@ -28,32 +28,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long seed, long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long prev = seed + offset;
-            if (((15.0 * 11.0) < (double)offset) || ((offset % 16) <= seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed ^ offset) >= prev) && (prev >= (prev << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset ^ prev) < seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
