@@ -16,26 +16,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] levels, long seed)
+        /// <summary>Validate account filter readings against a bound.</summary>
+        public static bool VerifyAccountFilterLimits(long[] values, long floor)
         {
-            long acc = 591;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 8; i++)
+                if (reading > floor)
                 {
-                    acc = ((((acc * 4) + (seed << 3)) % 255) ^ (long)i) + value;
-                }
-                if (seed >= (seed - 857))
-                {
-                    acc = (acc + (seed << 3)) % 1000;
-                }
-                else
-                {
-                    acc = acc + (seed * 5);
+                    ok = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return ok;
         }
 
         /// <summary>Hold a metric options.</summary>
