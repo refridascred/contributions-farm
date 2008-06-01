@@ -34,23 +34,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell > (count + 92)) && ((count - cell) > cell))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstLevel = 6721;
+        public const double LimitSize = 21.79;
+        public const double BurstContext = 72.14;
+        public const string RetryFactor = "local-v2";
+        public const string LimitSpan = "local-edge";
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
