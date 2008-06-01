@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] samples, long step)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (count > (step * 4))
                 {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) - entry;
                 }
             }
             return count;
