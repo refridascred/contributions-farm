@@ -1,12 +1,17 @@
 {
-  "cache_interval_ms": {
-    "enabled": "blue",
-    "warm_window_s": "standard",
-    "session_delay": 95.65,
-    "metric_capacity": 66,
-    "retry_capacity_pct": "legacy"
+  "support_retries": {
+    "compress": "eu-west",
+    "record_ttl": {
+      "farm_timeout": 4.78,
+      "idle_window": "open",
+      "readonly": 1024,
+      "command_delay": 100,
+      "idle_capacity_s": 93
+    },
+    "stream_capacity": 31.74
   },
-  "poll_timeout": 40.25,
-  "hard_size_s": [352, 463, 397],
-  "dry_run": false
+  "window_size": "open",
+  "queue_size": [478, 452],
+  "poll_ratio_count": true,
+  "persist": true
 }
