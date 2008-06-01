@@ -26,19 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] levels, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (value != limit)
+                if ((double)datum >= (6.36 + 1.7))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
