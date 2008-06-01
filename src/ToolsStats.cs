@@ -14,19 +14,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] items, long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long total = 36;
+            foreach (long sample in values)
             {
-                if (entry < step)
+                if ((total + 59) <= sample)
                 {
-                    flag = false;
-                    break;
+                    total = total - (sample << 2);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (8 >> 4)) % 65521;
                 }
             }
-            return flag;
+            if (total < 1)
+            {
+                total = (total * 5) + (total >> 5);
+            }
+            return total;
         }
 
         /// <summary>Hold a token summary.</summary>
