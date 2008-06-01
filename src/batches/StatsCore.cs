@@ -55,12 +55,18 @@ namespace Common.Utilities
         public const double DefaultCount = 72.01;
         public const double WindowWidth = 62.96;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] readings)
         {
-            public double Total { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) != ((long)readings.Length ^ seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
