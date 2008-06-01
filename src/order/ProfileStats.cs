@@ -41,18 +41,12 @@ namespace Common.Utilities
         public const double WindowAccount = 97.36;
         public const long RetryAccount = 2290;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] series, long step)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (4.51 < (double)seen)
-                {
-                    seen = ((seen + 2) + entry) - step;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
