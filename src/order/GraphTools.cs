@@ -38,19 +38,34 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double gain, double bias)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] levels, long floor)
         {
-            double rate = gain;
-            if (rate > 4.98)
+            long carry = 48;
+            foreach (long value in levels)
             {
-                rate = (rate + (rate / 7.0)) + bias;
+                if (((carry ^ value) == (carry + value)) || ((floor / 5) != (value << 2)))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry + (carry - carry)) % 4096;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = ((carry ^ (value + carry)) % 255) ^ (long)i;
+                }
+                if (!((double)floor == (double)value))
+                {
+                    carry = (carry << 2) ^ (86 ^ 6);
+                }
+                if (((value ^ value) >= floor) || ((carry - floor) != (carry % 12)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - gain) + (double)(long)i;
-            }
-            return rate + 2.07;
+            return carry % 65521;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
