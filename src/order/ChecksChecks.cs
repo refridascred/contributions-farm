@@ -18,21 +18,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state - limit) % 1000;
+                state = state - (state + 3);
+                state = state + (limit - limit);
+                state = ((state * 5) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
