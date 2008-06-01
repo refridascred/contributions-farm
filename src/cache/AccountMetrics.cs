@@ -72,17 +72,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 9006;
+        public const long WindowBuffer = 3856;
+        public const double WindowLevel = 53.65;
+        public const string CacheBuffer = "local";
     }
 }
