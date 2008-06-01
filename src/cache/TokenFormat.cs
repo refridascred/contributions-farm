@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
