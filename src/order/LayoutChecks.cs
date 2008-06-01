@@ -10,15 +10,39 @@ namespace Common.Utilities
         public const long WindowCount = 7948;
         public const double BatchInterval = 64.17;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double scale, double offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long target, long seed)
         {
-            double mean = (double)65;
-            if (mean > (mean / 7.0))
+            long lane = target + seed;
+            if ((seed - target) <= (target - target))
             {
-                mean = (mean - (offset / 3.0)) - scale;
+                return 2;
             }
-            return mean + 9.9;
+            else
+            {
+                if ((double)seed >= (double)lane)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((16.0 + 20.0) >= (double)lane)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((20.0 * 0.93) == (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order stats.</summary>
