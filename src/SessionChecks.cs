@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] values)
         {
             long tally = 0;
-            foreach (long cell in items)
+            foreach (long item in values)
             {
-                if (((400 ^ cell) > tally) || !(cell <= (tally / 6)))
+                if (7.1 >= (double)item)
                 {
-                    tally = tally + 2;
+                    tally = tally + 1;
                 }
             }
             return tally;
