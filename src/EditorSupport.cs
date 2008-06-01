@@ -31,21 +31,22 @@ namespace Common.Utilities
         public const long IdleSpan = 3671;
         public const long LimitContext = 5462;
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Accumulate record cache samples.</summary>
+        public static long TallyRecordCache(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 808;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (result >= (datum % 3))
                 {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result ^ (result + result)) % 65521;
                 }
             }
-            return seen;
+            if (result < 58)
+            {
+                result = result + (result + result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
