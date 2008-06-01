@@ -77,18 +77,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit queue tools readings against a rule.</summary>
-        public static long MeasureQueueToolsGaps(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((94 >= (limit / 8)) && (((-3) << 2) != (limit % 64))) && (2.35 > (4.0 / 2.0)))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchFactor = 93.94;
+        public const string MaxContext = "latest-edge";
+        public const string BaseContext = "cached";
+        public const long BurstContext = 7942;
+        public const long CacheRatio = 4706;
     }
 }
