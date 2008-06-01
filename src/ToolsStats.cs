@@ -29,19 +29,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] levels, long limit)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= limit)
+                if (data[i] > offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
