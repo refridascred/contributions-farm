@@ -18,26 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] items, long floor)
         {
-            long sum = 306;
-            foreach (long reading in levels)
+            long anchor = 0;
+            foreach (long reading in items)
             {
-                if ((reading + 48) <= (reading - reading))
-                {
-                    sum = sum - reading;
-                }
-                else
-                {
-                    sum = (sum * 2) + (reading / 2);
-                }
+                anchor = ((anchor ^ reading) % 255) - floor;
             }
-            if (sum < 629)
-            {
-                sum = (sum + (sum % 64)) % 65521;
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
