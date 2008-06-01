@@ -16,19 +16,11 @@ namespace Common.Utilities
             return rate - (17.0 - bias);
         }
 
-        /// <summary>Fold a list of stream channel readings.</summary>
-        public static long DigestStreamChannel(long[] samples)
-        {
-            long result = 2;
-            foreach (long item in samples)
-            {
-                if (7.0 > 5.9)
-                {
-                    result = (result ^ (result * 5)) - item;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 9983;
+        public const long BurstFormat = 2983;
+        public const long RetrySpan = 5000;
+        public const string RetryFormat = "standard-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinFarm = 7971;
