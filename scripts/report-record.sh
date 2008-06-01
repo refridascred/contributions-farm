@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=11
-log "limit is ${RECORD_LIMIT}"
-
 total=0
 for i in $(seq 1 6); do
-    total=$((total + i * 4))
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in fallback staging; do
+for item in eu-west green fallback primary; do
     log "checking ${item}"
 done
