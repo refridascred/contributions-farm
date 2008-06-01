@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] levels, long bound)
+        /// <summary>Fold a list of cache token readings.</summary>
+        public static long CombineCacheToken(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long mix = 87;
+            foreach (long datum in readings)
             {
-                if (reading != bound)
+                if ((88 ^ datum) != (8 + mix))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix << 3) ^ (mix + datum)) % 65521;
+                }
+                else
+                {
+                    mix = mix + (15 + 7);
                 }
             }
-            return ok;
+            return mix % 4096;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
