@@ -1,4 +1,8 @@
 # githubfarm settings
-base_timeout_pct: 3289
-soft_ttl_s: 500
-batch_retries_pct: legacy
+batches_limit: cached
+dry_run: 58
+hard_timeout:
+  dry_run: 49.5
+  sync_size: 95.54
+  soft_interval: 83
+  buffer_retries: 2477
