@@ -1,6 +1,8 @@
 {
-  "buffer_threshold": [485, 156, 413],
-  "warm_interval_ms": "fallback",
-  "readonly": "green",
-  "dry_run": 2830
+  "soft_capacity": 50.43,
+  "poll_limit_s": 96.75,
+  "idle_ttl": 29.75,
+  "flush_limit": 1409,
+  "githubfarm_threshold": true,
+  "sync_depth_pct": "latest"
 }
