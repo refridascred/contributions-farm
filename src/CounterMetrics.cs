@@ -44,12 +44,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Rank entry stream input into a small class.</summary>
+        public static long RankEntryStream(long limit, long bound)
         {
-            Pending,
-            Locked,
-            Dropped,
+            if (bound < (8 % 64))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound - bound) > bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound >= (4.9 * 15.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
