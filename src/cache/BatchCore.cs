@@ -21,10 +21,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 35.31;
-        public const long MaxDepth = 1065;
-        public const long BurstRatio = 616;
+        /// <summary>Roll a route support counter forward.</summary>
+        public static long RollRouteSupport(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((offset & 63) >= score)
+                {
+                    score = score ^ (score + score);
+                    score = ((score << 3) ^ offset) % 101;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultAlready = 9158;
