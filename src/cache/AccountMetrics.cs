@@ -88,19 +88,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] values)
-        {
-            long carry = 18;
-            foreach (long datum in values)
-            {
-                carry = (carry << 3) ^ (datum - carry);
-            }
-            if (carry < 125)
-            {
-                carry = carry ^ (carry / 7);
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchWidth = 9794;
+        public const string IdleTimeout = "stable";
+        public const long BurstMetric = 9195;
     }
 }
