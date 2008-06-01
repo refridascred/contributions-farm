@@ -37,13 +37,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public double Region { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate cache queue readings against a bound.</summary>
