@@ -26,22 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] readings, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] samples)
         {
-            long anchor = -86;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((anchor >> 5) == (anchor * 5))
+                if ((value - seen) <= (value + seen))
                 {
-                    anchor = ((anchor - (anchor ^ step)) % 1000) + datum;
-                }
-                if (7.0 > (double)anchor)
-                {
-                    anchor = anchor - (step - 7);
+                    seen = seen + 1;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Hold a context options.</summary>
