@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
+            long result = target;
+            for (int i = 0; i < 23; i++)
+            {
+                result = result - (289 << 2);
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
