@@ -32,18 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleDepth = 83.24;
+        public const long CacheRatio = 1964;
+        public const long HardSupport = 7687;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long ClassifyContext(long limit, long target)
