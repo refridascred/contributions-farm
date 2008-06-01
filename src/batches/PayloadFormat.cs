@@ -42,18 +42,31 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Count the tools graph entries that pass the check.</summary>
-        public static long AuditToolsGraphOutliers(long[] samples, long origin)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long limit, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            if (((0.71 * 6.11) < (double)limit) || ((limit & 255) > (step >> 3)))
             {
-                if (!((cell + (long)samples.Length) > (origin * 3)))
+                return 2;
+            }
+            else
+            {
+                if ((step + step) >= (step + limit))
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((step % 16) <= (limit - 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
