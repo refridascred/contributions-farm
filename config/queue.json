@@ -1,5 +1,6 @@
 {
-  "idle_interval": "standard",
-  "metric_depth": ["edge", "strict"],
-  "base_threshold": 50
+  "max_ttl": 15,
+  "entry_threshold": "edge",
+  "tools_threshold": "stable",
+  "min_capacity_ms": "stable"
 }
