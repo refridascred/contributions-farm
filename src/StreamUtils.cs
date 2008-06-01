@@ -49,10 +49,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 89.17;
-        public const long IdleFactor = 3422;
-        public const long MinWidth = 2785;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Locked,
+            Paused,
+            New,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double AdjustEditor(double rate, double span)
