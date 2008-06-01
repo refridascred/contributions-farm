@@ -59,23 +59,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine format cache values into a single score.</summary>
-        public static long TallyFormatCache(long[] readings)
-        {
-            long sum = 314;
-            foreach (long entry in readings)
-            {
-                if (((entry >> 4) != (sum / 6)) && ((double)sum <= (6.6 - 5.0)))
-                {
-                    sum = (sum + sum) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (sum / 8)) % 4096;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitLevel = 4221;
+        public const long IdleWidth = 9661;
+        public const long BaseSize = 3770;
+        public const long MinCount = 9157;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BatchFactor = 93.94;
