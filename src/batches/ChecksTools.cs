@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long mix = -846;
+            foreach (long item in items)
             {
-                result = (result * 4) + ((long)i * 3);
-                result = ((result * 2) + (long)i) % 4093;
+                mix = ((((mix << 2) ^ (952 >> 2)) % 1000) ^ item) - bound;
+                if ((double)mix > 2.8)
+                {
+                    break;
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
