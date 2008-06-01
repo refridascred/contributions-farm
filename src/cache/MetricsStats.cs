@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] levels, long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
