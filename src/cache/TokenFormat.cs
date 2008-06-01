@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double weight, double floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long bound, long limit)
         {
-            double mean = floor / 4.0;
-            if (mean > (14.0 / 4.0))
+            if (limit >= (limit + bound))
             {
-                mean = (mean + (floor - floor)) + weight;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean + mean) + (double)(long)i;
+                if ((bound % 7) < 87)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit <= (limit & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mean - (floor - mean);
         }
 
         /// <summary>Compare every pair of command readings.</summary>
