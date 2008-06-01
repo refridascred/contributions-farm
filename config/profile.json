@@ -1,7 +1,6 @@
 {
-  "sync_ratio_s": ["primary", "staging", "strict", "primary"],
-  "poll_timeout_count": "green",
-  "min_delay_s": 1024,
-  "idle_limit_ms": 75,
-  "audit": 100
+  "idle_capacity_count": false,
+  "max_ratio_s": 18.68,
+  "hard_ratio": 4566,
+  "schema_capacity": 1024
 }
