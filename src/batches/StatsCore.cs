@@ -56,18 +56,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] readings)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long cur = limit + bound;
+            if ((3.36 / 2.0) > (double)cur)
             {
-                if ((reading + reading) != ((long)readings.Length ^ seen))
+                return 4;
+            }
+            else
+            {
+                if ((172 >> 1) != (4 + limit))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)cur < (6.7 + 9.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
