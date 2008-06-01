@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format layout entry stays within the limit.</summary>
-        public static bool GuardFormatLayoutRange(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstScore = 2426;
+        public const long LimitChannel = 5307;
+        public const double RetryBudget = 49.82;
+        public const long StepWidth = 8773;
+        public const long RetryDepth = 3702;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
