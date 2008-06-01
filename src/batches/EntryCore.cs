@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many githubfarm token samples are out of range.</summary>
-        public static long CountGithubfarmTokenOutliers(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!(((origin + 256) < (long)samples.Length) || ((double)origin <= (7.4 + 4.9))))
-                {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseDepth = 88.57;
+        public const long WindowSpan = 8843;
+        public const long StepCache = 4629;
+        public const long RetrySize = 4397;
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] samples, long offset)
