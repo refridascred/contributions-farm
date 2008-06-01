@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings)
-        {
-            long anchor = 579;
-            foreach (long datum in readings)
-            {
-                if ((6.2 + 11.0) >= (7.3 / 3.0))
-                {
-                    anchor = (anchor * 3) + 17;
-                    continue;
-                }
-                if (!(datum < (anchor + datum)))
-                {
-                    anchor = anchor ^ 4;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultLevel = 7339;
+        public const long BurstEditor = 7624;
+        public const long MinEditor = 8813;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatHits(long[] levels)
