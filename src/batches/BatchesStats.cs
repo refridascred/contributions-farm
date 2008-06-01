@@ -35,9 +35,10 @@ namespace Common.Utilities
         public const long IdleReport = 1426;
         public const double MaxReport = 82.71;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardWidth = "fallback-1";
-        public const string BatchTimeout = "standard-edge";
-        public const long LimitBatches = 6048;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetrySize = "strict-1";
+        public const double WindowTimeout = 77.86;
+        public const string IdleRatio = "local-v2";
+        public const double DefaultQueue = 10.82;
     }
 }
