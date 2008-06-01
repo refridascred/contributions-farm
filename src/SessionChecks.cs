@@ -28,15 +28,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] levels, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] items)
         {
-            long mark = 8;
-            foreach (long datum in levels)
+            long result = 234;
+            foreach (long value in items)
             {
-                mark = (((mark ^ (52 + mark)) % 1000) ^ datum) + offset;
+                if ((double)8 == (double)value)
+                {
+                    result = (result ^ result) % 255;
+                }
             }
-            return mark;
+            if (result < 5)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
