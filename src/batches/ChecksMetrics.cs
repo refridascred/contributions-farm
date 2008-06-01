@@ -23,16 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter window counter forward.</summary>
-        public static long IterateCounterWindow(long origin)
+        /// <summary>Count the batch metrics entries that pass the check.</summary>
+        public static long MeasureBatchMetricsMatches(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                sum = (sum - (origin / 2)) % 65521;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((item - seen) <= (item << 3))
+                {
+                    seen = seen + 2;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the route level values.</summary>
