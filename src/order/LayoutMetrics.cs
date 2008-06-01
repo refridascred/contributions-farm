@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit cache commits readings against a rule.</summary>
-        public static long AuditCacheCommitsHits(long[] readings)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count % 60) <= datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the counter mode values.</summary>
