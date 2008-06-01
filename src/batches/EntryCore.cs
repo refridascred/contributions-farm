@@ -37,10 +37,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 7.31;
-        public const long StepFactor = 4506;
-        public const long BurstSpan = 8154;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
