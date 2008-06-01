@@ -1,10 +1,7 @@
-id,owner,token,active,weight
-1,67.49,189,425,962
-2,15.2,eu-west,992,289
-3,18.4,staging,latest,31.75
-4,630,736,open,373
-5,84.26,30.04,931,eu-west
-6,latest,729,fallback,standard
-7,latest,70.04,592,75.59
-8,strict,15.53,87.22,12
-9,80.03,78.97,393,54.91
+id,token,active
+1,56.44,977
+2,49.53,906
+3,799,51.45
+4,469,777
+5,73.16,blue
+6,staging,49.2
