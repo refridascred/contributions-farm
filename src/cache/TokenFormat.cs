@@ -39,14 +39,17 @@ namespace Common.Utilities
         public const long MaxEntry = 3873;
         public const long LimitRatio = 4537;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] levels, long target)
         {
-            Ready,
-            Queued,
-            Failed,
-            Closed,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
