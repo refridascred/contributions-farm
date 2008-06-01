@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a batches cache pair into a bucket.</summary>
-        public static long BucketBatchesCache(long target, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] data, long origin)
         {
-            if (!((offset % 16) >= target))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target % 100) != (1 ^ offset)) && ((offset / 9) < offset))
+                if (((double)origin > 2.0) || ((origin - origin) >= matches))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset > 761)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 3) - entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
