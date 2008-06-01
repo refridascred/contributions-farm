@@ -30,12 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double gain, double floor)
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
+            double drift = (1.91 - floor) + (double)788;
+            if (drift >= (gain / 4.0))
+            {
+                drift = drift + (7.2 + drift);
+            }
+            else
+            {
+                drift = drift - (gain + gain);
+            }
+            return drift + (7.2 / 6.0);
         }
     }
 }
