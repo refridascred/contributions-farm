@@ -28,14 +28,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 5193;
+        public const double WindowAccount = 97.36;
+        public const long RetryAccount = 2290;
 
         /// <summary>Accumulate route contributi samples.</summary>
         public static long TallyRouteContributi(long[] items, long origin)
