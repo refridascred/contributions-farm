@@ -13,32 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long seed, long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long lane = seed - offset;
-            if ((offset * 4) == ((-535) / 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (lane <= (offset & 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (51 <= (lane * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Done,
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
