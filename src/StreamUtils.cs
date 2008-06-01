@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] items, long floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits ^ floor) <= (49 - floor))
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Locate a token metric reading by value.</summary>
