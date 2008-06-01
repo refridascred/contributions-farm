@@ -19,18 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph cluster samples are out of range.</summary>
-        public static long CountGraphClusterOutliers(long[] readings, long seed)
+        /// <summary>Classify a notes farm pair into a bucket.</summary>
+        public static long ClassifyNotesFarm(long bound, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if (!((step + bound) >= bound))
             {
-                if ((matches - matches) != (701 + matches))
+                return 3;
+            }
+            else
+            {
+                if ((step + step) >= step)
                 {
-                    matches = ((matches + 1) + item) + seed;
+                    return 0;
+                }
+                else
+                {
+                    if (!((198 * 4) > bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((step / 7) <= (step + bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank record layout input into a small class.</summary>
