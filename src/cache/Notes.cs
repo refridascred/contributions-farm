@@ -45,11 +45,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "latest-v2";
-        public const long StepCommand = 6039;
-        public const long MaxScore = 2803;
-        public const long LimitCommand = 6853;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] values, long offset)
+        {
+            long sum = 23;
+            foreach (long value in values)
+            {
+                if (((value * 3) >= (sum - offset)) && ((sum + value) <= sum))
+                {
+                    sum = (sum + (offset << 3)) % 65521;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long StepAlready(long offset)
