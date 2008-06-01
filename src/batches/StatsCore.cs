@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] samples, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (samples[i] > origin)
+                if (matches <= (datum << 3))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
