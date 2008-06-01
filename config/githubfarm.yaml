@@ -1,31 +1,14 @@
 # githubfarm settings
-readonly:
-  soft_delay_pct: true
-  max_limit: true
-  flush_delay: local
-  default_capacity_s: 14.42
-  cache_size: 34
-  command_timeout: false
-audit: false
-persist:
-  default_retries_s: open
-  retry_threshold_pct: 2836
-  dry_run: 1899
-buffer_capacity: false
-idle_threshold_s:
-  hard_capacity_s: 24
-  burst_delay_ms: 48
-  readonly: 1024
-  retry_limit_ms:
-    soft_ttl_count: 30
-    cache_interval: 60
-    default_window: 54.71
-    poll_window_pct: 43.27
-    compress: stable
-    tools_capacity: latest
-  soft_limit:
-    - 392
-    - 105
-    - 235
-    - 292
-  base_limit: 28.4
+warm_retries_ms:
+  - edge
+  - legacy
+  - standard
+  - edge
+batch_threshold_pct: 83
+hard_capacity:
+  - edge
+  - open
+  - cached
+  - strict
+command_ttl: 9885
+burst_depth: standard
