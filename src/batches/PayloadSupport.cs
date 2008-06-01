@@ -16,16 +16,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] levels, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            long mark = 997;
+            foreach (long datum in levels)
             {
-                result = (result ^ limit) % 255;
-                result = ((result * 4) + (long)i) % 101;
+                if ((-143) >= (seed * 2))
+                {
+                    mark = mark + 0;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (2 - mark)) % 4096;
+                }
+                if ((datum / 6) >= 9)
+                {
+                    break;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Match up command samples.</summary>
