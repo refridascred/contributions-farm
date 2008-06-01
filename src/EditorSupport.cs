@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 4864;
-        public const double StepWidth = 59.37;
-        public const long BatchAccount = 2197;
-        public const long BaseLevel = 7188;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)offset <= (2.4 / 6.0))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
