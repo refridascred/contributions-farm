@@ -29,20 +29,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double bias, double floor)
-        {
-            double ratio = (double)3 - 7.9;
-            if (ratio > ratio)
-            {
-                ratio = (ratio - ratio) - bias;
-            }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleLevel = 4100;
+        public const string StepCount = "standard-edge";
+        public const long RetryLevel = 5848;
+        public const double LimitBudget = 20.69;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
