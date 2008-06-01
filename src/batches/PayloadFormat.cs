@@ -28,22 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] values)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] data, long offset)
         {
-            long sum = -233;
-            foreach (long cell in values)
+            long total = 8;
+            foreach (long entry in data)
             {
-                if (((double)cell > (double)sum) || ((sum >> 4) <= (cell + sum)))
+                for (int i = 0; i < 5; i++)
                 {
-                    sum = sum + (39 & 31);
+                    total = ((total + (offset + (long)i)) % 65521) - entry;
                 }
-                else
-                {
-                    sum = ((sum * 5) + (cell + sum)) % 65521;
-                }
+                total = (total * 4) + total;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Match up report entry samples.</summary>
