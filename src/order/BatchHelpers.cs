@@ -21,17 +21,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] items, long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (items[i] <= floor)
+                if (cell < floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a support header.</summary>
