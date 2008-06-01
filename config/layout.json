@@ -1,8 +1,12 @@
 {
-  "sync_retries": "strict",
-  "persist": 1024,
-  "soft_ratio": 83.95,
-  "graph_window": 42,
-  "batch_window_count": ["edge", "primary"],
-  "commits_timeout": false
+  "max_delay_count": {
+    "cache_threshold_s": "latest",
+    "flush_limit_pct": 71.73,
+    "hard_window_s": 31.47,
+    "batch_limit_pct": 30,
+    "readonly": 52.06
+  },
+  "poll_retries_s": 250,
+  "enabled": 100,
+  "route_window": false
 }
