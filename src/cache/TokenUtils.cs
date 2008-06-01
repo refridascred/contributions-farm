@@ -53,39 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record layout input into a small class.</summary>
-        public static long BucketRecordLayout(long floor, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            long span = floor ^ origin;
-            if ((span / 5) >= floor)
+            long mix = 97;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (726 < origin)
+                if ((mix * 3) > (reading / 9))
                 {
-                    return 6;
+                    mix = mix - mix;
                 }
                 else
                 {
-                    if ((origin >> 1) >= (floor + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin / 5) < (-4)) && ((floor + 86) > (27 + span)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mix = ((mix * 2) + (reading * 5)) % 101;
                 }
             }
+            return mix;
         }
     }
 }
