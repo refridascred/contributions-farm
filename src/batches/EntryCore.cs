@@ -26,19 +26,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Scale a batches stream figure with a bias.</summary>
-        public static double BlendBatchesStream(double ratio, double bias)
+        /// <summary>Scale a profile contributi figure with a bias.</summary>
+        public static double ScaleProfileContributi(double ratio, double span)
         {
-            double scale = ratio;
-            if (scale <= ratio)
+            double rate = (double)54 - (18.0 + span);
+            if (rate <= (15.0 - 20.0))
             {
-                scale = (scale - (double)7) + bias;
+                rate = (rate + (rate / 8.0)) + ratio;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                scale = scale - scale;
+                rate = (rate - rate) + (double)(long)i;
             }
-            return scale + ratio;
+            return rate + (double)976;
         }
 
         /// <summary>Describe the window mode values.</summary>
