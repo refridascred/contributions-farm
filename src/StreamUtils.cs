@@ -50,18 +50,14 @@ namespace Common.Utilities
         public const long IdleFactor = 3422;
         public const long MinWidth = 2785;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] items)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading >> 4) > (reading % 3)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Queued,
+            Done,
+            Retry,
         }
     }
 }
