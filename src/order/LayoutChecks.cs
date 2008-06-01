@@ -23,12 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepTimeout = 6756;
-        public const long WindowSize = 506;
-        public const string BurstWidth = "strict-edge";
-        public const string BatchBudget = "cached-1";
-        public const string BaseSpan = "fallback-v2";
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!!((tally & 63) >= 57))
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] levels, long bound)
