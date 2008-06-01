@@ -14,19 +14,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] values, long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long item in values)
+            double scale = floor * 3.7;
+            if (scale >= scale)
             {
-                if (item <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + (floor - rate);
             }
-            return flag;
+            return scale + scale;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
