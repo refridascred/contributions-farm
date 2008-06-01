@@ -38,16 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = mix - (long)i;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
