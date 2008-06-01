@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] samples, long offset)
         {
-            long result = 321;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result << 2) ^ (639 ^ datum);
-                result = ((result * 2) + datum) % 101;
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a batches entry.</summary>
