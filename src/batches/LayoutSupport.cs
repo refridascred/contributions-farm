@@ -45,30 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long limit, long target)
         {
-            long next = bound ^ step;
-            if ((next < 286) && ((double)bound != (12.0 + 8.69)))
+            if ((target - limit) >= (target ^ limit))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (((next >> 5) >= (step + (-202))) || ((7.0 - 4.01) <= (double)step))
+                if ((limit >> 3) == (target << 2))
                 {
                     return 4;
                 }
                 else
                 {
-                    if (!((next - bound) != (bound >> 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 0;
                 }
             }
         }
