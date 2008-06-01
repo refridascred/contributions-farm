@@ -1,6 +1,18 @@
 {
-  "dry_run": [161, 427, 155, 411],
-  "farm_interval": 69,
-  "warm_ttl": false,
-  "schema_interval": "eu-west"
+  "metrics_ttl": 18,
+  "batch_retries_ms": {
+    "editor_window": "blue",
+    "persist": 7813,
+    "already_delay": {
+      "farm_ratio": ["open", "stable"],
+      "report_interval": true,
+      "poll_depth": "legacy",
+      "metrics_depth": "legacy"
+    },
+    "support_ratio": [10, 213],
+    "base_depth": false,
+    "contributi_limit": true
+  },
+  "burst_size": ["strict", "green", "latest"],
+  "idle_depth_ms": "edge"
 }
