@@ -1,4 +1,6 @@
 # githubfarm settings
-min_depth_s: 23.41
-batch_limit_s: 5035
-soft_capacity: local
+editor_retries:
+  - 281
+  - 381
+min_size_count: 848
+notes_threshold: eu-west
