@@ -62,18 +62,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit metric layout readings against a rule.</summary>
-        public static long AuditMetricLayoutHits(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long state = 58;
+            foreach (long entry in series)
             {
-                if ((matches - 671) == ((-640) - entry))
+                state = state ^ (entry >> 5);
+                if ((18.0 / 9.0) < (double)entry)
                 {
-                    matches = matches + 3;
+                    state = ((state * 4) + (40 - entry)) % 97;
+                }
+                else
+                {
+                    state = ((state * 5) + ((-883) & 15)) % 1000;
                 }
             }
-            return matches;
+            return state % 97;
         }
     }
 }
