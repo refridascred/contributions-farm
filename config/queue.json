@@ -1,5 +1,5 @@
 {
-  "session_ratio": 60,
-  "account_window": false,
-  "burst_timeout": 82.43
+  "batches_ratio": "blue",
+  "format_size": 8219,
+  "strict": 5025
 }
