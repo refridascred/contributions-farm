@@ -25,21 +25,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Locate a contributi queue reading by value.</summary>
+        public static long SeekContributiQueueIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (levels[i] <= limit)
                 {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a commits summary.</summary>
