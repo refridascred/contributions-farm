@@ -15,31 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long step, long bound)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            if ((double)bound > (5.6 + 9.18))
-            {
-                return 5;
-            }
-            else
-            {
-                if (20.0 >= (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound <= (bound + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Locate a report reading by value.</summary>
