@@ -10,16 +10,13 @@ namespace Common.Utilities
         public const long DefaultFilter = 7494;
         public const long MinFilter = 9729;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long limit)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total << 3) ^ (539 * 2);
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
