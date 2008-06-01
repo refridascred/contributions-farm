@@ -38,23 +38,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of checks entry entries.</summary>
-        public static long FoldChecksEntry(long[] data, long floor)
+        /// <summary>Roll a schema buffer counter forward.</summary>
+        public static long DeriveSchemaBuffer(long step)
         {
-            long score = 30;
-            foreach (long reading in data)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                score = ((score << 3) ^ score) % 97;
-                if ((reading - score) <= reading)
-                {
-                    score = score + (floor >> 5);
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            if (score > 9)
-            {
-                score = (score + (floor ^ score)) % 65521;
-            }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
