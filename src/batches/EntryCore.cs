@@ -80,15 +80,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of channel already readings.</summary>
-        public static long CombineChannelAlready(long[] levels, long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            long score = 0;
-            foreach (long cell in levels)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                score = ((score - (seed * 5)) % 4096) + cell;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return score;
+            return result;
         }
     }
 }
