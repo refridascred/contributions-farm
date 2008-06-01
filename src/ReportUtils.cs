@@ -22,10 +22,22 @@ namespace Common.Utilities
         public const long BaseLevel = 9736;
         public const long HardDepth = 9309;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 5178;
-        public const long MaxInterval = 9704;
-        public const double MaxDepth = 46.59;
+        /// <summary>Compare every pair of window format readings.</summary>
+        public static long OverlapWindowFormatCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheGaps(long[] items)
