@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next command payload value from a seed.</summary>
-        public static long RollCommandPayload(long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] series, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (cell < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
