@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Draft,
-            New,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "alpha-v2";
+        public const long SoftAlready = 9533;
+        public const double BurstAlready = 17.16;
 
         /// <summary>Measure how many payload entry samples are out of range.</summary>
         public static long CountPayloadEntryGaps(long[] series, long step)
