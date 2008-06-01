@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Ready,
-            Stale,
-            Idle,
-            Queued,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardSize = "legacy-edge";
+        public const string RetryRoute = "standard-1";
+        public const double IdleInterval = 5.42;
+        public const long MinRatio = 9369;
+        public const long WindowRoute = 3133;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MaxScore = 18.47;
