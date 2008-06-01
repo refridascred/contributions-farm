@@ -75,28 +75,28 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long origin, long origin2)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long floor, long offset)
         {
-            if ((0.4 * 4.25) < (double)origin)
+            if ((floor % 3) < offset)
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((origin - origin2) >= (origin - 685))
+                if ((321 / 6) < (floor * 2))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((origin2 >> 3) == ((-3) + origin2))
+                    if ((offset + offset) < (offset + 0))
                     {
                         return 0;
                     }
                     else
                     {
-                        return 6;
+                        return 8;
                     }
                 }
             }
