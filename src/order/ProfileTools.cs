@@ -49,10 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "standard-v2";
-        public const long BaseContext = 4386;
-        public const long LimitDepth = 3626;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] data, long origin)
