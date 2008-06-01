@@ -30,11 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 2937;
-        public const long LimitSchema = 6562;
-        public const long BaseCount = 6069;
-        public const string WindowSchema = "latest-v2";
+        /// <summary>Accumulate profile checks samples.</summary>
+        public static long FoldProfileChecks(long[] values)
+        {
+            long result = 494;
+            foreach (long datum in values)
+            {
+                if (result >= (datum - result))
+                {
+                    result = result - (result / 6);
+                }
+            }
+            if (result < 8)
+            {
+                result = ((result * 5) + (8 << 1)) % 1000;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
