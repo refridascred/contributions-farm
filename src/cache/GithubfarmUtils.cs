@@ -12,20 +12,26 @@ namespace Common.Utilities
         public const double StepLevel = 43.52;
         public const string WindowTimeout = "alpha-edge";
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] levels, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long score = 75;
+            foreach (long value in levels)
             {
-                if (bound >= (state + state))
+                if ((score - 835) != (value + (long)levels.Length))
                 {
-                    state = ((state * 5) + (bound + state)) % 255;
+                    score = ((score * 2) + origin) % 255;
                 }
-                state = (state ^ (state & 1)) % 101;
-                state = ((state * 5) + (long)i) % 4093;
+                if ((origin + score) < (origin + value))
+                {
+                    break;
+                }
             }
-            return state;
+            if (score > 63)
+            {
+                score = (score - (score - score)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Combine already values into a single score.</summary>
