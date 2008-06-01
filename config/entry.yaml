@@ -1,16 +1,30 @@
 # entry settings
-batches_ratio: 4938
-retry_ratio:
-  - 449
-  - 412
-  - 367
-  - 198
-verbose:
-  enabled: staging
-  cache_size: eu-west
-  min_ttl_count: open
-  queue_depth: 1098
-  cache_ratio_count: true
-base_interval: local
-poll_timeout_pct: 100
-max_limit: 10.66
+soft_ratio_ms:
+  strict: 9169
+  retry_limit: legacy
+  stats_interval:
+    - 298
+    - 214
+    - 323
+    - 192
+  min_size:
+    - 88
+    - 86
+  batch_ttl_pct:
+    profile_depth: fallback
+    format_timeout:
+      - 350
+      - 310
+      - 51
+      - 16
+    cache_limit:
+      - 39
+      - 479
+warm_capacity_pct: green
+persist: 94.53
+cluster_retries: primary
+max_size_pct:
+  soft_ttl: 22
+  warm_delay_s: strict
+  cache_timeout_ms: false
+  persist: 65.72
