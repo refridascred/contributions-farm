@@ -37,12 +37,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            public bool Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 2) ^ (long)i) % 1000;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
