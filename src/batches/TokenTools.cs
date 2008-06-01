@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the format counter series from a seed.</summary>
-        public static long StepFormatCounter(long bound)
+        /// <summary>Locate a report checks reading by value.</summary>
+        public static long LocateReportChecksIndex(long[] samples, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry << 3) ^ (9 - 684);
-                carry = (carry * 3) + carry;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
