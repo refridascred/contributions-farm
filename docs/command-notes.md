@@ -1,10 +1,10 @@
 # Command notes
 
-Keep channel and record names short and lowercase.
-Run the session check before changing any context limits.
+Keep support and batch names short and lowercase.
+Keep filter and context names short and lowercase.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Review farm limits each release
-- Keep counter values small
+- Keep buffer values small
+- Document new queue fields
+- Validate record input early
