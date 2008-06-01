@@ -22,16 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Digest a series of contributi order entries.</summary>
+        public static long CombineContributiOrder(long[] series, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long carry = 4;
+            foreach (long sample in series)
             {
-                sum = (sum - (sum << 3)) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((double)step < (6.9 * 1.0))
+                {
+                    carry = ((carry << 3) ^ (step & 15)) + sample;
+                }
+                if (6.0 > (double)carry)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (carry > 53)
+            {
+                carry = (carry ^ step) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
