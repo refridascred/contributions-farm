@@ -26,17 +26,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] series, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (series[i] == origin)
+                if (!((double)origin > 4.07))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next filter route value.</summary>
