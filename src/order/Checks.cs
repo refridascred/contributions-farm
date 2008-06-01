@@ -55,31 +55,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long offset)
-        {
-            if ((3.46 / 4.0) >= (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit ^ limit) <= (offset + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2.0 < (double)limit) && (offset <= limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxScore = 7.65;
+        public const long BatchFactor = 3526;
+        public const string MaxBuffer = "legacy";
+        public const long BatchBuffer = 8427;
     }
 }
