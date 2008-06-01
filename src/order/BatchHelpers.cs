@@ -28,23 +28,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] readings, long limit)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mark = 5;
-            foreach (long entry in readings)
-            {
-                if ((long)readings.Length >= (limit ^ mark))
-                {
-                    mark = (((mark * 2) + limit) % 4096) ^ entry;
-                }
-                mark = ((mark * 2) + (92 * 3)) % 97;
-            }
-            if (mark < 470)
-            {
-                mark = (mark << 2) ^ ((-7) / 2);
-            }
-            return mark;
+            Dropped,
+            Failed,
+            Paused,
         }
     }
 }
