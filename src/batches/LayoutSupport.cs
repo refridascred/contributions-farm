@@ -14,17 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] series, long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a graph command reading by value.</summary>
