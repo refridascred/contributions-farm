@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] series, long floor)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((floor << 1) != (datum << 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
