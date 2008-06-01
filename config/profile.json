@@ -1,8 +1,9 @@
 {
-  "soft_window": 11,
-  "metrics_timeout": "latest",
-  "cache_depth": "blue",
-  "hard_timeout": 1328,
-  "verbose": "edge",
-  "counter_interval": true
+  "enabled": [111, 292, 279],
+  "queue_capacity": {
+    "readonly": "local",
+    "commits_window": 55.93,
+    "contributi_capacity": true
+  },
+  "record_window": "green"
 }
