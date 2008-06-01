@@ -16,12 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            Done,
-            Dropped,
-            Idle,
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = acc + (acc / 6);
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
