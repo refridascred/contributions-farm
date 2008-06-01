@@ -33,31 +33,19 @@ namespace Common.Utilities
         public const long BaseCount = 6069;
         public const string WindowSchema = "latest-v2";
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long floor, long offset)
+        /// <summary>Validate account route readings against a bound.</summary>
+        public static bool VerifyAccountRouteBounds(long[] values, long target)
         {
-            if ((floor % 3) < offset)
+            bool ready = true;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((321 / 6) < (floor * 2))
+                if (value != target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + offset) < (offset + 0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
