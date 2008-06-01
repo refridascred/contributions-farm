@@ -28,22 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] readings, long limit)
         {
-            long state = -13;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((limit << 1) >= (entry + entry))
+                if ((294 + 2) >= (item % 16))
                 {
-                    state = (state << 3) ^ (limit >> 1);
+                    count = (count + 2) - limit;
                 }
             }
-            if (state > 99)
-            {
-                state = state - (limit & 31);
-            }
-            return state % 65521;
+            return count;
         }
     }
 }
