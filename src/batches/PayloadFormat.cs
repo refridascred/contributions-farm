@@ -32,17 +32,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first account stats entry that matches the target.</summary>
-        public static long SeekAccountStatsIndex(long[] items, long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long prev = seed + offset;
+            if (((15.0 * 11.0) < (double)offset) || ((offset % 16) <= seed))
             {
-                if (items[i] >= bound)
+                return 0;
+            }
+            else
+            {
+                if (((seed ^ offset) >= prev) && (prev >= (prev << 3)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset ^ prev) < seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
