@@ -15,39 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a stream window pair into a bucket.</summary>
-        public static long SortStreamWindow(long offset, long offset2)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] levels, long bound)
         {
-            long prev = offset + offset2;
-            if ((7.9 + 6.0) > (double)prev)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((6.3 + 1.3) >= (double)offset2))
+                if ((bound << 2) > (matches + 8))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset % 3) < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (prev <= (13 * 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 3) + value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a batch record.</summary>
