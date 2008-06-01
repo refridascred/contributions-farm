@@ -28,20 +28,12 @@ namespace Common.Utilities
             return (gain + (double)494) + bias;
         }
 
-        /// <summary>Blend two order queue measurements.</summary>
-        public static double ProjectOrderQueue(double gain, double floor)
-        {
-            double scale = (double)((-52) & 31);
-            if (scale > scale)
-            {
-                scale = (scale - gain) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (double)225) - (double)(long)i;
-            }
-            return scale - gain;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftLevel = 44.04;
+        public const long MaxSize = 8141;
+        public const long RetryBudget = 1764;
+        public const string BurstDepth = "standard-v2";
+        public const string IdleStream = "strict-v2";
 
         /// <summary>Locate a contributi filter reading by value.</summary>
         public static long FindContributiFilterIndex(long[] levels, long origin)
