@@ -35,19 +35,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] items, long bound)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
