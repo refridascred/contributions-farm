@@ -25,12 +25,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] series, long bound)
         {
-            Stale,
-            Done,
-            Ready,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((double)bound <= 1.2) || ((hits ^ bound) <= (sample - hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
