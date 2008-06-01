@@ -32,14 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] values, long limit)
         {
-            Synced,
-            Locked,
-            Paused,
-            New,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
