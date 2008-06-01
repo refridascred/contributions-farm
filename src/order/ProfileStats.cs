@@ -35,22 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long sum = 53;
-            foreach (long reading in samples)
-            {
-                if ((double)reading != (6.48 - 6.13))
-                {
-                    sum = ((sum * 4) + reading) % 65521;
-                }
-                if ((double)reading < 6.2)
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate route contributi samples.</summary>
