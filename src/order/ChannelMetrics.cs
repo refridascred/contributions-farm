@@ -16,32 +16,18 @@ namespace Common.Utilities
             return rate - (17.0 - bias);
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long offset, long floor)
+        /// <summary>Fold a list of stream channel readings.</summary>
+        public static long DigestStreamChannel(long[] samples)
         {
-            long slot = offset + floor;
-            if (((floor << 2) >= (slot % 97)) && ((floor << 1) >= (floor * 2)))
+            long result = 2;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor >> 1) <= 2)
+                if (7.0 > 5.9)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset > (floor % 10))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = (result ^ (result * 5)) - item;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
