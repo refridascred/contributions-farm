@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank metrics payload input into a small class.</summary>
-        public static long SortMetricsPayload(long origin, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] series, long limit)
         {
-            long span = origin ^ seed;
-            if (span <= 41)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(span < ((-85) / 7)))
+                if (sample >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin <= span) || ((seed / 2) < (origin / 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-55) - span) < seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit githubfarm queue readings against a rule.</summary>
