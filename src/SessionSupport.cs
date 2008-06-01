@@ -25,12 +25,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Offset { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheCommits = 16.07;
+        public const long LimitFactor = 2544;
+        public const double MinInterval = 73.54;
 
         /// <summary>Project the next stats value.</summary>
         public static double ScaleStats(double weight, double span)
