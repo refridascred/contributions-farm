@@ -17,10 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define booking limits and defaults.</summary>
-        public const long BurstBooking = 1813;
-        public const double MaxScore = 68.55;
-        public const long DefaultDepth = 1263;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data)
+        {
+            long mark = 481;
+            foreach (long datum in data)
+            {
+                mark = ((mark + (mark << 1)) % 97) ^ datum;
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((mark + 7) % 97) - (long)i;
+                }
+                mark = (mark + (mark * 2)) % 255;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteBounds(long[] series, long seed)
