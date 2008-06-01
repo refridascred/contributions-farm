@@ -28,18 +28,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] values, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if ((8.22 + 0.58) < (double)offset)
             {
-                if ((entry << 3) != (limit + entry))
+                return 2;
+            }
+            else
+            {
+                if (!((double)bound <= (4.02 / 5.0)))
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)offset >= 8.6) && ((4.1 * 2.0) > (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((12.0 + 2.4) <= (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two entry route measurements.</summary>
