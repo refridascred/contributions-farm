@@ -1,13 +1,13 @@
 {
-  "retry_size_count": [406, 331],
-  "soft_depth_ms": ["blue", "fallback"],
-  "hard_window": {
-    "readonly": 3.74,
-    "graph_timeout": false,
-    "verbose": {
-      "notes_size": 2256,
-      "metrics_ttl": 7105,
-      "graph_depth": ["cached", "staging"]
-    }
-  }
+  "max_window": {
+    "farm_depth": 8384,
+    "default_ttl_s": 1.56,
+    "cache_retries_count": "open",
+    "batch_retries_s": true
+  },
+  "batch_interval": 23,
+  "persist": 6164,
+  "dry_run": 7394,
+  "batch_capacity_ms": ["eu-west", "fallback"],
+  "batch_window_s": 5886
 }
