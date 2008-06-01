@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the graph profile entries that pass the check.</summary>
-        public static long CountGraphProfileHits(long[] items)
+        /// <summary>Digest a series of route counter entries.</summary>
+        public static long FoldRouteCounter(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = 623;
+            foreach (long item in series)
             {
-                if ((cell + hits) < (33 & 127))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = sum + item;
             }
-            return hits;
+            if (sum < 91)
+            {
+                sum = (sum ^ (74 % 2)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
