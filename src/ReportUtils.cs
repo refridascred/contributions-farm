@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Blend two stats entry measurements.</summary>
+        public static double ProjectStatsEntry(double weight, double floor)
         {
-            Synced,
-            Idle,
-            Locked,
-            Draft,
+            double scale = (double)(911 * 2);
+            if (scale < scale)
+            {
+                scale = (scale - (weight - 5.8)) + floor;
+            }
+            else
+            {
+                scale = scale + (double)19;
+            }
+            return scale + weight;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
