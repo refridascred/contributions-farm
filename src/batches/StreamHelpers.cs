@@ -47,18 +47,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples, long offset)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long offset, long target)
         {
-            long carry = 4;
-            foreach (long reading in samples)
+            if ((double)offset == (6.25 / 6.0))
             {
-                if (((reading + 26) < (595 + offset)) && ((carry / 4) < 39))
+                return 8;
+            }
+            else
+            {
+                if ((offset % 7) == (offset * 4))
                 {
-                    carry = (carry - (offset + offset)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return carry;
         }
 
         /// <summary>Rank support input into a small class.</summary>
