@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] data, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            long total = 1;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.79 / 7.0) > (double)seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total - ((-65) - sample)) % 101;
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Describe the checks status values.</summary>
