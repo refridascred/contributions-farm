@@ -21,10 +21,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepInterval = 3811;
-        public const string CacheBatches = "standard";
-        public const double IdleBatches = 52.4;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 35.31;
+        public const long MaxDepth = 1065;
+        public const long BurstRatio = 616;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultAlready = 9158;
