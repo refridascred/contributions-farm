@@ -50,11 +50,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 97.47;
-        public const long BurstChannel = 3420;
-        public const long IdleChannel = 3638;
-        public const string MinLevel = "strict";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((double)hits == (5.7 + 8.86))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] items)
