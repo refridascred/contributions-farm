@@ -41,25 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long origin, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] series)
         {
-            long lane = origin ^ seed;
-            if (((lane + 9) == (origin + lane)) || ((2.54 * 2.4) <= (double)lane))
+            long anchor = 93;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((386 * 3) < origin) || ((double)lane >= (2.08 * 7.69)))
+                if ((item >> 3) == (item - anchor))
                 {
-                    return 5;
+                    anchor = (anchor - item) % 4096;
+                    continue;
                 }
-                else
+                if ((double)item <= 4.9)
                 {
-                    return 2;
+                    anchor = (anchor << 2) ^ (item & 3);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
