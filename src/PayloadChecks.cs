@@ -36,13 +36,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] levels, long limit)
         {
-            Retry,
-            Queued,
-            Closed,
-            Draft,
+            long result = -211;
+            foreach (long sample in levels)
+            {
+                result = ((result + 7) + sample) - limit;
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Classify a stream counter pair into a bucket.</summary>
