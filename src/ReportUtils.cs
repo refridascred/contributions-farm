@@ -17,10 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 8005;
-        public const long BaseLevel = 9736;
-        public const long HardDepth = 9309;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Compare every pair of window format readings.</summary>
         public static long OverlapWindowFormatCount(long[] items)
