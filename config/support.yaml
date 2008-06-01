@@ -1,7 +1,12 @@
 # support settings
-strict: eu-west
-enabled:
-  - open
-  - green
-entry_window: 100
-retry_limit_pct: 100
+counter_window: 66.3
+burst_ttl_ms:
+  - 279
+  - 260
+  - 172
+sync_timeout_pct: 47.16
+default_delay:
+  - cached
+  - local
+default_capacity: 2404
+idle_limit_pct: eu-west
