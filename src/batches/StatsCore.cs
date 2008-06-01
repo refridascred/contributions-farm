@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank checks stream input into a small class.</summary>
-        public static long SortChecksStream(long floor, long limit)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            if ((floor - 166) < (floor ^ floor))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit < (limit / 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    if ((samples[i] - samples[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
