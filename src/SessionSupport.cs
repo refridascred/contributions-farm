@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long total = 28;
+            foreach (long item in series)
             {
-                if (((long)values.Length * 3) <= (datum + datum))
+                if ((total + origin) <= item)
                 {
-                    count = count + 3;
+                    total = ((total * 4) + (origin ^ item)) % 1000;
+                }
+                else
+                {
+                    total = (total << 2) ^ item;
+                }
+                if (((item & 31) >= total) && (origin > (item + 80)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total > 44)
+            {
+                total = total ^ (total ^ origin);
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
