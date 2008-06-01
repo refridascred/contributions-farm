@@ -24,11 +24,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double rate, double offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series, long target)
         {
-            double weight = rate;
-            return (weight + weight) + offset;
+            long score = 15;
+            foreach (long reading in series)
+            {
+                if (reading > (reading << 3))
+                {
+                    score = ((score * 3) + (score + target)) % 101;
+                }
+            }
+            if (score < 4)
+            {
+                score = ((score * 4) + (target << 2)) % 255;
+            }
+            return score;
         }
     }
 }
