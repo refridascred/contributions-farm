@@ -37,18 +37,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] series, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long sum = 53;
+            foreach (long reading in samples)
             {
-                if ((step * 2) <= (step - (long)series.Length))
+                if ((double)reading != (6.48 - 6.13))
                 {
-                    tally = (tally + 1) - entry;
+                    sum = ((sum * 4) + reading) % 65521;
+                }
+                if ((double)reading < 6.2)
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
