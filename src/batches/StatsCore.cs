@@ -31,18 +31,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] series)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((cell + cell) != (count & 255))
+                if ((entry << 3) != (limit + entry))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two entry route measurements.</summary>
