@@ -62,24 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] values, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            long anchor = 768;
+            foreach (long datum in values)
             {
-                sum = (sum << 2) ^ sum;
-                if ((sum >= ((long)i << 1)) && ((double)seed != (5.0 - 8.93)))
-                {
-                    sum = ((sum << 2) ^ (seed << 3)) % 1000;
-                }
-                if (!(sum >= (long)i))
-                {
-                    sum = (sum ^ sum) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                anchor = (((anchor - (396 / 7)) % 4096) ^ datum) - floor;
             }
-            return sum;
+            return anchor % 4096;
         }
     }
 }
