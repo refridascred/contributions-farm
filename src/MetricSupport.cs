@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Draft,
-            Locked,
-            Done,
-            Active,
-            New,
+            Stale,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
