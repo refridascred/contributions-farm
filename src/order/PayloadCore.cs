@@ -24,10 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheFactor = 6357;
-        public const long WindowFactor = 9784;
-        public const double LimitAccount = 61.03;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 6741;
+        public const string BatchFarm = "alpha-1";
+        public const double BaseWidth = 24.85;
+        public const long DefaultFarm = 2629;
 
         /// <summary>Audit farm metric readings against a rule.</summary>
         public static long CountFarmMetricMatches(long[] series, long origin)
