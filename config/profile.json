@@ -1,5 +1,13 @@
 {
-  "burst_ratio_pct": "standard",
-  "warm_limit_s": "blue",
-  "dry_run": 38
+  "farm_delay": [164, 437, 388, 358],
+  "min_ttl_ms": true,
+  "window_retries": {
+    "base_threshold_pct": "legacy",
+    "retry_capacity_s": ["cached", "primary", "stable", "primary"],
+    "base_limit": "latest",
+    "metrics_window": "standard",
+    "enabled": [484, 169]
+  },
+  "retry_retries_s": "green",
+  "persist": 100
 }
