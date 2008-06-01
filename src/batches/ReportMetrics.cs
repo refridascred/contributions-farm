@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstBudget = 5385;
+        public const long IdleCount = 8468;
+        public const long RetryBudget = 5465;
+        public const double BatchSchema = 81.48;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double BlendStream(double scale, double floor)
