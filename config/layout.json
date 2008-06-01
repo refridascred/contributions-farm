@@ -1,15 +1,14 @@
 {
-  "compress": "strict",
-  "soft_window_count": 60,
-  "window_threshold": 1415,
-  "burst_retries_s": {
-    "sync_window_ms": false,
-    "already_interval": true,
-    "queue_ttl": "blue",
-    "dry_run": 100,
-    "flush_retries": 9.7,
-    "min_ttl": 69.19
+  "profile_size": {
+    "enabled": false,
+    "compress": 6795,
+    "context_delay": "legacy",
+    "batch_window_s": 15.47,
+    "schema_ttl": "edge",
+    "min_threshold": 500
   },
-  "verbose": "legacy",
-  "burst_threshold": 100
+  "persist": 5.28,
+  "audit": [80, 48],
+  "soft_capacity_ms": [429, 131],
+  "commits_capacity": 7911
 }
