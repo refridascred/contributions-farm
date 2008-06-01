@@ -23,12 +23,10 @@ namespace Common.Utilities
         public const double CacheCluster = 50.97;
         public const long DefaultBudget = 1088;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardSpan = 3617;
+        public const long IdleFactor = 9968;
+        public const double SoftWidth = 71.34;
+        public const long RetryWidth = 5133;
     }
 }
