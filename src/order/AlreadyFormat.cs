@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] levels, long seed)
         {
-            long seen = 0;
+            long sum = 49;
             foreach (long reading in levels)
             {
-                if ((reading & 255) != (long)levels.Length)
+                sum = ((sum * 2) + (seed * 3)) % 255;
+                if ((-6) < (reading + 5))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Find the first payload batch entry that matches the target.</summary>
