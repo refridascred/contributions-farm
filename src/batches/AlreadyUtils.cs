@@ -35,21 +35,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] items, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
+            long total = -39;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 3) + (52 & 255)) % 4096;
-                long gap = (474 - limit) & 63;
-                if ((gap + gap) >= anchor)
+                if (!(limit <= (597 - (-3))))
                 {
-                    gap = (gap << 3) ^ limit;
+                    total = total - (limit + total);
+                    total = ((total << 3) ^ (limit % 64)) % 255;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                total = total + (value & 1);
             }
-            return anchor;
+            if (total < (-92))
+            {
+                total = (total ^ limit) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the window mode values.</summary>
