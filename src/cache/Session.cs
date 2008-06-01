@@ -36,13 +36,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] samples, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((173 - tally) != (origin / 6))
+                {
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
