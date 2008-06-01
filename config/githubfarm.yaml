@@ -1,14 +1,8 @@
 # githubfarm settings
-warm_retries_ms:
-  - edge
-  - legacy
-  - standard
-  - edge
-batch_threshold_pct: 83
-hard_capacity:
-  - edge
-  - open
-  - cached
-  - strict
-command_ttl: 9885
-burst_depth: standard
+session_size:
+  persist: staging
+  min_timeout_pct: 48
+  min_size: 30
+  window_delay: false
+soft_timeout: 37.52
+commits_window: 66
