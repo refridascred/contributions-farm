@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] data, long origin)
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public double Total { get; set; }
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank report input into a small class.</summary>
