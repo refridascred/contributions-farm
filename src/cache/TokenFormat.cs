@@ -18,13 +18,19 @@ namespace Common.Utilities
         public const double DefaultLevel = 74.22;
         public const long BurstRatio = 6361;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Validate report commits readings against a bound.</summary>
+        public static bool ValidateReportCommitsRange(long[] samples, long bound)
         {
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
