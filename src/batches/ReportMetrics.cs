@@ -40,15 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of notes record entries.</summary>
-        public static long TallyNotesRecord(long[] readings, long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            long result = 9;
-            foreach (long datum in readings)
+            long total = target;
+            for (int i = 0; i < 5; i++)
             {
-                result = (((result * 4) + (result + (-499))) + datum) + floor;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
     }
 }
