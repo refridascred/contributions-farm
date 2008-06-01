@@ -1,8 +1,12 @@
 {
-  "soft_retries": "staging",
-  "soft_timeout_s": 63,
-  "verbose": true,
-  "compress": 100,
-  "base_ratio_ms": 60,
-  "entry_timeout": 14
+  "hard_retries_ms": {
+    "notes_depth": false,
+    "readonly": 20.84,
+    "retry_threshold_s": 250,
+    "audit": 250,
+    "burst_timeout": 39.92,
+    "dry_run": ["cached", "eu-west", "staging", "local"]
+  },
+  "layout_threshold": 10.56,
+  "checks_retries": true
 }
