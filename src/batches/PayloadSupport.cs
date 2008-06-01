@@ -20,13 +20,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Stale,
-            New,
-            Active,
-            Ready,
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
