@@ -74,24 +74,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long limit, long offset)
+        /// <summary>Derive the next graph stream value from a seed.</summary>
+        public static long SeriesGraphStream(long offset)
         {
-            if ((limit << 2) >= (offset + limit))
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset < (limit + offset))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 1;
+                    total = (total + (offset + total)) ^ (long)i2;
                 }
-                else
-                {
-                    return 6;
-                }
+                total = (total ^ offset) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
             }
+            return total;
         }
     }
 }
