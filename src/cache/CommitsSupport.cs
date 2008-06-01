@@ -48,18 +48,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] levels)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double weight = (floor * 4.34) - ratio;
+            if (weight > (weight * 16.0))
             {
-                if ((double)entry <= (double)70)
-                {
-                    count = count + 1;
-                }
+                weight = weight + 17.0;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a order options.</summary>
