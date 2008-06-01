@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 8853;
         public const long MaxSpan = 3011;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] readings, long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (datum <= limit)
+                if (item > origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Validate buffer order readings against a bound.</summary>
