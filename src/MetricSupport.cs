@@ -20,19 +20,38 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] readings, long origin)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long step)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            if (!((step << 3) >= step))
             {
-                if (item <= origin)
+                return 2;
+            }
+            else
+            {
+                if ((double)step < (7.29 / 4.0))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (5.1 >= (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step >= (limit << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
