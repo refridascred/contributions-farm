@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] data, long offset)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the counter mode values.</summary>
