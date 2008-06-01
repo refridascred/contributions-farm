@@ -70,18 +70,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] samples)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] levels)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = 4;
+            foreach (long sample in levels)
             {
-                if ((value * 2) < value)
-                {
-                    count = count + 2;
-                }
+                result = ((result + (result & 63)) % 65521) - sample;
             }
-            return count;
+            return result;
         }
     }
 }
