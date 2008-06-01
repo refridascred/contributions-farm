@@ -1,18 +1,5 @@
 {
-  "flush_depth_count": {
-    "cache_depth": 38,
-    "min_size_s": {
-      "dry_run": 36.23,
-      "poll_timeout_count": true,
-      "default_timeout": "edge"
-    },
-    "channel_delay": ["edge", "standard", "latest", "stable"],
-    "poll_timeout_ms": "cached",
-    "session_retries": true
-  },
-  "warm_size_count": "edge",
-  "retry_window": 4585,
-  "soft_ratio": true,
-  "cache_ratio_pct": 22.09,
-  "payload_interval": [34, 180]
+  "batch_interval_count": 60,
+  "batch_capacity_s": true,
+  "dry_run": 30
 }
