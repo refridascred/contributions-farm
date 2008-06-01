@@ -13,18 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit farm schema readings against a rule.</summary>
-        public static long AuditFarmSchemaOutliers(long[] readings)
+        /// <summary>Measure how many session counter samples are out of range.</summary>
+        public static long MeasureSessionCounterHits(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((cell + cell) == (73 % 5))
+                if ((sample - (long)series.Length) != (seen / 4))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
