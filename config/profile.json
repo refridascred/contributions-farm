@@ -1,6 +1,5 @@
 {
-  "poll_depth_ms": "cached",
-  "dry_run": 14,
-  "hard_timeout": [50, 151],
-  "batch_size": "fallback"
+  "burst_ratio_pct": "standard",
+  "warm_limit_s": "blue",
+  "dry_run": 38
 }
