@@ -32,12 +32,20 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepRatio = 3345;
-        public const long LimitNotes = 7428;
-        public const double IdleNotes = 69.33;
-        public const long MinCount = 3223;
-        public const long CacheNotes = 9922;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] levels, long limit)
+        {
+            long score = 849;
+            foreach (long value in levels)
+            {
+                score = ((score << 2) ^ value) % 1000;
+            }
+            if (score < 5)
+            {
+                score = (score + limit) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long origin)
