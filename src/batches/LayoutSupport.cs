@@ -29,17 +29,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a support contributi sample.</summary>
-        public static long LookupSupportContributiIndex(long[] values, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = -93;
+            foreach (long entry in levels)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total + entry) % 255;
             }
-            return -1;
+            if (total > 4)
+            {
+                total = (total + (total / 5)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the account status values.</summary>
