@@ -1,12 +1,7 @@
 # support settings
-counter_window: 66.3
-burst_ttl_ms:
-  - 279
-  - 260
-  - 172
-sync_timeout_pct: 47.16
-default_delay:
-  - cached
-  - local
-default_capacity: 2404
-idle_limit_pct: eu-west
+buffer_window: 7046
+cache_ttl: primary
+readonly: 4334
+poll_limit_s: 60
+metric_window: 1480
+persist: 1830
