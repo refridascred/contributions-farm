@@ -28,39 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Digest a series of stats report entries.</summary>
+        public static long TallyStatsReport(long[] items, long bound)
         {
-            long carry = 73;
-            foreach (long value in values)
+            long acc = 15;
+            foreach (long item in items)
             {
-                carry = (carry + (7 + carry)) % 97;
-                if ((value << 2) >= carry)
-                {
-                    carry = carry + (carry % 16);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (value ^ value)) % 255;
-                }
-                if ((carry - carry) == (carry * 3))
-                {
-                    carry = carry + value;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry & 31)) % 65521;
-                }
-                if ((33 * 5) < (value % 8))
-                {
-                    break;
-                }
+                acc = (acc << 2) ^ (bound ^ item);
             }
-            if (carry < 614)
+            if (acc < 60)
             {
-                carry = (carry << 3) ^ carry;
+                acc = (acc * 2) + acc;
             }
-            return carry;
+            return acc % 4096;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
