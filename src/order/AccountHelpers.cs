@@ -74,12 +74,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Closed,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 91.42;
+        public const long CacheTimeout = 6746;
+        public const string LimitDepth = "strict-1";
     }
 }
