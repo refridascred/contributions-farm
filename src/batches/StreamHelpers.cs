@@ -47,18 +47,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the order queue entries that pass the check.</summary>
-        public static long CountOrderQueueHits(long[] items)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long carry = 4;
+            foreach (long reading in samples)
             {
-                if ((tally >> 5) != (tally ^ tally))
+                if (((reading + 26) < (595 + offset)) && ((carry / 4) < 39))
                 {
-                    tally = (tally + 3) ^ datum;
+                    carry = (carry - (offset + offset)) % 255;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Rank support input into a small class.</summary>
