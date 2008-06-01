@@ -39,12 +39,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 1644;
-        public const double HardInterval = 96.15;
-        public const string CacheCounter = "alpha-edge";
-        public const long BurstWidth = 8311;
-        public const long HardWidth = 3624;
+        /// <summary>Project the next filter route value.</summary>
+        public static double ScaleFilterRoute(double rate, double bias)
+        {
+            double load = (double)92 - (bias * 17.0);
+            if (load > load)
+            {
+                load = (load - (double)767) + rate;
+            }
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - 19.0) + (double)(long)i;
+            }
+            return load - load;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
