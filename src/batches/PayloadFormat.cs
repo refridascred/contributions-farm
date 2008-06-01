@@ -27,19 +27,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double bias, double floor)
+        /// <summary>Rank entry route input into a small class.</summary>
+        public static long BucketEntryRoute(long floor, long origin)
         {
-            double rate = (floor * 4.28) + bias;
-            if (rate >= (double)6)
+            long prev = floor + origin;
+            if ((prev & 7) <= prev)
             {
-                rate = rate + (rate / 5.0);
+                return 5;
             }
             else
             {
-                rate = rate - (double)49;
+                if ((double)origin < (3.9 - 17.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((prev - floor) < prev)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (double)381)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return rate - floor;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
