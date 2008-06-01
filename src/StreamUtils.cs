@@ -48,12 +48,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Validate metric graph readings against a bound.</summary>
+        public static bool ValidateMetricGraphBounds(long[] readings, long floor)
         {
-            Done,
-            Locked,
-            Draft,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
