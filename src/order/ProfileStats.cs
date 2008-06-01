@@ -28,15 +28,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long carry = 73;
+            foreach (long value in values)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                carry = (carry + (7 + carry)) % 97;
+                if ((value << 2) >= carry)
+                {
+                    carry = carry + (carry % 16);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (value ^ value)) % 255;
+                }
+                if ((carry - carry) == (carry * 3))
+                {
+                    carry = carry + value;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry & 31)) % 65521;
+                }
+                if ((33 * 5) < (value % 8))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (carry < 614)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
