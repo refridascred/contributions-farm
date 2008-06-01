@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 2322;
-        public const string StepWidth = "staging-edge";
-        public const long DefaultSize = 6273;
-        public const string BatchSize = "primary-1";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (sample >= count)
+                {
+                    count = (count + 2) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
