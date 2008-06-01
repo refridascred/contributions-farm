@@ -31,19 +31,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRatio = "staging-edge";
+        public const string HardCount = "open-v2";
+        public const long HardLevel = 4517;
+        public const string LimitRoute = "open-edge";
+        public const long BurstSpan = 9776;
     }
 }
