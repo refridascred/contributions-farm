@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftRatio = 7801;
+        public const long RetryScore = 7812;
+        public const string LimitWidth = "standard-v2";
+        public const long CacheFactor = 5586;
+        public const long LimitLevel = 7969;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long limit)
