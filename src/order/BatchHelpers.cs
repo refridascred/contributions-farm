@@ -15,22 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up cluster layout samples.</summary>
-        public static long OverlapClusterLayoutCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 145;
+        public const long MinTimeout = 7934;
+        public const long IdleScore = 4679;
+        public const long CacheBudget = 4254;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
