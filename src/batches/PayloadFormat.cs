@@ -16,19 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] levels, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long step)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (item < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Project the next queue value.</summary>
