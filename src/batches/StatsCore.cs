@@ -42,18 +42,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] values, long origin)
         {
-            long sum = -12;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (((long)data.Length > (value + value)) || ((sum - sum) >= value))
+                if ((origin + origin) <= (hits ^ hits))
                 {
-                    sum = sum - (sum + value);
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
