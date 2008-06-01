@@ -65,19 +65,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] readings, long step)
         {
-            bool ready = true;
+            long seen = 0;
             foreach (long reading in readings)
             {
-                if (reading >= origin)
+                if ((reading + step) > reading)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Accumulate context samples.</summary>
