@@ -17,13 +17,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long seed)
         {
-            Retry,
-            Done,
-            Closed,
-            Synced,
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 2) ^ 9) % 1000;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
