@@ -26,11 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 7005;
-        public const long BurstInterval = 1799;
-        public const double BurstMetrics = 13.05;
-        public const long WindowRatio = 5686;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileGaps(long[] items)
