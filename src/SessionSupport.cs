@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (cell < (3 - cell))
+                if (!((((-4) + count) >= (4 << 3)) && ((double)(long)samples.Length <= (4.18 / 3.0))))
                 {
-                    hits = hits + 1;
+                    count = ((count + 1) + cell) + floor;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of context readings.</summary>
