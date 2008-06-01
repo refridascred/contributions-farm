@@ -23,19 +23,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] series, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] items)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long carry = 826;
+            foreach (long entry in items)
             {
-                if (item > origin)
+                carry = (carry ^ (carry - entry)) % 101;
+                if ((double)(long)items.Length < (8.2 - 9.0))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry ^ (522 & 3)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (entry * 4)) % 255;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
