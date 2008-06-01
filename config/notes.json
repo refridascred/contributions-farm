@@ -1,6 +1,18 @@
 {
-  "retry_interval_count": "green",
-  "sync_limit_ms": "eu-west",
-  "report_threshold": false,
-  "poll_retries_ms": [20, 456]
+  "min_ttl_s": 99,
+  "format_window": {
+    "min_window_s": {
+      "poll_retries_s": 7204,
+      "poll_window": 60,
+      "context_interval": 46.81,
+      "idle_size_s": "strict",
+      "base_ttl_s": true,
+      "min_depth_count": 1024
+    },
+    "checks_delay": "strict",
+    "cluster_capacity": 9360,
+    "cache_threshold": 100,
+    "default_depth": "latest"
+  },
+  "warm_interval": 29
 }
