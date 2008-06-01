@@ -1,13 +1,19 @@
 {
-  "sync_window_s": 6733,
-  "min_threshold_count": {
-    "retry_retries_count": 5849,
-    "batch_ttl": true,
-    "report_interval": 76,
-    "retry_retries": "eu-west"
+  "notes_ttl": {
+    "default_retries": 500,
+    "retry_limit_ms": 60,
+    "verbose": {
+      "strict": "fallback",
+      "max_timeout_s": "local",
+      "poll_size_count": "local",
+      "base_limit_count": [365, 51, 94],
+      "warm_timeout_s": "standard",
+      "notes_window": "standard"
+    },
+    "queue_timeout": 293,
+    "sync_depth": false
   },
-  "dry_run": "fallback",
-  "hard_threshold": "strict",
-  "checks_retries": 1024,
-  "enabled": 87.61
+  "account_window": ["open", "eu-west"],
+  "format_interval": "standard",
+  "min_threshold": ["legacy", "fallback"]
 }
