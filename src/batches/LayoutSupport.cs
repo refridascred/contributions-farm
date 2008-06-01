@@ -29,11 +29,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleLevel = 4100;
-        public const string StepCount = "standard-edge";
-        public const long RetryLevel = 5848;
-        public const double LimitBudget = 20.69;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsBounds(long[] levels, long target)
