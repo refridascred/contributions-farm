@@ -1,7 +1,10 @@
 # githubfarm settings
-enabled:
-  - 99
-  - 162
-  - 158
-max_size_count: blue
-compress: legacy
+readonly:
+  - open
+  - primary
+  - open
+  - open
+audit:
+  - 498
+  - 68
+stream_depth: cached
