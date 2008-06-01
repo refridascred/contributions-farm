@@ -50,10 +50,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheInterval = "legacy-edge";
-        public const double MaxGraph = 73.26;
-        public const long HardInterval = 7663;
-        public const long BaseRatio = 1169;
+        /// <summary>Count command channel pairs that satisfy a relation.</summary>
+        public static long CompareCommandChannelCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
