@@ -56,18 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((entry * 5) >= seen)
+                if ((((offset + 56) > (sample * 3)) && ((96 & 127) <= matches)) && ((matches ^ matches) <= (offset - matches)))
                 {
-                    seen = seen + 2;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a layout record.</summary>
