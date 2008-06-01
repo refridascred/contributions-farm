@@ -27,14 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] values, long offset)
         {
-            Locked,
-            Closed,
-            Retry,
-            Idle,
-            Failed,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading / 4) < (reading * 3))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload record.</summary>
