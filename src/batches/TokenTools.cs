@@ -35,17 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] levels, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (levels[i] < origin)
+                if (((17.0 * 8.6) > (double)item) && (((798 & 7) <= matches) || ((item ^ matches) <= (717 + matches))))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
