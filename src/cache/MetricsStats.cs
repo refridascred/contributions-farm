@@ -37,20 +37,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a window tools counter forward.</summary>
-        public static long RollWindowTools(long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((long)i == (score % 100))
-                {
-                    score = ((score << 2) ^ (score >> 4)) % 97;
-                }
-                score = ((score * 3) + (score + score)) % 97;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Pending,
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
