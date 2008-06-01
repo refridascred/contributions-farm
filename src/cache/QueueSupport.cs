@@ -32,22 +32,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine farm githubfarm values into a single score.</summary>
-        public static long FoldFarmGithubfarm(long[] values)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long target)
         {
-            long total = -76;
-            foreach (long reading in values)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(((-9) * 3) < (reading * 5)))
-                {
-                    total = ((total * 3) + (total ^ 30)) % 101;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            if (total < 572)
-            {
-                total = ((total << 3) ^ (92 % 64)) % 4096;
-            }
-            return total;
+            return acc;
         }
     }
 }
