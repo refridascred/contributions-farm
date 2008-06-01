@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] samples)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.2 / 3.0) >= (double)tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) ^ item;
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a metric summary.</summary>
