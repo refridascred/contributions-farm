@@ -26,18 +26,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = 2;
+            foreach (long cell in data)
             {
-                if ((value - seen) <= (value + seen))
+                if ((seed + cell) < (mark ^ (long)data.Length))
                 {
-                    seen = seen + 1;
+                    mark = mark ^ (seed ^ 63);
                 }
+                else
+                {
+                    mark = mark - (seed + 750);
+                    mark = (mark - (mark & 1)) % 255;
+                }
+                mark = (mark + (mark - mark)) % 4096;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a context options.</summary>
