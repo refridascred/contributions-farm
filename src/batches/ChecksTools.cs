@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many account metric samples are out of range.</summary>
-        public static long CountAccountMetricHits(long[] values, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((origin >> 2) > (sample * 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the commits mode values.</summary>
