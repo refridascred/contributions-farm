@@ -13,19 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    total = ((total ^ limit) % 101) - (long)i3;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
