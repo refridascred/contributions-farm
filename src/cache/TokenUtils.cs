@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already support samples are out of range.</summary>
-        public static long TallyAlreadySupportGaps(long[] items)
+        /// <summary>Measure how many graph cluster samples are out of range.</summary>
+        public static long CountGraphClusterOutliers(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (((-16) + reading) < count)
+                if ((matches - matches) != (701 + matches))
                 {
-                    count = count + 3;
+                    matches = ((matches + 1) + item) + seed;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
