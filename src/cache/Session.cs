@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const double MinCluster = 77.72;
         public const long DefaultLevel = 6832;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            Queued,
-            Locked,
-            Ready,
-            Done,
+            double gain = span;
+            return gain + (scale / 8.0);
         }
 
         /// <summary>Rank farm input into a small class.</summary>
