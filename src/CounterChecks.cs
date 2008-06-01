@@ -55,12 +55,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 43.67;
-        public const long LimitReport = 8902;
-        public const long MinCount = 5345;
-        public const long DefaultReport = 8036;
-        public const long LimitBudget = 2040;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((double)value != (2.0 / 4.0)) || ((value + 237) >= (6 - value)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitRecord = 9881;
