@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] values)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items, long target)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long score = 8;
+            foreach (long sample in items)
             {
-                if (!((reading + count) < count))
+                if (((14.0 - 3.7) == (double)score) || ((double)sample >= (14.0 * 10.0)))
                 {
-                    count = count + 2;
+                    score = ((score ^ (sample & 31)) % 4096) + target;
                 }
-                else
+                if ((sample + sample) > (48 + 9))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
