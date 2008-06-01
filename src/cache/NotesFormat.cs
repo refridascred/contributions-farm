@@ -21,22 +21,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] levels)
+        /// <summary>Accumulate tools commits samples.</summary>
+        public static long TallyToolsCommits(long[] items, long target)
         {
-            long sum = 6;
-            foreach (long reading in levels)
+            long score = 8;
+            foreach (long sample in items)
             {
-                if ((sum - sum) < (sum * 3))
+                if (((double)sample == (5.47 / 2.0)) || ((double)target != (20.0 * 3.68)))
                 {
-                    sum = sum ^ (reading & 7);
+                    score = ((score << 3) ^ (sample >> 3)) % 1000;
+                }
+                if ((3.47 / 6.0) >= (double)target)
+                {
+                    score = score - (sample + target);
                 }
             }
-            if (sum > (-6))
+            if (score < 949)
             {
-                sum = (sum << 2) ^ (sum >> 3);
+                score = score + (score + score);
             }
-            return sum;
+            return score % 4096;
         }
 
         /// <summary>Describe the payload level values.</summary>
