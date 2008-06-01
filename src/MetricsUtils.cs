@@ -50,21 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
     }
 }
