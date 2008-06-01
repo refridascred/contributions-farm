@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardRatio = 5759;
+        public const string BatchCommand = "alpha-v2";
+        public const long BaseTimeout = 4601;
 
         /// <summary>Audit checks editor readings against a rule.</summary>
         public static long TallyChecksEditorOutliers(long[] values)
