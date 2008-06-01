@@ -33,24 +33,14 @@ namespace Common.Utilities
             return (mean - (bias + 6.3)) + span;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long floor, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            if (((target % 100) != (target + target)) || ((floor / 7) <= 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(2 <= (676 + floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            New,
+            Active,
+            Stale,
+            Closed,
         }
     }
 }
