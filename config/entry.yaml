@@ -1,15 +1,20 @@
 # entry settings
-poll_limit_ms: open
-default_ratio:
-  - 209
-  - 489
-idle_timeout: local
-support_ttl:
-  - 64
-  - 403
-  - 328
-  - 395
-poll_ttl_ms: green
-flush_retries_ms:
-  - 330
-  - 297
+session_threshold: cached
+base_window_ms:
+  soft_limit: primary
+  batch_delay:
+    - 392
+    - 280
+    - 318
+    - 210
+  contributi_threshold:
+    strict: local
+    persist: 100
+    max_delay_s: 1.04
+    flush_window_s: eu-west
+    max_ratio_s: green
+    filter_timeout: local
+cache_capacity: false
+idle_size:
+  - primary
+  - fallback
