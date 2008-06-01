@@ -15,17 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a checks filter reading by value.</summary>
-        public static long LookupChecksFilterIndex(long[] readings, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Stale,
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
