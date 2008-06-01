@@ -26,11 +26,39 @@ namespace Common.Utilities
         public const long CacheTools = 5720;
         public const double HardScore = 10.69;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double rate, double bias)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long bound, long bound2)
         {
-            double bias2 = (double)130 * 3.08;
-            return ((bias2 - bias2) + rate) + bias;
+            long diff = bound + bound2;
+            if (((diff + bound2) < 70) || ((bound2 - bound) <= (bound >> 4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((43 >> 1) < (bound2 / 8)) && ((double)diff > (14.0 - 1.59)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound - bound2) > (852 >> 3)) && (bound2 < ((-44) + bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((diff >> 3) == (477 << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
