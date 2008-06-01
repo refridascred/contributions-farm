@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command batch pair into a bucket.</summary>
-        public static long ClassifyCommandBatch(long offset, long offset2)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            long slot = offset ^ offset2;
-            if (!((71 ^ offset) >= (48 + offset2)))
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((slot / 8) <= (offset2 + slot))
+                for (int i3 = 0; i3 < 2; i3++)
                 {
-                    return 0;
+                    total = ((total ^ limit) % 101) - (long)i3;
                 }
-                else
-                {
-                    if (offset > (offset2 / 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset2 % 60) < (slot + 75))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
