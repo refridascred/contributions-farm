@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long step)
         {
-            Retry,
-            Ready,
-            New,
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((total >> 2) >= (total % 7)))
+                {
+                    total = (total - (8 >> 2)) % 1000;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = (total + 767) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
