@@ -29,12 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples, long offset)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public bool Total { get; set; }
+            long total = 711;
+            foreach (long cell in samples)
+            {
+                total = (((total * 5) + total) - cell) - offset;
+            }
+            if (total > 1)
+            {
+                total = ((total * 2) + (total * 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Measure how many metric token samples are out of range.</summary>
