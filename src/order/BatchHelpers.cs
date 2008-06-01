@@ -37,12 +37,11 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Dropped,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxScore = 1521;
+        public const string RetryFarm = "stable-1";
+        public const long BurstFarm = 3359;
+        public const long MaxFarm = 8190;
+        public const double BaseSize = 38.69;
     }
 }
