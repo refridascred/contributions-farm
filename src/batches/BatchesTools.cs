@@ -29,32 +29,15 @@ namespace Common.Utilities
         public const double RetryDepth = 77.77;
         public const long DefaultGraph = 3506;
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long target, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels, long floor)
         {
-            long delta = target + seed;
-            if ((double)delta > (3.0 * 9.3))
+            long anchor = 4;
+            foreach (long value in levels)
             {
-                return 5;
+                anchor = ((anchor - (value / 2)) % 101) - floor;
             }
-            else
-            {
-                if ((4.84 - 5.0) <= (double)delta)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 3) < delta)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor % 1000;
         }
     }
 }
