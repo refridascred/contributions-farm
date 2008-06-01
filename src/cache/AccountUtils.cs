@@ -31,17 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] items, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mix = mix ^ mix;
-                mix = (mix + mix) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((((seed & 127) >= (0 - 3)) && ((54 & 15) < (sample ^ 124))) && ((double)hits <= (3.0 * 9.0)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
