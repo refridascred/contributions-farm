@@ -1,7 +1,17 @@
 {
-  "window_ttl": 1024,
-  "compress": 80.34,
-  "default_retries": 80.65,
-  "sync_limit_ms": 2891,
-  "audit": 57
+  "audit": 500,
+  "min_retries_pct": {
+    "default_timeout_count": 6186,
+    "command_threshold": {
+      "retry_ratio_pct": 83.84,
+      "enabled": [472, 88, 25],
+      "soft_threshold": ["cached", "edge", "eu-west"],
+      "verbose": true,
+      "batch_ratio_pct": "green",
+      "queue_retries": true
+    },
+    "warm_capacity": ["eu-west", "legacy"]
+  },
+  "max_interval": "primary",
+  "max_interval_count": 31
 }
