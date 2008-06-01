@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route farm entry stays within the limit.</summary>
-        public static bool VerifyRouteFarmRange(long[] samples, long bound)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a stats reading.</summary>
