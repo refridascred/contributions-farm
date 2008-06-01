@@ -1,17 +1,6 @@
 {
-  "retry_capacity": 8.57,
-  "farm_retries": {
-    "hard_size_ms": {
-      "compress": "edge",
-      "max_threshold_count": ["cached", "cached", "latest", "staging"],
-      "default_limit_pct": [428, 61],
-      "sync_size_pct": false,
-      "retry_threshold_s": 5695
-    },
-    "verbose": 3056,
-    "idle_timeout_s": "fallback"
-  },
-  "readonly": true,
-  "metrics_interval": 71.04,
-  "burst_limit_pct": [131, 331, 449, 436]
+  "batch_threshold": 250,
+  "min_timeout_count": 85,
+  "retry_size_count": 96,
+  "account_timeout": "standard"
 }
