@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 82.02;
-        public const string StepBudget = "cached-v2";
-        public const long HardFormat = 1643;
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double scale, double floor)
+        {
+            double weight = 4.17;
+            if (weight < (floor + floor))
+            {
+                weight = (weight + 4.4) - scale;
+            }
+            return weight - (weight - 8.69);
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long RankCommand(long offset, long bound)
