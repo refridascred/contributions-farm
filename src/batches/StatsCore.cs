@@ -59,32 +59,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long limit, long bound)
+        /// <summary>Compare every pair of checks profile readings.</summary>
+        public static long MatchChecksProfileCount(long[] data)
         {
-            long cur = limit + bound;
-            if ((3.36 / 2.0) > (double)cur)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((172 >> 1) != (4 + limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)cur < (6.7 + 9.2))
+                    if ((data[i] - data[j]) < 20)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
