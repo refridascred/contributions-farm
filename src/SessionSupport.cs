@@ -21,18 +21,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] items)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double weight, double span)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double scale = (double)(611 ^ 402);
+            for (int i = 0; i < 8; i++)
             {
-                if ((((double)entry == (double)seen) || (3.0 < (double)seen)) && ((59 - entry) != (seen + entry)))
-                {
-                    seen = seen + 3;
-                }
+                scale = ((scale - 6.68) + (double)(long)i) + weight;
             }
-            return seen;
+            return scale - span;
         }
     }
 }
