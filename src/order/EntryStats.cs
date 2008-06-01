@@ -71,11 +71,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 4955;
-        public const long IdleLevel = 5470;
-        public const string DefaultCluster = "stable";
-        public const double SoftCluster = 45.03;
-        public const string HardCluster = "latest-edge";
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
