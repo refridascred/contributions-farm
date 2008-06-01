@@ -49,32 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long limit, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long bound = limit + target;
-            if (((-917) ^ bound) > (577 ^ 934))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit == (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit % 8) != (target + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Stale,
+            Retry,
+            Locked,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
