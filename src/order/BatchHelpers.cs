@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            New,
+            Retry,
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Match up cluster layout samples.</summary>
