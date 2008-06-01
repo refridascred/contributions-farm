@@ -82,19 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] values, long bound)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double scale, double offset)
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double gain = offset;
+            return (gain + gain) + scale;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
