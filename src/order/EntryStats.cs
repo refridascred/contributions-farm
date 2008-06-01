@@ -33,15 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double weight, double span)
+        /// <summary>Validate cluster farm readings against a bound.</summary>
+        public static bool ValidateClusterFarmRange(long[] readings, long bound)
         {
-            double drift = weight;
-            if (drift > span)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                drift = drift + (drift + drift);
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift + (drift - 9.06);
+            return ready;
         }
 
         /// <summary>Adjust a context reading.</summary>
