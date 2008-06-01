@@ -31,11 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleSpan = 8741;
-        public const long MaxDepth = 5515;
-        public const long BurstInterval = 8085;
-        public const double SoftSize = 7.02;
-        public const long WindowSpan = 3318;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Ready,
+            Pending,
+            Synced,
+            Closed,
+        }
     }
 }
