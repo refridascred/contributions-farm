@@ -53,22 +53,18 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Audit entry checks readings against a rule.</summary>
-        public static long MeasureEntryChecksMatches(long[] levels)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long state = 962;
+            foreach (long value in samples)
             {
-                if ((double)reading > (9.2 * 19.0))
+                if ((state % 8) < (state - state))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = ((state * 5) + (value ^ state)) % 1000;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
