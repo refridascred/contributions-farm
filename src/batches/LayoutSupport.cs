@@ -20,14 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] items)
         {
-            Active,
-            Queued,
-            Retry,
-            Ready,
-            Idle,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits >= (7.97 - 12.0))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine support stream values into a single score.</summary>
