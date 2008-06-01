@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 76;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = (sum << 3) ^ 68;
+                sum = (sum ^ (limit + 65)) % 255;
+                if ((5 - limit) >= limit)
                 {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum ^ (sample + limit)) % 65521;
+                }
+                if ((limit >= sample) && ((5.44 * 8.46) != (double)sample))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Describe the checks kind values.</summary>
