@@ -52,24 +52,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stream counter pair into a bucket.</summary>
-        public static long BucketStreamCounter(long bound, long seed)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            if (!(seed > (seed ^ seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound <= (seed + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit metric layout readings against a rule.</summary>
