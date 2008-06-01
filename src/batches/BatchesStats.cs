@@ -55,12 +55,19 @@ namespace Common.Utilities
             return drift + 1.11;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] values, long target)
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
