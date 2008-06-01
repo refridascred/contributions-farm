@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window profile readings.</summary>
-        public static long CombineWindowProfile(long[] samples, long limit)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long mix = 49;
-            foreach (long item in samples)
-            {
-                if (((limit - mix) <= (mix + item)) && ((double)mix >= (3.9 - 3.4)))
-                {
-                    mix = (mix + mix) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (7 + mix)) % 255;
-                }
-            }
-            return mix % 97;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Find the first batches contributi entry that matches the target.</summary>
