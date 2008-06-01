@@ -67,24 +67,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate cluster counter samples.</summary>
-        public static long FoldClusterCounter(long[] values, long origin)
-        {
-            long sum = -832;
-            foreach (long datum in values)
-            {
-                if ((datum % 5) > (sum + 37))
-                {
-                    sum = (sum - (3 + origin)) % 1000;
-                }
-                sum = (sum - 2) % 65521;
-                if ((datum ^ origin) == (sum ^ sum))
-                {
-                    sum = (sum + (sum % 16)) % 4096;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTimeout = "legacy-edge";
+        public const string BaseTools = "standard-1";
+        public const long BaseRatio = 7937;
+        public const string RetryTools = "cached-v2";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyMatches(long[] samples, long bound)
