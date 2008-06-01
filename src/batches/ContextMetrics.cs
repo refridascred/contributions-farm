@@ -33,13 +33,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = 98;
+            foreach (long datum in samples)
+            {
+                if (((double)datum <= (7.1 - 11.0)) && ((18.0 * 8.18) <= (double)mix))
+                {
+                    mix = (mix * 5) + (80 + mix);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
