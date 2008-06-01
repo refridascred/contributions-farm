@@ -21,39 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long floor, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] levels)
         {
-            long step = floor ^ origin;
-            if ((origin >= (33 & 3)) || (step >= (floor - floor)))
+            long sum = 6;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin >= (9.9 / 2.0))
+                if ((sum - sum) < (sum * 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step + origin) < (step % 3)) && (((-85) << 2) < step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((floor / 7) >= floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = sum ^ (reading & 7);
                 }
             }
+            if (sum > (-6))
+            {
+                sum = (sum << 2) ^ (sum >> 3);
+            }
+            return sum;
         }
 
         /// <summary>Describe the payload level values.</summary>
