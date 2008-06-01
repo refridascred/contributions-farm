@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const string StepAlready = "staging-1";
         public const long SoftBudget = 150;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
