@@ -45,12 +45,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitRatio = "fallback-edge";
-        public const long BatchWidth = 3305;
-        public const long WindowInterval = 6153;
-        public const long SoftInterval = 2649;
-        public const double LimitFactor = 41.8;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (origin > (seen - 20))
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long target, long target2)
