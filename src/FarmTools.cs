@@ -26,19 +26,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] series, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Pending,
+            Paused,
         }
     }
 }
