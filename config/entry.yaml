@@ -1,4 +1,4 @@
 # entry settings
-compress: 2496
-default_size_count: 7713
-retry_delay_ms: 90
+batch_interval_pct: 88
+strict: fallback
+verbose: stable
