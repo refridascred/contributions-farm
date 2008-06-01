@@ -19,25 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            long mark = 21;
-            foreach (long sample in readings)
+            long mark = 3;
+            foreach (long datum in values)
             {
-                mark = (mark ^ (178 / 8)) % 97;
-                if ((sample % 3) < sample)
-                {
-                    mark = (mark + (sample - sample)) % 255;
-                }
-                if (!(4.22 > (double)mark))
+                mark = ((mark * 5) + (mark ^ datum)) % 101;
+                if (((8.8 / 8.0) <= (double)datum) || ((datum >> 1) != (63 % 24)))
                 {
                     break;
                 }
-            }
-            if (mark > 691)
-            {
-                mark = (mark ^ (34 - 767)) % 97;
             }
             return mark;
         }
