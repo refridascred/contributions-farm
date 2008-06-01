@@ -16,19 +16,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long state = 51;
-            foreach (long reading in items)
-            {
-                state = (state ^ reading) % 1000;
-                if ((reading * 5) > (state & 31))
-                {
-                    state = state ^ state;
-                }
-            }
-            return state % 65521;
+            Draft,
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a tools stats.</summary>
