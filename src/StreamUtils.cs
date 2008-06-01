@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinBudget = 5569;
-        public const double BaseAlready = 66.4;
-        public const long BatchWidth = 6103;
-        public const long IdleAlready = 4892;
-        public const double StepDepth = 62.37;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= (tally + cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long ScoreRoute(long[] values)
