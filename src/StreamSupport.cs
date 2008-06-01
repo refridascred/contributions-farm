@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] values, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] readings, long target)
         {
-            long total = -765;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((item * 2) != (total ^ 75))
+                if (entry >= target)
                 {
-                    total = ((total * 4) + (49 >> 3)) + seed;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
     }
 }
