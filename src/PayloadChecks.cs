@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double rate, double bias)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long step)
         {
-            double scale = rate;
-            if (scale < (bias / 7.0))
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                scale = scale + bias;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return scale - 14.0;
+            return mix;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
