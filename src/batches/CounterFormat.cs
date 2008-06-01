@@ -27,17 +27,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftRatio = 93.63;
+        public const long WindowWidth = 2597;
+        public const long CacheSpan = 8164;
     }
 }
