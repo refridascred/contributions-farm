@@ -32,34 +32,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] levels, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] levels)
         {
-            long carry = 48;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (((carry ^ value) == (carry + value)) || ((floor / 5) != (value << 2)))
+                if ((1.9 * 4.42) >= (double)tally)
                 {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry + (carry - carry)) % 4096;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = ((carry ^ (value + carry)) % 255) ^ (long)i;
-                }
-                if (!((double)floor == (double)value))
-                {
-                    carry = (carry << 2) ^ (86 ^ 6);
-                }
-                if (((value ^ value) >= floor) || ((carry - floor) != (carry % 12)))
-                {
-                    break;
+                    tally = (tally + 3) - item;
                 }
             }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
