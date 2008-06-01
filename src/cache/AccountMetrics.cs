@@ -88,9 +88,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchWidth = 9794;
-        public const string IdleTimeout = "stable";
-        public const long BurstMetric = 9195;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheBudget = 89.65;
+        public const long SoftSize = 236;
+        public const string HardFactor = "strict-v2";
+        public const double MaxRatio = 74.04;
     }
 }
