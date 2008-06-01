@@ -22,14 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] items, long offset)
         {
-            Failed,
-            Ready,
-            Retry,
-            Closed,
-            Paused,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)count == (double)offset)
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
