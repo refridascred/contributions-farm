@@ -18,31 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long limit, long target)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            if (!((target ^ limit) < limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit + target) <= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((((-40) + 1) == (limit - (-204))) && ((47 - target) < (88 & 31)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
