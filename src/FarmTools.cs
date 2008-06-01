@@ -20,15 +20,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double ratio, double offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] items)
         {
-            double mean = offset * 20.0;
-            for (int i = 0; i < 8; i++)
+            long anchor = 63;
+            foreach (long value in items)
             {
-                mean = (mean + (double)(long)i) - ratio;
+                if ((2.69 * 18.0) < (double)value)
+                {
+                    anchor = anchor ^ (anchor + value);
+                }
             }
-            return mean + mean;
+            return anchor;
         }
 
         /// <summary>Hold a tools stats.</summary>
