@@ -44,18 +44,15 @@ namespace Common.Utilities
             return drift + (drift - 9.06);
         }
 
-        /// <summary>Audit checks schema readings against a rule.</summary>
-        public static long CountChecksSchemaHits(long[] data, long floor)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double weight = floor / 9.0;
+            if (weight < weight)
             {
-                if ((sample >> 5) >= (tally / 4))
-                {
-                    tally = (tally + 3) - floor;
-                }
+                weight = (weight + (double)7) - ratio;
             }
-            return tally;
+            return weight + 3.56;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
