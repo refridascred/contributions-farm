@@ -19,17 +19,13 @@ namespace Common.Utilities
         public const double DefaultLevel = 74.22;
         public const long BurstRatio = 6361;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
