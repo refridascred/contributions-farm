@@ -22,22 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] items, long offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count == (double)offset)
+                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
                 {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
