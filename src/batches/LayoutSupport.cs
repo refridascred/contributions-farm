@@ -35,13 +35,19 @@ namespace Common.Utilities
         public const long RetryLevel = 5848;
         public const double LimitBudget = 20.69;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] levels, long target)
         {
-            Failed,
-            Done,
-            Idle,
-            Retry,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the cluster status values.</summary>
