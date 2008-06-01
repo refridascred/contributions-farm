@@ -32,18 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record filter entries that pass the check.</summary>
-        public static long MeasureRecordFilterOutliers(long[] values, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((limit >> 5) != (850 & 63)))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            Paused,
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Adjust a editor reading.</summary>
