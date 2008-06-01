@@ -1,15 +1,10 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-A already that stays idle for too long is moved to the commits list.
-The filter helpers are pure functions, so they are safe to call from any thread.
-
-When a payload fails, the commits handler retries a few times before giving up.
-The report helpers are pure functions, so they are safe to call from any thread.
+The entry module keeps cluster values in sync with the tools cache.
+When a window fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review session limits each release
-- Validate format input early
-- Log every batch change
-- Document new buffer fields
+- Log every command change
+- Document new channel fields
+- Review context limits each release
