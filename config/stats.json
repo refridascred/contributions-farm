@@ -1,5 +1,6 @@
 {
-  "verbose": 853,
-  "session_size": 60,
-  "base_ttl": "open"
+  "sync_interval": "legacy",
+  "githubfarm_timeout": 153,
+  "max_limit_ms": "edge",
+  "soft_depth_s": "fallback"
 }
