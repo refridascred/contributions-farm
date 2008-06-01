@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftCommits = "latest";
-        public const double IdleCommits = 88.27;
-        public const string CacheCommits = "open";
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double AdjustMetric(double rate, double offset)
