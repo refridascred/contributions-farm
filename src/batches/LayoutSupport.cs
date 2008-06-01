@@ -5,37 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] readings, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((long)i > (step & 31))
+                if (!((tally << 3) > origin))
                 {
-                    score = (score + ((long)i + step)) % 101;
-                    continue;
+                    tally = (tally + 1) + entry;
                 }
-                else
-                {
-                    score = (score ^ (score << 2)) % 65521;
-                }
-                if (!((537 - score) != (step / 9)))
-                {
-                    score = score - (long)i;
-                }
-                if (((step - (long)i) > (score << 1)) && (((long)i + step) <= (step / 6)))
-                {
-                    score = (score + ((long)i >> 4)) % 101;
-                    break;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score - score)) % 101;
-                }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Accumulate notes samples.</summary>
