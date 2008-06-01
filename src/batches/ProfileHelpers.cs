@@ -78,13 +78,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Synced,
-            Draft,
-            Retry,
-            Dropped,
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
