@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 4318;
-        public const string BaseRecord = "staging";
-        public const double RetryRecord = 92.15;
-        public const string RetryLevel = "strict-1";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((963 + matches) == (target & 15))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
