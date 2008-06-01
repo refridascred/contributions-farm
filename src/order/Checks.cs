@@ -44,19 +44,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long floor, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            if ((bound + bound) > bound)
             {
-                if ((894 + 8) < (origin & 15))
-                {
-                    score = ((score * 2) + (origin % 64)) % 97;
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((double)bound < (0.93 * 11.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound - 799) > floor) && ((733 ^ bound) <= 24))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor >= (bound * 2)) || (bound >= (floor ^ 43)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
