@@ -27,10 +27,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultDepth = "standard";
-        public const long DefaultCount = 8975;
-        public const string HardSupport = "fallback-edge";
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
