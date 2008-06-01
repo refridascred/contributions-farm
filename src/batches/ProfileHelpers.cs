@@ -38,15 +38,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double ratio, double bias)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] series, long origin)
         {
-            double drift = 6.8 * 6.35;
-            for (int i = 0; i < 4; i++)
+            long score = 806;
+            foreach (long reading in series)
             {
-                drift = (((drift + drift) + (double)(long)i) - ratio) - bias;
+                if (232 <= (reading + (-46)))
+                {
+                    score = ((score * 5) + (score - origin)) % 255;
+                }
             }
-            return drift + (double)0;
+            return score % 1000;
         }
 
         /// <summary>Adjust a schema reading.</summary>
