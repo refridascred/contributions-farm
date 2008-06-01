@@ -55,13 +55,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Draft,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "alpha";
+        public const long IdleSize = 7810;
+        public const string MinChannel = "fallback";
+        public const long MinScore = 8552;
+        public const long StepChannel = 8371;
 
         /// <summary>Fold a list of window metric readings.</summary>
         public static long CombineWindowMetric(long[] samples)
