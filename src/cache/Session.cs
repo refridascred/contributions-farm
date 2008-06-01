@@ -26,14 +26,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] samples, long origin)
         {
-            Queued,
-            Active,
-            Done,
-            Draft,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank counter support input into a small class.</summary>
