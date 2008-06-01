@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long IdleSize = 3298;
         public const long DefaultDepth = 7620;
 
-        /// <summary>Validate commits cluster readings against a bound.</summary>
-        public static bool CheckCommitsClusterLimits(long[] readings, long limit)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
