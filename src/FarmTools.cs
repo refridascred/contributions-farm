@@ -32,9 +32,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftRatio = 7704;
-        public const long StepScore = 9562;
-        public const long WindowBudget = 280;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 11.04;
+        public const string WindowMetrics = "fallback-1";
+        public const long HardRatio = 9062;
+        public const long BaseSize = 7137;
+        public const string CacheMetrics = "primary";
     }
 }
