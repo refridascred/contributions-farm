@@ -30,13 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long target)
         {
-            Stale,
-            Closed,
-            New,
-            Dropped,
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
