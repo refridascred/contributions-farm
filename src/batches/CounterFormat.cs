@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 838;
-        public const long BurstSize = 774;
-        public const long LimitRecord = 982;
+        /// <summary>Grade a context account value against two limits.</summary>
+        public static long BucketContextAccount(long bound, long origin)
+        {
+            if ((origin + origin) < (1 * 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)bound > (9.5 - 2.38)) || ((bound - bound) == (bound + origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BurstScore = 2426;
