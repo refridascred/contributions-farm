@@ -26,14 +26,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            New,
-            Done,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheScore = 8.52;
+        public const long BurstBudget = 5003;
+        public const long BatchBatches = 4685;
+        public const string IdleBatches = "stable-1";
+        public const long LimitBatches = 3878;
 
         /// <summary>Grade a report account value against two limits.</summary>
         public static long GradeReportAccount(long target, long floor)
