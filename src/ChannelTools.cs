@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the support record entries that pass the check.</summary>
-        public static long AuditSupportRecordHits(long[] items, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mark = 0;
+            foreach (long value in samples)
             {
-                if (seed < count)
-                {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (mark + 0) ^ value;
+                mark = (mark ^ (7 + 8)) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
