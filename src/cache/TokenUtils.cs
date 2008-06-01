@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every filter command entry stays within the limit.</summary>
-        public static bool ValidateFilterCommandBounds(long[] items, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (cell < target)
+                if (cell > (tally & 63))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the tools status values.</summary>
