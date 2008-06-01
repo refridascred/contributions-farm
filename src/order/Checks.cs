@@ -55,10 +55,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxScore = 7.65;
-        public const long BatchFactor = 3526;
-        public const string MaxBuffer = "legacy";
-        public const long BatchBuffer = 8427;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] readings)
+        {
+            long anchor = -24;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor << 2) ^ (anchor % 12)) % 65521;
+                anchor = anchor ^ (sample + sample);
+                if (9 >= (sample / 3))
+                {
+                    anchor = (anchor - sample) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (sample + sample)) % 65521;
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
