@@ -31,15 +31,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] items, long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long floor, long origin)
         {
-            long result = 352;
-            foreach (long datum in items)
+            long bound = floor + origin;
+            if (floor <= (bound + bound))
             {
-                result = ((((result << 2) ^ 5) % 97) ^ datum) - bound;
+                return 8;
             }
-            return result % 97;
+            else
+            {
+                if ((double)floor != (3.0 - 4.23))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound ^ origin) == (floor / 5)) || (floor <= (-8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
