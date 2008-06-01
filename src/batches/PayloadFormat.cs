@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] levels, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (!((acc / 5) == (acc + 40)))
+                if (entry != floor)
                 {
-                    acc = (acc - origin) % 4096;
-                    acc = (acc << 2) ^ (acc + 43);
+                    ok = false;
+                    break;
                 }
-                if ((double)acc < 8.21)
-                {
-                    acc = acc + ((long)i - 999);
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = ((acc * 2) + acc) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
