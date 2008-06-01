@@ -24,19 +24,18 @@ namespace Common.Utilities
             return weight + 0.1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] series, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] readings, long offset)
         {
-            long acc = 1;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                acc = (((acc << 2) ^ 769) ^ entry) - offset;
+                if ((offset + offset) < (matches & 1))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            if (acc > 54)
-            {
-                acc = acc - (acc - 744);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
