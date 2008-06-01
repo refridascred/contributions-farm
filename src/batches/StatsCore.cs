@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double ratio, double offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] samples, long origin)
         {
-            double ratio2 = 3.2;
-            if (ratio2 > (ratio2 * 3.5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio2 = (ratio2 + (ratio2 * 5.73)) + ratio;
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (double)1;
-            }
-            return ratio2 - offset;
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
