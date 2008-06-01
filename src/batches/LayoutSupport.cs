@@ -5,19 +5,37 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every batches format entry stays within the limit.</summary>
-        public static bool CheckBatchesFormatBounds(long[] samples, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long step)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum < step)
+                if ((long)i > (step & 31))
                 {
-                    flag = false;
+                    score = (score + ((long)i + step)) % 101;
+                    continue;
+                }
+                else
+                {
+                    score = (score ^ (score << 2)) % 65521;
+                }
+                if (!((537 - score) != (step / 9)))
+                {
+                    score = score - (long)i;
+                }
+                if (((step - (long)i) > (score << 1)) && (((long)i + step) <= (step / 6)))
+                {
+                    score = (score + ((long)i >> 4)) % 101;
                     break;
                 }
+                else
+                {
+                    score = ((score << 2) ^ (score - score)) % 101;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
