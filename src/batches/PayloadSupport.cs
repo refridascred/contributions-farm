@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] samples, long bound)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long step, long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            if (!((double)step <= (double)origin))
             {
-                if (sample > bound)
+                return 1;
+            }
+            else
+            {
+                if (!((double)origin == (double)step))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
