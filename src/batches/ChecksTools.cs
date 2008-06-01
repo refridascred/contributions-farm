@@ -22,13 +22,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
