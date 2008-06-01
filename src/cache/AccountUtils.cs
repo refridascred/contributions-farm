@@ -39,17 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] levels, long seed)
+        /// <summary>Digest a series of editor batch entries.</summary>
+        public static long FoldEditorBatch(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 8;
+            foreach (long sample in data)
             {
-                if (levels[i] >= seed)
+                if ((5.98 * 10.0) <= (double)sample)
                 {
-                    return (long)i;
+                    result = (result * 3) + (sample >> 4);
                 }
             }
-            return -1;
+            if (result > 8)
+            {
+                result = ((result << 2) ^ (6 + 8)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of context entries.</summary>
