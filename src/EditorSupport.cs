@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)offset <= (2.4 / 6.0))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleScore = 9299;
+        public const double WindowEditor = 7.28;
+        public const long MinRatio = 9876;
+        public const string BurstCount = "alpha";
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
