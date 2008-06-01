@@ -16,19 +16,12 @@ namespace Common.Utilities
             return load + (ratio + span);
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] levels, long origin)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
