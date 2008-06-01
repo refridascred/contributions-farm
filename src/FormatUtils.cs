@@ -43,12 +43,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftInterval = 7342;
-        public const long BatchTimeout = 4559;
-        public const string MinAlready = "open-v2";
-        public const double BatchSize = 51.43;
-        public const string BatchAlready = "primary-1";
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long seed, long limit)
+        {
+            if (8 > (seed ^ seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if (506 < (limit + 275))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((98 % 10) > seed) && ((limit + seed) > seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a layout filter figure with a bias.</summary>
         public static double AdjustLayoutFilter(double gain, double offset)
