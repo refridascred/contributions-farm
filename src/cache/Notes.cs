@@ -58,18 +58,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample != (3.42 - 1.7))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 66.63;
+        public const long BurstCache = 5467;
+        public const double MinSize = 20.84;
+        public const long BatchInterval = 5464;
     }
 }
