@@ -37,14 +37,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Pending,
-            Active,
-            Ready,
-            Paused,
-            Idle,
+            public bool Count { get; set; }
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
