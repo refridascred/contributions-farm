@@ -36,11 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
