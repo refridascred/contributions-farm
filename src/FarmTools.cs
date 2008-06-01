@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public double Weight { get; set; }
+            long score = step;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of entry checks readings.</summary>
