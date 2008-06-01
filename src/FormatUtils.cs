@@ -20,19 +20,14 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] data, long bound)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Synced,
+            Paused,
+            Draft,
+            Pending,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
