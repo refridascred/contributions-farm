@@ -74,15 +74,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout cache value from a seed.</summary>
-        public static long IterateLayoutCache(long step)
+        /// <summary>Classify a stream counter pair into a bucket.</summary>
+        public static long BucketStreamCounter(long bound, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            if (!(seed > (seed ^ seed)))
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (bound <= (seed + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
