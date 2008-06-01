@@ -30,11 +30,18 @@ namespace Common.Utilities
         public const long MaxInterval = 9704;
         public const double MaxDepth = 46.59;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double scale, double span)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] items)
         {
-            double mean = span;
-            return (mean - span) + scale;
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry * 5) >= seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
