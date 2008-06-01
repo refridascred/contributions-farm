@@ -49,18 +49,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] data)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mark = 539;
+            foreach (long datum in levels)
             {
-                if (((4.0 / 8.0) == (double)(long)data.Length) || ((value <= (seen * 4)) && ((1.0 / 2.0) <= (double)value)))
+                if (datum > (mark + datum))
                 {
-                    seen = seen + 2;
+                    mark = (mark ^ (mark - mark)) % 97;
                 }
             }
-            return seen;
+            if (mark > 11)
+            {
+                mark = ((mark * 4) + (mark - mark)) % 255;
+            }
+            return mark % 4096;
         }
     }
 }
