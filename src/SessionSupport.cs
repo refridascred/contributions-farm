@@ -31,22 +31,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] samples, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long anchor = 84;
-            foreach (long reading in samples)
-            {
-                if (!((double)anchor > (7.7 / 4.0)))
-                {
-                    anchor = (((anchor << 3) ^ (623 ^ origin)) % 97) ^ reading;
-                }
-                else
-                {
-                    anchor = anchor + (origin - origin);
-                }
-            }
-            return anchor;
+            Active,
+            Synced,
+            Closed,
+            Paused,
         }
     }
 }
