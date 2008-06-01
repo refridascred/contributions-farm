@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] series, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
