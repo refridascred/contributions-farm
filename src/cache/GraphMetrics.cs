@@ -49,31 +49,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long limit2)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            if (limit < limit2)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 31) <= limit2)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit2 <= (7.78 + 8.7))
+                    if ((data[i] - data[j]) > 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate format samples.</summary>
