@@ -65,18 +65,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] series, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits % 24) == (3 & 31))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 3) ^ value) - step;
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the notes mode values.</summary>
