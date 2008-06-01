@@ -43,18 +43,21 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Measure how many queue metric samples are out of range.</summary>
-        public static long MeasureQueueMetricOutliers(long[] series, long floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits + hits) <= (floor << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) - value;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
