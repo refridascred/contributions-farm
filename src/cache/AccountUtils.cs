@@ -58,18 +58,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] data, long seed)
-        {
-            long anchor = 810;
-            foreach (long reading in data)
-            {
-                if ((seed & 31) < (anchor - anchor))
-                {
-                    anchor = ((anchor << 2) ^ (reading * 3)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 56.48;
+        public const long CacheWindow = 247;
+        public const double WindowScore = 72.47;
+        public const long BurstWindow = 1308;
+        public const long SoftScore = 9454;
     }
 }
