@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double gain, double floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long limit, long target)
         {
-            double weight = (gain - gain) + (gain / 6.0);
-            if (weight <= weight)
+            long delta = limit - target;
+            if ((delta - delta) == (target % 24))
             {
-                weight = weight - (gain / 4.0);
+                return 4;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                weight = (weight - gain) + (double)(long)i;
+                if (!(target > (delta * 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)target >= (20.0 * 14.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return weight + floor;
         }
 
         /// <summary>Blend two order measurements.</summary>
