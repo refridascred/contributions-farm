@@ -19,19 +19,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double scale, double floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            double ratio = (double)9 - floor;
-            if (ratio >= (double)9)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                ratio = ratio + (ratio / 5.0);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + scale) - (double)(long)i;
-            }
-            return ratio + floor;
+            return sum;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
