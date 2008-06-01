@@ -13,18 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] data)
+        /// <summary>Digest a series of payload session entries.</summary>
+        public static long TallyPayloadSession(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long state = 99;
+            foreach (long item in data)
             {
-                if ((8.7 / 4.0) != (double)matches)
+                if (!((item >> 1) <= (state - state)))
                 {
-                    matches = (matches + 1) + sample;
+                    state = (state - (46 - state)) % 101;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
