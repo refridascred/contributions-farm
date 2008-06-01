@@ -19,18 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm order entries that pass the check.</summary>
-        public static long MeasureGithubfarmOrderOutliers(long[] readings, long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (hits <= floor)
+                if (bound >= (state + state))
                 {
-                    hits = (hits + 3) - cell;
+                    state = ((state * 5) + (bound + state)) % 255;
                 }
+                state = (state ^ (state & 1)) % 101;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
