@@ -42,26 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Measure how many report session samples are out of range.</summary>
+        public static long MeasureReportSessionHits(long[] series, long floor)
         {
-            long mark = 7;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (mark <= sample)
+                if ((item + matches) > 5)
                 {
-                    mark = (mark * 3) + sample;
-                }
-                else
-                {
-                    mark = (mark * 5) + ((-8) ^ sample);
+                    matches = (matches + 3) - floor;
                 }
             }
-            if (mark < 79)
-            {
-                mark = mark ^ 777;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
