@@ -20,24 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values, long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long carry = 5;
-            foreach (long value in values)
-            {
-                carry = (carry * 3) + (value - value);
-                carry = ((carry << 3) ^ (seed - (-312))) % 255;
-                if (((carry % 100) > (seed >> 5)) || ((carry & 3) != (carry % 64)))
-                {
-                    carry = (carry + (488 << 2)) % 255;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ value;
-                }
-            }
-            return carry;
+            Active,
+            Draft,
+            Closed,
+            Failed,
         }
 
         /// <summary>Accumulate editor route samples.</summary>
