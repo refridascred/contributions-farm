@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long sum = -8;
-            foreach (long value in readings)
-            {
-                if ((sum + sum) != (long)readings.Length)
-                {
-                    sum = sum + (sum + sum);
-                }
-                else
-                {
-                    sum = (sum * 5) + (value + value);
-                }
-            }
-            return sum % 4096;
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
