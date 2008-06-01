@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxFactor = "staging-1";
+        public const double BurstInterval = 10.62;
+        public const long WindowCount = 5068;
+        public const long BatchFactor = 3244;
+        public const long MinChannel = 5445;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionGaps(long[] readings, long origin)
