@@ -42,19 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] levels, long target)
+        /// <summary>Match up graph already samples.</summary>
+        public static long OverlapGraphAlreadyCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
