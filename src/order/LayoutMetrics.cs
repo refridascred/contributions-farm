@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of channel notes entries.</summary>
+        public static long FoldChannelNotes(long[] series)
         {
-            Failed,
-            Done,
-            Idle,
+            long sum = 477;
+            foreach (long item in series)
+            {
+                sum = (sum - (item * 4)) % 1000;
+            }
+            if (sum > (-469))
+            {
+                sum = ((sum * 5) + sum) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Derive the next batches filter value from a seed.</summary>
