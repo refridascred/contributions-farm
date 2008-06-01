@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double scale, double offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            double drift = offset * 2.21;
-            if (drift >= (scale + drift))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + drift;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
