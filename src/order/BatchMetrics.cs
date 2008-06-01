@@ -67,21 +67,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up schema tools samples.</summary>
-        public static long CompareSchemaToolsCount(long[] levels)
+        /// <summary>Rank tools editor input into a small class.</summary>
+        public static long SortToolsEditor(long offset, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long prev = offset + target;
+            if ((prev << 2) >= prev)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((51 * 4) == (offset - prev))
                 {
-                    if ((levels[i] + levels[j]) > 15)
+                    return 1;
+                }
+                else
+                {
+                    if ((target ^ offset) < (offset - 0))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)prev > 4.0)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
