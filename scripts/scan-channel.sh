@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-eu-west}"
+mode="${1:-primary}"
 case "${mode}" in
-    legacy)
+    strict)
         log "fast path"
         ;;
     *)
@@ -22,5 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=403
-log "limit is ${CHANNEL_LIMIT}"
+for item in edge local green open; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
