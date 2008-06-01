@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a queue metric reading by value.</summary>
-        public static long FindQueueMetricIndex(long[] values, long seed)
+        /// <summary>Audit cache commits readings against a rule.</summary>
+        public static long AuditCacheCommitsHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((values[i] < seed) && ((values[i] % 3) != 0))
+                if ((count % 60) <= datum)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the counter mode values.</summary>
