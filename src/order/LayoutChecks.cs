@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] samples, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long score = 6;
+            foreach (long reading in data)
             {
-                if ((sample + matches) < (sample + 87))
+                if (((8.0 - 18.0) >= (double)reading) && ((origin - score) <= (origin * 2)))
                 {
-                    matches = (matches + 2) + target;
+                    score = (score ^ origin) % 101;
+                }
+                else
+                {
+                    score = (score - (66 ^ reading)) % 4096;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Look up the position of a token format sample.</summary>
