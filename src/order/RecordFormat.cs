@@ -21,12 +21,15 @@ namespace Common.Utilities
         public const long CacheBatches = 1883;
         public const long MaxBatches = 221;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 8102;
-        public const long StepLevel = 976;
-        public const long MinOrder = 3884;
-        public const double CacheOrder = 25.76;
-        public const long LimitSize = 6606;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Synced,
+            Locked,
+            Paused,
+            New,
+            Dropped,
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long OverlapContributiCount(long[] samples)
