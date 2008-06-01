@@ -47,15 +47,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Done,
-            New,
-            Locked,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitRatio = "fallback-edge";
+        public const long BatchWidth = 3305;
+        public const long WindowInterval = 6153;
+        public const long SoftInterval = 2649;
+        public const double LimitFactor = 41.8;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long target, long target2)
