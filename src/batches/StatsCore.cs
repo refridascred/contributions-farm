@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Rank checks stream input into a small class.</summary>
+        public static long SortChecksStream(long floor, long limit)
         {
-            Ready,
-            Idle,
-            Synced,
+            if ((floor - 166) < (floor ^ floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit < (limit / 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
