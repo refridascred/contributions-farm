@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long HardTimeout = 2571;
         public const long BurstMetric = 9910;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] levels)
         {
-            Failed,
-            Pending,
-            Draft,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((((count >> 1) >= (8 + datum)) && ((count + count) != (datum + datum))) && ((double)datum <= (12.0 * 19.0)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
