@@ -37,19 +37,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the commits metrics series from a seed.</summary>
-        public static long DeriveCommitsMetrics(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((long)i - mix) == (mix - offset))
-                {
-                    mix = (mix ^ (-1)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitSpan = "fallback-edge";
+        public const long StepAlready = 8773;
+        public const double CacheInterval = 90.68;
+        public const long DefaultDepth = 7011;
     }
 }
