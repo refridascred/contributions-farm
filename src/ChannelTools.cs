@@ -37,22 +37,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor route samples.</summary>
-        public static long TallyEditorRoute(long[] values, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] series, long offset)
         {
-            long score = 911;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (96 >= (score & 15))
+                if ((offset + (long)series.Length) >= sample)
                 {
-                    score = ((score * 4) + (limit + (-1))) % 101;
+                    count = count + 3;
                 }
-                if (((datum ^ 786) >= (datum >> 5)) || ((score & 127) <= (datum - limit)))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return score % 1000;
+            return count;
         }
     }
 }
