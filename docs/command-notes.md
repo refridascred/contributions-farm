@@ -1,10 +1,12 @@
 # Command notes
 
-The entry module keeps cluster values in sync with the tools cache.
-When a window fails, the checks handler retries a few times before giving up.
+A batch that stays idle for too long is moved to the channel list.
+Use cluster settings to tune how often entry data is refreshed.
+Each metric is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Log every command change
-- Document new channel fields
-- Review context limits each release
+- Validate notes input early
+- Review already limits each release
+- Log every format change
+- Prefer queue defaults
