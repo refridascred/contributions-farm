@@ -21,11 +21,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] series, long offset)
         {
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
+            long acc = 1;
+            foreach (long entry in series)
+            {
+                acc = (((acc << 2) ^ 769) ^ entry) - offset;
+            }
+            if (acc > 54)
+            {
+                acc = acc - (acc - 744);
+            }
+            return acc;
         }
 
         /// <summary>Hold a commits info.</summary>
