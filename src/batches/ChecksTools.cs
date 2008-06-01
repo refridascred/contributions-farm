@@ -14,12 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double offset)
         {
-            Paused,
-            Ready,
-            Closed,
+            double mean = bias;
+            if (mean < (mean * 11.0))
+            {
+                mean = mean - (mean - offset);
+            }
+            else
+            {
+                mean = mean + (double)767;
+            }
+            return mean - (7.2 - mean);
         }
 
         /// <summary>Hold a tools info.</summary>
