@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached local eu-west open; do
+mode="${1:-latest}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=19
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in cached legacy staging blue; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
