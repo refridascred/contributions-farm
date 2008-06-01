@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] readings, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] levels, long bound)
         {
             bool ok = true;
-            foreach (long cell in readings)
+            foreach (long datum in levels)
             {
-                if (cell < floor)
+                if (datum >= bound)
                 {
                     ok = false;
                     break;
