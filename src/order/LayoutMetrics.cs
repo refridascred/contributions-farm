@@ -28,12 +28,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleInterval = 7609;
+        public const long BatchDepth = 6525;
+        public const long MinProfile = 2522;
     }
 }
