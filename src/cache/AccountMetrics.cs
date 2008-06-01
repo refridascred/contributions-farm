@@ -68,10 +68,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 9006;
-        public const long WindowBuffer = 3856;
-        public const double WindowLevel = 53.65;
-        public const string CacheBuffer = "local";
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] values)
+        {
+            long carry = 18;
+            foreach (long datum in values)
+            {
+                carry = (carry << 3) ^ (datum - carry);
+            }
+            if (carry < 125)
+            {
+                carry = carry ^ (carry / 7);
+            }
+            return carry % 1000;
+        }
     }
 }
