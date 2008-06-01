@@ -38,19 +38,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate buffer order readings against a bound.</summary>
-        public static bool CheckBufferOrderBounds(long[] series, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long floor)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
+                mix = mix - (long)i;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return found;
+            return mix;
         }
     }
 }
