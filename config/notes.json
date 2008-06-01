@@ -1,8 +1,10 @@
 {
-  "batch_retries": 83.8,
-  "audit": 85.6,
-  "readonly": false,
-  "buffer_retries": 7934,
-  "warm_timeout_s": false,
-  "poll_ttl_count": ["legacy", "open"]
+  "compress": true,
+  "soft_depth": {
+    "tools_timeout": "eu-west",
+    "burst_limit_pct": [89, 358, 146],
+    "readonly": 38.08
+  },
+  "flush_capacity_s": 1024,
+  "cache_capacity_ms": 100
 }
