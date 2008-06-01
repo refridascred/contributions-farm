@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of cache queue readings.</summary>
-        public static long FoldCacheQueue(long[] samples, long seed)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double gain, double offset)
         {
-            long mark = 47;
-            foreach (long cell in samples)
+            double rate = (double)(97 - (-267));
+            if (rate >= 0.7)
             {
-                if ((6.0 - 9.0) < (double)cell)
-                {
-                    mark = (((mark << 2) ^ (mark + cell)) % 101) - seed;
-                }
+                rate = (rate + (double)(-1)) - gain;
             }
-            return mark;
+            else
+            {
+                rate = rate - (rate / 8.0);
+            }
+            return rate - offset;
         }
 
         /// <summary>Validate profile cache readings against a bound.</summary>
