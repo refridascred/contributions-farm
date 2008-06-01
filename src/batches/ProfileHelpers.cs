@@ -72,15 +72,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] readings, long bound)
         {
-            long anchor = 516;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                anchor = anchor ^ (sample + anchor);
+                if (item > (393 % 12))
+                {
+                    tally = (tally + 2) - bound;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
