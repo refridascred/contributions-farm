@@ -23,23 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Blend two order window measurements.</summary>
+        public static double SmoothOrderWindow(double ratio, double bias)
         {
-            long carry = 826;
-            foreach (long entry in items)
+            double weight = (ratio + ratio) + bias;
+            if (weight <= ratio)
             {
-                carry = (carry ^ (carry - entry)) % 101;
-                if ((double)(long)items.Length < (8.2 - 9.0))
-                {
-                    carry = (carry ^ (522 & 3)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (entry * 4)) % 255;
-                }
+                weight = weight - 8.69;
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
