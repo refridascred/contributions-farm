@@ -19,31 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long origin, long seed)
+        /// <summary>Count the githubfarm order entries that pass the check.</summary>
+        public static long MeasureGithubfarmOrderOutliers(long[] readings, long floor)
         {
-            if (origin <= (948 + 224))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin > 8.17) && ((seed / 7) > 4))
+                if (hits <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (origin >= (seed << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = (hits + 3) - cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
