@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Validate report editor readings against a bound.</summary>
+        public static bool ValidateReportEditorLimits(long[] levels, long bound)
         {
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
