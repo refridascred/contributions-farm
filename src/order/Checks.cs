@@ -15,20 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] series, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long carry = 43;
+            foreach (long datum in series)
             {
-                if ((78 ^ floor) == (floor / 8))
-                {
-                    total = (total - (floor + floor)) % 255;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 97;
+                carry = ((carry ^ step) % 1000) + datum;
             }
-            return total;
+            if (carry < 724)
+            {
+                carry = (carry << 2) ^ 367;
+            }
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
