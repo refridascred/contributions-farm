@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] samples)
-        {
-            long anchor = 815;
-            foreach (long entry in samples)
-            {
-                anchor = anchor - (entry + 6);
-                anchor = (anchor - (45 - entry)) % 4096;
-                if ((20.0 / 6.0) == (double)entry)
-                {
-                    anchor = (anchor ^ (entry + anchor)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultAccount = "stable-1";
+        public const double BatchWidth = 9.69;
+        public const double MaxAccount = 94.38;
+        public const double CacheAccount = 32.86;
+        public const double CacheFactor = 93.88;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextGaps(long[] data)
