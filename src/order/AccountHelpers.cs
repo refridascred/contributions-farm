@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long carry = 808;
-            foreach (long item in series)
-            {
-                if (((6.8 * 8.24) > (double)carry) || (carry <= (carry << 3)))
-                {
-                    carry = ((carry << 3) ^ (item + carry)) % 65521;
-                }
-                if (((double)(long)series.Length >= (1.0 * 0.77)) || (carry <= (carry - carry)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
