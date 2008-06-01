@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((acc + bound) >= (-271)) || ((double)(long)i <= (19.0 * 8.0)))
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc << 2) ^ (acc - (long)i)) % 4096;
                 }
+                else
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                acc = (acc * 3) + (172 & 15);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
