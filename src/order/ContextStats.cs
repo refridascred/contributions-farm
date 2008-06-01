@@ -33,21 +33,32 @@ namespace Common.Utilities
         public const long SoftQueue = 8137;
         public const long LimitLevel = 9436;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Classify a githubfarm batches pair into a bucket.</summary>
+        public static long RankGithubfarmBatches(long step, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long cur = step + floor;
+            if ((floor + step) == (floor + 937))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((cur + 62) <= (floor + cur))
                 {
-                    if ((data[i] ^ data[j]) < 18)
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + (-8)) == (cur % 10))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
     }
 }
