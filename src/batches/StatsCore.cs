@@ -46,12 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 6665;
-        public const double BaseInterval = 32.0;
-        public const long IdleReport = 427;
-        public const double DefaultCount = 72.01;
-        public const double WindowWidth = 62.96;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] data)
+        {
+            long sum = -12;
+            foreach (long value in data)
+            {
+                if (((long)data.Length > (value + value)) || ((sum - sum) >= value))
+                {
+                    sum = sum - (sum + value);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] readings)
