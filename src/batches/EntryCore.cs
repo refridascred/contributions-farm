@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long StepCache = 4629;
         public const long RetrySize = 4397;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples, long offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long total = 711;
-            foreach (long cell in samples)
-            {
-                total = (((total * 5) + total) - cell) - offset;
-            }
-            if (total > 1)
-            {
-                total = ((total * 2) + (total * 3)) % 101;
-            }
-            return total;
+            Failed,
+            Active,
+            Pending,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
