@@ -55,21 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Adjust a stats reading.</summary>
