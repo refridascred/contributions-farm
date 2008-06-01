@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next batches filter value from a seed.</summary>
-        public static long RollBatchesFilter(long seed)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((seed & 63) <= carry)
-                {
-                    carry = carry + ((long)i + seed);
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Synced,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
