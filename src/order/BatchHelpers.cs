@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long origin, long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long limit)
         {
-            if (!((target * 5) > (origin ^ target)))
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((9.66 + 8.3) > (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target != (0.5 - 1.7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6.44 * 6.4) <= (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Project the next batches value.</summary>
