@@ -36,19 +36,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Rank record layout input into a small class.</summary>
+        public static long BucketRecordLayout(long floor, long origin)
         {
-            double weight = 1.0;
-            if (weight > offset)
+            long span = floor ^ origin;
+            if ((span / 5) >= floor)
             {
-                weight = weight + (gain - gain);
+                return 5;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                weight = (weight + offset) + (double)(long)i;
+                if (726 < origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin >> 1) >= (floor + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin / 5) < (-4)) && ((floor + 86) > (27 + span)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return weight - gain;
         }
     }
 }
