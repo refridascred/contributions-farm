@@ -40,38 +40,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long origin, long origin2)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            if (!((double)origin < (5.06 + 6.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin == (9.0 / 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.86 / 2.0) > (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin <= ((-743) * 4)) || ((origin - origin) < origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Roll a record counter forward.</summary>
