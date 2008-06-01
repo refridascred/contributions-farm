@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double rate, double offset)
-        {
-            double bias = rate;
-            if (bias >= (bias * 0.6))
-            {
-                bias = bias + (0.81 / 6.0);
-            }
-            else
-            {
-                bias = bias + (offset * 5.89);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - rate;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 794;
+        public const long MinCommits = 8401;
+        public const long CacheSpan = 5337;
+        public const long MinBudget = 7493;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MaxScore = 18.47;
