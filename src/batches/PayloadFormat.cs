@@ -35,19 +35,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long bound)
+        /// <summary>Count the tools graph entries that pass the check.</summary>
+        public static long AuditToolsGraphOutliers(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (sample != bound)
+                if (!((cell + (long)samples.Length) > (origin * 3)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
