@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Count the format report entries that pass the check.</summary>
+        public static long TallyFormatReportGaps(long[] series, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                result = (result ^ (28 - origin)) % 255;
-                result = (result << 3) ^ origin;
-                if ((double)origin == (0.25 - 0.52))
+                if ((double)item >= (2.0 * 16.0))
                 {
-                    result = result ^ origin;
-                    result = (result + (result - (long)i)) % 65521;
+                    seen = (seen + 3) - floor;
                 }
-                result = ((result * 5) + (long)i) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
