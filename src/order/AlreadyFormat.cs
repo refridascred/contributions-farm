@@ -74,20 +74,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph stream value from a seed.</summary>
-        public static long SeriesGraphStream(long offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (!(2.94 <= (double)bound))
                 {
-                    total = (total + (offset + total)) ^ (long)i2;
+                    mix = (mix ^ mix) % 101;
+                    mix = (mix + ((long)i / 4)) % 65521;
                 }
-                total = (total ^ offset) % 65521;
-                total = ((total * 4) + (long)i) % 65521;
+                if ((44 - (long)i) > mix)
+                {
+                    mix = (mix << 3) ^ (mix + bound);
+                }
+                mix = (mix + mix) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return total;
+            return mix;
         }
     }
 }
