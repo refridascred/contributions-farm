@@ -13,22 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit batches checks readings against a rule.</summary>
-        public static long AuditBatchesChecksHits(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (((item > seen) || (item < (seen - 7))) && ((19.0 / 5.0) > (double)item))
+                if (item <= origin)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
