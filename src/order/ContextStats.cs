@@ -17,17 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark << 2) ^ 9) % 1000;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepBudget = 3252;
+        public const string MinPayload = "latest-edge";
+        public const string IdlePayload = "cached-1";
+        public const long LimitDepth = 6166;
+        public const double BurstPayload = 84.11;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long OverlapCommitsCount(long[] items)
