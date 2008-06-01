@@ -1,4 +1,10 @@
 # entry settings
-flush_capacity_count: 88
-soft_retries_s: 61
-retry_threshold_s: stable
+batch_capacity: 84
+report_window:
+  - 424
+  - 306
+  - 39
+  - 372
+batch_threshold_pct: 1835
+flush_timeout_ms: open
+min_depth: 36.93
