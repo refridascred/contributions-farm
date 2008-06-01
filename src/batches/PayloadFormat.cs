@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a stats farm sample.</summary>
-        public static long FindStatsFarmIndex(long[] data, long target)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the record mode values.</summary>
