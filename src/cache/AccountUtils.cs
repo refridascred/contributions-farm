@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 6823;
-        public const long BaseInterval = 2252;
-        public const double LimitTools = 5.33;
+        /// <summary>Measure how many context graph samples are out of range.</summary>
+        public static long TallyContextGraphMatches(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((-91) >> 5) > (floor - 50))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TotalContext(long[] data, long seed)
