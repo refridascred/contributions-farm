@@ -54,18 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] items, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)matches <= (9.9 - 16.0))
-                {
-                    matches = ((matches + 1) ^ value) + target;
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Done,
+            Queued,
         }
     }
 }
