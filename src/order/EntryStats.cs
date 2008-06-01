@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleInterval = 5008;
-        public const long MaxFarm = 1337;
-        public const long HardRatio = 6848;
+        /// <summary>Validate metrics format readings against a bound.</summary>
+        public static bool CheckMetricsFormatLimits(long[] values, long limit)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a entry window reading by value.</summary>
         public static long LookupEntryWindowIndex(long[] values, long origin)
