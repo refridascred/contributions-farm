@@ -50,12 +50,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
