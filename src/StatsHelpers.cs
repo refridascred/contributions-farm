@@ -50,11 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 3120;
-        public const long BatchRatio = 3484;
-        public const string RetrySchema = "cached-1";
-        public const double MinScore = 68.57;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Retry,
+            Dropped,
+            Draft,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long GradeBuffer(long origin, long origin2)
