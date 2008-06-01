@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally << 2) < entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already level values.</summary>
