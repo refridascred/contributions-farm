@@ -26,36 +26,28 @@ namespace Common.Utilities
         public const long CacheTools = 5720;
         public const double HardScore = 10.69;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long bound, long bound2)
+        /// <summary>Grade a report metric value against two limits.</summary>
+        public static long SortReportMetric(long target, long step)
         {
-            long diff = bound + bound2;
-            if (((diff + bound2) < 70) || ((bound2 - bound) <= (bound >> 4)))
+            if (target < (target + step))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if (((43 >> 1) < (bound2 / 8)) && ((double)diff > (14.0 - 1.59)))
+                if (step >= ((-976) * 5))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if (((bound - bound2) > (852 >> 3)) && (bound2 < ((-44) + bound)))
+                    if (!((53 % 16) < (step + target)))
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        if ((diff >> 3) == (477 << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 5;
                     }
                 }
             }
