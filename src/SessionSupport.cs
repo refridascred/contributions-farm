@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Locked,
-            Synced,
-            Retry,
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate farm samples.</summary>
