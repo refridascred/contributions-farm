@@ -31,9 +31,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 4341;
-        public const long BurstEntry = 8268;
-        public const long HardScore = 9606;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
