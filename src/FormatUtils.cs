@@ -31,22 +31,25 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long target, long step)
         {
-            long carry = 5;
-            foreach (long reading in levels)
+            long cur = target + step;
+            if (((target << 1) >= (cur >> 4)) && ((double)cur > 7.81))
             {
-                if ((50 & 63) < (carry & 31))
+                return 0;
+            }
+            else
+            {
+                if ((9.1 / 6.0) <= (double)target)
                 {
-                    carry = (carry ^ (reading >> 3)) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (carry < 25)
-            {
-                carry = ((carry * 4) + 32) % 4096;
-            }
-            return carry;
         }
 
         /// <summary>Describe the record level values.</summary>
