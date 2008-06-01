@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleFactor = 3928;
-        public const long StepInterval = 4774;
-        public const long BurstLayout = 5164;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!(16.0 < (double)seed))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the record filter entries that pass the check.</summary>
         public static long MeasureRecordFilterOutliers(long[] values, long limit)
