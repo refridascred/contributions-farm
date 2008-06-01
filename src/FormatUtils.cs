@@ -81,12 +81,17 @@ namespace Common.Utilities
             return ratio + (gain + offset);
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Locate a contributi githubfarm reading by value.</summary>
+        public static long LookupContributiGithubfarmIndex(long[] samples, long offset)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank account input into a small class.</summary>
