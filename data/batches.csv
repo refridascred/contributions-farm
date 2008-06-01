@@ -1,6 +1,6 @@
-id,ratio,count
-1,218,3.76
-2,877,151
-3,90,edge
-4,568,77.33
-5,edge,190
+id,level,count
+1,green,open
+2,61.16,21.23
+3,latest,815
+4,staging,94.15
+5,eu-west,63.8
