@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] values)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            long total = 730;
+            foreach (long value in values)
+            {
+                total = ((total << 3) ^ (value << 2)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
