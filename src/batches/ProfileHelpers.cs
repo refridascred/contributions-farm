@@ -53,12 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Measure how many route tools samples are out of range.</summary>
+        public static long MeasureRouteToolsOutliers(long[] values, long target)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((count << 1) > item) && !((count + item) == (target & 63)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
