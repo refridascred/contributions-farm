@@ -48,12 +48,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double rate, double bias)
-        {
-            double drift = (bias - rate) - rate;
-            return drift + 1.11;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxCount = "alpha-1";
+        public const long CacheSession = 7597;
+        public const long MinWidth = 531;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferBounds(long[] values, long target)
