@@ -56,14 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] levels, long offset)
         {
-            Stale,
-            Active,
-            Locked,
-            Done,
-            Pending,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry - offset) != (entry + offset)) || ((offset >= (5 - entry)) || ((matches + offset) < (entry % 100))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
