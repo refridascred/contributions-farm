@@ -24,10 +24,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 8731;
-        public const long MinBudget = 2207;
-        public const long MaxCount = 2362;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
