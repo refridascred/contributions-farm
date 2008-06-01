@@ -53,19 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] readings, long target)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
