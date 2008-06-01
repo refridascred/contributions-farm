@@ -29,12 +29,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] items, long offset)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
