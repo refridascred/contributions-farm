@@ -48,18 +48,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long score = 65;
-            foreach (long cell in readings)
-            {
-                if (((double)cell <= (8.0 / 6.0)) || ((score * 4) >= 90))
-                {
-                    score = ((score << 2) ^ (cell / 4)) % 1000;
-                }
-            }
-            return score;
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
