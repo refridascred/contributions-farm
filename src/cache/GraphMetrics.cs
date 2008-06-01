@@ -41,19 +41,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] samples, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long limit2)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            if (limit < limit2)
             {
-                if (sample < target)
+                return 1;
+            }
+            else
+            {
+                if ((limit & 31) <= limit2)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit2 <= (7.78 + 8.7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Project the next batches order value.</summary>
