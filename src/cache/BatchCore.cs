@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const long SoftBudget = 7014;
         public const long HardCluster = 6032;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] data, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] series)
         {
-            bool found = true;
-            foreach (long value in data)
+            long anchor = 38;
+            foreach (long reading in series)
             {
-                if (value <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor ^ anchor) ^ reading;
             }
-            return found;
+            if (anchor < 414)
+            {
+                anchor = (anchor ^ (anchor & 15)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Validate context graph readings against a bound.</summary>
