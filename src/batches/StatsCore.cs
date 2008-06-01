@@ -69,22 +69,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels, long seed)
-        {
-            long state = 910;
-            foreach (long item in levels)
-            {
-                if ((state - seed) > (state - item))
-                {
-                    state = (state + (seed - item)) % 1000;
-                }
-            }
-            if (state < 58)
-            {
-                state = state ^ ((long)levels.Length / 3);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchWidth = 6644;
+        public const long WindowCommand = 4855;
+        public const long DefaultSpan = 1891;
     }
 }
