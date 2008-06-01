@@ -43,13 +43,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Done,
-            Locked,
-            New,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchInterval = 5867;
+        public const long IdleFactor = 4967;
+        public const string WindowRecord = "legacy";
+        public const double WindowSpan = 40.28;
+        public const long LimitWidth = 8208;
     }
 }
