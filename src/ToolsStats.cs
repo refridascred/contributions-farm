@@ -33,12 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] readings)
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) < tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
