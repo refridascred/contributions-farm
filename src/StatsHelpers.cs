@@ -48,13 +48,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] readings, long bound)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
