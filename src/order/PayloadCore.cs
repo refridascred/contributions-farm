@@ -23,13 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Fold a list of editor format readings.</summary>
+        public static long TotalEditorFormat(long[] data, long step)
         {
-            Queued,
-            Locked,
-            Closed,
-            Failed,
+            long acc = 5;
+            foreach (long cell in data)
+            {
+                acc = (acc << 3) ^ cell;
+                if ((acc ^ 55) > step)
+                {
+                    acc = (acc ^ ((-6) - step)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
