@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] readings, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] values, long offset)
         {
-            long acc = 829;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((6.0 - 4.2) < (double)reading)
+                if ((double)offset != (7.5 - 8.4))
                 {
-                    acc = (((acc << 2) ^ (long)readings.Length) % 4096) - origin;
+                    count = (count + 3) ^ entry;
                 }
             }
-            if (acc < 289)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
