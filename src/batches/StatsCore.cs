@@ -37,17 +37,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a context metric counter forward.</summary>
-        public static long DeriveContextMetric(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                score = score + (seed - score);
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheBudget = 58.96;
+        public const long SoftFormat = 8845;
+        public const long BaseInterval = 4492;
+        public const double StepFactor = 13.78;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
