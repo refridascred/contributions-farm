@@ -20,12 +20,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Fold a list of cluster stream readings.</summary>
+        public static long FoldClusterStream(long[] levels, long floor)
         {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            long total = 3;
+            foreach (long sample in levels)
+            {
+                total = ((total << 2) ^ (floor * 4)) - sample;
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate order samples.</summary>
