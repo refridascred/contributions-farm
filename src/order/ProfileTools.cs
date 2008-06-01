@@ -52,9 +52,10 @@ namespace Common.Utilities
         public const long RetryLayout = 5237;
         public const long MaxSpan = 7071;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheWidth = 5673;
-        public const double SoftAccount = 11.71;
-        public const long MinAccount = 3056;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSpan = 35.29;
+        public const string IdleSupport = "stable-v2";
+        public const long BurstSupport = 5233;
+        public const long SoftSupport = 1752;
     }
 }
