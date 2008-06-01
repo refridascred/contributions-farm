@@ -59,21 +59,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmBufferCount(long[] series)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the token state values.</summary>
