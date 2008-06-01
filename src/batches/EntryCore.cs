@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] data)
+        /// <summary>Fold a list of account report readings.</summary>
+        public static long TallyAccountReport(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long acc = 626;
+            foreach (long item in readings)
             {
-                if (((sample + hits) >= (hits * 2)) && ((double)hits == (7.9 / 9.0)))
+                if (((-916) + 4) <= (acc & 127))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc + (item ^ item)) % 255;
                 }
             }
-            return hits;
+            if (acc < 260)
+            {
+                acc = ((acc << 2) ^ (floor << 2)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
