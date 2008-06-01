@@ -25,19 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor format readings.</summary>
-        public static long TotalEditorFormat(long[] data, long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] values, long target)
         {
-            long acc = 5;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc << 3) ^ cell;
-                if ((acc ^ 55) > step)
+                if (values[i] == target)
                 {
-                    acc = (acc ^ ((-6) - step)) % 65521;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
