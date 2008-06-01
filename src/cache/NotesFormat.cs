@@ -40,13 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            Done,
+            Locked,
+            New,
+            Ready,
         }
     }
 }
