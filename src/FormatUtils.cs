@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long seed)
         {
-            long result = 44;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum >> 4) < result)
+                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
                 {
-                    result = result - datum;
-                }
-                else
-                {
-                    result = result + (result - 6);
-                }
-                result = (result + (result << 2)) % 101;
-                if ((9.1 / 9.0) == (double)datum)
-                {
-                    result = (result << 2) ^ 927;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
