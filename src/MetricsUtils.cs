@@ -19,13 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long offset, long floor)
         {
-            New,
-            Queued,
-            Paused,
-            Draft,
+            if (!((floor >> 3) < (offset & 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((3.8 * 3.4) != (double)offset) && ((offset & 63) < (floor << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset <= (floor + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token state values.</summary>
