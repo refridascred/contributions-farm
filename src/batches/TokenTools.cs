@@ -14,22 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] readings, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long bound)
         {
-            long sum = 817;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((double)sum != (double)59)
+                if (item < bound)
                 {
-                    sum = ((sum ^ (sum ^ limit)) % 1000) - value;
-                }
-                if (!((8.0 * 5.0) > (double)limit))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Iterate the commits metrics series from a seed.</summary>
