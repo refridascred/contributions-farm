@@ -25,19 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] data, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long floor, long seed)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long cur = floor ^ seed;
+            if ((cur >> 2) < (seed % 60))
             {
-                if (reading < target)
+                return 1;
+            }
+            else
+            {
+                if ((cur + seed) == (floor - seed))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((9 + cur) >= (cur - cur))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Iterate the counter cluster series from a seed.</summary>
