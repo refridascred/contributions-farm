@@ -1,6 +1,5 @@
 {
-  "sync_interval": "legacy",
-  "githubfarm_timeout": 153,
-  "max_limit_ms": "edge",
-  "soft_depth_s": "fallback"
+  "verbose": 28,
+  "cache_delay_count": "blue",
+  "audit": "green"
 }
