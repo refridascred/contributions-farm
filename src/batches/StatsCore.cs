@@ -96,9 +96,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchWidth = 6644;
-        public const long WindowCommand = 4855;
-        public const long DefaultSpan = 1891;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Dropped,
+            Done,
+            Retry,
+            Idle,
+            Failed,
+        }
     }
 }
