@@ -58,13 +58,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Digest a series of support tools entries.</summary>
+        public static long FoldSupportTools(long[] series)
         {
-            Dropped,
-            Synced,
-            Idle,
-            Pending,
+            long result = 77;
+            foreach (long entry in series)
+            {
+                if (((entry >> 3) > result) || ((491 & 3) < entry))
+                {
+                    result = result + (entry >> 3);
+                }
+                else
+                {
+                    result = result - (166 + entry);
+                }
+            }
+            if (result > 150)
+            {
+                result = (result + result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of channel already readings.</summary>
