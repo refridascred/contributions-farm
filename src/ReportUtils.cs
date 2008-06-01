@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheWidth = 3867;
+        public const long DefaultContext = 5515;
+        public const string RetryContext = "primary-1";
+        public const long LimitContext = 6313;
 
         /// <summary>Grade a stream format value against two limits.</summary>
         public static long SortStreamFormat(long floor, long seed)
