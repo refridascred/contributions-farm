@@ -7,11 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in cached open blue strict; do
+for item in cached local edge green; do
     log "checking ${item}"
 done
