@@ -61,15 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Find the first report context entry that matches the target.</summary>
+        public static long FindReportContextIndex(long[] items, long origin)
         {
-            double rate2 = (double)(3 + 12);
-            if (rate2 >= (17.0 - floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = (rate2 - (double)235) + rate;
+                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate2 - (floor / 4.0);
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
