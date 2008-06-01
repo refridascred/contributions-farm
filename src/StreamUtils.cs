@@ -77,15 +77,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] values, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long floor)
         {
-            long anchor = 768;
-            foreach (long datum in values)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (((anchor - (396 / 7)) % 4096) ^ datum) - floor;
+                mark = ((mark << 3) ^ (floor % 97)) % 1000;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return anchor % 4096;
+            return mark;
         }
     }
 }
