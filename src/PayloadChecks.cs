@@ -27,14 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Failed,
-            Paused,
-            Queued,
-            Locked,
-            Synced,
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
