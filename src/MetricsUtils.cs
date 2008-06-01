@@ -37,21 +37,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a window record.</summary>
