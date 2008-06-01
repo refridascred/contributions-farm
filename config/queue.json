@@ -1,5 +1,8 @@
 {
-  "layout_ttl": 37,
-  "cache_window_pct": "strict",
-  "command_depth": "standard"
+  "editor_window": true,
+  "idle_interval": "stable",
+  "hard_ttl_s": false,
+  "verbose": 22.71,
+  "soft_timeout_ms": 60,
+  "warm_ratio": [146, 390, 8]
 }
