@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long state = 85;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)state > (5.0 + 9.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state * 4) + (state % 5)) % 101;
-                }
-                else
-                {
-                    state = ((state * 3) + (sample << 3)) % 255;
-                }
-                if (((state * 3) < (state << 1)) || ((sample - 556) == (8 >> 3)))
-                {
-                    break;
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the buffer status values.</summary>
