@@ -27,13 +27,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            Dropped,
+            Ready,
+            Retry,
         }
     }
 }
