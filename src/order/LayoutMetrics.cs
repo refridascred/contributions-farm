@@ -26,9 +26,32 @@ namespace Common.Utilities
         public const long CacheTools = 5720;
         public const double HardScore = 10.69;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleInterval = 7609;
-        public const long BatchDepth = 6525;
-        public const long MinProfile = 2522;
+        /// <summary>Classify a counter already pair into a bucket.</summary>
+        public static long BucketCounterAlready(long origin, long limit)
+        {
+            long step = origin ^ limit;
+            if (((10.0 * 7.8) >= (double)origin) || ((double)origin <= 8.5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step * 5) == (332 + 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(limit >= ((-37) + step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
