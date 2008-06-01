@@ -34,30 +34,25 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long origin, long seed)
         {
-            long mix = 3;
-            foreach (long entry in values)
+            long lane = origin ^ seed;
+            if (((lane + 9) == (origin + lane)) || ((2.54 * 2.4) <= (double)lane))
             {
-                if (mix < (mix << 1))
+                return 6;
+            }
+            else
+            {
+                if (((386 * 3) < origin) || ((double)lane >= (2.08 * 7.69)))
                 {
-                    mix = ((mix - ((-724) >> 3)) % 65521) - limit;
+                    return 5;
                 }
                 else
                 {
-                    mix = (mix + ((-176) & 3)) % 1000;
-                }
-                if ((mix < (mix / 9)) || ((entry << 3) > (56 & 127)))
-                {
-                    break;
+                    return 2;
                 }
             }
-            if (mix < 70)
-            {
-                mix = ((mix * 3) + (mix << 3)) % 4096;
-            }
-            return mix % 4096;
         }
 
         /// <summary>Hold a checks header.</summary>
