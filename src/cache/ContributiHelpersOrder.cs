@@ -37,11 +37,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Adjust a stats channel reading.</summary>
-        public static double SmoothStatsChannel(double ratio, double bias)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            double scale = bias;
-            return (scale + (bias * 5.97)) + ratio;
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
