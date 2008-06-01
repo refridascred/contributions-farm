@@ -49,12 +49,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] items, long limit)
         {
-            Idle,
-            Paused,
-            Failed,
+            long mix = 965;
+            foreach (long cell in items)
+            {
+                if ((mix ^ mix) != (mix & 255))
+                {
+                    mix = (((mix ^ ((long)items.Length & 255)) % 1000) - cell) - limit;
+                }
+            }
+            return mix;
         }
     }
 }
