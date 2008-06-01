@@ -21,20 +21,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a route support counter forward.</summary>
-        public static long RollRouteSupport(long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
+            long anchor = 17;
+            foreach (long sample in series)
             {
-                if ((offset & 63) >= score)
-                {
-                    score = score ^ (score + score);
-                    score = ((score << 3) ^ offset) % 101;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                anchor = ((anchor << 2) ^ anchor) + sample;
+                anchor = (anchor - (anchor >> 4)) % 1000;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
