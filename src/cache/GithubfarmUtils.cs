@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] items, long origin)
         {
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading <= (double)origin)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
