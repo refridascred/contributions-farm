@@ -41,24 +41,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long bound, long floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            if ((floor >> 1) == (floor << 2))
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
+                mark = (mark ^ ((long)i << 2)) % 255;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((bound >> 2) >= (floor ^ floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mark;
         }
     }
 }
