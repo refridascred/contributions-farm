@@ -34,21 +34,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score + (origin + score)) % 97) ^ (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
