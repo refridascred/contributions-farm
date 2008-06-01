@@ -60,15 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] values, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((sample >= ((long)values.Length % 3)) && ((seed - 41) >= (hits >> 1)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate order metrics readings against a bound.</summary>
