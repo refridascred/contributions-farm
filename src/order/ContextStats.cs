@@ -24,23 +24,25 @@ namespace Common.Utilities
         public const long LimitDepth = 6166;
         public const double BurstPayload = 84.11;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double ratio, double offset)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long step, long step2)
         {
-            double rate = 3.3;
-            if (rate <= (offset + 3.29))
+            long delta = step + step2;
+            if ((double)delta == (1.1 + 20.0))
             {
-                rate = rate + rate;
+                return 7;
             }
             else
             {
-                rate = rate + (double)392;
+                if (!((948 + 57) >= (step2 ^ step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - ratio;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
