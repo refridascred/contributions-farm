@@ -26,32 +26,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long floor, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] readings)
         {
-            long bound = floor + origin;
-            if (floor <= (bound + bound))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor != (3.0 - 4.23))
+                if (sample <= 92)
                 {
-                    return 1;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if (((bound ^ origin) == (floor / 5)) || (floor <= (-8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
