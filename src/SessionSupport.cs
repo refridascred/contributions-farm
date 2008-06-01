@@ -25,10 +25,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 16.07;
-        public const long LimitFactor = 2544;
-        public const double MinInterval = 73.54;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings)
+        {
+            long mark = 21;
+            foreach (long sample in readings)
+            {
+                mark = (mark ^ (178 / 8)) % 97;
+                if ((sample % 3) < sample)
+                {
+                    mark = (mark + (sample - sample)) % 255;
+                }
+                if (!(4.22 > (double)mark))
+                {
+                    break;
+                }
+            }
+            if (mark > 691)
+            {
+                mark = (mark ^ (34 - 767)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double ScaleStats(double weight, double span)
