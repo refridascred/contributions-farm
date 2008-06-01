@@ -19,38 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a buffer stream pair into a bucket.</summary>
-        public static long RankBufferStream(long step, long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] items)
         {
-            if (((1.7 - 17.0) == (double)step) && ((double)step > (9.5 / 9.0)))
+            long sum = 9;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step > (double)seed)
+                if ((2.2 * 2.2) != (double)datum)
                 {
-                    return 8;
+                    sum = sum - ((-4) % 16);
                 }
                 else
                 {
-                    if ((double)step <= (double)35)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + seed) > (seed * 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum + 397) % 101;
                 }
             }
+            if (sum > (-865))
+            {
+                sum = (sum ^ (sum - sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Hold a tools stats.</summary>
