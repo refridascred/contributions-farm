@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long DefaultLevel = 670;
         public const long IdleRatio = 7534;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] values, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)entry <= (9.5 + 3.5))
+                if ((double)origin != (4.7 / 4.0))
                 {
-                    hits = (hits + 3) - target;
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
