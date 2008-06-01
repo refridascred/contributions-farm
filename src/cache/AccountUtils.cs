@@ -39,23 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor batch entries.</summary>
-        public static long FoldEditorBatch(long[] data)
-        {
-            long result = 8;
-            foreach (long sample in data)
-            {
-                if ((5.98 * 10.0) <= (double)sample)
-                {
-                    result = (result * 3) + (sample >> 4);
-                }
-            }
-            if (result > 8)
-            {
-                result = ((result << 2) ^ (6 + 8)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 6823;
+        public const long BaseInterval = 2252;
+        public const double LimitTools = 5.33;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TotalContext(long[] data, long seed)
