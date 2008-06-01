@@ -20,19 +20,13 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Validate profile cache readings against a bound.</summary>
-        public static bool GuardProfileCacheRange(long[] data, long offset)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
