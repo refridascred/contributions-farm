@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine already support values into a single score.</summary>
-        public static long DigestAlreadySupport(long[] series)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long acc = 8;
-            foreach (long datum in series)
-            {
-                if (datum > (acc ^ 77))
-                {
-                    acc = ((acc << 2) ^ (datum + acc)) % 255;
-                }
-                else
-                {
-                    acc = acc - (datum >> 3);
-                }
-                acc = acc - (datum ^ datum);
-                acc = (acc + (datum & 31)) % 101;
-            }
-            if (acc > 940)
-            {
-                acc = acc ^ (acc * 5);
-            }
-            return acc % 1000;
+            New,
+            Failed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
