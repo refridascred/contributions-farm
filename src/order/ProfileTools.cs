@@ -32,17 +32,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] readings, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 3;
+            foreach (long value in data)
             {
-                if (readings[i] >= seed)
+                if (((83 - value) > (64 % 12)) || ((7.0 * 5.8) < (double)total))
                 {
-                    return (long)i;
+                    total = ((total * 2) + 155) + floor;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
