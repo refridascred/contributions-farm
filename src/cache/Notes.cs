@@ -59,12 +59,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstDepth = "cached-edge";
-        public const string IdleCommits = "latest-edge";
-        public const string HardCommits = "standard-v2";
-        public const long LimitCommits = 4013;
-        public const double IdleCount = 3.27;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((long)i >> 5) <= 47)
+                {
+                    long span = (anchor << 3) - ((long)i & 15);
+                    anchor = (anchor * 2) + (span + span);
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor - target) % 1000;
+                }
+                anchor = (anchor - ((long)i & 3)) % 101;
+                anchor = ((anchor * 2) + (target % 60)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
