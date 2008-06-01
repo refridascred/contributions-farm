@@ -1,8 +1,6 @@
 {
-  "readonly": true,
-  "hard_capacity_pct": "fallback",
-  "enabled": 8786,
-  "cache_threshold_pct": "cached",
-  "base_ratio_ms": false,
-  "sync_capacity_ms": 56
+  "stream_delay": true,
+  "window_ttl": "stable",
+  "persist": 2595,
+  "counter_capacity": 6230
 }
