@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] values, long floor)
         {
-            long mark = 5;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (values[i] > floor)
                 {
-                    mark = ((mark - (item % 10)) % 101) ^ (long)i;
-                }
-                if ((14.0 / 6.0) >= (double)mark)
-                {
-                    mark = ((mark << 3) ^ item) % 1000;
+                    return (long)i;
                 }
             }
-            if (mark > 713)
-            {
-                mark = (mark + (mark + mark)) % 255;
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
