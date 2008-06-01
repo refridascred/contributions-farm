@@ -17,13 +17,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double ratio, double offset)
         {
-            Dropped,
-            Retry,
-            Locked,
-            Failed,
+            double scale = offset;
+            if (scale < ratio)
+            {
+                scale = scale + scale;
+            }
+            return scale - scale;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
