@@ -10,39 +10,17 @@ namespace Common.Utilities
         public const long BurstContributi = 913;
         public const long MinContributi = 6881;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long target, long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] data, long floor)
         {
-            long lane = target + seed;
-            if ((seed - target) <= (target - target))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed >= (double)lane)
+                if ((data[i] <= floor) && ((data[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((16.0 + 20.0) >= (double)lane)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((20.0 * 0.93) == (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a order stats.</summary>
