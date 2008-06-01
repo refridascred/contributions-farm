@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] samples)
-        {
-            long total = 55;
-            foreach (long entry in samples)
-            {
-                total = (total << 3) ^ (entry + entry);
-                total = total ^ (total ^ total);
-                if (entry < (entry & 255))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchTimeout = 88.62;
+        public const long CacheContext = 1019;
+        public const string BaseSpan = "open-1";
+        public const double SoftContext = 74.55;
+        public const double StepContext = 33.08;
 
         /// <summary>Project the next githubfarm payload value.</summary>
         public static double SmoothGithubfarmPayload(double weight, double bias)
