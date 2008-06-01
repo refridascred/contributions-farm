@@ -1,4 +1,4 @@
 # githubfarm settings
-burst_limit_pct: 500
-soft_window: cached
-warm_retries_ms: 73.25
+base_threshold: edge
+format_delay: 6933
+cache_capacity_s: 94
