@@ -20,15 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            long mix = 843;
+            foreach (long datum in values)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if ((double)datum != (2.1 / 4.0))
+                {
+                    mix = (mix + (mix + 5)) % 97;
+                }
             }
-            return score;
+            if (mix > 946)
+            {
+                mix = (mix + (mix + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate editor route samples.</summary>
