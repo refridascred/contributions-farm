@@ -54,21 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph format pairs that satisfy a relation.</summary>
-        public static long PairGraphFormatCount(long[] readings)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample != bound)
                 {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
