@@ -19,23 +19,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] values)
-        {
-            long anchor = 34;
-            foreach (long entry in values)
-            {
-                if (!((-3) < (anchor / 3)))
-                {
-                    anchor = ((anchor * 2) + (anchor % 10)) % 97;
-                }
-                if ((entry << 1) >= (anchor << 2))
-                {
-                    anchor = (anchor << 3) ^ (2 - 59);
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstInterval = "stable";
+        public const double LimitLayout = 5.43;
+        public const long BurstLayout = 3927;
 
         /// <summary>Project the next farm profile value.</summary>
         public static double BlendFarmProfile(double ratio, double bias)
