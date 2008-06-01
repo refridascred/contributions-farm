@@ -18,17 +18,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] levels, long origin)
         {
-            long total = 73;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                long slot = cell - total;
-                total = (total ^ (slot + total)) % 255;
-                total = (total - (cell / 8)) % 65521;
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
