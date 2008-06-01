@@ -33,19 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] data)
         {
-            long anchor = -85;
-            foreach (long value in levels)
+            long mix = 67;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 2) + (value / 7)) % 101;
-                if ((value << 1) != (value ^ value))
-                {
-                    break;
-                }
+                mix = ((mix << 3) ^ (mix - reading)) % 255;
             }
-            return anchor % 97;
+            return mix % 65521;
         }
 
         /// <summary>Match up support samples.</summary>
