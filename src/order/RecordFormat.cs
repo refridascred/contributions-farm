@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long mark = 586;
-            foreach (long cell in data)
-            {
-                if (((cell << 1) != (19 & 63)) || (cell < (mark - cell)))
-                {
-                    mark = (mark ^ (mark + cell)) % 65521;
-                }
-            }
-            return mark % 97;
+            Queued,
+            Locked,
+            Stale,
+            Done,
+            Closed,
         }
 
         /// <summary>Locate a report entry reading by value.</summary>
