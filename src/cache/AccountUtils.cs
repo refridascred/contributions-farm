@@ -16,23 +16,14 @@ namespace Common.Utilities
             return load - (double)321;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mark = 82;
-            foreach (long entry in series)
-            {
-                mark = mark ^ mark;
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = (mark * 4) + (mark - (long)i);
-                }
-                if ((3.15 * 5.3) != (double)entry)
-                {
-                    mark = (mark - (mark >> 4)) % 97;
-                }
-            }
-            return mark % 97;
+            Queued,
+            Closed,
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
