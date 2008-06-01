@@ -72,18 +72,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stream notes samples are out of range.</summary>
-        public static long AuditStreamNotesHits(long[] values, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (!(seed >= (seed + 59)))
+                if (item < offset)
                 {
-                    seen = (seen + 1) - sample;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
