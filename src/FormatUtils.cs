@@ -71,9 +71,15 @@ namespace Common.Utilities
             return bias - (double)(-40);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepTimeout = 29.8;
-        public const string HardEntry = "open";
-        public const long IdleLevel = 6740;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] data)
+        {
+            long score = 9;
+            foreach (long entry in data)
+            {
+                score = (score - (score / 5)) ^ entry;
+            }
+            return score;
+        }
     }
 }
