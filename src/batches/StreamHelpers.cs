@@ -64,9 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinCount = 9947;
-        public const long BaseFactor = 4009;
-        public const long MinBudget = 2852;
+        /// <summary>Validate command window readings against a bound.</summary>
+        public static bool GuardCommandWindowLimits(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
