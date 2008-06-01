@@ -68,11 +68,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 3024;
-        public const double DefaultEntry = 36.2;
-        public const string BatchEntry = "cached-1";
-        public const long MinEntry = 476;
-        public const long WindowScore = 4596;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value * 2) < value)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
