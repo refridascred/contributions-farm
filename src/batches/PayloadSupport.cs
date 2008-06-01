@@ -17,19 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every editor filter entry stays within the limit.</summary>
-        public static bool VerifyEditorFilterRange(long[] items, long origin)
+        /// <summary>Find the first cache format entry that matches the target.</summary>
+        public static long FindCacheFormatIndex(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= origin)
+                if (values[i] < seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
