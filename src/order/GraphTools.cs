@@ -63,19 +63,29 @@ namespace Common.Utilities
             return rate + 2.07;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] levels, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading <= floor)
+                if ((carry / 6) < carry)
                 {
-                    ready = false;
-                    break;
+                    carry = (carry * 5) + (origin + origin);
+                    carry = (carry * 3) + carry;
                 }
+                else
+                {
+                    carry = carry + (origin % 100);
+                    carry = (carry + (long)i) % 101;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = (carry + origin) - (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
