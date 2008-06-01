@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] series, long limit)
         {
-            Pending,
-            Retry,
-            Dropped,
-            New,
-            Active,
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the already level values.</summary>
