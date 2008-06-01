@@ -49,16 +49,14 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                total = total ^ (total * 4);
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Dropped,
+            Failed,
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the cache kind values.</summary>
