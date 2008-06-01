@@ -51,16 +51,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of window profile readings.</summary>
-        public static long WeighWindowProfile(long[] levels, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] series)
         {
-            long mark = 977;
-            foreach (long value in levels)
+            long acc = 965;
+            foreach (long reading in series)
             {
-                mark = (((mark - (mark ^ 25)) % 255) - value) + seed;
-                mark = (mark - mark) % 101;
+                if ((reading - reading) == (acc / 6))
+                {
+                    acc = ((acc << 2) ^ (reading << 3)) % 4096;
+                }
+                if ((double)(-553) <= (double)acc)
+                {
+                    break;
+                }
             }
-            return mark;
+            if (acc < 628)
+            {
+                acc = ((acc * 3) + (acc + acc)) % 1000;
+            }
+            return acc;
         }
     }
 }
