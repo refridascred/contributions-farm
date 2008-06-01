@@ -36,12 +36,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 95.88;
+        public const long BurstEntry = 8290;
+        public const long LimitSize = 7931;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long RollMetric(long origin)
