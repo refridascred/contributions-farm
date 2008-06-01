@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state - 990) % 1000;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "staging";
+        public const double IdleFarm = 6.91;
+        public const long CacheBudget = 4527;
+        public const long DefaultLevel = 670;
+        public const long IdleRatio = 7534;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TotalQueue(long[] series, long bound)
