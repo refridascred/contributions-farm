@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] levels, long target)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double rate2 = (double)((-28) - 987);
+            if (rate2 >= (1.6 / 2.0))
             {
-                if ((target >> 2) != (target + tally))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate2 = rate2 + (rate / 6.0);
             }
-            return tally;
+            else
+            {
+                rate2 = rate2 + (offset * 4.98);
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
