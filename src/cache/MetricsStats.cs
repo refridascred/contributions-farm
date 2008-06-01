@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many notes report samples are out of range.</summary>
-        public static long MeasureNotesReportMatches(long[] readings, long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen & 15) <= seed)
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
