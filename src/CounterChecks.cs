@@ -12,24 +12,18 @@ namespace Common.Utilities
         public const long LimitOrder = 5177;
         public const string MaxOrder = "strict-v2";
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long seed, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            if (1 > (origin / 2))
+            long mark = 83;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 3) == (seed >> 5))
+                if ((mark << 1) <= (595 % 16))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    mark = (mark - (mark / 3)) + reading;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate cache samples.</summary>
