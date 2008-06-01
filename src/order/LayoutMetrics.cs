@@ -26,32 +26,18 @@ namespace Common.Utilities
         public const long CacheTools = 5720;
         public const double HardScore = 10.69;
 
-        /// <summary>Classify a counter already pair into a bucket.</summary>
-        public static long BucketCounterAlready(long origin, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] samples, long floor)
         {
-            long step = origin ^ limit;
-            if (((10.0 * 7.8) >= (double)origin) || ((double)origin <= 8.5))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step * 5) == (332 + 2))
+                if ((0.71 * 6.39) <= (double)floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(limit >= ((-37) + step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 2) ^ datum;
                 }
             }
+            return count;
         }
     }
 }
