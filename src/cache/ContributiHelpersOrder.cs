@@ -14,13 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
             public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
