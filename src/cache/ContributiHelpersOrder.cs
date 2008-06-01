@@ -37,13 +37,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public bool Count { get; set; }
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
+            Stale,
+            Failed,
+            Dropped,
+            Paused,
         }
     }
 }
