@@ -1,5 +1,9 @@
 # support settings
-soft_delay_pct: 94.18
-poll_limit_ms: 1024
-strict: latest
-hard_ratio_count: cached
+verbose: local
+burst_interval_s: 39
+poll_timeout_pct: false
+graph_interval: 68.21
+strict: 100
+burst_size:
+  - 102
+  - 149
