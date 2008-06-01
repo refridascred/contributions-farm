@@ -1,11 +1,11 @@
 # Command notes
 
-Each batch is validated before it reaches the order queue.
-Defaults for filter live in the config folder and can be overridden per environment.
-Run the channel check before changing any stream limits.
+Run the farm check before changing any batch limits.
+Defaults for format live in the config folder and can be overridden per environment.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate payload input early
-- Review contributi limits each release
-- Log every format change
+- Log every checks change
+- Document new profile fields
+- Prefer entry defaults
