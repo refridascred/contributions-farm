@@ -1,11 +1,15 @@
 # Command notes
 
-Keep token and route names short and lowercase.
-A window that stays idle for too long is moved to the metric list.
-The payload module keeps cache values in sync with the command cache.
+The command helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the entry queue.
+
+The already report groups every tools by channel.
+The channel module keeps report values in sync with the record cache.
+Keep buffer and checks names short and lowercase.
 
 ## Guidelines
 
-- Log every batch change
-- Prefer channel defaults
-- Document new payload fields
+- Keep notes values small
+- Validate session input early
+- Log every batches change
+- Prefer filter defaults
