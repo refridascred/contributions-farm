@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] levels, long target)
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item & 31) == (target >> 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
