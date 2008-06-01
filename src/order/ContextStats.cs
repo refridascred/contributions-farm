@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Roll a support format counter forward.</summary>
+        public static long SeriesSupportFormat(long floor)
         {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark * 3) + (floor + mark);
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
