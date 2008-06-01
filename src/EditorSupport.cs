@@ -23,11 +23,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] samples, long offset)
         {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate cluster counter samples.</summary>
