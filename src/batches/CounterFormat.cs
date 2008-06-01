@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] levels, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] values)
         {
             long count = 0;
-            foreach (long cell in levels)
+            foreach (long reading in values)
             {
-                if ((count * 4) <= (cell >> 5))
+                if (!((reading + count) < count))
                 {
-                    count = (count + 2) - origin;
+                    count = count + 2;
                 }
                 else
                 {
