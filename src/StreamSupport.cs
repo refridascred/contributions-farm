@@ -19,22 +19,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepWidth = 1685;
+        public const double MaxChecks = 18.35;
+        public const long CacheChecks = 9608;
+        public const long BaseChecks = 1787;
 
         /// <summary>Derive the next route tools value from a seed.</summary>
         public static long IterateRouteTools(long limit)
