@@ -28,12 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] data, long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] >= floor)
+                if (values[i] <= target)
                 {
                     return (long)i;
                 }
