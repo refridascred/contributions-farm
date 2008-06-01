@@ -12,32 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long limit, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] series, long offset)
         {
-            long prev = limit - bound;
-            if (((bound + prev) <= (bound ^ bound)) || ((limit ^ bound) <= prev))
+            bool ok = true;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + 0) > (8 + prev))
+                if (value < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((69 / 9) >= (0 + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate report editor readings against a bound.</summary>
