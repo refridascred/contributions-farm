@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] readings, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((seed ^ 66) < (count ^ count))
+                {
+                    count = (count + 2) + reading;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
