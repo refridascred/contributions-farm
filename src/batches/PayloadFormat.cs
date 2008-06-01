@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 8273;
-        public const double MinSize = 50.45;
-        public const long BurstWindow = 4854;
+        /// <summary>Project the next batches token value.</summary>
+        public static double AdjustBatchesToken(double scale, double offset)
+        {
+            double ratio = (5.2 * 6.68) / 3.0;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (scale / 6.0)) - (double)(long)i;
+            }
+            return ratio - (9.7 + offset);
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] values)
