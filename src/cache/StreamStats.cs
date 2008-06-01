@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a command payload value against two limits.</summary>
-        public static long GradeCommandPayload(long origin, long origin2)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] values, long step)
         {
-            if (!(origin2 > origin))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin2 + origin) <= (origin - origin2))
+                if ((values[i] < step) && ((values[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
