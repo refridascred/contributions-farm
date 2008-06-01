@@ -40,18 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] readings)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((29 % 8) == ((long)readings.Length & 3))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
