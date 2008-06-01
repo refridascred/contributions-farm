@@ -26,11 +26,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 11.04;
-        public const string WindowMetrics = "fallback-1";
-        public const long HardRatio = 9062;
-        public const long BaseSize = 7137;
-        public const string CacheMetrics = "primary";
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
