@@ -40,10 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 3417;
-        public const string MaxGraph = "latest-edge";
-        public const long IdleGraph = 2173;
-        public const long StepGraph = 3776;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
