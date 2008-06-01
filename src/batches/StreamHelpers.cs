@@ -32,24 +32,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long seed, long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] levels, long limit)
         {
-            if (!((bound + seed) <= seed))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound == (7.0 / 7.0))
+                if (value != limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
