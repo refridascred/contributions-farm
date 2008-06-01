@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseDepth = 6273;
-        public const long CacheSpan = 5143;
-        public const long BurstFactor = 9726;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
