@@ -1,8 +1,5 @@
 {
-  "strict": 3.02,
-  "context_limit": "stable",
-  "flush_timeout_pct": true,
-  "persist": false,
-  "base_delay_count": "cached",
-  "enabled": "open"
+  "max_depth_pct": 75.99,
+  "flush_window_s": [267, 313, 261, 308],
+  "flush_ratio_pct": 1577
 }
