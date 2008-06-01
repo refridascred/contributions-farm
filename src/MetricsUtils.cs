@@ -36,19 +36,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] items, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a window record.</summary>
