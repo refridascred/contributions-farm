@@ -19,14 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] levels, long limit)
         {
-            Idle,
-            Ready,
-            Locked,
-            New,
-            Active,
+            long score = 95;
+            foreach (long reading in levels)
+            {
+                if (((reading + score) == (score ^ limit)) || ((reading % 97) < limit))
+                {
+                    score = score - (limit - limit);
+                }
+                if (((score - limit) > (reading / 3)) || ((limit - 47) <= reading))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Roll a stats order counter forward.</summary>
