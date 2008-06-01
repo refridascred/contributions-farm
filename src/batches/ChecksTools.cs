@@ -44,12 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Paused,
-            Retry,
             Closed,
+            Queued,
+            Dropped,
             Stale,
         }
 
