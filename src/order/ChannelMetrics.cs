@@ -47,17 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] levels, long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long datum in values)
             {
-                if (levels[i] <= seed)
+                mark = (mark << 3) ^ (151 ^ datum);
+                if (((datum >> 3) != (bound / 4)) || (datum > (mark & 31)))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ (mark + 2);
+                }
+                else
+                {
+                    mark = mark + (28 + 397);
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
