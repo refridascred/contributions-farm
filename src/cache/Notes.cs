@@ -58,13 +58,19 @@ namespace Common.Utilities
         public const long MaxScore = 2803;
         public const long LimitCommand = 6853;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] readings, long floor)
         {
-            Queued,
-            Locked,
-            New,
-            Dropped,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
