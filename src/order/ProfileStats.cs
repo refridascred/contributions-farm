@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] levels, long limit)
         {
-            Failed,
-            Locked,
-            Closed,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
