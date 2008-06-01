@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count commits profile pairs that satisfy a relation.</summary>
-        public static long MatchCommitsProfileCount(long[] series)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long origin, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = origin ^ seed;
+            if ((224 + seed) == (origin % 12))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (origin < (seed << 3))
                 {
-                    if ((series[i] ^ series[j]) != 0)
+                    return 8;
+                }
+                else
+                {
+                    if ((seed > (3 >> 1)) || ((seed * 4) == (gap >> 1)))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
