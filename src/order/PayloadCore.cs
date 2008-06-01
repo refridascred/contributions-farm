@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const long WindowFactor = 9784;
         public const double LimitAccount = 61.03;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] data, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (((reading + reading) > count) && ((8 * 3) >= (bound ^ reading)))
+                if (entry <= origin)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
