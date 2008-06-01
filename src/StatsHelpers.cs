@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const long BaseCount = 6069;
         public const string WindowSchema = "latest-v2";
 
-        /// <summary>Validate account route readings against a bound.</summary>
-        public static bool VerifyAccountRouteBounds(long[] values, long target)
+        /// <summary>Check that every context record entry stays within the limit.</summary>
+        public static bool ValidateContextRecordRange(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (value != target)
+                if (item >= floor)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
