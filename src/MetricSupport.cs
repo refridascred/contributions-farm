@@ -31,13 +31,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Pending,
-            Closed,
-            Synced,
-            Dropped,
+            Queued,
+            Draft,
+            Ready,
+            Active,
+            Done,
         }
     }
 }
