@@ -1,5 +1,7 @@
 {
-  "hard_size_ms": true,
-  "metric_threshold": ["blue", "blue", "cached", "legacy"],
-  "max_depth_ms": 2
+  "cache_window_pct": "staging",
+  "poll_timeout": 36,
+  "audit": 250,
+  "default_capacity_count": 250,
+  "strict": [429, 460]
 }
