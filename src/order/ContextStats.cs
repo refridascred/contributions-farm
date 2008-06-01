@@ -41,19 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] values, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long seed)
         {
-            long carry = 29;
-            foreach (long item in values)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry + (item - item)) % 255) + bound;
-                if ((item << 1) <= (carry + 657))
+                total = (total ^ seed) % 1000;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    break;
+                    total = (total ^ (seed + total)) + (long)i2;
                 }
+                total = (total - (total % 2)) % 1000;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
     }
 }
