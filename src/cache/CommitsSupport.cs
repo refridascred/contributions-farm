@@ -48,11 +48,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitLevel = 4221;
-        public const long IdleWidth = 9661;
-        public const long BaseSize = 3770;
-        public const long MinCount = 9157;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry <= (double)70)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
