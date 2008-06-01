@@ -25,22 +25,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] readings)
+        /// <summary>Combine window cluster values into a single score.</summary>
+        public static long DigestWindowCluster(long[] readings)
         {
-            long tally = 0;
+            long mark = 158;
             foreach (long sample in readings)
             {
-                if (sample <= 92)
+                if (mark < (mark << 3))
                 {
-                    tally = tally + 2;
+                    mark = (mark * 4) + (sample ^ (-6));
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = mark - 31;
                 }
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
