@@ -34,18 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long total = 640;
+            foreach (long cell in levels)
             {
-                if (((0.37 + 17.0) <= (double)cell) || ((matches ^ matches) >= (cell & 1)))
+                if ((total + step) < cell)
                 {
-                    matches = matches + 1;
+                    total = ((total << 2) ^ (step & 63)) % 1000;
+                }
+                else
+                {
+                    total = (total * 2) + (cell - cell);
                 }
             }
-            return matches;
+            return total % 65521;
         }
     }
 }
