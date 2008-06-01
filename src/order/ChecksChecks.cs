@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 8853;
         public const long MaxSpan = 3011;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] readings, long limit)
         {
-            Stale,
-            Retry,
-            Synced,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate buffer order readings against a bound.</summary>
