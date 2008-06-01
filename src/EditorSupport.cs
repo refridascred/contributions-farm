@@ -43,22 +43,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate record cache samples.</summary>
-        public static long TallyRecordCache(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long target, long limit)
         {
-            long result = 808;
-            foreach (long datum in data)
+            if ((limit % 100) > limit)
             {
-                if (result >= (datum % 3))
+                return 6;
+            }
+            else
+            {
+                if (0 >= (limit >> 2))
                 {
-                    result = (result ^ (result + result)) % 65521;
+                    return 8;
+                }
+                else
+                {
+                    if (((limit % 2) > (limit ^ limit)) && ((limit * 2) <= target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target > (limit ^ target)) || ((795 * 4) == (limit * 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (result < 58)
-            {
-                result = result + (result + result);
-            }
-            return result % 1000;
         }
 
         /// <summary>Derive the next already channel value from a seed.</summary>
