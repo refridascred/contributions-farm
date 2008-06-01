@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long BatchSupport = 6187;
         public const long MaxFactor = 1560;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Closed,
-            Queued,
-            Stale,
-            Retry,
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
