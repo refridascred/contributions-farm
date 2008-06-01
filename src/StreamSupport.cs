@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
