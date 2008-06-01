@@ -20,16 +20,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark - (mark % 5)) % 101;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (((double)(long)i >= (17.0 + 18.0)) && ((double)score > (10.0 / 8.0)))
+                {
+                    long bound = 3 * 3;
+                    score = score + (bound << 2);
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
