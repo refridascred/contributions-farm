@@ -21,13 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
             public long Region { get; set; }
-            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
