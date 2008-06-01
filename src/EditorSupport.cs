@@ -13,12 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] series)
         {
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value + value) != (value - value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
