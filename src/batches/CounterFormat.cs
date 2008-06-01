@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long StepWidth = 8773;
         public const long RetryDepth = 3702;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] data, long target)
+        /// <summary>Fold a list of cluster account readings.</summary>
+        public static long TallyClusterAccount(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long sum = 0;
+            foreach (long value in samples)
             {
-                if ((((double)target > (double)hits) || ((target << 3) == (hits / 4))) && !((hits & 255) > item))
+                if (((double)(-85) != (double)origin) || ((value % 5) > (value / 6)))
                 {
-                    hits = hits + 3;
+                    sum = ((sum << 3) ^ (origin / 5)) % 4096;
                 }
             }
-            return hits;
+            return sum % 4096;
         }
     }
 }
