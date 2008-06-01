@@ -32,15 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Audit counter stream readings against a rule.</summary>
+        public static long CountCounterStreamHits(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (((18.0 * 14.0) != (double)item) && ((double)(-654) <= (double)matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
