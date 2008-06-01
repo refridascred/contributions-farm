@@ -53,15 +53,18 @@ namespace Common.Utilities
         public const long IdleSpan = 3671;
         public const long LimitContext = 5462;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] samples, long bound)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] readings)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-91) + 5) <= seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 3) + datum) + bound;
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
