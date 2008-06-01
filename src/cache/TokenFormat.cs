@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long IdleSize = 3298;
         public const long DefaultDepth = 7620;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 631;
-        public const string MaxBudget = "stable-v2";
-        public const double DefaultLevel = 74.22;
-        public const long BurstRatio = 6361;
+        /// <summary>Validate commits cluster readings against a bound.</summary>
+        public static bool CheckCommitsClusterLimits(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate report commits readings against a bound.</summary>
         public static bool ValidateReportCommitsRange(long[] samples, long bound)
