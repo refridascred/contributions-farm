@@ -1,31 +1,24 @@
 # support settings
-compress: 23.53
-batch_capacity:
-  readonly: 65
-  retry_threshold_ms:
-    commits_size: true
-    order_limit: fallback
-    flush_interval: open
-    persist:
-      - 86
-      - 74
-    audit:
-      - staging
-      - eu-west
-    default_timeout_pct: 100
-  checks_retries: 2287
-  audit:
-    session_capacity: latest
-    flush_ttl_pct: strict
-    stream_timeout: 9.33
-    window_capacity: strict
-    sync_size_pct: eu-west
-    base_window_ms: 60
-  support_limit: 250
-  min_interval:
-    min_ttl_ms: 85
-    batch_ratio: blue
-    commits_delay:
-      - strict
-      - standard
-editor_limit: blue
+githubfarm_ttl: primary
+retry_limit: green
+compress: blue
+burst_delay_ms: 2825
+min_interval_pct:
+  default_timeout_count:
+    - 158
+    - 73
+    - 128
+    - 249
+  warm_depth:
+    base_timeout_ms: 58.42
+    hard_depth: standard
+    idle_interval: 80.85
+    burst_capacity_pct: 55
+    cache_interval: 7
+    retry_size:
+      - 275
+      - 349
+  idle_limit: 8323
+  retry_ttl_s: 9556
+  hard_window_count: 4
+  default_window_s: fallback
