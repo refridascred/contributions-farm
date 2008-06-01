@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitDepth = 4653;
-        public const long LimitNotes = 9499;
-        public const long BatchNotes = 8060;
-        public const long WindowDepth = 4491;
-        public const long MaxNotes = 359;
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] items, long step)
+        {
+            long score = 357;
+            foreach (long item in items)
+            {
+                if ((double)item == (14.0 * 8.0))
+                {
+                    score = ((score + item) % 4096) - step;
+                }
+                else
+                {
+                    score = (score - score) % 65521;
+                }
+            }
+            if (score > 458)
+            {
+                score = (score + score) % 101;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
