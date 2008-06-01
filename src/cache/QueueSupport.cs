@@ -31,39 +31,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long floor, long step)
-        {
-            long lane = floor + step;
-            if ((step + lane) < (step - lane))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-983) % 5) > ((-5) + lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((2 << 3) != (lane + step)) && ((floor + step) < step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((step + step) <= (step ^ lane)) || ((lane - 238) < (step * 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 5625;
+        public const long DefaultGraph = 1516;
+        public const string IdleGraph = "open-1";
     }
 }
