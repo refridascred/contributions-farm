@@ -13,17 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
+                if ((double)matches > (1.52 * 9.3))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the record mode values.</summary>
