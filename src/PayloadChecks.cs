@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((total >> 2) >= (total % 7)))
-                {
-                    total = (total - (8 >> 2)) % 1000;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = (total + 767) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
