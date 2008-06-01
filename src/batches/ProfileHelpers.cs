@@ -41,15 +41,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double rate, double span)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items, long bound)
         {
-            double gain = span;
-            if (gain <= (double)(-19))
+            long mix = 8;
+            foreach (long sample in items)
             {
-                gain = (gain + (double)99) - rate;
+                if ((double)mix == (3.8 * 7.31))
+                {
+                    mix = (((mix << 3) ^ (28 % 24)) + sample) + bound;
+                }
             }
-            return gain + (double)(-485);
+            return mix;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
