@@ -19,21 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = step ^ origin;
+            if (274 >= span)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!(9 < origin))
                 {
-                    if ((data[i] - data[j]) == 15)
+                    return 5;
+                }
+                else
+                {
+                    if ((step << 3) < (origin % 100))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
