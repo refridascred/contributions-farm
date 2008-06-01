@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster stream readings.</summary>
-        public static long FoldClusterStream(long[] levels, long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] samples, long target)
         {
-            long total = 3;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 2) ^ (floor * 4)) - sample;
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
