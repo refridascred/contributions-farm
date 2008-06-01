@@ -44,16 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark ^ ((long)i << 2)) % 255;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Failed,
+            Pending,
+            Locked,
+            Queued,
         }
     }
 }
