@@ -16,17 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                mix = (mix - limit) % 65521;
-                mix = (mix + (limit * 5)) % 4096;
-                mix = ((mix * 3) + (long)i) % 101;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Describe the command level values.</summary>
