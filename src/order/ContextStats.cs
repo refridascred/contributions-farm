@@ -44,13 +44,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            Pending,
+            Draft,
+            Idle,
         }
     }
 }
