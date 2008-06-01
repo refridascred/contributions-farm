@@ -77,15 +77,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double gain, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] samples, long limit)
         {
-            double scale = 4.24;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                scale = (((scale + scale) - (double)(long)i) - gain) + span;
+                if (item < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale + (scale * 14.0);
+            return ok;
         }
     }
 }
