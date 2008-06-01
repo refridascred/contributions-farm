@@ -38,13 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the route cluster entries that pass the check.</summary>
+        public static long TallyRouteClusterHits(long[] readings, long bound)
         {
-            Closed,
-            Queued,
-            Dropped,
-            Stale,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!((5.05 - 1.4) >= (double)datum) && ((bound / 7) != (datum + bound)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
