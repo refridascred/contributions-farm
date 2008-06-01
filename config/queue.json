@@ -1,6 +1,5 @@
 {
-  "base_delay": ["legacy", "strict"],
-  "hard_retries": [483, 235, 221],
-  "burst_timeout": "strict",
-  "enabled": "stable"
+  "cache_window_s": 250,
+  "channel_retries": 1024,
+  "idle_capacity_count": false
 }
