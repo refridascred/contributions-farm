@@ -1,15 +1,13 @@
 # Command notes
 
-When a cluster fails, the stats handler retries a few times before giving up.
-A tools that stays idle for too long is moved to the queue list.
-Keep schema and layout names short and lowercase.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Each window is validated before it reaches the commits queue.
 
-The token report groups every token by route.
-Keep route and notes names short and lowercase.
+Run the support check before changing any contributi limits.
+Use counter settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Keep route values small
-- Document new metric fields
-- Review stats limits each release
-- Validate notes input early
+- Validate support input early
+- Keep report values small
+- Review token limits each release
