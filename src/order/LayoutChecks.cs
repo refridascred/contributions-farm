@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long SoftCommits = 7954;
         public const double WindowTimeout = 52.88;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double scale, double offset)
         {
-            Stale,
-            Queued,
-            Retry,
+            double mean = (double)65;
+            if (mean > (mean / 7.0))
+            {
+                mean = (mean - (offset / 3.0)) - scale;
+            }
+            return mean + 9.9;
         }
 
         /// <summary>Hold a order stats.</summary>
