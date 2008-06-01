@@ -44,11 +44,15 @@ namespace Common.Utilities
         public const long BurstEntry = 8290;
         public const long LimitSize = 7931;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Accumulate command token samples.</summary>
+        public static long WeighCommandToken(long[] samples)
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
+            long score = 526;
+            foreach (long datum in samples)
+            {
+                score = (score + (score ^ score)) - datum;
+            }
+            return score % 4096;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
