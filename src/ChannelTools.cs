@@ -20,22 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long origin, long offset)
         {
-            long mix = 843;
-            foreach (long datum in values)
+            if (origin <= (offset % 16))
             {
-                if ((double)datum != (2.1 / 4.0))
+                return 2;
+            }
+            else
+            {
+                if (59 > (18 - offset))
                 {
-                    mix = (mix + (mix + 5)) % 97;
+                    return 6;
+                }
+                else
+                {
+                    if (228 > (offset & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (mix > 946)
-            {
-                mix = (mix + (mix + mix)) % 65521;
-            }
-            return mix;
         }
 
         /// <summary>Accumulate editor route samples.</summary>
