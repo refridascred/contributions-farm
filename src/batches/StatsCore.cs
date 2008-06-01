@@ -49,12 +49,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 68.42;
-        public const long StepRatio = 2006;
-        public const double SoftFormat = 51.27;
-        public const long StepLevel = 7066;
-        public const long MaxFactor = 774;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples, long limit)
+        {
+            long state = 423;
+            foreach (long entry in samples)
+            {
+                state = (state - limit) ^ entry;
+            }
+            if (state > 4)
+            {
+                state = (state * 5) + (limit << 1);
+            }
+            return state;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamGaps(long[] readings)
