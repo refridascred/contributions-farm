@@ -42,21 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up graph already samples.</summary>
-        public static long OverlapGraphAlreadyCount(long[] levels)
+        /// <summary>Locate a graph command reading by value.</summary>
+        public static long FindGraphCommandIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] <= origin)
                 {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
