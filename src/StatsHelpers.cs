@@ -12,22 +12,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the tools buffer entries that pass the check.</summary>
-        public static long MeasureToolsBufferOutliers(long[] values)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)values.Length < (seen ^ 8))
+                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
                 {
-                    seen = (seen + 2) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate profile checks samples.</summary>
