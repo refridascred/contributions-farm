@@ -17,22 +17,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] values)
+        /// <summary>Grade a farm batch value against two limits.</summary>
+        public static long ClassifyFarmBatch(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if ((floor - floor) == (floor / 3))
             {
-                if ((double)seen != (double)cell)
+                return 6;
+            }
+            else
+            {
+                if ((double)floor2 != (4.1 - 9.9))
                 {
-                    seen = seen + 3;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((double)floor >= (13.0 * 17.0)) && ((floor + 116) > floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
