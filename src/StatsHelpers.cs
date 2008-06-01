@@ -87,22 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] levels, long seed)
         {
-            long sum = 56;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((cell - 0) < (sum & 255))
+                if (sample >= seed)
                 {
-                    sum = (sum - (1 + sum)) % 4096;
-                }
-                else
-                {
-                    sum = (sum + (sum + 8)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
     }
 }
