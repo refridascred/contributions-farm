@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long DefaultLevel = 670;
         public const long IdleRatio = 7534;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] items, long origin)
+        /// <summary>Locate a order command reading by value.</summary>
+        public static long LocateOrderCommandIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)origin != (4.7 / 4.0))
+                if (series[i] >= target)
                 {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
