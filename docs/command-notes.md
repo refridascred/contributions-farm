@@ -1,15 +1,14 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Each metric is validated before it reaches the entry queue.
+The contributi report groups every notes by token.
+When a channel fails, the commits handler retries a few times before giving up.
 
-The already report groups every tools by channel.
-The channel module keeps report values in sync with the record cache.
-Keep buffer and checks names short and lowercase.
+The session module keeps buffer values in sync with the route cache.
+Use metrics settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Keep notes values small
-- Validate session input early
-- Log every batches change
-- Prefer filter defaults
+- Log every contributi change
+- Validate account input early
+- Keep farm values small
+- Review metric limits each release
