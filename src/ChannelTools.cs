@@ -17,13 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] levels, long target)
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((target - target) >= reading)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cluster entry.</summary>
