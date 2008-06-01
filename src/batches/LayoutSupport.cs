@@ -63,19 +63,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] items, long seed)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the contributi status values.</summary>
