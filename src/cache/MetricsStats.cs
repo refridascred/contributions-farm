@@ -29,15 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double scale, double floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double load = scale;
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load - load;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm record.</summary>
