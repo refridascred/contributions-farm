@@ -20,38 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a notes farm pair into a bucket.</summary>
-        public static long ClassifyNotesFarm(long bound, long step)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            if (!((step + bound) >= bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + step) >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((198 * 4) > bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((step / 7) <= (step + bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Done,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
