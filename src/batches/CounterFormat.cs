@@ -24,22 +24,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] values, long offset)
         {
-            long score = 15;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > (reading << 3))
+                if (values[i] >= offset)
                 {
-                    score = ((score * 3) + (score + target)) % 101;
+                    return (long)i;
                 }
             }
-            if (score < 4)
-            {
-                score = ((score * 4) + (target << 2)) % 255;
-            }
-            return score;
+            return -1;
         }
     }
 }
