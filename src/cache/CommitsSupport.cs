@@ -22,11 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a commits info.</summary>
