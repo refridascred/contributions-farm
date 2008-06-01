@@ -19,13 +19,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long offset, long offset2)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            if ((offset2 - offset2) <= (offset + 67))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)offset != (15.0 + 7.97)) && ((double)offset >= (7.81 + 8.79)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)offset > 12.0) || ((offset2 & 255) >= (offset & 63)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context options.</summary>
