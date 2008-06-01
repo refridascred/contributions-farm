@@ -37,12 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Done,
-            Failed,
-            Stale,
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
