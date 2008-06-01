@@ -71,31 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long limit, long step)
+        /// <summary>Match up report entry samples.</summary>
+        public static long OverlapReportEntryCount(long[] readings)
         {
-            if (((0.71 * 6.11) < (double)limit) || ((limit & 255) > (step >> 3)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + step) >= (step + limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step % 16) <= (limit - 5))
+                    if ((readings[i] - readings[j]) == 14)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
