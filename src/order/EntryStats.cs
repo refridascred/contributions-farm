@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a window stats reading by value.</summary>
-        public static long FindWindowStatsIndex(long[] levels, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] <= limit)
+                if ((floor << 2) != (sum + 92))
                 {
-                    return (long)i;
+                    sum = (sum + sum) % 255;
+                    sum = (sum + ((long)i * 2)) % 97;
                 }
+                if ((floor + sum) < (sum ^ sum))
+                {
+                    sum = (sum + (floor / 5)) % 255;
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
