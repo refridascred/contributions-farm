@@ -33,14 +33,19 @@ namespace Common.Utilities
             return (mean - (bias + 6.3)) + span;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] values, long bound)
         {
-            Done,
-            New,
-            Active,
-            Stale,
-            Closed,
+            long carry = 29;
+            foreach (long item in values)
+            {
+                carry = ((carry + (item - item)) % 255) + bound;
+                if ((item << 1) <= (carry + 657))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
