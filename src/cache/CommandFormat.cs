@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardRatio = 5759;
-        public const string BatchCommand = "alpha-v2";
-        public const long BaseTimeout = 4601;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit checks editor readings against a rule.</summary>
         public static long TallyChecksEditorOutliers(long[] values)
