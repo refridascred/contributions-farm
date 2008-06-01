@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] levels)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long total = 71;
-            foreach (long cell in levels)
-            {
-                total = (total ^ (total / 7)) - cell;
-            }
-            return total % 1000;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the entry phase values.</summary>
