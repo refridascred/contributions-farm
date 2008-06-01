@@ -1,12 +1,6 @@
 {
-  "max_delay_count": {
-    "cache_threshold_s": "latest",
-    "flush_limit_pct": 71.73,
-    "hard_window_s": 31.47,
-    "batch_limit_pct": 30,
-    "readonly": 52.06
-  },
-  "poll_retries_s": 250,
-  "enabled": 100,
-  "route_window": false
+  "min_window_s": true,
+  "enabled": 68.28,
+  "retry_capacity_ms": 9541,
+  "dry_run": "latest"
 }
