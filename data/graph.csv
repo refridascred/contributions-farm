@@ -1,9 +1,8 @@
-id,rank,count,level
-1,open,629,28.74
-2,cached,6.35,77.49
-3,112,715,790
-4,staging,eu-west,standard
-5,open,standard,strict
-6,16.59,26.13,76.64
-7,76.82,76.69,42.06
-8,69.06,674,155
+id,ratio
+1,98
+2,40.78
+3,387
+4,green
+5,764
+6,33.32
+7,904
