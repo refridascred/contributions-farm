@@ -40,24 +40,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long floor, long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long origin)
         {
-            if (((limit % 12) == (floor >> 5)) || ((double)floor >= (5.2 / 5.0)))
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit % 97) <= (floor + 680))
+                mix = (mix << 2) ^ ((-550) + 9);
+                if (origin < (origin << 2))
                 {
-                    return 4;
+                    mix = mix - 13;
+                    mix = (mix * 2) + ((long)i % 7);
                 }
-                else
-                {
-                    return 5;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
