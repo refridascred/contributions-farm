@@ -50,18 +50,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] readings, long step)
+        /// <summary>Validate stream batch readings against a bound.</summary>
+        public static bool GuardStreamBatchRange(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((reading + step) > reading)
+                if (cell != floor)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Accumulate context samples.</summary>
