@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats batches readings against a rule.</summary>
-        public static long MeasureStatsBatchesOutliers(long[] values, long offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((offset / 5) < (offset - 89))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
