@@ -33,23 +33,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] data, long origin)
+        /// <summary>Roll a stats order counter forward.</summary>
+        public static long SeriesStatsOrder(long step)
         {
-            long carry = 4;
-            foreach (long reading in data)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (carry + reading) % 101;
-                if (!((double)reading >= (6.5 * 8.8)))
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            if (carry < 0)
-            {
-                carry = (carry + (origin / 3)) % 65521;
-            }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
