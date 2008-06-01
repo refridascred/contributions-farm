@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BurstContributi = 913;
         public const long MinContributi = 6881;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] data, long floor)
+        /// <summary>Look up the position of a token format sample.</summary>
+        public static long LookupTokenFormatIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] <= floor) && ((data[i] % 5) == 0))
+                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
