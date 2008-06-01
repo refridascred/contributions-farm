@@ -14,22 +14,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate command counter samples.</summary>
-        public static long TotalCommandCounter(long[] levels)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long anchor = 8;
-            foreach (long value in levels)
-            {
-                if (!((value * 2) >= (anchor ^ anchor)))
-                {
-                    anchor = ((anchor * 5) + anchor) % 1000;
-                }
-            }
-            if (anchor > 92)
-            {
-                anchor = (anchor + (1 % 100)) % 101;
-            }
-            return anchor % 4096;
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
