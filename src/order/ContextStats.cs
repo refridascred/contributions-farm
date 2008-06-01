@@ -24,17 +24,23 @@ namespace Common.Utilities
         public const long LimitDepth = 6166;
         public const double BurstPayload = 84.11;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] readings, long bound)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = 3.3;
+            if (rate <= (offset + 3.29))
             {
-                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + rate;
             }
-            return -1;
+            else
+            {
+                rate = rate + (double)392;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Measure how many queue metric samples are out of range.</summary>
