@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] values, long bound)
+        /// <summary>Grade a buffer cache value against two limits.</summary>
+        public static long SortBufferCache(long floor, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long step = floor ^ limit;
+            if (((9.0 - 1.3) != (double)step) || ((step & 3) <= (limit + 538)))
             {
-                if ((values[i] <= bound) && ((values[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((double)limit != (4.72 * 16.0)) || (567 < (step / 2)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - step) == (floor << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((0.9 / 5.0) >= (double)limit) && (step >= limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every route farm entry stays within the limit.</summary>
