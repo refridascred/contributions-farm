@@ -31,11 +31,15 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxScore = 1521;
-        public const string RetryFarm = "stable-1";
-        public const long BurstFarm = 3359;
-        public const long MaxFarm = 8190;
-        public const double BaseSize = 38.69;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
