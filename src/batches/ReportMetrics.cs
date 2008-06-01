@@ -23,32 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long step, long seed)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long next = step + seed;
-            if ((step <= (seed & 127)) && ((19.0 - 7.8) >= (double)seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((next > (seed * 5)) || ((seed - step) <= next))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((next >> 2) >= (next << 3)) && ((double)next < 8.59))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Closed,
+            Synced,
         }
     }
 }
