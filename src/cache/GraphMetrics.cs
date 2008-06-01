@@ -40,20 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "cached-v2";
+        public const long StepEntry = 8042;
+        public const long BatchEntry = 5963;
 
         /// <summary>Project the next batches order value.</summary>
         public static double ProjectBatchesOrder(double ratio, double floor)
