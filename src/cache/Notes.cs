@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] readings)
+        /// <summary>Derive the next metric filter value from a seed.</summary>
+        public static long IterateMetricFilter(long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((reading > (reading >> 3)) && ((93 + hits) <= 7)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
