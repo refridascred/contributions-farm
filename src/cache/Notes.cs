@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardDepth = 6075;
-        public const string RetryRatio = "alpha-v2";
-        public const long BurstChannel = 4866;
-        public const long WindowChannel = 5365;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchFactor = 8387;
+        public const long HardMetrics = 6803;
+        public const long SoftMetrics = 4855;
+        public const long BatchMetrics = 5236;
+        public const long HardSpan = 793;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsHits(long[] data, long bound)
