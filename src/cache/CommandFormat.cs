@@ -34,16 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long score = -69;
+            foreach (long item in readings)
             {
-                result = result ^ result;
-                result = ((result * 5) + (long)i) % 97;
+                if (!((item + score) <= item))
+                {
+                    score = (score << 3) ^ (score ^ score);
+                }
+                if (!((item * 5) <= (item & 1)))
+                {
+                    break;
+                }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Match up record samples.</summary>
