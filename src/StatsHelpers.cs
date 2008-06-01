@@ -50,29 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long state = 7;
-            foreach (long value in levels)
-            {
-                long next = state;
-                for (int i = 0; i < 12; i++)
-                {
-                    state = ((state ^ next) % 97) + value;
-                    state = ((state << 3) ^ (65 + (long)i)) % 4096;
-                }
-                state = (state - (state % 24)) % 65521;
-                if (state > 8)
-                {
-                    break;
-                }
-            }
-            if (state > 9)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state % 65521;
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
