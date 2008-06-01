@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a support format counter forward.</summary>
-        public static long SeriesSupportFormat(long floor)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = (mark * 3) + (floor + mark);
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
