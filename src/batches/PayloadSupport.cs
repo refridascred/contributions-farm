@@ -31,19 +31,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] items, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] items, long step)
         {
-            long anchor = 9;
-            foreach (long entry in items)
+            long mix = 964;
+            foreach (long item in items)
             {
-                anchor = (anchor ^ floor) - entry;
+                mix = ((((mix << 3) ^ 10) % 255) - item) - step;
             }
-            if (anchor > 51)
-            {
-                anchor = (anchor * 4) + floor;
-            }
-            return anchor;
+            return mix % 4096;
         }
     }
 }
