@@ -33,22 +33,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] data, long origin)
         {
-            long score = -80;
-            foreach (long entry in samples)
+            long carry = 4;
+            foreach (long reading in data)
             {
-                if (((double)score >= (7.0 + 4.5)) && ((score ^ score) < (score + score)))
+                carry = (carry + reading) % 101;
+                if (!((double)reading >= (6.5 * 8.8)))
                 {
-                    score = (score - entry) % 4096;
+                    break;
                 }
             }
-            if (score > 1)
+            if (carry < 0)
             {
-                score = (score * 3) + (score % 16);
+                carry = (carry + (origin / 3)) % 65521;
             }
-            return score;
+            return carry % 97;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
