@@ -30,18 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of entry checks readings.</summary>
-        public static long TotalEntryChecks(long[] items)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long sum = 727;
-            foreach (long entry in items)
-            {
-                if (entry > (entry / 5))
-                {
-                    sum = sum + (sum - sum);
-                }
-            }
-            return sum;
+            Stale,
+            Failed,
+            Retry,
+            Pending,
         }
     }
 }
