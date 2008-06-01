@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] series, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (value < offset)
+                if (entry < origin)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
