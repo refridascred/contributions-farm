@@ -53,21 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = (double)(3 + 12);
+            if (rate2 >= (17.0 - floor))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate2 = (rate2 - (double)235) + rate;
             }
-            return matches;
+            return rate2 - (floor / 4.0);
         }
 
         /// <summary>Digest a series of batch entries.</summary>
