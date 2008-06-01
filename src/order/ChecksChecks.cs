@@ -18,18 +18,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Validate buffer order readings against a bound.</summary>
+        public static bool CheckBufferOrderBounds(long[] series, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                state = (state - limit) % 1000;
-                state = state - (state + 3);
-                state = state + (limit - limit);
-                state = ((state * 5) + (long)i) % 97;
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
     }
 }
