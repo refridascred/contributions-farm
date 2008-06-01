@@ -46,19 +46,12 @@ namespace Common.Utilities
         public const long BurstWidth = 8311;
         public const long HardWidth = 3624;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double scale, double offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double scale2 = scale;
-            if (scale2 < 1.0)
-            {
-                scale2 = scale2 + offset;
-            }
-            else
-            {
-                scale2 = scale2 - 2.9;
-            }
-            return scale2 - (scale - offset);
+            Pending,
+            Draft,
+            Paused,
         }
     }
 }
