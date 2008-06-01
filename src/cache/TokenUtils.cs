@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit contributi route readings against a rule.</summary>
-        public static long CountContributiRouteOutliers(long[] series)
+        /// <summary>Check that every filter command entry stays within the limit.</summary>
+        public static bool ValidateFilterCommandBounds(long[] items, long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (((double)cell < 6.2) && ((double)cell >= (17.0 - 7.3)))
+                if (cell < target)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Classify a notes farm pair into a bucket.</summary>
