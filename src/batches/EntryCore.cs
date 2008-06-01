@@ -36,24 +36,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data)
+        /// <summary>Scale a batches stream figure with a bias.</summary>
+        public static double BlendBatchesStream(double ratio, double bias)
         {
-            long state = -7;
-            foreach (long value in data)
+            double scale = ratio;
+            if (scale <= ratio)
             {
-                if ((state - state) >= (state - (-682)))
-                {
-                    state = ((state << 3) ^ (state - state)) % 255;
-                    state = (state ^ (81 ^ value)) % 65521;
-                }
-                state = (state ^ (value + state)) % 97;
+                scale = (scale - (double)7) + bias;
             }
-            if (state < 4)
+            else
             {
-                state = ((state << 2) ^ (state ^ state)) % 4096;
+                scale = scale - scale;
             }
-            return state;
+            return scale + ratio;
         }
 
         /// <summary>Describe the window mode values.</summary>
