@@ -37,12 +37,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Combine batches batch values into a single score.</summary>
+        public static long WeighBatchesBatch(long[] items)
         {
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long result = 2;
+            foreach (long sample in items)
+            {
+                if (!((6.0 / 8.0) <= (double)result))
+                {
+                    result = result - (sample * 2);
+                }
+                result = (result + (5 + sample)) % 97;
+                if (((sample % 24) <= (sample - result)) || ((16.0 + 0.7) < (double)result))
+                {
+                    result = (result << 3) ^ (result + result);
+                }
+                if ((double)result == (12.0 + 14.0))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
