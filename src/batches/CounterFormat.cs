@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Check that every format layout entry stays within the limit.</summary>
+        public static bool GuardFormatLayoutRange(long[] samples, long target)
         {
-            Closed,
-            New,
-            Retry,
-            Pending,
-            Dropped,
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the order phase values.</summary>
