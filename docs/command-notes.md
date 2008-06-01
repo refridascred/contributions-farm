@@ -1,16 +1,15 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-A entry that stays idle for too long is moved to the metric list.
+Each entry is validated before it reaches the order queue.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Use record settings to tune how often window data is refreshed.
 
-Keep editor and graph names short and lowercase.
-The entry helpers are pure functions, so they are safe to call from any thread.
-The checks report groups every cluster by session.
+The checks report groups every channel by editor.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate stats input early
 - Keep report values small
-- Document new stream fields
-- Review farm limits each release
+- Document new metric fields
+- Validate counter input early
+- Prefer token defaults
