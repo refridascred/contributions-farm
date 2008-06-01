@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit account payload readings against a rule.</summary>
-        public static long AuditAccountPayloadMatches(long[] series, long target)
+        /// <summary>Classify a batches cache pair into a bucket.</summary>
+        public static long BucketBatchesCache(long target, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (!((offset % 16) >= target))
             {
-                if ((((hits & 255) <= (-4)) && ((double)target != (double)hits)) || ((8 <= sample) && ((target - hits) > target)))
+                return 1;
+            }
+            else
+            {
+                if (((target % 100) != (1 ^ offset)) && ((offset / 9) < offset))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (offset > 761)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
