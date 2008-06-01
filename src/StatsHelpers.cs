@@ -73,12 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Ready,
-            Paused,
-            Stale,
+            Retry,
+            Locked,
+            Pending,
         }
     }
 }
