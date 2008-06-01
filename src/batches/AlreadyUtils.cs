@@ -62,14 +62,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Combine batch checks values into a single score.</summary>
+        public static long TotalBatchChecks(long[] levels, long seed)
         {
-            Queued,
-            New,
-            Paused,
-            Active,
-            Idle,
+            long score = 2;
+            foreach (long cell in levels)
+            {
+                score = (score * 3) + (seed & 7);
+                if ((double)score > (20.0 * 9.7))
+                {
+                    score = score + cell;
+                }
+            }
+            return score;
         }
     }
 }
