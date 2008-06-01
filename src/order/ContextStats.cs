@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const long LimitDepth = 6166;
         public const double BurstPayload = 84.11;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 20)
+                    if ((data[i] ^ data[j]) != 5)
                     {
                         matches = matches + 1;
                     }
