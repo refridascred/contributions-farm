@@ -46,14 +46,11 @@ namespace Common.Utilities
         public const long DefaultReport = 8036;
         public const long LimitBudget = 2040;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 9881;
+        public const double SoftRecord = 22.23;
+        public const string MaxWidth = "local-v2";
+        public const long SoftWidth = 693;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 5494;
