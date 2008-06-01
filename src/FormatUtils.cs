@@ -64,18 +64,9 @@ namespace Common.Utilities
         public const long MinTimeout = 459;
         public const long SoftToken = 7713;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] levels)
-        {
-            long total = -871;
-            foreach (long item in levels)
-            {
-                if (item >= (total % 2))
-                {
-                    total = (total ^ total) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepTimeout = 29.8;
+        public const string HardEntry = "open";
+        public const long IdleLevel = 6740;
     }
 }
