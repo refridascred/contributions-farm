@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double MinCluster = 77.72;
         public const long DefaultLevel = 6832;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Validate payload filter readings against a bound.</summary>
+        public static bool GuardPayloadFilterRange(long[] samples, long bound)
         {
-            double gain = span;
-            return gain + (scale / 8.0);
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate editor samples.</summary>
