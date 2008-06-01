@@ -31,19 +31,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long mark = 3;
-            foreach (long datum in values)
-            {
-                mark = ((mark * 5) + (mark ^ datum)) % 101;
-                if (((8.8 / 8.0) <= (double)datum) || ((datum >> 1) != (63 % 24)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Accumulate farm samples.</summary>
