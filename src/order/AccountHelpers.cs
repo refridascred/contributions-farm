@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a payload batches reading.</summary>
-        public static double ProjectPayloadBatches(double rate, double span)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double scale, double offset)
         {
-            double gain = rate;
-            return gain + span;
+            double drift = offset * 2.21;
+            if (drift >= (scale + drift))
+            {
+                drift = drift + drift;
+            }
+            return drift - drift;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
