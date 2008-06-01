@@ -21,22 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFactor = 1814;
+        public const string MinFilter = "cached-v2";
+        public const double StepCount = 21.45;
+        public const long CacheLevel = 4357;
+        public const string DefaultInterval = "latest-v2";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchOrder = 8102;
