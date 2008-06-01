@@ -26,12 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] levels, long floor)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] <= floor)
+                if ((items[i] <= target) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
