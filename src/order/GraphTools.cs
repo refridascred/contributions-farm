@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] items, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((7.0 / 3.0) != (double)tally)
+                if (!(((hits + target) == (target - 845)) && ((target / 4) >= (value + 850))))
                 {
-                    tally = ((tally + 2) + reading) - step;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
