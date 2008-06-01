@@ -1,8 +1,6 @@
 {
-  "poll_ratio_s": false,
-  "flush_limit": true,
-  "max_depth_s": "standard",
-  "contributi_timeout": ["local", "standard", "green"],
-  "flush_timeout_pct": 500,
-  "readonly": 51
+  "order_depth": 74,
+  "default_window_s": 30,
+  "session_depth": 70.48,
+  "base_window": "strict"
 }
