@@ -30,11 +30,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxScore = "stable";
-        public const long LimitSpan = 3671;
-        public const long BurstChecks = 6527;
-        public const long SoftChecks = 2790;
-        public const double MaxChecks = 18.83;
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] items, long limit)
+        {
+            long mix = 94;
+            foreach (long reading in items)
+            {
+                if ((limit > (limit + 888)) && ((7.5 - 9.0) < (double)mix))
+                {
+                    mix = ((mix * 5) + (limit ^ reading)) % 97;
+                }
+                if ((68 + limit) < (limit + limit))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix - (reading ^ limit)) % 97;
+                    mix = (mix * 4) + (limit * 3);
+                }
+                if ((9.69 + 18.0) >= (double)mix)
+                {
+                    mix = (mix + (424 - mix)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + reading) % 1000;
+                }
+            }
+            if (mix < (-6))
+            {
+                mix = (mix - limit) % 1000;
+            }
+            return mix;
+        }
     }
 }
