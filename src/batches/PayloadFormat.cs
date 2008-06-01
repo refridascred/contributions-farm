@@ -54,19 +54,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every route checks entry stays within the limit.</summary>
-        public static bool CheckRouteChecksLimits(long[] series, long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Closed,
+            Ready,
+            Retry,
+            Synced,
         }
     }
 }
