@@ -1,15 +1,8 @@
 {
-  "sync_interval_pct": 4237,
-  "base_timeout": {
-    "graph_ratio": "blue",
-    "farm_depth": true,
-    "compress": {
-      "readonly": false,
-      "warm_size_count": "staging",
-      "idle_window_s": [133, 301, 142, 31]
-    },
-    "commits_interval": 1024
-  },
-  "hard_size": true,
-  "min_capacity_s": 96
+  "readonly": true,
+  "hard_capacity_pct": "fallback",
+  "enabled": 8786,
+  "cache_threshold_pct": "cached",
+  "base_ratio_ms": false,
+  "sync_capacity_ms": 56
 }
