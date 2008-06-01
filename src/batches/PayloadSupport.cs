@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long step, long origin)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            if (!((double)step <= (double)origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)origin == (double)step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Queued,
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
