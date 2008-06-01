@@ -28,17 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                long slot = 0;
-                result = (result - (slot - result)) % 101;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchWidth = 6991;
+        public const long StepCount = 6789;
+        public const long MaxContributi = 1246;
+        public const string IdleCount = "standard-1";
+        public const string HardLevel = "cached-edge";
     }
 }
