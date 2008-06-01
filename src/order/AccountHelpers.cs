@@ -42,12 +42,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
             Synced,
-            Idle,
-            Stale,
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the notes mode values.</summary>
