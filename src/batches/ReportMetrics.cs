@@ -12,15 +12,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] items, long floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long offset)
         {
-            long anchor = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor ^ reading) % 255) - floor;
+                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the format level values.</summary>
