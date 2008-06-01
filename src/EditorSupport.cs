@@ -33,19 +33,30 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] samples, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long score = 864;
+            foreach (long reading in readings)
             {
-                if (reading != offset)
+                if ((8.04 / 9.0) == (double)reading)
                 {
-                    stale = false;
+                    score = score + (4 >> 4);
+                }
+                if (!((score % 7) != (reading * 4)))
+                {
+                    score = (score + (score + reading)) % 101;
+                }
+                else
+                {
+                    score = (score + (948 % 7)) % 255;
+                }
+                if ((double)score < 2.1)
+                {
                     break;
                 }
             }
-            return stale;
+            return score % 97;
         }
 
         /// <summary>Accumulate cluster counter samples.</summary>
