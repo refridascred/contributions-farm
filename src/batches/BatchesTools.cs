@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Rank metrics payload input into a small class.</summary>
+        public static long SortMetricsPayload(long origin, long seed)
         {
-            long total = 730;
-            foreach (long value in values)
+            long span = origin ^ seed;
+            if (span <= 41)
             {
-                total = ((total << 3) ^ (value << 2)) % 65521;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (!(span < ((-85) / 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin <= span) || ((seed / 2) < (origin / 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-55) - span) < seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
