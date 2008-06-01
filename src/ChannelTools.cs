@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every record channel entry stays within the limit.</summary>
-        public static bool VerifyRecordChannelRange(long[] readings, long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] items, long step)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (entry < seed)
+                if (datum >= step)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
