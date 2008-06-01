@@ -7,20 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=175
+CHANNEL_LIMIT=164
 log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-green}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
