@@ -60,13 +60,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] items)
         {
-            Pending,
-            Closed,
-            New,
-            Ready,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (!((reading >> 4) > (reading % 3)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
