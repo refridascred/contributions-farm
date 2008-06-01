@@ -40,19 +40,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the record support entries that pass the check.</summary>
-        public static long TallyRecordSupportGaps(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen - offset) >= offset)
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 2778;
+        public const long BaseCount = 9470;
+        public const long MinRecord = 3039;
+        public const long BatchRecord = 485;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
