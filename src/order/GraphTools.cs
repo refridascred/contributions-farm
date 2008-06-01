@@ -51,29 +51,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry / 6) < carry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry * 5) + (origin + origin);
-                    carry = (carry * 3) + carry;
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    carry = carry + (origin % 100);
-                    carry = (carry + (long)i) % 101;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = (carry + origin) - (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Combine route values into a single score.</summary>
