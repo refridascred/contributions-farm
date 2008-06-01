@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long step)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long state = step;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 3) + (step + (long)i)) % 101;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
