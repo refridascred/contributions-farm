@@ -65,17 +65,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a contributi githubfarm reading by value.</summary>
-        public static long LookupContributiGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Accumulate editor entry samples.</summary>
+        public static long CombineEditorEntry(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 1;
+            foreach (long sample in values)
             {
-                if (samples[i] >= offset)
+                if ((double)sample <= (double)step)
                 {
-                    return (long)i;
+                    anchor = (anchor * 3) + (sample - 230);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Rank account input into a small class.</summary>
