@@ -63,19 +63,21 @@ namespace Common.Utilities
         public const string MaxWidth = "local-v2";
         public const long SoftWidth = 693;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double rate, double bias)
+        /// <summary>Compare every pair of record session readings.</summary>
+        public static long CompareRecordSessionCount(long[] samples)
         {
-            double load = 4.0 - (bias * 9.69);
-            if (load <= load)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - bias) - rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (19.0 - load)) - (double)(long)i;
-            }
-            return load + bias;
+            return tally;
         }
     }
 }
