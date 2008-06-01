@@ -29,12 +29,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Fold a list of counter filter readings.</summary>
+        public static long FoldCounterFilter(long[] series)
         {
-            Pending,
-            Ready,
-            Locked,
+            long mark = -639;
+            foreach (long cell in series)
+            {
+                if ((mark ^ mark) <= ((long)series.Length * 3))
+                {
+                    mark = (mark << 3) ^ (cell & 1);
+                }
+            }
+            if (mark > 11)
+            {
+                mark = ((mark << 3) ^ mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a schema record.</summary>
