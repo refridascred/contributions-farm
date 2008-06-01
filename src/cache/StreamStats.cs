@@ -30,13 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate record stats readings against a bound.</summary>
+        public static bool CheckRecordStatsRange(long[] data, long target)
         {
-            Failed,
-            Pending,
-            Locked,
-            Queued,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
