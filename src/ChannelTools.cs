@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long offset, long bound)
+        /// <summary>Count the support record entries that pass the check.</summary>
+        public static long AuditSupportRecordHits(long[] items, long seed)
         {
-            long offset2 = offset ^ bound;
-            if ((double)bound >= (4.61 - 5.9))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(offset >= bound))
+                if (seed < count)
                 {
-                    return 6;
+                    count = (count + 1) - value;
                 }
                 else
                 {
-                    if ((86 & 31) == (offset2 * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
