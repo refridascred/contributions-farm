@@ -40,23 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next filter route value.</summary>
-        public static double ScaleFilterRoute(double rate, double bias)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] readings, long bound)
         {
-            double load = (double)92 - (bias * 17.0);
-            if (load > load)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - (double)767) + rate;
+                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - 19.0) + (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
 
         /// <summary>Describe the route status values.</summary>
