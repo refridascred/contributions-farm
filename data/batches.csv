@@ -1,8 +1,9 @@
-id,active,region
-1,4.77,local
-2,eu-west,612
-3,fallback,283
-4,open,64.34
-5,fallback,fallback
-6,blue,930
-7,strict,133
+id,active,state
+1,13.04,92.28
+2,edge,21.39
+3,open,81.92
+4,721,50.45
+5,eu-west,82.59
+6,46.95,standard
+7,primary,134
+8,5.99,39.98
