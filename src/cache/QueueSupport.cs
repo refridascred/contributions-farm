@@ -23,13 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Draft,
-            Closed,
+            Idle,
+            Ready,
+            Synced,
             Failed,
-            Retry,
+            Locked,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
