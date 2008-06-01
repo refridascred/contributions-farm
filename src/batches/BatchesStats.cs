@@ -48,10 +48,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxCount = "alpha-1";
-        public const long CacheSession = 7597;
-        public const long MinWidth = 531;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] levels)
+        {
+            long total = 73;
+            foreach (long cell in levels)
+            {
+                long slot = cell - total;
+                total = (total ^ (slot + total)) % 255;
+                total = (total - (cell / 8)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferBounds(long[] values, long target)
