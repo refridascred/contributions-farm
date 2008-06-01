@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the metric account entries that pass the check.</summary>
-        public static long MeasureMetricAccountOutliers(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally <= reading) && ((267 + reading) >= 7))
+                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of token readings.</summary>
