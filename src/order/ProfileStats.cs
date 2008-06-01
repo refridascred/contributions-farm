@@ -19,12 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
