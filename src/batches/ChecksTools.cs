@@ -44,12 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Find the first format buffer entry that matches the target.</summary>
+        public static long FindFormatBufferIndex(long[] items, long step)
         {
-            Idle,
-            Ready,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
