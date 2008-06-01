@@ -26,17 +26,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (double)(462 ^ 593);
+            return ((rate - 5.87) + ratio) + bias;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
