@@ -50,14 +50,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            Retry,
-            Dropped,
-            Draft,
-            Idle,
-            Ready,
+            long state = 7;
+            foreach (long value in levels)
+            {
+                long next = state;
+                for (int i = 0; i < 12; i++)
+                {
+                    state = ((state ^ next) % 97) + value;
+                    state = ((state << 3) ^ (65 + (long)i)) % 4096;
+                }
+                state = (state - (state % 24)) % 65521;
+                if (state > 8)
+                {
+                    break;
+                }
+            }
+            if (state > 9)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
