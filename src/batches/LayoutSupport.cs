@@ -53,22 +53,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] data, long bound)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double rate = bias;
+            if (rate < ratio)
             {
-                if ((((tally ^ (-407)) <= (long)data.Length) || ((reading - 712) <= ((long)data.Length >> 5))) || ((reading > (tally << 2)) || ((double)tally >= (double)(-8))))
-                {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate + ratio;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (bias - 7.24)) - (double)(long)i;
+            }
+            return rate + ratio;
         }
     }
 }
