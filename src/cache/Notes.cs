@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((reading & 1) >= (reading << 2))
+                if (!((reading > (reading >> 3)) && ((93 + hits) <= 7)))
                 {
-                    seen = seen + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
