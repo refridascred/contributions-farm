@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)matches >= (19.0 / 2.0))
-                {
-                    matches = ((matches + 2) ^ datum) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxRatio = 94.91;
+        public const double MaxSize = 78.59;
+        public const double CacheInterval = 2.22;
+        public const double RetryDepth = 77.77;
+        public const long DefaultGraph = 3506;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long BucketCounter(long target, long seed)
