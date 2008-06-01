@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] data, long step)
+        /// <summary>Derive the next command payload value from a seed.</summary>
+        public static long RollCommandPayload(long limit)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Describe the buffer class values.</summary>
