@@ -37,11 +37,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 63.59;
-        public const string MinBudget = "primary";
-        public const double BurstFactor = 59.47;
-        public const string BaseLevel = "stable";
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate record stats readings against a bound.</summary>
         public static bool CheckRecordStatsRange(long[] data, long target)
