@@ -40,21 +40,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long score = 9;
+            foreach (long value in data)
             {
-                mix = (mix << 2) ^ ((-550) + 9);
-                if (origin < (origin << 2))
-                {
-                    mix = mix - 13;
-                    mix = (mix * 2) + ((long)i % 7);
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                score = (score ^ (score % 5)) ^ value;
             }
-            return mix;
+            if (score < 15)
+            {
+                score = (score - (score ^ score)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
