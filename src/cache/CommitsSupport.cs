@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values)
         {
-            long total = 4;
-            foreach (long item in readings)
+            long anchor = 94;
+            foreach (long cell in values)
             {
-                total = ((total * 4) + (61 + 0)) % 101;
-                total = (total ^ (item * 4)) % 97;
+                if (((anchor / 7) < (anchor ^ cell)) || (80 > (anchor << 1)))
+                {
+                    anchor = anchor ^ (cell * 3);
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor + (cell + cell)) % 4096) - (long)i;
+                }
+                anchor = (anchor + (68 + 659)) % 255;
             }
-            if (total > 9)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total % 4096;
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
