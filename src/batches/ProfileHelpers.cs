@@ -41,21 +41,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count tools payload pairs that satisfy a relation.</summary>
-        public static long MatchToolsPayloadCount(long[] values)
+        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
+        public static bool ValidateClusterQueueRange(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell <= limit)
                 {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
