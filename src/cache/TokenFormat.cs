@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 8114;
-        public const long WindowRatio = 9363;
-        public const long StepScore = 5490;
-        public const string StepGraph = "stable";
-        public const long IdleGraph = 2321;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardFactor = "local-edge";
+        public const long IdleSize = 3298;
+        public const long DefaultDepth = 7620;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinFilter = 631;
