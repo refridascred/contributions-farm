@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 971;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc ^ ((-587) & 63)) - sample;
             }
-            return seen;
+            if (acc > 6)
+            {
+                acc = (acc << 3) ^ (origin + 21);
+            }
+            return acc;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
