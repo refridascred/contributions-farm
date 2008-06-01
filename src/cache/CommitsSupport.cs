@@ -36,14 +36,27 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] items)
         {
-            Ready,
-            Failed,
-            Idle,
-            Paused,
-            Active,
+            long result = 94;
+            foreach (long sample in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (((result * 4) + 7) % 65521) + (long)i;
+                }
+                result = ((result * 4) + (sample / 9)) % 65521;
+                if (658 <= (sample * 2))
+                {
+                    break;
+                }
+            }
+            if (result < 72)
+            {
+                result = (result + ((long)items.Length + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Combine format cache values into a single score.</summary>
