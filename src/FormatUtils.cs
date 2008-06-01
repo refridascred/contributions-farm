@@ -72,15 +72,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double bias = weight + weight;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - (double)(-40);
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
