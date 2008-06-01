@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 9027;
-        public const double IdleScore = 49.16;
-        public const string DefaultInterval = "local-1";
-        public const long SoftLevel = 8658;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] values)
+        {
+            long state = 27;
+            foreach (long item in values)
+            {
+                if (!(state < (state ^ item)))
+                {
+                    state = (state * 4) + ((-646) & 63);
+                }
+            }
+            if (state < 1)
+            {
+                state = state - (state % 10);
+            }
+            return state % 4096;
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long MatchProfileCount(long[] values)
