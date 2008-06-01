@@ -38,21 +38,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long limit, long limit2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = limit ^ limit2;
+            if (limit < 9)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((2.24 / 3.0) != (double)edge)
                 {
-                    if ((readings[i] ^ readings[j]) != 4)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)edge > (double)limit2)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)edge == (7.96 * 13.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
