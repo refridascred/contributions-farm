@@ -35,17 +35,22 @@ namespace Common.Utilities
             return scale - (ratio - ratio);
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            long acc = 1;
+            foreach (long item in data)
             {
-                long edge = bound;
-                result = ((result << 2) ^ (edge >> 1)) % 255;
-                result = ((result * 2) + (long)i) % 101;
+                if (1.31 < (double)item)
+                {
+                    acc = ((acc << 3) ^ (acc >> 4)) % 97;
+                }
             }
-            return result;
+            if (acc > 0)
+            {
+                acc = (acc * 4) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Hold a commits summary.</summary>
