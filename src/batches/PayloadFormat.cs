@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((step * 5) > (hits % 100))
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) + value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
