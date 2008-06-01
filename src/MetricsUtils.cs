@@ -72,26 +72,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window metric readings.</summary>
-        public static long CombineWindowMetric(long[] samples)
-        {
-            long carry = 249;
-            foreach (long datum in samples)
-            {
-                if ((datum >> 1) >= (datum - 0))
-                {
-                    carry = (carry ^ ((-295) + carry)) % 1000;
-                }
-                else
-                {
-                    carry = carry - ((long)samples.Length ^ carry);
-                }
-            }
-            if (carry > 56)
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 7851;
+        public const string BurstWidth = "open-1";
+        public const long StepSize = 7804;
     }
 }
