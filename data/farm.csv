@@ -1,7 +1,9 @@
-id,ratio,weight
-1,929,edge
-2,green,360
-3,793,636
-4,eu-west,latest
-5,strict,999
-6,19.78,38.28
+id,token
+1,primary
+2,9.61
+3,local
+4,legacy
+5,73.18
+6,34.15
+7,legacy
+8,62.97
