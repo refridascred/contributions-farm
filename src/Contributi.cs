@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] values, long seed)
+        /// <summary>Measure how many layout account samples are out of range.</summary>
+        public static long CountLayoutAccountGaps(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (seed <= (seen % 97))
+                if (!((item + count) < (item % 10)) || ((3.7 * 8.08) != (double)count))
                 {
-                    seen = (seen + 3) + reading;
+                    count = (count + 3) - seed;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
