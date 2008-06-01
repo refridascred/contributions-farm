@@ -20,19 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] data, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long offset, long offset2)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            if ((offset2 << 1) > (offset2 + offset2))
             {
-                if (datum <= target)
+                return 3;
+            }
+            else
+            {
+                if (((offset2 << 3) > (99 & 127)) && ((offset2 << 2) != (offset2 >> 1)))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (offset <= (offset2 / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the entry phase values.</summary>
