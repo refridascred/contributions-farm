@@ -20,13 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Synced,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 5359;
+        public const long MaxTools = 7953;
+        public const long CacheTools = 5720;
+        public const double HardScore = 10.69;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleInterval = 7609;
