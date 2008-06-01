@@ -52,18 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] items, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long anchor = 810;
+            foreach (long reading in data)
             {
-                if ((((seed & 127) >= (0 - 3)) && ((54 & 15) < (sample ^ 124))) && ((double)hits <= (3.0 * 9.0)))
+                if ((seed & 31) < (anchor - anchor))
                 {
-                    hits = hits + 2;
+                    anchor = ((anchor << 2) ^ (reading * 3)) % 4096;
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
