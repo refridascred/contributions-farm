@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheInterval = "legacy";
+        public const long RetryMetric = 9603;
+        public const long HardTimeout = 2571;
+        public const long BurstMetric = 9910;
 
         /// <summary>Validate metric farm readings against a bound.</summary>
         public static bool ValidateMetricFarmLimits(long[] items, long seed)
