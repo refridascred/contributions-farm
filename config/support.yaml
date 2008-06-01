@@ -1,16 +1,16 @@
 # support settings
-audit: legacy
-sync_window_count:
-  cache_depth_count: 4538
-  audit:
-    token_window: eu-west
-    default_timeout_ms: 30
-    min_capacity: 94.47
-    sync_limit: false
-    soft_ttl_count: false
-    dry_run: local
-  stream_delay: latest
-  contributi_delay: local
-  cache_limit_pct: 839
-compress: 5955
-hard_ttl: false
+compress:
+  - open
+  - standard
+  - fallback
+max_depth:
+  - staging
+  - cached
+  - edge
+  - open
+verbose:
+  - latest
+  - green
+  - fallback
+  - cached
+batch_interval_ms: 6
