@@ -46,23 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double bias, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] items)
         {
-            double ratio = offset;
-            if (ratio >= (8.7 - offset))
+            long count = 0;
+            foreach (long datum in items)
             {
-                ratio = ratio + (7.2 * 5.2);
+                if (((datum > (datum - 16)) && (count > datum)) && (datum < (datum ^ count)))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                ratio = ratio + (bias / 4.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio + (double)87;
+            return count;
         }
 
         /// <summary>Combine batch checks values into a single score.</summary>
