@@ -1,33 +1,15 @@
 # entry settings
-githubfarm_limit:
-  support_timeout: 82
-  base_limit_ms: strict
-  poll_retries_s:
-    min_size: 61.19
-    farm_ttl: eu-west
-    profile_depth: strict
-  cache_ratio: 1.23
-  poll_size_ms:
-    - 165
-    - 241
-  stream_retries:
-    compress: cached
-    min_size_s:
-      - 25
-      - 354
-      - 312
-    flush_delay_count:
-      - 217
-      - 8
-      - 405
-      - 425
-    persist: 19.26
-    session_ratio: true
-    graph_threshold: 93.1
-flush_ratio_pct:
-  - stable
-  - strict
-  - green
-  - latest
-min_retries_s: 60
-already_threshold: 100
+poll_limit_ms: open
+default_ratio:
+  - 209
+  - 489
+idle_timeout: local
+support_ttl:
+  - 64
+  - 403
+  - 328
+  - 395
+poll_ttl_ms: green
+flush_retries_ms:
+  - 330
+  - 297
