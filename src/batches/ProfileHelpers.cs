@@ -26,11 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the command phase values.</summary>
