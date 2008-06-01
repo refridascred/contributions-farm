@@ -1,12 +1,12 @@
 {
-  "burst_interval_ms": {
-    "sync_retries_s": 45.22,
-    "idle_ttl_ms": true,
-    "batch_size_count": 79.49,
-    "hard_threshold": 3586
+  "burst_threshold": true,
+  "counter_capacity": "legacy",
+  "default_size": {
+    "max_threshold_ms": 34.08,
+    "idle_size_ms": false,
+    "account_interval": 6621
   },
-  "poll_size": [443, 264, 246],
-  "flush_ratio": ["open", "staging", "local"],
-  "readonly": true,
-  "retry_depth_ms": 83.43
+  "cache_depth_s": false,
+  "max_limit_count": true,
+  "verbose": "fallback"
 }
