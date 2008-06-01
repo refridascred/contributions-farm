@@ -31,21 +31,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 263;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(2 >= (datum % 97)))
                 {
-                    if ((samples[i] + samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (((mix * 5) + datum) % 4096) - offset;
                 }
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
