@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] data, long step)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!((count - step) >= (step & 63)))
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Validate profile cache readings against a bound.</summary>
