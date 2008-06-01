@@ -46,11 +46,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public double Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
