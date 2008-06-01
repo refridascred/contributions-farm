@@ -78,19 +78,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches order value.</summary>
-        public static double ProjectBatchesOrder(double ratio, double floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] values, long origin)
         {
-            double scale = ratio * 7.2;
-            if (scale < (ratio + 4.8))
+            long anchor = 317;
+            foreach (long sample in values)
             {
-                scale = scale - (double)8;
+                anchor = ((anchor - (origin % 3)) % 255) + sample;
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            return scale - (floor - scale);
+            return anchor;
         }
     }
 }
