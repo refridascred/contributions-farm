@@ -17,12 +17,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepBudget = 3252;
-        public const string MinPayload = "latest-edge";
-        public const string IdlePayload = "cached-1";
-        public const long LimitDepth = 6166;
-        public const double BurstPayload = 84.11;
+        /// <summary>Adjust a format graph reading.</summary>
+        public static double ScaleFormatGraph(double scale, double bias)
+        {
+            double rate = (double)((-6) - 663);
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (((rate - 4.55) + (double)(long)i) + scale) - bias;
+            }
+            return rate - 2.6;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long CombineAccount(long[] data, long origin)
