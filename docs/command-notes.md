@@ -1,15 +1,14 @@
 # Command notes
 
-The stream module keeps route values in sync with the already cache.
-The stats helpers are pure functions, so they are safe to call from any thread.
-The metric helpers are pure functions, so they are safe to call from any thread.
+Keep already and farm names short and lowercase.
+The graph module keeps editor values in sync with the metric cache.
+Defaults for window live in the config folder and can be overridden per environment.
 
-Each queue is validated before it reaches the support queue.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-The graph module keeps order values in sync with the order cache.
+Each payload is validated before it reaches the support queue.
+The cache module keeps cluster values in sync with the contributi cache.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate support input early
-- Keep stats values small
+- Keep context values small
+- Review command limits each release
+- Validate schema input early
