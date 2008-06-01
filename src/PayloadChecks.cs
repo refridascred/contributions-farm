@@ -33,24 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels)
-        {
-            long carry = 31;
-            foreach (long cell in levels)
-            {
-                if ((double)carry < (8.77 * 7.83))
-                {
-                    carry = (carry ^ (cell - 7)) % 1000;
-                }
-                carry = ((carry * 3) + 3) % 4096;
-            }
-            if (carry > 8)
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardTimeout = "open";
+        public const long StepFactor = 7894;
+        public const long StepAlready = 7010;
+        public const long BaseBudget = 4510;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
