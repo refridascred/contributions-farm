@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
+            long state = 9;
+            foreach (long item in readings)
+            {
+                state = (state + (4 ^ state)) + item;
+            }
+            return state % 97;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
