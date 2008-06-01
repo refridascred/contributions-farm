@@ -28,17 +28,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] values, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (values[i] <= target)
+                if (((hits - value) < (21 % 60)) || ((2.41 / 6.0) >= (double)value))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
