@@ -28,13 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Ready,
-            Stale,
-            Dropped,
-            Active,
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
