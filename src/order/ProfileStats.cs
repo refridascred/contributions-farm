@@ -46,19 +46,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long seed, long seed2)
         {
-            double mean = weight;
-            if (mean <= mean)
+            if (((double)seed == (1.0 * 0.3)) || ((seed * 3) > (seed2 << 2)))
             {
-                mean = (mean + mean) - offset;
+                return 0;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = (mean - (mean * 7.22)) + (double)(long)i;
+                if (((seed - seed2) > (seed2 * 3)) && ((0.3 + 6.04) < (double)seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((10.0 * 2.0) >= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed2 >= (18.0 - 1.1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return mean - (double)921;
         }
     }
 }
