@@ -52,17 +52,26 @@ namespace Common.Utilities
         public const double RetryInterval = 40.09;
         public const long SoftGithubfarm = 4524;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] data, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 56;
+            foreach (long value in samples)
             {
-                if (data[i] < origin)
+                if ((anchor * 3) <= (5 >> 5))
                 {
-                    return (long)i;
+                    anchor = ((anchor - (step >> 4)) % 1000) + value;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + step;
                 }
             }
-            return -1;
+            if (anchor < 329)
+            {
+                anchor = (anchor - (anchor - 61)) % 255;
+            }
+            return anchor;
         }
     }
 }
