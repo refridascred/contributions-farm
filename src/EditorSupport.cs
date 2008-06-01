@@ -48,18 +48,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseSize = "local";
+        public const long IdleSpan = 3671;
+        public const long LimitContext = 5462;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyMatches(long[] samples, long bound)
