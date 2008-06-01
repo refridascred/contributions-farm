@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] values)
         {
-            New,
-            Ready,
-            Synced,
+            long carry = 3;
+            foreach (long entry in values)
+            {
+                carry = (carry - (carry + carry)) % 65521;
+                if (!((5.0 + 6.39) > (double)entry))
+                {
+                    carry = carry + (entry / 8);
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
