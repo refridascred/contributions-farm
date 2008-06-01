@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many entry schema samples are out of range.</summary>
-        public static long CountEntrySchemaHits(long[] items, long seed)
+        /// <summary>Compare every pair of stream notes readings.</summary>
+        public static long PairStreamNotesCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally * 3) != (seed * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) - cell;
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a command batch pair into a bucket.</summary>
