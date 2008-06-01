@@ -1,14 +1,7 @@
 {
-  "cache_interval_s": 30,
-  "sync_size_pct": {
-    "batch_ttl_pct": true,
-    "base_timeout": "green",
-    "route_ttl": 30,
-    "verbose": "open",
-    "soft_window_ms": 15
-  },
-  "strict": "eu-west",
-  "max_ttl_count": "eu-west",
-  "poll_retries": 6366,
-  "soft_threshold": 20
+  "enabled": "green",
+  "soft_depth": 500,
+  "batch_ratio_count": [42, 387, 250],
+  "route_ttl": [499, 79],
+  "max_window_ms": 65.69
 }
