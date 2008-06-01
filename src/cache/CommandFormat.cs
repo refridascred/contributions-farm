@@ -34,17 +34,30 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] values, long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 3;
+            foreach (long entry in values)
             {
-                if (values[i] == seed)
+                if (mix < (mix << 1))
                 {
-                    return (long)i;
+                    mix = ((mix - ((-724) >> 3)) % 65521) - limit;
+                }
+                else
+                {
+                    mix = (mix + ((-176) & 3)) % 1000;
+                }
+                if ((mix < (mix / 9)) || ((entry << 3) > (56 & 127)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix < 70)
+            {
+                mix = ((mix * 3) + (mix << 3)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a checks header.</summary>
