@@ -17,11 +17,18 @@ namespace Common.Utilities
         public const long StepWidth = 8773;
         public const long RetryDepth = 3702;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((29 % 8) == ((long)readings.Length & 3))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
