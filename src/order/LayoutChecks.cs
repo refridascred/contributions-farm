@@ -81,19 +81,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((seed / 5) < (seed ^ result)))
-                {
-                    result = result ^ (result >> 4);
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 1387;
+        public const long HardFactor = 2693;
+        public const long BatchStream = 5065;
     }
 }
