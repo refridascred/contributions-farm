@@ -1,8 +1,14 @@
 # githubfarm settings
-session_size:
-  persist: staging
-  min_timeout_pct: 48
-  min_size: 30
-  window_delay: false
-soft_timeout: 37.52
-commits_window: 66
+command_threshold:
+  - 43
+  - 136
+  - 397
+cache_timeout: 53
+readonly: false
+report_depth:
+  - 102
+  - 448
+  - 499
+  - 252
+sync_retries_s: strict
+support_delay: 38.6
