@@ -41,19 +41,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double gain, double bias)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long bound, long floor)
         {
-            double gain2 = (double)(7 >> 4);
-            if (gain2 > (5.4 - 4.4))
+            if ((floor >> 1) == (floor << 2))
             {
-                gain2 = gain2 + gain;
+                return 8;
             }
             else
             {
-                gain2 = gain2 - bias;
+                if ((bound >> 2) >= (floor ^ floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return gain2 - gain2;
         }
     }
 }
