@@ -1,5 +1,6 @@
 {
-  "default_limit_ms": 30,
-  "retry_depth": ["local", "edge"],
-  "dry_run": false
+  "retry_interval_count": "green",
+  "sync_limit_ms": "eu-west",
+  "report_threshold": false,
+  "poll_retries_ms": [20, 456]
 }
