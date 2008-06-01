@@ -1,5 +1,11 @@
 # githubfarm settings
-idle_size_s: true
-poll_threshold_count: primary
-soft_ratio: stable
-min_delay_pct: 1228
+idle_delay_s:
+  - fallback
+  - open
+  - green
+  - stable
+cache_size: true
+payload_capacity: false
+retry_size: 6016
+cache_capacity: local
+burst_ttl_count: stable
