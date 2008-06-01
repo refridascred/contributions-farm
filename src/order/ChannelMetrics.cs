@@ -42,11 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 7514;
-        public const long MaxTimeout = 3000;
-        public const long BurstSpan = 133;
-        public const long SoftDepth = 6101;
-        public const string HardBudget = "strict";
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinSpan = 81.04;
+        public const double BatchScore = 90.03;
+        public const string RetryRoute = "latest";
+        public const long HardLevel = 8273;
     }
 }
