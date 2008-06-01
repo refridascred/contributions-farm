@@ -26,22 +26,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit batches farm readings against a rule.</summary>
-        public static long CountBatchesFarmHits(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (datum <= 9)
+                if (cell >= floor)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
