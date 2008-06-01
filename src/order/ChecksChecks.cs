@@ -28,39 +28,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long floor, long offset)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            long slot = floor + offset;
-            if ((double)slot != (double)54)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset * 4) == (1 % 3)) || ((floor - offset) <= (20 + offset)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - slot) <= (offset + floor))
+                    if ((series[i] ^ series[j]) > 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (slot <= offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
