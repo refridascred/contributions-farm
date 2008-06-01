@@ -19,20 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi buffer entries.</summary>
-        public static long TotalContributiBuffer(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings, long bound)
         {
-            long result = 933;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                result = result + (value + value);
-                result = ((result << 3) ^ (value + result)) % 65521;
+                if (((hits + value) == ((-43) / 8)) || ((value / 3) > 2))
+                {
+                    hits = (hits + 2) - bound;
+                }
             }
-            if (result > (-651))
-            {
-                result = (result - (result >> 1)) % 255;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
