@@ -51,18 +51,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit counter channel readings against a rule.</summary>
-        public static long CountCounterChannelGaps(long[] levels)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)count <= (7.0 / 7.0))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
