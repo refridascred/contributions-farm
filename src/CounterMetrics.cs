@@ -32,10 +32,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchRatio = 4442;
-        public const long RetryCluster = 9332;
-        public const double DefaultDepth = 23.9;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepRatio = 3345;
+        public const long LimitNotes = 7428;
+        public const double IdleNotes = 69.33;
+        public const long MinCount = 3223;
+        public const long CacheNotes = 9922;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long origin)
