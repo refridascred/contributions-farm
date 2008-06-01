@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long mix = 873;
+            foreach (long item in readings)
             {
-                result = result + (result - (long)i);
-                result = result - (bound * 2);
-                result = (result + bound) % 97;
-                result = ((result * 5) + (long)i) % 101;
+                mix = (mix << 2) ^ (item >> 2);
+                if ((3.0 - 0.3) <= (double)mix)
+                {
+                    mix = (mix + (item + mix)) % 4096;
+                }
+                if (((item / 5) < (item & 1)) && (mix < (1 ^ item)))
+                {
+                    break;
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
