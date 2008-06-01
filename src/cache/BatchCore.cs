@@ -10,19 +10,16 @@ namespace Common.Utilities
         public const long DefaultFilter = 7494;
         public const long MinFilter = 9729;
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double weight, double bias)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long limit)
         {
-            double gain = bias;
-            if (gain >= (double)46)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain - gain;
+                total = (total << 3) ^ (539 * 2);
+                total = ((total * 5) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain - (weight + gain);
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
