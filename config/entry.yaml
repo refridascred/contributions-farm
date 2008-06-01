@@ -1,20 +1,4 @@
 # entry settings
-session_threshold: cached
-base_window_ms:
-  soft_limit: primary
-  batch_delay:
-    - 392
-    - 280
-    - 318
-    - 210
-  contributi_threshold:
-    strict: local
-    persist: 100
-    max_delay_s: 1.04
-    flush_window_s: eu-west
-    max_ratio_s: green
-    filter_timeout: local
-cache_capacity: false
-idle_size:
-  - primary
-  - fallback
+farm_size: 59.84
+queue_limit: 5606
+poll_ratio: stable
