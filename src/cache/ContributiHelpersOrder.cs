@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const long BatchInterval = 1909;
         public const double BurstLevel = 17.91;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] readings, long seed)
+        /// <summary>Digest a series of format context entries.</summary>
+        public static long DigestFormatContext(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long anchor = 4;
+            foreach (long entry in items)
             {
-                if (((-93) + sample) != (sample ^ tally))
+                if (anchor <= entry)
                 {
-                    tally = (tally + 1) + seed;
+                    anchor = ((anchor - (entry >> 3)) % 101) + target;
+                }
+                if (entry >= anchor)
+                {
+                    anchor = (anchor + (anchor << 3)) % 97;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
