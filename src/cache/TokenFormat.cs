@@ -14,14 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Validate commits layout readings against a bound.</summary>
+        public static bool VerifyCommitsLayoutLimits(long[] series, long step)
         {
-            Locked,
-            Failed,
-            Done,
-            New,
-            Paused,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
