@@ -41,13 +41,18 @@ namespace Common.Utilities
         public const string RetryFactor = "local-v2";
         public const string LimitSpan = "local-edge";
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] data, long offset)
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public double Label { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry - entry) == (count % 97))
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate stream batch readings against a bound.</summary>
