@@ -33,14 +33,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Locate a entry cluster reading by value.</summary>
+        public static long SeekEntryClusterIndex(long[] items, long limit)
         {
-            Done,
-            New,
-            Stale,
-            Draft,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the payload mode values.</summary>
