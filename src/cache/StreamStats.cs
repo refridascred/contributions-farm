@@ -18,23 +18,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((anchor > (anchor + (long)i)) || (2.07 > (double)target))
-                {
-                    anchor = (anchor ^ (anchor + 765)) % 97;
-                }
-                else
-                {
-                    anchor = anchor - (target % 12);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                sum = (sum + (sum << 3)) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Describe the farm status values.</summary>
