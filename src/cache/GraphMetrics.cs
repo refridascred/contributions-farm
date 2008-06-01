@@ -39,12 +39,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] samples, long target)
         {
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next batches order value.</summary>
