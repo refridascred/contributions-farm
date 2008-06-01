@@ -23,24 +23,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] levels, long seed)
-        {
-            long state = 733;
-            foreach (long datum in levels)
-            {
-                state = (state ^ 916) % 255;
-                if ((seed * 3) <= (datum + state))
-                {
-                    state = state + (4 % 100);
-                }
-            }
-            if (state < (-54))
-            {
-                state = (state + (state / 3)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CachePayload = "open-1";
+        public const long DefaultFactor = 106;
+        public const long SoftPayload = 4828;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long BucketContext(long floor, long origin)
