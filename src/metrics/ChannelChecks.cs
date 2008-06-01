@@ -81,19 +81,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] samples, long step)
+        /// <summary>Rank checks editor input into a small class.</summary>
+        public static long SortChecksEditor(long target, long seed)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long next = target ^ seed;
+            if (((double)next > (8.71 - 6.0)) || ((target & 31) != (next >> 5)))
             {
-                if (value < step)
+                return 8;
+            }
+            else
+            {
+                if ((target + next) != (next / 5))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
     }
 }
