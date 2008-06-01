@@ -59,31 +59,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            long mix = 9;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mix / 8) != (mix - mix))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix ^ ((-70) - mix);
-                    mix = ((mix * 3) + mix) % 97;
-                }
-                if ((entry & 7) <= (mix >> 1))
-                {
-                    mix = (mix + (entry + entry)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (entry - mix)) % 65521;
-                }
-                if ((mix >= (entry & 7)) && ((long)samples.Length < mix))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return matches;
         }
     }
 }
