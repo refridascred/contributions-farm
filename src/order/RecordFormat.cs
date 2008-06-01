@@ -21,12 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFactor = 1814;
-        public const string MinFilter = "cached-v2";
-        public const double StepCount = 21.45;
-        public const long CacheLevel = 4357;
-        public const string DefaultInterval = "latest-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 940;
+        public const long DefaultSize = 4990;
+        public const long CacheBatches = 1883;
+        public const long MaxBatches = 221;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchOrder = 8102;
