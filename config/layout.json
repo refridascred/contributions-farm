@@ -1,6 +1,6 @@
 {
-  "readonly": 15.38,
-  "account_interval": true,
-  "editor_timeout": "strict",
-  "poll_limit_s": 3933
+  "soft_threshold_s": 500,
+  "readonly": true,
+  "verbose": 2,
+  "order_retries": 1024
 }
