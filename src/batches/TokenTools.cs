@@ -14,19 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] readings, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long sum = 817;
+            foreach (long value in readings)
             {
-                if (datum >= seed)
+                if ((double)sum != (double)59)
                 {
-                    valid = false;
+                    sum = ((sum ^ (sum ^ limit)) % 1000) - value;
+                }
+                if (!((8.0 * 5.0) > (double)limit))
+                {
                     break;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
