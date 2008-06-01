@@ -51,38 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long seed, long seed2)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] data, long step)
         {
-            if (((double)seed == (1.0 * 0.3)) || ((seed * 3) > (seed2 << 2)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed - seed2) > (seed2 * 3)) && ((0.3 + 6.04) < (double)seed))
+                if (data[i] < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((10.0 * 2.0) >= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed2 >= (18.0 - 1.1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
