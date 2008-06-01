@@ -56,18 +56,12 @@ namespace Common.Utilities
         public const long WindowCount = 7558;
         public const string SoftSpan = "standard-1";
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] readings)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (1.9 <= (double)cell)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
