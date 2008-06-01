@@ -17,11 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "fallback";
-        public const long WindowChannel = 8743;
-        public const double WindowRatio = 57.13;
-        public const long IdleWidth = 4824;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Closed,
+            Done,
+            Pending,
+            Paused,
+            Active,
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] readings)
