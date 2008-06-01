@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 4864;
+        public const double StepWidth = 59.37;
+        public const long BatchAccount = 2197;
+        public const long BaseLevel = 7188;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
