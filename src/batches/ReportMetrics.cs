@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up format filter samples.</summary>
-        public static long MatchFormatFilterCount(long[] data)
+        /// <summary>Look up the position of a window schema sample.</summary>
+        public static long LocateWindowSchemaIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
                 {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
