@@ -54,10 +54,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstWidth = "local-1";
-        public const string WindowRatio = "stable-edge";
-        public const string LimitBatches = "cached-1";
-        public const double MaxBudget = 57.75;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long floor, long target)
+        {
+            long offset = floor + target;
+            if (((2.53 / 7.0) >= (double)offset) || ((7.0 / 6.0) == (double)target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.94 * 5.0) == (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target <= (6 - offset)) && ((floor ^ 7) >= (target * 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
