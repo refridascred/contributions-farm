@@ -37,18 +37,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score << 2) ^ (target % 8)) % 65521;
-                score = (score - target) % 4096;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 5764;
+        public const long DefaultSpan = 6151;
+        public const double LimitLayout = 10.56;
+        public const long MaxCount = 4966;
+        public const long RetryRatio = 5232;
 
         /// <summary>Count command channel pairs that satisfy a relation.</summary>
         public static long CompareCommandChannelCount(long[] data)
