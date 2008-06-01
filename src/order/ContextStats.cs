@@ -44,21 +44,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Validate format already readings against a bound.</summary>
+        public static bool GuardFormatAlreadyRange(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value < floor)
                 {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
