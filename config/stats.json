@@ -1,24 +1,7 @@
 {
-  "audit": {
-    "report_ratio": {
-      "batch_capacity_count": true,
-      "retry_ttl_ms": "local",
-      "readonly": 9,
-      "farm_window": "eu-west",
-      "strict": "primary"
-    },
-    "poll_delay": 91.68,
-    "base_retries_count": 77.15,
-    "soft_window": true,
-    "persist": {
-      "dry_run": "latest",
-      "persist": "stable",
-      "compress": 2790,
-      "idle_limit": "local",
-      "hard_limit_count": 65.51,
-      "warm_ttl": ["standard", "strict", "standard", "local"]
-    }
-  },
-  "poll_size": [382, 266],
-  "stats_ttl": "primary"
+  "poll_ratio_s": 80.12,
+  "default_window": ["eu-west", "stable", "cached"],
+  "min_delay": 100,
+  "max_capacity_s": 100,
+  "hard_capacity_s": "stable"
 }
