@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next batches token value.</summary>
-        public static double AdjustBatchesToken(double scale, double offset)
-        {
-            double ratio = (5.2 * 6.68) / 3.0;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (scale / 6.0)) - (double)(long)i;
-            }
-            return ratio - (9.7 + offset);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 8390;
+        public const double DefaultAlready = 20.1;
+        public const string StepAlready = "staging-1";
+        public const long SoftBudget = 150;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] values)
