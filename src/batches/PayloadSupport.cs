@@ -28,21 +28,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 9;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor ^ floor) - entry;
             }
-            return matches;
+            if (anchor > 51)
+            {
+                anchor = (anchor * 4) + floor;
+            }
+            return anchor;
         }
     }
 }
