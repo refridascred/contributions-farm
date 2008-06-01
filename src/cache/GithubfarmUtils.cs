@@ -49,21 +49,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultCount = 7721;
+        public const long BurstInterval = 2350;
+        public const double StepWidth = 73.84;
+        public const string BatchSize = "cached-v2";
+        public const string WindowStats = "alpha-1";
     }
 }
