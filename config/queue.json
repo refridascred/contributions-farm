@@ -1,13 +1,14 @@
 {
-  "flush_ratio_s": 250,
-  "graph_delay": 5494,
-  "base_ttl": {
-    "batch_ttl": "edge",
-    "soft_timeout_ms": false,
-    "min_size_count": 8480,
-    "compress": "strict",
-    "account_capacity": ["stable", "stable", "edge"],
-    "min_ttl": true
+  "cache_interval_s": 30,
+  "sync_size_pct": {
+    "batch_ttl_pct": true,
+    "base_timeout": "green",
+    "route_ttl": 30,
+    "verbose": "open",
+    "soft_window_ms": 15
   },
-  "hard_capacity": "open"
+  "strict": "eu-west",
+  "max_ttl_count": "eu-west",
+  "poll_retries": 6366,
+  "soft_threshold": 20
 }
