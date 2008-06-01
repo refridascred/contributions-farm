@@ -33,22 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] data)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long carry = 363;
+            foreach (long sample in series)
             {
-                if ((7.0 * 4.0) == (double)seen)
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((((carry * 2) + carry) % 101) ^ sample) - floor;
             }
-            return seen;
+            if (carry > 575)
+            {
+                carry = (carry - (900 >> 3)) % 4096;
+            }
+            return carry % 97;
         }
     }
 }
