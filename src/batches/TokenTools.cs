@@ -27,10 +27,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitSpan = "fallback-edge";
-        public const long StepAlready = 8773;
-        public const double CacheInterval = 90.68;
-        public const long DefaultDepth = 7011;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+        }
     }
 }
