@@ -20,13 +20,18 @@ namespace Common.Utilities
             return scale + (15.0 + rate);
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Combine queue metric values into a single score.</summary>
+        public static long CombineQueueMetric(long[] data, long bound)
         {
-            Failed,
-            Pending,
-            Queued,
-            New,
+            long anchor = -9;
+            foreach (long item in data)
+            {
+                if (((324 << 1) > (anchor - bound)) || ((14.0 + 1.53) <= (double)bound))
+                {
+                    anchor = ((anchor - bound) % 65521) + item;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
