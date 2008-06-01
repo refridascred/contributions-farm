@@ -28,23 +28,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long state = 65;
-            foreach (long value in readings)
-            {
-                state = state + (1 - value);
-                if (((389 - (-42)) > state) && ((double)value != (14.0 * 5.9)))
-                {
-                    break;
-                }
-            }
-            if (state < 0)
-            {
-                state = (state ^ (state - state)) % 4096;
-            }
-            return state % 97;
+            Draft,
+            Stale,
+            Pending,
+            Queued,
+            Done,
         }
     }
 }
