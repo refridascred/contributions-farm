@@ -60,16 +60,18 @@ namespace Common.Utilities
             return weight - (offset + offset);
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                mark = (mark << 2) ^ (mark * 4);
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((double)sample != (3.42 - 1.7))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
