@@ -38,24 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a stream format value against two limits.</summary>
-        public static long SortStreamFormat(long floor, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] items, long target)
         {
-            if ((floor + seed) > seed)
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed / 8) == ((-2) + 28)) || ((double)seed >= (9.46 - 6.1)))
+                if (value != target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
