@@ -53,39 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long origin, long seed)
-        {
-            long prev = origin - seed;
-            if (((origin / 3) >= (seed ^ prev)) || ((prev << 2) > (prev ^ prev)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((prev >> 1) < origin) || (origin < prev))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((prev + origin) > (prev - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin != (3.0 + 13.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 9964;
+        public const double BaseEditor = 1.34;
+        public const string IdleInterval = "primary-edge";
+        public const long SoftInterval = 3609;
+        public const long BurstRatio = 401;
     }
 }
