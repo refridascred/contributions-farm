@@ -1,7 +1,8 @@
 {
-  "flush_window_s": false,
-  "readonly": false,
-  "cache_depth_s": 65.18,
-  "account_retries": 8671,
-  "batch_window": "edge"
+  "strict": 3.02,
+  "context_limit": "stable",
+  "flush_timeout_pct": true,
+  "persist": false,
+  "base_delay_count": "cached",
+  "enabled": "open"
 }
