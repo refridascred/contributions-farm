@@ -1,11 +1,6 @@
-id,level,token,state
-1,92.25,green,cached
-2,85.63,363,blue
-3,154,cached,381
-4,fallback,36.76,local
-5,52.55,390,primary
-6,9.42,884,698
-7,909,primary,eu-west
-8,452,91.06,eu-west
-9,primary,965,341
-10,edge,770,67.11
+id,region,weight
+1,primary,stable
+2,712,810
+3,primary,68.48
+4,205,edge
+5,40,edge
