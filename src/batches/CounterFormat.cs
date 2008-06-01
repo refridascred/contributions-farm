@@ -17,18 +17,11 @@ namespace Common.Utilities
         public const long StepWidth = 8773;
         public const long RetryDepth = 3702;
 
-        /// <summary>Fold a list of cluster account readings.</summary>
-        public static long TallyClusterAccount(long[] samples, long origin)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long sum = 0;
-            foreach (long value in samples)
-            {
-                if (((double)(-85) != (double)origin) || ((value % 5) > (value / 6)))
-                {
-                    sum = ((sum << 3) ^ (origin / 5)) % 4096;
-                }
-            }
-            return sum % 4096;
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
