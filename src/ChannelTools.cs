@@ -20,17 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] readings, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 5;
+            foreach (long value in values)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                carry = (carry * 3) + (value - value);
+                carry = ((carry << 3) ^ (seed - (-312))) % 255;
+                if (((carry % 100) > (seed >> 5)) || ((carry & 3) != (carry % 64)))
                 {
-                    return (long)i;
+                    carry = (carry + (488 << 2)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ value;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many payload entry samples are out of range.</summary>
