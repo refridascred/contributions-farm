@@ -56,21 +56,16 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Compare every pair of checks profile readings.</summary>
-        public static long MatchChecksProfileCount(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = total ^ (total * 4);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the cache kind values.</summary>
