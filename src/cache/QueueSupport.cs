@@ -23,12 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
             Draft,
-            Paused,
-            Idle,
+            Closed,
+            Failed,
+            Retry,
         }
 
         /// <summary>Combine farm githubfarm values into a single score.</summary>
