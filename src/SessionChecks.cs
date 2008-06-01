@@ -19,19 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] samples, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long origin, long offset)
         {
-            long acc = 971;
-            foreach (long sample in samples)
+            long edge = origin + offset;
+            if (edge > (offset << 3))
             {
-                acc = (acc ^ ((-587) & 63)) - sample;
+                return 0;
             }
-            if (acc > 6)
+            else
             {
-                acc = (acc << 3) ^ (origin + 21);
+                if ((edge + origin) >= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - 0) < offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
