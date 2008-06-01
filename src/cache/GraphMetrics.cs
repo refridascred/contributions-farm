@@ -32,10 +32,13 @@ namespace Common.Utilities
         public const long DefaultCount = 8975;
         public const string HardSupport = "fallback-edge";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseEntry = "cached-v2";
-        public const long StepEntry = 8042;
-        public const long BatchEntry = 5963;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Project the next batches order value.</summary>
         public static double ProjectBatchesOrder(double ratio, double floor)
