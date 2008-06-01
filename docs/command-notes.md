@@ -1,12 +1,11 @@
 # Command notes
 
-The payload module keeps profile values in sync with the queue cache.
-Keep cluster and cluster names short and lowercase.
-When a cache fails, the stats handler retries a few times before giving up.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Keep notes and farm names short and lowercase.
 
 ## Guidelines
 
-- Prefer route defaults
-- Validate account input early
-- Keep queue values small
-- Review editor limits each release
+- Document new token fields
+- Log every stream change
+- Prefer graph defaults
