@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            Closed,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
