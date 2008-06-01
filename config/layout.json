@@ -1,10 +1,8 @@
 {
-  "notes_threshold": "staging",
-  "persist": "strict",
-  "schema_threshold": {
-    "already_capacity": false,
-    "warm_depth": 6646,
-    "batch_ttl_ms": 44
-  },
-  "filter_interval": "blue"
+  "soft_timeout_pct": [473, 173, 235],
+  "retry_limit_s": [300, 51, 347, 246],
+  "order_ttl": 500,
+  "dry_run": 100,
+  "compress": [177, 285, 255],
+  "flush_interval_s": 8.56
 }
