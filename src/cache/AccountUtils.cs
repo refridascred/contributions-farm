@@ -14,24 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long target, long target2)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            if ((target & 63) < 0)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target % 64) > (target << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the batch level values.</summary>
