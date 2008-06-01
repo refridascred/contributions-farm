@@ -64,13 +64,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 4888;
+        public const long DefaultOrder = 9065;
+        public const double BaseOrder = 97.6;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferMatches(long[] readings, long bound)
