@@ -60,11 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
