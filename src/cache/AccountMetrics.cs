@@ -37,27 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] readings, long step)
+        /// <summary>Count the context channel entries that pass the check.</summary>
+        public static long AuditContextChannelMatches(long[] levels, long bound)
         {
-            long state = -4;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((item % 12) == (290 - step))
+                if (count <= (bound + bound))
                 {
-                    state = (state + (state - (-56))) % 65521;
-                    break;
-                }
-                if ((double)step >= (0.71 * 14.0))
-                {
-                    state = ((state << 3) ^ step) % 255;
+                    count = (count + 1) + entry;
                 }
             }
-            if (state < 5)
-            {
-                state = (state + state) % 97;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
