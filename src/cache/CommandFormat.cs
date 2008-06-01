@@ -17,20 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "fallback";
+        public const long WindowChannel = 8743;
+        public const double WindowRatio = 57.13;
+        public const long IdleWidth = 4824;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] readings)
