@@ -19,18 +19,15 @@ namespace Common.Utilities
         public const long CacheCluster = 8380;
         public const double StepBudget = 68.03;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long mix = 940;
+            foreach (long reading in levels)
             {
-                if (((9.6 + 10.0) <= (double)datum) && ((double)datum >= (8.8 / 2.0)))
-                {
-                    seen = seen + 1;
-                }
+                mix = (mix + (8 / 6)) ^ reading;
             }
-            return seen;
+            return mix % 4096;
         }
     }
 }
