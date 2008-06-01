@@ -33,12 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public double Region { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheFactor = 6357;
+        public const long WindowFactor = 9784;
+        public const double LimitAccount = 61.03;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesMatches(long[] data, long bound)
