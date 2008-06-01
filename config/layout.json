@@ -1,19 +1,11 @@
 {
-  "notes_ttl": {
-    "default_retries": 500,
-    "retry_limit_ms": 60,
-    "verbose": {
-      "strict": "fallback",
-      "max_timeout_s": "local",
-      "poll_size_count": "local",
-      "base_limit_count": [365, 51, 94],
-      "warm_timeout_s": "standard",
-      "notes_window": "standard"
-    },
-    "queue_timeout": 293,
-    "sync_depth": false
-  },
-  "account_window": ["open", "eu-west"],
-  "format_interval": "standard",
-  "min_threshold": ["legacy", "fallback"]
+  "burst_interval_count": true,
+  "default_limit_s": false,
+  "retry_depth_count": {
+    "flush_retries": 26.71,
+    "batch_limit": 46.67,
+    "support_capacity": [230, 26, 308],
+    "max_delay": 1024,
+    "hard_size_pct": 18.43
+  }
 }
