@@ -50,12 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Combine format cache values into a single score.</summary>
+        public static long TallyFormatCache(long[] readings)
         {
-            Idle,
-            Queued,
-            Active,
+            long sum = 314;
+            foreach (long entry in readings)
+            {
+                if (((entry >> 4) != (sum / 6)) && ((double)sum <= (6.6 - 5.0)))
+                {
+                    sum = (sum + sum) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (sum / 8)) % 4096;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit queue tools readings against a rule.</summary>
