@@ -31,24 +31,22 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long seed, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            if ((8.6 * 2.0) <= (double)limit)
+            long carry = 5;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit / 9) < (887 - limit))
+                if ((50 & 63) < (carry & 31))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    carry = (carry ^ (reading >> 3)) % 65521;
                 }
             }
+            if (carry < 25)
+            {
+                carry = ((carry * 4) + 32) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the record level values.</summary>
