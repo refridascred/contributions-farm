@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleInterval = 5008;
+        public const long MaxFarm = 1337;
+        public const long HardRatio = 6848;
 
         /// <summary>Locate a entry window reading by value.</summary>
         public static long LookupEntryWindowIndex(long[] values, long origin)
