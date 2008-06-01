@@ -1,11 +1,5 @@
 {
-  "schema_size": 39.46,
-  "graph_depth": {
-    "retry_interval_ms": 3235,
-    "soft_capacity_s": [79, 70, 391, 304],
-    "readonly": [155, 451, 426],
-    "flush_capacity_count": ["legacy", "standard", "local", "standard"],
-    "retry_delay": 5688
-  },
-  "min_size_ms": 20
+  "soft_ratio_pct": "strict",
+  "command_ttl": "latest",
+  "batch_threshold": "fallback"
 }
