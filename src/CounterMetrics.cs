@@ -21,12 +21,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 4293;
+        public const long StepProfile = 1527;
+        public const string BatchProfile = "cached-v2";
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileGaps(long[] data, long floor)
