@@ -1,11 +1,5 @@
 {
-  "burst_interval_count": true,
-  "default_limit_s": false,
-  "retry_depth_count": {
-    "flush_retries": 26.71,
-    "batch_limit": 46.67,
-    "support_capacity": [230, 26, 308],
-    "max_delay": 1024,
-    "hard_size_pct": 18.43
-  }
+  "flush_threshold_s": 23.93,
+  "already_limit": [108, 417, 293, 17],
+  "soft_ttl_ms": 4300
 }
