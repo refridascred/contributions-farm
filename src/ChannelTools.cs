@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of token already readings.</summary>
-        public static long CompareTokenAlreadyCount(long[] data)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 57;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((limit & 31) >= result)
                 {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result + (result & 7)) % 255;
+                }
+                if (limit > (limit - entry))
+                {
+                    result = (result + limit) % 65521;
                 }
             }
-            return matches;
+            if (result > 72)
+            {
+                result = (result - (46 + limit)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a token info.</summary>
