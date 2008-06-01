@@ -31,17 +31,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] values, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 92;
+            foreach (long reading in levels)
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                total = ((total + (reading + 809)) % 1000) - step;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Classify a metrics format pair into a bucket.</summary>
