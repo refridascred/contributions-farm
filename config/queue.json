@@ -1,11 +1,11 @@
 {
-  "cache_timeout_count": {
-    "min_limit_ms": "open",
-    "warm_ratio": 3,
-    "idle_timeout_s": true,
-    "soft_delay_count": ["open", "legacy", "open"],
-    "retry_limit": 51
-  },
-  "profile_ratio": 100,
-  "idle_delay_ms": 80
+  "default_threshold_ms": 1024,
+  "retry_depth_ms": "stable",
+  "cache_threshold_count": {
+    "enabled": true,
+    "batch_depth_s": "stable",
+    "cache_window_pct": 15.46,
+    "batch_ratio_ms": "strict",
+    "warm_threshold_ms": 5682
+  }
 }
