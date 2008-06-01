@@ -33,11 +33,13 @@ namespace Common.Utilities
             return gain + (4.67 - ratio);
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
+            Dropped,
+            Locked,
+            Closed,
+            Stale,
         }
     }
 }
