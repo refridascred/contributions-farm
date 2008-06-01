@@ -1,14 +1,7 @@
 # githubfarm settings
-command_threshold:
-  - 43
-  - 136
-  - 397
-cache_timeout: 53
-readonly: false
-report_depth:
-  - 102
-  - 448
-  - 499
-  - 252
-sync_retries_s: strict
-support_delay: 38.6
+min_depth: eu-west
+readonly: 1024
+compress: 4026
+window_timeout: true
+editor_capacity: 88.83
+default_depth_s: 12
