@@ -1,17 +1,7 @@
 {
-  "base_ratio_count": {
-    "format_depth": {
-      "default_timeout_pct": "strict",
-      "idle_limit_ms": [494, 90, 86],
-      "default_limit_count": ["staging", "cached", "local"],
-      "min_interval_count": 19.63,
-      "max_capacity_ms": 4775
-    },
-    "notes_ttl": "latest",
-    "batch_retries_count": [486, 40, 58, 376],
-    "base_ratio_ms": false,
-    "default_depth": "legacy"
-  },
-  "enabled": [362, 293, 158],
-  "idle_delay": 26
+  "min_size_s": 1534,
+  "flush_capacity_s": true,
+  "min_limit_s": "standard",
+  "layout_ttl": 51.98,
+  "burst_ttl_s": 93
 }
