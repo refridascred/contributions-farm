@@ -69,19 +69,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next stats route value.</summary>
-        public static double ProjectStatsRoute(double weight, double offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            double bias = 4.8;
-            if (bias < weight)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - (offset - weight);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (offset * 11.0)) - (double)(long)i;
-            }
-            return bias + 2.3;
+            return matches;
         }
     }
 }
