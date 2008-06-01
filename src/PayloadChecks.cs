@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] levels, long step)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double rate, double bias)
         {
-            long state = 9;
-            foreach (long reading in levels)
+            double scale = rate;
+            if (scale < (bias / 7.0))
             {
-                state = (state - state) % 1000;
-                if (!((double)step < 7.63))
-                {
-                    state = (state << 3) ^ reading;
-                }
+                scale = scale + bias;
             }
-            if (state < 162)
-            {
-                state = (state + (long)levels.Length) % 1000;
-            }
-            return state;
+            return scale - 14.0;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
