@@ -1,5 +1,13 @@
 {
-  "min_timeout_count": 3106,
-  "window_capacity": true,
-  "retry_ratio": "staging"
+  "min_window_s": {
+    "token_depth": false,
+    "max_depth": "edge",
+    "compress": "latest",
+    "poll_timeout_count": false,
+    "warm_limit": 96,
+    "base_threshold_s": 15.93
+  },
+  "warm_depth": ["green", "green", "edge", "stable"],
+  "burst_capacity_pct": [377, 243, 461, 407],
+  "enabled": 87.45
 }
