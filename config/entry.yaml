@@ -1,15 +1,12 @@
 # entry settings
-token_ttl: 3151
-enabled:
-  - latest
-  - eu-west
-  - edge
-stream_window: stable
-idle_limit_ms:
-  enabled: standard
-  retry_depth_pct:
-    - green
-    - green
+support_depth: true
+notes_limit: 42.89
+cache_threshold: 72
+persist: eu-west
+sync_retries_s: 53
+flush_size_pct:
+  readonly:
     - open
-    - stable
-  compress: strict
+    - latest
+  retry_limit_pct: cached
+  soft_ratio_s: legacy
