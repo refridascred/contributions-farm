@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the already cluster entries that pass the check.</summary>
-        public static long MeasureAlreadyClusterOutliers(long[] series)
+        /// <summary>Derive the next token filter value from a seed.</summary>
+        public static long StepTokenFilter(long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading % 3) < 778)
-                {
-                    seen = seen + 2;
-                }
+                mark = (mark << 2) ^ ((long)i % 5);
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
