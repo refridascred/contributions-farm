@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Retry,
-            Pending,
-            New,
-            Stale,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 4272;
+        public const string LimitLevel = "fallback";
+        public const long BaseSpan = 3263;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
