@@ -33,10 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 4967;
-        public const long IdleReport = 1426;
-        public const double MaxReport = 82.71;
+        /// <summary>Measure how many already account samples are out of range.</summary>
+        public static long MeasureAlreadyAccountOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen <= (seen - item)) && ((item + seen) <= (item ^ seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetrySize = "strict-1";
