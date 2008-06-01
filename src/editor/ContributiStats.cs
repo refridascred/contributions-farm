@@ -43,12 +43,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double ratio, double bias)
         {
-            Retry,
-            Synced,
-            Pending,
+            double ratio2 = (bias * 6.1) * 5.2;
+            if (ratio2 > ratio2)
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - (ratio * 10.0)) + (double)(long)i;
+            }
+            return ratio2 - bias;
         }
     }
 }
