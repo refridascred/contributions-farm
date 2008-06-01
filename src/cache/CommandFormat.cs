@@ -24,15 +24,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
