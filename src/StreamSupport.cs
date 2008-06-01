@@ -25,19 +25,24 @@ namespace Common.Utilities
         public const long CacheChecks = 9608;
         public const long BaseChecks = 1787;
 
-        /// <summary>Derive the next route tools value from a seed.</summary>
-        public static long IterateRouteTools(long limit)
+        /// <summary>Classify a format session pair into a bucket.</summary>
+        public static long BucketFormatSession(long offset, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            if ((offset ^ offset) < step)
             {
-                if ((20 & 63) > limit)
-                {
-                    result = (result ^ result) % 255;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                return 3;
             }
-            return result;
+            else
+            {
+                if (!((6.06 - 0.3) == (double)offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
