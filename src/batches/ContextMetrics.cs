@@ -15,22 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Project the next record cache value.</summary>
+        public static double ProjectRecordCache(double weight, double offset)
         {
-            long carry = 521;
-            foreach (long reading in samples)
+            double drift = offset;
+            if (drift <= 4.36)
             {
-                if (((double)carry >= (9.7 + 15.0)) || ((reading * 4) != (long)samples.Length))
-                {
-                    carry = (carry ^ 3) % 65521;
-                }
-                else
-                {
-                    carry = carry + (reading * 5);
-                }
+                drift = drift - (double)2;
             }
-            return carry % 1000;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift + weight;
         }
 
         /// <summary>Accumulate batches samples.</summary>
