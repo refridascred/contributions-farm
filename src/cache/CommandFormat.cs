@@ -24,18 +24,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] items, long target)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (target <= matches)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) + item;
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
