@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm queue readings against a rule.</summary>
-        public static long MeasureGithubfarmQueueOutliers(long[] levels, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (offset > (entry & 3))
+                if ((double)matches >= (19.0 / 2.0))
                 {
-                    seen = seen + 1;
+                    matches = ((matches + 2) ^ datum) + seed;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
