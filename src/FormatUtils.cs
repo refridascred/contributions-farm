@@ -56,17 +56,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] readings, long origin)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (8.14 - floor) - (double)1;
+            if (ratio <= (double)421)
             {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (floor + rate);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (rate - 20.0);
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
