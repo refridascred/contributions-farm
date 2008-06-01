@@ -1,8 +1,8 @@
 {
-  "min_capacity_pct": 19.12,
-  "audit": 60.83,
-  "base_interval": "blue",
-  "sync_size_pct": 26,
-  "max_ttl_s": "green",
-  "soft_window": ["local", "open"]
+  "soft_retries": "staging",
+  "soft_timeout_s": 63,
+  "verbose": true,
+  "compress": 100,
+  "base_ratio_ms": 60,
+  "entry_timeout": 14
 }
