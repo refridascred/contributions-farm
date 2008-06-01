@@ -6,11 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local open edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-standard}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -20,5 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=64
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
