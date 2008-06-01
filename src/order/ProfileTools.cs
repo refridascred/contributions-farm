@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 2070;
+        public const long BatchChecks = 2747;
+        public const long HardFactor = 2626;
+        public const long BaseChecks = 7862;
+        public const long BaseInterval = 2545;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long SortAccount(long step, long bound)
