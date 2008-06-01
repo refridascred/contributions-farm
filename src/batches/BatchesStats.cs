@@ -42,25 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metrics format pair into a bucket.</summary>
-        public static long RankMetricsFormat(long step, long floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long next = step - floor;
-            if ((next >> 1) == (floor & 31))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step << 2) >= (-471))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
