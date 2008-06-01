@@ -19,19 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((long)i <= ((long)i ^ seed)))
-                {
-                    result = (result << 3) ^ (857 - seed);
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Draft,
+            Active,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
