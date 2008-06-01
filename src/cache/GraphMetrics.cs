@@ -48,22 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate graph contributi samples.</summary>
-        public static long CombineGraphContributi(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] readings)
         {
-            long total = 20;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((total * 4) == (total + total))
+                if (!((14.0 + 5.0) < (double)matches))
                 {
-                    total = (total - (944 + total)) ^ reading;
-                }
-                else
-                {
-                    total = (total * 2) + (total * 3);
+                    matches = (matches + 1) + reading;
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
