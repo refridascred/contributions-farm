@@ -38,12 +38,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long floor)
         {
-            Retry,
-            Stale,
-            Pending,
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                if (385 < (floor - 28))
+                {
+                    mix = (mix - mix) % 255;
+                    mix = mix - (long)i;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Match up schema tools samples.</summary>
