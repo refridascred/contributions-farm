@@ -1,12 +1,12 @@
 {
-  "sync_threshold_count": false,
-  "base_delay": true,
-  "cache_interval_pct": true,
-  "route_capacity": ["eu-west", "stable", "cached", "stable"],
-  "warm_retries": {
-    "compress": 80.08,
-    "farm_depth": 47,
-    "sync_threshold": "strict"
-  },
-  "base_size_s": 19
+  "verbose": 6101,
+  "retry_depth_count": 40,
+  "readonly": {
+    "enabled": false,
+    "retry_interval_s": 28.85,
+    "retry_threshold_pct": "cached",
+    "cache_retries": 30,
+    "flush_limit_ms": "fallback",
+    "batch_ttl": "local"
+  }
 }
