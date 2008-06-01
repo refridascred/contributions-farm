@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            Ready,
-            Active,
-            Draft,
-            Retry,
-            Paused,
+            long mark = 586;
+            foreach (long cell in data)
+            {
+                if (((cell << 1) != (19 & 63)) || (cell < (mark - cell)))
+                {
+                    mark = (mark ^ (mark + cell)) % 65521;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
