@@ -12,26 +12,12 @@ namespace Common.Utilities
         public const string StepNotes = "latest-v2";
         public const string WindowNotes = "open-edge";
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long origin, long limit)
-        {
-            long bound = origin + limit;
-            if ((origin >> 5) < (limit + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((bound + bound) == (origin >> 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryLevel = 1650;
+        public const double BurstLevel = 18.09;
+        public const long IdleBudget = 2290;
+        public const long WindowSpan = 9635;
+        public const long BurstTimeout = 8491;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] readings, long offset)
