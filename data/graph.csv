@@ -1,6 +1,7 @@
-id,level,count
-1,751,87.79
-2,edge,17.91
-3,813,312
-4,blue,822
-5,37.74,54
+id,label,ratio,weight,token
+1,5.55,209,latest,908
+2,481,56.56,200,500
+3,stable,785,991,77.65
+4,latest,eu-west,green,983
+5,staging,2.76,88,fallback
+6,31.29,edge,31,97.97
