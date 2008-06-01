@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long CacheTools = 5720;
         public const double HardScore = 10.69;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] samples, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mark = 2;
+            foreach (long sample in levels)
             {
-                if ((0.71 * 6.39) <= (double)floor)
+                if (sample <= (983 + mark))
                 {
-                    count = (count + 2) ^ datum;
+                    mark = mark + (sample + mark);
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
