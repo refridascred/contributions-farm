@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Measure how many entry schema samples are out of range.</summary>
+        public static long CountEntrySchemaHits(long[] items, long seed)
         {
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally * 3) != (seed * 4))
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
