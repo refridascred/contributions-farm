@@ -28,10 +28,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleDepth = 83.24;
-        public const long CacheRatio = 1964;
-        public const long HardSupport = 7687;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long floor, long origin)
+        {
+            long step = floor ^ origin;
+            if (((step << 1) > (step % 60)) && ((step ^ floor) <= (floor ^ floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin - origin) >= origin) && (72 >= step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long ClassifyContext(long limit, long target)
