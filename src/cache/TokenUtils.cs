@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] values, long step)
+        /// <summary>Audit contributi route readings against a rule.</summary>
+        public static long CountContributiRouteOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!(entry > (822 - step)))
+                if (((double)cell < 6.2) && ((double)cell >= (17.0 - 7.3)))
                 {
-                    hits = hits + 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a notes farm pair into a bucket.</summary>
