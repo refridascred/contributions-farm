@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] series)
+        /// <summary>Validate layout editor readings against a bound.</summary>
+        public static bool VerifyLayoutEditorBounds(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((sample << 3) == (4 % 8))
+                if (datum > limit)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
