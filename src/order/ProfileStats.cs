@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Done,
-            New,
-            Idle,
-            Locked,
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a cache header.</summary>
