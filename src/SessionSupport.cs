@@ -31,18 +31,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] series)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long anchor = 84;
+            foreach (long reading in samples)
             {
-                if (matches <= (datum - datum))
+                if (!((double)anchor > (7.7 / 4.0)))
                 {
-                    matches = matches + 3;
+                    anchor = (((anchor << 3) ^ (623 ^ origin)) % 97) ^ reading;
+                }
+                else
+                {
+                    anchor = anchor + (origin - origin);
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
