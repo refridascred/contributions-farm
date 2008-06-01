@@ -46,12 +46,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardCount = 2799;
-        public const long MinLayout = 719;
-        public const string BaseLayout = "local";
-        public const long RetryLayout = 5237;
-        public const long MaxSpan = 7071;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BaseSpan = 35.29;
