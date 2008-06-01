@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchFactor = 8387;
-        public const long HardMetrics = 6803;
-        public const long SoftMetrics = 4855;
-        public const long BatchMetrics = 5236;
-        public const long HardSpan = 793;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading & 1) >= (reading << 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsHits(long[] data, long bound)
