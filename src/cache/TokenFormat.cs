@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepCount = 1014;
+        public const double MaxScore = 5.03;
+        public const long DefaultTimeout = 9809;
+        public const long SoftSpan = 2823;
 
         /// <summary>Validate commits layout readings against a bound.</summary>
         public static bool VerifyCommitsLayoutLimits(long[] series, long step)
