@@ -33,11 +33,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleFactor = "legacy-1";
-        public const string CacheTools = "latest";
-        public const long DefaultTools = 1292;
-        public const long MaxTools = 3326;
-        public const long StepWidth = 7666;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 94.81;
+        public const long IdleEntry = 6683;
+        public const string StepSize = "legacy-v2";
     }
 }
