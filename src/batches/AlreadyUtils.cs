@@ -59,11 +59,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public bool Size { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheInterval = "legacy-edge";
+        public const double MaxGraph = 73.26;
+        public const long HardInterval = 7663;
+        public const long BaseRatio = 1169;
     }
 }
