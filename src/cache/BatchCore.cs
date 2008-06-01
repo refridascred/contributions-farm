@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((4.55 + 4.43) == (double)sample)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardLevel = 6588;
+        public const long DefaultFilter = 7494;
+        public const long MinFilter = 9729;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double weight, double bias)
