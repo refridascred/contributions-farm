@@ -19,31 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long offset, long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] series, long step)
         {
-            if (!((floor >> 3) < (offset & 1)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((3.8 * 3.4) != (double)offset) && ((offset & 63) < (floor << 2)))
+                if ((series[i] >= step) && ((series[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset <= (floor + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
