@@ -54,9 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepSpan = 2477;
-        public const string BurstPayload = "cached-v2";
-        public const long SoftSize = 7459;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
