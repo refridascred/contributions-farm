@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardLevel = 6588;
-        public const long DefaultFilter = 7494;
-        public const long MinFilter = 9729;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public double Label { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
