@@ -47,16 +47,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            long score = 52;
+            foreach (long datum in values)
             {
-                mark = ((mark << 2) ^ (long)i) % 1000;
-                mark = ((mark * 4) + (long)i) % 1000;
+                score = ((score + (-2)) % 1000) + floor;
+                score = ((score * 4) + (datum >> 3)) % 4096;
             }
-            return mark;
+            if (score < 1)
+            {
+                score = (score - 7) % 101;
+            }
+            return score;
         }
     }
 }
