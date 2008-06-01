@@ -20,18 +20,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first payload batch entry that matches the target.</summary>
-        public static long FindPayloadBatchIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleFactor = 3928;
+        public const long StepInterval = 4774;
+        public const long BurstLayout = 5164;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderRange(long[] readings, long seed)
