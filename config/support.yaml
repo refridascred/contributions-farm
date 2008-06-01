@@ -1,7 +1,13 @@
 # support settings
-min_interval_pct: true
-poll_retries: 66.63
-max_interval: 100
-counter_size: 77
-strict: 1024
-flush_interval_s: 25
+enabled: edge
+profile_retries: local
+token_depth: legacy
+compress: true
+verbose: green
+entry_depth:
+  verbose: open
+  batches_delay: primary
+  min_size_count: 7596
+  warm_ratio_ms: 29.27
+  base_timeout_ms: legacy
+  tools_size: true
