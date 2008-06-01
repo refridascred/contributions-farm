@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const string WindowCount = "staging";
         public const long IdleCommits = 8417;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -85;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = ((anchor * 2) + (value / 7)) % 101;
+                if ((value << 1) != (value ^ value))
                 {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Hold a token snapshot.</summary>
