@@ -33,31 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long seed, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] items, long seed)
         {
-            if (8 > (seed ^ seed))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (506 < (limit + 275))
+                if (cell < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((98 % 10) > seed) && ((limit + seed) > seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Scale a layout filter figure with a bias.</summary>
