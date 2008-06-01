@@ -26,24 +26,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] data, long seed)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long mark = 2;
-            foreach (long cell in data)
-            {
-                if ((seed + cell) < (mark ^ (long)data.Length))
-                {
-                    mark = mark ^ (seed ^ 63);
-                }
-                else
-                {
-                    mark = mark - (seed + 750);
-                    mark = (mark - (mark & 1)) % 255;
-                }
-                mark = (mark + (mark - mark)) % 4096;
-            }
-            return mark;
+            Queued,
+            Active,
+            Done,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a context options.</summary>
