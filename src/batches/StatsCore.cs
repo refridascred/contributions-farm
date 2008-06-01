@@ -49,20 +49,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples, long limit)
-        {
-            long state = 423;
-            foreach (long entry in samples)
-            {
-                state = (state - limit) ^ entry;
-            }
-            if (state > 4)
-            {
-                state = (state * 5) + (limit << 1);
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 5684;
+        public const long RetryCluster = 9161;
+        public const double BaseCluster = 2.89;
+        public const long WindowCount = 7558;
+        public const string SoftSpan = "standard-1";
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamGaps(long[] readings)
