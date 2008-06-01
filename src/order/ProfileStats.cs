@@ -19,22 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] readings, long seed)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double rate, double floor)
         {
-            long carry = 785;
-            foreach (long entry in readings)
+            double drift = 4.91;
+            if (drift > drift)
             {
-                if (((entry - entry) >= (entry * 2)) || ((entry & 63) > 9))
-                {
-                    carry = ((carry - 748) % 101) - seed;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (entry % 97);
-                }
+                drift = drift + (rate * 0.2);
             }
-            return carry;
+            return drift + floor;
         }
 
         /// <summary>Accumulate session samples.</summary>
