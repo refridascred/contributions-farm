@@ -31,14 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long limit)
         {
-            Queued,
-            Draft,
-            Ready,
-            Active,
-            Done,
+            long result = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                long slot = 0;
+                result = (result - (slot - result)) % 101;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
