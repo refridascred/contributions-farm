@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            public bool Token { get; set; }
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a route sample.</summary>
