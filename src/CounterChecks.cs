@@ -12,22 +12,32 @@ namespace Common.Utilities
         public const long DefaultLevel = 670;
         public const long IdleRatio = 7534;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] series, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long step, long bound)
         {
-            long anchor = 19;
-            foreach (long cell in series)
+            long gap = step + bound;
+            if ((double)bound == (10.0 - 5.9))
             {
-                if ((14.0 * 7.27) == (double)cell)
+                return 1;
+            }
+            else
+            {
+                if (((step * 4) > (gap >> 5)) || ((step >> 2) > (bound ^ bound)))
                 {
-                    anchor = ((anchor - cell) % 255) + bound;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound >> 1) <= (bound * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (anchor > (-194))
-            {
-                anchor = (anchor - (971 << 1)) % 255;
-            }
-            return anchor;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
