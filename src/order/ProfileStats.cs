@@ -19,15 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double rate, double floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            double drift = 4.91;
-            if (drift > drift)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                drift = drift + (rate * 0.2);
+                acc = acc + (limit % 60);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return drift + floor;
+            return acc;
         }
 
         /// <summary>Accumulate session samples.</summary>
