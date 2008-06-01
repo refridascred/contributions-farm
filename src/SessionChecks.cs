@@ -13,15 +13,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] samples, long step)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] levels, long offset)
         {
-            long mix = 56;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((((mix << 3) ^ (mix * 4)) % 101) ^ item) + step;
+                if ((levels[i] < offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
