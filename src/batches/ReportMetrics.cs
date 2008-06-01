@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of contributi payload entries.</summary>
-        public static long WeighContributiPayload(long[] samples, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            long state = 434;
-            foreach (long sample in samples)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (state < (sample - 851))
-                {
-                    state = (state ^ (target * 4)) % 1000;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            if (state > 1)
-            {
-                state = (state * 2) + (state % 7);
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
