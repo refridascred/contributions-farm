@@ -35,18 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] levels)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((1.9 * 4.42) >= (double)tally)
-                {
-                    tally = (tally + 3) - item;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Match up token samples.</summary>
