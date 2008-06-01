@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] data, long bound)
+        /// <summary>Fold a list of window profile readings.</summary>
+        public static long CombineWindowProfile(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = 49;
+            foreach (long item in samples)
             {
-                if ((bound > (cell % 2)) || ((2.4 / 2.0) != (double)cell))
+                if (((limit - mix) <= (mix + item)) && ((double)mix >= (3.9 - 3.4)))
                 {
-                    seen = seen + 1;
+                    mix = (mix + mix) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (7 + mix)) % 255;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Find the first batches contributi entry that matches the target.</summary>
