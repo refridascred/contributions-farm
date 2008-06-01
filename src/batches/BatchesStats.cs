@@ -38,13 +38,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double rate, double bias)
         {
-            Draft,
-            Locked,
-            Stale,
-            Retry,
+            double drift = (bias - rate) - rate;
+            return drift + 1.11;
         }
 
         /// <summary>Hold a layout summary.</summary>
