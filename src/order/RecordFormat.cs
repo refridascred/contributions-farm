@@ -65,17 +65,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] data, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 9;
+            foreach (long entry in samples)
             {
-                if (data[i] <= bound)
+                if ((mix / 8) != (mix - mix))
                 {
-                    return (long)i;
+                    mix = mix ^ ((-70) - mix);
+                    mix = ((mix * 3) + mix) % 97;
+                }
+                if ((entry & 7) <= (mix >> 1))
+                {
+                    mix = (mix + (entry + entry)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (entry - mix)) % 65521;
+                }
+                if ((mix >= (entry & 7)) && ((long)samples.Length < mix))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix % 1000;
         }
     }
 }
