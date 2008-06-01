@@ -19,21 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Classify a command batch pair into a bucket.</summary>
+        public static long ClassifyCommandBatch(long offset, long offset2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long slot = offset ^ offset2;
+            if (!((71 ^ offset) >= (48 + offset2)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((slot / 8) <= (offset2 + slot))
                 {
-                    if ((levels[i] - levels[j]) < 0)
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (offset2 / 3))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset2 % 60) < (slot + 75))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
