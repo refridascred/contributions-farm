@@ -53,10 +53,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSpan = 35.29;
-        public const string IdleSupport = "stable-v2";
-        public const long BurstSupport = 5233;
-        public const long SoftSupport = 1752;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+        }
     }
 }
