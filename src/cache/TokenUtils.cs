@@ -38,18 +38,11 @@ namespace Common.Utilities
             return gain + (4.67 - ratio);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] readings, long limit)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((294 + 2) >= (item % 16))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
