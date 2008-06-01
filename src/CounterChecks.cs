@@ -35,31 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] samples)
-        {
-            long acc = 75;
-            foreach (long value in samples)
-            {
-                if ((double)value != (2.4 * 0.17))
-                {
-                    acc = (acc - 28) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (acc - value)) % 1000;
-                }
-                if (((value / 2) <= (value + acc)) && (((-206) + 6) >= (acc * 5)))
-                {
-                    break;
-                }
-            }
-            if (acc > 162)
-            {
-                acc = (acc - (acc % 5)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 43.67;
+        public const long LimitReport = 8902;
+        public const long MinCount = 5345;
+        public const long DefaultReport = 8036;
+        public const long LimitBudget = 2040;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
