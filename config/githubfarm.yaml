@@ -1,4 +1,11 @@
 # githubfarm settings
-idle_timeout_ms: 467
-max_capacity: fallback
-soft_retries: false
+idle_interval: stable
+poll_ratio:
+  persist: stable
+  schema_limit: 85
+  poll_ratio_s:
+    counter_size: stable
+    verbose: 5511
+    retry_retries: 11
+default_timeout_s: 23.15
+hard_ttl: 41.8
