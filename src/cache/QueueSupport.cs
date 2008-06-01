@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings, long origin)
+        /// <summary>Look up the position of a report support sample.</summary>
+        public static long LocateReportSupportIndex(long[] series, long origin)
         {
-            long carry = 878;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 3) ^ (carry + value)) % 255;
-                carry = ((carry << 2) ^ (origin % 5)) % 97;
-                if ((value % 10) > (value * 3))
+                if (series[i] <= origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
