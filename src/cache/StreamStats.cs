@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Validate metric farm readings against a bound.</summary>
+        public static bool ValidateMetricFarmLimits(long[] items, long seed)
         {
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
