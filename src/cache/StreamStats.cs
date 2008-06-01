@@ -26,21 +26,39 @@ namespace Common.Utilities
             return bias2 + 10.0;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long seed, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            long slot = seed - origin;
+            if (origin > (origin + 0))
             {
-                double weight = 5.7 / 6.0;
-                if ((7.6 + 12.0) >= (weight + 8.4))
-                {
-                    weight = weight + weight;
-                    sum = ((sum << 3) ^ (sum + limit)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if (slot > (origin - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((slot >> 1) == (352 << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (11.0 - 5.34))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate record stats readings against a bound.</summary>
