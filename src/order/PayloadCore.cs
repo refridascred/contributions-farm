@@ -40,11 +40,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 2778;
-        public const long BaseCount = 9470;
-        public const long MinRecord = 3039;
-        public const long BatchRecord = 485;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public double Region { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
