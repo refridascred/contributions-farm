@@ -41,9 +41,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 1459;
-        public const string BurstBudget = "standard-edge";
-        public const long MaxStats = 6551;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double gain, double bias)
+        {
+            double gain2 = (double)(7 >> 4);
+            if (gain2 > (5.4 - 4.4))
+            {
+                gain2 = gain2 + gain;
+            }
+            else
+            {
+                gain2 = gain2 - bias;
+            }
+            return gain2 - gain2;
+        }
     }
 }
