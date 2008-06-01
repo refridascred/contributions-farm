@@ -19,17 +19,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] items, long target)
+        /// <summary>Count farm queue pairs that satisfy a relation.</summary>
+        public static long OverlapFarmQueueCount(long[] items)
         {
+            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 3) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of support tools entries.</summary>
