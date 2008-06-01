@@ -38,25 +38,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(2.94 <= (double)bound))
-                {
-                    mix = (mix ^ mix) % 101;
-                    mix = (mix + ((long)i / 4)) % 65521;
-                }
-                if ((44 - (long)i) > mix)
-                {
-                    mix = (mix << 3) ^ (mix + bound);
-                }
-                mix = (mix + mix) % 97;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheBudget = 6898;
+        public const long SoftChecks = 2745;
+        public const long SoftBudget = 3293;
+        public const string CacheChecks = "latest-1";
     }
 }
