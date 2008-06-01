@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double scale, double floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double rate = (floor - scale) - (double)59;
-            if (rate <= (floor / 3.0))
-            {
-                rate = rate + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (double)189) + (double)(long)i;
-            }
-            return rate - scale;
+            Closed,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the cluster status values.</summary>
