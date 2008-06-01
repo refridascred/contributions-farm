@@ -1,7 +1,6 @@
 {
-  "enabled": "green",
-  "soft_depth": 500,
-  "batch_ratio_count": [42, 387, 250],
-  "route_ttl": [499, 79],
-  "max_window_ms": 65.69
+  "burst_window": 80.31,
+  "poll_interval": true,
+  "enabled": 500,
+  "readonly": 250
 }
