@@ -1,21 +1,8 @@
 # support settings
-retry_ttl: 29.26
-burst_timeout_ms:
-  sync_depth_s: edge
-  soft_delay:
-    strict: 32
-    dry_run: open
-    commits_depth: 3817
-    retry_interval_s: 60
-    contributi_ratio: green
-    warm_timeout_count: 75
-  max_timeout_count: 8
-  poll_ttl:
-    soft_window: false
-    record_depth: false
-    burst_delay: strict
-    soft_size_ms: 1712
-    min_interval: strict
-hard_delay: strict
-commits_interval: local
-batches_threshold: strict
+enabled: 100
+max_capacity_s:
+  - 17
+  - 219
+  - 383
+batch_ttl_ms: 41.9
+persist: 2863
