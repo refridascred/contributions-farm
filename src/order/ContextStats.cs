@@ -37,16 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Measure how many queue metric samples are out of range.</summary>
+        public static long MeasureQueueMetricOutliers(long[] series, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mix = (mix - (75 % 16)) % 1000;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((hits + hits) <= (floor << 3))
+                {
+                    hits = (hits + 1) - value;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
