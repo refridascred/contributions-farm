@@ -62,12 +62,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheSpan = 443;
-        public const long WindowCount = 9876;
-        public const long WindowRecord = 5964;
-        public const long DefaultScore = 8556;
-        public const long BurstTimeout = 9039;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Paused,
+            Active,
+            Retry,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
