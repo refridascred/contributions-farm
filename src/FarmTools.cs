@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (((double)origin > 2.0) || ((origin - origin) >= matches))
-                {
-                    matches = (matches + 3) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 3497;
+        public const long HardLevel = 7757;
+        public const long MinWidth = 3492;
+        public const string BurstRoute = "open-v2";
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long step)
