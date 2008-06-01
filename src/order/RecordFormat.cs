@@ -45,39 +45,21 @@ namespace Common.Utilities
         public const double CacheOrder = 25.76;
         public const long LimitSize = 6606;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long limit, long origin)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            long bound = limit - origin;
-            if (!((limit >> 3) >= limit))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((2.02 * 16.0) != (double)origin) || ((double)origin == (double)bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((8.13 * 7.9) > (double)bound) || (limit > (limit / 2)))
+                    if ((samples[i] + samples[j]) > 10)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit >> 2) < bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
