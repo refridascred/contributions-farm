@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] data, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long mark = 5;
+            foreach (long item in items)
             {
-                if (reading >= offset)
+                for (int i = 0; i < 10; i++)
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark - (item % 10)) % 101) ^ (long)i;
+                }
+                if ((14.0 / 6.0) >= (double)mark)
+                {
+                    mark = ((mark << 3) ^ item) % 1000;
                 }
             }
-            return stale;
+            if (mark > 713)
+            {
+                mark = (mark + (mark + mark)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
