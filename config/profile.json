@@ -1,7 +1,6 @@
 {
-  "audit": 59.96,
-  "counter_window": "local",
-  "default_interval": "stable",
-  "sync_threshold_pct": 236,
-  "payload_depth": "primary"
+  "poll_depth_ms": "cached",
+  "dry_run": 14,
+  "hard_timeout": [50, 151],
+  "batch_size": "fallback"
 }
