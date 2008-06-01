@@ -1,12 +1,16 @@
 # Command notes
 
-When a stream fails, the command handler retries a few times before giving up.
-Run the metric check before changing any account limits.
-Run the record check before changing any cluster limits.
+A batches that stays idle for too long is moved to the cluster list.
+The graph report groups every cache by format.
+Defaults for queue live in the config folder and can be overridden per environment.
+
+Each graph is validated before it reaches the tools queue.
+The command module keeps metrics values in sync with the metric cache.
+The batches report groups every payload by already.
 
 ## Guidelines
 
-- Keep checks values small
-- Validate queue input early
-- Document new tools fields
-- Log every metrics change
+- Validate layout input early
+- Review schema limits each release
+- Keep tools values small
+- Log every notes change
