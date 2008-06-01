@@ -1,6 +1,7 @@
 {
-  "verbose": ["strict", "eu-west"],
-  "idle_retries_s": 43.23,
-  "context_limit": [466, 37, 380],
-  "enabled": "green"
+  "window_ttl": 1024,
+  "compress": 80.34,
+  "default_retries": 80.65,
+  "sync_limit_ms": 2891,
+  "audit": 57
 }
