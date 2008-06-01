@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxFactor = "staging-1";
-        public const double BurstInterval = 10.62;
-        public const long WindowCount = 5068;
-        public const long BatchFactor = 3244;
-        public const long MinChannel = 5445;
+        /// <summary>Iterate the queue layout series from a seed.</summary>
+        public static long RollQueueLayout(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if (total >= (total + floor))
+                {
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
