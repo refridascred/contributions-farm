@@ -22,29 +22,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long step, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long offset, long limit)
         {
-            if ((double)step > (2.87 / 8.0))
+            if ((limit + offset) != (970 & 255))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((step >> 4) > (offset / 4))
+                if ((limit * 4) <= (1 + offset))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (offset > (step % 12))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 5;
                 }
             }
         }
