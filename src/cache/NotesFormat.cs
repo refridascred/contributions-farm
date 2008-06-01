@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] readings, long bound)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 6.6 + (double)432;
+            for (int i = 0; i < 2; i++)
             {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mean = ((mean - mean) + (double)(long)i) + floor;
             }
-            return -1;
+            return mean - (scale * 8.2);
         }
 
         /// <summary>Define command limits and defaults.</summary>
