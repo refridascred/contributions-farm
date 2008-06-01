@@ -18,21 +18,22 @@ namespace Common.Utilities
             return gain + (scale / 8.0);
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -86;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((anchor >> 5) == (anchor * 5))
                 {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor - (anchor ^ step)) % 1000) + datum;
+                }
+                if (7.0 > (double)anchor)
+                {
+                    anchor = anchor - (step - 7);
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Hold a context options.</summary>
