@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    long delta = (origin & 127) & 15;
+                    sum = (((sum << 2) ^ delta) % 4096) - (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a notes options.</summary>
