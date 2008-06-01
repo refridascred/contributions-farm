@@ -5,23 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next cache route value.</summary>
-        public static double SmoothCacheRoute(double weight, double floor)
+        /// <summary>Roll a buffer stats counter forward.</summary>
+        public static long IterateBufferStats(long target)
         {
-            double gain = weight;
-            if (gain >= gain)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                gain = (gain + 2.33) - floor;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = (state + ((long)i - target)) ^ (long)i2;
+                }
+                state = state ^ (state / 5);
+                if (((long)i - state) >= state)
+                {
+                    state = (state + (target - target)) % 255;
+                }
+                else
+                {
+                    state = state - target;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + 0.58;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (1.8 + gain)) - (double)(long)i;
-            }
-            return gain - weight;
+            return state;
         }
 
         /// <summary>Hold a counter options.</summary>
