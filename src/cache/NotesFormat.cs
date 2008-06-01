@@ -16,19 +16,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (sample >= count)
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 14.89;
+        public const long BurstStream = 2680;
+        public const double IdleStream = 78.6;
+        public const long DefaultStream = 9336;
+        public const double SoftCount = 88.26;
 
         /// <summary>Derive the next layout account value from a seed.</summary>
         public static long IterateLayoutAccount(long target)
