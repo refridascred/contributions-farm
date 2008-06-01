@@ -45,18 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] data)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double weight = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (((count % 10) >= entry) || (((double)entry == (2.47 + 3.07)) && ((14.0 / 6.0) > (double)entry)))
-                {
-                    count = count + 3;
-                }
+                weight = ((weight - (weight - 4.6)) - (double)(long)i) + ratio;
             }
-            return count;
+            return weight - (offset + offset);
         }
 
         /// <summary>Roll a already counter forward.</summary>
