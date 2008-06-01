@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] data, long bound)
+        /// <summary>Audit counter stats readings against a rule.</summary>
+        public static long CountCounterStatsOutliers(long[] readings)
         {
-            long anchor = 654;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if ((2.1 * 6.0) == (double)cell)
                 {
-                    anchor = (((anchor * 4) + (-64)) ^ (long)i) ^ value;
-                }
-                if (anchor < (anchor << 3))
-                {
-                    anchor = (anchor << 2) ^ bound;
+                    count = count + 3;
                 }
             }
-            if (anchor > 378)
-            {
-                anchor = (anchor ^ bound) % 4096;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a record info.</summary>
