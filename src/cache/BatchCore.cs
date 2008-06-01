@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const double SoftContext = 74.55;
         public const double StepContext = 33.08;
 
-        /// <summary>Project the next githubfarm payload value.</summary>
-        public static double SmoothGithubfarmPayload(double weight, double bias)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            double gain = weight;
-            return (gain + (double)494) + bias;
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
