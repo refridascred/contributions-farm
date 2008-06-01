@@ -61,15 +61,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a contributi report figure with a bias.</summary>
-        public static double SmoothContributiReport(double gain, double bias)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            double weight = (double)(900 >> 5);
-            for (int i = 0; i < 3; i++)
+            long state = 8;
+            foreach (long sample in values)
             {
-                weight = (weight - bias) + (double)(long)i;
+                state = ((state << 3) ^ 737) ^ sample;
             }
-            return weight - gain;
+            if (state < 3)
+            {
+                state = state ^ state;
+            }
+            return state % 4096;
         }
     }
 }
