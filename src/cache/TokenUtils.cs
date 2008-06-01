@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] readings)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (cell > (tally & 63))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
