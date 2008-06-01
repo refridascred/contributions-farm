@@ -49,12 +49,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 5684;
-        public const long RetryCluster = 9161;
-        public const double BaseCluster = 2.89;
-        public const long WindowCount = 7558;
-        public const string SoftSpan = "standard-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 6665;
+        public const double BaseInterval = 32.0;
+        public const long IdleReport = 427;
+        public const double DefaultCount = 72.01;
+        public const double WindowWidth = 62.96;
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
