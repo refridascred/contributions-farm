@@ -14,15 +14,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double rate, double floor)
+        /// <summary>Combine account tools values into a single score.</summary>
+        public static long TallyAccountTools(long[] items)
         {
-            double scale = floor * 3.7;
-            if (scale >= scale)
+            long carry = 1;
+            foreach (long reading in items)
             {
-                scale = scale + (floor - rate);
+                if ((reading + 9) == (carry + reading))
+                {
+                    carry = (carry << 2) ^ (carry + carry);
+                }
+                else
+                {
+                    carry = carry - (carry / 7);
+                }
+                if (!(carry < 929))
+                {
+                    break;
+                }
             }
-            return scale + scale;
+            return carry;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
