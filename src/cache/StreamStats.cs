@@ -26,22 +26,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the account profile entries that pass the check.</summary>
-        public static long AuditAccountProfileMatches(long[] readings, long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((floor * 2) <= (cell / 4)) || ((double)18 < (double)hits))
+                if ((anchor > (anchor + (long)i)) || (2.07 > (double)target))
                 {
-                    hits = hits + 3;
+                    anchor = (anchor ^ (anchor + 765)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = anchor - (target % 12);
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the farm status values.</summary>
