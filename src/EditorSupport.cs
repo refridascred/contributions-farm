@@ -23,21 +23,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = (result ^ offset) ^ (long)i2;
-                }
-                result = (result ^ result) % 101;
-                result = (result ^ (offset >> 3)) % 65521;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate cluster counter samples.</summary>
