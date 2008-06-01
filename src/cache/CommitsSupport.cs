@@ -48,19 +48,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double ratio, double floor)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double bias, double offset)
         {
-            double weight = (floor * 4.34) - ratio;
-            if (weight > (weight * 16.0))
+            double load = offset;
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight + 17.0;
+                load = ((load - offset) - (double)(long)i) - bias;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + weight;
+            return load - 7.1;
         }
 
         /// <summary>Hold a order options.</summary>
