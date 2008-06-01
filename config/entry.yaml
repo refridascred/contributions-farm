@@ -1,15 +1,16 @@
 # entry settings
-profile_ratio:
-  verbose:
-    - 360
-    - 386
-    - 496
-    - 252
-  dry_run: 85.72
-  batch_delay: 1024
-window_retries:
-  - stable
-  - blue
-  - cached
-  - latest
-flush_depth_count: false
+retry_ratio_pct:
+  cache_limit:
+    burst_window_ms: stable
+    command_threshold: 4608
+    persist: 90.6
+    sync_capacity_count: blue
+    batches_retries:
+      - blue
+      - staging
+      - open
+  default_capacity_s: 4802
+  entry_limit: 3547
+  tools_retries: 55
+compress: 1.95
+order_ratio: 82
