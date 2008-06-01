@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] data, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (sample != origin)
+                if (entry >= seed)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Hold a cluster entry.</summary>
