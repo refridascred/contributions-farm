@@ -43,18 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] values, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long sum = 23;
-            foreach (long value in values)
-            {
-                if (((value * 3) >= (sum - offset)) && ((sum + value) <= sum))
-                {
-                    sum = (sum + (offset << 3)) % 65521;
-                }
-            }
-            return sum % 1000;
+            Idle,
+            Active,
+            Done,
         }
 
         /// <summary>Roll a already counter forward.</summary>
