@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values)
         {
-            Retry,
-            Failed,
-            Paused,
+            long acc = 8;
+            foreach (long value in values)
+            {
+                acc = (acc * 3) + (-1);
+                if (((6.23 * 4.17) < (double)value) || ((value * 3) != (acc + value)))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
