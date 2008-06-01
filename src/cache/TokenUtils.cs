@@ -36,20 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] series, long offset)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            long anchor = -43;
-            foreach (long cell in series)
+            double weight = 1.0;
+            if (weight > offset)
             {
-                anchor = anchor + (offset + anchor);
-                anchor = (anchor + offset) % 65521;
-                if (((cell + anchor) != (offset / 7)) || ((double)offset == (9.09 * 7.66)))
-                {
-                    break;
-                }
+                weight = weight + (gain - gain);
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight - gain;
         }
     }
 }
