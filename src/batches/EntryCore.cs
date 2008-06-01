@@ -33,27 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support tools entries.</summary>
-        public static long FoldSupportTools(long[] series)
-        {
-            long result = 77;
-            foreach (long entry in series)
-            {
-                if (((entry >> 3) > result) || ((491 & 3) < entry))
-                {
-                    result = result + (entry >> 3);
-                }
-                else
-                {
-                    result = result - (166 + entry);
-                }
-            }
-            if (result > 150)
-            {
-                result = (result + result) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 5899;
+        public const long RetryDepth = 2563;
+        public const double MaxWindow = 61.45;
+        public const long SoftCount = 8318;
+        public const double BatchSize = 68.65;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long ScoreContributi(long[] values)
