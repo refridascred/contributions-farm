@@ -23,15 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] levels, long step)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long anchor = 669;
-            foreach (long value in levels)
-            {
-                anchor = (anchor + (value + value)) + step;
-            }
-            return anchor % 65521;
+            Queued,
+            Locked,
+            Closed,
+            Failed,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
