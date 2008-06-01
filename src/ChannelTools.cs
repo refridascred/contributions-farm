@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the tools queue entries that pass the check.</summary>
-        public static long CountToolsQueueOutliers(long[] readings, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally % 64) == (tally >> 1))
+                if (series[i] < bound)
                 {
-                    tally = ((tally + 1) ^ datum) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the route kind values.</summary>
