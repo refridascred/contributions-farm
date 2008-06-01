@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Dropped,
-            Idle,
-            Stale,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxTimeout = 6589;
+        public const string MinFarm = "stable-v2";
+        public const long WindowCount = 3459;
+        public const long BatchFarm = 9656;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long WeighChecks(long[] series, long step)
