@@ -1,8 +1,7 @@
 # support settings
-enabled: 100
-max_capacity_s:
-  - 17
-  - 219
-  - 383
-batch_ttl_ms: 41.9
-persist: 2863
+min_interval_pct: true
+poll_retries: 66.63
+max_interval: 100
+counter_size: 77
+strict: 1024
+flush_interval_s: 25
