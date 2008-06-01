@@ -44,15 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] items)
         {
-            long state = 2;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                state = ((((state << 2) ^ (state * 5)) % 97) ^ item) - bound;
+                if ((double)seen < 1.8)
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a commits summary.</summary>
