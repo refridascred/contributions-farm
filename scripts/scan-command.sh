@@ -6,13 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary; do
+for item in standard blue primary open; do
     log "checking ${item}"
 done
 
-mode="${1:-blue}"
+COMMAND_LIMIT=324
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    legacy)
+    open)
         log "fast path"
         ;;
     *)
