@@ -35,12 +35,9 @@ namespace Common.Utilities
         public const string CacheBatches = "standard";
         public const double IdleBatches = 52.4;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 9158;
+        public const string LimitDepth = "latest-v2";
+        public const string HardAlready = "latest-1";
     }
 }
