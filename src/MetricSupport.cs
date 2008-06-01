@@ -11,38 +11,13 @@ namespace Common.Utilities
         public const double BurstSize = 91.1;
         public const long SoftInterval = 4659;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long step)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            if (!((step << 3) >= step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step < (7.29 / 4.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (5.1 >= (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step >= (limit << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
