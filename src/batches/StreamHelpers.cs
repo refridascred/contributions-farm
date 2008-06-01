@@ -32,18 +32,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] series)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            if (!((bound + seed) <= seed))
             {
-                if ((matches >= (-423)) && (((long)series.Length ^ reading) >= matches))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound == (7.0 / 7.0))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
