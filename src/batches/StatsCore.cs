@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double ratio, double span)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long limit)
         {
-            double load = (3.6 + ratio) - (8.4 / 8.0);
-            for (int i = 0; i < 9; i++)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                load = (load + (load / 5.0)) + (double)(long)i;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return load + (ratio + span);
+            return result;
         }
 
         /// <summary>Describe the report phase values.</summary>
