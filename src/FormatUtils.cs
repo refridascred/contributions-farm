@@ -60,25 +60,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long target, long offset)
-        {
-            if ((2 << 1) == (target >> 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((900 - offset) > (target * 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "latest-edge";
+        public const long MinTimeout = 459;
+        public const long SoftToken = 7713;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long ScoreTools(long[] levels)
