@@ -37,11 +37,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleLevel = 6205;
-        public const long MaxCluster = 3454;
-        public const string MinCluster = "primary";
-        public const string IdleCluster = "cached-edge";
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long floor)
