@@ -16,18 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Match up cluster layout samples.</summary>
+        public static long OverlapClusterLayoutCount(long[] series)
         {
-            long score = 229;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell >= (score + cell)) || ((cell - score) <= cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score << 3) ^ (score & 31)) % 255;
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Classify a contributi filter pair into a bucket.</summary>
