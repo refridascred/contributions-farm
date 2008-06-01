@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Measure how many notes report samples are out of range.</summary>
+        public static long MeasureNotesReportMatches(long[] readings, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((seen & 15) <= seed)
                 {
-                    if ((data[i] - data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) - reading;
                 }
             }
             return seen;
