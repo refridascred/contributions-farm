@@ -38,19 +38,13 @@ namespace Common.Utilities
         public const long WindowFactor = 9784;
         public const double LimitAccount = 61.03;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] data, long origin)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
