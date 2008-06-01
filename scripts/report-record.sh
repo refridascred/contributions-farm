@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=11
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-mode="${1:-standard}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in fallback staging; do
+    log "checking ${item}"
+done
