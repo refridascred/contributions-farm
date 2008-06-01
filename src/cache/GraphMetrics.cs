@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            Draft,
-            Pending,
-            Failed,
-            Stale,
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
