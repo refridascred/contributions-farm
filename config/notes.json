@@ -1,18 +1,6 @@
 {
-  "base_window_pct": "standard",
-  "contributi_size": [329, 488],
-  "cache_size_count": 59,
-  "format_capacity": 42,
-  "batch_capacity": 44,
-  "channel_ttl": {
-    "audit": 1024,
-    "support_delay": {
-      "max_delay": "staging",
-      "soft_timeout_pct": true,
-      "batch_interval_s": 14.25
-    },
-    "default_depth_pct": 20.29,
-    "compress": "primary",
-    "warm_timeout": false
-  }
+  "dry_run": "edge",
+  "retry_capacity": 2401,
+  "command_retries": "blue",
+  "burst_window_s": "primary"
 }
