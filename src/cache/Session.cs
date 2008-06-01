@@ -13,18 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many session counter samples are out of range.</summary>
-        public static long MeasureSessionCounterHits(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long anchor = 17;
+            foreach (long cell in samples)
             {
-                if ((sample - (long)series.Length) != (seen / 4))
+                for (int i = 0; i < 7; i++)
                 {
-                    seen = seen + 3;
+                    anchor = (((anchor + ((long)samples.Length & 255)) % 4096) + (long)i) - cell;
                 }
+                anchor = (anchor - 42) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
