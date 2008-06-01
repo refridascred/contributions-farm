@@ -1,7 +1,4 @@
 # support settings
-readonly: 18.21
-warm_timeout_pct: 30
-account_ratio: latest
-enabled: true
-cache_retries_pct: 5946
-audit: 39
+readonly: true
+strict: 7513
+graph_depth: true
