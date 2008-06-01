@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] readings, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] items)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (item >= step)
+                if (((400 ^ cell) > tally) || !(cell <= (tally / 6)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the buffer level values.</summary>
