@@ -30,19 +30,20 @@ namespace Common.Utilities
         public const string BatchBudget = "cached-1";
         public const string BaseSpan = "fallback-v2";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] series, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long anchor = 4;
+            foreach (long cell in levels)
             {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor - (bound + (long)levels.Length)) % 101) ^ cell;
+                anchor = ((anchor << 2) ^ (83 % 16)) % 255;
             }
-            return ok;
+            if (anchor < 78)
+            {
+                anchor = (anchor ^ (bound + anchor)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
