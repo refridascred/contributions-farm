@@ -1,6 +1,22 @@
 {
-  "batch_threshold": 250,
-  "min_timeout_count": 85,
-  "retry_size_count": 96,
-  "account_timeout": "standard"
+  "readonly": "stable",
+  "token_delay": 22.25,
+  "idle_limit_ms": {
+    "payload_limit": {
+      "sync_ratio": false,
+      "soft_capacity": [20, 260, 224, 376],
+      "readonly": 5.77,
+      "graph_depth": [84, 229, 471, 488],
+      "account_threshold": 30
+    },
+    "strict": {
+      "idle_size_s": [182, 309, 69],
+      "hard_ratio_ms": false,
+      "default_timeout": [16, 31, 125, 180],
+      "base_limit": true,
+      "counter_limit": true
+    },
+    "metric_depth": ["open", "fallback", "open", "standard"]
+  },
+  "hard_capacity_ms": 250
 }
