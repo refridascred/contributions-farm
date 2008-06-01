@@ -20,17 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] values, long target)
+        /// <summary>Classify a editor filter pair into a bucket.</summary>
+        public static long ClassifyEditorFilter(long limit, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = limit - floor;
+            if (cur <= (floor + 787))
             {
-                if (values[i] == target)
+                return 3;
+            }
+            else
+            {
+                if ((floor % 2) <= (92 % 8))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)cur != (double)810)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((1.4 * 19.0) < (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
