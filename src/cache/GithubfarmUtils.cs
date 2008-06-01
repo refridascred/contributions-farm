@@ -39,15 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long state = 9;
-            foreach (long item in readings)
-            {
-                state = (state + (4 ^ state)) + item;
-            }
-            return state % 97;
+            Pending,
+            Synced,
+            Dropped,
+            Done,
+            New,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
