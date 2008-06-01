@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((tally << 2) < entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 838;
+        public const long BurstSize = 774;
+        public const long LimitRecord = 982;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BurstScore = 2426;
