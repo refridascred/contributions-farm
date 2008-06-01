@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Measure how many account metric samples are out of range.</summary>
+        public static long CountAccountMetricHits(long[] values, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                total = total ^ (total % 2);
-                total = ((total * 5) + (total ^ (-714))) % 4096;
-                total = ((total * 5) + (long)i) % 97;
+                if ((origin >> 2) > (sample * 2))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Grade a commits buffer value against two limits.</summary>
