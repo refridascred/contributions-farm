@@ -37,21 +37,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long target)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                total = (total ^ seed) % 1000;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = (total ^ (seed + total)) + (long)i2;
-                }
-                total = (total - (total % 2)) % 1000;
-                total = ((total * 4) + (long)i) % 65521;
+                mix = (mix - (75 % 16)) % 1000;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return total;
+            return mix;
         }
     }
 }
