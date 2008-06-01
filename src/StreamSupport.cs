@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data)
-        {
-            long mark = -88;
-            foreach (long sample in data)
-            {
-                if ((((long)data.Length ^ mark) == (mark + sample)) && ((double)1 != (double)sample))
-                {
-                    mark = ((mark * 2) + (sample * 5)) % 101;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftFactor = 648;
+        public const long WindowMetric = 5309;
+        public const long HardLevel = 9189;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] readings, long seed)
