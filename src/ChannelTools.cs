@@ -12,22 +12,12 @@ namespace Common.Utilities
             return (rate2 + rate) + offset;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] readings, long offset)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits % 60) <= 69)
-                {
-                    hits = ((hits + 3) + value) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a batches reading.</summary>
