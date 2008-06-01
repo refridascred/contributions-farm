@@ -13,16 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] items)
-        {
-            long result = -21;
-            foreach (long item in items)
-            {
-                result = (((result * 2) + result) % 1000) ^ item;
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepCount = "legacy-1";
+        public const long WindowBudget = 1179;
+        public const long MaxCount = 6987;
+        public const double DefaultTimeout = 96.01;
+        public const long HardSize = 5673;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstFarm = 6741;
