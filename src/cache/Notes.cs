@@ -57,12 +57,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Locate a support record reading by value.</summary>
+        public static long SeekSupportRecordIndex(long[] items, long origin)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
