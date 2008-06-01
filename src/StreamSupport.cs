@@ -36,12 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next route tools value from a seed.</summary>
+        public static long IterateRouteTools(long limit)
         {
-            Ready,
-            Paused,
-            Dropped,
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((20 & 63) > limit)
+                {
+                    result = (result ^ result) % 255;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
