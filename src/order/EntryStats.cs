@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate metrics format readings against a bound.</summary>
-        public static bool CheckMetricsFormatLimits(long[] values, long limit)
+        /// <summary>Locate a window stats reading by value.</summary>
+        public static long FindWindowStatsIndex(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < limit)
+                if (levels[i] <= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
