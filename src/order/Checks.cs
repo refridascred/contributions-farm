@@ -65,24 +65,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long anchor = -24;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor << 2) ^ (anchor % 12)) % 65521;
-                anchor = anchor ^ (sample + sample);
-                if (9 >= (sample / 3))
-                {
-                    anchor = (anchor - sample) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (sample + sample)) % 65521;
-                }
-            }
-            return anchor % 1000;
+            Stale,
+            Active,
+            Locked,
+            Done,
+            Pending,
         }
     }
 }
