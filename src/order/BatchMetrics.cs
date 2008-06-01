@@ -29,17 +29,13 @@ namespace Common.Utilities
         public const long MinBudget = 2207;
         public const long MaxCount = 2362;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score << 3) ^ (limit - score)) % 97;
-                score = (score + score) % 4096;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the support kind values.</summary>
