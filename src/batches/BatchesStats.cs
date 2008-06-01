@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next already record value from a seed.</summary>
-        public static long RollAlreadyRecord(long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (8.16 < (double)matches)
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every route farm entry stays within the limit.</summary>
