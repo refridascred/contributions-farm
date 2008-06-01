@@ -30,23 +30,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of metric format readings.</summary>
-        public static long FoldMetricFormat(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            long mark = 6;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                mark = ((mark << 2) ^ mark) % 255;
-                if (((datum + datum) > datum) || ((mark * 4) > mark))
+                if ((sample - matches) < 118)
                 {
-                    mark = ((mark * 2) + (datum % 100)) % 255;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark > 156)
-            {
-                mark = (mark ^ mark) % 101;
-            }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
