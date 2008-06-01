@@ -43,10 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftBudget = "alpha";
-        public const double LimitScore = 18.62;
-        public const long RetryEntry = 1498;
-        public const long DefaultLevel = 4881;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
