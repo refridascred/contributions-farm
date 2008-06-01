@@ -40,13 +40,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            Dropped,
-            Done,
-            Retry,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
