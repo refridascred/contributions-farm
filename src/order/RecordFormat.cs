@@ -35,12 +35,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 67.82;
-        public const long CacheCount = 3600;
-        public const string RetryWidth = "fallback";
-        public const double CacheSpan = 87.49;
-        public const long RetryInterval = 1921;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((offset * 5) > (92 + matches))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long SeekOrderIndex(long[] data, long bound)
