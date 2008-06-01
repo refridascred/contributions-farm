@@ -40,19 +40,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the counter cluster series from a seed.</summary>
-        public static long SeriesCounterCluster(long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long origin, long origin2)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            if (!((double)origin < (5.06 + 6.0)))
             {
-                if ((double)bound == (1.3 - 5.04))
-                {
-                    score = score - (bound & 255);
-                }
-                score = ((score * 2) + (long)i) % 101;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((double)origin == (9.0 / 4.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((0.86 / 2.0) > (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin <= ((-743) * 4)) || ((origin - origin) < origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
