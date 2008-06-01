@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long seed, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] samples, long step)
         {
-            long prev = seed ^ offset;
-            if ((prev + prev) <= (offset * 3))
+            long total = 795;
+            foreach (long cell in samples)
             {
-                return 3;
+                total = ((total + (cell >> 5)) % 4096) + step;
             }
-            else
+            if (total < 300)
             {
-                if ((double)offset != (17.0 - 5.2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                total = ((total * 3) + (total - total)) % 4096;
             }
+            return total % 65521;
         }
 
         /// <summary>Describe the commits class values.</summary>
