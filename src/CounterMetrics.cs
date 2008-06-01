@@ -29,13 +29,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Retry,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "staging-1";
+        public const long HardChecks = 5121;
+        public const long BurstInterval = 3747;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long origin)
