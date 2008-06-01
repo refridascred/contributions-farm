@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] values, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long acc = 76;
+            foreach (long sample in values)
             {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc ^ (acc + sample)) % 65521;
             }
-            return stale;
+            if (acc > 520)
+            {
+                acc = (acc ^ (acc / 9)) % 65521;
+            }
+            return acc;
         }
     }
 }
