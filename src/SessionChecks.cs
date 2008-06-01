@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] readings, long step)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the buffer level values.</summary>
