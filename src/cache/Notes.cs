@@ -30,19 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] values, long limit)
+        /// <summary>Find the first batches contributi entry that matches the target.</summary>
+        public static long LookupBatchesContributiIndex(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < limit)
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Accumulate queue samples.</summary>
