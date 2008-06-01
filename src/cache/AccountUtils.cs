@@ -22,14 +22,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Paused,
-            Queued,
-            Failed,
-            Retry,
-            Pending,
+            Stale,
+            Closed,
+            New,
+            Dropped,
         }
     }
 }
