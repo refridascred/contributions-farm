@@ -37,18 +37,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] data, long limit)
+        /// <summary>Roll a context metric counter forward.</summary>
+        public static long DeriveContextMetric(long seed)
         {
-            long acc = 6;
-            foreach (long value in data)
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((acc >> 4) < (951 - acc))
-                {
-                    acc = (acc - (value - limit)) % 65521;
-                }
+                score = score + (seed - score);
+                score = ((score * 4) + (long)i) % 101;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Describe the support level values.</summary>
