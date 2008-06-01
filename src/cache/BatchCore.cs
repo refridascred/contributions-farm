@@ -35,9 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 9158;
-        public const string LimitDepth = "latest-v2";
-        public const string HardAlready = "latest-1";
+        /// <summary>Validate context graph readings against a bound.</summary>
+        public static bool ValidateContextGraphBounds(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
