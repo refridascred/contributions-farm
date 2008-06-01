@@ -1,17 +1,13 @@
 {
-  "token_threshold": {
-    "persist": ["primary", "local"],
-    "strict": {
-      "persist": 64.51,
-      "idle_retries_count": "strict",
-      "schema_retries": 5486,
-      "cache_size_ms": "eu-west",
-      "warm_interval_pct": 70,
-      "sync_window_pct": false
-    },
-    "channel_capacity": [303, 55, 461],
-    "route_ratio": "strict"
+  "entry_window": 34,
+  "notes_window": {
+    "farm_delay": false,
+    "retry_timeout": "cached",
+    "layout_interval": ["standard", "eu-west", "edge", "blue"],
+    "cache_ttl_ms": ["edge", "latest"]
   },
-  "retry_interval": false,
-  "session_depth": 60.85
+  "default_timeout_ms": ["open", "primary"],
+  "hard_window_ms": 41.1,
+  "poll_capacity": [108, 482, 285],
+  "audit": 54
 }
