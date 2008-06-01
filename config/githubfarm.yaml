@@ -1,5 +1,8 @@
 # githubfarm settings
-soft_timeout_ms: 35
-githubfarm_delay: fallback
-max_window_s: stable
-command_limit: 500
+burst_size_count: 250
+soft_limit_s:
+  - strict
+  - stable
+  - standard
+  - stable
+warm_window: stable
