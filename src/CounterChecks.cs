@@ -63,17 +63,19 @@ namespace Common.Utilities
         public const string MaxWidth = "local-v2";
         public const long SoftWidth = 693;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] series, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double rate, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = 4.0 - (bias * 9.69);
+            if (load <= load)
             {
-                if ((series[i] == seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - bias) - rate;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (19.0 - load)) - (double)(long)i;
+            }
+            return load + bias;
         }
     }
 }
