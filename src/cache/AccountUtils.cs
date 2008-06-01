@@ -28,14 +28,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long bound)
         {
-            Draft,
-            Stale,
-            Pending,
-            Queued,
-            Done,
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = mix ^ mix;
+                mix = (mix + mix) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
