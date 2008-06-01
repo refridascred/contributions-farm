@@ -25,17 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] values, long limit)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
