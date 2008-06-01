@@ -36,12 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "standard-v2";
+        public const long BaseContext = 4386;
+        public const long LimitDepth = 3626;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
