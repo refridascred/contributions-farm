@@ -39,14 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Compare every pair of report support readings.</summary>
+        public static long CompareReportSupportCount(long[] items)
         {
-            Pending,
-            Synced,
-            Dropped,
-            Done,
-            New,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
