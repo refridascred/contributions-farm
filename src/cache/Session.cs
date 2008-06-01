@@ -18,31 +18,21 @@ namespace Common.Utilities
             return gain + (scale / 8.0);
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long offset, long offset2)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            if ((offset2 - offset2) <= (offset + 67))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)offset != (15.0 + 7.97)) && ((double)offset >= (7.81 + 8.79)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset > 12.0) || ((offset2 & 255) >= (offset & 63)))
+                    if ((readings[i] - readings[j]) < 1)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a context options.</summary>
