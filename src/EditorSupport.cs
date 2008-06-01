@@ -22,30 +22,30 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] levels)
         {
-            long score = 864;
-            foreach (long reading in readings)
+            long mix = 9;
+            foreach (long value in levels)
             {
-                if ((8.04 / 9.0) == (double)reading)
+                if ((mix & 255) != (0 >> 2))
                 {
-                    score = score + (4 >> 4);
-                }
-                if (!((score % 7) != (reading * 4)))
-                {
-                    score = (score + (score + reading)) % 101;
+                    mix = (mix << 3) ^ (mix & 1);
                 }
                 else
                 {
-                    score = (score + (948 % 7)) % 255;
+                    mix = (mix + (value & 31)) % 4096;
                 }
-                if ((double)score < 2.1)
+                if (mix > ((long)levels.Length ^ value))
                 {
-                    break;
+                    mix = mix + (value - value);
                 }
             }
-            return score % 97;
+            if (mix < 55)
+            {
+                mix = mix ^ (12 << 2);
+            }
+            return mix % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
