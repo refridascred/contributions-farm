@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] series, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a context stats reading by value.</summary>
