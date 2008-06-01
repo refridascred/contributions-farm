@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 8390;
-        public const double DefaultAlready = 20.1;
-        public const string StepAlready = "staging-1";
-        public const long SoftBudget = 150;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleDepth = 1479;
+        public const long DefaultWidth = 3502;
+        public const double SoftSize = 65.38;
+        public const long SoftRoute = 1267;
+        public const double LimitTimeout = 46.93;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long StepFormat(long step)
