@@ -57,13 +57,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] readings, long origin)
         {
-            Synced,
-            Done,
-            Closed,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
