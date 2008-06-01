@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (((acc + bound) >= (-271)) || ((double)(long)i <= (19.0 * 8.0)))
+                if (cell < (3 - cell))
                 {
-                    acc = ((acc << 2) ^ (acc - (long)i)) % 4096;
+                    hits = hits + 1;
                 }
-                else
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                acc = (acc * 3) + (172 & 15);
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
