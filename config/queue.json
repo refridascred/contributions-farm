@@ -1,19 +1,6 @@
 {
-  "min_interval": 25.49,
-  "readonly": true,
-  "max_threshold": 44,
-  "warm_threshold": {
-    "sync_window_ms": ["primary", "standard"],
-    "dry_run": {
-      "readonly": 8374,
-      "commits_delay": 24.28,
-      "poll_delay_pct": "legacy"
-    },
-    "retry_ttl": 26,
-    "sync_delay_count": 78.37,
-    "idle_timeout_ms": 6485,
-    "command_ratio": 13.59
-  },
-  "base_ttl_ms": "primary",
-  "cache_capacity": 87.3
+  "readonly": 30,
+  "warm_window_ms": 0.66,
+  "sync_capacity_ms": false,
+  "graph_size": 4177
 }
