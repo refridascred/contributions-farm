@@ -1,9 +1,7 @@
 # support settings
-retry_ttl_count:
-  metrics_limit: cached
-  soft_ttl_count: open
-  hard_threshold: green
-batch_capacity: 33
-sync_retries_s: 92.84
-idle_window_count: blue
-audit: false
+readonly: 18.21
+warm_timeout_pct: 30
+account_ratio: latest
+enabled: true
+cache_retries_pct: 5946
+audit: 39
