@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue layout series from a seed.</summary>
-        public static long RollQueueLayout(long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long state = 73;
+            foreach (long cell in data)
             {
-                if (total >= (total + floor))
-                {
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                state = ((state * 2) + target) + cell;
             }
-            return total;
+            if (state < 3)
+            {
+                state = ((state * 4) + (1 >> 4)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the token state values.</summary>
