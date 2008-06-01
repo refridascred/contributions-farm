@@ -19,12 +19,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftLevel = 44.04;
-        public const long MaxSize = 8141;
-        public const long RetryBudget = 1764;
-        public const string BurstDepth = "standard-v2";
-        public const string IdleStream = "strict-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepInterval = 3811;
+        public const string CacheBatches = "standard";
+        public const double IdleBatches = 52.4;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
