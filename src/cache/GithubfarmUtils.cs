@@ -46,19 +46,9 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double scale, double offset)
-        {
-            double weight = offset;
-            if (weight >= (offset / 7.0))
-            {
-                weight = (weight - offset) + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (offset - 8.6);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 7002;
+        public const long MinDepth = 1529;
+        public const long SoftWidth = 2296;
     }
 }
