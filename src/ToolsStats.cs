@@ -33,18 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] readings)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + reading) < tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank checks input into a small class.</summary>
