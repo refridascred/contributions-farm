@@ -48,10 +48,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetrySize = "strict-1";
-        public const double WindowTimeout = 77.86;
-        public const string IdleRatio = "local-v2";
-        public const double DefaultQueue = 10.82;
+        /// <summary>Classify a metrics format pair into a bucket.</summary>
+        public static long RankMetricsFormat(long step, long floor)
+        {
+            long next = step - floor;
+            if ((next >> 1) == (floor & 31))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step << 2) >= (-471))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
