@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long CacheSpan = 5143;
         public const long BurstFactor = 9726;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long limit)
         {
-            public double Score { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of entry stream readings.</summary>
