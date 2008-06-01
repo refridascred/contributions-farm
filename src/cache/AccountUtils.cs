@@ -17,31 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a farm batch value against two limits.</summary>
-        public static long ClassifyFarmBatch(long floor, long floor2)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if ((floor - floor) == (floor / 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor2 != (4.1 - 9.9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)floor >= (13.0 * 17.0)) && ((floor + 116) > floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
