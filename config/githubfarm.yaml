@@ -1,11 +1,12 @@
 # githubfarm settings
-idle_interval: stable
-poll_ratio:
-  persist: stable
-  schema_limit: 85
-  poll_ratio_s:
-    counter_size: stable
-    verbose: 5511
-    retry_retries: 11
-default_timeout_s: 23.15
-hard_ttl: 41.8
+max_window_count: 60
+base_capacity_ms: fallback
+cache_interval_ms: latest
+flush_ratio_pct: false
+min_limit: eu-west
+min_threshold_pct:
+  default_window_count: true
+  persist: edge
+  payload_interval: 49.85
+  audit: 2684
+  compress: 1024
