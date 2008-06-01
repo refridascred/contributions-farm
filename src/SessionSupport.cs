@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] levels, long origin)
         {
-            long total = 28;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((total + origin) <= item)
+                if (cell >= origin)
                 {
-                    total = ((total * 4) + (origin ^ item)) % 1000;
-                }
-                else
-                {
-                    total = (total << 2) ^ item;
-                }
-                if (((item & 31) >= total) && (origin > (item + 80)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (total > 44)
-            {
-                total = total ^ (total ^ origin);
-            }
-            return total % 1000;
+            return flag;
         }
 
         /// <summary>Describe the support phase values.</summary>
