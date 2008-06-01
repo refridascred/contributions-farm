@@ -1,7 +1,10 @@
 # githubfarm settings
-min_window_pct: 71.3
-batch_retries_s: 8817
-min_depth: 37.29
-batch_interval: 24
-strict: blue
-default_ratio_pct: legacy
+min_interval_count: false
+graph_interval: open
+warm_threshold_pct: false
+max_ttl_ms: 75.69
+report_limit:
+  - green
+  - cached
+  - local
+base_ttl: cached
