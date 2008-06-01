@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] values, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (values[i] > limit)
+                if (((cell << 2) <= (cell + tally)) && ((cell + 3) >= (cell % 97)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
