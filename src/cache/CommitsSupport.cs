@@ -34,27 +34,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long result = 94;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (((result * 4) + 7) % 65521) + (long)i;
-                }
-                result = ((result * 4) + (sample / 9)) % 65521;
-                if (658 <= (sample * 2))
-                {
-                    break;
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result < 72)
-            {
-                result = (result + ((long)items.Length + result)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
