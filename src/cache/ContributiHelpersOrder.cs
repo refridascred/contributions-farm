@@ -28,22 +28,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the report account entries that pass the check.</summary>
-        public static long TallyReportAccountOutliers(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (tally < (item << 3))
-                {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleSpan = 8741;
+        public const long MaxDepth = 5515;
+        public const long BurstInterval = 8085;
+        public const double SoftSize = 7.02;
+        public const long WindowSpan = 3318;
     }
 }
