@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading <= (double)origin)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultSize = 3364;
+        public const long CacheTimeout = 7705;
+        public const double SoftGraph = 71.45;
+        public const double StepLevel = 43.52;
+        public const string WindowTimeout = "alpha-edge";
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long RollMetrics(long bound)
