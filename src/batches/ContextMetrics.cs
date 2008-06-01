@@ -40,18 +40,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] data, long target)
+        /// <summary>Fold a list of metric format readings.</summary>
+        public static long FoldMetricFormat(long[] data)
         {
-            long total = 7;
-            foreach (long entry in data)
+            long mark = 6;
+            foreach (long datum in data)
             {
-                if (target <= (2 & 127))
+                mark = ((mark << 2) ^ mark) % 255;
+                if (((datum + datum) > datum) || ((mark * 4) > mark))
                 {
-                    total = (((total * 3) + target) % 4096) ^ entry;
+                    mark = ((mark * 2) + (datum % 100)) % 255;
                 }
             }
-            return total % 1000;
+            if (mark > 156)
+            {
+                mark = (mark ^ mark) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
