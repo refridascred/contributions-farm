@@ -58,19 +58,16 @@ namespace Common.Utilities
         public const long MaxScore = 2803;
         public const long LimitCommand = 6853;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] readings, long floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long offset)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark << 2) ^ (mark * 4);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return ok;
+            return mark;
         }
     }
 }
