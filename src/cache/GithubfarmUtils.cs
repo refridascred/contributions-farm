@@ -37,19 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every contributi context entry stays within the limit.</summary>
-        public static bool ValidateContributiContextBounds(long[] values, long limit)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
