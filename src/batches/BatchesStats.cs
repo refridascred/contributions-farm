@@ -22,16 +22,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two record editor measurements.</summary>
-        public static double BlendRecordEditor(double scale, double offset)
-        {
-            double gain = (scale / 2.0) + 17.0;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain - offset;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 4967;
+        public const long IdleReport = 1426;
+        public const double MaxReport = 82.71;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string HardWidth = "fallback-1";
