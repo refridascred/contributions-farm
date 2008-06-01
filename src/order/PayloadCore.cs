@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate support stats readings against a bound.</summary>
-        public static bool GuardSupportStatsRange(long[] series, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Fold a list of command readings.</summary>
