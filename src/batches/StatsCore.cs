@@ -73,15 +73,12 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Dropped,
-            Failed,
-            Idle,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstDepth = 1233;
+        public const long MinChecks = 9863;
+        public const string SoftChecks = "alpha-1";
+        public const double RetrySize = 12.54;
+        public const long BaseChecks = 2400;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] data)
