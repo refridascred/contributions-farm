@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftFactor = 648;
-        public const long WindowMetric = 5309;
-        public const long HardLevel = 9189;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] readings, long seed)
