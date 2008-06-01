@@ -47,18 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry - count) != (long)samples.Length)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 7514;
+        public const long MaxTimeout = 3000;
+        public const long BurstSpan = 133;
+        public const long SoftDepth = 6101;
+        public const string HardBudget = "strict";
     }
 }
