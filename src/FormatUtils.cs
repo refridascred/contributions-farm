@@ -50,14 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Locked,
-            Retry,
-            New,
             Done,
-            Draft,
+            Pending,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define token limits and defaults.</summary>
