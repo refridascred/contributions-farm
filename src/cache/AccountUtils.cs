@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] series, long offset)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
