@@ -30,11 +30,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] series, long target)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long anchor = 28;
+            foreach (long item in series)
+            {
+                anchor = (((anchor << 3) ^ (159 * 4)) % 255) - item;
+            }
+            if (anchor < (-427))
+            {
+                anchor = anchor ^ (anchor ^ target);
+            }
+            return anchor;
         }
     }
 }
