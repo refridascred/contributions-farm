@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] series, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long bound, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((floor % 97) > (618 / 9)) || (bound < (floor << 2)))
             {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if (((bound * 2) <= (bound & 127)) && ((double)bound <= (double)82))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)8 > (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound >= (bound + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
