@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] series, long bound)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first batches contributi entry that matches the target.</summary>
