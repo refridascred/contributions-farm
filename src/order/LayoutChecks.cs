@@ -37,20 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels, long bound)
+        /// <summary>Count the entry payload entries that pass the check.</summary>
+        public static long MeasureEntryPayloadHits(long[] values)
         {
-            long anchor = 4;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                anchor = ((anchor - (bound + (long)levels.Length)) % 101) ^ cell;
-                anchor = ((anchor << 2) ^ (83 % 16)) % 255;
+                if ((sample ^ matches) >= (sample << 2))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor < 78)
-            {
-                anchor = (anchor ^ (bound + anchor)) % 101;
-            }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
