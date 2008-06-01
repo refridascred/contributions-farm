@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many already order samples are out of range.</summary>
-        public static long MeasureAlreadyOrderGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)count != (4.2 + 8.0))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 7224;
+        public const long StepCount = 427;
+        public const long DefaultCache = 604;
+        public const double LimitCache = 44.11;
+        public const double LimitCount = 77.66;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] samples, long limit)
