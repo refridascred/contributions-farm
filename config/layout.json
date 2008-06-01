@@ -1,6 +1,10 @@
 {
-  "soft_threshold_s": 500,
-  "readonly": true,
-  "verbose": 2,
-  "order_retries": 1024
+  "notes_threshold": "staging",
+  "persist": "strict",
+  "schema_threshold": {
+    "already_capacity": false,
+    "warm_depth": 6646,
+    "batch_ttl_ms": 44
+  },
+  "filter_interval": "blue"
 }
