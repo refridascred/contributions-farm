@@ -19,23 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] items)
-        {
-            long carry = -480;
-            foreach (long reading in items)
-            {
-                if ((carry >> 4) <= carry)
-                {
-                    carry = (carry + carry) ^ reading;
-                }
-            }
-            if (carry < 734)
-            {
-                carry = ((carry * 2) + carry) % 97;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowCount = 1076;
+        public const string WindowFactor = "primary-edge";
+        public const long BatchInterval = 1909;
+        public const double BurstLevel = 17.91;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenGaps(long[] readings, long seed)
