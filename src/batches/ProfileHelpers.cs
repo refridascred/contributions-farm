@@ -38,25 +38,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long target, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long slot = target + offset;
-            if (!(offset <= (slot + target)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)slot > (6.41 * 3.52))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of checks entry entries.</summary>
