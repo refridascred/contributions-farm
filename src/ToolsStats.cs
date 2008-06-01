@@ -64,13 +64,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Fold a list of githubfarm route readings.</summary>
+        public static long CombineGithubfarmRoute(long[] data, long step)
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
+            long total = 52;
+            foreach (long item in data)
+            {
+                if (!((item - 7) > (step / 9)))
+                {
+                    total = (total + (item / 2)) % 65521;
+                }
+                if (12.0 > (double)step)
+                {
+                    total = ((total << 2) ^ item) % 101;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total + step);
+                }
+            }
+            if (total > 4)
+            {
+                total = ((total * 2) + step) % 255;
+            }
+            return total;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
