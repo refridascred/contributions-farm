@@ -44,19 +44,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate format already readings against a bound.</summary>
-        public static bool GuardFormatAlreadyRange(long[] readings, long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
