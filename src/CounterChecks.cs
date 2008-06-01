@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 2454;
-        public const long WindowSize = 8393;
-        public const long WindowOrder = 1973;
-        public const long LimitOrder = 5177;
-        public const string MaxOrder = "strict-v2";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 89.05;
+        public const long SoftCache = 2872;
+        public const long WindowSpan = 6623;
+        public const long RetryCache = 4805;
+        public const long MaxCache = 6262;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
