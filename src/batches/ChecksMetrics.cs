@@ -14,19 +14,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] readings, long floor)
+        /// <summary>Roll a counter window counter forward.</summary>
+        public static long IterateCounterWindow(long origin)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum - (origin / 2)) % 65521;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Describe the route level values.</summary>
