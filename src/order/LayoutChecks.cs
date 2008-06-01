@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxLevel = "open-v2";
-        public const long SoftCommits = 7954;
-        public const double WindowTimeout = 52.88;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 6132;
+        public const long WindowCount = 7948;
+        public const double BatchInterval = 64.17;
 
         /// <summary>Project the next notes value.</summary>
         public static double ScaleNotes(double scale, double offset)
