@@ -19,21 +19,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count farm queue pairs that satisfy a relation.</summary>
-        public static long OverlapFarmQueueCount(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)value >= 1.11)
                 {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of support tools entries.</summary>
