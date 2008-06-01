@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long origin, long step)
+        /// <summary>Audit contributi metric readings against a rule.</summary>
+        public static long TallyContributiMetricMatches(long[] series, long limit)
         {
-            if ((step ^ step) < (-33))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((5.2 + 1.71) != (double)step) && ((origin / 8) >= origin))
+                if (!(((-87) + limit) >= (limit + hits)))
                 {
-                    return 7;
+                    hits = (hits + 2) ^ reading;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a counter window counter forward.</summary>
