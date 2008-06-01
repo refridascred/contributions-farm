@@ -33,15 +33,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the batches queue series from a seed.</summary>
-        public static long IterateBatchesQueue(long limit)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long seed, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            if ((8.6 * 2.0) <= (double)limit)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((limit / 9) < (887 - limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the graph class values.</summary>
