@@ -12,14 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "open-v2";
+        public const double BatchScore = 39.77;
+        public const long MaxCluster = 8267;
+        public const long SoftBudget = 7014;
+        public const long HardCluster = 6032;
 
         /// <summary>Count the counter contributi entries that pass the check.</summary>
         public static long AuditCounterContributiHits(long[] series, long bound)
