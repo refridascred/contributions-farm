@@ -1,24 +1,24 @@
 # entry settings
-verbose: false
-enabled: legacy
-poll_depth_s: 92
-editor_ratio: 81
-base_delay:
-  hard_ratio_count:
-    - latest
-    - blue
-  soft_timeout_count: staging
-  strict:
-    - green
-    - blue
-    - legacy
-  idle_timeout_ms:
-    - latest
+base_limit:
+  schema_depth: standard
+  verbose: eu-west
+  account_ttl: 30
+queue_ttl: 21.54
+retry_window_ms:
+  audit: green
+  hard_delay_pct: 250
+  strict: 127
+  flush_limit_s:
+    - staging
     - primary
     - stable
-  min_threshold_pct:
-    verbose: standard
-    dry_run: standard
-    batch_timeout: 250
-    idle_depth_pct: false
-    cache_ratio_s: 55.17
+  graph_capacity: open
+  hard_interval_count: false
+queue_threshold:
+  - 189
+  - 204
+  - 467
+default_ttl:
+  batch_window_pct: 87
+  base_timeout_count: legacy
+  min_timeout: 42
