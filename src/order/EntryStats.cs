@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 79.59;
-        public const long HardSpan = 9303;
-        public const string WindowCount = "staging";
-        public const long IdleCommits = 8417;
+        /// <summary>Find the first tools payload entry that matches the target.</summary>
+        public static long FindToolsPayloadIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] levels)
