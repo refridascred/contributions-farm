@@ -43,14 +43,32 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Rank stats counter input into a small class.</summary>
+        public static long SortStatsCounter(long seed, long floor)
         {
-            Locked,
-            Paused,
-            New,
-            Ready,
-            Pending,
+            long offset = seed - floor;
+            if ((offset <= (offset + 85)) || ((double)floor <= (double)seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor <= 5.6)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed & 3) != (seed * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a editor reading.</summary>
