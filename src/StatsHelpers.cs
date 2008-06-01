@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] levels, long origin)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
