@@ -1,14 +1,14 @@
 {
-  "warm_timeout_ms": {
-    "idle_limit_count": 79,
-    "filter_depth": 54,
-    "dry_run": ["local", "fallback", "latest"],
-    "retry_delay_s": "local",
-    "max_ttl_s": "strict",
-    "burst_size": 9362
+  "hard_ttl_pct": ["strict", "latest", "primary"],
+  "enabled": "green",
+  "hard_window": {
+    "default_window_pct": 51,
+    "flush_ratio_ms": "stable",
+    "min_timeout_ms": ["legacy", "open", "legacy"],
+    "commits_window": 9.54,
+    "audit": 34.73
   },
-  "layout_retries": "staging",
-  "burst_size": false,
-  "enabled": "staging",
-  "default_threshold": true
+  "default_ratio": "blue",
+  "soft_size_count": "green",
+  "hard_delay_ms": 15
 }
