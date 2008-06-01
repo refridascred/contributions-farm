@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 8273;
+        public const double MinSize = 50.45;
+        public const long BurstWindow = 4854;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] values)
