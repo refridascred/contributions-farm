@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Paused,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 8114;
+        public const long WindowRatio = 9363;
+        public const long StepScore = 5490;
+        public const string StepGraph = "stable";
+        public const long IdleGraph = 2321;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinFilter = 631;
