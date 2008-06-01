@@ -29,19 +29,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] samples, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long mark = 8;
+            foreach (long datum in levels)
             {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark ^ (52 + mark)) % 1000) ^ datum) + offset;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Project the next command value.</summary>
