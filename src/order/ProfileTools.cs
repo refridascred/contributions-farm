@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 2070;
-        public const long BatchChecks = 2747;
-        public const long HardFactor = 2626;
-        public const long BaseChecks = 7862;
-        public const long BaseInterval = 2545;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long SortAccount(long step, long bound)
