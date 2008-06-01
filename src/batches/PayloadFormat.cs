@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 6910;
-        public const long CacheEditor = 9209;
-        public const long RetryTimeout = 5211;
-        public const string LimitWidth = "primary-edge";
-        public const double MinBudget = 75.81;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double ratio, double bias)
+        {
+            double drift = (double)(90 / 7);
+            if (drift >= (bias / 7.0))
+            {
+                drift = (drift - (bias - 1.6)) - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift * 8.26)) - (double)(long)i;
+            }
+            return drift - (double)89;
+        }
 
         /// <summary>Measure how many metrics already samples are out of range.</summary>
         public static long AuditMetricsAlreadyOutliers(long[] items, long floor)
