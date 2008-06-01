@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const long StepInterval = 4774;
         public const long BurstLayout = 5164;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] readings, long seed)
+        /// <summary>Count the record filter entries that pass the check.</summary>
+        public static long MeasureRecordFilterOutliers(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (sample > seed)
+                if (!((limit >> 5) != (850 & 63)))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Adjust a editor reading.</summary>
