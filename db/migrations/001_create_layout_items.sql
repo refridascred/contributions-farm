@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    owner TEXT NOT NULL,
-    count INTEGER NOT NULL DEFAULT 0
+    created_at TIMESTAMP,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
+CREATE INDEX IF NOT EXISTS idx_layout_items_weight ON layout_items (weight);
 
-INSERT INTO layout_items (weight, owner, count) VALUES (11.28, 'stable', 13);
-INSERT INTO layout_items (weight, owner, count) VALUES (28.65, 'local', 32);
-INSERT INTO layout_items (weight, owner, count) VALUES (48.1, 'open', 11);
+INSERT INTO layout_items (weight, active) VALUES (85.58, 42);
+INSERT INTO layout_items (weight, active) VALUES (45.59, 79);
