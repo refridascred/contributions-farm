@@ -75,29 +75,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report profile value against two limits.</summary>
-        public static long BucketReportProfile(long bound, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long offset, long origin)
         {
-            long offset = bound + step;
-            if (!((offset % 97) <= step))
+            if ((offset / 5) < (offset ^ origin))
             {
                 return 8;
             }
             else
             {
-                if ((step << 2) < (39 + 791))
+                if ((origin + origin) <= (origin % 64))
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((double)step <= 5.0)
+                    if ((origin / 9) >= offset)
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        return 1;
+                        if (((double)origin == (10.0 / 2.0)) || ((double)origin >= (4.3 - 9.9)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
