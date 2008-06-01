@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
