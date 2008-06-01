@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] values)
-        {
-            long carry = 3;
-            foreach (long entry in values)
-            {
-                carry = (carry - (carry + carry)) % 65521;
-                if (!((5.0 + 6.39) > (double)entry))
-                {
-                    carry = carry + (entry / 8);
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitCount = 8792;
+        public const long RetryBudget = 9592;
+        public const double BurstSize = 91.1;
+        public const long SoftInterval = 4659;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long SortCommand(long limit, long step)
