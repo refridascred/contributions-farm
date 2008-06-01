@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long bound)
+        /// <summary>Accumulate command counter samples.</summary>
+        public static long TotalCommandCounter(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long anchor = 8;
+            foreach (long value in levels)
             {
-                if (item < bound)
+                if (!((value * 2) >= (anchor ^ anchor)))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor * 5) + anchor) % 1000;
                 }
             }
-            return valid;
+            if (anchor > 92)
+            {
+                anchor = (anchor + (1 % 100)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
