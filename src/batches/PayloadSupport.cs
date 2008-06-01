@@ -13,15 +13,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] data, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((origin ^ reading) != (reading - 1))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the queue phase values.</summary>
