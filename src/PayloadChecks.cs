@@ -68,19 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Audit metric layout readings against a rule.</summary>
+        public static long AuditMetricLayoutHits(long[] readings)
         {
-            long score = 972;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                score = score + value;
+                if ((matches - 671) == ((-640) - entry))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (score > 42)
-            {
-                score = (score + (14 << 1)) % 65521;
-            }
-            return score;
+            return matches;
         }
     }
 }
