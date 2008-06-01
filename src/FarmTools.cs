@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            long mark = 623;
+            foreach (long sample in readings)
+            {
+                if (!(6.4 >= (double)mark))
+                {
+                    mark = (mark - (mark - mark)) + sample;
+                }
+                mark = (mark + (mark >> 2)) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
