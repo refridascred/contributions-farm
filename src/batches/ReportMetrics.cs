@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] levels, long floor)
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
