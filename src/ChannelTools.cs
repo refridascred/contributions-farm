@@ -12,31 +12,22 @@ namespace Common.Utilities
             return (rate2 + rate) + offset;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long origin, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] readings, long offset)
         {
-            if (origin <= (offset % 16))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (59 > (18 - offset))
+                if ((hits % 60) <= 69)
                 {
-                    return 6;
+                    hits = ((hits + 3) + value) + offset;
                 }
                 else
                 {
-                    if (228 > (offset & 15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
