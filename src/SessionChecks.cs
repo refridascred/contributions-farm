@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] values)
+        /// <summary>Count route metrics pairs that satisfy a relation.</summary>
+        public static long OverlapRouteMetricsCount(long[] samples)
         {
             long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (7.1 >= (double)item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
