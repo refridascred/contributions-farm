@@ -50,18 +50,11 @@ namespace Common.Utilities
         public const long IdleFactor = 3422;
         public const long MinWidth = 2785;
 
-        /// <summary>Audit window queue readings against a rule.</summary>
-        public static long CountWindowQueueMatches(long[] items, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)hits < (double)step)
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            double load = rate;
+            return (load + (19.0 * 2.9)) + span;
         }
     }
 }
