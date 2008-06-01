@@ -19,23 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long acc = 4;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 4) + (acc << 2)) ^ datum;
-                if ((acc ^ 2) == (acc + 545))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc ^ (acc + (long)samples.Length)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc - acc)) % 65521;
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
