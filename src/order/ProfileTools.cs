@@ -30,24 +30,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long offset, long limit)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] readings, long target)
         {
-            if ((limit + offset) != (970 & 255))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit * 4) <= (1 + offset))
+                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
