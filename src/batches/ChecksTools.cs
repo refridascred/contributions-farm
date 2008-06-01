@@ -19,25 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits buffer value against two limits.</summary>
-        public static long ClassifyCommitsBuffer(long origin, long floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long next = origin + floor;
-            if ((origin ^ origin) > (origin & 15))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + floor) < (next % 60))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a layout record.</summary>
