@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double weight, double bias)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            double scale = (double)(41 - 6);
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = ((scale + (bias * 14.0)) + (double)(long)i) - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale - 11.0;
+            return count;
         }
 
         /// <summary>Hold a checks info.</summary>
