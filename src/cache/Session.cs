@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] data, long bound)
         {
-            Stale,
-            New,
-            Done,
+            long anchor = 654;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = (((anchor * 4) + (-64)) ^ (long)i) ^ value;
+                }
+                if (anchor < (anchor << 3))
+                {
+                    anchor = (anchor << 2) ^ bound;
+                }
+            }
+            if (anchor > 378)
+            {
+                anchor = (anchor ^ bound) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
