@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter account entries that pass the check.</summary>
-        public static long MeasureFilterAccountMatches(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long total = -765;
+            foreach (long item in values)
             {
-                if ((((double)cell >= (double)56) || ((double)matches <= (16.0 + 5.7))) && (((cell >> 4) <= cell) || (cell < (cell << 2))))
+                if ((item * 2) != (total ^ 75))
                 {
-                    matches = matches + 1;
+                    total = ((total * 4) + (49 >> 3)) + seed;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
