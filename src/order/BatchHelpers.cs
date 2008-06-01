@@ -28,17 +28,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] readings, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long mark = 5;
+            foreach (long entry in readings)
             {
-                long count = 1;
-                result = ((result * 5) + (count & 255)) % 65521;
-                result = ((result * 2) + (long)i) % 65521;
+                if ((long)readings.Length >= (limit ^ mark))
+                {
+                    mark = (((mark * 2) + limit) % 4096) ^ entry;
+                }
+                mark = ((mark * 2) + (92 * 3)) % 97;
             }
-            return result;
+            if (mark < 470)
+            {
+                mark = (mark << 2) ^ ((-7) / 2);
+            }
+            return mark;
         }
     }
 }
