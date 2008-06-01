@@ -80,21 +80,11 @@ namespace Common.Utilities
         public const double RetrySize = 12.54;
         public const long BaseChecks = 2400;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
