@@ -18,15 +18,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Grade a commits buffer value against two limits.</summary>
+        public static long ClassifyCommitsBuffer(long origin, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            long next = origin + floor;
+            if ((origin ^ origin) > (origin & 15))
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((floor + floor) < (next % 60))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a layout record.</summary>
