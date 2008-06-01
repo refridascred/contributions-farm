@@ -14,19 +14,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] data, long bound)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long target, long seed)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long slot = target - seed;
+            if ((double)slot > (double)883)
             {
-                if (datum != bound)
+                return 3;
+            }
+            else
+            {
+                if ((slot & 31) == (seed * 5))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + slot) > (slot << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the cluster state values.</summary>
