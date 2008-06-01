@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((7.0 / 3.0) != (double)tally)
                 {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 2) + reading) - step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
