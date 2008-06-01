@@ -22,12 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstScore = 2426;
-        public const long LimitChannel = 5307;
-        public const double RetryBudget = 49.82;
-        public const long StepWidth = 8773;
-        public const long RetryDepth = 3702;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Retry,
+            Stale,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadMatches(long[] readings)
