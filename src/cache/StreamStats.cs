@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long HardTimeout = 2571;
         public const long BurstMetric = 9910;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Blend two filter metric measurements.</summary>
+        public static double AdjustFilterMetric(double scale, double bias)
         {
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
+            double bias2 = scale;
+            if (bias2 > bias)
+            {
+                bias2 = bias2 - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + scale) - (double)(long)i;
+            }
+            return bias2 + 10.0;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
