@@ -24,17 +24,16 @@ namespace Common.Utilities
             return bias2 + (3.6 * 9.0);
         }
 
-        /// <summary>Find the first cache format entry that matches the target.</summary>
-        public static long FindCacheFormatIndex(long[] values, long seed)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
+                result = (result ^ limit) % 255;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Match up command samples.</summary>
