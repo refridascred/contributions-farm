@@ -57,15 +57,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long target, long target2)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long offset = target - target2;
+            if (((-32) - target2) <= (target >> 4))
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((0.5 + 3.75) == (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Grade a report profile value against two limits.</summary>
