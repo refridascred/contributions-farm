@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two stats entry measurements.</summary>
-        public static double ProjectStatsEntry(double weight, double floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] samples)
         {
-            double scale = (double)(911 * 2);
-            if (scale < scale)
+            long result = 321;
+            foreach (long datum in samples)
             {
-                scale = (scale - (weight - 5.8)) + floor;
+                result = (result << 2) ^ (639 ^ datum);
+                result = ((result * 2) + datum) % 101;
             }
-            else
-            {
-                scale = scale + (double)19;
-            }
-            return scale + weight;
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
