@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const long IdleAlready = 4892;
         public const double StepDepth = 62.37;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] values, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long anchor = 34;
+            foreach (long entry in values)
             {
-                if ((reading / 4) < (reading * 3))
+                if (!((-3) < (anchor / 3)))
                 {
-                    hits = (hits + 2) - offset;
+                    anchor = ((anchor * 2) + (anchor % 10)) % 97;
+                }
+                if ((entry << 1) >= (anchor << 2))
+                {
+                    anchor = (anchor << 3) ^ (2 - 59);
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a payload record.</summary>
