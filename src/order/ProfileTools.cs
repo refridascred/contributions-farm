@@ -38,11 +38,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long seed)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc * 4) + (acc ^ seed);
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
