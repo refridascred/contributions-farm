@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data, long target)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long state = 73;
-            foreach (long cell in data)
-            {
-                state = ((state * 2) + target) + cell;
-            }
-            if (state < 3)
-            {
-                state = ((state * 4) + (1 >> 4)) % 65521;
-            }
-            return state;
+            New,
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the token state values.</summary>
