@@ -1,6 +1,6 @@
-id,level,count
-1,green,open
-2,61.16,21.23
-3,latest,815
-4,staging,94.15
-5,eu-west,63.8
+id,score,weight
+1,64.87,170
+2,42.29,679
+3,green,cached
+4,818,strict
+5,285,761
