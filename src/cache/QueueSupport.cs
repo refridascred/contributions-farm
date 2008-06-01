@@ -31,9 +31,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 5625;
-        public const long DefaultGraph = 1516;
-        public const string IdleGraph = "open-1";
+        /// <summary>Combine farm githubfarm values into a single score.</summary>
+        public static long FoldFarmGithubfarm(long[] values)
+        {
+            long total = -76;
+            foreach (long reading in values)
+            {
+                if (!(((-9) * 3) < (reading * 5)))
+                {
+                    total = ((total * 3) + (total ^ 30)) % 101;
+                }
+            }
+            if (total < 572)
+            {
+                total = ((total << 3) ^ (92 % 64)) % 4096;
+            }
+            return total;
+        }
     }
 }
