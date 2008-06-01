@@ -20,21 +20,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
-        public static long OverlapMetricClusterCount(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 332;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((origin + origin) != (mark - 700))
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark ^ (mark / 5);
+                    mark = (mark + (datum << 3)) % 101;
+                    continue;
+                }
+                if ((((-3) - datum) < origin) && ((origin & 63) < (origin ^ 8)))
+                {
+                    mark = mark - mark;
+                }
+                if ((6.8 - 9.4) > (double)mark)
+                {
+                    mark = (mark * 2) + (datum - datum);
+                }
+                if (datum < (origin + datum))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine batches batch values into a single score.</summary>
