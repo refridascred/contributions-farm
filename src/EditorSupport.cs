@@ -13,13 +13,24 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] values, long seed)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long mark = 89;
+            foreach (long item in values)
+            {
+                if ((item + item) < (seed - seed))
+                {
+                    mark = mark - (seed + item);
+                    continue;
+                }
+                mark = mark - (mark + item);
+            }
+            if (mark < 708)
+            {
+                mark = (mark - (mark - mark)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
