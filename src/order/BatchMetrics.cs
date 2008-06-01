@@ -57,13 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
