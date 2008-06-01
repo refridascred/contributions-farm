@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 1;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((4.79 / 7.0) > (double)seed)
                 {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - ((-65) - sample)) % 101;
                 }
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Describe the checks status values.</summary>
