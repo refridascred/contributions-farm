@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 7768;
-        public const long BaseEditor = 8901;
-        public const long RetryRatio = 7313;
-        public const long LimitEditor = 3350;
-        public const long MinDepth = 8482;
+        /// <summary>Look up the position of a tools batch sample.</summary>
+        public static long LookupToolsBatchIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long WeighTools(long[] levels)
