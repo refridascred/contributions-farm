@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseSpan = 21.27;
-        public const long IdleRatio = 2066;
-        public const double BatchDepth = 27.26;
-        public const double SoftBudget = 44.2;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample << 3) == (4 % 8))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] samples, long origin)
