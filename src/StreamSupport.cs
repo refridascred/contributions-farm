@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine entry account values into a single score.</summary>
-        public static long TotalEntryAccount(long[] levels, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double rate, double offset)
         {
-            long acc = 917;
-            foreach (long sample in levels)
+            double bias = rate;
+            if (bias >= (bias * 0.6))
             {
-                acc = (acc - acc) % 1000;
-                acc = ((acc << 3) ^ (sample >> 5)) % 4096;
-                if ((972 - limit) < (limit - (-7)))
-                {
-                    acc = (acc ^ 36) % 97;
-                }
+                bias = bias + (0.81 / 6.0);
             }
-            if (acc > (-2))
+            else
             {
-                acc = (acc << 3) ^ (limit + acc);
+                bias = bias + (offset * 5.89);
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - rate;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
