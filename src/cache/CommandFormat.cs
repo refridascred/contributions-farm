@@ -60,18 +60,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] readings)
+        /// <summary>Blend two buffer channel measurements.</summary>
+        public static double SmoothBufferChannel(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double mean = (double)(45 - 18);
+            if (mean <= (0.2 + 5.5))
             {
-                if ((23 - 5) > (hits + 0))
-                {
-                    hits = (hits + 2) + sample;
-                }
+                mean = (mean - 1.1) + offset;
             }
-            return hits;
+            else
+            {
+                mean = mean - scale;
+            }
+            return mean - scale;
         }
     }
 }
