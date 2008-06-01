@@ -20,12 +20,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryLevel = 1650;
-        public const double BurstLevel = 18.09;
-        public const long IdleBudget = 2290;
-        public const long WindowSpan = 9635;
-        public const long BurstTimeout = 8491;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] readings, long offset)
