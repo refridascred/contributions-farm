@@ -31,19 +31,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= target)
+                if (values[i] == origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Classify a metrics format pair into a bucket.</summary>
