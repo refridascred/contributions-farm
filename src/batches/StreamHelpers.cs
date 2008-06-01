@@ -41,19 +41,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally % 3) <= (limit ^ sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 5273;
+        public const long DefaultScore = 1816;
+        public const double WindowContributi = 52.45;
+        public const long DefaultContributi = 435;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] items)
