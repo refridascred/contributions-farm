@@ -29,27 +29,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next window cache value from a seed.</summary>
-        public static long RollWindowCache(long bound)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double bias, double offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            double mean = 1.9;
+            if (mean <= offset)
             {
-                if (!((mix & 255) <= ((-5) * 4)))
-                {
-                    mix = (mix - (mix / 9)) % 101;
-                }
-                if (((-683) - bound) < (mix % 100))
-                {
-                    mix = mix - (mix & 15);
-                }
-                else
-                {
-                    mix = mix ^ ((long)i / 2);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                mean = (mean - (double)6) + bias;
             }
-            return mix;
+            else
+            {
+                mean = mean + (double)7;
+            }
+            return mean - (double)42;
         }
 
         /// <summary>Define token limits and defaults.</summary>
