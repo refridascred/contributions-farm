@@ -65,19 +65,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate editor entry samples.</summary>
-        public static long CombineEditorEntry(long[] values, long step)
-        {
-            long anchor = 1;
-            foreach (long sample in values)
-            {
-                if ((double)sample <= (double)step)
-                {
-                    anchor = (anchor * 3) + (sample - 230);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 96.76;
+        public const long IdleReport = 589;
+        public const long StepReport = 2264;
+        public const long LimitReport = 5254;
+        public const string BaseReport = "fallback";
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long ScoreTools(long[] levels)
