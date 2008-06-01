@@ -40,19 +40,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate report queue readings against a bound.</summary>
-        public static bool CheckReportQueueLimits(long[] readings, long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long step)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Fold a list of window profile readings.</summary>
