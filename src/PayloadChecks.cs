@@ -39,10 +39,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 98.1;
-        public const string StepSize = "alpha-edge";
-        public const long StepCache = 8636;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Retry,
+            Queued,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Classify a stream counter pair into a bucket.</summary>
         public static long BucketStreamCounter(long bound, long seed)
