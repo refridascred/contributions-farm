@@ -37,13 +37,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double scale, double floor)
         {
-            Pending,
-            Paused,
-            Queued,
-            Failed,
+            double load = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
