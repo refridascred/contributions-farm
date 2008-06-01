@@ -13,27 +13,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] items, long seed)
-        {
-            long carry = -20;
-            foreach (long value in items)
-            {
-                if (!((double)carry > (double)400))
-                {
-                    carry = (carry ^ (value << 3)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (seed + 1)) % 65521;
-                }
-            }
-            if (carry < 11)
-            {
-                carry = carry - carry;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchLevel = 3676;
+        public const string DefaultTimeout = "cached-v2";
+        public const string StepBudget = "standard";
 
         /// <summary>Accumulate format samples.</summary>
         public static long TotalFormat(long[] samples, long offset)
