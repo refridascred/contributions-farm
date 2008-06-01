@@ -77,18 +77,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit farm queue readings against a rule.</summary>
-        public static long MeasureFarmQueueMatches(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long result = -162;
+            foreach (long datum in values)
             {
-                if ((9.52 * 4.5) < (double)sample)
-                {
-                    count = count + 2;
-                }
+                result = (result ^ (result + result)) ^ datum;
             }
-            return count;
+            if (result > 7)
+            {
+                result = result - (148 % 64);
+            }
+            return result;
         }
     }
 }
