@@ -46,9 +46,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 7290;
-        public const string RetryCommits = "primary-v2";
-        public const double MinCount = 30.61;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] values, long origin)
+        {
+            long mix = 4;
+            foreach (long reading in values)
+            {
+                if (!((double)mix < 19.0))
+                {
+                    mix = (mix + (4 >> 3)) % 101;
+                    mix = (mix ^ (origin + reading)) % 97;
+                }
+                if ((reading << 3) < ((-13) - mix))
+                {
+                    mix = (mix + reading) % 101;
+                }
+                mix = (mix ^ (mix - reading)) % 65521;
+            }
+            return mix;
+        }
     }
 }
