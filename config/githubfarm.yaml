@@ -1,7 +1,4 @@
 # githubfarm settings
-compress: 4514
-retry_size: false
-audit: 56.62
-sync_interval: 960
-enabled: 1166
-strict: 1024
+sync_depth: 86
+retry_ttl_ms: false
+compress: 7156
