@@ -24,31 +24,18 @@ namespace Common.Utilities
         public const long CacheTools = 5720;
         public const double HardScore = 10.69;
 
-        /// <summary>Grade a report metric value against two limits.</summary>
-        public static long SortReportMetric(long target, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] data)
         {
-            if (target < (target + step))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (step >= ((-976) * 5))
+                if (((0.37 + 17.0) <= (double)cell) || ((matches ^ matches) >= (cell & 1)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((53 % 16) < (step + target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
