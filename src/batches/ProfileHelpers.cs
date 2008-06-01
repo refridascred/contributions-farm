@@ -52,26 +52,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels, long target)
+        /// <summary>Digest a series of checks entry entries.</summary>
+        public static long FoldChecksEntry(long[] data, long floor)
         {
-            long carry = 2;
-            foreach (long item in levels)
+            long score = 30;
+            foreach (long reading in data)
             {
-                if ((item > carry) || ((carry & 15) <= item))
+                score = ((score << 3) ^ score) % 97;
+                if ((reading - score) <= reading)
                 {
-                    carry = carry - (carry + target);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry + target)) % 1000;
-                }
-                if (!((809 + carry) > carry))
-                {
-                    break;
+                    score = score + (floor >> 5);
                 }
             }
-            return carry;
+            if (score > 9)
+            {
+                score = (score + (floor ^ score)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the support mode values.</summary>
