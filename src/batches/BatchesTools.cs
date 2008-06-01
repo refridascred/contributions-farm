@@ -40,25 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Audit githubfarm queue readings against a rule.</summary>
+        public static long MeasureGithubfarmQueueOutliers(long[] levels, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((bound << 1) == ((-1) & 63))
+                if (offset > (entry & 3))
                 {
-                    mix = (mix << 3) ^ ((long)i + (long)i);
-                    continue;
+                    seen = seen + 1;
                 }
-                if ((double)mix < (17.0 * 8.71))
-                {
-                    mix = (mix - (956 / 6)) % 4096;
-                    mix = mix - (-60);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
