@@ -49,22 +49,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mark = 539;
-            foreach (long datum in levels)
-            {
-                if (datum > (mark + datum))
-                {
-                    mark = (mark ^ (mark - mark)) % 97;
-                }
-            }
-            if (mark > 11)
-            {
-                mark = ((mark * 4) + (mark - mark)) % 255;
-            }
-            return mark % 4096;
+            Idle,
+            Paused,
+            Failed,
         }
     }
 }
