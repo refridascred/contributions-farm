@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepLevel = 29.82;
+        public const long MinBudget = 9008;
+        public const long BaseBatches = 7795;
+        public const string WindowLevel = "standard-1";
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaMatches(long[] data)
