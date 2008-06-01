@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long target, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] levels, long target)
         {
-            long span = target + floor;
-            if ((target + (-86)) < (target ^ floor))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((14.0 / 4.0) > (double)target))
+                if ((target >> 2) != (target + tally))
                 {
-                    return 1;
+                    tally = (tally + 2) ^ reading;
                 }
                 else
                 {
-                    if ((target <= span) && ((double)target > (double)span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
