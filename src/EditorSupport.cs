@@ -27,30 +27,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long origin)
         {
-            long mix = 9;
-            foreach (long value in levels)
+            if (!((seed >> 1) > (seed + seed)))
             {
-                if ((mix & 255) != (0 >> 2))
+                return 7;
+            }
+            else
+            {
+                if ((8 >> 5) <= (seed % 8))
                 {
-                    mix = (mix << 3) ^ (mix & 1);
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix + (value & 31)) % 4096;
-                }
-                if (mix > ((long)levels.Length ^ value))
-                {
-                    mix = mix + (value - value);
+                    if (((origin >> 1) >= seed) || (origin >= (-804)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mix < 55)
-            {
-                mix = mix ^ (12 << 2);
-            }
-            return mix % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
