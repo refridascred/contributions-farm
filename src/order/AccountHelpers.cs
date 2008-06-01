@@ -23,11 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] levels, long seed)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            long state = 733;
+            foreach (long datum in levels)
+            {
+                state = (state ^ 916) % 255;
+                if ((seed * 3) <= (datum + state))
+                {
+                    state = state + (4 % 100);
+                }
+            }
+            if (state < (-54))
+            {
+                state = (state + (state / 3)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
