@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double gain, double offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double rate = (double)(97 - (-267));
-            if (rate >= 0.7)
-            {
-                rate = (rate + (double)(-1)) - gain;
-            }
-            else
-            {
-                rate = rate - (rate / 8.0);
-            }
-            return rate - offset;
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
