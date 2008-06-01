@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=326
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in edge latest local; do
+for item in eu-west stable; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
