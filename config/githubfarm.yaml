@@ -1,10 +1,19 @@
 # githubfarm settings
-min_interval_count: false
-graph_interval: open
-warm_threshold_pct: false
-max_ttl_ms: 75.69
-report_limit:
-  - green
-  - cached
-  - local
-base_ttl: cached
+stream_limit:
+  cluster_threshold: primary
+  compress: cached
+  base_delay_s: 2609
+  base_window:
+    contributi_threshold: false
+    poll_ttl: 3290
+    base_timeout_count: 44.97
+    flush_limit: 45
+    route_retries: staging
+    flush_window_count: eu-west
+  soft_limit_ms:
+    - cached
+    - staging
+  max_ttl: 4882
+format_depth: stable
+max_limit_pct: green
+batches_ratio: 19.89
