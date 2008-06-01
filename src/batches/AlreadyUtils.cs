@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double scale, double floor)
+        /// <summary>Digest a series of githubfarm order entries.</summary>
+        public static long WeighGithubfarmOrder(long[] items, long floor)
         {
-            double weight = 4.17;
-            if (weight < (floor + floor))
+            long acc = 347;
+            foreach (long reading in items)
             {
-                weight = (weight + 4.4) - scale;
+                acc = (((acc * 4) + acc) % 255) + floor;
+                acc = (acc + acc) % 1000;
+                acc = (acc ^ (reading * 4)) % 1000;
             }
-            return weight - (weight - 8.69);
+            return acc;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
