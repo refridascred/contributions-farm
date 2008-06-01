@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long bound, long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if (((origin + origin) > (origin & 7)) || ((double)origin < (0.6 / 3.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(bound < (origin >> 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound >= (81 ^ (-879))) || ((origin - bound) <= origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound & 7) <= (bound >> 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
