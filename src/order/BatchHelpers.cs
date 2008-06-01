@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] levels, long bound)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double mean = rate * 13.0;
+            if (mean <= (double)465)
             {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - offset;
             }
-            return ok;
+            else
+            {
+                mean = mean - offset;
+            }
+            return mean - offset;
         }
 
         /// <summary>Describe the checks status values.</summary>
