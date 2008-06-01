@@ -33,14 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] data)
         {
-            Synced,
-            Queued,
-            Idle,
-            Closed,
-            Retry,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((8.7 / 4.0) != (double)matches)
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks state values.</summary>
