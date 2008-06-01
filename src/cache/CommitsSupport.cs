@@ -23,13 +23,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
