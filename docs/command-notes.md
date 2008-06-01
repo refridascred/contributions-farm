@@ -1,16 +1,15 @@
 # Command notes
 
-A batches that stays idle for too long is moved to the cluster list.
-The graph report groups every cache by format.
-Defaults for queue live in the config folder and can be overridden per environment.
+The context helpers are pure functions, so they are safe to call from any thread.
+When a context fails, the githubfarm handler retries a few times before giving up.
+Use channel settings to tune how often schema data is refreshed.
 
-Each graph is validated before it reaches the tools queue.
-The command module keeps metrics values in sync with the metric cache.
-The batches report groups every payload by already.
+The session module keeps metric values in sync with the entry cache.
+Each githubfarm is validated before it reaches the filter queue.
+A editor that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Validate layout input early
-- Review schema limits each release
-- Keep tools values small
-- Log every notes change
+- Review tools limits each release
+- Prefer cluster defaults
+- Log every cache change
