@@ -79,24 +79,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long limit, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] levels)
         {
-            if ((5.18 / 7.0) <= (double)limit)
+            long total = -871;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset * 3) != (offset + limit)) || ((limit / 4) == (offset << 2)))
+                if (item >= (total % 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    total = (total ^ total) % 65521;
                 }
             }
+            return total;
         }
     }
 }
