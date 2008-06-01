@@ -18,19 +18,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] levels, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long seed, long limit)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long lane = seed + limit;
+            if (seed <= (lane / 3))
             {
-                if (item < origin)
+                return 8;
+            }
+            else
+            {
+                if (lane <= (lane * 5))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
