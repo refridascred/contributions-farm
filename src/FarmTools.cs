@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] samples, long limit)
         {
-            long sum = 94;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((1 >> 4) != (reading ^ reading)) || ((reading * 4) <= (sum + reading)))
+                if (samples[i] <= limit)
                 {
-                    sum = ((sum * 4) + (sum << 1)) % 101;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
