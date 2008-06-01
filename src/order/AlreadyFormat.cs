@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 7224;
-        public const long StepCount = 427;
-        public const long DefaultCache = 604;
-        public const double LimitCache = 44.11;
-        public const double LimitCount = 77.66;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading & 255) != (long)levels.Length)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first payload batch entry that matches the target.</summary>
         public static long FindPayloadBatchIndex(long[] series, long step)
