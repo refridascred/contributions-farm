@@ -1,19 +1,7 @@
 {
-  "cache_delay_count": "primary",
-  "max_window": false,
-  "max_timeout_count": "blue",
-  "filter_window": {
-    "warm_threshold_s": ["local", "strict", "green", "edge"],
-    "queue_capacity": [317, 250, 1],
-    "burst_interval": {
-      "readonly": 27.43,
-      "stats_ttl": 41.51,
-      "format_depth": "cached",
-      "poll_window": false,
-      "warm_ratio_pct": true
-    },
-    "warm_ttl_count": "local",
-    "enabled": 30,
-    "max_ratio": 47.15
-  }
+  "editor_interval": 60,
+  "profile_capacity": [125, 359],
+  "burst_timeout": ["green", "standard", "eu-west"],
+  "min_retries_s": "strict",
+  "idle_ttl_ms": 52
 }
