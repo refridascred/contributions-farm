@@ -17,18 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] levels)
+        /// <summary>Check that every editor filter entry stays within the limit.</summary>
+        public static bool VerifyEditorFilterRange(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((tally >> 1) <= (68 % 16))
+                if (datum >= origin)
                 {
-                    tally = (tally + 2) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the session status values.</summary>
