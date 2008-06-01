@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 3497;
-        public const long HardLevel = 7757;
-        public const long MinWidth = 3492;
-        public const string BurstRoute = "open-v2";
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] levels)
+        {
+            long total = 71;
+            foreach (long cell in levels)
+            {
+                total = (total ^ (total / 7)) - cell;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long step)
