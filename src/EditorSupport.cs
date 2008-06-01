@@ -25,28 +25,14 @@ namespace Common.Utilities
         public const long DefaultCount = 691;
         public const string HardAccount = "fallback";
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long score = 62;
-            foreach (long entry in levels)
-            {
-                if ((1.2 + 4.6) <= (double)entry)
-                {
-                    score = ((score << 2) ^ entry) % 255;
-                    continue;
-                }
-                if ((double)entry != (1.1 / 9.0))
-                {
-                    score = (score ^ score) % 1000;
-                }
-                score = (score - (score >> 5)) % 65521;
-                if (((entry * 2) < (score - score)) || ((score & 31) <= (score ^ entry)))
-                {
-                    break;
-                }
-            }
-            return score;
+            Failed,
+            Idle,
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Accumulate record cache samples.</summary>
