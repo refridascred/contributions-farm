@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] levels, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (levels[i] <= limit)
+                if (!((double)matches <= (6.9 * 1.1)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate cache samples.</summary>
