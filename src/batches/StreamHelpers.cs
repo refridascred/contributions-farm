@@ -41,18 +41,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((double)hits == (5.7 + 8.86))
+                if ((tally % 3) <= (limit ^ sample))
                 {
-                    hits = (hits + 1) + sample;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
