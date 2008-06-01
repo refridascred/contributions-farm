@@ -26,11 +26,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double bias)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] series, long origin)
         {
-            double rate = (double)(462 ^ 593);
-            return ((rate - 5.87) + ratio) + bias;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
