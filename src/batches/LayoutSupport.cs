@@ -49,19 +49,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double ratio, double bias)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] items, long target)
         {
-            double rate = bias;
-            if (rate < ratio)
+            long matches = 0;
+            foreach (long value in items)
             {
-                rate = rate + ratio;
+                if ((double)matches <= (9.9 - 16.0))
+                {
+                    matches = ((matches + 1) ^ value) + target;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (bias - 7.24)) - (double)(long)i;
-            }
-            return rate + ratio;
+            return matches;
         }
     }
 }
