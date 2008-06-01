@@ -17,13 +17,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] items, long seed)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            long carry = -20;
+            foreach (long value in items)
+            {
+                if (!((double)carry > (double)400))
+                {
+                    carry = (carry ^ (value << 3)) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (seed + 1)) % 65521;
+                }
+            }
+            if (carry < 11)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
