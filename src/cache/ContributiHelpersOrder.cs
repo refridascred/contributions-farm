@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of route queue entries.</summary>
-        public static long CombineRouteQueue(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] data, long target)
         {
-            long total = 6;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                total = ((total ^ total) % 101) - reading;
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Describe the entry phase values.</summary>
