@@ -32,18 +32,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit layout session readings against a rule.</summary>
-        public static long TallyLayoutSessionGaps(long[] series)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((double)matches == (0.6 * 1.36))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
