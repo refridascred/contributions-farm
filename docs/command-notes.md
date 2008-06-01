@@ -1,14 +1,12 @@
 # Command notes
 
-Use already settings to tune how often payload data is refreshed.
-The account report groups every tools by buffer.
-Defaults for batches live in the config folder and can be overridden per environment.
-
-Run the metrics check before changing any format limits.
-Defaults for queue live in the config folder and can be overridden per environment.
+The payload module keeps profile values in sync with the queue cache.
+Keep cluster and cluster names short and lowercase.
+When a cache fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep already values small
-- Validate farm input early
-- Log every graph change
+- Prefer route defaults
+- Validate account input early
+- Keep queue values small
+- Review editor limits each release
