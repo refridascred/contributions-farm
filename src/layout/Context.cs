@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "alpha-edge";
-        public const long SoftLevel = 4462;
-        public const double BurstTools = 51.01;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitDepth = 3934;
+        public const long MinTimeout = 4820;
+        public const long MaxToken = 4116;
 
         /// <summary>Count the command counter entries that pass the check.</summary>
         public static long MeasureCommandCounterHits(long[] values, long floor)
