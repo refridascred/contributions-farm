@@ -38,22 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route cluster entries that pass the check.</summary>
-        public static long TallyRouteClusterHits(long[] readings, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((5.05 - 1.4) >= (double)datum) && ((bound / 7) != (datum + bound)))
+                if (readings[i] < offset)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
