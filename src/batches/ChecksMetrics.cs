@@ -24,18 +24,24 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] readings)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long step, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            if (bound > (bound + bound))
             {
-                if ((((tally & 15) == (24 + tally)) && ((tally - tally) < tally)) || !((datum + 193) <= (datum & 127)))
+                return 5;
+            }
+            else
+            {
+                if (((step + bound) <= (bound + bound)) && (step < (bound / 7)))
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
