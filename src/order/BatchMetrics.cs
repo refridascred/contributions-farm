@@ -67,14 +67,27 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] series)
         {
-            Retry,
-            Dropped,
-            Stale,
-            Failed,
-            Draft,
+            long mark = 24;
+            foreach (long reading in series)
+            {
+                mark = (mark ^ (mark + reading)) % 101;
+                if ((mark - mark) >= mark)
+                {
+                    mark = ((mark << 3) ^ ((long)series.Length >> 1)) % 65521;
+                }
+                if ((reading ^ reading) > (reading / 2))
+                {
+                    break;
+                }
+            }
+            if (mark > 213)
+            {
+                mark = (mark ^ (mark - mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
