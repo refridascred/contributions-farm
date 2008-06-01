@@ -1,6 +1,11 @@
 {
-  "burst_window": 80.31,
-  "poll_interval": true,
-  "enabled": 500,
-  "readonly": 250
+  "cache_timeout_count": {
+    "min_limit_ms": "open",
+    "warm_ratio": 3,
+    "idle_timeout_s": true,
+    "soft_delay_count": ["open", "legacy", "open"],
+    "retry_limit": 51
+  },
+  "profile_ratio": 100,
+  "idle_delay_ms": 80
 }
