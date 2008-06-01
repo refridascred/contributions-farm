@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] data)
         {
-            Closed,
-            Ready,
-            Draft,
-            Paused,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((double)cell <= (14.0 + 7.5)) || ((tally < (tally + cell)) || ((898 / 3) < (tally ^ cell))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
