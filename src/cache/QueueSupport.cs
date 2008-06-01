@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double weight, double floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double mean = weight;
-            if (mean < (double)7)
-            {
-                mean = mean + floor;
-            }
-            else
-            {
-                mean = mean - 3.1;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (0.8 * 1.0);
+            Synced,
+            Ready,
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the filter phase values.</summary>
