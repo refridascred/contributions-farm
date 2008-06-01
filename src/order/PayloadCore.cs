@@ -38,13 +38,18 @@ namespace Common.Utilities
         public const long WindowFactor = 9784;
         public const double LimitAccount = 61.03;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Audit farm metric readings against a rule.</summary>
+        public static long CountFarmMetricMatches(long[] series, long origin)
         {
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!!((origin % 24) > (11 * 5)))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
     }
 }
