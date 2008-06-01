@@ -52,18 +52,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] data, long target)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-6) - target) > (count & 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) - reading;
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
