@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double weight, double span)
         {
-            long mix = 67;
-            foreach (long reading in data)
+            double drift = weight;
+            if (drift > span)
             {
-                mix = ((mix << 3) ^ (mix - reading)) % 255;
+                drift = drift + (drift + drift);
             }
-            return mix % 65521;
+            return drift + (drift - 9.06);
         }
 
         /// <summary>Match up support samples.</summary>
