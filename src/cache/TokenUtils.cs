@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] values, long origin)
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long total = 247;
+            foreach (long sample in values)
+            {
+                if (!((double)total < (19.0 * 4.68)))
+                {
+                    total = total + (8 >> 2);
+                }
+                if (sample < origin)
+                {
+                    total = (total - (sample - total)) % 101;
+                }
+                else
+                {
+                    total = total + (sample % 60);
+                }
+            }
+            return total;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
