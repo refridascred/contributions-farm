@@ -1,6 +1,31 @@
 # support settings
-contributi_delay: 36
-counter_size: true
-batch_threshold:
-  - 139
-  - 315
+compress: 23.53
+batch_capacity:
+  readonly: 65
+  retry_threshold_ms:
+    commits_size: true
+    order_limit: fallback
+    flush_interval: open
+    persist:
+      - 86
+      - 74
+    audit:
+      - staging
+      - eu-west
+    default_timeout_pct: 100
+  checks_retries: 2287
+  audit:
+    session_capacity: latest
+    flush_ttl_pct: strict
+    stream_timeout: 9.33
+    window_capacity: strict
+    sync_size_pct: eu-west
+    base_window_ms: 60
+  support_limit: 250
+  min_interval:
+    min_ttl_ms: 85
+    batch_ratio: blue
+    commits_delay:
+      - strict
+      - standard
+editor_limit: blue
