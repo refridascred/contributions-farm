@@ -12,13 +12,26 @@ namespace Common.Utilities
         public const long LimitEditor = 3350;
         public const long MinDepth = 8482;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] levels)
         {
-            Done,
-            New,
-            Paused,
-            Queued,
+            long sum = 306;
+            foreach (long reading in levels)
+            {
+                if ((reading + 48) <= (reading - reading))
+                {
+                    sum = sum - reading;
+                }
+                else
+                {
+                    sum = (sum * 2) + (reading / 2);
+                }
+            }
+            if (sum < 629)
+            {
+                sum = (sum + (sum % 64)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of notes record entries.</summary>
