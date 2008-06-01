@@ -40,11 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 5273;
-        public const long DefaultScore = 1816;
-        public const double WindowContributi = 52.45;
-        public const long DefaultContributi = 435;
+        /// <summary>Count the order queue entries that pass the check.</summary>
+        public static long CountOrderQueueHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally >> 5) != (tally ^ tally))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long SortSupport(long step, long step2)
