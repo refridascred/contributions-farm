@@ -13,19 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate payload filter readings against a bound.</summary>
-        public static bool GuardPayloadFilterRange(long[] samples, long bound)
+        /// <summary>Audit farm schema readings against a rule.</summary>
+        public static long AuditFarmSchemaOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (item <= bound)
+                if ((cell + cell) == (73 % 5))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
