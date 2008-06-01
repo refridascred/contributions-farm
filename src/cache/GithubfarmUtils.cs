@@ -28,22 +28,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] readings)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double bias = 7.5 * 9.0;
+            if (bias > (double)44)
             {
-                if (((hits - value) < (21 % 60)) || ((2.41 / 6.0) >= (double)value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = (bias + (bias * 19.0)) + ratio;
             }
-            return hits;
+            else
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (double)550) - (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
