@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Find the first metric graph entry that matches the target.</summary>
+        public static long LocateMetricGraphIndex(long[] items, long limit)
         {
-            long score = 723;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score - score) % 1000) - sample;
-                if (!((17.0 - 6.0) < (7.57 * 9.4)))
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the channel state values.</summary>
