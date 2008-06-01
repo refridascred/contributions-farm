@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
