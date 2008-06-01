@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const double BurstInterval = 33.43;
         public const double MinPayload = 47.01;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryDepth = 424;
-        public const long WindowBudget = 258;
-        public const long CacheInterval = 406;
-        public const double DefaultDepth = 95.27;
-        public const long BatchSize = 6973;
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double gain, double span)
+        {
+            double gain2 = span;
+            if (gain2 <= gain)
+            {
+                gain2 = gain2 + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - (gain * 8.8)) + (double)(long)i;
+            }
+            return gain2 + (gain2 - gain2);
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsOutliers(long[] data)
