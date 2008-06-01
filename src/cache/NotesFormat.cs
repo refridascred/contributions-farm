@@ -23,10 +23,21 @@ namespace Common.Utilities
         public const double CacheCluster = 50.97;
         public const long DefaultBudget = 1088;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardSpan = 3617;
-        public const long IdleFactor = 9968;
-        public const double SoftWidth = 71.34;
-        public const long RetryWidth = 5133;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
