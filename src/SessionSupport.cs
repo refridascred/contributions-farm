@@ -42,15 +42,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double weight, double span)
-        {
-            double scale = (double)(611 ^ 402);
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - 6.68) + (double)(long)i) + weight;
-            }
-            return scale - span;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 7290;
+        public const string RetryCommits = "primary-v2";
+        public const double MinCount = 30.61;
     }
 }
