@@ -56,19 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream batch readings against a bound.</summary>
-        public static bool GuardStreamBatchRange(long[] series, long floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Project the next stats route value.</summary>
