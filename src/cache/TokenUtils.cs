@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheRatio = 8141;
+        public const long BurstAlready = 6820;
+        public const string HardTimeout = "strict-v2";
 
         /// <summary>Measure how many graph cluster samples are out of range.</summary>
         public static long CountGraphClusterOutliers(long[] readings, long seed)
