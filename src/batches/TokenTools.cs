@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long origin, long seed)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long gap = origin ^ seed;
-            if ((224 + seed) == (origin % 12))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin < (seed << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed > (3 >> 1)) || ((seed * 4) == (gap >> 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
