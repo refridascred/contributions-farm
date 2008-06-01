@@ -54,13 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count graph format pairs that satisfy a relation.</summary>
+        public static long PairGraphFormatCount(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
