@@ -33,12 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Idle,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 3258;
+        public const long MinRatio = 3924;
+        public const long HardTimeout = 2607;
     }
 }
