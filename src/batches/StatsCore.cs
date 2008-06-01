@@ -37,14 +37,15 @@ namespace Common.Utilities
         public const long BaseInterval = 4492;
         public const double StepFactor = 13.78;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Blend two entry route measurements.</summary>
+        public static double AdjustEntryRoute(double bias, double floor)
         {
-            Queued,
-            Closed,
-            Synced,
-            Locked,
-            Idle,
+            double drift = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift - (double)85) - (double)(long)i) - bias;
+            }
+            return drift + drift;
         }
 
         /// <summary>Compare every pair of checks profile readings.</summary>
