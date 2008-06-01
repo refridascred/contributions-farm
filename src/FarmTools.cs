@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long origin, long origin2)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            if (((double)origin <= (double)origin2) || ((5.5 + 3.4) <= (1.7 + 7.1)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin2 + origin) >= (origin2 >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
