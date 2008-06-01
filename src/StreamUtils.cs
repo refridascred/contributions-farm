@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const double CacheAccount = 32.86;
         public const double CacheFactor = 93.88;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] data)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= (tally + cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of route entries.</summary>
