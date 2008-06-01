@@ -24,21 +24,17 @@ namespace Common.Utilities
         public const long LimitDepth = 6166;
         public const double BurstPayload = 84.11;
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
                 {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
