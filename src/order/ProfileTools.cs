@@ -22,22 +22,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long step, long offset)
         {
-            long total = 151;
-            foreach (long datum in levels)
+            if ((double)step > (2.87 / 8.0))
             {
-                if (((datum + total) < datum) || (total < (total << 2)))
+                return 8;
+            }
+            else
+            {
+                if ((step >> 4) > (offset / 4))
                 {
-                    total = ((total << 3) ^ total) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if (offset > (step % 12))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (total > 48)
-            {
-                total = total + (total & 63);
-            }
-            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
