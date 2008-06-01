@@ -1,12 +1,12 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the channel list.
-Use cluster settings to tune how often entry data is refreshed.
-Each metric is validated before it reaches the buffer queue.
+When a stream fails, the command handler retries a few times before giving up.
+Run the metric check before changing any account limits.
+Run the record check before changing any cluster limits.
 
 ## Guidelines
 
-- Validate notes input early
-- Review already limits each release
-- Log every format change
-- Prefer queue defaults
+- Keep checks values small
+- Validate queue input early
+- Document new tools fields
+- Log every metrics change
