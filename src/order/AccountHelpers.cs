@@ -43,22 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "stable";
+        public const long BatchStream = 3183;
+        public const long BaseRatio = 3778;
+        public const long MinStream = 5766;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
