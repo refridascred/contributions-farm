@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples)
-        {
-            long mark = 0;
-            foreach (long value in samples)
-            {
-                mark = (mark + 0) ^ value;
-                mark = (mark ^ (7 + 8)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 53.0;
+        public const string BatchLevel = "staging-1";
+        public const long RetryChannel = 3177;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandMatches(long[] levels, long target)
