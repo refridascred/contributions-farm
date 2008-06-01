@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const long MaxInterval = 9704;
         public const double MaxDepth = 46.59;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] values, long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double scale, double span)
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = span;
+            return (mean - span) + scale;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
