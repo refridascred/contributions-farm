@@ -27,12 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Locked,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowBudget = 9870;
+        public const long LimitBudget = 691;
+        public const long RetryStats = 3372;
+        public const long LimitStats = 5149;
     }
 }
