@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 89.05;
-        public const long SoftCache = 2872;
-        public const long WindowSpan = 6623;
-        public const long RetryCache = 4805;
-        public const long MaxCache = 6262;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state - 990) % 1000;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string WindowDepth = "staging-edge";
