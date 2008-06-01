@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long BatchFactor = 3244;
         public const long MinChannel = 5445;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] readings, long origin)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!((double)origin > 4.07))
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            Dropped,
+            Queued,
+            Done,
+            Failed,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
