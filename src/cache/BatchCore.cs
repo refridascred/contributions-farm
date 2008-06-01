@@ -21,16 +21,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] series)
+        /// <summary>Count the counter contributi entries that pass the check.</summary>
+        public static long AuditCounterContributiHits(long[] series, long bound)
         {
-            long anchor = 17;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                anchor = ((anchor << 2) ^ anchor) + sample;
-                anchor = (anchor - (anchor >> 4)) % 1000;
+                if (datum > (63 + matches))
+                {
+                    matches = (matches + 2) - bound;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
