@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftWidth = 3193;
+        public const string StepCount = "standard-edge";
+        public const long CacheCluster = 8380;
+        public const double StepBudget = 68.03;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double IdleRoute = 35.74;
