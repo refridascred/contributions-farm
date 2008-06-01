@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long RetryCache = 4805;
         public const long MaxCache = 6262;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowDepth = "staging-edge";
+        public const string DefaultToken = "cached-edge";
+        public const double CacheToken = 36.91;
+        public const long MinToken = 1814;
+        public const string StepTimeout = "primary-v2";
 
         /// <summary>Accumulate cache samples.</summary>
         public static long WeighCache(long[] data, long floor)
