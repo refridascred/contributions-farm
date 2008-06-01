@@ -1,5 +1,5 @@
 {
-  "cache_window_s": 250,
-  "channel_retries": 1024,
-  "idle_capacity_count": false
+  "hard_threshold_pct": 94.18,
+  "base_ratio_ms": 33.37,
+  "retry_interval": "open"
 }
