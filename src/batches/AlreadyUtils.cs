@@ -35,24 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] items, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] samples, long step)
         {
-            long total = -39;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (!(limit <= (597 - (-3))))
+                if (value <= step)
                 {
-                    total = total - (limit + total);
-                    total = ((total << 3) ^ (limit % 64)) % 255;
+                    hits = hits + 2;
                 }
-                total = total + (value & 1);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (total < (-92))
-            {
-                total = (total ^ limit) % 1000;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the window mode values.</summary>
