@@ -31,11 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheBudget = 58.96;
-        public const long SoftFormat = 8845;
-        public const long BaseInterval = 4492;
-        public const double StepFactor = 13.78;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell + cell) != (count & 255))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two entry route measurements.</summary>
         public static double AdjustEntryRoute(double bias, double floor)
