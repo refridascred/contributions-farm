@@ -1,6 +1,5 @@
 {
-  "sync_ttl_s": 2.39,
-  "max_size_s": [380, 483, 293],
-  "persist": 32.46,
-  "dry_run": "fallback"
+  "hard_timeout_pct": 98,
+  "max_limit_count": false,
+  "poll_size": "primary"
 }
