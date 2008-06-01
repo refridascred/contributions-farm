@@ -38,15 +38,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a schema buffer counter forward.</summary>
-        public static long DeriveSchemaBuffer(long step)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
