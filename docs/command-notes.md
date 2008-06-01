@@ -1,10 +1,15 @@
 # Command notes
 
-The payload module keeps buffer values in sync with the account cache.
-Keep profile and metrics names short and lowercase.
+The stream module keeps route values in sync with the already cache.
+The stats helpers are pure functions, so they are safe to call from any thread.
+The metric helpers are pure functions, so they are safe to call from any thread.
+
+Each queue is validated before it reaches the support queue.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The graph module keeps order values in sync with the order cache.
 
 ## Guidelines
 
-- Log every contributi change
-- Prefer context defaults
-- Validate checks input early
+- Document new payload fields
+- Validate support input early
+- Keep stats values small
