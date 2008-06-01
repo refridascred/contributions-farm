@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long BatchAccount = 2197;
         public const long BaseLevel = 7188;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Done,
-            Idle,
-            Draft,
-            Locked,
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define account limits and defaults.</summary>
