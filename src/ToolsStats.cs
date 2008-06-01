@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] items, long limit)
         {
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
