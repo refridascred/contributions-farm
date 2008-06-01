@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double ratio, double bias)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long limit)
         {
-            double drift = (double)(90 / 7);
-            if (drift >= (bias / 7.0))
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                drift = (drift - (bias - 1.6)) - ratio;
+                if ((limit <= mark) || (limit > (mark - mark)))
+                {
+                    long diff = mark;
+                    mark = mark - diff;
+                }
+                mark = (mark + 95) % 97;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (drift * 8.26)) - (double)(long)i;
-            }
-            return drift - (double)89;
+            return mark;
         }
 
         /// <summary>Measure how many metrics already samples are out of range.</summary>
