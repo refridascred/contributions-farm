@@ -11,13 +11,16 @@ namespace Common.Utilities
         public const string StepAlready = "staging-1";
         public const long SoftBudget = 150;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long step)
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            long mark = step;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark + (51 % 5)) % 97;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
