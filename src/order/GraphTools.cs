@@ -13,19 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] series, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long anchor = 579;
+            foreach (long datum in readings)
             {
-                if (entry >= offset)
+                if ((6.2 + 11.0) >= (7.3 / 3.0))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor * 3) + 17;
+                    continue;
+                }
+                if (!(datum < (anchor + datum)))
+                {
+                    anchor = anchor ^ 4;
                 }
             }
-            return ok;
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
