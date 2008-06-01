@@ -11,28 +11,29 @@ namespace Common.Utilities
         public const double BurstSize = 91.1;
         public const long SoftInterval = 4659;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long step, long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long step, long step2)
         {
-            if ((step % 2) > (2 + step))
+            long delta = step - step2;
+            if ((14.0 / 3.0) > (double)step)
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((6.47 / 6.0) <= (double)offset)
+                if (step2 < (delta % 7))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((412 - offset) <= (step + step))
+                    if (step2 >= (step2 + 68))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        return 2;
+                        return 4;
                     }
                 }
             }
