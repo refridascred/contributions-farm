@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] samples)
-        {
-            long sum = 3;
-            foreach (long item in samples)
-            {
-                if (item < (item & 15))
-                {
-                    sum = sum + item;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (49 & 63)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftCommits = "latest";
+        public const double IdleCommits = 88.27;
+        public const string CacheCommits = "open";
 
         /// <summary>Validate account filter readings against a bound.</summary>
         public static bool VerifyAccountFilterLimits(long[] values, long floor)
