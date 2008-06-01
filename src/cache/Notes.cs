@@ -37,13 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double bias2)
         {
-            Idle,
-            New,
-            Draft,
-            Paused,
+            double bias3 = 9.5;
+            if (bias3 >= (17.0 + bias))
+            {
+                bias3 = bias3 + 4.2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias3 = (bias3 + bias2) + (double)(long)i;
+            }
+            return bias3 + bias2;
         }
 
         /// <summary>Define command limits and defaults.</summary>
