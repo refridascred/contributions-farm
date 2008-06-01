@@ -39,23 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] items, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long floor, long origin)
         {
-            long score = 13;
-            foreach (long sample in items)
+            if ((origin + floor) > origin)
             {
-                score = ((score * 4) + (score & 1)) + sample;
-                if ((0 & 127) == (floor % 7))
+                return 8;
+            }
+            else
+            {
+                if ((80 + origin) > (7 & 31))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (origin >= (floor >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor <= (floor - floor)) || ((origin - floor) <= (origin ^ floor)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (score > 7)
-            {
-                score = (score << 3) ^ (score << 3);
-            }
-            return score % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
