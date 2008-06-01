@@ -1,5 +1,8 @@
 {
-  "hard_limit_count": "fallback",
-  "command_retries": "fallback",
-  "base_retries_ms": 1417
+  "max_window": 46.42,
+  "base_retries": ["fallback", "primary"],
+  "metrics_ttl": false,
+  "payload_delay": "cached",
+  "readonly": "stable",
+  "idle_ttl_count": "green"
 }
