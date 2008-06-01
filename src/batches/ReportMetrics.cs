@@ -38,10 +38,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowBudget = 9870;
-        public const long LimitBudget = 691;
-        public const long RetryStats = 3372;
-        public const long LimitStats = 5149;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
