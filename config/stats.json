@@ -1,5 +1,24 @@
 {
-  "max_depth_pct": 75.99,
-  "flush_window_s": [267, 313, 261, 308],
-  "flush_ratio_pct": 1577
+  "audit": {
+    "report_ratio": {
+      "batch_capacity_count": true,
+      "retry_ttl_ms": "local",
+      "readonly": 9,
+      "farm_window": "eu-west",
+      "strict": "primary"
+    },
+    "poll_delay": 91.68,
+    "base_retries_count": 77.15,
+    "soft_window": true,
+    "persist": {
+      "dry_run": "latest",
+      "persist": "stable",
+      "compress": 2790,
+      "idle_limit": "local",
+      "hard_limit_count": 65.51,
+      "warm_ttl": ["standard", "strict", "standard", "local"]
+    }
+  },
+  "poll_size": [382, 266],
+  "stats_ttl": "primary"
 }
