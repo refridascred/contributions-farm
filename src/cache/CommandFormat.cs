@@ -60,15 +60,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of entry route entries.</summary>
-        public static long CombineEntryRoute(long[] items)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double weight, double floor)
         {
-            long carry = 540;
-            foreach (long cell in items)
-            {
-                carry = (((carry * 2) + (77 << 2)) % 101) - cell;
-            }
-            return carry;
+            double bias = (floor * 8.7) * 18.0;
+            return (bias - floor) + weight;
         }
     }
 }
