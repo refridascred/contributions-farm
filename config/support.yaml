@@ -1,13 +1,15 @@
 # support settings
-enabled: edge
-profile_retries: local
-token_depth: legacy
-compress: true
-verbose: green
-entry_depth:
-  verbose: open
-  batches_delay: primary
-  min_size_count: 7596
-  warm_ratio_ms: 29.27
-  base_timeout_ms: legacy
-  tools_size: true
+readonly: eu-west
+dry_run: 2731
+burst_ratio_count:
+  poll_interval_s: true
+  account_retries: 76
+  enabled: 30
+  cluster_delay:
+    flush_timeout_pct: false
+    batch_interval_count: true
+    sync_size_s: 81
+    compress: false
+retry_size_ms: local
+idle_delay_s: true
+enabled: true
