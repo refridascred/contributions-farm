@@ -13,18 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (matches <= (datum << 3))
+                if (value <= origin)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Fold a list of order readings.</summary>
