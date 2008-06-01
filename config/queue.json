@@ -1,12 +1,6 @@
 {
-  "burst_threshold": true,
-  "counter_capacity": "legacy",
-  "default_size": {
-    "max_threshold_ms": 34.08,
-    "idle_size_ms": false,
-    "account_interval": 6621
-  },
-  "cache_depth_s": false,
-  "max_limit_count": true,
-  "verbose": "fallback"
+  "dry_run": [161, 427, 155, 411],
+  "farm_interval": 69,
+  "warm_ttl": false,
+  "schema_interval": "eu-west"
 }
