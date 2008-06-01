@@ -32,12 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public double Score { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
+            Locked,
+            Closed,
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a payload record.</summary>
