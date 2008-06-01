@@ -45,12 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] data)
         {
-            Idle,
-            Active,
-            Done,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((count % 10) >= entry) || (((double)entry == (2.47 + 3.07)) && ((14.0 / 6.0) > (double)entry)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a already counter forward.</summary>
