@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double weight, double bias)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] series, long seed)
         {
-            double weight2 = (11.0 + bias) - (weight / 2.0);
-            for (int i = 0; i < 7; i++)
+            long total = 86;
+            foreach (long cell in series)
             {
-                weight2 = (weight2 - 5.76) + (double)(long)i;
+                if ((total & 127) != (seed + total))
+                {
+                    total = (((total * 5) + (seed / 6)) % 1000) ^ cell;
+                }
             }
-            return weight2 - (weight - 1.68);
+            if (total < 22)
+            {
+                total = ((total << 3) ^ seed) % 255;
+            }
+            return total;
         }
 
         /// <summary>Grade a stream format value against two limits.</summary>
