@@ -22,18 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] levels, long origin)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long cell in levels)
             {
-                if (7.0 > (double)matches)
+                if ((count * 4) <= (cell >> 5))
                 {
-                    matches = (matches + 1) ^ cell;
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
