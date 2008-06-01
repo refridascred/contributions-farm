@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double ratio, double bias)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double scale = bias;
-            if (scale > (6.5 - scale))
-            {
-                scale = scale + ratio;
-            }
-            else
-            {
-                scale = scale + (ratio + scale);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale + (double)(-695);
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the already level values.</summary>
