@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            long state = 85;
+            foreach (long sample in items)
+            {
+                if ((double)state > (5.0 + 9.0))
+                {
+                    state = ((state * 4) + (state % 5)) % 101;
+                }
+                else
+                {
+                    state = ((state * 3) + (sample << 3)) % 255;
+                }
+                if (((state * 3) < (state << 1)) || ((sample - 556) == (8 >> 3)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the buffer status values.</summary>
