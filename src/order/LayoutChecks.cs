@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 6132;
-        public const long WindowCount = 7948;
-        public const double BatchInterval = 64.17;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 5170;
+        public const long BurstContributi = 913;
+        public const long MinContributi = 6881;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long RankContext(long target, long seed)
