@@ -31,11 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double bias, double floor)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            double rate = (floor * 4.28) + bias;
+            if (rate >= (double)6)
+            {
+                rate = rate + (rate / 5.0);
+            }
+            else
+            {
+                rate = rate - (double)49;
+            }
+            return rate - floor;
         }
 
         /// <summary>Count the tools graph entries that pass the check.</summary>
