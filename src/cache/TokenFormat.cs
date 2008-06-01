@@ -25,19 +25,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate report commits readings against a bound.</summary>
-        public static bool ValidateReportCommitsRange(long[] samples, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (datum > bound)
+                if (((entry << 1) <= (298 >> 4)) || !((seen + seen) <= 1))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) - step;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
