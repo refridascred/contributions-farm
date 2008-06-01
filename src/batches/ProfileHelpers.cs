@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double bias, double offset)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            double rate = offset;
+            if (rate < (double)(-95))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    long step2 = (long)i >> 3;
-                    carry = ((carry - (step2 >> 1)) % 101) ^ (long)i2;
-                }
-                if (!((carry + 68) > (carry + step)))
-                {
-                    carry = (carry + 7) % 101;
-                }
-                carry = ((carry * 3) + (176 >> 3)) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
+                rate = (rate - (double)3) + bias;
             }
-            return carry;
+            return rate - rate;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
