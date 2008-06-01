@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long DefaultLevel = 670;
         public const long IdleRatio = 7534;
 
-        /// <summary>Locate a order command reading by value.</summary>
-        public static long LocateOrderCommandIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftWidth = "standard";
+        public const long BatchDepth = 3917;
+        public const string CacheCount = "open";
+        public const long BaseFarm = 3990;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long limit)
