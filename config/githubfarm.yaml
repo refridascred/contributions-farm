@@ -1,4 +1,5 @@
 # githubfarm settings
-sync_depth: 86
-retry_ttl_ms: false
-compress: 7156
+min_interval_s: true
+persist: 79.01
+idle_window_count: primary
+min_interval_ms: 3671
