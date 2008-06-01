@@ -41,23 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            long anchor = 93;
-            foreach (long item in series)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((item >> 3) == (item - anchor))
-                {
-                    anchor = (anchor - item) % 4096;
-                    continue;
-                }
-                if ((double)item <= 4.9)
-                {
-                    anchor = (anchor << 2) ^ (item & 3);
-                }
+                result = result ^ result;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Match up record samples.</summary>
