@@ -19,17 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long bound)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = ratio;
+            if (gain < (ratio + 7.0))
             {
-                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (double)5;
             }
-            return -1;
+            else
+            {
+                gain = gain - (span - 8.2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (4.67 - ratio);
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
