@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 8342;
-        public const string SoftSpan = "legacy-1";
-        public const double SoftGithubfarm = 88.85;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchRatio = "strict-1";
+        public const double BurstBudget = 67.3;
+        public const double MinCluster = 77.72;
+        public const long DefaultLevel = 6832;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
