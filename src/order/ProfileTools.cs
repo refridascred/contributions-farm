@@ -52,20 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardCount = 2799;
+        public const long MinLayout = 719;
+        public const string BaseLayout = "local";
+        public const long RetryLayout = 5237;
+        public const long MaxSpan = 7071;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheWidth = 5673;
