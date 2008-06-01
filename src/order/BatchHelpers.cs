@@ -30,19 +30,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] series, long target)
+        /// <summary>Classify a contributi filter pair into a bucket.</summary>
+        public static long SortContributiFilter(long seed, long target)
         {
-            long anchor = 28;
-            foreach (long item in series)
+            if ((target + seed) <= (seed % 16))
             {
-                anchor = (((anchor << 3) ^ (159 * 4)) % 255) - item;
+                return 6;
             }
-            if (anchor < (-427))
+            else
             {
-                anchor = anchor ^ (anchor ^ target);
+                if ((4 + seed) <= (target >> 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return anchor;
         }
     }
 }
