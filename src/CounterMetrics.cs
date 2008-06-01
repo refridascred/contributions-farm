@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    long delta = (origin & 127) & 15;
-                    sum = (((sum << 2) ^ delta) % 4096) - (long)i2;
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
