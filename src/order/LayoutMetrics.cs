@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] values, long floor)
+        /// <summary>Project the next batch counter value.</summary>
+        public static double SmoothBatchCounter(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)7 + rate;
+            if (scale <= (floor + rate))
             {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
+                scale = scale + (double)575;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (15.0 + rate);
         }
 
         /// <summary>Describe the tools state values.</summary>
