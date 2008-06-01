@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long LimitOrder = 5177;
         public const string MaxOrder = "strict-v2";
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long mark = 83;
-            foreach (long reading in items)
-            {
-                if ((mark << 1) <= (595 % 16))
-                {
-                    mark = (mark - (mark / 3)) + reading;
-                }
-            }
-            return mark % 65521;
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
