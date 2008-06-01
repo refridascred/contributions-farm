@@ -38,10 +38,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "staging-1";
-        public const long HardChecks = 5121;
-        public const long BurstInterval = 3747;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchRatio = 4442;
+        public const long RetryCluster = 9332;
+        public const double DefaultDepth = 23.9;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long origin)
