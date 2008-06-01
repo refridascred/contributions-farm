@@ -34,11 +34,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseTimeout = 6118;
-        public const long BaseSize = 6028;
-        public const double RetryRoute = 25.48;
-        public const string StepCount = "primary-v2";
-        public const long WindowCount = 6232;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long target, long seed)
+        {
+            long delta = target + seed;
+            if ((double)delta > (3.0 * 9.3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.84 - 5.0) <= (double)delta)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed << 3) < delta)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
