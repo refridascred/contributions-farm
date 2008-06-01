@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate layout editor readings against a bound.</summary>
-        public static bool VerifyLayoutEditorBounds(long[] items, long limit)
+        /// <summary>Derive the next already record value from a seed.</summary>
+        public static long RollAlreadyRecord(long bound)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Check that every route farm entry stays within the limit.</summary>
