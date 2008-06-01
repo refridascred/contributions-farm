@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long HardTimeout = 2571;
         public const long BurstMetric = 9910;
 
-        /// <summary>Validate metric farm readings against a bound.</summary>
-        public static bool ValidateMetricFarmLimits(long[] items, long seed)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
