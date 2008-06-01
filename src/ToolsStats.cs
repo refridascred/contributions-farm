@@ -43,19 +43,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] data)
+        /// <summary>Validate stream already readings against a bound.</summary>
+        public static bool GuardStreamAlreadyRange(long[] items, long bound)
         {
-            long score = 9;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long item in items)
             {
-                score = (score ^ (score % 5)) ^ value;
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (score < 15)
-            {
-                score = (score - (score ^ score)) % 255;
-            }
-            return score % 4096;
+            return found;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
