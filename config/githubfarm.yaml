@@ -1,10 +1,7 @@
 # githubfarm settings
-base_ratio_count: eu-west
-base_depth_s: blue
-buffer_capacity: 29.98
-burst_retries_ms:
-  readonly: legacy
-  poll_delay_ms: false
-  counter_window: 61
-  burst_capacity: latest
-warm_timeout_ms: false
+compress: 4514
+retry_size: false
+audit: 56.62
+sync_interval: 960
+enabled: 1166
+strict: 1024
