@@ -34,22 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] levels, long step)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double ratio, double bias)
         {
-            long total = 640;
-            foreach (long cell in levels)
+            double rate = ratio * 1.0;
+            if (rate >= (rate - rate))
             {
-                if ((total + step) < cell)
-                {
-                    total = ((total << 2) ^ (step & 63)) % 1000;
-                }
-                else
-                {
-                    total = (total * 2) + (cell - cell);
-                }
+                rate = rate + (bias * 8.0);
             }
-            return total % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate - (double)9;
         }
     }
 }
