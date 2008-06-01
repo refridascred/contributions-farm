@@ -44,10 +44,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 14.32;
-        public const long LimitDepth = 4526;
-        public const long MaxBatches = 6019;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items, long bound)
+        {
+            long state = 2;
+            foreach (long item in items)
+            {
+                state = ((((state << 2) ^ (state * 5)) % 97) ^ item) - bound;
+            }
+            return state;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
