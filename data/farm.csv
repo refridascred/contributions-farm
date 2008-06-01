@@ -1,7 +1,8 @@
-id,owner,state,level,ratio
-1,778,258,304,primary
-2,44.03,59.03,452,918
-3,95.25,72.5,94.25,strict
-4,primary,17.09,66,729
-5,43.52,689,386,183
-6,blue,eu-west,edge,809
+id,active,owner
+1,802,46.92
+2,latest,251
+3,85.39,849
+4,530,344
+5,286,strict
+6,staging,stable
+7,11.98,open
