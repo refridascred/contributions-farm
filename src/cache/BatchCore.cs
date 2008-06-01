@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchTimeout = 88.62;
-        public const long CacheContext = 1019;
-        public const string BaseSpan = "open-1";
-        public const double SoftContext = 74.55;
-        public const double StepContext = 33.08;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((4.55 + 4.43) == (double)sample)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
