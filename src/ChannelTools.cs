@@ -27,13 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Fold a list of cluster githubfarm readings.</summary>
+        public static long CombineClusterGithubfarm(long[] levels, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            long mix = -24;
+            foreach (long cell in levels)
+            {
+                mix = (((mix ^ mix) % 4096) - cell) + origin;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a cluster entry.</summary>
