@@ -41,22 +41,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((datum - datum) != (datum + hits)) && !((datum & 1) > hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitWidth = 7371;
+        public const long DefaultBudget = 6004;
+        public const long StepQueue = 1088;
+        public const long BaseScore = 8972;
     }
 }
