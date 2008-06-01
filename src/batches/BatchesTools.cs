@@ -22,13 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Iterate the stats cluster series from a seed.</summary>
+        public static long DeriveStatsCluster(long origin)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of route entries.</summary>
