@@ -25,18 +25,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepRatio = "fallback-1";
+        public const string CacheGithubfarm = "latest-edge";
+        public const long BurstGithubfarm = 9695;
+        public const double HardFactor = 39.7;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] data, long origin)
