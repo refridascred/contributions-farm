@@ -24,26 +24,12 @@ namespace Common.Utilities
         public const long LimitDepth = 6166;
         public const double BurstPayload = 84.11;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long step, long step2)
-        {
-            long delta = step + step2;
-            if ((double)delta == (1.1 + 20.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((948 + 57) >= (step2 ^ step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinCount = "open";
+        public const double LimitNotes = 77.92;
+        public const long RetryNotes = 9873;
+        public const long DefaultNotes = 3611;
+        public const long BurstScore = 2404;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] data)
