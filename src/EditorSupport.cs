@@ -68,15 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long AuditChecksTokenGaps(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((entry << 2) >= (hits + entry))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
