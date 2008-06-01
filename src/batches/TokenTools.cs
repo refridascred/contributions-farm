@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Look up the position of a window stream sample.</summary>
+        public static long FindWindowStreamIndex(long[] series, long bound)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a command options.</summary>
