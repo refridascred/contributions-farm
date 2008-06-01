@@ -26,12 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinRatio = 9971;
+        public const double DefaultDepth = 77.21;
+        public const double IdleBatch = 37.6;
+        public const long RetryLevel = 3266;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
