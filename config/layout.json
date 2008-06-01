@@ -1,5 +1,7 @@
 {
-  "soft_ratio_pct": "strict",
-  "command_ttl": "latest",
-  "batch_threshold": "fallback"
+  "flush_limit": 7.98,
+  "sync_limit_s": "edge",
+  "burst_depth_s": 23.33,
+  "min_delay_ms": 20.53,
+  "strict": 7411
 }
