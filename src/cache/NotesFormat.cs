@@ -40,13 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Paused,
-            Draft,
-            Ready,
-            Failed,
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
