@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long score = 73;
+            foreach (long datum in items)
             {
-                if ((double)datum >= (6.36 + 1.7))
+                score = (score - score) % 4096;
+                if ((score >> 1) > (datum & 15))
                 {
-                    hits = hits + 1;
+                    score = (score * 3) + datum;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count the order queue entries that pass the check.</summary>
