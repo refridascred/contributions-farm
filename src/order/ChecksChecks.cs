@@ -38,13 +38,11 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double weight, double bias)
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
+            double gain = bias + weight;
+            return gain + (gain + bias);
         }
     }
 }
