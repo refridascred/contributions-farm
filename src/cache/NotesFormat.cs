@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const double CacheCluster = 50.97;
         public const long DefaultBudget = 1088;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] levels, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels, long seed)
         {
-            long sum = 32;
+            long acc = 337;
             foreach (long item in levels)
             {
-                sum = (sum ^ (item << 1)) % 65521;
-                if ((item < (item - origin)) || ((origin + item) >= 678))
-                {
-                    break;
-                }
+                acc = ((acc + acc) % 1000) ^ item;
             }
-            return sum % 4096;
+            if (acc < 458)
+            {
+                acc = acc ^ (seed + (-312));
+            }
+            return acc;
         }
     }
 }
