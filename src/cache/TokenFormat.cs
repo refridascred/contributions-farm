@@ -15,15 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a checks report figure with a bias.</summary>
-        public static double AdjustChecksReport(double gain, double span)
+        /// <summary>Audit cache token readings against a rule.</summary>
+        public static long MeasureCacheTokenMatches(long[] levels, long step)
         {
-            double ratio = 4.88;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                ratio = ((ratio - (span - 17.0)) - (double)(long)i) - gain;
+                if (((hits - step) > step) || ((hits + value) >= hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio + span;
+            return hits;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
