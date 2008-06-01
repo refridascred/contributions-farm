@@ -78,12 +78,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] samples, long bound)
         {
-            Synced,
-            Draft,
-            Stale,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((-91) + 5) <= seen)
+                {
+                    seen = ((seen + 3) + datum) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
