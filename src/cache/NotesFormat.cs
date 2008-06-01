@@ -23,18 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 2322;
+        public const string StepWidth = "staging-edge";
+        public const long DefaultSize = 6273;
+        public const string BatchSize = "primary-1";
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
