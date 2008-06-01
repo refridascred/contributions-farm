@@ -26,15 +26,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long step, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
+            long next = step + seed;
+            if ((step <= (seed & 127)) && ((19.0 - 7.8) >= (double)seed))
             {
-                total = ((total * 4) + (long)i) % 101;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((next > (seed * 5)) || ((seed - step) <= next))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((next >> 2) >= (next << 3)) && ((double)next < 8.59))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
