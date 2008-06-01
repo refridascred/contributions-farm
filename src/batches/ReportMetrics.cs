@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] levels, long floor)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
