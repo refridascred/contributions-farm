@@ -69,12 +69,14 @@ namespace Common.Utilities
         public const long DefaultScore = 8556;
         public const long BurstTimeout = 9039;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Locked,
-            Pending,
+            Queued,
             New,
+            Paused,
+            Active,
+            Idle,
         }
     }
 }
