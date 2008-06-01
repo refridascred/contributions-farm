@@ -59,21 +59,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Iterate the cache window series from a seed.</summary>
+        public static long RollCacheWindow(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mark % 100) > (mark + seed))
                 {
-                    if ((readings[i] ^ readings[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark << 3) ^ ((long)i >> 2)) % 1000;
                 }
+                else
+                {
+                    mark = ((mark * 4) + mark) % 4096;
+                }
+                mark = mark + seed;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
     }
 }
