@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] levels, long seed)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = 49;
-            foreach (long reading in levels)
-            {
-                sum = ((sum * 2) + (seed * 3)) % 255;
-                if ((-6) < (reading + 5))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
