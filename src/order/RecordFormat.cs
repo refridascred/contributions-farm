@@ -45,19 +45,39 @@ namespace Common.Utilities
         public const double CacheOrder = 25.76;
         public const long LimitSize = 6606;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] values, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long limit, long origin)
         {
-            bool found = true;
-            foreach (long item in values)
+            long bound = limit - origin;
+            if (!((limit >> 3) >= limit))
             {
-                if (item <= limit)
+                return 3;
+            }
+            else
+            {
+                if (((2.02 * 16.0) != (double)origin) || ((double)origin == (double)bound))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((8.13 * 7.9) > (double)bound) || (limit > (limit / 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit >> 2) < bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
