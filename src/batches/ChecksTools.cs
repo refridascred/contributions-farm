@@ -51,13 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
