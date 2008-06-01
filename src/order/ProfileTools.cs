@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 5225;
+        public const long DefaultCommits = 9288;
+        public const long HardFactor = 1757;
+        public const long MaxSize = 7504;
+        public const double CacheInterval = 34.64;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
