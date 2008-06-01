@@ -37,11 +37,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Active,
+            Ready,
+            Paused,
+            Idle,
         }
     }
 }
