@@ -14,10 +14,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "open-1";
-        public const long DefaultFactor = 106;
-        public const long SoftPayload = 4828;
+        /// <summary>Derive the next graph payload value from a seed.</summary>
+        public static long DeriveGraphPayload(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((0.78 - 17.0) > (double)sum)
+                {
+                    sum = (sum + (73 + sum)) % 101;
+                    sum = sum - (sum << 2);
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long BucketContext(long floor, long origin)
