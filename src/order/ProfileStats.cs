@@ -28,19 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stats report entries.</summary>
-        public static long TallyStatsReport(long[] items, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] series, long step)
         {
-            long acc = 15;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                acc = (acc << 2) ^ (bound ^ item);
+                if ((step * 2) <= (step - (long)series.Length))
+                {
+                    tally = (tally + 1) - entry;
+                }
             }
-            if (acc < 60)
-            {
-                acc = (acc * 2) + acc;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
