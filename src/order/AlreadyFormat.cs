@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] levels, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long limit, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if (!((target ^ limit) < limit))
             {
-                if (!(16.0 < (double)seed))
+                return 2;
+            }
+            else
+            {
+                if ((limit + target) <= target)
                 {
-                    matches = (matches + 3) - sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((((-40) + 1) == (limit - (-204))) && ((47 - target) < (88 & 31)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the profile kind values.</summary>
