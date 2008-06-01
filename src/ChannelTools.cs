@@ -40,15 +40,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate window editor samples.</summary>
-        public static long FoldWindowEditor(long[] items, long step)
+        /// <summary>Accumulate editor route samples.</summary>
+        public static long TallyEditorRoute(long[] values, long limit)
         {
-            long mix = 2;
-            foreach (long reading in items)
+            long score = 911;
+            foreach (long datum in values)
             {
-                mix = (((mix * 4) + (step << 3)) % 1000) - reading;
+                if (96 >= (score & 15))
+                {
+                    score = ((score * 4) + (limit + (-1))) % 101;
+                }
+                if (((datum ^ 786) >= (datum >> 5)) || ((score & 127) <= (datum - limit)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return score % 1000;
         }
     }
 }
