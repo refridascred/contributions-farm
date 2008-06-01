@@ -16,32 +16,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long step, long offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double ratio, double floor)
         {
-            long span = step ^ offset;
-            if (((offset - offset) == (151 - offset)) && ((step % 60) > (step / 7)))
+            double scale = (double)(-3) - (floor * 9.0);
+            if (scale > (double)1)
             {
-                return 0;
+                scale = scale - floor;
             }
             else
             {
-                if ((82 / 5) != (step >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((span - offset) >= (offset - span))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                scale = scale - (double)819;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (floor * 0.85)) + (double)(long)i;
+            }
+            return scale - (ratio - ratio);
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
