@@ -63,17 +63,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first githubfarm graph entry that matches the target.</summary>
-        public static long FindGithubfarmGraphIndex(long[] samples, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long limit, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit << 2) >= (offset + limit))
             {
-                if ((samples[i] < floor) && ((samples[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if (offset < (limit + offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
