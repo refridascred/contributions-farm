@@ -59,11 +59,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
+            double bias = weight + weight;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - (double)(-40);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
