@@ -25,18 +25,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] series, long bound)
+        /// <summary>Measure how many batch account samples are out of range.</summary>
+        public static long AuditBatchAccountGaps(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (((double)bound <= 1.2) || ((hits ^ bound) <= (sample - hits)))
+                if (entry > count)
                 {
-                    hits = hits + 2;
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
