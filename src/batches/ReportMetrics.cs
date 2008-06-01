@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
