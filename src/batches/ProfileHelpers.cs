@@ -53,15 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] readings, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Fold a list of order readings.</summary>
