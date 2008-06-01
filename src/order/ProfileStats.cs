@@ -19,16 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = acc + (limit % 60);
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            New,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a cache header.</summary>
