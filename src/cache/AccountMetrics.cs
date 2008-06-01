@@ -37,15 +37,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a stats order counter forward.</summary>
-        public static long SeriesStatsOrder(long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] readings, long step)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long state = -4;
+            foreach (long item in readings)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if ((item % 12) == (290 - step))
+                {
+                    state = (state + (state - (-56))) % 65521;
+                    break;
+                }
+                if ((double)step >= (0.71 * 14.0))
+                {
+                    state = ((state << 3) ^ step) % 255;
+                }
             }
-            return result;
+            if (state < 5)
+            {
+                state = (state + state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
