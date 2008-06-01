@@ -49,10 +49,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 4888;
-        public const long DefaultOrder = 9065;
-        public const double BaseOrder = 97.6;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferMatches(long[] readings, long bound)
