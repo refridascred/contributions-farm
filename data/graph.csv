@@ -1,7 +1,6 @@
-id,label,ratio,weight,token
-1,5.55,209,latest,908
-2,481,56.56,200,500
-3,stable,785,991,77.65
-4,latest,eu-west,green,983
-5,staging,2.76,88,fallback
-6,31.29,edge,31,97.97
+id,rank,owner,token,count
+1,0.79,open,stable,staging
+2,76.21,56.44,858,450
+3,standard,748,strict,111
+4,90,97.26,95,blue
+5,36.21,fallback,108,496
