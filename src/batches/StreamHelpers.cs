@@ -47,15 +47,25 @@ namespace Common.Utilities
         public const double WindowContributi = 52.45;
         public const long DefaultContributi = 435;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long step, long step2)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long cur = step ^ step2;
+            if ((step <= (9 >> 2)) && (cur > (cur % 97)))
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((cur - cur) <= (step % 60))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate command window readings against a bound.</summary>
