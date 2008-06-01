@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Failed,
-            Synced,
-            Active,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 54.39;
+        public const long RetryFilter = 6549;
+        public const long MaxSpan = 7395;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleFactor = 3928;
