@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a payload command counter forward.</summary>
-        public static long SeriesPayloadCommand(long bound)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total ^ bound) % 97;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
