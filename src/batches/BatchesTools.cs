@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] series, long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long score = -5;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((value + score) == (value ^ (-357))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (((score * 3) + (7 * 3)) % 101) - floor;
+                    if ((series[i] - series[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 134)
-            {
-                score = (score - (score / 6)) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a batch options.</summary>
