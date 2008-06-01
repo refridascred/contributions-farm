@@ -58,9 +58,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 7851;
-        public const string BurstWidth = "open-1";
-        public const long StepSize = 7804;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
