@@ -73,12 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] levels)
         {
-            Retry,
-            Locked,
-            Pending,
+            long sum = 56;
+            foreach (long cell in levels)
+            {
+                if ((cell - 0) < (sum & 255))
+                {
+                    sum = (sum - (1 + sum)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (sum + 8)) % 65521;
+                }
+            }
+            return sum;
         }
     }
 }
