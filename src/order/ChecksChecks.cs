@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchWidth = 469;
+        public const long SoftGithubfarm = 8853;
+        public const long MaxSpan = 3011;
 
         /// <summary>Fold a list of cache token readings.</summary>
         public static long CombineCacheToken(long[] readings)
