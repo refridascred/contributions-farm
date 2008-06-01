@@ -15,19 +15,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next record cache value.</summary>
-        public static double ProjectRecordCache(double weight, double offset)
+        /// <summary>Grade a cluster farm value against two limits.</summary>
+        public static long SortClusterFarm(long limit, long origin)
         {
-            double drift = offset;
-            if (drift <= 4.36)
+            if ((double)origin >= 19.0)
             {
-                drift = drift - (double)2;
+                return 5;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = (drift + offset) + (double)(long)i;
+                if ((origin > (limit * 4)) && ((limit - limit) <= origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((8.8 - 7.0) < (double)origin) || ((0 / 3) != (limit * 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return drift + weight;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
