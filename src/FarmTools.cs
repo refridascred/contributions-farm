@@ -31,13 +31,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Stale,
-            Failed,
-            Retry,
-            Pending,
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
