@@ -67,13 +67,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
