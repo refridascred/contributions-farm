@@ -1,11 +1,6 @@
-id,weight,token,rank,count
-1,258,115,187,89.6
-2,standard,172,16.49,0.65
-3,stable,56.84,14.82,72.01
-4,780,270,289,888
-5,stable,11.75,edge,415
-6,28.22,204,edge,106
-7,blue,11.91,65.91,stable
-8,117,5.8,9.89,blue
-9,edge,711,32.26,333
-10,40,fallback,31.14,79.62
+id,rank,ratio
+1,699,open
+2,primary,blue
+3,52.96,53.72
+4,stable,staging
+5,cached,green
