@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Classify a buffer layout pair into a bucket.</summary>
+        public static long GradeBufferLayout(long bound, long origin)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
+            if ((bound - origin) < (origin % 64))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((origin & 7) <= bound) || ((origin * 5) >= (origin - 170)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)18 < (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
