@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit contributi metric readings against a rule.</summary>
-        public static long TallyContributiMetricMatches(long[] series, long limit)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double bias, double span)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double mean = span;
+            if (mean <= (double)72)
             {
-                if (!(((-87) + limit) >= (limit + hits)))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean + (mean + mean);
             }
-            return hits;
+            else
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Count the batch metrics entries that pass the check.</summary>
