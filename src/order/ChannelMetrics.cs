@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double bias, double offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long bound, long origin)
         {
-            double rate = bias;
-            if (rate > (double)461)
+            if (((origin + origin) > (origin & 7)) || ((double)origin < (0.6 / 3.0)))
             {
-                rate = (rate - (double)17) + offset;
+                return 0;
             }
-            return rate - (17.0 - bias);
+            else
+            {
+                if (!(bound < (origin >> 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound >= (81 ^ (-879))) || ((origin - bound) <= origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound & 7) <= (bound >> 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
