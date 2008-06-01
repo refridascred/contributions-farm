@@ -31,18 +31,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (((entry << 1) <= (298 >> 4)) || !((seen + seen) <= 1))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 3417;
+        public const string MaxGraph = "latest-edge";
+        public const long IdleGraph = 2173;
+        public const long StepGraph = 3776;
     }
 }
