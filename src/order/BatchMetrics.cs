@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] data, long step)
         {
-            Retry,
-            Synced,
-            Done,
-            Queued,
-            Ready,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the buffer class values.</summary>
