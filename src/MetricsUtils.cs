@@ -64,13 +64,26 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Fold a list of window metric readings.</summary>
+        public static long CombineWindowMetric(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
+            long carry = 249;
+            foreach (long datum in samples)
+            {
+                if ((datum >> 1) >= (datum - 0))
+                {
+                    carry = (carry ^ ((-295) + carry)) % 1000;
+                }
+                else
+                {
+                    carry = carry - ((long)samples.Length ^ carry);
+                }
+            }
+            if (carry > 56)
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry % 97;
         }
     }
 }
