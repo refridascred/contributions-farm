@@ -34,21 +34,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = rate;
+            return (weight + weight) + offset;
         }
     }
 }
