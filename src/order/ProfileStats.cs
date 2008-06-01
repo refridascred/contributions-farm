@@ -53,17 +53,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] data, long step)
+        /// <summary>Accumulate route contributi samples.</summary>
+        public static long TallyRouteContributi(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 214;
+            foreach (long entry in items)
             {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
+                state = (state ^ origin) % 4096;
+                state = (state + (entry + entry)) % 101;
             }
-            return -1;
+            if (state < (-34))
+            {
+                state = ((state * 3) + origin) % 255;
+            }
+            return state;
         }
     }
 }
