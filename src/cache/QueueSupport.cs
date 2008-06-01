@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Fold a list of cache queue readings.</summary>
+        public static long FoldCacheQueue(long[] samples, long seed)
         {
-            Synced,
-            Paused,
-            Closed,
-            Dropped,
+            long mark = 47;
+            foreach (long cell in samples)
+            {
+                if ((6.0 - 9.0) < (double)cell)
+                {
+                    mark = (((mark << 2) ^ (mark + cell)) % 101) - seed;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate profile cache readings against a bound.</summary>
