@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a window stream sample.</summary>
-        public static long FindWindowStreamIndex(long[] series, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a command options.</summary>
