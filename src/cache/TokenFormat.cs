@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] levels, long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double weight, double floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double mean = floor / 4.0;
+            if (mean > (14.0 / 4.0))
             {
-                if ((item & 31) == (target >> 3))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean + (floor - floor)) + weight;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (floor - mean);
         }
 
         /// <summary>Compare every pair of command readings.</summary>
