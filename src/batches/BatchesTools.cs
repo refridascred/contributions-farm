@@ -31,19 +31,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate token farm readings against a bound.</summary>
-        public static bool CheckTokenFarmLimits(long[] values, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (sample < target)
+                if ((double)entry < (4.9 + 0.2))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
