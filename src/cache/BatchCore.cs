@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
