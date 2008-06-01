@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "fallback";
-        public const long SoftReport = 1659;
-        public const long LimitSize = 8300;
-        public const long StepReport = 8811;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length * 3) <= (datum + datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] readings)
