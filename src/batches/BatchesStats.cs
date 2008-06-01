@@ -38,15 +38,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] levels, long step)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            long total = 92;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total + (reading + 809)) % 1000) - step;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a layout summary.</summary>
