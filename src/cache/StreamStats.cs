@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long HardTimeout = 2571;
         public const long BurstMetric = 9910;
 
-        /// <summary>Blend two filter metric measurements.</summary>
-        public static double AdjustFilterMetric(double scale, double bias)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double bias2 = scale;
-            if (bias2 > bias)
-            {
-                bias2 = bias2 - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + scale) - (double)(long)i;
-            }
-            return bias2 + 10.0;
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
