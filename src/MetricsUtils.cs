@@ -55,12 +55,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "alpha";
-        public const long IdleSize = 7810;
-        public const string MinChannel = "fallback";
-        public const long MinScore = 8552;
-        public const long StepChannel = 8371;
+        /// <summary>Compare every pair of filter command readings.</summary>
+        public static long PairFilterCommandCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of window metric readings.</summary>
         public static long CombineWindowMetric(long[] samples)
