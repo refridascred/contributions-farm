@@ -1,24 +1,19 @@
 # entry settings
-base_limit:
-  schema_depth: standard
-  verbose: eu-west
-  account_ttl: 30
-queue_ttl: 21.54
-retry_window_ms:
-  audit: green
-  hard_delay_pct: 250
-  strict: 127
-  flush_limit_s:
-    - staging
-    - primary
-    - stable
-  graph_capacity: open
-  hard_interval_count: false
-queue_threshold:
-  - 189
-  - 204
-  - 467
-default_ttl:
-  batch_window_pct: 87
-  base_timeout_count: legacy
-  min_timeout: 42
+hard_interval_ms: 28
+cache_ttl_count:
+  - green
+  - blue
+max_size_pct: true
+channel_size:
+  min_capacity: true
+  readonly: eu-west
+  compress:
+    command_window: 76.93
+    poll_interval_count: 8509
+    tools_ratio:
+      - fallback
+      - latest
+    format_limit: 41.97
+  account_limit: 84
+  cache_limit_s: 79.96
+idle_window_count: 83
