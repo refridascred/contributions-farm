@@ -48,32 +48,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank stats counter input into a small class.</summary>
-        public static long SortStatsCounter(long seed, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] samples)
         {
-            long offset = seed - floor;
-            if ((offset <= (offset + 85)) || ((double)floor <= (double)seed))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor <= 5.6)
+                if ((long)samples.Length >= (hits - 220))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed & 3) != (seed * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 3) + item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
