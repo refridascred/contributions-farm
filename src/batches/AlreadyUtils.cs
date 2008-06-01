@@ -28,22 +28,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] samples, long step)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (value <= step)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Draft,
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
