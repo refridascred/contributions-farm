@@ -27,19 +27,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] readings, long offset)
+        /// <summary>Check that every batches editor entry stays within the limit.</summary>
+        public static bool ValidateBatchesEditorLimits(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (datum >= offset)
+                if (datum != target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Hold a channel entry.</summary>
