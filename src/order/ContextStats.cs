@@ -17,15 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a format graph reading.</summary>
-        public static double ScaleFormatGraph(double scale, double bias)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            double rate = (double)((-6) - 663);
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (((rate - 4.55) + (double)(long)i) + scale) - bias;
-            }
-            return rate - 2.6;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
