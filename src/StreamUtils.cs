@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
