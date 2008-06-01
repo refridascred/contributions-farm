@@ -45,12 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 3) + (52 & 255)) % 4096;
+                long gap = (474 - limit) & 63;
+                if ((gap + gap) >= anchor)
+                {
+                    gap = (gap << 3) ^ limit;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
