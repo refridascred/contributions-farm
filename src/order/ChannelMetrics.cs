@@ -22,10 +22,11 @@ namespace Common.Utilities
         public const long RetrySpan = 5000;
         public const string RetryFormat = "standard-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 7971;
-        public const long IdleDepth = 1562;
-        public const long BurstWidth = 7455;
-        public const long StepDepth = 4817;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 35.74;
+        public const string StepFactor = "cached";
+        public const double StepRoute = 35.57;
+        public const double RetryRoute = 42.83;
+        public const string DefaultBudget = "strict";
     }
 }
