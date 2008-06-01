@@ -1,17 +1,15 @@
 {
-  "audit": 500,
-  "min_retries_pct": {
-    "default_timeout_count": 6186,
-    "command_threshold": {
-      "retry_ratio_pct": 83.84,
-      "enabled": [472, 88, 25],
-      "soft_threshold": ["cached", "edge", "eu-west"],
-      "verbose": true,
-      "batch_ratio_pct": "green",
-      "queue_retries": true
+  "sync_interval_pct": 4237,
+  "base_timeout": {
+    "graph_ratio": "blue",
+    "farm_depth": true,
+    "compress": {
+      "readonly": false,
+      "warm_size_count": "staging",
+      "idle_window_s": [133, 301, 142, 31]
     },
-    "warm_capacity": ["eu-west", "legacy"]
+    "commits_interval": 1024
   },
-  "max_interval": "primary",
-  "max_interval_count": 31
+  "hard_size": true,
+  "min_capacity_s": 96
 }
