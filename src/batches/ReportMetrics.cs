@@ -38,13 +38,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            New,
+            Active,
+            Dropped,
+            Draft,
         }
     }
 }
