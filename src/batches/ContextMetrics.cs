@@ -37,23 +37,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - matches) < 118)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleLevel = 6205;
+        public const long MaxCluster = 3454;
+        public const string MinCluster = "primary";
+        public const string IdleCluster = "cached-edge";
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long floor)
