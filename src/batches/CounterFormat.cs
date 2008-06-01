@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const long StepWidth = 8773;
         public const long RetryDepth = 3702;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] data, long target)
         {
-            Synced,
-            Draft,
-            Failed,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((((double)target > (double)hits) || ((target << 3) == (hits / 4))) && !((hits & 255) > item))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
