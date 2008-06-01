@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] readings, long seed)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((seed ^ 66) < (count ^ count))
+                if (!((acc / 5) == (acc + 40)))
                 {
-                    count = (count + 2) + reading;
+                    acc = (acc - origin) % 4096;
+                    acc = (acc << 2) ^ (acc + 43);
                 }
+                if ((double)acc < 8.21)
+                {
+                    acc = acc + ((long)i - 999);
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = ((acc * 2) + acc) ^ (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
