@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheWidth = 3867;
-        public const long DefaultContext = 5515;
-        public const string RetryContext = "primary-1";
-        public const long LimitContext = 6313;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double weight, double bias)
+        {
+            double weight2 = (11.0 + bias) - (weight / 2.0);
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - 5.76) + (double)(long)i;
+            }
+            return weight2 - (weight - 1.68);
+        }
 
         /// <summary>Grade a stream format value against two limits.</summary>
         public static long SortStreamFormat(long floor, long seed)
