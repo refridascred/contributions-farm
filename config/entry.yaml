@@ -1,12 +1,4 @@
 # entry settings
-support_depth: true
-notes_limit: 42.89
-cache_threshold: 72
-persist: eu-west
-sync_retries_s: 53
-flush_size_pct:
-  readonly:
-    - open
-    - latest
-  retry_limit_pct: cached
-  soft_ratio_s: legacy
+dry_run: standard
+route_limit: eu-west
+retry_ratio_pct: staging
