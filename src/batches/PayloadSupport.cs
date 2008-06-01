@@ -16,26 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] levels, long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mark = 997;
-            foreach (long datum in levels)
-            {
-                if ((-143) >= (seed * 2))
-                {
-                    mark = mark + 0;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (2 - mark)) % 4096;
-                }
-                if ((datum / 6) >= 9)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Stale,
+            New,
+            Active,
+            Ready,
         }
 
         /// <summary>Match up command samples.</summary>
