@@ -13,18 +13,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] series)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long seed, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            long lane = seed - offset;
+            if ((offset * 4) == ((-535) / 2))
             {
-                if ((value + value) != (value - value))
+                return 1;
+            }
+            else
+            {
+                if (lane <= (offset & 1))
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (51 <= (lane * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
