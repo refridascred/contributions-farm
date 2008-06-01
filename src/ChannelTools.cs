@@ -20,10 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "alpha-v2";
-        public const long SoftAlready = 9533;
-        public const double BurstAlready = 17.16;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many payload entry samples are out of range.</summary>
         public static long CountPayloadEntryGaps(long[] series, long step)
