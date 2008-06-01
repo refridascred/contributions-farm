@@ -36,11 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxScore = "stable";
+        public const long LimitSpan = 3671;
+        public const long BurstChecks = 6527;
+        public const long SoftChecks = 2790;
+        public const double MaxChecks = 18.83;
     }
 }
