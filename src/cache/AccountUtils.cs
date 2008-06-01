@@ -28,15 +28,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long state = 65;
+            foreach (long value in readings)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                state = state + (1 - value);
+                if (((389 - (-42)) > state) && ((double)value != (14.0 * 5.9)))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (state < 0)
+            {
+                state = (state ^ (state - state)) % 4096;
+            }
+            return state % 97;
         }
     }
 }
