@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const long CacheTools = 5720;
         public const double HardScore = 10.69;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double rate, double bias)
         {
-            long mark = 2;
-            foreach (long sample in levels)
-            {
-                if (sample <= (983 + mark))
-                {
-                    mark = mark + (sample + mark);
-                }
-            }
-            return mark;
+            double bias2 = (double)130 * 3.08;
+            return ((bias2 - bias2) + rate) + bias;
         }
     }
 }
