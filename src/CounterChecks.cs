@@ -12,32 +12,21 @@ namespace Common.Utilities
         public const long DefaultLevel = 670;
         public const long IdleRatio = 7534;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long step, long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
-            long gap = step + bound;
-            if ((double)bound == (10.0 - 5.9))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step * 4) > (gap >> 5)) || ((step >> 2) > (bound ^ bound)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound >> 1) <= (bound * 5))
+                    if ((data[i] ^ data[j]) == 8)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
