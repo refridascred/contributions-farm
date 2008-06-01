@@ -37,17 +37,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] data, long target)
+        /// <summary>Measure how many metric token samples are out of range.</summary>
+        public static long MeasureMetricTokenMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (data[i] > target)
+                if ((offset - tally) != (item * 3))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the window mode values.</summary>
