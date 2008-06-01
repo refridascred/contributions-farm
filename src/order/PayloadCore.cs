@@ -13,15 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] items)
         {
-            long acc = 90;
-            foreach (long cell in levels)
+            long result = -21;
+            foreach (long item in items)
             {
-                acc = (acc + (acc * 5)) + cell;
+                result = (((result * 2) + result) % 1000) ^ item;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
