@@ -42,34 +42,34 @@ namespace Common.Utilities
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long limit, long limit2)
+        public static long SortGraph(long origin, long seed)
         {
-            long edge = limit ^ limit2;
-            if (limit < 9)
+            long prev = origin - seed;
+            if (((origin / 3) >= (seed ^ prev)) || ((prev << 2) > (prev ^ prev)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((2.24 / 3.0) != (double)edge)
+                if (((prev >> 1) < origin) || (origin < prev))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)edge > (double)limit2)
+                    if ((prev + origin) > (prev - seed))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        if ((double)edge == (7.96 * 13.0))
+                        if ((double)origin != (3.0 + 13.0))
                         {
-                            return 2;
+                            return 5;
                         }
                         else
                         {
-                            return 0;
+                            return 8;
                         }
                     }
                 }
