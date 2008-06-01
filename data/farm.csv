@@ -1,7 +1,8 @@
-id,token,score,region,rank
-1,786,401,653,117
-2,open,573,40.54,41.55
-3,93.51,553,56.65,64.88
-4,6.64,973,78.85,309
-5,44.6,168,strict,staging
-6,15.87,96.08,89.27,stable
+id,token,active,state,count
+1,open,828,latest,stable
+2,standard,416,blue,851
+3,edge,25.31,staging,687
+4,280,31.6,36.71,497
+5,967,strict,426,cached
+6,32.53,fallback,367,25.36
+7,826,847,98.61,green
