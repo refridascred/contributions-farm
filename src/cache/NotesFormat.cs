@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double scale, double floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double mean = 6.6 + (double)432;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - mean) + (double)(long)i) + floor;
-            }
-            return mean - (scale * 8.2);
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
