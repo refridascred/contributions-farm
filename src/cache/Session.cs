@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchRatio = "strict-1";
-        public const double BurstBudget = 67.3;
-        public const double MinCluster = 77.72;
-        public const long DefaultLevel = 6832;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Stale,
+            New,
+            Done,
+        }
 
         /// <summary>Validate payload filter readings against a bound.</summary>
         public static bool GuardPayloadFilterRange(long[] samples, long bound)
