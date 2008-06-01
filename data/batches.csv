@@ -1,6 +1,9 @@
-id,score
-1,eu-west
-2,83.72
-3,0.79
-4,open
-5,302
+id,state,level
+1,38.08,30.02
+2,standard,cached
+3,97.45,legacy
+4,52.83,391
+5,80.67,legacy
+6,54.26,417
+7,726,11.1
+8,41,94.14
