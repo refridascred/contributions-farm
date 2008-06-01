@@ -22,27 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi order entries.</summary>
-        public static long CombineContributiOrder(long[] series, long step)
-        {
-            long carry = 4;
-            foreach (long sample in series)
-            {
-                if ((double)step < (6.9 * 1.0))
-                {
-                    carry = ((carry << 3) ^ (step & 15)) + sample;
-                }
-                if (6.0 > (double)carry)
-                {
-                    break;
-                }
-            }
-            if (carry > 53)
-            {
-                carry = (carry ^ step) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinBudget = 5569;
+        public const double BaseAlready = 66.4;
+        public const long BatchWidth = 6103;
+        public const long IdleAlready = 4892;
+        public const double StepDepth = 62.37;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long AuditQueueMatches(long[] values, long offset)
