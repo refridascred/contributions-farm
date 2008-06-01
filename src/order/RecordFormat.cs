@@ -31,19 +31,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] samples, long offset)
-        {
-            long mix = 263;
-            foreach (long datum in samples)
-            {
-                if (!(2 >= (datum % 97)))
-                {
-                    mix = (((mix * 5) + datum) % 4096) - offset;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 67.82;
+        public const long CacheCount = 3600;
+        public const string RetryWidth = "fallback";
+        public const double CacheSpan = 87.49;
+        public const long RetryInterval = 1921;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long SeekOrderIndex(long[] data, long bound)
