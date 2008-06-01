@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] values, long bound)
         {
-            Locked,
-            Stale,
-            Synced,
-            Dropped,
-            Idle,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
