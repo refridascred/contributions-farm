@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] readings, long bound)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long total = 84;
-            foreach (long sample in readings)
-            {
-                if ((bound <= (sample % 100)) || ((sample * 5) == (total + bound)))
-                {
-                    total = ((total << 2) ^ sample) % 1000;
-                }
-            }
-            if (total > 63)
-            {
-                total = (total ^ (45 ^ bound)) % 65521;
-            }
-            return total;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a notes options.</summary>
