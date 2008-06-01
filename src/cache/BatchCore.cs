@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const string BurstDepth = "standard-v2";
         public const string IdleStream = "strict-v2";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] series, long floor)
+        /// <summary>Check that every editor schema entry stays within the limit.</summary>
+        public static bool ValidateEditorSchemaRange(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((7.45 / 4.0) >= (double)cell)
+                if (entry >= limit)
                 {
-                    tally = (tally + 1) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
