@@ -16,11 +16,20 @@ namespace Common.Utilities
             return rate - (17.0 - bias);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 9983;
-        public const long BurstFormat = 2983;
-        public const long RetrySpan = 5000;
-        public const string RetryFormat = "standard-v2";
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double IdleRoute = 35.74;
