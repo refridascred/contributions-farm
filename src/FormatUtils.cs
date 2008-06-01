@@ -65,12 +65,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 96.76;
-        public const long IdleReport = 589;
-        public const long StepReport = 2264;
-        public const long LimitReport = 5254;
-        public const string BaseReport = "fallback";
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long target, long offset)
+        {
+            if ((2 << 1) == (target >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((900 - offset) > (target * 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long ScoreTools(long[] levels)
