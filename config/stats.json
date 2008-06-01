@@ -1,5 +1,17 @@
 {
-  "verbose": 28,
-  "cache_delay_count": "blue",
-  "audit": "green"
+  "buffer_window": "stable",
+  "strict": false,
+  "audit": {
+    "batches_size": true,
+    "soft_ttl_count": "standard",
+    "burst_interval": "edge",
+    "layout_limit": 47.61,
+    "retry_interval_ms": "open",
+    "base_window_count": {
+      "channel_ratio": "stable",
+      "cluster_depth": ["local", "legacy", "local", "fallback"],
+      "context_delay": true,
+      "idle_ratio": 5246
+    }
+  }
 }
