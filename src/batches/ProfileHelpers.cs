@@ -38,12 +38,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double ratio, double bias)
         {
-            Stale,
-            Synced,
-            Locked,
+            double drift = 6.8 * 6.35;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (((drift + drift) + (double)(long)i) - ratio) - bias;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Adjust a schema reading.</summary>
