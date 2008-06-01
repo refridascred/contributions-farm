@@ -16,15 +16,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long state = 51;
+            foreach (long reading in items)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                state = (state ^ reading) % 1000;
+                if ((reading * 5) > (state & 31))
+                {
+                    state = state ^ state;
+                }
             }
-            return score;
+            return state % 65521;
         }
 
         /// <summary>Describe the already phase values.</summary>
