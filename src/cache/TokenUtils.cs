@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] values, long origin)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long total = 247;
-            foreach (long sample in values)
-            {
-                if (!((double)total < (19.0 * 4.68)))
-                {
-                    total = total + (8 >> 2);
-                }
-                if (sample < origin)
-                {
-                    total = (total - (sample - total)) % 101;
-                }
-                else
-                {
-                    total = total + (sample % 60);
-                }
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
