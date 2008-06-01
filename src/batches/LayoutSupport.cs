@@ -38,18 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long total = 227;
+            foreach (long entry in readings)
             {
-                if ((double)hits >= (7.97 - 12.0))
+                if ((offset + offset) < (entry & 15))
                 {
-                    hits = (hits + 1) + cell;
+                    total = ((total << 3) ^ (total / 6)) % 97;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Combine support stream values into a single score.</summary>
