@@ -62,13 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] readings)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((23 - 5) > (hits + 0))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
