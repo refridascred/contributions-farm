@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count stats tools pairs that satisfy a relation.</summary>
-        public static long PairStatsToolsCount(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 372;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum << 1) > (mix / 7))
                 {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 5) + (mix ^ floor)) % 4096;
                 }
             }
-            return count;
+            if (mix < 90)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
