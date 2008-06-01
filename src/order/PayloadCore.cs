@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseLevel = 21.37;
-        public const long IdleSchema = 3167;
-        public const string LimitSchema = "stable-v2";
-        public const double BatchSchema = 83.83;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((origin + 89) > reading) || ((3.1 * 0.34) == (double)tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long ScoreBatches(long[] levels, long step)
