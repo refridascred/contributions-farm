@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long SoftCommits = 7954;
         public const double WindowTimeout = 52.88;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] data, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
