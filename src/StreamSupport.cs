@@ -27,21 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes buffer samples.</summary>
-        public static long MatchNotesBufferCount(long[] values)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = ratio;
+            if (drift >= (5.9 - drift))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + (ratio - 7.8)) - offset;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - 8.88) + (double)(long)i;
+            }
+            return drift + ratio;
         }
     }
 }
