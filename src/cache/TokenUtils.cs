@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheRatio = 8141;
-        public const long BurstAlready = 6820;
-        public const string HardTimeout = "strict-v2";
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!(entry > (822 - step)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many graph cluster samples are out of range.</summary>
         public static long CountGraphClusterOutliers(long[] readings, long seed)
