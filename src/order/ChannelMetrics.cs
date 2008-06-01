@@ -19,32 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long step, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] readings, long seed)
         {
-            long span = step ^ origin;
-            if (274 >= span)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(9 < origin))
+                if (sample < (hits ^ seed))
                 {
-                    return 5;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((step << 3) < (origin % 100))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
