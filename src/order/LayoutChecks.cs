@@ -23,18 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a token format sample.</summary>
-        public static long LookupTokenFormatIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepTimeout = 6756;
+        public const long WindowSize = 506;
+        public const string BurstWidth = "strict-edge";
+        public const string BatchBudget = "cached-1";
+        public const string BaseSpan = "fallback-v2";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatLimits(long[] series, long limit)
