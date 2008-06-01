@@ -29,22 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] readings)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (((17.0 * 8.6) > (double)item) && (((798 & 7) <= matches) || ((item ^ matches) <= (717 + matches))))
+                if (sample > seed)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
