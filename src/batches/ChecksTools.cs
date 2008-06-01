@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            Idle,
+            Ready,
+            Retry,
         }
     }
 }
