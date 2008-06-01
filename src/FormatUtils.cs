@@ -66,12 +66,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] data, long limit)
         {
-            Failed,
-            Synced,
-            Active,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches - cell) <= matches)
+                {
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
