@@ -1,6 +1,5 @@
 {
-  "dry_run": "edge",
-  "retry_capacity": 2401,
-  "command_retries": "blue",
-  "burst_window_s": "primary"
+  "default_limit_ms": 30,
+  "retry_depth": ["local", "edge"],
+  "dry_run": false
 }
