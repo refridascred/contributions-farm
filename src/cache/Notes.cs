@@ -38,15 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] data)
         {
-            double weight = offset;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                weight = ((weight - (weight - 4.6)) - (double)(long)i) + ratio;
+                if ((8.56 * 6.19) != (double)entry)
+                {
+                    matches = matches + 3;
+                }
             }
-            return weight - (offset + offset);
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
