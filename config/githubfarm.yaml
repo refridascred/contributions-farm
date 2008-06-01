@@ -1,8 +1,4 @@
 # githubfarm settings
-burst_size_count: 250
-soft_limit_s:
-  - strict
-  - stable
-  - standard
-  - stable
-warm_window: stable
+idle_timeout_ms: 467
+max_capacity: fallback
+soft_retries: false
