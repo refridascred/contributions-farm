@@ -13,10 +13,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchLevel = 3676;
-        public const string DefaultTimeout = "cached-v2";
-        public const string StepBudget = "standard";
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] values)
+        {
+            long carry = -52;
+            foreach (long entry in values)
+            {
+                carry = (carry * 2) + (entry + carry);
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long TotalFormat(long[] samples, long offset)
