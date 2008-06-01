@@ -43,24 +43,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long limit, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] values, long origin)
         {
-            if ((target - limit) >= (target ^ limit))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit >> 3) == (target << 2))
+                if (values[i] < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
