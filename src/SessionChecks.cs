@@ -47,12 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 7139;
-        public const long CacheEntry = 4586;
-        public const double LimitEntry = 71.6;
-        public const double CacheSize = 86.34;
-        public const long MinRatio = 6181;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
