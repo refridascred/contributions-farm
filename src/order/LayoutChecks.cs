@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 5170;
-        public const long BurstContributi = 913;
-        public const long MinContributi = 6881;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + matches) < (sample + 87))
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a token format sample.</summary>
         public static long LookupTokenFormatIndex(long[] readings, long bound)
