@@ -1,5 +1,13 @@
 {
-  "hard_threshold_pct": 94.18,
-  "base_ratio_ms": 33.37,
-  "retry_interval": "open"
+  "flush_ratio_s": 250,
+  "graph_delay": 5494,
+  "base_ttl": {
+    "batch_ttl": "edge",
+    "soft_timeout_ms": false,
+    "min_size_count": 8480,
+    "compress": "strict",
+    "account_capacity": ["stable", "stable", "edge"],
+    "min_ttl": true
+  },
+  "hard_capacity": "open"
 }
