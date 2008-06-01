@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const string BaseSupport = "cached-v2";
         public const double BaseScore = 0.58;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Derive the next order graph value from a seed.</summary>
+        public static long RollOrderGraph(long target)
         {
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
