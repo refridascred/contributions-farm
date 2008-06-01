@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] levels, long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((3.35 * 8.86) == (double)seen)
-                {
-                    seen = ((seen + 2) + reading) - limit;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
