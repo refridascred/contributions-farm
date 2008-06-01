@@ -1,5 +1,22 @@
 # entry settings
-flush_ratio_count: true
-buffer_limit: 21
-layout_limit: 44.08
-graph_interval: 61
+metric_retries: 2
+readonly:
+  burst_depth_ms: 14.78
+  audit: 1798
+  min_ttl_pct: open
+  flush_capacity_count:
+    compress: primary
+    max_timeout: local
+    poll_threshold: latest
+    warm_retries_ms: 64
+    report_interval: 82
+    notes_threshold: true
+  compress:
+    dry_run: 1639
+    soft_capacity: true
+    hard_capacity_count: true
+    sync_ratio_s: 500
+    base_delay_count: 52
+base_threshold: fallback
+editor_depth: true
+base_interval: 6836
