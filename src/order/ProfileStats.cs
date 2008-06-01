@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] items, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = 785;
+            foreach (long entry in readings)
             {
-                if (reading > (limit & 7))
+                if (((entry - entry) >= (entry * 2)) || ((entry & 63) > 9))
                 {
-                    hits = hits + 2;
+                    carry = ((carry - 748) % 101) - seed;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (entry % 97);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
