@@ -32,19 +32,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] levels, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] data, long floor)
         {
-            long score = 849;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                score = ((score << 2) ^ value) % 1000;
+                if (((hits % 7) == (floor << 3)) && ((42 ^ hits) >= sample))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (score < 5)
-            {
-                score = (score + limit) % 65521;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
