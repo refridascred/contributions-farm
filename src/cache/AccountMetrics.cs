@@ -65,19 +65,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order metrics readings against a bound.</summary>
-        public static bool GuardOrderMetricsLimits(long[] values, long offset)
+        /// <summary>Combine payload checks values into a single score.</summary>
+        public static long TotalPayloadChecks(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long result = 7;
+            foreach (long reading in data)
             {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (((result * 3) + (result ^ reading)) % 4096) + step;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
