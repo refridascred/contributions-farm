@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheTimeout = 6913;
-        public const long BatchNotes = 6847;
-        public const double IdleDepth = 53.81;
-        public const string StepNotes = "latest-v2";
-        public const string WindowNotes = "open-edge";
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Retry,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetryLevel = 1650;
