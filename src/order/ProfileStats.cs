@@ -36,10 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 5193;
-        public const double WindowAccount = 97.36;
-        public const long RetryAccount = 2290;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Pending,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
