@@ -30,22 +30,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] series)
+        /// <summary>Scale a stats command figure with a bias.</summary>
+        public static double SmoothStatsCommand(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double weight = offset;
+            if (weight >= 5.0)
             {
-                if ((double)entry < (4.9 + 0.2))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = weight - 3.0;
             }
-            return seen;
+            return weight + (ratio / 8.0);
         }
     }
 }
