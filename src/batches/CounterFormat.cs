@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] samples)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (seen <= (432 - 129))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            Pending,
+            Ready,
+            Queued,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
