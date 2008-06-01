@@ -53,15 +53,21 @@ namespace Common.Utilities
         public const long IdleChannel = 3638;
         public const string MinLevel = "strict";
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            long carry = 59;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry ^ datum) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
