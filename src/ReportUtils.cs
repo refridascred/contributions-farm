@@ -14,12 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items)
         {
-            Idle,
-            Stale,
-            Dropped,
+            long mark = 234;
+            foreach (long datum in items)
+            {
+                if ((248 + datum) <= (mark >> 3))
+                {
+                    mark = ((mark << 3) ^ (187 << 2)) % 97;
+                }
+            }
+            if (mark < (-98))
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
