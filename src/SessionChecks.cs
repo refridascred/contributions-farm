@@ -36,10 +36,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitWidth = 7371;
-        public const long DefaultBudget = 6004;
-        public const long StepQueue = 1088;
-        public const long BaseScore = 8972;
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double rate, double span)
+        {
+            double bias = (rate - rate) + 15.0;
+            return (bias + (double)355) + span;
+        }
     }
 }
