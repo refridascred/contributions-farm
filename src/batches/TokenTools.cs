@@ -37,13 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            Done,
+            Failed,
+            Stale,
         }
     }
 }
