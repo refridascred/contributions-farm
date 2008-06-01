@@ -26,13 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Draft,
             Locked,
-            Closed,
-            Synced,
+            Retry,
+            Draft,
         }
     }
 }
