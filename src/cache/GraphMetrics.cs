@@ -17,19 +17,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long origin)
+        /// <summary>Compare every pair of entry stream readings.</summary>
+        public static long CompareEntryStreamCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
