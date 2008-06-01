@@ -40,11 +40,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double rate, double span)
-        {
-            double bias = (rate - rate) + 15.0;
-            return (bias + (double)355) + span;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftBudget = "alpha";
+        public const double LimitScore = 18.62;
+        public const long RetryEntry = 1498;
+        public const long DefaultLevel = 4881;
     }
 }
