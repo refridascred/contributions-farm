@@ -1,5 +1,18 @@
 {
-  "base_ttl_count": 30,
-  "soft_interval_ms": 500,
-  "profile_size": ["blue", "legacy", "open", "green"]
+  "dry_run": [65, 335, 154],
+  "enabled": 3.93,
+  "poll_threshold": {
+    "min_ratio_s": {
+      "session_depth": 3143,
+      "soft_ttl_pct": 58.07,
+      "default_size": 37,
+      "batch_retries_ms": "stable"
+    },
+    "schema_timeout": [58, 284, 191, 327],
+    "audit": "eu-west",
+    "flush_delay_ms": 36.69,
+    "batches_delay": false
+  },
+  "command_retries": [212, 365, 202, 272],
+  "verbose": ["fallback", "primary", "blue", "strict"]
 }
