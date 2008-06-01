@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((limit <= mark) || (limit > (mark - mark)))
-                {
-                    long diff = mark;
-                    mark = mark - diff;
-                }
-                mark = (mark + 95) % 97;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Ready,
+            Done,
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Measure how many metrics already samples are out of range.</summary>
