@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultSize = 3364;
-        public const long CacheTimeout = 7705;
-        public const double SoftGraph = 71.45;
-        public const double StepLevel = 43.52;
-        public const string WindowTimeout = "alpha-edge";
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] levels, long origin)
