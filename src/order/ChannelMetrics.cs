@@ -22,11 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long offset, long floor)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long slot = offset + floor;
+            if (((floor << 2) >= (slot % 97)) && ((floor << 1) >= (floor * 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor >> 1) <= 2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (floor % 10))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
