@@ -21,15 +21,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Adjust a stats channel reading.</summary>
+        public static double SmoothStatsChannel(double ratio, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            double scale = bias;
+            return (scale + (bias * 5.97)) + ratio;
         }
     }
 }
