@@ -56,12 +56,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            Dropped,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a graph entry.</summary>
