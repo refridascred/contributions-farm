@@ -19,11 +19,10 @@ namespace Common.Utilities
         public const long CacheCluster = 8380;
         public const double StepBudget = 68.03;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 35.74;
-        public const string StepFactor = "cached";
-        public const double StepRoute = 35.57;
-        public const double RetryRoute = 42.83;
-        public const string DefaultBudget = "strict";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstDepth = 8240;
+        public const long MinGithubfarm = 4979;
+        public const long HardGithubfarm = 2028;
+        public const double WindowGithubfarm = 13.35;
     }
 }
