@@ -44,21 +44,18 @@ namespace Common.Utilities
             return drift + (drift - 9.06);
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Audit checks schema readings against a rule.</summary>
+        public static long CountChecksSchemaHits(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample >> 5) >= (tally / 4))
                 {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
