@@ -40,11 +40,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            Ready,
+            Queued,
+            Failed,
+            Closed,
+            Dropped,
         }
     }
 }
