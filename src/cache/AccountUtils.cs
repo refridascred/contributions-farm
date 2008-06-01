@@ -35,22 +35,16 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] levels, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((long)levels.Length != (entry % 64))
-                {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 2) + (25 / 2)) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
     }
 }
