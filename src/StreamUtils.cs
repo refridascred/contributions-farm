@@ -14,11 +14,16 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum - (sum << 3)) % 101;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
