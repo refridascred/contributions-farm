@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a support account figure with a bias.</summary>
-        public static double SmoothSupportAccount(double rate, double span)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            double ratio = span * 13.0;
-            if (ratio <= rate)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (rate - ratio);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio - (ratio + ratio);
+            return hits;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
