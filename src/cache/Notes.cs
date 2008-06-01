@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next metric filter value from a seed.</summary>
-        public static long IterateMetricFilter(long floor)
+        /// <summary>Look up the position of a stream channel sample.</summary>
+        public static long SeekStreamChannelIndex(long[] samples, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
