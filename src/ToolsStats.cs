@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long acc = 4;
-            foreach (long item in samples)
-            {
-                acc = (acc << 3) ^ item;
-            }
-            return acc;
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
