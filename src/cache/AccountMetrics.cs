@@ -88,10 +88,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheBudget = 89.65;
-        public const long SoftSize = 236;
-        public const string HardFactor = "strict-v2";
-        public const double MaxRatio = 74.04;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
