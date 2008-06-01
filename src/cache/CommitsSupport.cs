@@ -46,14 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Retry,
-            Closed,
             Idle,
-            Locked,
-            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Audit queue tools readings against a rule.</summary>
