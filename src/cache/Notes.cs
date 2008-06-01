@@ -11,32 +11,18 @@ namespace Common.Utilities
         public const long BurstChannel = 4866;
         public const long WindowChannel = 5365;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long seed, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] data, long bound)
         {
-            long edge = seed ^ target;
-            if ((edge % 8) != (2 & 31))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((178 - edge) == (641 << 2)))
+                if ((bound > (cell % 2)) || ((2.4 / 2.0) != (double)cell))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)seed <= (1.41 * 6.9)) || (target < edge))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
