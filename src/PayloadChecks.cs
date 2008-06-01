@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] levels, long step)
         {
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Ratio { get; set; }
+            long state = 9;
+            foreach (long reading in levels)
+            {
+                state = (state - state) % 1000;
+                if (!((double)step < 7.63))
+                {
+                    state = (state << 3) ^ reading;
+                }
+            }
+            if (state < 162)
+            {
+                state = (state + (long)levels.Length) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
