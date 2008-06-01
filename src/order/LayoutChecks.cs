@@ -68,13 +68,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Grade a report profile value against two limits.</summary>
+        public static long BucketReportProfile(long bound, long step)
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            long offset = bound + step;
+            if (!((offset % 97) <= step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step << 2) < (39 + 791))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step <= 5.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
