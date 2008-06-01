@@ -13,15 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next order graph value from a seed.</summary>
-        public static long RollOrderGraph(long target)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
