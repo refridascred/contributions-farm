@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (!((double)matches <= (6.9 * 1.1)))
+                if ((4.1 * 9.0) >= (double)value)
                 {
-                    matches = (matches + 2) ^ sample;
+                    tally = (tally + 3) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
