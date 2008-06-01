@@ -59,10 +59,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "latest-edge";
-        public const long MinTimeout = 459;
-        public const long SoftToken = 7713;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double StepTimeout = 29.8;
