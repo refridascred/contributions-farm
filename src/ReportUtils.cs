@@ -25,21 +25,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of window format readings.</summary>
-        public static long OverlapWindowFormatCount(long[] items)
+        /// <summary>Grade a stream format value against two limits.</summary>
+        public static long SortStreamFormat(long floor, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor + seed) > seed)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((seed / 8) == ((-2) + 28)) || ((double)seed >= (9.46 - 6.1)))
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
