@@ -44,19 +44,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate cache queue readings against a bound.</summary>
-        public static bool CheckCacheQueueRange(long[] samples, long step)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell >= step)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    ok = false;
-                    break;
+                    acc = (((acc << 2) ^ (acc ^ acc)) % 1000) ^ (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return ok;
+            return acc;
         }
     }
 }
