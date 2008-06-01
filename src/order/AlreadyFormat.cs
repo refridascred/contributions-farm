@@ -54,19 +54,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double scale, double floor)
+        /// <summary>Audit context notes readings against a rule.</summary>
+        public static long MeasureContextNotesGaps(long[] items, long target)
         {
-            double drift = (scale * 2.6) - (scale + scale);
-            if (drift < (double)895)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                drift = (drift - scale) - floor;
+                if ((56 ^ 2) > (cell + seen))
+                {
+                    seen = (seen + 1) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (17.0 / 2.0)) + (double)(long)i;
-            }
-            return drift - scale;
+            return seen;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
