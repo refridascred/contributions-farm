@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Scale a support account figure with a bias.</summary>
+        public static double SmoothSupportAccount(double rate, double span)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            double ratio = span * 13.0;
+            if (ratio <= rate)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                ratio = ratio - (rate - ratio);
             }
-            return carry;
+            return ratio - (ratio + ratio);
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
