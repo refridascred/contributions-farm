@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (3.6 + ratio) - (8.4 / 8.0);
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load + (load / 5.0)) + (double)(long)i;
             }
-            return matches;
+            return load + (ratio + span);
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
