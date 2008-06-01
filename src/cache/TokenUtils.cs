@@ -29,22 +29,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels, long limit)
         {
-            long mix = 97;
-            foreach (long reading in levels)
+            long state = -13;
+            foreach (long entry in levels)
             {
-                if ((mix * 3) > (reading / 9))
+                if ((limit << 1) >= (entry + entry))
                 {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (reading * 5)) % 101;
+                    state = (state << 3) ^ (limit >> 1);
                 }
             }
-            return mix;
+            if (state > 99)
+            {
+                state = state - (limit & 31);
+            }
+            return state % 65521;
         }
     }
 }
