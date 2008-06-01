@@ -36,16 +36,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 2) + (25 / 2)) % 97;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Paused,
+            Queued,
+            Failed,
+            Retry,
+            Pending,
         }
     }
 }
