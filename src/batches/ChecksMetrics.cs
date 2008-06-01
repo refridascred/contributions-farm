@@ -38,12 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] samples)
         {
-            Synced,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell > (count + 92)) && ((count - cell) > cell))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
