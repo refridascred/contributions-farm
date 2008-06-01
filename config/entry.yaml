@@ -1,19 +1,12 @@
 # entry settings
-hard_interval_ms: 28
-cache_ttl_count:
-  - green
-  - blue
-max_size_pct: true
-channel_size:
-  min_capacity: true
-  readonly: eu-west
-  compress:
-    command_window: 76.93
-    poll_interval_count: 8509
-    tools_ratio:
-      - fallback
-      - latest
-    format_limit: 41.97
-  account_limit: 84
-  cache_limit_s: 79.96
-idle_window_count: 83
+idle_ratio: true
+burst_window: 3699
+max_limit_count: 98
+burst_size_s: 1.8
+warm_delay:
+  base_retries: green
+  readonly: true
+  sync_ttl_pct:
+    - blue
+    - standard
+metrics_ttl: open
