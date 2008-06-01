@@ -30,13 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Derive the next layout account value from a seed.</summary>
+        public static long IterateLayoutAccount(long target)
         {
-            New,
-            Stale,
-            Closed,
-            Active,
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)target == (8.4 * 7.37))
+                {
+                    mark = mark ^ ((-9) % 5);
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
