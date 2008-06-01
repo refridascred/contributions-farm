@@ -25,11 +25,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepRatio = "fallback-1";
-        public const string CacheGithubfarm = "latest-edge";
-        public const long BurstGithubfarm = 9695;
-        public const double HardFactor = 39.7;
+        /// <summary>Audit layout session readings against a rule.</summary>
+        public static long TallyLayoutSessionGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)matches == (0.6 * 1.36))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double RetryGithubfarm = 43.99;
