@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] readings)
+        /// <summary>Match up schema editor samples.</summary>
+        public static long CompareSchemaEditorCount(long[] readings)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((reading / 7) > (reading ^ reading)) || ((reading + reading) != (88 + reading)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
