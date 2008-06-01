@@ -37,22 +37,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] values)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((11.0 + 3.45) < (double)tally)
-                {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
