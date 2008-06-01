@@ -38,16 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] data, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc * 4) + (acc ^ seed);
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
