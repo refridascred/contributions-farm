@@ -16,13 +16,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long origin, long limit)
         {
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            if (((double)limit < (1.0 - 4.9)) && (origin > (origin % 97)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit > 7.0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit % 3) <= (limit + 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
