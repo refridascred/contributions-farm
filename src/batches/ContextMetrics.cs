@@ -48,10 +48,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCount = 3265;
-        public const double BaseCluster = 24.67;
-        public const long SoftDepth = 8723;
-        public const double MinWidth = 48.82;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
