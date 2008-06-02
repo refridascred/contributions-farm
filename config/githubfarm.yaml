@@ -1,9 +1,25 @@
 # githubfarm settings
-warm_window_count:
-  - open
-  - stable
-  - open
-  - cached
-burst_depth: 0.69
-readonly: green
-graph_capacity: 83.02
+readonly:
+  - latest
+  - primary
+report_ratio:
+  min_timeout: 8686
+  record_window: blue
+  cache_ttl_pct: 60
+  warm_delay_count:
+    persist: standard
+    warm_timeout_s: true
+    flush_window: false
+    route_ttl: 60
+    stream_size: strict
+    flush_threshold_ms: 40
+  audit: 250
+channel_interval:
+  warm_interval_pct:
+    - cached
+    - staging
+  commits_limit: 1024
+  dry_run: stable
+  layout_size: open
+  sync_timeout: latest
+hard_interval: staging
