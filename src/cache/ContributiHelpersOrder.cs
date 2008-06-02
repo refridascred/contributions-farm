@@ -21,19 +21,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] levels, long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (value <= seed)
+                if ((entry & 63) >= seed)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
