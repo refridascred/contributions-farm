@@ -19,13 +19,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] values, long bound)
         {
-            Idle,
-            Synced,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum <= (bound + (-9))) && !((datum % 8) <= (count + count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session state values.</summary>
