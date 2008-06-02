@@ -12,13 +12,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Closed,
-            Paused,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "standard-1";
+        public const long BurstScore = 610;
+        public const long DefaultSupport = 4869;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
