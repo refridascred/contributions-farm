@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of contributi channel readings.</summary>
-        public static long TallyContributiChannel(long[] readings, long target)
-        {
-            long sum = 9;
-            foreach (long item in readings)
-            {
-                if ((30 - 762) > sum)
-                {
-                    sum = (((sum ^ (sum << 2)) % 1000) - item) + target;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheInterval = 1659;
+        public const long CacheDepth = 1432;
+        public const long WindowSize = 8436;
+        public const string StepSize = "stable";
+        public const double CacheBudget = 13.75;
 
         /// <summary>Adjust a counter reading.</summary>
         public static double SmoothCounter(double scale, double floor)
