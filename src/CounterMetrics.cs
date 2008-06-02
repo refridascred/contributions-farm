@@ -23,12 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long origin, long bound)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            if ((bound >> 4) < (origin ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((0.89 / 9.0) <= (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (6.4 < (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin - origin) == (bound ^ bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile level values.</summary>
