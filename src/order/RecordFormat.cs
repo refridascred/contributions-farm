@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double gain, double floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] values, long seed)
         {
-            double load = gain - gain;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                load = ((load - 6.0) + (double)(long)i) - floor;
+                if ((((tally / 3) >= (seed + seed)) || ((value << 2) <= (seed + tally))) || !((double)seed > 8.0))
+                {
+                    tally = tally + 3;
+                }
             }
-            return load + load;
+            return tally;
         }
 
         /// <summary>Describe the cluster class values.</summary>
