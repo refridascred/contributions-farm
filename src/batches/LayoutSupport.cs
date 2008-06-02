@@ -47,12 +47,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((double)bound <= (double)tally) || ((tally - reading) < (bound >> 5)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
