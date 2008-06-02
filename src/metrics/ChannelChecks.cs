@@ -23,39 +23,15 @@ namespace Common.Utilities
             return scale + (weight / 6.0);
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long target, long bound)
+        /// <summary>Scale a context commits figure with a bias.</summary>
+        public static double BlendContextCommits(double gain, double bias)
         {
-            long next = target + bound;
-            if ((double)next >= (5.6 - 3.0))
+            double load = (double)(4 / 5);
+            if (load <= (bias / 7.0))
             {
-                return 5;
+                load = load - bias;
             }
-            else
-            {
-                if ((bound - target) <= next)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((2 & 31) > (6 - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((next + 3) >= next)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return load - gain;
         }
 
         /// <summary>Hold a context header.</summary>
