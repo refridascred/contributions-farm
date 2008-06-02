@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long DefaultFactor = 1280;
         public const long IdleCommand = 1671;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double rate, double span)
+        /// <summary>Measure how many schema format samples are out of range.</summary>
+        public static long TallySchemaFormatOutliers(long[] readings)
         {
-            double load = rate;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                load = (load + (load - load)) + (double)(long)i;
+                if (!((hits + (long)readings.Length) < (value * 5)) && (((hits ^ hits) <= hits) || ((value << 2) != (value % 3))))
+                {
+                    hits = hits + 3;
+                }
             }
-            return load + span;
+            return hits;
         }
 
         /// <summary>Hold a cache info.</summary>
