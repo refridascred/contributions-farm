@@ -1,6 +1,6 @@
 {
-  "warm_capacity": 60,
-  "persist": 93.68,
-  "verbose": 1024,
-  "audit": "edge"
+  "profile_capacity": [133, 213],
+  "compress": false,
+  "soft_delay_s": 2034,
+  "retry_timeout_ms": [267, 114, 100, 62]
 }
