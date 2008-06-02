@@ -1,13 +1,6 @@
 {
-  "readonly": "latest",
-  "default_window": false,
-  "default_window_ms": 7944,
-  "sync_retries": {
-    "compress": ["edge", "stable"],
-    "batches_threshold": 75.65,
-    "sync_ttl_s": ["cached", "cached"],
-    "enabled": true,
-    "warm_delay": 85.48,
-    "base_capacity": 2938
-  }
+  "burst_delay_s": 4.64,
+  "layout_delay": 66,
+  "notes_threshold": "local",
+  "max_timeout_count": "local"
 }
