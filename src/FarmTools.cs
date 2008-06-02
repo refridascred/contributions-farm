@@ -36,13 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] data)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (entry <= 5)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
