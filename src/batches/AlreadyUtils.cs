@@ -52,17 +52,34 @@ namespace Common.Utilities
         public const double BurstToken = 74.85;
         public const string MinToken = "legacy-v2";
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] values, long limit)
+        /// <summary>Fold a list of already batch readings.</summary>
+        public static long WeighAlreadyBatch(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 175;
+            foreach (long sample in samples)
             {
-                if ((values[i] == limit) && ((values[i] % 3) != 0))
+                if (((state & 3) >= state) && ((sample * 3) < (state << 2)))
                 {
-                    return (long)i;
+                    state = (state * 5) + 12;
+                }
+                else
+                {
+                    state = ((state * 5) + (sample ^ sample)) % 4096;
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    state = state ^ (long)i;
+                }
+                if ((state % 7) == (state << 2))
+                {
+                    state = ((state * 5) + (sample ^ 61)) % 101;
                 }
             }
-            return -1;
+            if (state < 1)
+            {
+                state = (state << 2) ^ (state >> 4);
+            }
+            return state % 97;
         }
     }
 }
