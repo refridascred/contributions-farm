@@ -22,22 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer format value from a seed.</summary>
-        public static long StepBufferFormat(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc ^ acc) % 65521;
-                if ((0.55 * 0.6) >= (double)seed)
-                {
-                    acc = ((acc * 2) + 152) % 101;
-                    acc = (acc + (372 + 649)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 8837;
+        public const double MinCommits = 64.24;
+        public const string LimitLevel = "strict-v2";
+        public const long BurstCommits = 1352;
 
         /// <summary>Accumulate queue metrics samples.</summary>
         public static long ScoreQueueMetrics(long[] levels)
