@@ -27,18 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] values)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((((double)count > (7.0 + 12.0)) && ((count + count) < (entry / 7))) || (((double)entry <= (3.45 * 15.0)) && ((long)values.Length < (count & 1))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
