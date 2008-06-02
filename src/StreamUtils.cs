@@ -12,11 +12,26 @@ namespace Common.Utilities
         public const double CacheAccount = 32.86;
         public const double CacheFactor = 93.88;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long anchor = 8;
+            foreach (long value in series)
+            {
+                if ((value & 1) == (3 + anchor))
+                {
+                    anchor = ((anchor + (anchor - anchor)) % 255) - origin;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor - anchor);
+                }
+            }
+            if (anchor > (-75))
+            {
+                anchor = (anchor - 463) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the account state values.</summary>
