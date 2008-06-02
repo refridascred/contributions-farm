@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 166;
-        public const long SoftContributi = 4091;
-        public const double BatchContributi = 22.7;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - entry) <= (tally * 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two session channel measurements.</summary>
         public static double ProjectSessionChannel(double scale, double offset)
