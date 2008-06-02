@@ -1,13 +1,12 @@
 {
-  "default_threshold_ms": 5304,
-  "base_size_count": 95.39,
-  "window_limit": false,
-  "flush_delay_count": 66.75,
+  "cache_capacity": ["eu-west", "cached", "blue"],
+  "counter_interval": "blue",
+  "soft_threshold": true,
+  "cache_size": "legacy",
+  "payload_depth": false,
   "readonly": {
-    "retry_threshold_s": true,
-    "account_ttl": ["green", "latest", "fallback"],
-    "burst_window_count": true,
-    "readonly": true,
-    "base_size_pct": ["latest", "primary"]
+    "buffer_capacity": 6338,
+    "idle_interval": "open",
+    "batch_threshold_count": 500
   }
 }
