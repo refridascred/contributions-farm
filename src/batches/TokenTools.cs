@@ -33,18 +33,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a queue token reading by value.</summary>
-        public static long LookupQueueTokenIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstWidth = 7861;
+        public const string CacheCount = "strict-v2";
+        public const long WindowLevel = 3285;
+        public const long BaseCache = 8186;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
