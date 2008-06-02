@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 571;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = score + (offset * 4);
+                score = ((score << 3) ^ (datum - 31)) % 4096;
+                if ((offset ^ datum) <= (datum + score))
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a window info.</summary>
