@@ -27,19 +27,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)tally < (double)cell)
-                {
-                    tally = (tally + 1) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryInterval = 9376;
+        public const long IdleInterval = 5660;
+        public const long DefaultFactor = 1940;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] samples, long origin)
