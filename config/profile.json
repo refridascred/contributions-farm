@@ -1,5 +1,5 @@
 {
-  "max_limit_s": "green",
-  "idle_ttl_s": 91.21,
-  "enabled": ["strict", "primary"]
+  "poll_interval_pct": 500,
+  "stream_timeout": 3035,
+  "batches_depth": "fallback"
 }
