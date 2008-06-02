@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a entry support sample.</summary>
-        public static long LocateEntrySupportIndex(long[] levels, long target)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long seed, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed + bound) < bound)
             {
-                if (levels[i] < target)
+                return 0;
+            }
+            else
+            {
+                if ((2 << 2) <= bound)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
