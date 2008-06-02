@@ -1,10 +1,13 @@
 # githubfarm settings
-retry_ttl: 1024
-profile_delay:
-  - stable
-  - local
-hard_interval_s: local
-compress:
-  verbose: open
-  cache_depth: true
-  soft_delay: green
+buffer_threshold: 500
+idle_retries_s:
+  - open
+  - eu-west
+  - cached
+max_ratio_s: edge
+default_capacity_count:
+  - staging
+  - legacy
+  - cached
+poll_delay_s: true
+base_threshold: false
