@@ -1,18 +1,8 @@
 {
-  "compress": {
-    "burst_timeout_ms": "latest",
-    "batch_depth_s": "fallback",
-    "poll_window_count": false
-  },
-  "stats_ttl": "primary",
-  "sync_timeout_ms": "cached",
-  "min_ttl_pct": {
-    "strict": [157, 152],
-    "idle_ratio_ms": 60,
-    "entry_limit": "latest",
-    "burst_depth": "stable",
-    "idle_window_count": false
-  },
-  "cache_retries": "latest",
-  "burst_window_ms": 59.41
+  "commits_interval": 57,
+  "poll_threshold": 250,
+  "max_timeout": true,
+  "burst_ttl_count": "legacy",
+  "commits_window": "standard",
+  "poll_threshold_pct": false
 }
