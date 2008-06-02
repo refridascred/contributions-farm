@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] readings, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long acc = 71;
+            foreach (long entry in samples)
             {
-                if ((cell + cell) > (8 + limit))
+                if (((entry * 3) > (entry % 5)) && ((acc / 4) > (acc + 97)))
                 {
-                    hits = hits + 3;
+                    acc = ((acc << 3) ^ (entry + entry)) % 4096;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a payload stats.</summary>
