@@ -29,14 +29,32 @@ namespace Common.Utilities
         public const double BurstAlready = 54.14;
         public const string WindowTimeout = "strict-edge";
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long step, long origin)
         {
-            Ready,
-            Retry,
-            Synced,
-            Done,
-            Stale,
+            long lane = step + origin;
+            if (!((origin % 7) <= (step / 7)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin <= (1 - lane)) && ((lane & 63) != ((-72) << 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((74 / 4) != (origin + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
