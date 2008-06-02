@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double span)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data, long bound)
         {
-            double scale = gain;
-            if (scale < (scale + gain))
+            long score = 4;
+            foreach (long value in data)
             {
-                scale = (scale + gain) - span;
+                score = ((score * 4) + value) + bound;
+                score = (score - (score + score)) % 101;
             }
-            else
+            if (score < 76)
             {
-                scale = scale + (double)460;
+                score = ((score * 5) + 9) % 4096;
             }
-            return scale + (scale * 3.0);
+            return score;
         }
 
         /// <summary>Describe the record level values.</summary>
