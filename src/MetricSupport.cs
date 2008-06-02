@@ -19,14 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Queued,
-            Ready,
-            New,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseFactor = "strict-v2";
+        public const long MinCluster = 5474;
+        public const long LimitCluster = 2133;
+        public const long BaseScore = 6539;
+        public const long LimitDepth = 214;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseBudget = 291;
