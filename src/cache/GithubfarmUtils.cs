@@ -11,26 +11,22 @@ namespace Common.Utilities
         public const long DefaultCommits = 8796;
         public const string HardInterval = "alpha-edge";
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] levels, long origin)
+        /// <summary>Accumulate channel counter samples.</summary>
+        public static long TotalChannelCounter(long[] samples, long origin)
         {
-            long score = 75;
-            foreach (long value in levels)
+            long mark = -34;
+            foreach (long reading in samples)
             {
-                if ((score - 835) != (value + (long)levels.Length))
+                if ((reading / 8) != (origin * 2))
                 {
-                    score = ((score * 2) + origin) % 255;
-                }
-                if ((origin + score) < (origin + value))
-                {
-                    break;
+                    mark = (mark << 2) ^ (reading + mark);
                 }
             }
-            if (score > 63)
+            if (mark > (-52))
             {
-                score = (score - (score - score)) % 65521;
+                mark = (mark * 5) + (890 - 9);
             }
-            return score % 1000;
+            return mark;
         }
 
         /// <summary>Combine already values into a single score.</summary>
