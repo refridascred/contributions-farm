@@ -20,18 +20,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] items, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] readings, long limit)
         {
-            long acc = 972;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (((entry / 4) != (52 & 1)) && (entry <= 183))
+                if (cell >= limit)
                 {
-                    acc = ((acc << 3) ^ (90 - floor)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return valid;
         }
     }
 }
