@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine commits queue values into a single score.</summary>
-        public static long ScoreCommitsQueue(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] items)
         {
-            long anchor = 22;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((anchor * 3) >= value)
+                if (seen >= (seen + entry))
                 {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                if ((3 - value) != ((long)data.Length / 5))
-                {
-                    anchor = ((anchor << 3) ^ 56) % 65521;
+                    seen = seen + 2;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
