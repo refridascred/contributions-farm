@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] samples, long seed)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double scale, double offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double scale2 = (scale - offset) * 15.0;
+            if (scale2 < 7.3)
             {
-                if ((seed + count) < seed)
-                {
-                    count = (count + 1) + cell;
-                }
+                scale2 = scale2 - (4.0 + 9.0);
             }
-            return count;
+            return scale2 - 2.5;
         }
 
         /// <summary>Define token limits and defaults.</summary>
