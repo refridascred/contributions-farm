@@ -27,12 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Roll a stats cache counter forward.</summary>
+        public static long DeriveStatsCache(long offset)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
