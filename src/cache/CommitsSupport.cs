@@ -75,15 +75,13 @@ namespace Common.Utilities
             return load - 7.1;
         }
 
-        /// <summary>Derive the next contributi tools value from a seed.</summary>
-        public static long IterateContributiTools(long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Ready,
+            New,
+            Closed,
+            Failed,
         }
     }
 }
