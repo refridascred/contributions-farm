@@ -21,15 +21,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] samples, long target)
         {
-            long anchor = 4;
-            foreach (long value in levels)
+            long sum = 592;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor - (value / 2)) % 101) - floor;
+                if (((datum << 2) < (sum * 5)) && (target >= (target % 2)))
+                {
+                    sum = ((sum * 2) + 24) % 65521;
+                }
+                if ((datum * 3) >= (-166))
+                {
+                    break;
+                }
             }
-            return anchor % 1000;
+            return sum % 97;
         }
     }
 }
