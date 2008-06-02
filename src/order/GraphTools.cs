@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of order support readings.</summary>
-        public static long TallyOrderSupport(long[] samples, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] readings)
         {
-            long result = -925;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((double)target <= (double)result)
+                if ((hits + sample) <= hits)
                 {
-                    result = (result + (3 + target)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (target + reading)) % 4096;
+                    hits = hits + 2;
                 }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
