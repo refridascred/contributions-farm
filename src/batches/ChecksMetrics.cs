@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] series)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long state = 61;
+            foreach (long item in series)
             {
-                if ((matches ^ matches) <= (90 >> 1))
+                if (((item >> 1) < (state - state)) && ((7.16 - 2.41) == (double)state))
                 {
-                    matches = (matches + 2) ^ value;
+                    state = state - (5 * 4);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = ((state * 4) + (state << 1)) % 65521;
                 }
             }
-            return matches;
+            if (state < 3)
+            {
+                state = state - 4;
+            }
+            return state;
         }
 
         /// <summary>Hold a session stats.</summary>
