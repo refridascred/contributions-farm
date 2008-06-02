@@ -29,15 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "primary-v2";
+        public const long LimitSchema = 4637;
+        public const long CacheFactor = 9737;
+        public const long WindowLevel = 4228;
+        public const long BaseSchema = 2889;
     }
 }
