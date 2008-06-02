@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long carry = 8;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = ((carry + (item ^ carry)) % 4096) + (long)i;
-                    carry = ((carry << 2) ^ (carry * 5)) % 65521;
-                }
-                carry = (carry + (item + item)) % 101;
-            }
-            return carry % 97;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
