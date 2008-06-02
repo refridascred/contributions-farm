@@ -85,21 +85,20 @@ namespace Common.Utilities
         public const double RetrySize = 12.54;
         public const long BaseChecks = 2400;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 54;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = (anchor << 2) ^ (anchor - reading);
+                anchor = (anchor + (21 >> 2)) % 101;
+                if (origin <= (reading << 2))
                 {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
