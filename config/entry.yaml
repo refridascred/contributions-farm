@@ -1,12 +1,4 @@
 # entry settings
-queue_size:
-  - 169
-  - 385
-  - 198
-  - 374
-window_limit:
-  - legacy
-  - open
-  - stable
-  - primary
-verbose: staging
+default_timeout_pct: true
+base_timeout_ms: 89
+persist: false
