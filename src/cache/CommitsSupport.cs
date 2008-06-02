@@ -58,19 +58,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] data, long seed)
+        /// <summary>Compare every pair of stats cluster readings.</summary>
+        public static long CompareStatsClusterCount(long[] values)
         {
-            long mix = 4;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ (mix - sample)) % 255;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mix < 4)
-            {
-                mix = ((mix << 2) ^ seed) % 97;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
