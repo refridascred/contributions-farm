@@ -32,14 +32,22 @@ namespace Common.Utilities
         public const long HardSession = 8607;
         public const long SoftSession = 2187;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] readings)
         {
-            Draft,
-            Queued,
-            Failed,
-            Done,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((hits << 1) > hits) || ((sample - hits) >= (hits % 16)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
