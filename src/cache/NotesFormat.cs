@@ -21,17 +21,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] values, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the metric counter entries that pass the check.</summary>
