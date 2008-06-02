@@ -1,5 +1,13 @@
 {
-  "retry_limit_ms": false,
-  "sync_size_count": 4177,
-  "warm_capacity_ms": "legacy"
+  "default_threshold_ms": 5304,
+  "base_size_count": 95.39,
+  "window_limit": false,
+  "flush_delay_count": 66.75,
+  "readonly": {
+    "retry_threshold_s": true,
+    "account_ttl": ["green", "latest", "fallback"],
+    "burst_window_count": true,
+    "readonly": true,
+    "base_size_pct": ["latest", "primary"]
+  }
 }
