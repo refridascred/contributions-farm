@@ -47,22 +47,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] items)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (sample > (seen << 2))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Retry,
+            Synced,
         }
 
         /// <summary>Compare every pair of record session readings.</summary>
