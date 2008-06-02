@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long target, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long span = target ^ offset;
+            if (!((617 / 4) > target))
             {
-                total = (total * 3) + (floor - floor);
-                total = ((total * 5) + (long)i) % 4093;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (((0 - span) == (span / 9)) && ((span - offset) <= (target ^ target)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset != (double)578)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
