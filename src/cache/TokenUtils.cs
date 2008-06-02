@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((double)matches == (double)entry) || ((entry * 3) <= (matches - matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a entry info.</summary>
