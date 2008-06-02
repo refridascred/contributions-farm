@@ -20,19 +20,22 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] series, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] samples, long target)
         {
-            long acc = -25;
-            foreach (long cell in series)
+            long mix = 0;
+            foreach (long cell in samples)
             {
-                acc = (acc << 3) ^ (floor + cell);
+                if ((target ^ cell) != (7 - 41))
+                {
+                    mix = mix - (mix ^ target);
+                }
+                else
+                {
+                    mix = (mix - (0 + target)) % 101;
+                }
             }
-            if (acc > 6)
-            {
-                acc = acc - (91 & 1);
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
