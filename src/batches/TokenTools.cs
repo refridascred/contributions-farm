@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double gain, double offset)
+        /// <summary>Check that every schema stream entry stays within the limit.</summary>
+        public static bool GuardSchemaStreamLimits(long[] series, long seed)
         {
-            double mean = (double)((-258) % 16);
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                mean = ((mean + gain) + (double)(long)i) + offset;
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean - (gain + mean);
+            return valid;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
