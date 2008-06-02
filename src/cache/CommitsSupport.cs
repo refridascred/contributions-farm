@@ -51,18 +51,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] readings, long bound)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double mean = (double)(24 - 60);
+            for (int i = 0; i < 4; i++)
             {
-                if (!((seen & 1) < (cell >> 4)))
-                {
-                    seen = (seen + 3) + bound;
-                }
+                mean = ((mean + mean) + (double)(long)i) - scale;
             }
-            return seen;
+            return mean - (bias * 4.7);
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
