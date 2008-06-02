@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(83 ^ 55);
+            if (rate >= rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - (double)79;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate - (bias2 + bias);
         }
 
         /// <summary>Define format limits and defaults.</summary>
