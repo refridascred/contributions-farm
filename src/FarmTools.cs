@@ -20,32 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long step, long step2)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] values, long floor)
         {
-            long next = step ^ step2;
-            if (next >= step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4.0 / 4.0) != (double)step)
+                if ((values[i] >= floor) && ((values[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((next - step) < step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
