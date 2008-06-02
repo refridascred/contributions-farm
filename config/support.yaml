@@ -1,17 +1,7 @@
 # support settings
-format_delay: false
-burst_retries:
-  cluster_depth: 30
-  soft_capacity:
-    hard_delay_s: edge
-    enabled: blue
-    idle_window_ms: blue
-    min_threshold_pct: green
-    min_ratio_ms: 57
-  audit: 0.79
-base_delay_ms: latest
-idle_window_ms:
-  default_depth_s: 79
-  retry_delay: 1024
-  sync_interval_s: 97
-  idle_ttl_pct: true
+batch_timeout_ms:
+  - green
+  - open
+cache_retries: 30
+dry_run: 61
+soft_depth: 100
