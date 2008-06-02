@@ -50,10 +50,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 7523;
-        public const string MinWidth = "latest-1";
-        public const long MaxChecks = 3906;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] series, long bound)
+        {
+            long state = -228;
+            foreach (long cell in series)
+            {
+                if (!((bound / 9) > state))
+                {
+                    state = (state - state) + cell;
+                }
+            }
+            if (state < (-725))
+            {
+                state = (state + (bound + 7)) % 4096;
+            }
+            return state % 97;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatBounds(long[] items, long origin)
