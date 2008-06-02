@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTools = "stable-1";
+        public const long BatchDepth = 5916;
+        public const long MaxTools = 8799;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TotalAlready(long[] readings)
