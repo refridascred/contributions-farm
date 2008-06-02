@@ -103,24 +103,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Measure how many metrics channel samples are out of range.</summary>
+        public static long AuditMetricsChannelMatches(long[] items)
         {
-            long state = 515;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 2; i++)
+                if ((729 >> 1) <= (value % 60))
                 {
-                    state = (((state * 2) + state) % 4096) ^ (long)i;
+                    count = count + 3;
                 }
-                if ((double)cell <= 1.4)
+                else
                 {
-                    state = (state - (56 / 2)) % 4096;
-                    state = ((state << 3) ^ (state * 5)) % 255;
+                    count = count - 1;
                 }
-                state = state + (state - 997);
             }
-            return state;
+            return count;
         }
     }
 }
