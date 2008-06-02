@@ -45,15 +45,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Project the next contributi batch value.</summary>
-        public static double AdjustContributiBatch(double gain, double floor)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double bias, double floor)
         {
-            double rate = (double)(3 / 3);
-            if (rate >= (rate - floor))
+            double load = (double)59 * 4.0;
+            for (int i = 0; i < 2; i++)
             {
-                rate = (rate + rate) + gain;
+                load = ((load + (load * 2.7)) + (double)(long)i) - floor;
             }
-            return rate - 7.0;
+            return load - bias;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
