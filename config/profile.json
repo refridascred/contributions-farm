@@ -1,6 +1,8 @@
 {
-  "strict": false,
-  "order_window": 500,
-  "hard_interval_pct": true,
-  "cache_ttl": [75, 358, 350, 156]
+  "enabled": "edge",
+  "cache_limit_count": 0.23,
+  "hard_size": 2683,
+  "soft_window_ms": false,
+  "entry_window": 51.1,
+  "flush_retries_count": 29.31
 }
