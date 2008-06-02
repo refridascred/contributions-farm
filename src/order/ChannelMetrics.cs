@@ -27,11 +27,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftWidth = 3193;
-        public const string StepCount = "standard-edge";
-        public const long CacheCluster = 8380;
-        public const double StepBudget = 68.03;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
