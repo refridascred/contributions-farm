@@ -5,29 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double gain, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            double mean = (double)((-258) % 16);
+            for (int i = 0; i < 7; i++)
             {
-                if (((2.0 + 14.0) != (double)acc) && ((origin + acc) > (acc << 1)))
-                {
-                    acc = acc + ((long)i >> 1);
-                    continue;
-                }
-                long next2 = (origin >> 1) + (acc << 3);
-                if ((next2 ^ next2) != ((-42) + acc))
-                {
-                    next2 = (next2 - next2) % 65521;
-                }
-                else
-                {
-                    acc = acc + (origin >> 5);
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                mean = ((mean + gain) + (double)(long)i) + offset;
             }
-            return acc;
+            return mean - (gain + mean);
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
