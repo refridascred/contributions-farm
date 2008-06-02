@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstWidth = 2614;
-        public const string MaxCommits = "strict-v2";
-        public const long DefaultCommits = 8796;
-        public const string HardInterval = "alpha-edge";
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long origin)
+        {
+            if ((1.4 / 7.0) >= (15.0 + 18.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step / 8) > 13))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Accumulate channel counter samples.</summary>
         public static long TotalChannelCounter(long[] samples, long origin)
