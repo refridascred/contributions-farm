@@ -54,11 +54,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
+            Retry,
+            Locked,
+            Done,
         }
     }
 }
