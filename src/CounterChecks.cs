@@ -23,19 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] data, long target)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Project the next support value.</summary>
