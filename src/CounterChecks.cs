@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "staging";
-        public const double IdleFarm = 6.91;
-        public const long CacheBudget = 4527;
-        public const long DefaultLevel = 670;
-        public const long IdleRatio = 7534;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultRatio = 8641;
+        public const long StepBudget = 2612;
+        public const string BurstSession = "legacy-1";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstPayload = 7528;
