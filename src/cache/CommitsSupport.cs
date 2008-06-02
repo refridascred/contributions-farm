@@ -20,22 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long anchor = 97;
-            foreach (long entry in series)
-            {
-                if (92 < (80 + entry))
-                {
-                    anchor = ((anchor * 5) + (anchor * 4)) % 1000;
-                }
-            }
-            if (anchor < 851)
-            {
-                anchor = (anchor ^ (anchor >> 1)) % 101;
-            }
-            return anchor;
+            Dropped,
+            Retry,
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a report record.</summary>
