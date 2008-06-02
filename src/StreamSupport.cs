@@ -38,9 +38,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardBudget = "latest-v2";
-        public const double IdleFactor = 17.15;
-        public const long BurstCommits = 4600;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 9852;
+        public const string StepCluster = "local-v2";
+        public const long HardCluster = 5889;
     }
 }
