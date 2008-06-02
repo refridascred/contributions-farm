@@ -69,15 +69,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseDepth = 11.84;
+        public const long MaxLevel = 3450;
+        public const long RetryQueue = 864;
     }
 }
