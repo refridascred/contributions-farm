@@ -21,17 +21,10 @@ namespace Common.Utilities
         public const long DefaultFarm = 6055;
         public const long IdleFarm = 8005;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 2) + (sum + target)) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepFormat = "standard-edge";
+        public const long CacheFormat = 5445;
+        public const long StepInterval = 2931;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
