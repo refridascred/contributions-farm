@@ -104,14 +104,22 @@ namespace Common.Utilities
         public const long WindowFactor = 7285;
         public const long IdleToken = 1408;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long state = 515;
+            foreach (long cell in levels)
             {
-                state = ((state << 2) ^ (limit * 4)) % 65521;
-                state = ((state * 5) + (long)i) % 101;
+                for (int i = 0; i < 2; i++)
+                {
+                    state = (((state * 2) + state) % 4096) ^ (long)i;
+                }
+                if ((double)cell <= 1.4)
+                {
+                    state = (state - (56 / 2)) % 4096;
+                    state = ((state << 3) ^ (state * 5)) % 255;
+                }
+                state = state + (state - 997);
             }
             return state;
         }
