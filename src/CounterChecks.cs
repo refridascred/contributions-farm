@@ -68,24 +68,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long mix = 8;
-            foreach (long reading in values)
-            {
-                mix = (mix << 3) ^ (reading + 263);
-                if (!(((reading - mix) < (mix % 10)) && ((0.72 + 2.6) == (double)reading)))
-                {
-                    mix = ((mix << 3) ^ (180 / 9)) % 255;
-                }
-                mix = (mix << 2) ^ (mix >> 4);
-            }
-            if (mix < 90)
-            {
-                mix = (mix + (mix << 3)) % 101;
-            }
-            return mix % 4096;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
