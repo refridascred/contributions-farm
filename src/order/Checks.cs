@@ -37,18 +37,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the layout queue entries that pass the check.</summary>
-        public static long MeasureLayoutQueueHits(long[] series, long bound)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches >= sample) && ((matches << 1) < 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + bound;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
