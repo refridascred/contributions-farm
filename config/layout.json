@@ -1,13 +1,8 @@
 {
-  "entry_window": 34,
-  "notes_window": {
-    "farm_delay": false,
-    "retry_timeout": "cached",
-    "layout_interval": ["standard", "eu-west", "edge", "blue"],
-    "cache_ttl_ms": ["edge", "latest"]
-  },
-  "default_timeout_ms": ["open", "primary"],
-  "hard_window_ms": 41.1,
-  "poll_capacity": [108, 482, 285],
-  "audit": 54
+  "poll_size_pct": 72.72,
+  "poll_limit_ms": "eu-west",
+  "notes_depth": 52,
+  "flush_depth_ms": 70.88,
+  "enabled": 60,
+  "order_capacity": "stable"
 }
