@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public double Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
