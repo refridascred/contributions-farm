@@ -38,24 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((mark + (long)i) > (seed + mark))
-                {
-                    mark = (mark ^ seed) % 1000;
-                    mark = (mark * 3) + (seed + mark);
-                }
-                else
-                {
-                    mark = ((mark * 5) + 1) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of stats cluster readings.</summary>
