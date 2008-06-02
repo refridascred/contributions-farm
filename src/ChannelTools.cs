@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCount = 6612;
+        public const double MinLevel = 95.26;
+        public const string BurstTimeout = "fallback-1";
+        public const long DefaultFactor = 1280;
+        public const long IdleCommand = 1671;
 
         /// <summary>Count the metric cluster entries that pass the check.</summary>
         public static long CountMetricClusterOutliers(long[] samples)
