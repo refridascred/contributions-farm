@@ -14,12 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Blend two support entry measurements.</summary>
+        public static double SmoothSupportEntry(double scale, double span)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            double rate = 5.31;
+            if (rate <= (double)59)
+            {
+                rate = (rate + rate) - scale;
+            }
+            else
+            {
+                rate = rate + (span * 7.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
