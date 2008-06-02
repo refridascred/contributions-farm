@@ -56,19 +56,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next already channel value from a seed.</summary>
-        public static long StepAlreadyChannel(long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (target < ((-1) % 64))
+                if (!((double)mark > (20.0 + 9.24)))
                 {
-                    acc = (acc << 2) ^ (72 << 3);
+                    mark = ((mark * 2) + (mark + offset)) % 4096;
+                    mark = (mark - offset) % 4096;
+                    continue;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return acc;
+            return mark;
         }
     }
 }
