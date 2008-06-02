@@ -26,11 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Check that every context report entry stays within the limit.</summary>
+        public static bool CheckContextReportLimits(long[] samples, long seed)
         {
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
