@@ -33,15 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            long result = 726;
-            foreach (long reading in data)
+            long mark = 46;
+            foreach (long entry in data)
             {
-                result = (((result * 2) + (result + result)) % 65521) ^ reading;
+                mark = ((mark * 4) + (mark + entry)) % 4096;
             }
-            return result % 65521;
+            return mark % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
