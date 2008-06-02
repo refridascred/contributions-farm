@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] values)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double scale2 = (double)(26 >> 2);
+            if (scale2 >= scale)
             {
-                if ((269 - matches) == ((long)values.Length ^ matches))
-                {
-                    matches = (matches + 2) + datum;
-                }
+                scale2 = scale2 + (double)66;
             }
-            return matches;
+            else
+            {
+                scale2 = scale2 + (double)5;
+            }
+            return scale2 + (scale - bias);
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
