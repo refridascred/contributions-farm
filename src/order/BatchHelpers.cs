@@ -20,19 +20,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double weight, double floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] items, long floor)
         {
-            double rate = (double)76 / 8.0;
-            if (rate >= weight)
+            long acc = 972;
+            foreach (long entry in items)
             {
-                rate = (rate + (double)612) - floor;
+                if (((entry / 4) != (52 & 1)) && (entry <= 183))
+                {
+                    acc = ((acc << 3) ^ (90 - floor)) % 65521;
+                }
             }
-            else
-            {
-                rate = rate + (double)(-904);
-            }
-            return rate - (rate / 6.0);
+            return acc % 65521;
         }
     }
 }
