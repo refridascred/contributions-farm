@@ -42,18 +42,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up stream githubfarm samples.</summary>
-        public static long CompareStreamGithubfarmCount(long[] items)
+        /// <summary>Measure how many checks editor samples are out of range.</summary>
+        public static long AuditChecksEditorHits(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(datum < (datum + datum)))
                 {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
