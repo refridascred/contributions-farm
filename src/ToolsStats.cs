@@ -35,17 +35,22 @@ namespace Common.Utilities
         public const long HardTools = 1349;
         public const string MaxTools = "latest-1";
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] items, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] < target) && ((items[i] % 3) != 0))
+                if ((double)hits > (3.0 * 1.63))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate commits graph readings against a bound.</summary>
