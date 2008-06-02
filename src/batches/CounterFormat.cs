@@ -28,23 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] samples, long seed)
+        /// <summary>Derive the next report route value from a seed.</summary>
+        public static long IterateReportRoute(long offset)
         {
-            long carry = 8;
-            foreach (long datum in samples)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                carry = ((carry - (seed / 2)) % 65521) + datum;
-                if (!((double)seed <= (6.6 * 7.95)))
+                if (!(offset >= 1))
                 {
-                    carry = (carry ^ carry) % 101;
+                    mark = (mark - (offset % 100)) % 1000;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            if (carry < 12)
-            {
-                carry = (carry - (seed + seed)) % 4096;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Hold a order snapshot.</summary>
