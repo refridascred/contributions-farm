@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Validate account schema readings against a bound.</summary>
+        public static bool VerifyAccountSchemaLimits(long[] values, long bound)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the metric status values.</summary>
