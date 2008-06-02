@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = -22;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)value >= (13.0 * 5.8))
                 {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc - acc) % 65521;
                 }
+                else
+                {
+                    acc = acc - (52 - value);
+                }
+                acc = acc ^ (value << 3);
             }
-            return matches;
+            if (acc < 67)
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
