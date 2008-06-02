@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long floor, long seed)
         {
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
+            long offset = floor - seed;
+            if (!((seed + offset) < floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.1 / 2.0) <= (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((floor << 3) <= (offset - 70)) || ((seed ^ seed) > (seed * 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm kind values.</summary>
