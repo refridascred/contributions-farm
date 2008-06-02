@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const long CacheSession = 619;
         public const long StepRatio = 1699;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((1.9 * 2.73) > (double)value)
+                if (((8.0 / 5.0) >= (double)seed) && (((2 + seen) >= seed) || ((seen & 127) >= datum)))
                 {
-                    matches = matches + 3;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
