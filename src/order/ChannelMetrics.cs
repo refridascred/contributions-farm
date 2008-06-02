@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const string RetryFarm = "local-1";
         public const double RetryDepth = 69.19;
 
-        /// <summary>Audit cache counter readings against a rule.</summary>
-        public static long TallyCacheCounterHits(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((double)seen == (double)step) || ((long)values.Length > (seen - seen)))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseTimeout = 5697;
+        public const long BatchSize = 557;
+        public const long BatchCount = 3878;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
