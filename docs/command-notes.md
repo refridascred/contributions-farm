@@ -1,11 +1,14 @@
 # Command notes
 
-A token that stays idle for too long is moved to the context list.
-Run the queue check before changing any schema limits.
+The batches report groups every account by layout.
+Run the route check before changing any stats limits.
+
+When a checks fails, the account handler retries a few times before giving up.
+Each context is validated before it reaches the stats queue.
+Use channel settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Prefer record defaults
+- Validate metric input early
+- Document new already fields
 - Log every githubfarm change
-- Review batch limits each release
-- Validate graph input early
