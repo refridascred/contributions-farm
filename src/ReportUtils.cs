@@ -47,13 +47,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] levels, long floor)
         {
-            Dropped,
-            Draft,
-            Queued,
-            Ready,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
