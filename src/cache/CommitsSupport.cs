@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] readings, long offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((offset + offset) < (matches & 1))
+                if (((long)i << 3) < ((long)i % 60))
                 {
-                    matches = (matches + 2) ^ value;
+                    continue;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
