@@ -39,16 +39,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] values, long bound)
         {
-            long score = 65;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score - (score - score);
-                score = (score ^ (datum << 1)) % 255;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Adjust a tools reading.</summary>
