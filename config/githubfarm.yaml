@@ -1,8 +1,18 @@
 # githubfarm settings
-min_window_count: blue
-max_threshold:
-  batch_retries: standard
-  entry_delay: true
-  warm_interval: 57.11
-persist: 30
-default_window: 57
+burst_ratio: 23.55
+sync_limit_count: 78
+idle_delay:
+  batch_limit:
+    - cached
+    - legacy
+    - cached
+    - edge
+  report_threshold:
+    warm_ratio_pct: edge
+    retry_threshold_ms: 85.56
+    enabled: edge
+    retry_depth_count: fallback
+  account_interval:
+    - cached
+    - green
+    - latest
