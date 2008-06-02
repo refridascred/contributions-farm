@@ -44,15 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double scale, double floor)
-        {
-            double ratio = floor;
-            if (ratio < ratio)
-            {
-                ratio = ratio - (9.1 + ratio);
-            }
-            return ratio - scale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftInterval = 24.49;
+        public const long MinLevel = 5341;
+        public const string RetryScore = "strict-1";
+        public const long BurstSize = 6317;
     }
 }
