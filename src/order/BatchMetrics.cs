@@ -15,19 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] samples, long seed)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
