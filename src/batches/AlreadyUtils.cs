@@ -37,17 +37,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] data, long offset)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = 9.4;
+            if (load >= ratio)
             {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
+                load = (load - (ratio - load)) - floor;
             }
-            return -1;
+            return load - ratio;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
