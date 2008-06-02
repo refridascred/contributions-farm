@@ -69,22 +69,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel editor readings.</summary>
-        public static long ScoreChannelEditor(long[] samples, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] values, long offset)
         {
-            long state = -2;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (!((reading - reading) >= state))
+                if (value >= offset)
                 {
-                    state = (state ^ (reading + step)) % 255;
-                }
-                if (reading <= (reading & 31))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state % 4096;
+            return stale;
         }
     }
 }
