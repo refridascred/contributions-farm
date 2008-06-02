@@ -45,21 +45,13 @@ namespace Common.Utilities
         public const long MaxCount = 4966;
         public const long RetryRatio = 5232;
 
-        /// <summary>Count command channel pairs that satisfy a relation.</summary>
-        public static long CompareCommandChannelCount(long[] data)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Active,
+            Closed,
+            Synced,
         }
     }
 }
