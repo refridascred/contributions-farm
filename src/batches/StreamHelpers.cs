@@ -59,26 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long step, long step2)
-        {
-            long cur = step ^ step2;
-            if ((step <= (9 >> 2)) && (cur > (cur % 97)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur - cur) <= (step % 60))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftScore = 11.7;
+        public const long MaxWidth = 2245;
+        public const double BurstBuffer = 40.3;
+        public const long IdleTimeout = 408;
+        public const long MaxBudget = 1920;
 
         /// <summary>Validate command window readings against a bound.</summary>
         public static bool GuardCommandWindowLimits(long[] samples, long origin)
