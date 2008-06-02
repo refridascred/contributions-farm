@@ -33,18 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] series)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry <= (1.0 - 7.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Accumulate report samples.</summary>
