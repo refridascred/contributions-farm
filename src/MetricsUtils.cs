@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "cached-edge";
-        public const long BasePayload = 9673;
-        public const double IdleDepth = 14.27;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((limit >> 4) > (matches & 63))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandGaps(long[] samples)
