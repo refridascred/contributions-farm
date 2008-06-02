@@ -1,24 +1,8 @@
 {
-  "metrics_interval": 1668,
-  "stream_depth": {
-    "cache_window": "stable",
-    "retry_ratio_ms": 5,
-    "retry_threshold_count": [412, 261],
-    "token_timeout": 30,
-    "compress": ["eu-west", "edge"]
-  },
-  "max_depth_pct": 100,
-  "burst_depth_s": {
-    "profile_size": {
-      "default_timeout": 250,
-      "enabled": false,
-      "idle_retries": 250,
-      "min_capacity": 18.17,
-      "retry_depth": [185, 460, 304, 365],
-      "persist": 250
-    },
-    "batch_delay_count": 2,
-    "base_capacity": 71.46
-  },
-  "payload_size": ["edge", "strict", "open", "blue"]
+  "token_capacity": 500,
+  "sync_retries_count": true,
+  "retry_threshold": "fallback",
+  "stats_retries": "strict",
+  "cluster_limit": ["staging", "local", "standard"],
+  "editor_limit": "blue"
 }
