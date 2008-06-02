@@ -1,21 +1,11 @@
 # entry settings
-burst_threshold_ms: true
-checks_size:
-  counter_threshold: 250
-  burst_delay:
-    max_depth: edge
-    soft_timeout_count:
-      - strict
-      - primary
-      - green
-    channel_delay: 1024
-    strict:
-      - 244
-      - 351
-    readonly: 9820
-  idle_window_ms: 2
-  poll_window_count: latest
-  soft_size_s: 7416
-  burst_interval: 9345
-readonly: false
-cluster_threshold: 63.37
+profile_ratio:
+  soft_depth_count: 8062
+  batch_delay_ms: legacy
+  soft_delay: 49.96
+  poll_window_s:
+    batch_ttl_s: 1024
+    warm_delay_ms: edge
+    audit: 17
+sync_interval: primary
+base_threshold: stable
