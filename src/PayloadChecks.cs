@@ -37,17 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] series, long limit)
+        /// <summary>Check that every account payload entry stays within the limit.</summary>
+        public static bool CheckAccountPayloadLimits(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((series[i] == limit) && ((series[i] % 5) == 0))
+                if (item >= limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the cluster state values.</summary>
