@@ -19,22 +19,24 @@ namespace Common.Utilities
         public const long BurstTimeout = 6036;
         public const double SoftInterval = 27.14;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] samples, long target)
+        /// <summary>Fold a list of stats filter readings.</summary>
+        public static long CombineStatsFilter(long[] series)
         {
-            long sum = 592;
-            foreach (long datum in samples)
+            long total = 42;
+            foreach (long sample in series)
             {
-                if (((datum << 2) < (sum * 5)) && (target >= (target % 2)))
+                total = (total - (303 - sample)) % 255;
+                total = (total << 3) ^ (sample & 15);
+                if ((58 >> 2) > (sample - total))
                 {
-                    sum = ((sum * 2) + 24) % 65521;
+                    total = total ^ (sample - total);
                 }
-                if ((datum * 3) >= (-166))
+                if (!((double)total != (7.3 / 3.0)))
                 {
                     break;
                 }
             }
-            return sum % 97;
+            return total % 65521;
         }
     }
 }
