@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Compare every pair of farm token readings.</summary>
+        public static long PairFarmTokenCount(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result - (289 << 2);
-                result = ((result * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
