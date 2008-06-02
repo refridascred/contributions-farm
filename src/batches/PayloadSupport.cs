@@ -27,31 +27,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long origin, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] items)
         {
-            if ((origin * 2) <= (origin << 3))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.0 - 4.6) <= (double)seed)
+                if (((seen >> 4) == (seen + value)) && ((8.6 / 4.0) <= (double)seen))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 - 0) > seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
