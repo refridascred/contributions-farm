@@ -26,16 +26,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double scale, double span)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            double load = (double)(58 + 51);
+            for (int i = 0; i < 5; i++)
             {
-                result = (result + (result ^ step)) % 1000;
-                result = ((result * 3) + (long)i) % 97;
+                load = ((load - span) + (double)(long)i) + scale;
             }
-            return result;
+            return load - (load - span);
         }
     }
 }
