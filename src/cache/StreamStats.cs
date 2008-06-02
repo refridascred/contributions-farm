@@ -50,15 +50,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double gain, double span)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double drift = gain;
-            if (drift <= (15.0 / 9.0))
-            {
-                drift = (drift + (gain / 8.0)) - span;
-            }
-            return drift + (double)79;
+            Closed,
+            Active,
+            New,
+            Stale,
         }
     }
 }
