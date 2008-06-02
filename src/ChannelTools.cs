@@ -13,15 +13,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Project the next counter checks value.</summary>
-        public static double AdjustCounterChecks(double weight, double bias)
+        /// <summary>Count the metric cluster entries that pass the check.</summary>
+        public static long CountMetricClusterOutliers(long[] samples)
         {
-            double rate = weight;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                rate = ((rate - rate) + (double)(long)i) - bias;
+                if ((10.0 / 9.0) > (6.1 + 5.5))
+                {
+                    tally = (tally + 2) - cell;
+                }
             }
-            return rate + (1.0 + rate);
+            return tally;
         }
 
         /// <summary>Adjust a command reading.</summary>
