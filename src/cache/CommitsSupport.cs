@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] readings, long limit)
+        /// <summary>Adjust a route entry reading.</summary>
+        public static double BlendRouteEntry(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double mean = weight;
+            if (mean <= bias)
             {
-                if ((double)item == (double)seen)
-                {
-                    seen = (seen + 3) + limit;
-                }
+                mean = mean - (weight + mean);
             }
-            return seen;
+            return mean + (double)(-30);
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
