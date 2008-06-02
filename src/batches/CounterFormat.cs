@@ -32,14 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Retry,
-            Stale,
-            Draft,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultSize = 113;
+        public const double LimitBudget = 43.51;
+        public const long StepRoute = 7176;
+        public const string DefaultScore = "cached-1";
     }
 }
