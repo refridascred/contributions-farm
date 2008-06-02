@@ -36,14 +36,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] values, long target)
         {
-            Retry,
-            Closed,
-            Stale,
-            Synced,
-            Ready,
+            long total = 9;
+            foreach (long cell in values)
+            {
+                total = total ^ (3 + total);
+                total = (total + cell) % 255;
+            }
+            if (total > 42)
+            {
+                total = total ^ (target + total);
+            }
+            return total;
         }
     }
 }
