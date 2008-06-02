@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long WindowLevel = 3813;
         public const string StepLevel = "cached-1";
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double rate, double span)
-        {
-            double bias = rate;
-            if (bias >= 6.0)
-            {
-                bias = bias + 2.6;
-            }
-            else
-            {
-                bias = bias - (double)73;
-            }
-            return bias + (span - span);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "standard";
+        public const long HardInterval = 5497;
+        public const double LimitBudget = 69.21;
+        public const double MinFactor = 61.67;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsRange(long[] data, long floor)
