@@ -52,25 +52,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long target, long target2)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long offset = target - target2;
-            if (((-32) - target2) <= (target >> 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((0.5 + 3.75) == (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Ready,
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
