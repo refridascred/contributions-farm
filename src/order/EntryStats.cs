@@ -24,17 +24,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] readings, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long floor, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)floor <= (6.73 * 7.0)) && ((floor + origin) > origin))
             {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((origin % 3) > origin)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
