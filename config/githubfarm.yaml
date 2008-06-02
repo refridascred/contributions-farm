@@ -1,5 +1,10 @@
 # githubfarm settings
-min_retries_ms: 8971
-channel_ttl: 60
-buffer_interval: 100
-command_limit: 6621
+retry_ttl: 1024
+profile_delay:
+  - stable
+  - local
+hard_interval_s: local
+compress:
+  verbose: open
+  cache_depth: true
+  soft_delay: green
