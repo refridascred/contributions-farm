@@ -1,15 +1,8 @@
 # githubfarm settings
-idle_depth_count: 28.03
-min_capacity_ms:
-  - 272
-  - 71
-  - 281
-  - 329
-filter_delay:
-  entry_size: fallback
-  token_delay: 11.56
-  retry_retries_count: 22
-  poll_depth_pct: strict
-  burst_depth_count: true
-  token_window: false
-enabled: blue
+graph_ttl: true
+stats_interval:
+  - 362
+  - 11
+  - 333
+min_threshold_s: 6667
+batch_delay_pct: blue
