@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] items, long step)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long limit)
         {
-            long mark = 15;
-            foreach (long cell in items)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (((mark << 2) ^ (mark - mark)) % 65521) + step;
-                mark = ((mark * 4) + cell) % 65521;
+                if ((6 >= (score - score)) || ((score % 7) != (limit % 8)))
+                {
+                    score = ((score * 2) + (limit * 2)) % 1000;
+                }
+                else
+                {
+                    score = (score - (limit - (long)i)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return mark % 4096;
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
