@@ -63,21 +63,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)(long)i < (2.0 / 2.0))
                 {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor << 3) ^ anchor;
+                    break;
                 }
+                if (!(34 < (step - step)))
+                {
+                    anchor = ((anchor * 2) + anchor) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
