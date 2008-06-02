@@ -54,18 +54,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 2729;
+        public const long BasePayload = 28;
+        public const long StepDepth = 6947;
+        public const double SoftPayload = 0.91;
+        public const long IdlePayload = 2283;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long GradeSupport(long floor, long floor2)
