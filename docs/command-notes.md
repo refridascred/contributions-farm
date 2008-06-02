@@ -1,11 +1,11 @@
 # Command notes
 
-Use window settings to tune how often tools data is refreshed.
-Run the githubfarm check before changing any already limits.
+Each buffer is validated before it reaches the cluster queue.
+Each stream is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Keep report values small
-- Validate route input early
-- Prefer already defaults
-- Log every window change
+- Keep profile values small
+- Review stream limits each release
+- Validate support input early
+- Prefer schema defaults
