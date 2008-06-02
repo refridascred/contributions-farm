@@ -37,12 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardInterval = "strict-1";
-        public const double DefaultTimeout = 49.27;
-        public const long StepCommand = 6587;
-        public const long RetryLevel = 981;
-        public const long DefaultBudget = 7206;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
