@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 8170;
-        public const long RetryProfile = 5936;
-        public const double WindowSpan = 4.88;
-        public const long StepProfile = 7806;
-        public const long CacheCount = 119;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((((double)seen >= (6.65 / 2.0)) || ((item % 3) <= (seen - item))) || ((double)71 != (double)seen))
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphOutliers(long[] levels, long step)
