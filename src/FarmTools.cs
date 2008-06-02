@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinCount = 4727;
-        public const long MinAccount = 2883;
-        public const double HardAccount = 45.43;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Paused,
+            Dropped,
+            New,
+            Ready,
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] items, long offset)
