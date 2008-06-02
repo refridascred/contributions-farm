@@ -30,18 +30,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] values)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((matches >> 1) < datum)
-                {
-                    matches = matches + 2;
-                }
+                mix = (mix * 5) + 6;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
