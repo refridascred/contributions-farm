@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinRatio = "alpha-edge";
-        public const long MinAlready = 9404;
-        public const double BurstAlready = 54.14;
-        public const string WindowTimeout = "strict-edge";
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Failed,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long step, long origin)
