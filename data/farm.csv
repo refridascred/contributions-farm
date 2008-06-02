@@ -1,6 +1,7 @@
-id,rank,label,active,level
-1,blue,edge,600,eu-west
-2,628,0.91,8.86,766
-3,537,987,941,130
-4,78.47,821,edge,291
-5,46,588,90.02,fallback
+id,token,weight,rank,region
+1,42.44,845,357,33.21
+2,610,837,155,13.24
+3,31.58,925,open,202
+4,blue,88.0,72.63,258
+5,local,715,429,stable
+6,standard,420,716,blue
