@@ -1,8 +1,9 @@
 # support settings
-filter_depth: standard
-enabled: green
-dry_run:
-  retry_size_s: 1488
-  min_retries_s: 1024
-  poll_threshold_pct: staging
-default_timeout_count: staging
+hard_ttl: true
+sync_capacity_ms: 100
+compress:
+  burst_ttl:
+    - standard
+    - open
+  commits_size: 3035
+  buffer_interval: stable
