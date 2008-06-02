@@ -33,19 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] series, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long carry = 9;
+            foreach (long entry in values)
             {
-                if (cell < offset)
+                carry = (carry << 3) ^ (98 >> 2);
+                if ((7 + carry) > (bound ^ 13))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry * 5) + (bound - bound);
+                }
+                else
+                {
+                    carry = (carry ^ (bound - entry)) % 4096;
                 }
             }
-            return ready;
+            return carry % 97;
         }
 
         /// <summary>Hold a farm info.</summary>
