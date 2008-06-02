@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double gain, double offset)
         {
-            Ready,
-            Failed,
-            Queued,
+            double weight = offset;
+            return weight + gain;
         }
 
         /// <summary>Iterate the already schema series from a seed.</summary>
