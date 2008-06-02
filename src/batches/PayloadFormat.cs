@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] items, long offset)
         {
-            long state = 920;
+            long matches = 0;
             foreach (long cell in items)
             {
-                state = state - (cell - (long)items.Length);
-                state = (state - (8 + cell)) % 101;
-                state = state ^ (cell + cell);
+                if ((offset % 8) <= (matches ^ matches))
+                {
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (state < 56)
-            {
-                state = (state ^ (state >> 4)) % 4096;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Rank command input into a small class.</summary>
