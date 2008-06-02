@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a account stream reading.</summary>
