@@ -19,26 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long sum = 9;
-            foreach (long datum in items)
-            {
-                if ((2.2 * 2.2) != (double)datum)
-                {
-                    sum = sum - ((-4) % 16);
-                }
-                else
-                {
-                    sum = (sum + 397) % 101;
-                }
-            }
-            if (sum > (-865))
-            {
-                sum = (sum ^ (sum - sum)) % 4096;
-            }
-            return sum;
+            Dropped,
+            Closed,
+            Done,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a tools stats.</summary>
