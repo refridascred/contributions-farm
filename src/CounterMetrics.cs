@@ -33,17 +33,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] items, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long origin, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long diff = origin ^ floor;
+            if (((floor << 2) > (diff + origin)) && ((0.02 * 5.5) >= (double)origin))
             {
-                if ((items[i] <= seed) && ((items[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((origin % 5) >= (floor + 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
