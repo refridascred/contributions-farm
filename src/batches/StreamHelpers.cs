@@ -33,22 +33,19 @@ namespace Common.Utilities
         public const long RetrySize = 2181;
         public const double LimitFactor = 63.66;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (sample <= count)
+                if (datum > origin)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
