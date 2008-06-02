@@ -1,14 +1,37 @@
 # support settings
-support_interval: stable
-flush_depth: eu-west
-counter_window:
-  poll_retries_ms:
-    - edge
-    - blue
-    - primary
-    - primary
-  batch_retries_count: 6344
-  batches_threshold: eu-west
-warm_retries_pct: open
-retry_capacity: 7.94
-support_retries: 37
+warm_retries_ms:
+  flush_limit_pct: local
+  already_delay:
+    audit: 47.71
+    soft_threshold_count: 100
+    profile_retries: 6188
+    verbose: stable
+  warm_ttl_count:
+    cache_threshold_count: true
+    strict: 60
+    flush_depth_pct:
+      - primary
+      - stable
+      - fallback
+      - stable
+  default_interval:
+    burst_timeout_pct: 3085
+    audit: 1024
+    sync_window_s: 52.81
+    retry_capacity: 1024
+    flush_threshold: 59.69
+    sync_threshold_count: eu-west
+  enabled: 13.8
+cache_window_count: 3416
+compress:
+  - eu-west
+  - legacy
+  - staging
+  - cached
+poll_ratio_pct:
+  - 200
+  - 306
+base_window:
+  - legacy
+  - primary
+  - latest
