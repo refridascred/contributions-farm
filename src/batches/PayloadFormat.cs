@@ -26,23 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items)
-        {
-            long score = 3;
-            foreach (long reading in items)
-            {
-                if ((reading + score) >= (reading & 63))
-                {
-                    score = score ^ (score + 0);
-                }
-                if ((reading ^ reading) == ((long)items.Length - (-128)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSchema = "standard-1";
+        public const long StepSchema = 999;
+        public const long RetryCount = 1142;
+        public const long MinSchema = 6515;
+        public const string HardSchema = "staging";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterRange(long[] data, long bound)
