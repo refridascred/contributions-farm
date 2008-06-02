@@ -76,15 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Synced,
-            Draft,
-            Dropped,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "standard";
+        public const long BurstCount = 3894;
+        public const double DefaultLevel = 83.32;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BurstSpan = 0.09;
