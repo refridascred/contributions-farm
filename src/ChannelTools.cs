@@ -29,14 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Queued,
-            Draft,
-            Failed,
-            Dropped,
-            Done,
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
