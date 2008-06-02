@@ -73,15 +73,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double bias, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] samples)
         {
-            double load = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                load = ((load - offset) - (double)(long)i) - bias;
+                if ((cell % 10) < (7 ^ cell))
+                {
+                    seen = seen + 2;
+                }
             }
-            return load - 7.1;
+            return seen;
         }
 
         /// <summary>Describe the batches level values.</summary>
