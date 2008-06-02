@@ -40,14 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] samples, long offset)
         {
-            New,
-            Stale,
-            Closed,
-            Retry,
-            Ready,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (!(((0.1 * 3.66) <= (double)(long)samples.Length) && ((double)matches <= (8.7 - 14.0))))
+                {
+                    matches = ((matches + 3) + sample) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session entry.</summary>
