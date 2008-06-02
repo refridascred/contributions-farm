@@ -33,14 +33,17 @@ namespace Common.Utilities
         public const double BurstInterval = 33.43;
         public const double MinPayload = 47.01;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] readings, long seed)
         {
-            Queued,
-            Retry,
-            Stale,
-            Synced,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
