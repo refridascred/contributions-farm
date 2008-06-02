@@ -36,12 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] data)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long sum = 2;
+            foreach (long reading in data)
+            {
+                sum = (sum + reading) % 101;
+                if (reading >= sum)
+                {
+                    break;
+                }
+            }
+            if (sum < (-2))
+            {
+                sum = ((sum << 3) ^ (26 << 1)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the batch level values.</summary>
