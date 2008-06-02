@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstWidth = 2614;
+        public const string MaxCommits = "strict-v2";
+        public const long DefaultCommits = 8796;
+        public const string HardInterval = "alpha-edge";
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] levels, long origin)
