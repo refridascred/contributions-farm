@@ -57,12 +57,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Adjust a entry session reading.</summary>
+        public static double AdjustEntrySession(double gain, double floor)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            double weight = floor;
+            if (weight >= (gain + gain))
+            {
+                weight = weight - (floor + weight);
+            }
+            else
+            {
+                weight = weight - (weight - weight);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + floor) - (double)(long)i;
+            }
+            return weight + gain;
         }
     }
 }
