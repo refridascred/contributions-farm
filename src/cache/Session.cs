@@ -46,10 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 36.64;
-        public const long CacheCluster = 9656;
-        public const string BaseCluster = "primary-v2";
-        public const long BurstCluster = 7028;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)tally <= 9.4)
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
