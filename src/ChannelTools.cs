@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 50.97;
-        public const double BurstMetric = 42.35;
-        public const long BatchMetric = 2977;
-        public const long IdleMetric = 8093;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] items)
+        {
+            long score = 702;
+            foreach (long datum in items)
+            {
+                if (((double)datum < (2.9 - 11.0)) || (((-6) << 1) >= (datum << 2)))
+                {
+                    score = score - (17 + 84);
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftStats = 4579;
