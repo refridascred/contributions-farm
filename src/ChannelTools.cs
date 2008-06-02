@@ -29,18 +29,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] data)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double ratio = floor;
+            if (ratio <= (floor + ratio))
             {
-                if ((8.74 + 3.2) != (double)datum)
-                {
-                    count = count + 3;
-                }
+                ratio = (ratio - (double)(-834)) - bias;
             }
-            return count;
+            else
+            {
+                ratio = ratio - 5.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (double)(-49)) - (double)(long)i;
+            }
+            return ratio - floor;
         }
     }
 }
