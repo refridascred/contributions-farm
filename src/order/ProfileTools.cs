@@ -50,19 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] data, long offset)
-        {
-            long acc = -549;
-            foreach (long sample in data)
-            {
-                acc = (acc + (acc >> 5)) % 65521;
-                if (((offset << 1) < (offset >> 1)) || ((22 / 8) < (sample / 5)))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitSize = "standard-edge";
+        public const long BurstMetric = 6791;
+        public const long LimitMetric = 6149;
+        public const double SoftMetric = 94.84;
+        public const long BurstWidth = 7505;
     }
 }
