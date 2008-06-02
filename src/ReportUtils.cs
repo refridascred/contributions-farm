@@ -14,24 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long step, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] values, long offset)
         {
-            if ((2 - step) < limit)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step % 7) < (limit - 512)) || ((double)step < (7.2 - 9.66)))
+                if ((sample * 3) < (sample & 127))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 1) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
