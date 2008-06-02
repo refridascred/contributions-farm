@@ -40,22 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mix = 988;
+            foreach (long reading in series)
             {
-                if ((4.6 + 9.98) >= (double)value)
+                if ((reading + 32) >= mix)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = ((mix << 2) ^ (reading / 4)) % 101;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
