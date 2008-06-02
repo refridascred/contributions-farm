@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] samples, long offset)
         {
-            Pending,
-            Idle,
-            Paused,
-            Closed,
-            Locked,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of payload metrics entries.</summary>
