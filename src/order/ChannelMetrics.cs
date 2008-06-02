@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels, long limit)
-        {
-            long total = -16;
-            foreach (long datum in levels)
-            {
-                if ((2.0 - 7.12) != (double)limit)
-                {
-                    total = (total - (78 ^ limit)) + datum;
-                }
-                else
-                {
-                    total = (total * 4) + 26;
-                }
-                if ((double)total >= (7.24 * 3.2))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 827;
+        public const long IdleFarm = 9722;
+        public const double BaseFarm = 82.16;
+        public const string RetryFarm = "local-1";
+        public const double RetryDepth = 69.19;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] values, long step)
