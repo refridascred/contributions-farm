@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next metrics schema value from a seed.</summary>
-        public static long RollMetricsSchema(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = sum - sum;
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstBudget = 38.78;
+        public const string CacheMetrics = "cached";
+        public const long BaseMetrics = 3964;
+        public const double BatchMetrics = 0.94;
+        public const long CacheTimeout = 753;
 
         /// <summary>Match up graph batch samples.</summary>
         public static long PairGraphBatchCount(long[] data)
