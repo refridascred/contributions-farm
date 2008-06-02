@@ -1,5 +1,6 @@
 {
-  "flush_timeout": false,
-  "sync_retries_ms": 44.4,
-  "verbose": "edge"
+  "compress": "stable",
+  "support_delay": 7256,
+  "burst_timeout_ms": "legacy",
+  "burst_threshold_ms": "local"
 }
