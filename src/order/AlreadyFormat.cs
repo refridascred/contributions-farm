@@ -47,15 +47,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double weight, double bias)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double rate, double offset)
         {
-            double gain = weight;
-            if (gain > (double)(-5))
+            double weight = 18.0;
+            if (weight > (weight - rate))
             {
-                gain = gain + bias;
+                weight = (weight - rate) + offset;
             }
-            return gain - bias;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (weight + rate)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
