@@ -38,18 +38,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] series)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            long anchor = 659;
-            foreach (long cell in series)
+            double load = (7.0 / 4.0) * 0.49;
+            for (int i = 0; i < 3; i++)
             {
-                if (!(cell >= (cell + cell)))
-                {
-                    anchor = anchor - (cell >> 4);
-                }
+                load = ((load + (load * 8.83)) + (double)(long)i) + gain;
             }
-            return anchor;
+            return load + (offset * 13.0);
         }
 
         /// <summary>Describe the counter level values.</summary>
