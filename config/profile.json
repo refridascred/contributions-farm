@@ -1,5 +1,12 @@
 {
-  "max_timeout": ["green", "open", "staging", "latest"],
-  "notes_ratio": 7298,
-  "payload_depth": false
+  "default_retries_pct": [154, 79, 443, 463],
+  "readonly": {
+    "hard_size_s": [68, 247, 249],
+    "flush_timeout": ["staging", "staging", "fallback"],
+    "buffer_threshold": ["local", "stable", "legacy", "staging"],
+    "persist": "legacy",
+    "window_window": "local",
+    "readonly": 60
+  },
+  "default_delay": true
 }
