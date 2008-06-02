@@ -31,12 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSession = "legacy-edge";
-        public const string SoftSession = "legacy-v2";
-        public const double DefaultSpan = 11.6;
-        public const long BatchRatio = 9948;
-        public const long BaseSession = 3044;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)count >= (17.0 - 4.9))
+                {
+                    count = ((count + 1) + entry) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long limit, long origin)
