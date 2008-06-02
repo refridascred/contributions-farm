@@ -40,17 +40,15 @@ namespace Common.Utilities
         public const long BaseScore = 6539;
         public const long LimitDepth = 214;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 5;
+            foreach (long reading in items)
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark + (975 & 7)) % 97) ^ reading;
             }
-            return -1;
+            return mark % 4096;
         }
     }
 }
