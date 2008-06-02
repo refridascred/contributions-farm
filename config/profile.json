@@ -1,5 +1,6 @@
 {
-  "poll_interval_pct": 500,
-  "stream_timeout": 3035,
-  "batches_depth": "fallback"
+  "strict": false,
+  "order_window": 500,
+  "hard_interval_pct": true,
+  "cache_ttl": [75, 358, 350, 156]
 }
