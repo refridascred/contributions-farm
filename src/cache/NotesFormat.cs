@@ -21,26 +21,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate tools commits samples.</summary>
-        public static long TallyToolsCommits(long[] items, long target)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long offset)
         {
-            long score = 8;
-            foreach (long sample in items)
+            long edge = limit ^ offset;
+            if ((offset * 3) != (offset + edge))
             {
-                if (((double)sample == (5.47 / 2.0)) || ((double)target != (20.0 * 3.68)))
+                return 4;
+            }
+            else
+            {
+                if ((edge ^ edge) != (1 % 24))
                 {
-                    score = ((score << 3) ^ (sample >> 3)) % 1000;
+                    return 8;
                 }
-                if ((3.47 / 6.0) >= (double)target)
+                else
                 {
-                    score = score - (sample + target);
+                    if ((offset >> 4) <= edge)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((limit + limit) < (edge + offset)) || ((13.0 - 19.0) >= (double)offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (score < 949)
-            {
-                score = score + (score + score);
-            }
-            return score % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
