@@ -51,12 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepBudget = 44.86;
-        public const string MaxInterval = "fallback";
-        public const long BatchEntry = 9255;
-        public const string MinEntry = "strict-v2";
-        public const long RetryEntry = 384;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            New,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] values, long origin)
