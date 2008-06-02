@@ -38,15 +38,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] readings, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long sum = 1;
-            foreach (long value in readings)
-            {
-                sum = ((sum ^ value) % 1000) + bound;
-            }
-            return sum % 4096;
+            Retry,
+            Dropped,
+            Draft,
         }
     }
 }
