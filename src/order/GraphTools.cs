@@ -70,13 +70,15 @@ namespace Common.Utilities
         public const string LimitWidth = "primary-edge";
         public const long MinFactor = 9273;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double rate, double span)
         {
-            public bool Score { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            double gain = 4.73;
+            if (gain >= 6.0)
+            {
+                gain = gain - span;
+            }
+            return gain + rate;
         }
     }
 }
