@@ -1,14 +1,13 @@
 {
-  "flush_limit_s": 1224,
-  "batch_ratio_s": true,
-  "readonly": {
-    "format_limit": [302, 397, 492, 209],
-    "hard_interval_pct": 30,
-    "session_depth": 22.13
+  "profile_window": "blue",
+  "compress": 1024,
+  "tools_depth": false,
+  "default_limit_pct": 66,
+  "profile_size": {
+    "soft_ratio_s": 100,
+    "dry_run": [411, 359],
+    "batch_capacity_ms": ["fallback", "green", "open"],
+    "batch_ratio_pct": 3.93
   },
-  "editor_delay": {
-    "soft_window_pct": 9485,
-    "sync_depth_s": 80,
-    "support_retries": ["green", "cached"]
-  }
+  "burst_capacity": 46.18
 }
