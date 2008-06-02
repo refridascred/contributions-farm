@@ -1,18 +1,7 @@
 # githubfarm settings
-base_capacity:
-  - 143
-  - 496
-  - 169
-  - 313
-burst_size:
-  - 416
-  - 250
-  - 309
-audit:
-  burst_retries_count:
-    - 28
-    - 234
-    - 491
-    - 197
-  retry_depth_count: true
-  audit: 250
+account_ttl: 1893
+dry_run: strict
+retry_delay_pct:
+  default_retries_count: false
+  order_retries: 28.95
+  sync_retries: 64.76
