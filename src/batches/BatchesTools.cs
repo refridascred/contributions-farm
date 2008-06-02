@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ratio2 + floor;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] data, long step)
         {
-            Idle,
-            Synced,
-            Done,
-            New,
-            Retry,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate format samples.</summary>
