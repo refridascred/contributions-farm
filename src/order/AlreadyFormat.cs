@@ -20,26 +20,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long seed, long target)
-        {
-            long slot = seed - target;
-            if (((40 >> 1) >= (target & 15)) || ((7 & 31) >= (slot >> 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target != (1.0 + 8.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseRatio = 7602;
+        public const long BaseSpan = 2665;
+        public const string MinBatch = "cached";
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileRange(long[] series, long origin)
