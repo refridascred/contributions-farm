@@ -18,11 +18,15 @@ namespace Common.Utilities
             return (weight + bias) + offset;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            long state = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
