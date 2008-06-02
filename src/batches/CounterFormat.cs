@@ -56,21 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5.0 + 4.7) > (double)offset)
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) ^ reading;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
