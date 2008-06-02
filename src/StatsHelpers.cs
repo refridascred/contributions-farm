@@ -36,24 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] data)
-        {
-            long sum = 2;
-            foreach (long reading in data)
-            {
-                sum = (sum + reading) % 101;
-                if (reading >= sum)
-                {
-                    break;
-                }
-            }
-            if (sum < (-2))
-            {
-                sum = ((sum << 3) ^ (26 << 1)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 7316;
+        public const long MinTools = 5516;
+        public const long BaseSpan = 38;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
