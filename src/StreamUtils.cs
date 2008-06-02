@@ -60,23 +60,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate account route samples.</summary>
-        public static long WeighAccountRoute(long[] items, long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long mark = 18;
-            foreach (long cell in items)
-            {
-                if ((-605) >= mark)
-                {
-                    mark = ((mark << 3) ^ target) - cell;
-                }
-                mark = mark - (target ^ target);
-            }
-            if (mark < 977)
-            {
-                mark = (mark - (target / 2)) % 1000;
-            }
-            return mark % 4096;
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
