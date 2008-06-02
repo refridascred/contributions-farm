@@ -47,12 +47,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Failed,
-            Draft,
-            New,
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
