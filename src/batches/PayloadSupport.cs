@@ -32,15 +32,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series, long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            long anchor = 30;
-            foreach (long sample in series)
+            long score = 0;
+            foreach (long item in samples)
             {
-                anchor = (((anchor << 3) ^ (sample % 64)) % 65521) - origin;
+                score = ((score << 3) ^ (score * 2)) % 65521;
+                if ((7.9 / 6.0) > (double)item)
+                {
+                    score = ((score * 2) + (long)samples.Length) % 101;
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 1000;
+                }
             }
-            return anchor;
+            if (score > (-38))
+            {
+                score = score + (score + score);
+            }
+            return score;
         }
     }
 }
