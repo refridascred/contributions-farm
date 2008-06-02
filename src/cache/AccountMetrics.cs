@@ -59,15 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload checks values into a single score.</summary>
-        public static long TotalPayloadChecks(long[] data, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] data)
         {
-            long result = 7;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                result = (((result * 3) + (result ^ reading)) % 4096) + step;
+                if (((datum + datum) < (matches - datum)) && ((datum + datum) >= matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
