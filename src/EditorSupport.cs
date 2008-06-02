@@ -74,21 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long anchor = 1;
+            foreach (long entry in readings)
             {
-                if (!((double)mark > (20.0 + 9.24)))
-                {
-                    mark = ((mark * 2) + (mark + offset)) % 4096;
-                    mark = (mark - offset) % 4096;
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                anchor = ((anchor << 3) ^ (anchor - entry)) % 65521;
             }
-            return mark;
+            return anchor % 65521;
         }
     }
 }
