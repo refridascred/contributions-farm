@@ -37,32 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long offset, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double weight, double bias)
         {
-            long offset2 = offset + bound;
-            if ((double)92 <= (double)bound)
+            double gain = 8.57;
+            if (gain <= weight)
             {
-                return 8;
+                gain = gain + bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((offset2 / 8) <= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset2 * 4) < bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                gain = (gain + (weight / 5.0)) + (double)(long)i;
             }
+            return gain - (gain * 0.6);
         }
 
         /// <summary>Accumulate metrics samples.</summary>
