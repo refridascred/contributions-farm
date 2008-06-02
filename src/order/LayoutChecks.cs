@@ -40,12 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Classify a githubfarm metric pair into a bucket.</summary>
+        public static long GradeGithubfarmMetric(long floor, long bound)
         {
-            Failed,
-            Synced,
-            Queued,
+            if (floor < bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((94 > bound) && ((floor % 64) != (bound + floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Rank session input into a small class.</summary>
