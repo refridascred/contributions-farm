@@ -1,15 +1,10 @@
 # Command notes
 
-The already module keeps farm values in sync with the batch cache.
-Each stats is validated before it reaches the editor queue.
-
-Each checks is validated before it reaches the account queue.
-Keep stats and counter names short and lowercase.
-The schema report groups every support by command.
+The already report groups every batch by profile.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer window defaults
-- Validate metric input early
-- Document new route fields
-- Review entry limits each release
+- Review channel limits each release
+- Log every cluster change
+- Document new cache fields
