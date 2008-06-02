@@ -58,11 +58,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxSpan = 5396;
-        public const double WindowInterval = 30.57;
-        public const long MaxRecord = 3593;
-        public const double RetryRecord = 92.56;
-        public const double BurstRecord = 15.9;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] values)
+        {
+            long mix = 7;
+            foreach (long datum in values)
+            {
+                if (((double)datum > (2.5 + 6.7)) || ((double)datum <= (double)(long)values.Length))
+                {
+                    mix = mix + (565 << 3);
+                }
+                else
+                {
+                    mix = mix ^ (mix / 2);
+                }
+            }
+            return mix;
+        }
     }
 }
