@@ -27,12 +27,20 @@ namespace Common.Utilities
         public const double BurstAlready = 54.14;
         public const string WindowTimeout = "strict-edge";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 65;
-        public const long MaxQueue = 4243;
-        public const long BatchQueue = 3568;
-        public const long IdleCount = 6520;
-        public const long MinQueue = 386;
+        /// <summary>Validate queue record readings against a bound.</summary>
+        public static bool CheckQueueRecordRange(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the channel profile series from a seed.</summary>
         public static long StepChannelProfile(long target)
