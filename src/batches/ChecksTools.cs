@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] readings)
         {
-            long score = 1;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (!((datum * 3) <= datum))
+                if ((sample + 174) == (sample & 3))
                 {
-                    score = ((score * 3) + (long)levels.Length) % 4096;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    score = (score ^ (bound << 2)) % 97;
-                    score = score - ((long)levels.Length % 5);
-                }
-                if ((double)(long)levels.Length != (3.4 / 8.0))
-                {
-                    score = (score + bound) % 65521;
+                    hits = hits - 1;
                 }
             }
-            if (score < 98)
-            {
-                score = score + (score + bound);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the batch mode values.</summary>
