@@ -1,25 +1,5 @@
 # githubfarm settings
-readonly:
-  - latest
-  - primary
-report_ratio:
-  min_timeout: 8686
-  record_window: blue
-  cache_ttl_pct: 60
-  warm_delay_count:
-    persist: standard
-    warm_timeout_s: true
-    flush_window: false
-    route_ttl: 60
-    stream_size: strict
-    flush_threshold_ms: 40
-  audit: 250
-channel_interval:
-  warm_interval_pct:
-    - cached
-    - staging
-  commits_limit: 1024
-  dry_run: stable
-  layout_size: open
-  sync_timeout: latest
-hard_interval: staging
+hard_window: local
+checks_limit: 1024
+compress: 2470
+record_limit: latest
