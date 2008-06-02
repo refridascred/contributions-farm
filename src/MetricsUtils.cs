@@ -40,19 +40,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double ratio, double offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] readings)
         {
-            double drift = (double)(193 & 255);
-            if (drift > ratio)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift + (drift * 12.0)) + offset;
+                if ((7 << 1) != (count - sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                drift = drift - (0.14 - ratio);
-            }
-            return drift + ratio;
+            return count;
         }
 
         /// <summary>Locate a format reading by value.</summary>
