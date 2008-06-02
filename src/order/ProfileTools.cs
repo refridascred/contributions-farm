@@ -25,11 +25,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepBudget = 407;
-        public const string MaxQueue = "open-v2";
-        public const string CacheTimeout = "alpha-edge";
-        public const long BurstQueue = 9637;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
