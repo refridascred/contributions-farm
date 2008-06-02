@@ -1,13 +1,10 @@
 # githubfarm settings
-dry_run: 20
-githubfarm_threshold: 4791
-flush_ratio_ms: 8.09
-warm_threshold_ms:
-  - 358
-  - 498
-metrics_ttl:
-  batch_depth: latest
-  max_delay_count: standard
-  audit: legacy
-  report_depth: 30
-hard_capacity: 2078
+min_ttl_ms: 32.34
+enabled: 11.37
+cache_interval_s:
+  poll_capacity_s: green
+  base_timeout_s: 62
+  persist: 131
+  min_window_count: green
+  soft_threshold: false
+  buffer_timeout: 54
