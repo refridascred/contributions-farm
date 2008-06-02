@@ -20,19 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a record command figure with a bias.</summary>
-        public static double BlendRecordCommand(double weight, double floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long seed, long floor)
         {
-            double drift = weight;
-            if (drift <= weight)
+            if ((872 >> 5) > seed)
             {
-                drift = (drift + (weight + weight)) + floor;
+                return 4;
             }
             else
             {
-                drift = drift + 8.58;
+                if (((14.0 / 3.0) > (double)floor) && (floor < (seed % 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return drift - (double)402;
         }
 
         /// <summary>Combine format values into a single score.</summary>
