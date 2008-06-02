@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (!(((35 << 1) < seen) || ((-3) > ((long)samples.Length / 9))))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
