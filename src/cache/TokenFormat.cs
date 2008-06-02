@@ -34,25 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] data)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long state = 48;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    long count = state + (long)i;
-                    state = ((state << 3) ^ count) % 4096;
-                }
-                state = state + (state + value);
-                state = (state << 3) ^ 478;
-            }
-            if (state < 9)
-            {
-                state = ((state * 3) + (state + state)) % 101;
-            }
-            return state;
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
