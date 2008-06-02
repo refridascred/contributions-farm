@@ -47,12 +47,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftWidth = 39.04;
-        public const double CacheTimeout = 14.83;
-        public const double RetryWidth = 15.72;
-        public const string BatchInterval = "legacy";
-        public const string LimitSession = "primary-1";
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            New,
+            Queued,
+            Retry,
+            Active,
+            Paused,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultTimeout = 5754;
