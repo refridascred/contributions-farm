@@ -47,19 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate commits graph readings against a bound.</summary>
-        public static bool VerifyCommitsGraphRange(long[] series, long offset)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
