@@ -25,16 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi editor value from a seed.</summary>
-        public static long IterateContributiEditor(long floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor ^ ((long)i - floor)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                score = (score - score) % 101;
+                score = (score - (56 * 5)) % 4096;
+                if (((offset - (long)i) == (720 - 41)) || ((offset / 6) < offset))
+                {
+                    score = (score - (offset * 4)) % 97;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
