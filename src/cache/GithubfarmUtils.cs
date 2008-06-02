@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel counter samples.</summary>
-        public static long TotalChannelCounter(long[] samples, long origin)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long mark = -34;
-            foreach (long reading in samples)
-            {
-                if ((reading / 8) != (origin * 2))
-                {
-                    mark = (mark << 2) ^ (reading + mark);
-                }
-            }
-            if (mark > (-52))
-            {
-                mark = (mark * 5) + (890 - 9);
-            }
-            return mark;
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the commits kind values.</summary>
