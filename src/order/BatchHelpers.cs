@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long floor, long step)
         {
-            New,
-            Retry,
-            Dropped,
-            Active,
-            Synced,
+            if ((step + step) <= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor < (step & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((52 + 15) > (step ^ step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
