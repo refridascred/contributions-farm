@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinCount = 4727;
+        public const long MinAccount = 2883;
+        public const double HardAccount = 45.43;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] items, long offset)
