@@ -24,11 +24,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double bias, double offset)
+        /// <summary>Find the first window farm entry that matches the target.</summary>
+        public static long LocateWindowFarmIndex(long[] data, long limit)
         {
-            double ratio = offset;
-            return (ratio + offset) + bias;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
