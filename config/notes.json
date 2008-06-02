@@ -1,5 +1,19 @@
 {
-  "sync_limit_count": 79.99,
-  "dry_run": true,
-  "cluster_window": "green"
+  "hard_capacity_pct": 8569,
+  "schema_interval": 48.7,
+  "base_ratio": 51.0,
+  "commits_size": "local",
+  "flush_capacity": {
+    "githubfarm_threshold": 30,
+    "verbose": false,
+    "support_timeout": true,
+    "strict": false,
+    "soft_limit_s": 21.2,
+    "base_interval_ms": {
+      "warm_retries_pct": ["local", "latest", "primary"],
+      "batches_interval": 1498,
+      "soft_delay_s": 87.67,
+      "verbose": true
+    }
+  }
 }
