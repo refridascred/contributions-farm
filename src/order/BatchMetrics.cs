@@ -72,13 +72,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Queued,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 2568;
+        public const string CacheDepth = "standard-v2";
+        public const long IdleMetrics = 585;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
