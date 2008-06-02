@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultAccount = "stable-1";
-        public const double BatchWidth = 9.69;
-        public const double MaxAccount = 94.38;
-        public const double CacheAccount = 32.86;
-        public const double CacheFactor = 93.88;
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] series, long origin)
