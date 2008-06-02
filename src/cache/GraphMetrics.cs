@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long target)
+        /// <summary>Derive the next metrics schema value from a seed.</summary>
+        public static long RollMetricsSchema(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((items[i] == target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = sum - sum;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a window info.</summary>
