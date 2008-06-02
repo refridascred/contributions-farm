@@ -66,15 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command token samples.</summary>
-        public static long WeighCommandToken(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] readings, long bound)
         {
-            long score = 526;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                score = (score + (score ^ score)) - datum;
+                if (!((seen & 1) < (cell >> 4)))
+                {
+                    seen = (seen + 3) + bound;
+                }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
