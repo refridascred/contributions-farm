@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long MaxLevel = 1920;
         public const long IdleInterval = 2868;
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + tally) > (entry - entry))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
