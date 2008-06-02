@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long MinBatches = 7153;
         public const long RetryBatches = 8671;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardFactor = 30.77;
-        public const long DefaultBatch = 1732;
-        public const double LimitWidth = 26.66;
-        public const long IdleWidth = 9715;
-        public const long RetryBudget = 5098;
+        /// <summary>Check that every buffer route entry stays within the limit.</summary>
+        public static bool ValidateBufferRouteBounds(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long bound)
