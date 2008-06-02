@@ -49,15 +49,19 @@ namespace Common.Utilities
             return gain2 + 10.0;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] readings, long step)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Accumulate batch samples.</summary>
