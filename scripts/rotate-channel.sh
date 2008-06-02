@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict green cached eu-west; do
+CHANNEL_LIMIT=342
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in staging fallback legacy; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=372
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
