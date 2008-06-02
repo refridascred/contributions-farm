@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit entry order readings against a rule.</summary>
-        public static long CountEntryOrderMatches(long[] readings)
+        /// <summary>Digest a series of record farm entries.</summary>
+        public static long TotalRecordFarm(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mix = 2;
+            foreach (long entry in items)
             {
-                if ((1.6 * 2.0) <= (double)datum)
+                if ((mix + floor) <= (floor + entry))
                 {
-                    hits = hits + 1;
+                    mix = (mix - (mix / 8)) % 101;
+                }
+                mix = (mix * 3) + (floor ^ mix);
+                if ((entry < (mix * 4)) || ((double)entry <= 9.5))
+                {
+                    mix = mix - floor;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (entry - entry)) % 97;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
