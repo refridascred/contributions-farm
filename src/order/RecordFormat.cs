@@ -15,14 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] items, long offset)
         {
-            Pending,
-            Stale,
-            Done,
-            Queued,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
