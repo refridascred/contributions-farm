@@ -1,11 +1,6 @@
-id,rank,ratio
-1,409,899
-2,strict,28.9
-3,50.5,40.97
-4,140,primary
-5,145,23.44
-6,444,staging
-7,cached,green
-8,95,legacy
-9,standard,staging
-10,stable,68.09
+id,rank,region
+1,471,981
+2,80.83,522
+3,323,154
+4,standard,blue
+5,719,21.86
