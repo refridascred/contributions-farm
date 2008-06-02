@@ -38,23 +38,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] series, long step)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mark = 9;
-            foreach (long datum in series)
-            {
-                mark = ((mark - (datum + datum)) % 4096) + step;
-                if ((double)mark == (9.56 + 9.89))
-                {
-                    mark = ((mark * 3) + mark) % 4096;
-                }
-            }
-            if (mark < 113)
-            {
-                mark = (mark + (mark + mark)) % 101;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
