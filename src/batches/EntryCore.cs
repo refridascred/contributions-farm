@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseDepth = 88.57;
-        public const long WindowSpan = 8843;
-        public const long StepCache = 4629;
-        public const long RetrySize = 4397;
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
