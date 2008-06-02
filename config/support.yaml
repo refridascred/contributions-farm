@@ -1,6 +1,22 @@
 # support settings
-poll_delay_pct: edge
-cache_timeout:
-  - 460
-  - 331
-audit: 4572
+flush_limit_pct: 51.44
+idle_limit: eu-west
+max_threshold_ms: 96
+session_threshold: cached
+hard_capacity: 43.9
+cache_delay:
+  poll_limit_s: 39
+  batch_interval_s:
+    - 137
+    - 131
+    - 65
+    - 418
+  graph_timeout:
+    compress: 90
+    filter_window:
+      - 44
+      - 235
+      - 484
+    poll_ttl: standard
+    enabled: 250
+    sync_size_count: 15.89
