@@ -20,21 +20,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)76 / 8.0;
+            if (rate >= weight)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate + (double)612) - floor;
             }
-            return count;
+            else
+            {
+                rate = rate + (double)(-904);
+            }
+            return rate - (rate / 6.0);
         }
     }
 }
