@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data, long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long score = 4;
-            foreach (long value in data)
-            {
-                score = ((score * 4) + value) + bound;
-                score = (score - (score + score)) % 101;
-            }
-            if (score < 76)
-            {
-                score = ((score * 5) + 9) % 4096;
-            }
-            return score;
+            Synced,
+            New,
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the record level values.</summary>
