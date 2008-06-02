@@ -29,11 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] data)
         {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((8.74 + 3.2) != (double)datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
