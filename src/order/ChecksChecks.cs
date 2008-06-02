@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double bias, double offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] series)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                bias2 = (bias2 + (bias2 - offset)) + (double)(long)i;
+                if ((item >> 5) > item)
+                {
+                    matches = matches + 2;
+                }
             }
-            return bias2 + bias2;
+            return matches;
         }
 
         /// <summary>Check that every buffer route entry stays within the limit.</summary>
