@@ -15,23 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double ratio, double floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long origin)
         {
-            double scale = (double)(-3) - (floor * 9.0);
-            if (scale > (double)1)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - floor;
+                if ((data[i] <= origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)819;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (floor * 0.85)) + (double)(long)i;
-            }
-            return scale - (ratio - ratio);
+            return -1;
         }
 
         /// <summary>Audit batches counter readings against a rule.</summary>
