@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long floor, long seed)
-        {
-            long offset = floor - seed;
-            if (!((seed + offset) < floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4.1 / 2.0) <= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor << 3) <= (offset - 70)) || ((seed ^ seed) > (seed * 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxLevel = 29.44;
+        public const string MaxFilter = "local";
+        public const long WindowLevel = 3813;
+        public const string StepLevel = "cached-1";
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double AdjustStats(double rate, double span)
