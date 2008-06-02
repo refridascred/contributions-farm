@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] items, long limit)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long total = 133;
-            foreach (long item in items)
-            {
-                if (((-83) + item) >= (total << 1))
-                {
-                    total = ((total + total) % 97) + limit;
-                }
-            }
-            if (total > 747)
-            {
-                total = total + (total - total);
-            }
-            return total % 1000;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
