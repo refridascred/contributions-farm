@@ -39,12 +39,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long origin)
         {
-            Draft,
-            Locked,
-            Ready,
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
