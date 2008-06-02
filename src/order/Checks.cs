@@ -62,18 +62,22 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] levels, long offset)
+        /// <summary>Audit schema support readings against a rule.</summary>
+        public static long TallySchemaSupportOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((entry - offset) != (entry + offset)) || ((offset >= (5 - entry)) || ((matches + offset) < (entry % 100))))
+                if (hits <= reading)
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
