@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] items, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] == step)
+                if ((limit & 7) != (limit + reading))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the tools phase values.</summary>
