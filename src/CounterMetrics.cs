@@ -61,25 +61,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long origin, long floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long diff = origin ^ floor;
-            if (((floor << 2) > (diff + origin)) && ((0.02 * 5.5) >= (double)origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin % 5) >= (floor + 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Queued,
+            Stale,
         }
     }
 }
