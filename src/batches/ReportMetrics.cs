@@ -36,15 +36,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] levels, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if ((reading + limit) == (limit >> 2))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
