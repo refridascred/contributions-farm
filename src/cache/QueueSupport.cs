@@ -38,24 +38,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long target, long step)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            if ((double)step == (double)7)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((3.76 + 8.3) > (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
