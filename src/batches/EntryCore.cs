@@ -46,13 +46,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] readings, long target)
         {
-            New,
-            Synced,
-            Dropped,
-            Done,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
