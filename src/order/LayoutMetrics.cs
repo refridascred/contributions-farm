@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cluster route entry stays within the limit.</summary>
-        public static bool ValidateClusterRouteRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleDepth = 1549;
+        public const double MinInterval = 61.64;
+        public const long BatchScore = 1536;
+        public const string BatchCommits = "stable-edge";
+        public const string HardCommits = "standard";
 
         /// <summary>Iterate the token record series from a seed.</summary>
         public static long DeriveTokenRecord(long step)
