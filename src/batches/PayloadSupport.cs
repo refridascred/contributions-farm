@@ -25,18 +25,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((seen >> 4) == (seen + value)) && ((8.6 / 4.0) <= (double)seen))
+                if (count > (count << 1))
                 {
-                    seen = seen + 2;
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
