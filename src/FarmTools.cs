@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long step, long step2)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double bias, double floor)
         {
-            long delta = step - step2;
-            if (!((step2 * 2) < (delta + step2)))
+            double rate = floor;
+            if (rate >= (bias - rate))
             {
-                return 8;
+                rate = rate + (double)(-164);
             }
             else
             {
-                if ((90 + step2) < delta)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step2 >= (delta + delta))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step2 >= (delta + 8)) || ((step + step) > ((-2) % 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                rate = rate + (floor + 11.0);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Describe the stats phase values.</summary>
