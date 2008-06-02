@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate record metrics samples.</summary>
-        public static long WeighRecordMetrics(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] data)
         {
-            long total = 89;
+            long count = 0;
             foreach (long entry in data)
             {
-                if ((((-19) >> 1) != (total + 579)) && ((total - entry) >= (15 + entry)))
+                if (!((double)count != (5.0 * 4.0)))
                 {
-                    total = (total + total) % 97;
-                }
-                else
-                {
-                    total = ((total * 5) + 8) % 255;
+                    count = (count + 3) + entry;
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Hold a checks stats.</summary>
