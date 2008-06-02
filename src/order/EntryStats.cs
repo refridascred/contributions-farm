@@ -41,39 +41,15 @@ namespace Common.Utilities
         public const long BatchRecord = 893;
         public const string DefaultRecord = "local-v2";
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long target, long seed)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long step)
         {
-            long cur = target - seed;
-            if (1.98 <= (double)target)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((8.69 >= (double)114) && ((double)cur >= (4.0 - 4.6)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + cur) > 587)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)cur < (9.29 * 9.44))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
