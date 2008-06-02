@@ -27,24 +27,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] values, long origin)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double ratio, double span)
         {
-            long mix = 4;
-            foreach (long reading in values)
+            double rate = span;
+            if (rate > 18.0)
             {
-                if (!((double)mix < 19.0))
-                {
-                    mix = (mix + (4 >> 3)) % 101;
-                    mix = (mix ^ (origin + reading)) % 97;
-                }
-                if ((reading << 3) < ((-13) - mix))
-                {
-                    mix = (mix + reading) % 101;
-                }
-                mix = (mix ^ (mix - reading)) % 65521;
+                rate = rate + ratio;
             }
-            return mix;
+            else
+            {
+                rate = rate - (double)63;
+            }
+            return rate + ratio;
         }
     }
 }
