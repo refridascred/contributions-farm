@@ -1,7 +1,6 @@
 {
-  "base_ratio_count": "legacy",
-  "order_limit": "standard",
-  "context_depth": true,
-  "default_capacity_count": ["blue", "green", "fallback", "standard"],
-  "record_interval": "legacy"
+  "hard_threshold_count": [241, 154],
+  "retry_capacity_pct": "primary",
+  "channel_timeout": [190, 187, 285],
+  "compress": ["local", "cached", "local"]
 }
