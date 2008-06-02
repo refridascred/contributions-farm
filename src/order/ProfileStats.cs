@@ -48,39 +48,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long floor, long bound)
-        {
-            long slot = floor - bound;
-            if ((slot - slot) > floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor != (double)slot)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)slot <= (7.0 + 11.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((bound % 16) >= (floor + 204)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseDepth = 316;
+        public const long BaseCount = 3776;
+        public const long BurstSpan = 2688;
+        public const double BatchScore = 65.75;
+        public const double MaxFactor = 29.41;
     }
 }
