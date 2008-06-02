@@ -26,19 +26,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every context report entry stays within the limit.</summary>
-        public static bool CheckContextReportLimits(long[] samples, long seed)
+        /// <summary>Count the graph order entries that pass the check.</summary>
+        public static long TallyGraphOrderGaps(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (datum != seed)
+                if ((reading & 3) >= (reading + reading))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
