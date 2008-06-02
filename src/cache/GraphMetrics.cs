@@ -37,14 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Pending,
-            Locked,
-            Draft,
-            Done,
-            Dropped,
+            public double Score { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a format record pair into a bucket.</summary>
