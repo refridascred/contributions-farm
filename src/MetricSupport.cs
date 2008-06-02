@@ -20,9 +20,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 3152;
-        public const double WindowScore = 79.39;
-        public const long LimitEditor = 9697;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseDepth = 27.14;
+        public const double BatchInterval = 72.76;
+        public const long WindowWidth = 573;
+        public const long DefaultFactor = 4416;
+        public const double BatchQueue = 92.39;
     }
 }
