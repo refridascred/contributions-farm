@@ -17,23 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if (1.7 <= (double)anchor)
-                {
-                    anchor = ((anchor << 2) ^ (offset * 3)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor + offset);
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Pending,
+            Failed,
+            Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
