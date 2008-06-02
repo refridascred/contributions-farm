@@ -45,18 +45,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] readings, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] data)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = 121;
+            foreach (long datum in data)
             {
-                if ((count + cell) >= (count ^ count))
+                if ((mark ^ 564) < (datum - mark))
                 {
-                    count = (count + 2) + floor;
+                    mark = ((mark * 3) + mark) % 65521;
                 }
             }
-            return count;
+            if (mark > 48)
+            {
+                mark = ((mark * 2) + mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Roll a order graph counter forward.</summary>
