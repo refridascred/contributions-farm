@@ -49,22 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] samples, long seed)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)hits != (0.93 * 3.8))
-                {
-                    hits = ((hits + 2) + entry) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
