@@ -31,12 +31,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Validate payload counter readings against a bound.</summary>
+        public static bool VerifyPayloadCounterLimits(long[] readings, long seed)
         {
-            Ready,
-            Locked,
-            Done,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
