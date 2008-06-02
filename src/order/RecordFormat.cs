@@ -60,19 +60,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((total * 3) <= (long)i)
-                {
-                    total = total + (origin / 4);
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxInterval = "staging-edge";
+        public const double MinRoute = 28.03;
+        public const string IdleLevel = "local";
+        public const long StepRoute = 8272;
     }
 }
