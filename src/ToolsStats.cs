@@ -28,13 +28,18 @@ namespace Common.Utilities
         public const long BaseAccount = 7169;
         public const long BurstAccount = 957;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] items)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally + 2) >= (tally * 4))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate stats record samples.</summary>
