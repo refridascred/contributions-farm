@@ -51,17 +51,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] readings, long bound)
+        /// <summary>Classify a counter command pair into a bucket.</summary>
+        public static long ClassifyCounterCommand(long target, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((8.94 * 6.3) > (double)limit) || (target >= 65))
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((limit * 4) < (target ^ target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((target ^ limit) < limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
