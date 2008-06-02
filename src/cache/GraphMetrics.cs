@@ -82,15 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] values, long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long anchor = 317;
-            foreach (long sample in values)
-            {
-                anchor = ((anchor - (origin % 3)) % 255) + sample;
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
