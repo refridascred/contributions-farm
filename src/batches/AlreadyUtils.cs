@@ -37,13 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Adjust a already reading.</summary>
