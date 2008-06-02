@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(2 >> 4);
+            if (rate >= (floor - 4.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + scale;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate + (double)3;
         }
 
         /// <summary>Hold a context snapshot.</summary>
