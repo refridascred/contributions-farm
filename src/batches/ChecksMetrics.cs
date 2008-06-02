@@ -62,18 +62,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metrics account counter forward.</summary>
-        public static long StepMetricsAccount(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = mix + (mix & 1);
-                mix = (mix - bound) % 65521;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinTimeout = 87.53;
+        public const string BatchWidth = "primary-edge";
+        public const long BurstContext = 9210;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] levels)
