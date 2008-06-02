@@ -1,8 +1,17 @@
 # entry settings
-readonly: 41.89
-min_delay_s: fallback
-sync_retries_ms: 6151
-batch_ratio_pct:
-  - cached
+sync_timeout_pct: legacy
+warm_limit_pct:
+  compress: 90.05
+  batch_retries_pct:
+    min_interval: 51
+    payload_window: true
+    retry_ttl_count: strict
+    retry_size: eu-west
+  soft_timeout_count: edge
+poll_capacity_pct:
   - local
-idle_delay_count: 26.45
+  - edge
+  - primary
+idle_threshold_count: eu-west
+enabled: 37.03
+audit: stable
