@@ -49,20 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cluster buffer value from a seed.</summary>
-        public static long IterateClusterBuffer(long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] samples, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((total << 2) > (total ^ total))
+                if ((double)hits != (0.93 * 3.8))
                 {
-                    long count = (total + 97) - (long)i;
-                    total = (total - (count / 2)) % 101;
+                    hits = ((hits + 2) + entry) - seed;
                 }
-                total = ((total * 2) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
