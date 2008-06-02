@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix * 2) + mix;
-                if ((2.0 * 2.3) >= (double)limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 5) + (mix - limit)) % 255;
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Accumulate checks samples.</summary>
