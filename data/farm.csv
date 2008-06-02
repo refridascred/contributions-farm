@@ -1,7 +1,6 @@
-id,active,weight
-1,7.5,12.44
-2,open,44.9
-3,996,18.7
-4,70.26,691
-5,66,staging
-6,666,primary
+id,rank,label,active,level
+1,blue,edge,600,eu-west
+2,628,0.91,8.86,766
+3,537,987,941,130
+4,78.47,821,edge,291
+5,46,588,90.02,fallback
