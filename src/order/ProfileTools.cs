@@ -25,22 +25,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepScore = 3615;
+        public const long RetryDepth = 4125;
+        public const long BatchFilter = 8775;
+        public const string RetryFilter = "staging-edge";
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
