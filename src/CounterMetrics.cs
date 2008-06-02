@@ -35,22 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] items, long target)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] series, long limit)
         {
-            long anchor = 66;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)target <= (9.73 * 15.0)))
+                if (series[i] == limit)
                 {
-                    anchor = (anchor << 3) ^ (anchor + 156);
-                }
-                else
-                {
-                    anchor = (anchor - (item >> 2)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
