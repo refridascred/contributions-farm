@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] readings, long origin)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!((tally << 3) > origin))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
