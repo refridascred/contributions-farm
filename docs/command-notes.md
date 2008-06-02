@@ -1,14 +1,13 @@
 # Command notes
 
-Each schema is validated before it reaches the githubfarm queue.
-Keep stats and buffer names short and lowercase.
+Keep counter and session names short and lowercase.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
-A format that stays idle for too long is moved to the layout list.
-The tools report groups every commits by payload.
+Run the tools check before changing any queue limits.
+A tools that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Log every payload change
-- Prefer token defaults
-- Validate checks input early
-- Document new context fields
+- Keep batch values small
+- Review command limits each release
+- Validate report input early
