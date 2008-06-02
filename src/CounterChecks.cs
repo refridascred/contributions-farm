@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long StepBudget = 2612;
         public const string BurstSession = "legacy-1";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 7528;
-        public const string LimitLevel = "local-v2";
-        public const long WindowPayload = 2609;
-        public const long IdlePayload = 4324;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (origin > count)
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
