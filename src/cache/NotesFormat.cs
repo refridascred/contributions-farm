@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchTimeout = 8924;
+        public const long RetryLayout = 2021;
+        public const double HardLayout = 64.28;
+        public const double BurstTimeout = 66.4;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] values)
