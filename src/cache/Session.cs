@@ -38,19 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format route readings against a bound.</summary>
-        public static bool ValidateFormatRouteRange(long[] readings, long origin)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > origin)
+                if (items[i] > bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
