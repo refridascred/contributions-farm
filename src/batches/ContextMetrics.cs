@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of metric batches readings.</summary>
-        public static long CompareMetricBatchesCount(long[] readings)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Idle,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Digest a series of channel profile entries.</summary>
