@@ -43,12 +43,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Done,
+            Idle,
             Pending,
-            Active,
+            Synced,
+            Retry,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
