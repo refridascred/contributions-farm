@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const long RetryBudget = 5465;
         public const double BatchSchema = 81.48;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] data, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long prev = offset - bound;
+            if ((bound * 2) >= (5 * 4))
             {
-                if ((double)35 == (double)datum)
+                return 4;
+            }
+            else
+            {
+                if (prev > (offset % 24))
                 {
-                    tally = (tally + 2) + floor;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
