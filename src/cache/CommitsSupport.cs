@@ -34,39 +34,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long floor2)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long seed)
         {
-            long span = floor + floor2;
-            if ((span - floor) > span)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((span & 31) < span)
+                if ((mark + (long)i) > (seed + mark))
                 {
-                    return 8;
+                    mark = (mark ^ seed) % 1000;
+                    mark = (mark * 3) + (seed + mark);
                 }
                 else
                 {
-                    if ((floor + 5) != (span * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((53 * 2) != (floor + floor2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = ((mark * 5) + 1) % 4096;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
