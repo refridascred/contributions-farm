@@ -42,22 +42,39 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] series, long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long seed, long bound)
         {
-            long anchor = 9;
-            foreach (long reading in series)
+            long edge = seed - bound;
+            if (((seed - seed) <= seed) && ((bound - bound) != (bound + bound)))
             {
-                if ((double)offset < 7.0)
+                return 1;
+            }
+            else
+            {
+                if ((edge >> 5) < 352)
                 {
-                    anchor = ((anchor << 3) ^ (offset & 15)) % 255;
+                    return 5;
                 }
-                if (reading < (offset + offset))
+                else
                 {
-                    break;
+                    if ((double)seed > 16.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed < (edge + bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
