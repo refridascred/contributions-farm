@@ -1,23 +1,6 @@
 {
-  "batches_size": "fallback",
-  "compress": [133, 461, 489, 411],
-  "default_threshold_s": {
-    "hard_limit_count": {
-      "min_interval_count": true,
-      "batch_depth_count": ["edge", "standard"],
-      "strict": true,
-      "burst_capacity": 14,
-      "batch_size": false
-    },
-    "audit": 5763,
-    "batch_ttl_ms": "local",
-    "cache_ttl": {
-      "strict": [29, 337, 3, 85],
-      "report_threshold": 15,
-      "soft_interval_s": "latest",
-      "max_timeout": "green"
-    }
-  },
-  "poll_delay_ms": [228, 28],
-  "min_window_s": "strict"
+  "default_delay": 85.72,
+  "sync_delay_s": "open",
+  "channel_window": [244, 202],
+  "contributi_depth": 1024
 }
