@@ -20,31 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long origin, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            if (target < (291 - target))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target * 4) >= origin)
+                if ((count & 63) > (count + count))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin < (3.03 / 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
