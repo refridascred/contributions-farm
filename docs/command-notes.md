@@ -1,14 +1,10 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-A stream that stays idle for too long is moved to the cache list.
-
-Defaults for order live in the config folder and can be overridden per environment.
-The contributi module keeps contributi values in sync with the cluster cache.
+Each metric is validated before it reaches the buffer queue.
+When a buffer fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Prefer filter defaults
-- Document new buffer fields
-- Validate metrics input early
+- Log every payload change
+- Keep format values small
+- Validate contributi input early
