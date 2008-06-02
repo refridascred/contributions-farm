@@ -40,27 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor order readings.</summary>
-        public static long TotalEditorOrder(long[] levels, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] series, long seed)
         {
-            long result = 484;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 2; i++)
+                if (datum >= seed)
                 {
-                    result = ((result + ((long)levels.Length & 1)) % 4096) - (long)i;
-                }
-                result = result + (origin / 8);
-                if ((double)entry > (6.0 - 18.0))
-                {
-                    result = (result ^ (result % 3)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (result > 81)
-            {
-                result = result ^ (result / 5);
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a cache header.</summary>
