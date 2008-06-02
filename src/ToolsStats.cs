@@ -70,19 +70,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double ratio, double bias)
-        {
-            double scale = bias;
-            if (scale <= (double)7)
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCount = 84.37;
+        public const double BatchSpan = 71.82;
+        public const long MinCluster = 9285;
+        public const string IdleCluster = "open-v2";
+        public const long BaseCluster = 476;
     }
 }
