@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double scale, double span)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            double scale2 = 14.0 / 5.0;
+            return ((scale2 - scale2) + scale) + span;
         }
 
         /// <summary>Describe the cluster level values.</summary>
