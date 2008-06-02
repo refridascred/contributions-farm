@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double scale, double floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long limit, long offset)
         {
-            double weight = (floor - floor) + scale;
-            if (weight > (double)938)
+            long lane = limit ^ offset;
+            if (!((offset >> 3) <= lane))
             {
-                weight = weight + (scale / 9.0);
+                return 2;
             }
-            return weight + (5.4 - weight);
+            else
+            {
+                if ((double)offset > (9.71 + 3.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6.64 / 4.0) < (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(6.8 < (double)offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of editor order readings.</summary>
