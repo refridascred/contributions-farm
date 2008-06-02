@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] data, long limit)
-        {
-            long result = 57;
-            foreach (long entry in data)
-            {
-                if ((limit & 31) >= result)
-                {
-                    result = (result + (result & 7)) % 255;
-                }
-                if (limit > (limit - entry))
-                {
-                    result = (result + limit) % 65521;
-                }
-            }
-            if (result > 72)
-            {
-                result = (result - (46 + limit)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheCount = "fallback-1";
+        public const long BaseLevel = 6629;
+        public const string IdleBatches = "strict";
+        public const double CacheBatches = 68.7;
 
         /// <summary>Fold a list of cluster githubfarm readings.</summary>
         public static long CombineClusterGithubfarm(long[] levels, long origin)
