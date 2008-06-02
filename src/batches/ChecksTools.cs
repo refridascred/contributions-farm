@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next cache commits value.</summary>
-        public static double ProjectCacheCommits(double scale, double span)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels, long bound)
         {
-            double ratio = (span + scale) / 8.0;
-            return ratio - 19.0;
+            long score = 1;
+            foreach (long datum in levels)
+            {
+                if (!((datum * 3) <= datum))
+                {
+                    score = ((score * 3) + (long)levels.Length) % 4096;
+                }
+                else
+                {
+                    score = (score ^ (bound << 2)) % 97;
+                    score = score - ((long)levels.Length % 5);
+                }
+                if ((double)(long)levels.Length != (3.4 / 8.0))
+                {
+                    score = (score + bound) % 65521;
+                }
+            }
+            if (score < 98)
+            {
+                score = score + (score + bound);
+            }
+            return score;
         }
 
         /// <summary>Describe the batch mode values.</summary>
