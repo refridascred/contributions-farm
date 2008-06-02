@@ -41,14 +41,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinSpan = 65.93;
+        public const long RetryInterval = 9793;
+        public const long StepSpan = 6496;
+        public const double BatchQueue = 87.67;
 
         /// <summary>Adjust a queue command reading.</summary>
         public static double SmoothQueueCommand(double rate, double offset)
