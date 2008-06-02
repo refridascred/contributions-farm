@@ -41,19 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph report entries.</summary>
-        public static long TallyGraphReport(long[] data, long bound)
+        /// <summary>Iterate the channel profile series from a seed.</summary>
+        public static long StepChannelProfile(long target)
         {
-            long result = -519;
-            foreach (long item in data)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result - (bound - bound)) + item;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            if (result < (-6))
-            {
-                result = ((result << 2) ^ (-97)) % 4096;
-            }
-            return result % 4096;
+            return sum;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
