@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long floor, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] items, long offset)
         {
-            if ((double)floor > (6.6 + 4.9))
+            bool ready = true;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.7 / 9.0) <= (double)floor)
+                if (reading != offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
