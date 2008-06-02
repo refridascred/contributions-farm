@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a context stats reading by value.</summary>
-        public static long LookupContextStatsIndex(long[] series, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] == floor)
+                if ((values[i] >= origin) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
