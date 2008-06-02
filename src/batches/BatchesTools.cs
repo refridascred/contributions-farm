@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] items)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (((entry + entry) > entry) || ((5.5 / 6.0) != (double)count))
+                if (cell <= bound)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
