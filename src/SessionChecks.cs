@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Find the first stream buffer entry that matches the target.</summary>
+        public static long SeekStreamBufferIndex(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] == step) && ((data[i] % 5) != 0))
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a editor options.</summary>
