@@ -35,13 +35,16 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long bound)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public bool Level { get; set; }
-            public bool Size { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 4) + (bound ^ anchor)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
