@@ -16,14 +16,18 @@ namespace Common.Utilities
             return mean - (gain + mean);
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] data)
         {
-            Idle,
-            Synced,
-            Pending,
-            Queued,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry >= tally) || (tally < (9 + tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
