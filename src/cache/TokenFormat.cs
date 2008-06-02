@@ -20,18 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Accumulate record metrics samples.</summary>
+        public static long WeighRecordMetrics(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            long total = 89;
+            foreach (long entry in data)
             {
-                score = ((score << 3) ^ (offset - offset)) % 1000;
-                score = ((score << 2) ^ (offset & 15)) % 101;
-                score = score ^ offset;
-                score = ((score * 5) + (long)i) % 97;
+                if ((((-19) >> 1) != (total + 579)) && ((total - entry) >= (15 + entry)))
+                {
+                    total = (total + total) % 97;
+                }
+                else
+                {
+                    total = ((total * 5) + 8) % 255;
+                }
             }
-            return score;
+            return total % 97;
         }
 
         /// <summary>Hold a checks stats.</summary>
