@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate account schema readings against a bound.</summary>
-        public static bool VerifyAccountSchemaLimits(long[] values, long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a batches record.</summary>
