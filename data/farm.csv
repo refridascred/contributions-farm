@@ -1,7 +1,7 @@
-id,token,weight,rank,region
-1,42.44,845,357,33.21
-2,610,837,155,13.24
-3,31.58,925,open,202
-4,blue,88.0,72.63,258
-5,local,715,429,stable
-6,standard,420,716,blue
+id,state,score,owner
+1,714,74.75,fallback
+2,legacy,local,49.15
+3,434,stable,primary
+4,cached,3.29,standard
+5,latest,eu-west,3.06
+6,134,20.07,blue
