@@ -29,19 +29,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)value >= 1.11)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultTimeout = 7996;
+        public const string CacheGithubfarm = "cached-1";
+        public const double HardGithubfarm = 86.18;
 
         /// <summary>Blend two window editor measurements.</summary>
         public static double AdjustWindowEditor(double bias, double offset)
