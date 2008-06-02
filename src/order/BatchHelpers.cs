@@ -32,11 +32,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double ratio, double bias)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double ratio2 = ratio;
-            return ratio2 - (bias + ratio);
+            New,
+            Draft,
+            Closed,
+            Pending,
         }
     }
 }
