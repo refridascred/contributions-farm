@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
+            Locked,
+            Failed,
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Locate a report reading by value.</summary>
