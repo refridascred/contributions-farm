@@ -37,11 +37,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 90.99;
-        public const long LimitSpan = 8524;
-        public const long CacheProfile = 8342;
-        public const long WindowProfile = 3039;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Stale,
+            Synced,
+            New,
+            Failed,
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileOutliers(long[] items)
