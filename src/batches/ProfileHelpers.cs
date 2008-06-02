@@ -63,18 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] readings)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally << 3) <= (value >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
