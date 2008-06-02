@@ -1,7 +1,4 @@
 # githubfarm settings
-hard_delay_count: 8.48
-persist: 3605
-idle_capacity_ms: latest
-idle_timeout_s: true
-filter_delay: true
-cache_timeout_pct: 25
+batch_size: strict
+stream_ttl: 90.21
+retry_ratio_ms: strict
