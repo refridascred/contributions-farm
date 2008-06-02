@@ -21,18 +21,16 @@ namespace Common.Utilities
         public const long DefaultFarm = 6055;
         public const long IdleFarm = 8005;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] levels, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long target)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (0.6 >= (double)tally)
-                {
-                    tally = ((tally + 3) + value) - bound;
-                }
+                sum = ((sum * 2) + (sum + target)) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the cluster state values.</summary>
