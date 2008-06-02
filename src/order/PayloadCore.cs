@@ -48,38 +48,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank stream format input into a small class.</summary>
-        public static long BucketStreamFormat(long origin, long origin2)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            if (!((origin2 + origin) >= (origin2 / 8)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin >= (62 ^ origin2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < (6 & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((4.81 * 19.0) > (double)origin) || ((origin2 % 64) == (origin2 - origin2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
