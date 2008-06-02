@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long BaseCount = 6068;
         public const double HardFarm = 20.35;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            long anchor = 3;
+            foreach (long entry in samples)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (((entry - entry) < entry) || ((anchor * 2) >= (7 * 4)))
+                {
+                    anchor = anchor ^ (entry - 17);
+                }
+                if ((1.5 / 8.0) > (double)anchor)
+                {
+                    break;
+                }
             }
-            return state;
+            return anchor % 97;
         }
 
         /// <summary>Hold a record info.</summary>
