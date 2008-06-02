@@ -1,16 +1,13 @@
 # githubfarm settings
-poll_depth_ms:
-  persist: edge
-  min_limit_s:
-    - 88
-    - 402
-  sync_size_ms: 272
-  hard_interval_count: eu-west
-report_depth: 8174
-batch_ratio_s:
-  - edge
-  - latest
-  - fallback
-  - stable
-command_retries: 38.23
-persist: 26.2
+dry_run: 20
+githubfarm_threshold: 4791
+flush_ratio_ms: 8.09
+warm_threshold_ms:
+  - 358
+  - 498
+metrics_ttl:
+  batch_depth: latest
+  max_delay_count: standard
+  audit: legacy
+  report_depth: 30
+hard_capacity: 2078
