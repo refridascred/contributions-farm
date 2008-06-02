@@ -37,39 +37,17 @@ namespace Common.Utilities
             return (gain + (gain + scale)) + bias;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long origin, long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] readings, long seed)
         {
-            long offset = origin + target;
-            if ((783 ^ target) >= (origin << 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9 >= (offset + offset)) && ((origin - offset) >= (target >> 3)))
+                if (readings[i] == seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset > ((-6) - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target << 2) < (target ^ origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
