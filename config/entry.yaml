@@ -1,5 +1,7 @@
 # entry settings
-base_timeout_s: primary
-profile_size: false
-enabled: 141
-batch_depth_count: 80
+max_limit: edge
+min_ttl: true
+retry_capacity_s:
+  tools_interval: blue
+  batch_delay_pct: latest
+  metrics_depth: staging
