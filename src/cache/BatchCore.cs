@@ -39,14 +39,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long bound, long origin)
         {
-            Pending,
-            Done,
-            Locked,
-            Synced,
-            New,
+            if ((bound * 3) < 940)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin != (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin * 5) <= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin <= ((-719) % 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session options.</summary>
