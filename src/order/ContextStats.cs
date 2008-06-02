@@ -25,13 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
+            Stale,
+            Locked,
+            Failed,
         }
 
         /// <summary>Match up farm samples.</summary>
