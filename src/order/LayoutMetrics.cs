@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Compare every pair of support editor readings.</summary>
+        public static long OverlapSupportEditorCount(long[] readings)
         {
-            long mark = 46;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 4) + (mark + entry)) % 4096;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
