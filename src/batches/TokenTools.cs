@@ -31,16 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch support value from a seed.</summary>
-        public static long IterateBatchSupport(long origin)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor + (origin / 7)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Idle,
+            Draft,
+            Stale,
+            Closed,
         }
     }
 }
