@@ -20,13 +20,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 149;
+            foreach (long entry in items)
+            {
+                if ((sum + entry) > ((-4) - 11))
+                {
+                    sum = ((sum * 2) + sum) % 4096;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
