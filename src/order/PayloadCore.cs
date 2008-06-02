@@ -48,19 +48,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a graph session figure with a bias.</summary>
-        public static double SmoothGraphSession(double bias, double span)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            double mean = 15.0;
-            if (mean >= bias)
-            {
-                mean = mean + (double)6;
-            }
+            long mark = offset;
             for (int i = 0; i < 9; i++)
             {
-                mean = (mean - (span / 3.0)) - (double)(long)i;
+                mark = (mark ^ (mark / 9)) % 65521;
+                mark = ((mark * 4) + (6 % 12)) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mean - (mean * 0.97);
+            return mark;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
