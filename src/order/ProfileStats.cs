@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit report batches readings against a rule.</summary>
-        public static long TallyReportBatchesHits(long[] levels)
+        /// <summary>Combine commits queue values into a single score.</summary>
+        public static long ScoreCommitsQueue(long[] data)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long anchor = 22;
+            foreach (long value in data)
             {
-                if ((double)value != (3.1 * 20.0))
+                if ((anchor * 3) >= value)
                 {
-                    seen = seen + 3;
+                    anchor = (anchor - anchor) % 1000;
+                }
+                if ((3 - value) != ((long)data.Length / 5))
+                {
+                    anchor = ((anchor << 3) ^ 56) % 65521;
                 }
             }
-            return seen;
+            return anchor % 97;
         }
 
         /// <summary>Hold a graph info.</summary>
