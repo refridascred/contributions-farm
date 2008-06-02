@@ -51,19 +51,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items, long seed)
-        {
-            long state = 8;
-            foreach (long value in items)
-            {
-                state = (((state ^ (state + 90)) % 97) - value) + seed;
-            }
-            if (state < 81)
-            {
-                state = state ^ (6 & 3);
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 4538;
+        public const long MaxStats = 7915;
+        public const double CacheStats = 61.97;
+        public const long BurstCount = 6152;
+        public const long IdleRatio = 1664;
     }
 }
