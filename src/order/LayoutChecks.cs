@@ -74,12 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardTimeout = 1191;
-        public const long LimitLayout = 3525;
-        public const long HardLayout = 6372;
-        public const long RetryLayout = 3399;
-        public const long BatchSize = 3104;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Synced,
+            Draft,
+            Dropped,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BurstSpan = 0.09;
