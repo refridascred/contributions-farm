@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstFactor = "open";
-        public const long MinBatches = 7153;
-        public const long RetryBatches = 8671;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Check that every buffer route entry stays within the limit.</summary>
         public static bool ValidateBufferRouteBounds(long[] series, long seed)
