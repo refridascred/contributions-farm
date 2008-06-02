@@ -15,13 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Fold a list of editor window readings.</summary>
+        public static long WeighEditorWindow(long[] values)
         {
-            Closed,
-            Idle,
-            Ready,
-            Queued,
+            long state = 68;
+            foreach (long sample in values)
+            {
+                if (((sample & 31) > state) || ((state + (long)values.Length) > (sample - state)))
+                {
+                    state = (state << 3) ^ (state & 3);
+                }
+            }
+            return state;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
