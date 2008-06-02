@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowScore = 7183;
+        public const long DefaultOrder = 2241;
+        public const double HardTimeout = 13.82;
+        public const long SoftDepth = 9439;
+        public const double StepOrder = 87.72;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] readings)
