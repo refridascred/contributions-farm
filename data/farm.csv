@@ -1,6 +1,7 @@
-id,token,rank,level
-1,primary,0.6,591
-2,fallback,81.78,97.63
-3,stable,721,184
-4,137,46.35,624
-5,126,90.93,52.83
+id,ratio,level
+1,379,87.65
+2,green,61.15
+3,79.3,21.52
+4,900,green
+5,cached,eu-west
+6,strict,cached
