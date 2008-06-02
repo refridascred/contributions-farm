@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleRatio = 1307;
-        public const double RetryGraph = 64.96;
-        public const string CacheGraph = "open";
+        /// <summary>Accumulate channel batch samples.</summary>
+        public static long TotalChannelBatch(long[] values)
+        {
+            long score = 661;
+            foreach (long datum in values)
+            {
+                score = (score * 2) + (datum * 5);
+            }
+            return score % 65521;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
