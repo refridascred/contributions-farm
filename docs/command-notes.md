@@ -1,15 +1,16 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the format list.
-Use editor settings to tune how often order data is refreshed.
-The schema report groups every route by report.
+The stats module keeps account values in sync with the editor cache.
+Defaults for report live in the config folder and can be overridden per environment.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
-Each batches is validated before it reaches the support queue.
-A metric that stays idle for too long is moved to the githubfarm list.
-The context report groups every payload by farm.
+The profile module keeps checks values in sync with the profile cache.
+Each already is validated before it reaches the queue queue.
+Each order is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Keep editor values small
-- Prefer batch defaults
-- Review entry limits each release
+- Validate commits input early
+- Log every metrics change
+- Prefer metrics defaults
+- Keep record values small
