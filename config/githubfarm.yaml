@@ -1,4 +1,7 @@
 # githubfarm settings
-hard_delay_count: 500
-metric_ratio: 83
-min_retries: true
+flush_limit: false
+hard_ratio_pct: staging
+max_threshold_s: 4159
+min_ratio_ms: eu-west
+cache_timeout: 90.28
+soft_delay_ms: 38.49
