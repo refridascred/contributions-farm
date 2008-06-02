@@ -33,19 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] data, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long mark = 88;
+            foreach (long item in data)
             {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark + ((long)data.Length >> 3)) % 65521) ^ item;
             }
-            return stale;
+            if (mark < 8)
+            {
+                mark = ((mark * 2) + mark) % 4096;
+            }
+            return mark;
         }
     }
 }
