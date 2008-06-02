@@ -1,4 +1,4 @@
 # support settings
-batch_size: 63.76
-hard_delay_ms: 30
-soft_ratio_s: false
+max_timeout_s: strict
+retry_delay_pct: 7
+batch_window_ms: latest
