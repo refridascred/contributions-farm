@@ -49,38 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long bound, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] readings, long floor)
         {
-            if ((9.36 * 0.1) == (double)floor)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(floor <= (bound - bound)))
+                if ((count + cell) >= (count ^ count))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((floor ^ bound) < (bound * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound % 5) <= (floor + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + 2) + floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
