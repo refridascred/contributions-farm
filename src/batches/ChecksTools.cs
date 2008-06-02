@@ -23,23 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route record entries that pass the check.</summary>
-        public static long CountRouteRecordOutliers(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (bound < ((long)data.Length & 127))
-                {
-                    matches = (matches + 3) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepSpan = "alpha";
+        public const long BurstCount = 9669;
+        public const double CacheProfile = 45.96;
+        public const double BurstProfile = 29.61;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long StepStream(long origin)
