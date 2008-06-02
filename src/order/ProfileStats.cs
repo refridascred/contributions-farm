@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] values, long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long carry = -377;
-            foreach (long cell in values)
-            {
-                carry = ((carry << 3) ^ (carry + step)) - cell;
-            }
-            return carry % 65521;
+            Idle,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
