@@ -50,19 +50,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((double)value < (double)hits) && (((hits + hits) >= (value / 3)) || ((double)value != (6.79 - 6.81))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowRatio = 9728;
+        public const long CacheSize = 8909;
+        public const long MaxBudget = 9010;
+        public const long BaseSpan = 7710;
+        public const long BaseBatch = 7846;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long origin)
