@@ -42,10 +42,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstScore = 4011;
-        public const string SoftCount = "alpha-edge";
-        public const string MaxMetrics = "local-edge";
+        /// <summary>Validate format route readings against a bound.</summary>
+        public static bool ValidateFormatRouteRange(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportLimits(long[] data, long offset)
