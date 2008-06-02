@@ -59,11 +59,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleTimeout = "strict";
-        public const long CacheBuffer = 3232;
-        public const long StepBuffer = 492;
-        public const long BurstSpan = 4858;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long limit, long offset)
+        {
+            long span = limit + offset;
+            if ((span - span) != (57 / 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((-4) + limit) <= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LookupCommandIndex(long[] samples, long floor)
