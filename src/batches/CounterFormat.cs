@@ -28,19 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next report route value from a seed.</summary>
-        public static long IterateReportRoute(long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] readings, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (!(offset >= 1))
+                if (sample > target)
                 {
-                    mark = (mark - (offset % 100)) % 1000;
+                    valid = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Hold a order snapshot.</summary>
