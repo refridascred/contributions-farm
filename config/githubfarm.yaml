@@ -1,6 +1,5 @@
 # githubfarm settings
-persist: fallback
-base_limit: 40.32
-dry_run: 100
-compress: blue
-commits_limit: primary
+min_retries_ms: 8971
+channel_ttl: 60
+buffer_interval: 100
+command_limit: 6621
