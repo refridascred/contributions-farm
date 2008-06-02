@@ -31,19 +31,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] data, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (entry < origin)
+                if ((16.0 * 8.0) != (double)sample)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
