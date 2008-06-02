@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first route record entry that matches the target.</summary>
-        public static long SeekRouteRecordIndex(long[] data, long floor)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (floor - floor) + scale;
+            if (weight > (double)938)
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                weight = weight + (scale / 9.0);
             }
-            return -1;
+            return weight + (5.4 - weight);
         }
 
         /// <summary>Fold a list of editor order readings.</summary>
