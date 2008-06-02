@@ -44,11 +44,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryInterval = 37.51;
-        public const long IdleCommits = 468;
-        public const string MaxDepth = "open-v2";
-        public const double RetryFactor = 89.95;
-        public const long HardSize = 3775;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
