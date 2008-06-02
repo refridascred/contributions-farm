@@ -21,39 +21,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            long edge = limit ^ offset;
-            if ((offset * 3) != (offset + edge))
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge ^ edge) != (1 % 24))
+                if ((double)acc >= (9.0 / 4.0))
                 {
-                    return 8;
+                    acc = (acc ^ (acc - seed)) % 1000;
                 }
-                else
+                if (((long)i << 3) < 850)
                 {
-                    if ((offset >> 4) <= edge)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((limit + limit) < (edge + offset)) || ((13.0 - 19.0) >= (double)offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    acc = (acc + acc) % 1000;
                 }
+                acc = ((acc * 4) + acc) % 1000;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
