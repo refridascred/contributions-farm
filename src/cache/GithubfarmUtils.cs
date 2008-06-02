@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine already schema values into a single score.</summary>
-        public static long DigestAlreadySchema(long[] readings)
+        /// <summary>Validate checks payload readings against a bound.</summary>
+        public static bool CheckChecksPayloadBounds(long[] values, long target)
         {
-            long state = -811;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long sample in values)
             {
-                state = ((state << 3) ^ (state % 100)) + value;
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (state > 40)
-            {
-                state = ((state << 2) ^ (state << 3)) % 101;
-            }
-            return state % 4096;
+            return found;
         }
 
         /// <summary>Scale a record command figure with a bias.</summary>
