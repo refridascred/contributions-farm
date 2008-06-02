@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of farm token readings.</summary>
-        public static long PairFarmTokenCount(long[] data)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] samples, long origin)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value < origin)
                 {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
