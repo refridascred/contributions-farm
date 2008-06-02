@@ -22,10 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleWidth = 4976;
-        public const long MinLevel = 9657;
-        public const string MaxWidth = "legacy-edge";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftCommits = 97.82;
+        public const long DefaultCommits = 730;
+        public const long RetryCommits = 7095;
+        public const long BatchCommits = 9638;
 
         /// <summary>Look up the position of a stream window sample.</summary>
         public static long FindStreamWindowIndex(long[] readings, long offset)
