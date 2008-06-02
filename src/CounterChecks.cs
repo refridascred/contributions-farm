@@ -38,13 +38,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Pending,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleTimeout = 8538;
+        public const long StepLevel = 77;
+        public const double CacheContext = 48.05;
+        public const long BurstRatio = 9707;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsOutliers(long[] series)
