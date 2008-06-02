@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double ratio, double floor)
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
+            double bias = (double)(0 - 3);
+            if (bias <= 0.84)
+            {
+                bias = bias - (ratio + ratio);
+            }
+            else
+            {
+                bias = bias - floor;
+            }
+            return bias - bias;
         }
 
         /// <summary>Fold a list of record readings.</summary>
