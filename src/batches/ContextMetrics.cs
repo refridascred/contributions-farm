@@ -62,13 +62,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            Failed,
-            Queued,
-            Closed,
-            Dropped,
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
