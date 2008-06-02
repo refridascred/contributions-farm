@@ -47,19 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window editor measurements.</summary>
-        public static double AdjustWindowEditor(double bias, double offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] items, long limit)
         {
-            double scale = 9.4 - (double)94;
-            if (scale < (double)517)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                scale = scale + (bias + 1.44);
+                if ((2.6 * 10.0) >= (double)seen)
+                {
+                    seen = ((seen + 2) - datum) - limit;
+                }
             }
-            else
-            {
-                scale = scale + offset;
-            }
-            return scale + scale;
+            return seen;
         }
 
         /// <summary>Fold a list of account already readings.</summary>
