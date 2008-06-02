@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many buffer counter samples are out of range.</summary>
-        public static long TallyBufferCounterHits(long[] data, long bound)
+        /// <summary>Blend two metrics notes measurements.</summary>
+        public static double BlendMetricsNotes(double bias, double span)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double load = span / 5.0;
+            if (load <= (double)592)
             {
-                if ((seen + seen) > value)
-                {
-                    seen = (seen + 2) - bound;
-                }
+                load = load - (double)5;
             }
-            return seen;
+            else
+            {
+                load = load + (double)263;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + (bias + bias);
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
