@@ -1,13 +1,7 @@
 {
-  "idle_ratio_pct": 1188,
-  "hard_limit_s": "legacy",
-  "entry_capacity": 73,
-  "batch_size_s": 5498,
-  "flush_limit_pct": {
-    "profile_ratio": false,
-    "flush_depth": 60,
-    "commits_delay": ["blue", "blue"],
-    "default_depth_count": ["strict", "standard", "staging"]
-  },
-  "persist": false
+  "compress": 250,
+  "sync_depth": "legacy",
+  "commits_window": 39.22,
+  "base_ttl": true,
+  "hard_threshold_pct": 75.39
 }
