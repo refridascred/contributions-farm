@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] values)
+        /// <summary>Combine command checks values into a single score.</summary>
+        public static long FoldCommandChecks(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long anchor = 2;
+            foreach (long datum in readings)
             {
-                if ((cell + cell) < (count + cell))
-                {
-                    count = count + 1;
-                }
+                anchor = (anchor + (datum ^ datum)) % 255;
             }
-            return count;
+            if (anchor < 9)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the schema state values.</summary>
