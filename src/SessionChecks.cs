@@ -30,31 +30,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long limit, long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            if ((double)offset >= (9.0 / 7.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset & 15) == (limit ^ limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((716 << 3) >= (offset + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Stale,
+            Ready,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
