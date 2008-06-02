@@ -16,13 +16,13 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Queued,
-            Ready,
-            Active,
-            Failed,
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
