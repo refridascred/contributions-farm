@@ -1,6 +1,5 @@
 {
-  "sync_depth_s": 500,
-  "graph_threshold": ["cached", "cached", "standard", "legacy"],
-  "readonly": 68,
-  "enabled": "fallback"
+  "filter_retries": "cached",
+  "contributi_capacity": [257, 206, 181],
+  "batch_depth_count": [309, 200, 449, 273]
 }
