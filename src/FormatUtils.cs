@@ -25,13 +25,14 @@ namespace Common.Utilities
         public const double SoftSpan = 61.29;
         public const string BaseQueue = "alpha";
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
+            Closed,
+            Active,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a notes header.</summary>
