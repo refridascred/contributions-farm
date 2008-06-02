@@ -32,19 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster counter samples.</summary>
-        public static long CombineClusterCounter(long[] readings, long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long floor)
         {
-            long state = 52;
-            foreach (long datum in readings)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state ^ state) % 255) - datum;
+                mix = (mix * 2) + mix;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (state > (-5))
-            {
-                state = state + (target / 4);
-            }
-            return state % 97;
+            return mix;
         }
 
         /// <summary>Look up the position of a channel filter sample.</summary>
