@@ -42,19 +42,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((seed - reading) > (tally + reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstScore = 4011;
+        public const string SoftCount = "alpha-edge";
+        public const string MaxMetrics = "local-edge";
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportLimits(long[] data, long offset)
