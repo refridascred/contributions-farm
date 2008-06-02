@@ -46,19 +46,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (value >= (value - value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 24.48;
+        public const long SoftSpan = 845;
+        public const string MaxBuffer = "fallback-edge";
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
