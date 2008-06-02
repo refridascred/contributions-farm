@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] levels, long step)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)seen > (6.87 + 20.0))
-                {
-                    seen = ((seen + 3) ^ cell) + step;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every context report entry stays within the limit.</summary>
