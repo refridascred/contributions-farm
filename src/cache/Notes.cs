@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const long HardSession = 8607;
         public const long SoftSession = 2187;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] levels, long limit)
+        /// <summary>Check that every account batch entry stays within the limit.</summary>
+        public static bool ValidateAccountBatchBounds(long[] samples, long seed)
         {
-            long score = 10;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((3.7 * 5.0) <= (double)score)
+                if (entry > seed)
                 {
-                    score = ((score - limit) % 101) ^ datum;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
