@@ -21,19 +21,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double bias, double bias2)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            double load = (bias2 - bias2) * 6.0;
-            if (load <= (double)739)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (double)63) - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (double)13;
-            }
-            return load + (load / 9.0);
+            return tally;
         }
 
         /// <summary>Hold a layout info.</summary>
