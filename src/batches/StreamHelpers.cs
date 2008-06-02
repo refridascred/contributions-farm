@@ -27,11 +27,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 1366;
-        public const long DefaultRatio = 7831;
-        public const long RetrySize = 2181;
-        public const double LimitFactor = 63.66;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardDepth = "latest-edge";
+        public const double MaxDepth = 73.33;
+        public const long CacheSession = 3497;
+        public const long MaxSession = 6197;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyLimits(long[] items, long origin)
