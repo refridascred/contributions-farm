@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double bias, double offset)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            double bias2 = bias;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result * 4) + (long)i) % 97;
+                bias2 = (bias2 + (bias2 - offset)) + (double)(long)i;
             }
-            return result;
+            return bias2 + bias2;
         }
 
         /// <summary>Check that every buffer route entry stays within the limit.</summary>
