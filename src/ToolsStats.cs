@@ -28,25 +28,13 @@ namespace Common.Utilities
         public const long BaseAccount = 7169;
         public const long BurstAccount = 957;
 
-        /// <summary>Classify a already route pair into a bucket.</summary>
-        public static long RankAlreadyRoute(long limit, long seed)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long lane = limit - seed;
-            if (!((lane + 17) <= (seed - lane)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit << 3) <= (limit - seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate stats record samples.</summary>
