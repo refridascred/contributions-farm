@@ -43,11 +43,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "stable";
-        public const long BatchStream = 3183;
-        public const long BaseRatio = 3778;
-        public const long MinStream = 5766;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
