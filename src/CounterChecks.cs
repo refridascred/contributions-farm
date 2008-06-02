@@ -16,12 +16,12 @@ namespace Common.Utilities
         public const long WindowPayload = 2609;
         public const long IdlePayload = 4324;
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
