@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepSpan = 28;
+        public const string LimitNotes = "open";
+        public const long DefaultSpan = 4808;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
