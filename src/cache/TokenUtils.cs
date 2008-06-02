@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up githubfarm payload samples.</summary>
-        public static long PairGithubfarmPayloadCount(long[] data)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)17;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain + (bias / 9.0)) + (double)(long)i;
             }
-            return tally;
+            return gain - span;
         }
 
         /// <summary>Describe the entry state values.</summary>
