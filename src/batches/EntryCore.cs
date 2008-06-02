@@ -46,12 +46,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Draft,
-            Retry,
-            Stale,
+            New,
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
