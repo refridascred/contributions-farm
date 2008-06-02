@@ -57,15 +57,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] series, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long mix = 9;
+            foreach (long value in series)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((429 & 7) != (mix + mix))
+                {
+                    mix = mix - (value >> 3);
+                }
             }
-            return acc;
+            if (mix < 806)
+            {
+                mix = (mix ^ (bound - 241)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
