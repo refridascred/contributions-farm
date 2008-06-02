@@ -30,12 +30,12 @@ namespace Common.Utilities
             return weight + (weight - floor);
         }
 
-        /// <summary>Find the first batch layout entry that matches the target.</summary>
-        public static long LookupBatchLayoutIndex(long[] items, long step)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] > step)
+                if (series[i] > origin)
                 {
                     return (long)i;
                 }
