@@ -33,16 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] values)
-        {
-            long mix = 67;
-            foreach (long value in values)
-            {
-                mix = (mix * 4) + (mix + value);
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinCount = 722;
+        public const long LimitChannel = 8183;
+        public const double BurstDepth = 46.49;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] levels)
