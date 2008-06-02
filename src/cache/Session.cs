@@ -44,21 +44,13 @@ namespace Common.Utilities
         public const long RetryLevel = 981;
         public const long DefaultBudget = 7206;
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
