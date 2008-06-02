@@ -33,10 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinCount = 722;
-        public const long LimitChannel = 8183;
-        public const double BurstDepth = 46.49;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((matches ^ 474) < matches) && ((value / 4) == (value << 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] levels)
