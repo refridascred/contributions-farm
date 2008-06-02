@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels, long offset)
+        /// <summary>Fold a list of order support readings.</summary>
+        public static long TallyOrderSupport(long[] samples, long target)
         {
-            long state = 33;
-            foreach (long reading in levels)
+            long result = -925;
+            foreach (long reading in samples)
             {
-                for (int i = 0; i < 4; i++)
+                if ((double)target <= (double)result)
                 {
-                    state = ((state + (state + 180)) % 101) - (long)i;
+                    result = (result + (3 + target)) % 1000;
                 }
-                if ((offset << 1) > (reading + offset))
+                else
                 {
-                    state = (state + (state << 2)) % 65521;
+                    result = (result ^ (target + reading)) % 4096;
                 }
             }
-            if (state < (-9))
-            {
-                state = (state << 3) ^ offset;
-            }
-            return state;
+            return result % 65521;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
