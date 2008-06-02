@@ -19,14 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            New,
-            Dropped,
-            Draft,
-            Done,
-            Ready,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (seen <= (4 - seen))
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
