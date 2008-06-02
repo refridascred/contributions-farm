@@ -37,19 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long carry = 16;
-            foreach (long entry in samples)
-            {
-                carry = ((carry * 2) + (entry / 8)) % 4096;
-            }
-            if (carry < 74)
-            {
-                carry = ((carry * 5) + (carry + carry)) % 1000;
-            }
-            return carry;
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate record stats readings against a bound.</summary>
