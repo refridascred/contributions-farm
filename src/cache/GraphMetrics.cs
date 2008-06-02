@@ -51,12 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            New,
-            Dropped,
-            Paused,
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
