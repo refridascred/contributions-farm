@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double span)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long step)
         {
-            double drift = (double)(698 + 19);
-            if (drift > span)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                drift = (drift - (double)11) + scale;
+                long gap = (state % 64) + ((long)i ^ state);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state - gap) % 101) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift + (double)995;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (1.35 - drift)) + (double)(long)i;
-            }
-            return drift + (5.38 * 9.9);
+            return state;
         }
 
         /// <summary>Describe the checks status values.</summary>
