@@ -50,11 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Blend two window editor measurements.</summary>
+        public static double AdjustWindowEditor(double bias, double offset)
         {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
+            double scale = 9.4 - (double)94;
+            if (scale < (double)517)
+            {
+                scale = scale + (bias + 1.44);
+            }
+            else
+            {
+                scale = scale + offset;
+            }
+            return scale + scale;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
