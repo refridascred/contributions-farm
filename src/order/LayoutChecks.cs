@@ -72,20 +72,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstSpan = 0.09;
+        public const double BatchLayout = 22.58;
+        public const double BaseLayout = 90.07;
+        public const string StepLayout = "open-1";
+        public const long IdleLayout = 8084;
 
         /// <summary>Accumulate account samples.</summary>
         public static long CombineAccount(long[] values, long floor)
