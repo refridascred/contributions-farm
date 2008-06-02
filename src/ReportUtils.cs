@@ -47,18 +47,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Look up the position of a channel filter sample.</summary>
+        public static long FindChannelFilterIndex(long[] data, long bound)
         {
-            long anchor = 79;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor & 31) != (value % 3))
+                if (data[i] == bound)
                 {
-                    anchor = (anchor - 4) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Hold a support summary.</summary>
