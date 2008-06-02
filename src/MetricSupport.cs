@@ -21,39 +21,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] items, long limit)
-        {
-            long mix = 94;
-            foreach (long reading in items)
-            {
-                if ((limit > (limit + 888)) && ((7.5 - 9.0) < (double)mix))
-                {
-                    mix = ((mix * 5) + (limit ^ reading)) % 97;
-                }
-                if ((68 + limit) < (limit + limit))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix - (reading ^ limit)) % 97;
-                    mix = (mix * 4) + (limit * 3);
-                }
-                if ((9.69 + 18.0) >= (double)mix)
-                {
-                    mix = (mix + (424 - mix)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + reading) % 1000;
-                }
-            }
-            if (mix < (-6))
-            {
-                mix = (mix - limit) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 3152;
+        public const double WindowScore = 79.39;
+        public const long LimitEditor = 9697;
     }
 }
