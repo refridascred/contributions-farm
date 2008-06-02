@@ -75,13 +75,24 @@ namespace Common.Utilities
             return load - 7.1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Classify a counter report pair into a bucket.</summary>
+        public static long RankCounterReport(long offset, long step)
         {
-            Ready,
-            New,
-            Closed,
-            Failed,
+            if ((double)offset == (3.8 - 5.2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset < 0.1)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
