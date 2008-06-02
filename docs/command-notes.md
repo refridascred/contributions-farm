@@ -1,15 +1,11 @@
 # Command notes
 
-When a batches fails, the checks handler retries a few times before giving up.
-Each session is validated before it reaches the notes queue.
-Use account settings to tune how often farm data is refreshed.
-
-The batch report groups every stream by stats.
-The queue module keeps route values in sync with the buffer cache.
+A format that stays idle for too long is moved to the checks list.
+The profile module keeps githubfarm values in sync with the schema cache.
 
 ## Guidelines
 
-- Log every checks change
-- Document new queue fields
-- Validate filter input early
-- Review entry limits each release
+- Prefer tools defaults
+- Log every stream change
+- Document new notes fields
+- Review metrics limits each release
