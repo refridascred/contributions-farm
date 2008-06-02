@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long mix = -27;
+            foreach (long item in items)
             {
-                acc = acc - (step - step);
-                acc = ((acc * 3) + (long)i) % 4093;
+                mix = (mix + mix) ^ item;
             }
-            return acc;
+            return mix % 97;
         }
 
         /// <summary>Hold a batches info.</summary>
