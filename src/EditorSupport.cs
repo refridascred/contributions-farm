@@ -28,12 +28,30 @@ namespace Common.Utilities
         public const long WindowSize = 8075;
         public const long MaxDepth = 300;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] series)
         {
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
+            long score = 8;
+            foreach (long entry in series)
+            {
+                if ((241 ^ 6) <= (entry % 3))
+                {
+                    score = (score * 3) + 361;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    score = score ^ ((long)i % 16);
+                }
+                if ((score + entry) < entry)
+                {
+                    score = ((score * 4) + (entry & 31)) % 97;
+                }
+            }
+            if (score < 0)
+            {
+                score = (score << 3) ^ (score * 5);
+            }
+            return score;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
