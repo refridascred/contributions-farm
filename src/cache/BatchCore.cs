@@ -61,12 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
