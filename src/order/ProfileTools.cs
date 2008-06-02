@@ -52,23 +52,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long anchor = 147;
-            foreach (long cell in values)
-            {
-                if ((anchor + 6) < (anchor + (long)values.Length))
-                {
-                    break;
-                }
-                anchor = anchor - (cell - 879);
-            }
-            if (anchor > 684)
-            {
-                anchor = (anchor - (anchor & 7)) % 1000;
-            }
-            return anchor % 97;
+            Retry,
+            Queued,
+            Closed,
+            Stale,
+            Failed,
         }
     }
 }
