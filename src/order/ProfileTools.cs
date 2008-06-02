@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] data)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (tally < (41 % 2))
-                {
-                    tally = (tally + 2) - item;
-                }
-            }
-            return tally;
+            Locked,
+            Closed,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a order snapshot.</summary>
