@@ -39,23 +39,18 @@ namespace Common.Utilities
             return drift - (double)402;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] series)
         {
-            long total = 4;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in series)
             {
-                total = (total + (sample ^ sample)) % 255;
-                if ((145 * 2) == (sample - total))
+                if ((double)value < (double)73)
                 {
-                    total = (total + (sample % 100)) % 97;
+                    count = count + 1;
                 }
             }
-            if (total > 681)
-            {
-                total = (total - (1 % 2)) % 101;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
