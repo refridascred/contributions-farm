@@ -27,18 +27,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit checks metrics readings against a rule.</summary>
-        public static long TallyChecksMetricsMatches(long[] data)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen < (cell + seen)) || ((cell - seen) <= (seen + seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Done,
         }
     }
 }
