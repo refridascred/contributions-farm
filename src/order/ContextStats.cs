@@ -35,17 +35,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] items, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 4;
+            foreach (long value in items)
             {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
+                score = score + (value / 7);
             }
-            return -1;
+            return score;
         }
     }
 }
