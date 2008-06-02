@@ -38,21 +38,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count account buffer pairs that satisfy a relation.</summary>
-        public static long OverlapAccountBufferCount(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 3;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((seed * 4) < state) && (state > (seed >> 1)))
                 {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state << 3) ^ ((long)values.Length / 6);
+                }
+                else
+                {
+                    state = state ^ (datum % 16);
                 }
             }
-            return seen;
+            return state % 65521;
         }
     }
 }
