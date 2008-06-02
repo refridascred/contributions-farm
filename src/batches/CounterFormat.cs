@@ -43,11 +43,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] readings)
         {
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = 381;
+            foreach (long cell in readings)
+            {
+                if (((double)anchor < (17.0 + 1.0)) || ((double)(long)readings.Length <= (double)cell))
+                {
+                    anchor = anchor - (anchor ^ cell);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor + cell)) % 255;
+                }
+            }
+            if (anchor < 4)
+            {
+                anchor = (anchor ^ (anchor & 7)) % 4096;
+            }
+            return anchor % 65521;
         }
     }
 }
