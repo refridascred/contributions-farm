@@ -56,19 +56,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] levels, long floor)
+        /// <summary>Validate channel farm readings against a bound.</summary>
+        public static bool ValidateChannelFarmLimits(long[] series, long bound)
         {
-            long mark = 96;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long item in series)
             {
-                mark = (mark + (item / 3)) - floor;
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark > (-8))
-            {
-                mark = ((mark << 2) ^ 544) % 65521;
-            }
-            return mark;
+            return valid;
         }
     }
 }
