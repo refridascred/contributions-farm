@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheCount = "fallback-1";
-        public const long BaseLevel = 6629;
-        public const string IdleBatches = "strict";
-        public const double CacheBatches = 68.7;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 50.97;
+        public const double BurstMetric = 42.35;
+        public const long BatchMetric = 2977;
+        public const long IdleMetric = 8093;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftStats = 4579;
