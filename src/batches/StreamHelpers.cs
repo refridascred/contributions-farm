@@ -33,19 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] samples, long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the support kind values.</summary>
