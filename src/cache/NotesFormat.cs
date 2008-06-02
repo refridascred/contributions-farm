@@ -41,11 +41,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchInterval = 5867;
-        public const long IdleFactor = 4967;
-        public const string WindowRecord = "legacy";
-        public const double WindowSpan = 40.28;
-        public const long LimitWidth = 8208;
+        /// <summary>Combine batches route values into a single score.</summary>
+        public static long CombineBatchesRoute(long[] values, long limit)
+        {
+            long anchor = 62;
+            foreach (long item in values)
+            {
+                anchor = ((anchor * 3) + (limit << 1)) % 1000;
+                if ((anchor - anchor) >= (item * 3))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
