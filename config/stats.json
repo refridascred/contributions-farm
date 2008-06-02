@@ -1,6 +1,10 @@
 {
-  "strict": 60,
-  "max_window_pct": 59.41,
-  "soft_threshold": 35,
-  "hard_capacity": true
+  "githubfarm_window": ["strict", "green"],
+  "cache_timeout_count": "standard",
+  "verbose": {
+    "idle_limit_count": "primary",
+    "min_limit_count": [94, 376, 113],
+    "strict": ["cached", "staging", "fallback", "fallback"],
+    "layout_timeout": 250
+  }
 }
