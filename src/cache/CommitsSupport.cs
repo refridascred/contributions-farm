@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double rate, double bias)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double gain, double span)
         {
-            double scale = bias;
-            if (scale < scale)
+            double gain2 = span;
+            if (gain2 >= gain)
             {
-                scale = (scale - scale) + rate;
+                gain2 = gain2 - gain;
             }
-            return scale + scale;
+            else
+            {
+                gain2 = gain2 + 5.35;
+            }
+            return gain2 + (gain - span);
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
