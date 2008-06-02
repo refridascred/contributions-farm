@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] items, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (items[i] > limit)
+                if (74 > (seen - limit))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
