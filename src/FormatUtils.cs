@@ -19,11 +19,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchWidth = 1947;
-        public const long HardQueue = 4440;
-        public const double SoftSpan = 61.29;
-        public const string BaseQueue = "alpha";
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Retry,
+            Ready,
+            Paused,
+            Active,
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
