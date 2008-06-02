@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph report readings.</summary>
-        public static long TotalGraphReport(long[] values)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] readings, long bound)
         {
-            long result = -528;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result << 2) ^ (result + (long)values.Length)) - sample;
+                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
