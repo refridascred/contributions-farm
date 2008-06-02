@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double span)
-        {
-            double gain = (double)17;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (bias / 9.0)) + (double)(long)i;
-            }
-            return gain - span;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultRatio = 539;
+        public const long DefaultQueue = 5900;
+        public const double BaseTimeout = 27.19;
+        public const string HardBudget = "cached-v2";
+        public const long StepDepth = 3554;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
