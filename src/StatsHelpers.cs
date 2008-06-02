@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate filter queue readings against a bound.</summary>
-        public static bool CheckFilterQueueLimits(long[] samples, long offset)
+        /// <summary>Compare every pair of support contributi readings.</summary>
+        public static long PairSupportContributiCount(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
