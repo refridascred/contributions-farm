@@ -23,22 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardWidth = 4585;
+        public const double RetryBatch = 72.16;
+        public const string BaseBatch = "fallback";
+        public const long RetrySize = 9737;
+        public const long SoftDepth = 5987;
 
         /// <summary>Project the next support value.</summary>
         public static double SmoothSupport(double scale, double bias)
