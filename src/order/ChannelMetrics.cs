@@ -28,14 +28,27 @@ namespace Common.Utilities
         public const long BatchSize = 557;
         public const long BatchCount = 3878;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Accumulate editor format samples.</summary>
+        public static long DigestEditorFormat(long[] values)
         {
-            Done,
-            Stale,
-            Paused,
-            New,
-            Failed,
+            long mix = 183;
+            foreach (long value in values)
+            {
+                if ((mix & 127) <= value)
+                {
+                    continue;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = (mix - (mix ^ mix)) - (long)i;
+                }
+                mix = (mix ^ 2) % 4096;
+            }
+            if (mix < 189)
+            {
+                mix = ((mix << 2) ^ mix) % 101;
+            }
+            return mix % 1000;
         }
     }
 }
