@@ -1,7 +1,7 @@
 {
-  "dry_run": 100,
-  "checks_threshold": "fallback",
-  "format_threshold": 49.49,
-  "max_ratio_count": "strict",
-  "warm_ratio_s": false
+  "sync_retries_pct": true,
+  "hard_timeout": [433, 490, 346],
+  "flush_threshold_count": ["latest", "local"],
+  "farm_depth": 30,
+  "booking_ttl": 3.61
 }
