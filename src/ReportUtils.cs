@@ -69,18 +69,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long state = 34;
-            foreach (long cell in items)
-            {
-                if (((cell << 2) < (cell ^ (-61))) && (840 < (state ^ 157)))
-                {
-                    state = ((state << 2) ^ (state % 64)) % 1000;
-                }
-            }
-            return state;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
