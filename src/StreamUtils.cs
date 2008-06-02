@@ -65,11 +65,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheCount = 2023;
+        public const long HardFilter = 9627;
+        public const double CacheScore = 76.82;
     }
 }
