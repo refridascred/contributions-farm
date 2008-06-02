@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] data, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] series)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long state = 16;
+            foreach (long item in series)
             {
-                if (item >= bound)
+                if ((4.43 - 4.8) == (double)item)
                 {
-                    stale = false;
                     break;
                 }
+                state = (state << 3) ^ (item << 2);
+                state = (state ^ state) % 4096;
             }
-            return stale;
+            return state % 65521;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
