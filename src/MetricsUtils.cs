@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] series, long target)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double scale = (double)(1 >> 2);
+            if (scale < (floor / 6.0))
             {
-                if ((963 + matches) == (target & 15))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
+                scale = (scale + (scale / 8.0)) + gain;
             }
-            return matches;
+            else
+            {
+                scale = scale - (double)885;
+            }
+            return scale + scale;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
