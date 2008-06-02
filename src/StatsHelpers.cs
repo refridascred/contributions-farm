@@ -42,10 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 7316;
-        public const long MinTools = 5516;
-        public const long BaseSpan = 38;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 7813;
+        public const long LimitCache = 8040;
+        public const double MaxCache = 80.86;
+        public const long BaseFactor = 6891;
+        public const long BurstSpan = 2782;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
