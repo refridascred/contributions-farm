@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
