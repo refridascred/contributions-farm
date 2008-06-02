@@ -1,13 +1,5 @@
 {
-  "profile_window": "blue",
-  "compress": 1024,
-  "tools_depth": false,
-  "default_limit_pct": 66,
-  "profile_size": {
-    "soft_ratio_s": 100,
-    "dry_run": [411, 359],
-    "batch_capacity_ms": ["fallback", "green", "open"],
-    "batch_ratio_pct": 3.93
-  },
-  "burst_capacity": 46.18
+  "route_depth": "latest",
+  "base_depth_pct": 42.94,
+  "dry_run": ["staging", "strict", "fallback"]
 }
