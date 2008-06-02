@@ -1,12 +1,18 @@
 # entry settings
-warm_size: latest
-retry_capacity: fallback
-session_delay: 4399
-max_interval_pct: 26.17
-enabled: false
-sync_window:
-  layout_window: 26
-  cache_timeout: 5439
-  verbose: latest
-  default_ttl_s: true
-  persist: stable
+max_depth_pct: 250
+counter_ratio:
+  readonly: true
+  already_interval: false
+  compress: cached
+  sync_capacity:
+    batch_limit_ms: 22.05
+    warm_retries_ms: 11.37
+    readonly:
+      - open
+      - primary
+      - edge
+      - cached
+  payload_limit: false
+strict: 500
+persist: open
+retry_limit: open
