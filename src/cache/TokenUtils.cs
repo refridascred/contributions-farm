@@ -35,22 +35,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine checks githubfarm values into a single score.</summary>
-        public static long CombineChecksGithubfarm(long[] data, long origin)
+        /// <summary>Classify a report editor pair into a bucket.</summary>
+        public static long GradeReportEditor(long floor, long target)
         {
-            long anchor = 50;
-            foreach (long cell in data)
+            if ((target >= (target % 5)) || (target > (target + 0)))
             {
-                if (((origin ^ anchor) != (anchor - cell)) && ((8.3 / 5.0) <= (double)cell))
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 5) > (floor & 3))
                 {
-                    anchor = (anchor ^ anchor) % 4096;
+                    return 7;
                 }
                 else
                 {
-                    anchor = (anchor + (cell + anchor)) % 65521;
+                    if (!(((-2) + target) == (floor + floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((14.0 * 1.83) != (double)floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
