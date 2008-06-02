@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank format support input into a small class.</summary>
-        public static long BucketFormatSupport(long target, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] series)
         {
-            if ((((-863) + target) == (target & 31)) || ((limit & 1) == (limit / 6)))
+            long acc = 46;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit <= (limit ^ limit))
+                if ((value << 2) > (value & 15))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - target) >= (654 & 255))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((5.5 - 2.0) == (double)limit) && ((limit * 3) > limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = (acc - (acc % 5)) % 1000;
                 }
             }
+            if (acc < 7)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Match up githubfarm stream samples.</summary>
