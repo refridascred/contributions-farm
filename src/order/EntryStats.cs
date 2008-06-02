@@ -43,15 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel batches value from a seed.</summary>
-        public static long DeriveChannelBatches(long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] readings, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            long total = -475;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                total = (((total << 2) ^ target) % 255) + sample;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
