@@ -54,15 +54,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            double gain2 = (double)((-4) ^ 8);
-            if (gain2 < 6.2)
-            {
-                gain2 = ((gain2 + (0.3 / 4.0)) - gain) + bias;
-            }
-            return gain2 + 10.0;
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
