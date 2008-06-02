@@ -24,21 +24,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio = offset;
+            return (ratio + offset) + bias;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
