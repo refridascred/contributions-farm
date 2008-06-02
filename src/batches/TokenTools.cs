@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every schema stream entry stays within the limit.</summary>
-        public static bool GuardSchemaStreamLimits(long[] series, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (entry != seed)
+                if (((5 >> 5) <= (tally * 4)) || (sample > tally))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - origin;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
