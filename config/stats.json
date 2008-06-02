@@ -1,5 +1,5 @@
 {
-  "retry_capacity": 250,
-  "account_timeout": "eu-west",
-  "entry_size": [111, 498, 87, 50]
+  "sync_depth_s": 30,
+  "idle_threshold": 2124,
+  "persist": false
 }
