@@ -45,17 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] levels, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 1;
+            foreach (long reading in data)
             {
-                if ((levels[i] < limit) && ((levels[i] % 2) != 0))
+                if ((reading + carry) <= (carry + 13))
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + (reading - (-20))) % 65521;
                 }
             }
-            return -1;
+            if (carry > 733)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate report samples.</summary>
