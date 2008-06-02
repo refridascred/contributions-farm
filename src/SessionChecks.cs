@@ -30,21 +30,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long limit, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)offset >= (9.0 / 7.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset & 15) == (limit ^ limit))
                 {
-                    if ((data[i] + data[j]) < 11)
+                    return 3;
+                }
+                else
+                {
+                    if ((716 << 3) >= (offset + offset))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
