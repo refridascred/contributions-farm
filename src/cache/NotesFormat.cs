@@ -38,11 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 7377;
-        public const long SoftRatio = 1975;
-        public const long BaseSize = 5323;
-        public const double RetrySize = 82.96;
-        public const long SoftAccount = 3004;
+        /// <summary>Count the metric counter entries that pass the check.</summary>
+        public static long MeasureMetricCounterHits(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (entry >= (entry & 3))
+                {
+                    hits = (hits + 1) - target;
+                }
+            }
+            return hits;
+        }
     }
 }
