@@ -37,21 +37,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
