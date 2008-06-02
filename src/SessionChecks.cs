@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] items, long floor)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((7.0 / 8.0) != (double)floor)
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the already state values.</summary>
