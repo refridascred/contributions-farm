@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] items, long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (((5 >> 5) <= (tally * 4)) || (sample > tally))
-                {
-                    tally = (tally + 1) - origin;
-                }
+                anchor = anchor + (offset + (-78));
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
