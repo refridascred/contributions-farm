@@ -58,31 +58,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a counter command pair into a bucket.</summary>
-        public static long ClassifyCounterCommand(long target, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] data, long seed)
         {
-            if (((8.94 * 6.3) > (double)limit) || (target >= 65))
+            long mix = 4;
+            foreach (long sample in data)
             {
-                return 3;
+                mix = (mix ^ (mix - sample)) % 255;
             }
-            else
+            if (mix < 4)
             {
-                if ((limit * 4) < (target ^ target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target ^ limit) < limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mix = ((mix << 2) ^ seed) % 97;
             }
+            return mix;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
