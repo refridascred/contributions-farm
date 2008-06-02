@@ -30,16 +30,32 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long seed, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long gap = seed ^ origin;
+            if (((origin - seed) == (origin & 31)) && ((double)seed <= 7.29))
             {
-                acc = ((acc << 2) ^ acc) % 4096;
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((1.8 + 5.9) <= (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((gap * 4) < (seed - 78))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate batch samples.</summary>
