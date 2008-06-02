@@ -21,18 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] readings, long offset)
+        /// <summary>Validate support already readings against a bound.</summary>
+        public static bool GuardSupportAlreadyLimits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((count & 3) < (count >> 2))
+                if (datum <= target)
                 {
-                    count = ((count + 3) + entry) - offset;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Match up channel already samples.</summary>
