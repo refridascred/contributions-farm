@@ -1,9 +1,12 @@
 {
-  "base_size_count": true,
-  "sync_ratio": {
-    "burst_interval_s": false,
-    "idle_timeout_pct": 67.41,
-    "checks_size": ["primary", "blue", "primary", "fallback"]
+  "default_interval_pct": "local",
+  "base_limit": {
+    "retry_capacity_ms": 8916,
+    "soft_ttl_pct": 4384,
+    "cache_ttl_count": "fallback",
+    "idle_ratio_pct": 4719,
+    "dry_run": 64,
+    "githubfarm_size": 250
   },
-  "buffer_threshold": false
+  "metrics_size": ["local", "staging", "local"]
 }
