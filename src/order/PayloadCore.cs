@@ -33,23 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] series, long floor)
         {
-            long carry = 9;
-            foreach (long entry in values)
+            long acc = -25;
+            foreach (long cell in series)
             {
-                carry = (carry << 3) ^ (98 >> 2);
-                if ((7 + carry) > (bound ^ 13))
-                {
-                    carry = (carry * 5) + (bound - bound);
-                }
-                else
-                {
-                    carry = (carry ^ (bound - entry)) % 4096;
-                }
+                acc = (acc << 3) ^ (floor + cell);
             }
-            return carry % 97;
+            if (acc > 6)
+            {
+                acc = acc - (91 & 1);
+            }
+            return acc;
         }
 
         /// <summary>Hold a farm info.</summary>
