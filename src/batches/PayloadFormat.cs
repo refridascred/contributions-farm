@@ -23,38 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long origin)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            if (((floor & 31) >= origin) || (floor >= (floor / 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((16.0 / 4.0) != (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((2.65 - 1.1) > (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor + origin) != (floor + floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
