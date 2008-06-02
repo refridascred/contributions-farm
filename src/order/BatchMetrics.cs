@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate stats format samples.</summary>
-        public static long WeighStatsFormat(long[] values)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long anchor = 5;
-            foreach (long cell in values)
-            {
-                anchor = (anchor + ((long)values.Length % 60)) % 97;
-                if ((anchor - cell) != (11 << 3))
-                {
-                    anchor = anchor + (anchor * 5);
-                }
-            }
-            return anchor;
+            Pending,
+            Idle,
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
