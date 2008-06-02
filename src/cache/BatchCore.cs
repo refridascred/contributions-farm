@@ -61,13 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheWidth = 4391;
+        public const long BatchFactor = 4344;
+        public const double WindowScore = 11.24;
+        public const long RetryContributi = 5915;
     }
 }
