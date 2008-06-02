@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] samples, long step)
         {
-            long acc = -22;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value >= (13.0 * 5.8))
+                if (samples[i] <= step)
                 {
-                    acc = (acc - acc) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = acc - (52 - value);
-                }
-                acc = acc ^ (value << 3);
             }
-            if (acc < 67)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
