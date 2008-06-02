@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 7;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (mix + reading) % 255;
+                if ((6.25 - 0.1) > (double)reading)
                 {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix << 2) ^ (reading - mix)) % 1000;
+                }
+                else
+                {
+                    mix = mix - reading;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
