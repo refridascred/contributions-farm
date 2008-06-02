@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] levels, long offset)
         {
-            Paused,
-            Dropped,
-            New,
-            Ready,
+            long mix = 5;
+            foreach (long item in levels)
+            {
+                mix = ((mix << 3) ^ (item - offset)) % 101;
+            }
+            if (mix > 6)
+            {
+                mix = ((mix * 3) + (mix - mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
