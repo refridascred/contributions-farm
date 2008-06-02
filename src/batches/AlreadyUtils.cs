@@ -36,12 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 1927;
-        public const long LimitTimeout = 5356;
-        public const long MaxBudget = 6275;
-        public const long DefaultCache = 5619;
-        public const double CacheSpan = 74.72;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] values, long limit)
