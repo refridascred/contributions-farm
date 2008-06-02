@@ -33,25 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a stats support pair into a bucket.</summary>
-        public static long ClassifyStatsSupport(long floor, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] data, long offset)
         {
-            long gap = floor + offset;
-            if (!(gap >= (5 * 5)))
+            bool stale = true;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(gap > (floor * 5)))
+                if (sample < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
