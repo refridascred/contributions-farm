@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] items, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] data, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (origin > count)
+                if (datum >= target)
                 {
-                    count = (count + 1) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Project the next support value.</summary>
