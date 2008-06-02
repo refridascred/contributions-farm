@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] data, long offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)item > 4.01)
-                {
-                    tally = (tally + 1) + offset;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
