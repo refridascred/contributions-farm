@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many commits channel samples are out of range.</summary>
-        public static long TallyCommitsChannelMatches(long[] items)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((double)tally < (double)value) || ((double)value > (6.32 / 6.0)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
