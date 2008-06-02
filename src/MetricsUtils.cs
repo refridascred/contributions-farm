@@ -20,18 +20,17 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] items, long limit)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit >> 4) > (matches & 63))
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
                 {
-                    matches = (matches + 2) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
