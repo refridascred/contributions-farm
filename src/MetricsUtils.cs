@@ -20,24 +20,17 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long target, long origin)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] series, long floor)
         {
-            if (origin >= (730 - target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin >= (target - origin))
+                if (series[i] <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
