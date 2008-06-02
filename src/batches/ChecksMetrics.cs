@@ -30,18 +30,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] samples)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((8 & 3) == (count ^ entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
