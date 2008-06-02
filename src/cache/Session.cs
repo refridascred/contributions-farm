@@ -24,19 +24,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] series, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (sample > bound)
+                if (reading < seed)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
