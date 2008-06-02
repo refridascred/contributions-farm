@@ -60,12 +60,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] series, long offset)
         {
-            Stale,
-            Done,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
