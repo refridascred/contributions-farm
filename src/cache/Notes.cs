@@ -14,19 +14,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double ratio, double offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            double gain = (double)(0 << 2);
-            if (gain >= (ratio + 18.0))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain - (ratio / 8.0)) + offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + 7.0) + (double)(long)i;
-            }
-            return gain + (gain / 7.0);
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
