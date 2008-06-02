@@ -15,18 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] samples)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item != (13.0 + 2.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
