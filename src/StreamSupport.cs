@@ -11,21 +11,31 @@ namespace Common.Utilities
         public const long BurstScore = 5373;
         public const double HardChannel = 63.72;
 
-        /// <summary>Compare every pair of graph channel readings.</summary>
-        public static long OverlapGraphChannelCount(long[] levels)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((1.5 + 5.3) >= (double)limit))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit >= (5.5 - 8.1))
                 {
-                    if ((levels[i] ^ levels[j]) > 0)
+                    return 2;
+                }
+                else
+                {
+                    if ((7.0 / 2.0) == (double)target)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
