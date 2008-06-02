@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] items, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((6 * 3) <= ((-356) - hits))
+                if (datum >= step)
                 {
-                    hits = ((hits + 1) + item) - origin;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
