@@ -44,13 +44,11 @@ namespace Common.Utilities
         public const long RetryLevel = 981;
         public const long DefaultBudget = 7206;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            public bool Size { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
