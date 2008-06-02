@@ -35,17 +35,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Accumulate entry batches samples.</summary>
+        public static long FoldEntryBatches(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 8;
+            foreach (long reading in values)
             {
-                if (samples[i] >= seed)
+                if (!((floor << 2) < ((long)values.Length - mix)))
                 {
-                    return (long)i;
+                    mix = (mix + floor) - reading;
                 }
+                mix = (mix * 4) + ((long)values.Length << 2);
             }
-            return -1;
+            if (mix < 947)
+            {
+                mix = (mix + (mix - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
