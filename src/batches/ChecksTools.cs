@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the route record entries that pass the check.</summary>
+        public static long CountRouteRecordOutliers(long[] data, long bound)
         {
-            Done,
-            Synced,
-            Draft,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (bound < ((long)data.Length & 127))
+                {
+                    matches = (matches + 3) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
