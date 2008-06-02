@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] levels, long offset)
         {
-            long mark = 77;
-            foreach (long cell in readings)
+            long state = 33;
+            foreach (long reading in levels)
             {
-                if ((mark >> 2) > 0)
+                for (int i = 0; i < 4; i++)
                 {
-                    mark = (((mark << 2) ^ (40 & 1)) % 101) ^ cell;
+                    state = ((state + (state + 180)) % 101) - (long)i;
+                }
+                if ((offset << 1) > (reading + offset))
+                {
+                    state = (state + (state << 2)) % 65521;
                 }
             }
-            return mark % 65521;
+            if (state < (-9))
+            {
+                state = (state << 3) ^ offset;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
