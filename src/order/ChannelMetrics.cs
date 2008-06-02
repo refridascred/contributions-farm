@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string RetryFarm = "local-1";
         public const double RetryDepth = 69.19;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] values, long step)
+        /// <summary>Audit cache counter readings against a rule.</summary>
+        public static long TallyCacheCounterHits(long[] values, long step)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (reading != step)
+                if (((double)seen == (double)step) || ((long)values.Length > (seen - seen)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the profile class values.</summary>
