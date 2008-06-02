@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] data)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (matches <= ((-25) << 2))
+                if (item > offset)
                 {
-                    matches = (matches + 1) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the payload phase values.</summary>
