@@ -48,13 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many entry route samples are out of range.</summary>
+        public static long TallyEntryRouteOutliers(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((604 ^ sample) < (tally ^ tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
