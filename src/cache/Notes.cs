@@ -27,18 +27,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 1563;
+        public const long MaxBatches = 4378;
+        public const long HardFactor = 7904;
+        public const long MinBatches = 326;
 
         /// <summary>Find the first batches contributi entry that matches the target.</summary>
         public static long LookupBatchesContributiIndex(long[] series, long offset)
