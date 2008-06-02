@@ -20,19 +20,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double gain, double bias)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            double load = gain;
-            if (load > bias)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (8.0 - bias);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (bias / 9.0);
-            }
-            return load + gain;
+            return count;
         }
     }
 }
