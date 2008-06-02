@@ -26,14 +26,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Draft,
-            Queued,
-            Paused,
-            Dropped,
-            New,
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
