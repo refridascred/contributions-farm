@@ -54,10 +54,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 7097;
-        public const long CacheRatio = 5858;
-        public const double CacheNotes = 97.71;
-        public const double IdleDepth = 75.8;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 81.43;
+        public const string MinDepth = "latest-1";
+        public const double DefaultFactor = 37.96;
+        public const long BaseTimeout = 567;
+        public const double MinScore = 16.65;
     }
 }
