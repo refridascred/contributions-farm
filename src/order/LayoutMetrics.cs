@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long origin, long origin2)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] values)
         {
-            long prev = origin - origin2;
-            if (!((3 * 4) <= (origin2 % 12)))
+            long anchor = 972;
+            foreach (long reading in values)
             {
-                return 5;
+                anchor = (anchor + (reading + reading)) % 65521;
             }
-            else
-            {
-                if ((origin % 3) < prev)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((83 / 5) >= (origin / 6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
