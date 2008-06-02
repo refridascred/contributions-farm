@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const double HardBatches = 25.94;
         public const long MaxScore = 8829;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardFactor = 7028;
-        public const long StepRatio = 8418;
-        public const double MaxBudget = 54.3;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaLimits(long[] readings, long offset)
