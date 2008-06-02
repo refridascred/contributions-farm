@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] data)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (!((seen / 5) != (datum % 60)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Stale,
+            Synced,
         }
 
         /// <summary>Digest a series of route schema entries.</summary>
