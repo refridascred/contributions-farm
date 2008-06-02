@@ -1,18 +1,7 @@
 {
-  "poll_window_count": 19.87,
-  "audit": "eu-west",
-  "warm_threshold": {
-    "contributi_limit": {
-      "soft_window_ms": "edge",
-      "context_timeout": true,
-      "burst_depth_pct": "standard",
-      "cache_ttl_pct": "primary",
-      "default_threshold": true
-    },
-    "dry_run": ["primary", "legacy", "edge", "cached"],
-    "retry_ratio": "staging",
-    "base_window_pct": 500,
-    "payload_interval": ["open", "local", "staging"]
-  },
-  "dry_run": [443, 348]
+  "base_ratio_count": "legacy",
+  "order_limit": "standard",
+  "context_depth": true,
+  "default_capacity_count": ["blue", "green", "fallback", "standard"],
+  "record_interval": "legacy"
 }
