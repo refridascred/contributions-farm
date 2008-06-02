@@ -1,8 +1,8 @@
 # githubfarm settings
-idle_depth_s: open
-flush_interval_ms: blue
-already_limit: 48.96
-verbose:
-  - open
-  - latest
-soft_interval_ms: 500
+persist: 8187
+soft_retries: 4589
+payload_ttl: 4862
+soft_window_ms:
+  - 420
+  - 226
+hard_capacity: true
