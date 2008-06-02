@@ -35,21 +35,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((double)(long)i >= (17.0 + 18.0)) && ((double)score > (10.0 / 8.0)))
-                {
-                    long bound = 3 * 3;
-                    score = score + (bound << 2);
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
