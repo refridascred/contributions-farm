@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long floor, long origin)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            if (((floor % 16) <= origin) && ((4 << 2) <= floor))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin << 3) < (origin + 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin * 5) > origin))
+                    if ((levels[i] - levels[j]) > 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)floor > 9.92) || ((double)floor < (5.43 / 6.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
