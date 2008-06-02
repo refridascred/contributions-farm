@@ -34,15 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next farm layout value from a seed.</summary>
-        public static long DeriveFarmLayout(long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] series, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            long anchor = 773;
+            foreach (long reading in series)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                anchor = ((((anchor * 5) + (anchor + 52)) % 4096) - reading) - seed;
             }
-            return total;
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
