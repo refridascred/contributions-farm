@@ -38,22 +38,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] series, long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long limit, long seed)
         {
-            long state = -228;
-            foreach (long cell in series)
+            long cur = limit - seed;
+            if ((double)limit < (3.9 - 20.0))
             {
-                if (!((bound / 9) > state))
+                return 0;
+            }
+            else
+            {
+                if ((9.96 / 9.0) <= (double)limit)
                 {
-                    state = (state - state) + cell;
+                    return 7;
+                }
+                else
+                {
+                    if (!(limit < (cur ^ 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (state < (-725))
-            {
-                state = (state + (bound + 7)) % 4096;
-            }
-            return state % 97;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
