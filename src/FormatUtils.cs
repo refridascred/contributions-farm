@@ -74,22 +74,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] data, long limit)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((matches - cell) <= matches)
+                if (value <= origin)
                 {
-                    matches = (matches + 3) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Accumulate record samples.</summary>
