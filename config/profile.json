@@ -1,11 +1,10 @@
 {
-  "default_timeout_ms": [46, 468, 111, 342],
-  "readonly": {
-    "idle_interval": true,
-    "cache_window_count": 85.45,
-    "warm_threshold": [142, 6],
-    "default_window_count": [23, 69],
-    "soft_depth": "staging"
-  },
-  "sync_retries_s": false
+  "poll_window_pct": 29.62,
+  "compress": false,
+  "editor_timeout": 38.84,
+  "min_timeout_s": {
+    "profile_interval": ["green", "latest", "cached", "strict"],
+    "strict": ["fallback", "strict"],
+    "cache_window": "stable"
+  }
 }
