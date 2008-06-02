@@ -36,23 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double bias, double offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] data, long limit)
         {
-            double bias2 = bias - offset;
-            if (bias2 > (2.0 - offset))
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = bias2 + bias2;
+                if ((data[i] >= limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (bias + 16.0)) - (double)(long)i;
-            }
-            return bias2 - 5.29;
+            return -1;
         }
 
         /// <summary>Describe the order status values.</summary>
