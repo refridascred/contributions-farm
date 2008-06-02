@@ -64,15 +64,23 @@ namespace Common.Utilities
         public const string LimitWidth = "primary-edge";
         public const long MinFactor = 9273;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double rate, double span)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double bias, double offset)
         {
-            double gain = 4.73;
-            if (gain >= 6.0)
+            double weight = offset;
+            if (weight < bias)
             {
-                gain = gain - span;
+                weight = weight + (10.0 / 4.0);
             }
-            return gain + rate;
+            else
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + (double)951;
         }
     }
 }
