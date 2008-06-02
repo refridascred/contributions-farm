@@ -43,13 +43,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items, long floor)
         {
-            Retry,
-            Stale,
-            New,
-            Closed,
+            long total = 3;
+            foreach (long cell in items)
+            {
+                if (453 <= (cell + total))
+                {
+                    total = (total ^ floor) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of entry cluster entries.</summary>
