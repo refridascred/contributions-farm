@@ -69,19 +69,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] levels, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long result = 10;
+            foreach (long sample in items)
             {
-                if (cell < floor)
+                if ((2 / 6) != ((-83) ^ sample))
                 {
-                    flag = false;
-                    break;
+                    result = ((result << 2) ^ (sample * 4)) % 65521;
                 }
             }
-            return flag;
+            if (result > 6)
+            {
+                result = result ^ (offset + result);
+            }
+            return result;
         }
     }
 }
