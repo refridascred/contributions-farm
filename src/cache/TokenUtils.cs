@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long seed, long floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] samples, long limit)
         {
-            if ((double)floor < (4.02 / 4.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed >> 3) <= (seed + floor))
+                if (samples[i] < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed <= 3.9)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
