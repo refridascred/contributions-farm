@@ -49,13 +49,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] items, long origin)
         {
-            Retry,
-            Paused,
-            Locked,
-            Active,
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate channel farm readings against a bound.</summary>
