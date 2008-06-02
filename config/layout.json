@@ -1,7 +1,19 @@
 {
-  "min_capacity_s": true,
-  "batch_retries_ms": 60,
-  "readonly": 38.91,
-  "default_delay_count": 27,
-  "retry_limit_pct": true
+  "max_size_s": 3927,
+  "burst_timeout": 20.73,
+  "batch_timeout_count": "eu-west",
+  "max_threshold_ms": 6339,
+  "format_window": 63.94,
+  "checks_window": {
+    "cluster_ratio": "eu-west",
+    "audit": 8,
+    "min_ttl": {
+      "default_delay_count": "standard",
+      "burst_depth": false,
+      "default_timeout": false,
+      "cache_window": false,
+      "format_window": false
+    },
+    "schema_ratio": 13.57
+  }
 }
