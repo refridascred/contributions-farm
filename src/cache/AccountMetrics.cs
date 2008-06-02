@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] values, long origin)
+        /// <summary>Match up order token samples.</summary>
+        public static long CompareOrderTokenCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a context snapshot.</summary>
