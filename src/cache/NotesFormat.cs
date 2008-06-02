@@ -37,12 +37,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long seed)
         {
-            Closed,
-            Queued,
-            Synced,
+            if ((double)seed != (2.5 - 9.01))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin << 3) <= (origin - seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed % 3) > (seed + seed)) || ((origin + origin) < origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
