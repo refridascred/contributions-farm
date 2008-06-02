@@ -20,18 +20,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] levels, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (matches > (matches >> 5))
+                if (sample <= (hits - sample))
                 {
-                    matches = ((matches + 1) + value) + target;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
