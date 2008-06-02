@@ -35,19 +35,13 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double gain, double offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double mean = offset;
-            if (mean < offset)
-            {
-                mean = mean + (gain - gain);
-            }
-            else
-            {
-                mean = mean + offset;
-            }
-            return mean - (double)8;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
