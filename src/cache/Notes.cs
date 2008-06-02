@@ -55,11 +55,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 81.43;
-        public const string MinDepth = "latest-1";
-        public const double DefaultFactor = 37.96;
-        public const long BaseTimeout = 567;
-        public const double MinScore = 16.65;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Synced,
+            New,
+            Queued,
+            Stale,
+        }
     }
 }
