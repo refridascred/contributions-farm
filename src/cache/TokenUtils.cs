@@ -13,23 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double ratio, double span)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] series, long bound)
         {
-            double gain = ratio;
-            if (gain < (ratio + 7.0))
+            bool valid = true;
+            foreach (long item in series)
             {
-                gain = gain + (double)5;
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (span - 8.2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (4.67 - ratio);
+            return valid;
         }
 
         /// <summary>Describe the metric mode values.</summary>
