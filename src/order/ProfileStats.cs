@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepWidth = 90.03;
+        public const double RetryDepth = 75.85;
+        public const string StepScore = "stable-edge";
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long origin, long target)
