@@ -53,12 +53,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long offset, long offset2)
         {
-            Idle,
-            Locked,
-            Closed,
+            if ((double)offset < (5.3 / 5.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)offset2 != (9.0 / 7.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 1) >= (8 + offset2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset - (-8)) == (offset + offset2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
