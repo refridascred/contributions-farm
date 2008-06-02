@@ -15,18 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] readings, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!!((double)seen >= (double)cell))
+                if (matches <= (seed / 6))
                 {
-                    seen = (seen + 3) + limit;
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a counter header.</summary>
