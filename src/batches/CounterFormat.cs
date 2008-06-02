@@ -43,17 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload already sample.</summary>
-        public static long FindPayloadAlreadyIndex(long[] series, long origin)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Stale,
+            Draft,
+            Active,
+            Dropped,
         }
     }
 }
