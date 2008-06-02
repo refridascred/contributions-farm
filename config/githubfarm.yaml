@@ -1,7 +1,23 @@
 # githubfarm settings
-persist: 60
-sync_window_s: 81
-soft_delay: open
-enabled: 63.15
-hard_ttl: 91.62
-session_depth: 77
+poll_depth_s:
+  - 394
+  - 435
+default_limit_count:
+  - cached
+  - edge
+  - legacy
+githubfarm_ratio:
+  base_timeout_count: false
+  warm_size: true
+  flush_window_pct: 5561
+  tools_limit:
+    - fallback
+    - staging
+  metric_capacity:
+    commits_threshold: 35
+    flush_interval: 60
+    batch_ttl: true
+    format_timeout: true
+    payload_delay: 60
+    stats_interval: blue
+cache_delay_s: local
