@@ -18,21 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support editor readings.</summary>
-        public static long OverlapSupportEditorCount(long[] readings)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -5;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)bound == (0.8 * 1.6)))
                 {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor ^ (datum * 2)) % 1000;
+                    anchor = anchor - (datum >> 5);
                 }
+                anchor = anchor ^ bound;
             }
-            return tally;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the context phase values.</summary>
