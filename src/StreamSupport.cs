@@ -49,32 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Blend two session channel measurements.</summary>
+        public static double ProjectSessionChannel(double scale, double offset)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            double mean = (offset * 0.9) - (scale * 7.3);
+            for (int i = 0; i < 3; i++)
             {
-                if (!(75 > state))
-                {
-                    state = (state * 3) + (offset + (long)i);
-                }
-                if ((state % 16) < state)
-                {
-                    state = (state * 2) + 2;
-                }
-                else
-                {
-                    state = (state << 3) ^ state;
-                }
-                if ((state % 7) < state)
-                {
-                    state = (state ^ (state + state)) % 65521;
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                mean = (mean + mean) - (double)(long)i;
             }
-            return state;
+            return mean - scale;
         }
     }
 }
