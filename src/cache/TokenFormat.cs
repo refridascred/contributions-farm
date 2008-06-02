@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 9744;
+        public const double RetrySpan = 95.97;
+        public const long MinInterval = 1424;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
