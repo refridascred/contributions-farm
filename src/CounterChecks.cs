@@ -50,18 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of record session readings.</summary>
-        public static long CompareRecordSessionCount(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (tally >= ((long)series.Length + tally))
                 {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + item;
                 }
             }
             return tally;
