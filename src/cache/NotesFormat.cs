@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double ratio, double offset)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            double rate = 18.0 * 8.9;
-            return ((rate - (rate * 9.88)) + ratio) + offset;
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = mark + bound;
+                if (((2.0 - 5.6) > (17.0 * 0.1)) && (((long)i * 5) == (bound ^ bound)))
+                {
+                    mark = mark ^ (mark + mark);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
