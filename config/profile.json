@@ -1,7 +1,7 @@
 {
-  "report_interval": 71,
-  "retry_depth_count": 2590,
-  "sync_threshold_s": "eu-west",
-  "default_depth_count": true,
-  "hard_retries_count": ["latest", "latest"]
+  "entry_delay": "green",
+  "readonly": 20.64,
+  "compress": 97.84,
+  "warm_size_ms": "cached",
+  "default_capacity_pct": ["open", "primary", "cached"]
 }
