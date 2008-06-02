@@ -42,14 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 44.4;
+        public const string HardLevel = "legacy-edge";
+        public const long MaxBatch = 8308;
+        public const double StepFactor = 36.0;
+        public const double MaxWidth = 87.74;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long floor)
