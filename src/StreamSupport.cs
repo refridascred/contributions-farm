@@ -38,15 +38,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardBudget = "latest-v2";
+        public const double IdleFactor = 17.15;
+        public const long BurstCommits = 4600;
     }
 }
