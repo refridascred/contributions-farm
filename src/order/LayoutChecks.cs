@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftInterval = 3834;
-        public const string MaxLevel = "latest";
-        public const string MinFactor = "primary-1";
-        public const string HardRoute = "open-1";
-        public const double DefaultRoute = 2.37;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] readings)
+        {
+            long carry = 8;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = ((carry + (item ^ carry)) % 4096) + (long)i;
+                    carry = ((carry << 2) ^ (carry * 5)) % 65521;
+                }
+                carry = (carry + (item + item)) % 101;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string MinRatio = "alpha-edge";
