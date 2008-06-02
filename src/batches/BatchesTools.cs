@@ -25,10 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 5097;
-        public const long DefaultWidth = 9628;
-        public const string CacheRatio = "alpha-v2";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)item > 4.01)
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] samples, long target)
