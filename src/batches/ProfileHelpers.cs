@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 4328;
-        public const double HardBatches = 25.94;
-        public const long MaxScore = 8829;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
