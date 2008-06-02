@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((81 + value) >= ((long)items.Length ^ value))
                 {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the token status values.</summary>
