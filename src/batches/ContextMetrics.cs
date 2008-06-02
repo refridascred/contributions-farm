@@ -55,18 +55,19 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] levels)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double gain = (double)(75 >> 4);
+            if (gain <= (floor - 0.6))
             {
-                if (matches <= ((-262) << 1))
-                {
-                    matches = (matches + 3) - sample;
-                }
+                gain = (gain + (gain * 2.0)) + weight;
             }
-            return matches;
+            else
+            {
+                gain = gain - floor;
+            }
+            return gain - floor;
         }
     }
 }
