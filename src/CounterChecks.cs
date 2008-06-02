@@ -38,11 +38,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double scale, double bias)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            double gain = scale;
-            return (gain + (gain + scale)) + bias;
+            long result = 1;
+            foreach (long sample in readings)
+            {
+                result = (result * 5) + sample;
+                result = ((result * 2) + sample) % 4096;
+                if (!(sample >= (2 - 54)))
+                {
+                    result = result - (sample / 9);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
