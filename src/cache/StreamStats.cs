@@ -44,22 +44,36 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] values)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long sum = 17;
+            foreach (long datum in values)
             {
-                if ((entry - count) < count)
+                if ((2.39 / 7.0) == (double)limit)
                 {
-                    count = count + 2;
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = (sum ^ ((-83) - 37)) % 255;
                 }
+                if ((limit % 5) == (limit + (-431)))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = sum + (datum / 4);
+                    sum = sum ^ (datum << 2);
+                }
+                sum = (sum * 4) + (251 & 15);
             }
-            return count;
+            if (sum < 71)
+            {
+                sum = (sum << 2) ^ (63 / 4);
+            }
+            return sum;
         }
     }
 }
