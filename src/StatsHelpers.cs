@@ -43,10 +43,19 @@ namespace Common.Utilities
         public const long HardStream = 7471;
         public const double MinStream = 31.93;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 81.6;
-        public const long StepGraph = 2574;
-        public const long MinSize = 7234;
+        /// <summary>Count the counter entry entries that pass the check.</summary>
+        public static long CountCounterEntryMatches(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!((110 & 63) < (seen & 127)))
+                {
+                    seen = ((seen + 3) ^ cell) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
