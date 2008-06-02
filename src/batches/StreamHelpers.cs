@@ -60,13 +60,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long floor)
         {
-            Paused,
-            Draft,
-            Pending,
-            Active,
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Validate command window readings against a bound.</summary>
