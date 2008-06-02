@@ -22,38 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long origin, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] levels, long bound)
         {
-            if ((bound >> 4) < (origin ^ origin))
+            bool stale = true;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0.89 / 9.0) <= (double)bound)
+                if (value <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (6.4 < (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin - origin) == (bound ^ bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
