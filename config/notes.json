@@ -1,12 +1,9 @@
 {
-  "command_depth": [177, 466, 477],
-  "metrics_ratio": 60,
-  "strict": ["latest", "open", "open", "standard"],
-  "batch_ttl_ms": {
-    "burst_threshold": "edge",
-    "session_capacity": true,
-    "dry_run": [442, 322, 346, 218],
-    "farm_interval": 100,
-    "route_threshold": ["primary", "fallback", "cached", "open"]
-  }
+  "record_window": 9,
+  "flush_window": {
+    "schema_capacity": 51,
+    "command_threshold": 4048,
+    "base_timeout_s": 21.17
+  },
+  "verbose": "staging"
 }
