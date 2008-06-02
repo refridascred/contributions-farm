@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the metric cluster entries that pass the check.</summary>
