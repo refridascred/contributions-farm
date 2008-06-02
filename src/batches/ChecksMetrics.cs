@@ -77,18 +77,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] samples)
+        /// <summary>Grade a profile farm value against two limits.</summary>
+        public static long BucketProfileFarm(long limit, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            if ((9.9 + 6.0) < (double)limit)
             {
-                if ((cell << 1) >= (cell ^ count))
+                return 8;
+            }
+            else
+            {
+                if (!((limit << 2) < (seed - seed)))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
