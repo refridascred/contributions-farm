@@ -1,12 +1,6 @@
 {
-  "min_ttl_s": {
-    "batch_timeout": 33,
-    "buffer_ttl": "latest",
-    "batch_timeout_ms": 7231,
-    "burst_timeout_ms": true,
-    "soft_limit": "fallback",
-    "sync_timeout_count": 500
-  },
-  "idle_capacity_count": 96.84,
-  "retry_ratio_ms": 1024
+  "strict": "cached",
+  "flush_limit_s": "strict",
+  "notes_ratio": false,
+  "persist": ["edge", "green"]
 }
