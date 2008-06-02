@@ -26,19 +26,18 @@ namespace Common.Utilities
             return bias + (span - span);
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] series, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (item >= limit)
+                if (((value >= seen) && ((target + target) <= seen)) || ((seen - value) >= (704 ^ target)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the batches status values.</summary>
