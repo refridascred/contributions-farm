@@ -43,11 +43,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
