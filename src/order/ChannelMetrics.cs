@@ -36,12 +36,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Fold a list of account editor readings.</summary>
+        public static long TallyAccountEditor(long[] values)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
+            long sum = 96;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = ((sum << 2) ^ ((long)i >> 3)) % 4096;
+                    sum = ((sum << 2) ^ ((-5) / 8)) % 4096;
+                }
+                sum = (sum + (sample >> 3)) % 1000;
+            }
+            return sum;
         }
     }
 }
