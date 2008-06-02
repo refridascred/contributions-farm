@@ -1,5 +1,17 @@
 {
-  "max_window": 89.12,
-  "persist": ["strict", "blue"],
-  "cache_delay_s": 75.89
+  "hard_depth": "fallback",
+  "persist": {
+    "account_ttl": "stable",
+    "persist": ["fallback", "local", "eu-west", "standard"],
+    "report_window": {
+      "base_limit_ms": true,
+      "warm_capacity_count": false,
+      "readonly": 55,
+      "soft_window_pct": 89.6
+    },
+    "idle_window": [89, 123],
+    "dry_run": [399, 65, 259],
+    "base_timeout_count": true
+  },
+  "burst_ratio_count": false
 }
