@@ -33,10 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxSpan = 7314;
-        public const double HardCommits = 25.1;
-        public const double HardFactor = 6.37;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] data)
+        {
+            long result = 726;
+            foreach (long reading in data)
+            {
+                result = (((result * 2) + (result + result)) % 65521) ^ reading;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BatchSpan = 2758;
