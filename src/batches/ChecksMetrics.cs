@@ -37,12 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstLevel = 6721;
-        public const double LimitSize = 21.79;
-        public const double BurstContext = 72.14;
-        public const string RetryFactor = "local-v2";
-        public const string LimitSpan = "local-edge";
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Queued,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long OverlapCommitsCount(long[] items)
