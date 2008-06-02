@@ -1,18 +1,6 @@
 {
-  "idle_threshold_count": 9803,
-  "retry_timeout": [36, 189, 175],
-  "poll_retries_pct": false,
-  "default_ratio_s": {
-    "enabled": {
-      "base_timeout_ms": 294,
-      "hard_window_pct": 8508,
-      "burst_window": 6696,
-      "min_interval_ms": "cached",
-      "farm_interval": "green"
-    },
-    "retry_window_pct": 60,
-    "audit": 40
-  },
-  "sync_ratio_count": 692,
-  "readonly": 90.11
+  "record_size": "stable",
+  "max_interval_s": "blue",
+  "audit": false,
+  "readonly": true
 }
