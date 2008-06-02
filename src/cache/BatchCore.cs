@@ -39,22 +39,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] levels, long seed)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = 295;
-            foreach (long datum in levels)
-            {
-                if (38 <= result)
-                {
-                    result = ((result * 3) + seed) + datum;
-                }
-                else
-                {
-                    result = (result << 2) ^ 669;
-                }
-            }
-            return result % 97;
+            Pending,
+            Done,
+            Locked,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a session options.</summary>
