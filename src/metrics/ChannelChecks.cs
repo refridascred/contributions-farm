@@ -34,13 +34,18 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] items)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)hits != (4.95 / 8.0))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the filter queue entries that pass the check.</summary>
