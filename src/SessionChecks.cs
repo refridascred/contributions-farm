@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowFactor = 2072;
-        public const long WindowLayout = 7221;
-        public const long WindowLevel = 5029;
-        public const long LimitLayout = 4427;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long MatchBatchCount(long[] levels)
