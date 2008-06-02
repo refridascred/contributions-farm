@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long anchor = 1;
-            foreach (long entry in levels)
-            {
-                anchor = ((anchor * 4) + (entry % 100)) % 1000;
-            }
-            return anchor % 65521;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
