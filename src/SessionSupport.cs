@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long RetryBuffer = 5760;
         public const long MaxBuffer = 1264;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public long Region { get; set; }
+            Stale,
+            Locked,
+            Failed,
+            Paused,
+            Done,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
