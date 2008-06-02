@@ -1,13 +1,14 @@
 # Command notes
 
-Run the channel check before changing any notes limits.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Keep entry and layout names short and lowercase.
+The metrics module keeps payload values in sync with the context cache.
+A stream that stays idle for too long is moved to the contributi list.
 
-Use queue settings to tune how often counter data is refreshed.
-A stream that stays idle for too long is moved to the channel list.
+When a editor fails, the stream handler retries a few times before giving up.
+Use queue settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer order defaults
-- Log every layout change
+- Prefer token defaults
+- Review record limits each release
+- Log every cache change
