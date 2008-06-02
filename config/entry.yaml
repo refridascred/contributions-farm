@@ -1,6 +1,21 @@
 # entry settings
-dry_run: false
-idle_size_ms: eu-west
-window_interval: 70.53
-channel_limit: primary
-default_depth: true
+burst_threshold_ms: true
+checks_size:
+  counter_threshold: 250
+  burst_delay:
+    max_depth: edge
+    soft_timeout_count:
+      - strict
+      - primary
+      - green
+    channel_delay: 1024
+    strict:
+      - 244
+      - 351
+    readonly: 9820
+  idle_window_ms: 2
+  poll_window_count: latest
+  soft_size_s: 7416
+  burst_interval: 9345
+readonly: false
+cluster_threshold: 63.37
