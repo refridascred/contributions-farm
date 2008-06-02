@@ -17,16 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Project the next counter checks value.</summary>
+        public static double AdjustCounterChecks(double weight, double bias)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            double rate = weight;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = ((anchor << 3) ^ ((long)i - 8)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                rate = ((rate - rate) + (double)(long)i) - bias;
             }
-            return anchor;
+            return rate + (1.0 + rate);
         }
 
         /// <summary>Adjust a command reading.</summary>
