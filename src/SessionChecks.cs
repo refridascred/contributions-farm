@@ -49,13 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
+            long state = -78;
+            foreach (long entry in values)
+            {
+                if (14 <= state)
+                {
+                    state = (state << 3) ^ (entry << 1);
+                }
+            }
+            return state;
         }
     }
 }
