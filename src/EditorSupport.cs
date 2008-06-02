@@ -84,12 +84,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxScore = 1510;
-        public const string LimitToken = "open";
-        public const long StepLevel = 7423;
-        public const long WindowFactor = 7285;
-        public const long IdleToken = 1408;
+        /// <summary>Measure how many record contributi samples are out of range.</summary>
+        public static long MeasureRecordContributiGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (item <= (item & 31))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long DigestCommits(long[] levels)
