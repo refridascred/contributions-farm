@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Find the first editor farm entry that matches the target.</summary>
+        public static long LocateEditorFarmIndex(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] >= offset) && ((items[i] % 3) != 0))
                 {
-                    if ((data[i] - data[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a metrics summary.</summary>
