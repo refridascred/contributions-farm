@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] values)
+        /// <summary>Adjust a command entry reading.</summary>
+        public static double SmoothCommandEntry(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = ratio;
+            if (bias2 > (double)5)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 - bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (5.79 - 2.5)) - (double)(long)i;
+            }
+            return bias2 + (double)62;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
