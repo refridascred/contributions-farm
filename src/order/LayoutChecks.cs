@@ -53,11 +53,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 4662;
-        public const string MinSize = "cached";
-        public const long HardSize = 8365;
-        public const double SoftWindow = 73.66;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] samples, long floor)
