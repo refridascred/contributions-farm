@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] levels, long step)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry / 9) >= tally)
-                {
-                    tally = (tally + 2) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many counter notes samples are out of range.</summary>
