@@ -1,9 +1,11 @@
 # entry settings
-max_window_pct:
-  persist: 806
-  metric_ratio: local
-  warm_interval_s: primary
-  batch_capacity_count: 6182
-compress: true
-stream_capacity: 4769
-cache_interval: false
+tools_capacity:
+  - staging
+  - local
+  - latest
+  - stable
+payload_size:
+  - fallback
+  - legacy
+base_delay_pct: primary
+cache_window: true
