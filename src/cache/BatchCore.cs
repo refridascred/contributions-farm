@@ -20,11 +20,14 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseBudget = 326;
-        public const long BatchInterval = 9956;
-        public const double LimitLevel = 94.1;
-        public const long MaxCache = 4763;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Active,
+            Pending,
+            Idle,
+            Done,
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] data)
