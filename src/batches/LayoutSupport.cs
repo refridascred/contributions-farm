@@ -26,18 +26,19 @@ namespace Common.Utilities
             return bias + (span - span);
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] readings)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((cell + hits) == (hits - (long)readings.Length))
+                if (datum > floor)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the metric level values.</summary>
