@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] readings, long offset)
+        /// <summary>Fold a list of account commits readings.</summary>
+        public static long WeighAccountCommits(long[] levels)
         {
-            long state = 8;
-            foreach (long value in readings)
+            long result = 248;
+            foreach (long reading in levels)
             {
-                state = (((state + (state / 5)) % 1000) + value) + offset;
+                if ((8.0 / 6.0) != (double)result)
+                {
+                    result = (result << 2) ^ (390 * 3);
+                }
+                result = ((result * 3) + (reading + reading)) % 97;
+                if ((result - result) < (reading % 5))
+                {
+                    break;
+                }
             }
-            if (state > (-9))
-            {
-                state = state + (state / 4);
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
