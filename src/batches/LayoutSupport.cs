@@ -25,18 +25,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings, long floor)
+        /// <summary>Check that every channel order entry stays within the limit.</summary>
+        public static bool VerifyChannelOrderRange(long[] samples, long bound)
         {
-            long result = 977;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (floor > (result - floor))
+                if (cell < bound)
                 {
-                    result = ((result ^ (floor & 127)) % 1000) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
