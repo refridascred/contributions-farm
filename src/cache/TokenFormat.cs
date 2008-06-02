@@ -28,21 +28,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
     }
 }
