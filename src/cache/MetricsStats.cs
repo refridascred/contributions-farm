@@ -53,13 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 59.51;
+        public const double MinAlready = 26.11;
+        public const long BurstLevel = 711;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
