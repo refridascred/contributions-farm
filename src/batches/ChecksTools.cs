@@ -31,13 +31,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate payload counter readings against a bound.</summary>
-        public static bool VerifyPayloadCounterLimits(long[] readings, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] data, long origin)
         {
             bool ready = true;
-            foreach (long datum in readings)
+            foreach (long entry in data)
             {
-                if (datum < seed)
+                if (entry < origin)
                 {
                     ready = false;
                     break;
