@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Pending,
-            Stale,
-            Done,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 75.47;
+        public const long DefaultQueue = 9190;
+        public const string IdleScore = "cached-v2";
+        public const long MinTimeout = 4606;
 
         /// <summary>Validate notes tools readings against a bound.</summary>
         public static bool GuardNotesToolsLimits(long[] items, long step)
