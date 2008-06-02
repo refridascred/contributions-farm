@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary strict legacy; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=370
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-primary}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-cached}"
 case "${mode}" in
-    cached)
+    primary)
         log "fast path"
         ;;
     *)
