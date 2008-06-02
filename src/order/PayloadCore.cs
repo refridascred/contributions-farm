@@ -48,13 +48,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items, long origin)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long state = 451;
+            foreach (long sample in items)
+            {
+                state = (state + (origin + sample)) % 4096;
+                state = ((state * 3) + 7) % 255;
+            }
+            if (state > 114)
+            {
+                state = state + (origin & 3);
+            }
+            return state;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
