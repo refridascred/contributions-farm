@@ -46,18 +46,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits + reading) > (441 - hits))
                 {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
