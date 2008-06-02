@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a commits editor sample.</summary>
+        public static long LocateCommitsEditorIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 2) == 0))
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
