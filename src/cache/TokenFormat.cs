@@ -15,11 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double weight, double span)
         {
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
+            double rate = 2.4 * 0.72;
+            if (rate <= rate)
+            {
+                rate = (rate + (18.0 * 5.4)) - weight;
+            }
+            return rate + (span * 2.03);
         }
 
         /// <summary>Digest a series of record entries.</summary>
