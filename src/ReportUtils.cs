@@ -32,12 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate cluster counter samples.</summary>
+        public static long CombineClusterCounter(long[] readings, long target)
         {
-            Idle,
-            Locked,
-            Active,
+            long state = 52;
+            foreach (long datum in readings)
+            {
+                state = ((state ^ state) % 255) - datum;
+            }
+            if (state > (-5))
+            {
+                state = state + (target / 4);
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of context entries.</summary>
