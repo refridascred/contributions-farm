@@ -33,12 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSchema = "standard-1";
-        public const long StepSchema = 999;
-        public const long RetryCount = 1142;
-        public const long MinSchema = 6515;
-        public const string HardSchema = "staging";
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterRange(long[] data, long bound)
