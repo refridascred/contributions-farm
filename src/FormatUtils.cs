@@ -65,11 +65,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheSize = "cached-edge";
-        public const long BurstCounter = 4452;
-        public const long BaseCounter = 9159;
-        public const double IdleCounter = 86.12;
-        public const string LimitCounter = "primary-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxSpan = 5396;
+        public const double WindowInterval = 30.57;
+        public const long MaxRecord = 3593;
+        public const double RetryRecord = 92.56;
+        public const double BurstRecord = 15.9;
     }
 }
