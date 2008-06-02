@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + (result / 5)) % 101;
-                result = ((result * 5) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
