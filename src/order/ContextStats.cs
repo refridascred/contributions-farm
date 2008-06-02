@@ -50,17 +50,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] levels, long floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
     }
 }
