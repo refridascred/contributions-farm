@@ -31,18 +31,19 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] levels)
+        /// <summary>Validate notes tools readings against a bound.</summary>
+        public static bool GuardNotesToolsLimits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (cell <= (cell - tally))
+                if (value > step)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
