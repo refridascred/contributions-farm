@@ -1,5 +1,26 @@
 {
-  "filter_retries": "cached",
-  "contributi_capacity": [257, 206, 181],
-  "batch_depth_count": [309, 200, 449, 273]
+  "flush_interval_pct": 92.49,
+  "persist": false,
+  "batch_limit_s": {
+    "warm_ttl": {
+      "readonly": "strict",
+      "persist": "primary",
+      "cache_window": true,
+      "dry_run": 22.95
+    },
+    "dry_run": "eu-west",
+    "batches_ttl": "cached",
+    "queue_ratio": "latest"
+  },
+  "record_capacity": {
+    "retry_interval_s": true,
+    "retry_limit_count": {
+      "format_ratio": 60,
+      "readonly": [76, 71, 56, 188],
+      "retry_retries_ms": "blue"
+    },
+    "payload_timeout": 60,
+    "sync_ttl": "strict",
+    "readonly": "blue"
+  }
 }
