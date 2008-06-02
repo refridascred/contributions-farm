@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long bound, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            if (((floor % 97) > (618 / 9)) || (bound < (floor << 2)))
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound * 2) <= (bound & 127)) && ((double)bound <= (double)82))
+                if ((offset & 63) == ((long)i + (long)i))
                 {
-                    return 1;
+                    score = (score << 3) ^ (offset >> 5);
+                    break;
                 }
-                else
-                {
-                    if ((double)8 > (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound >= (bound + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
