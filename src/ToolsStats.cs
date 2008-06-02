@@ -28,38 +28,13 @@ namespace Common.Utilities
         public const long BaseAccount = 7169;
         public const long BurstAccount = 957;
 
-        /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
-        public static long GradeFarmGithubfarm(long target, long limit)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            if ((17 % 7) >= (limit + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target >> 1) >= (target + target)) && ((double)6 != (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target != (1.9 + 17.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(202 < (limit - limit)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a format stats.</summary>
