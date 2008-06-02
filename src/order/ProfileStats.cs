@@ -62,17 +62,9 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Locate a payload format reading by value.</summary>
-        public static long SeekPayloadFormatIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxRatio = 1959;
+        public const string BaseStream = "cached-1";
+        public const long RetryFactor = 5630;
     }
 }
