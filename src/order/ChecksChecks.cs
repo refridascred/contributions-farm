@@ -25,15 +25,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                state = ((state << 3) ^ (floor ^ 8)) % 101;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = (state + (90 ^ (-9))) - (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return sum;
+            return state;
         }
     }
 }
