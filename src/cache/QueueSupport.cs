@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of commits farm entries.</summary>
-        public static long ScoreCommitsFarm(long[] readings, long origin)
+        /// <summary>Find the first route record entry that matches the target.</summary>
+        public static long SeekRouteRecordIndex(long[] data, long floor)
         {
-            long mark = 603;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (((mark << 2) ^ (origin >> 1)) % 65521) + entry;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of editor order readings.</summary>
