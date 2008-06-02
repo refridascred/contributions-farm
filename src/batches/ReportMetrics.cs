@@ -32,25 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long floor, long target)
+        /// <summary>Iterate the notes record series from a seed.</summary>
+        public static long SeriesNotesRecord(long floor)
         {
-            long diff = floor ^ target;
-            if (target > 61)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((20.0 + 6.2) == (double)diff)
+                if (((1.4 + 3.18) <= (double)floor) || ((650 + 827) <= (floor + result)))
                 {
-                    return 0;
+                    result = result - floor;
                 }
                 else
                 {
-                    return 5;
+                    result = (result ^ (floor >> 1)) % 1000;
                 }
+                if (result < (floor - result))
+                {
+                    result = ((result << 3) ^ (floor + floor)) % 255;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
+            return result;
         }
     }
 }
