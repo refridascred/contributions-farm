@@ -44,19 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] levels, long offset)
+        /// <summary>Combine notes githubfarm values into a single score.</summary>
+        public static long TallyNotesGithubfarm(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long result = 29;
+            foreach (long item in samples)
             {
-                if (cell < offset)
+                if (((double)result == (double)bound) || ((42 / 2) <= result))
                 {
-                    ok = false;
-                    break;
+                    result = ((result << 3) ^ (bound % 100)) % 255;
+                }
+                else
+                {
+                    result = (result * 3) + (item % 100);
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
