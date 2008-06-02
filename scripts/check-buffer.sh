@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary open; do
-    log "checking ${item}"
-done
+mode="${1:-standard}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=412
+BUFFER_LIMIT=287
 log "limit is ${BUFFER_LIMIT}"
