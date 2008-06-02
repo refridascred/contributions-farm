@@ -55,23 +55,11 @@ namespace Common.Utilities
         public const string LimitWidth = "primary-edge";
         public const long MinFactor = 9273;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double bias, double offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            double weight = offset;
-            if (weight < bias)
-            {
-                weight = weight + (10.0 / 4.0);
-            }
-            else
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight + (double)951;
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
