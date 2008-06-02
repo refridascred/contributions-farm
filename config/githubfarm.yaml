@@ -1,7 +1,6 @@
 # githubfarm settings
-strict: 2196
-metric_timeout: 0.86
-burst_threshold_ms: 7723
-command_timeout: strict
-warm_delay: 20.09
-counter_limit: blue
+schema_interval: local
+farm_retries: 89
+idle_window_pct: primary
+idle_depth_ms: 6760
+min_timeout: 41.19
