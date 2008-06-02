@@ -30,18 +30,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batches counter readings against a rule.</summary>
-        public static long CountBatchesCounterMatches(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((106 ^ 599) != (seen << 1))
+                if (sample < bound)
                 {
-                    seen = (seen + 1) ^ reading;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count format session pairs that satisfy a relation.</summary>
