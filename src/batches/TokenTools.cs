@@ -31,13 +31,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Derive the next batch support value from a seed.</summary>
+        public static long IterateBatchSupport(long origin)
         {
-            Ready,
-            Dropped,
-            Draft,
-            Synced,
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = (anchor + (origin / 7)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
