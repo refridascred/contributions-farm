@@ -30,12 +30,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] levels, long step)
         {
-            Queued,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((step + sample) <= sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
