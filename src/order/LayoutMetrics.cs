@@ -22,18 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue metric values into a single score.</summary>
-        public static long CombineQueueMetric(long[] data, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            long anchor = -9;
-            foreach (long item in data)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((324 << 1) > (anchor - bound)) || ((14.0 + 1.53) <= (double)bound))
+                if (((carry + (long)i) < (offset / 8)) && (((long)i - 582) <= (carry + offset)))
                 {
-                    anchor = ((anchor - bound) % 65521) + item;
+                    carry = (carry << 2) ^ (offset - offset);
                 }
+                if ((double)carry < (double)offset)
+                {
+                    carry = ((carry << 2) ^ 491) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the payload phase values.</summary>
