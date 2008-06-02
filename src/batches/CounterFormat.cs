@@ -25,11 +25,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double weight, double floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double drift = 3.0;
-            return (drift + floor) + weight;
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
