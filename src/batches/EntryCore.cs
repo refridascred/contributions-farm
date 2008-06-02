@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((((550 * 4) != (datum << 1)) || ((datum % 2) > 0)) && !((double)tally >= (double)datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardSize = 7495;
+        public const long RetryInterval = 2059;
+        public const double MaxBudget = 10.44;
+        public const long BurstCommand = 8056;
+        public const long SoftScore = 3423;
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] data)
