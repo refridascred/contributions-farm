@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
-        public static long CompareMetricsEntryCount(long[] series)
+        /// <summary>Count the metrics stream entries that pass the check.</summary>
+        public static long CountMetricsStreamMatches(long[] data, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((1.1 * 20.0) <= (double)cell)
                 {
-                    if ((series[i] - series[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
