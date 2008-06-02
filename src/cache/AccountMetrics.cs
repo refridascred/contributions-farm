@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double scale, double floor)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double rate = (double)(2 >> 4);
-            if (rate >= (floor - 4.0))
-            {
-                rate = rate + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate + (double)3;
+            Closed,
+            Dropped,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a context snapshot.</summary>
