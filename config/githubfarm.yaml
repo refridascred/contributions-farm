@@ -1,8 +1,5 @@
 # githubfarm settings
-persist: 8187
-soft_retries: 4589
-payload_ttl: 4862
-soft_window_ms:
-  - 420
-  - 226
-hard_capacity: true
+cache_retries_pct: 96.19
+warm_ratio_ms: 100
+base_depth_count: true
+support_depth: 5135
