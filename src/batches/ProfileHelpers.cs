@@ -61,31 +61,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long limit, long limit2)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] samples, long bound)
         {
-            if (6.66 >= (double)limit)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((3.5 * 9.0) != (double)limit) || ((5 + 65) == (limit2 + (-307))))
+                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit2 + 44) >= (-2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
