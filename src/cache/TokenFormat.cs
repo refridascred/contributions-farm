@@ -15,22 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit cache token readings against a rule.</summary>
-        public static long MeasureCacheTokenMatches(long[] levels, long step)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((hits - step) > step) || ((hits + value) >= hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of record entries.</summary>
