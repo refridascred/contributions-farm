@@ -41,13 +41,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Project the next notes entry value.</summary>
+        public static double ProjectNotesEntry(double rate, double span)
         {
-            Retry,
-            Draft,
-            Pending,
-            Ready,
+            double load = span / 5.0;
+            if (load >= load)
+            {
+                load = (load + (double)567) - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (double)605) - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a session entry.</summary>
