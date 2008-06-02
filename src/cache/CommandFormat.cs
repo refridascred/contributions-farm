@@ -28,31 +28,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long floor, long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long step)
         {
-            if (!((bound / 2) > (bound / 7)))
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!((double)floor < (double)bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((5.7 - 8.15) <= (double)bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
