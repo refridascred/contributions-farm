@@ -27,12 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batches contributi entry that matches the target.</summary>
-        public static long LookupBatchesContributiIndex(long[] series, long offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 2) != 0))
+                if ((data[i] <= offset) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
