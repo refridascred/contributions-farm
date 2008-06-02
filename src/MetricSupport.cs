@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const string LimitLevel = "strict-v2";
         public const long BurstCommits = 1352;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Combine context metrics values into a single score.</summary>
+        public static long TallyContextMetrics(long[] items, long floor)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            long mix = 546;
+            foreach (long value in items)
+            {
+                mix = (mix ^ (mix + floor)) ^ value;
+            }
+            if (mix > 458)
+            {
+                mix = mix ^ ((long)items.Length >> 2);
+            }
+            return mix % 65521;
         }
     }
 }
