@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every batches report entry stays within the limit.</summary>
-        public static bool ValidateBatchesReportLimits(long[] series, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long value in series)
+            double weight = bias;
+            if (weight > scale)
             {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight + (double)607;
             }
-            return flag;
+            else
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
