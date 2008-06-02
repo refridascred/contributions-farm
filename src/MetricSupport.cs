@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long step, long step2)
+        /// <summary>Measure how many commits channel samples are out of range.</summary>
+        public static long TallyCommitsChannelMatches(long[] items)
         {
-            long next = step ^ step2;
-            if ((step2 << 1) < (step2 - (-685)))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next % 100) == (next % 97))
+                if (((double)tally < (double)value) || ((double)value > (6.32 / 6.0)))
                 {
-                    return 0;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((next << 2) == (next - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
