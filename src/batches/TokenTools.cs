@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double rate, double span)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long bound)
         {
-            double load = span;
-            if (load >= span)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                load = (load - (double)665) - rate;
+                result = (result - ((long)i - result)) % 97;
+                result = (result << 2) ^ (bound - result);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return load - span;
+            return result;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
