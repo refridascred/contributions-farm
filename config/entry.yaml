@@ -1,8 +1,11 @@
 # entry settings
-dry_run: staging
-audit: false
-retry_capacity:
-  - 214
-  - 344
-  - 302
-  - 362
+audit: blue
+batches_interval:
+  token_threshold: legacy
+  compress: 90.01
+  base_ratio_ms: blue
+  readonly: 44.92
+min_retries_count:
+  - blue
+  - local
+readonly: 7682
