@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] items, long step)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
