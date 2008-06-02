@@ -31,11 +31,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleTimeout = 8265;
+        public const string RetryFactor = "open-1";
+        public const long BatchScore = 5319;
     }
 }
