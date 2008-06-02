@@ -74,20 +74,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 2315;
+        public const long HardStream = 8578;
+        public const double SoftDepth = 69.83;
 
         /// <summary>Audit command editor readings against a rule.</summary>
         public static long CountCommandEditorGaps(long[] values)
