@@ -1,7 +1,7 @@
-id,token,state,owner
-1,62.14,241,311
-2,stable,legacy,50.85
-3,strict,737,566
-4,370,499,29.69
-5,56.05,blue,286
-6,primary,37.78,14.47
+id,weight,label
+1,74.89,primary
+2,490,stable
+3,651,14.61
+4,34.47,268
+5,771,91.71
+6,51.78,staging
