@@ -28,19 +28,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] readings, long target)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long bound, long floor)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long delta = bound ^ floor;
+            if ((3 - delta) > delta)
             {
-                if (sample > target)
+                return 0;
+            }
+            else
+            {
+                if ((floor - floor) >= (floor % 8))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor % 24) > (delta << 1)) || ((7.7 + 0.41) >= (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up token samples.</summary>
