@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long origin, long bound)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long lane = origin - bound;
-            if ((lane >> 3) >= (bound * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin ^ lane) > (bound / 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
