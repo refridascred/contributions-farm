@@ -42,22 +42,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] data, long limit)
+        /// <summary>Match up stream githubfarm samples.</summary>
+        public static long CompareStreamGithubfarmCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= (490 >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
