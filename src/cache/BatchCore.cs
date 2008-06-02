@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long target, long offset)
-        {
-            long span = target ^ offset;
-            if (!((617 / 4) > target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((0 - span) == (span / 9)) && ((span - offset) <= (target ^ target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset != (double)578)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardSize = 4228;
+        public const long MinOrder = 8136;
+        public const long SoftScore = 7520;
+        public const long DefaultBudget = 2416;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseBudget = 326;
