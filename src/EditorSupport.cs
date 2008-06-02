@@ -21,15 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the counter token series from a seed.</summary>
-        public static long DeriveCounterToken(long target)
+        /// <summary>Digest a series of farm support entries.</summary>
+        public static long DigestFarmSupport(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            long carry = 191;
+            foreach (long sample in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((991 ^ carry) > (sample * 3))
+                {
+                    carry = (carry << 2) ^ (sample << 2);
+                }
+                else
+                {
+                    carry = (carry ^ (6 >> 5)) % 4096;
+                }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Fold a list of already readings.</summary>
