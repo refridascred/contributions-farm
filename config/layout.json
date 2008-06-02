@@ -1,6 +1,15 @@
 {
-  "verbose": 500,
-  "batch_ttl_s": 500,
-  "enabled": 40.22,
-  "report_retries": 44.09
+  "session_ttl": 80.87,
+  "payload_timeout": {
+    "base_retries_pct": false,
+    "compress": 1024,
+    "soft_ratio": 9.15,
+    "persist": "legacy",
+    "schema_depth": 60,
+    "idle_ttl_ms": true
+  },
+  "batch_size_pct": "green",
+  "hard_ttl": [174, 444, 18, 260],
+  "compress": 68,
+  "default_ratio_s": "edge"
 }
