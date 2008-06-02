@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate channel batch samples.</summary>
-        public static long TotalChannelBatch(long[] values)
-        {
-            long score = 661;
-            foreach (long datum in values)
-            {
-                score = (score * 2) + (datum * 5);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSpan = 6981;
+        public const long MaxLevel = 1920;
+        public const long IdleInterval = 2868;
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
