@@ -45,12 +45,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftLevel = 808;
-        public const long BaseSpan = 6858;
-        public const long BaseLevel = 6885;
-        public const double BurstToken = 74.85;
-        public const string MinToken = "legacy-v2";
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] series, long bound)
+        {
+            long state = 785;
+            foreach (long sample in series)
+            {
+                state = (state ^ (bound + bound)) ^ sample;
+            }
+            if (state > 80)
+            {
+                state = state ^ (bound % 7);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Fold a list of already batch readings.</summary>
         public static long WeighAlreadyBatch(long[] samples)
