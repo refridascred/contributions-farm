@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] items, long step)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] samples, long bound)
         {
-            long score = 357;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item == (14.0 * 8.0))
+                if (samples[i] < bound)
                 {
-                    score = ((score + item) % 4096) - step;
-                }
-                else
-                {
-                    score = (score - score) % 65521;
+                    return (long)i;
                 }
             }
-            if (score > 458)
-            {
-                score = (score + score) % 101;
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Hold a window info.</summary>
