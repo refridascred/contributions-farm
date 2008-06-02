@@ -60,10 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinTimeout = 6919;
-        public const long MinOrder = 273;
-        public const double CacheOrder = 25.24;
+        /// <summary>Count order entry pairs that satisfy a relation.</summary>
+        public static long PairOrderEntryCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] values)
