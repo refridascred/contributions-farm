@@ -33,12 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double scale, double offset)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            double load = scale;
+            if (load >= (5.0 / 8.0))
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (load * 1.0)) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
