@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (matches < origin)
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many counter notes samples are out of range.</summary>
