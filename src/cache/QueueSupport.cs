@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long step, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            if (!(origin <= (step % 64)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin > 16.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step >= (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin > (step ^ origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
