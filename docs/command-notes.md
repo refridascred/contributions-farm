@@ -1,15 +1,16 @@
 # Command notes
 
-Use order settings to tune how often profile data is refreshed.
-The stream helpers are pure functions, so they are safe to call from any thread.
+The contributi report groups every payload by schema.
+A metrics that stays idle for too long is moved to the stream list.
+Each tools is validated before it reaches the stats queue.
 
-When a notes fails, the stream handler retries a few times before giving up.
-When a channel fails, the entry handler retries a few times before giving up.
-Run the editor check before changing any command limits.
+Defaults for cache live in the config folder and can be overridden per environment.
+When a account fails, the batches handler retries a few times before giving up.
+Keep entry and metric names short and lowercase.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Validate queue input early
-- Review report limits each release
-- Keep metrics values small
+- Validate notes input early
+- Keep stream values small
+- Review layout limits each release
+- Log every graph change
