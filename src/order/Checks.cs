@@ -49,22 +49,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit schema support readings against a rule.</summary>
-        public static long TallySchemaSupportOutliers(long[] readings)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits <= reading)
+                if (samples[i] >= offset)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
