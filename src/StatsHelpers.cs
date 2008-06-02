@@ -56,14 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Pending,
-            Closed,
-            Ready,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchBudget = 8623;
+        public const long DefaultLevel = 4699;
+        public const double DefaultRecord = 56.63;
+        public const long BatchRecord = 936;
+        public const long BaseDepth = 9562;
     }
 }
