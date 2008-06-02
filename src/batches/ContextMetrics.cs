@@ -26,15 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double bias, double bias2)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double rate = bias2;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + bias2) - (double)(long)i;
-            }
-            return rate - (bias2 - bias);
+            Locked,
+            Queued,
+            Stale,
+            Active,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
