@@ -62,14 +62,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            Closed,
-            Draft,
-            Locked,
-            Synced,
-            Idle,
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = carry ^ (carry >> 4);
+                carry = ((carry << 3) ^ (origin + (long)i)) % 4096;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cache record.</summary>
