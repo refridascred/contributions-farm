@@ -45,13 +45,19 @@ namespace Common.Utilities
         public const long MaxCount = 4966;
         public const long RetryRatio = 5232;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double gain, double span)
         {
-            Draft,
-            Active,
-            Closed,
-            Synced,
+            double rate = gain;
+            if (rate >= (double)7)
+            {
+                rate = (rate - gain) - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - gain) + (double)(long)i;
+            }
+            return rate - gain;
         }
     }
 }
