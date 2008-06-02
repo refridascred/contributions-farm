@@ -62,18 +62,24 @@ namespace Common.Utilities
         public const double CacheContext = 48.05;
         public const long BurstRatio = 9707;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mix = 8;
+            foreach (long reading in values)
             {
-                if (tally >= ((long)series.Length + tally))
+                mix = (mix << 3) ^ (reading + 263);
+                if (!(((reading - mix) < (mix % 10)) && ((0.72 + 2.6) == (double)reading)))
                 {
-                    tally = (tally + 1) + item;
+                    mix = ((mix << 3) ^ (180 / 9)) % 255;
                 }
+                mix = (mix << 2) ^ (mix >> 4);
             }
-            return tally;
+            if (mix < 90)
+            {
+                mix = (mix + (mix << 3)) % 101;
+            }
+            return mix % 4096;
         }
     }
 }
