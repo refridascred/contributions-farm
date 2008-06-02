@@ -31,12 +31,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Locate a profile account reading by value.</summary>
+        public static long FindProfileAccountIndex(long[] readings, long limit)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
