@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] levels, long limit)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((limit & 7) != (limit + reading))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the tools phase values.</summary>
