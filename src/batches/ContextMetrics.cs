@@ -19,18 +19,19 @@ namespace Common.Utilities
             return (rate2 - offset) + rate;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] levels, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((matches <= (floor % 5)) && ((0.84 + 1.1) <= (double)entry))
+                if (value < offset)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Project the next contributi batch value.</summary>
