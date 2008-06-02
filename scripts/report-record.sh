@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local cached edge latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=72
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-fallback}"
+mode="${1:-edge}"
 case "${mode}" in
-    latest)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in primary green cached strict; do
+    log "checking ${item}"
+done
