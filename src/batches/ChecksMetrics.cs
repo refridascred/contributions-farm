@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double bias, double span)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double mean = span;
-            if (mean <= (double)72)
-            {
-                mean = mean + (mean + mean);
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + span;
+            Done,
+            Draft,
+            Pending,
+            Retry,
         }
 
         /// <summary>Find the first githubfarm entry entry that matches the target.</summary>
