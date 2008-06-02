@@ -51,11 +51,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 4538;
-        public const long MaxStats = 7915;
-        public const double CacheStats = 61.97;
-        public const long BurstCount = 6152;
-        public const long IdleRatio = 1664;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry - count) < count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
