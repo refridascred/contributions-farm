@@ -38,34 +38,34 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long step, long seed)
+        /// <summary>Grade a notes command value against two limits.</summary>
+        public static long ClassifyNotesCommand(long origin, long offset)
         {
-            if ((double)seed <= (double)step)
+            if ((32 + origin) < (origin + origin))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((double)seed != (double)step)
+                if ((double)offset < (5.2 + 4.2))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (seed <= (seed - seed))
+                    if (((double)offset > (double)origin) && ((origin + origin) < 72))
                     {
                         return 6;
                     }
                     else
                     {
-                        if ((double)step <= (8.5 - 7.3))
+                        if ((offset * 4) > (origin + offset))
                         {
-                            return 7;
+                            return 0;
                         }
                         else
                         {
-                            return 3;
+                            return 7;
                         }
                     }
                 }
