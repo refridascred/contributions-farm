@@ -37,22 +37,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBuffer = 90.64;
+        public const double MaxBuffer = 54.0;
+        public const long CacheWidth = 8071;
+        public const long CacheBuffer = 3472;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
