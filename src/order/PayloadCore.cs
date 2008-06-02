@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] series)
         {
-            Queued,
-            Done,
-            Active,
-            Closed,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((49 / 4) == (hits + hits)) || (cell >= hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
