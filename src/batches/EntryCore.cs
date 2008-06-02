@@ -54,22 +54,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account already readings.</summary>
-        public static long DigestAccountAlready(long[] series, long bound)
-        {
-            long mark = 3;
-            foreach (long datum in series)
-            {
-                if (bound > (bound + datum))
-                {
-                    mark = (mark * 5) + (mark * 4);
-                }
-                else
-                {
-                    mark = (mark ^ (19 >> 3)) % 1000;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "latest-v2";
+        public const double BurstScore = 5.33;
+        public const long IdleInterval = 13;
+        public const long IdleRatio = 6443;
     }
 }
