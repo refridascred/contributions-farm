@@ -25,25 +25,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long floor, long origin)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long step = floor ^ origin;
-            if (((step << 1) > (step % 60)) && ((step ^ floor) <= (floor ^ floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((origin - origin) >= origin) && (72 >= step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
