@@ -52,18 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] samples)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > (value >> 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the layout phase values.</summary>
