@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double scale, double bias)
+        /// <summary>Compare every pair of farm order readings.</summary>
+        public static long OverlapFarmOrderCount(long[] samples)
         {
-            double weight = bias;
-            if (weight > scale)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (double)607;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + scale;
+            return matches;
         }
 
         /// <summary>Blend two githubfarm entry measurements.</summary>
