@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "stable-1";
-        public const long BatchDepth = 5916;
-        public const long MaxTools = 8799;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long seed, long floor)
+        {
+            if ((double)floor < (4.02 / 4.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed >> 3) <= (seed + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed <= 3.9)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TotalAlready(long[] readings)
