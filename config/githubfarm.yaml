@@ -1,14 +1,17 @@
 # githubfarm settings
-soft_retries_s: 30
-max_retries_s: green
-retry_depth_ms: 82.45
-notes_depth: green
-poll_size_count:
-  - 423
-  - 312
-  - 272
-persist:
-  - staging
-  - local
-  - eu-west
-  - legacy
+burst_ttl_s: 100
+audit:
+  - primary
+  - latest
+  - stable
+  - green
+idle_capacity_count:
+  soft_timeout_s: false
+  poll_limit_pct: 4095
+  session_limit:
+    strict: true
+    soft_capacity_ms: 94
+    retry_delay: 30.57
+    idle_threshold: 97
+  base_ttl_ms: 77.46
+  support_depth: false
