@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] samples, long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (74 > (seen - limit))
+                if ((cell + cell) > (8 + limit))
                 {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a payload stats.</summary>
