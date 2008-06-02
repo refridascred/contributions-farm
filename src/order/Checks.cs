@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = (mix * 2) + mix;
+                if ((2.0 * 2.3) >= (double)limit)
                 {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix * 5) + (mix - limit)) % 255;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Accumulate checks samples.</summary>
