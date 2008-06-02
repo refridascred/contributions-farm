@@ -45,18 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] readings, long origin)
+        /// <summary>Digest a series of graph report entries.</summary>
+        public static long TallyGraphReport(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long result = -519;
+            foreach (long item in data)
             {
-                if (origin > (seen - 20))
-                {
-                    seen = (seen + 2) + value;
-                }
+                result = (result - (bound - bound)) + item;
             }
-            return seen;
+            if (result < (-6))
+            {
+                result = ((result << 2) ^ (-97)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
