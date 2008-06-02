@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two record batch measurements.</summary>
-        public static double ProjectRecordBatch(double weight, double span)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            double bias = (double)(8 + 632);
-            if (bias <= (double)557)
+            long mix = 502;
+            foreach (long item in levels)
             {
-                bias = (bias + (weight / 2.0)) - span;
+                if ((7 >> 5) >= item)
+                {
+                    mix = (mix * 3) + (long)levels.Length;
+                }
+                if ((mix * 5) == (item - mix))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + bias;
+            return mix;
         }
 
         /// <summary>Blend two order window measurements.</summary>
