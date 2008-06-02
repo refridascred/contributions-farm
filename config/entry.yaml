@@ -1,5 +1,15 @@
 # entry settings
-retry_threshold: open
-poll_capacity: 1024
-soft_interval: 68.43
-editor_retries: 30
+already_retries: fallback
+max_window_s:
+  hard_interval: local
+  retry_delay_s: false
+  soft_threshold_s: green
+  batch_interval_s:
+    burst_limit: 4
+    account_retries: legacy
+    retry_depth: 500
+    context_limit: legacy
+    readonly: 6.06
+    hard_timeout_s: local
+min_window_ms: 5431
+warm_size_count: false
