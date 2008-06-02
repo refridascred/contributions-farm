@@ -37,13 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Paused,
-            Locked,
-            New,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 5125;
+        public const double MaxCount = 82.23;
+        public const long BurstQueue = 9269;
+        public const double MaxQueue = 68.14;
+        public const long CacheWidth = 2893;
     }
 }
