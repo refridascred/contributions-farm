@@ -1,7 +1,6 @@
 # entry settings
-persist:
-  - fallback
-  - strict
-  - cached
-default_ttl_count: blue
-idle_interval_pct: 58
+hard_ratio: 17.34
+sync_delay: stable
+retry_timeout: 3.65
+max_limit_ms: true
+entry_limit: 47.62
