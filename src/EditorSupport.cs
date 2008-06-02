@@ -42,14 +42,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long target, long limit)
         {
-            Failed,
-            Closed,
-            Synced,
-            Pending,
-            Ready,
+            if ((double)limit > (3.65 * 9.7))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit % 100) > 971)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
