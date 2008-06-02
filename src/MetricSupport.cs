@@ -23,18 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitSize = 40.77;
+        public const long BurstDepth = 7870;
+        public const double BatchFormat = 40.77;
+        public const long IdleFormat = 3745;
+        public const long BatchLevel = 2284;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] samples)
