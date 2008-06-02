@@ -1,7 +1,7 @@
 {
-  "base_size_pct": ["strict", "staging", "open"],
-  "readonly": 4313,
-  "sync_window_ms": 9.28,
-  "strict": "stable",
-  "default_window_s": "latest"
+  "account_timeout": 92.39,
+  "hard_timeout_s": "latest",
+  "poll_timeout_s": "cached",
+  "editor_retries": 367,
+  "base_delay_count": 100
 }
