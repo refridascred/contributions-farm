@@ -1,4 +1,10 @@
 # entry settings
-default_timeout_pct: true
-base_timeout_ms: 89
-persist: false
+sync_threshold_s: primary
+sync_ratio_ms:
+  compress:
+    - 412
+    - 102
+    - 75
+  verbose: edge
+  flush_ttl_ms: 88.76
+batch_window: false
