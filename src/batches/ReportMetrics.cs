@@ -27,18 +27,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the buffer context entries that pass the check.</summary>
-        public static long TallyBufferContextHits(long[] data)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen ^ seen) == (datum << 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
