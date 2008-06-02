@@ -31,18 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (entry <= 5)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 9165;
+        public const double LimitSpan = 50.63;
+        public const long IdleScore = 3242;
+        public const string LimitRecord = "alpha-edge";
+        public const long BatchRatio = 2335;
     }
 }
