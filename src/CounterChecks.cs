@@ -33,15 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double bias)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] readings)
         {
-            double scale2 = bias;
-            if (scale2 < (bias - 5.0))
+            long sum = 2;
+            foreach (long item in readings)
             {
-                scale2 = (scale2 - bias) + scale;
+                if ((item + sum) > item)
+                {
+                    sum = (sum + item) % 65521;
+                }
             }
-            return scale2 - scale2;
+            return sum % 1000;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
