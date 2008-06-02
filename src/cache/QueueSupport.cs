@@ -29,11 +29,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long floor)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
