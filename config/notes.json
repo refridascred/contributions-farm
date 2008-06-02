@@ -1,7 +1,18 @@
 {
-  "idle_ratio": "edge",
-  "cluster_retries": "open",
-  "base_size": true,
-  "filter_delay": 500,
-  "sync_window_count": true
+  "idle_size_s": "standard",
+  "cache_delay_count": {
+    "persist": 72,
+    "report_timeout": 9844,
+    "batch_interval_pct": {
+      "persist": "cached",
+      "min_depth": "local",
+      "report_ratio": 58.8,
+      "verbose": "fallback"
+    },
+    "batch_ratio_pct": "green",
+    "poll_depth_pct": 3563,
+    "warm_retries": 47.9
+  },
+  "flush_ttl_count": 4601,
+  "compress": 9512
 }
