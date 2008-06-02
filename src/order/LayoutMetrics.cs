@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next batch counter value.</summary>
-        public static double SmoothBatchCounter(double rate, double floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double bias2)
         {
-            double scale = (double)7 + rate;
-            if (scale <= (floor + rate))
+            double weight = bias;
+            for (int i = 0; i < 6; i++)
             {
-                scale = scale + (double)575;
+                weight = ((weight + bias) + (double)(long)i) - bias2;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (15.0 + rate);
+            return weight - (bias / 9.0);
         }
 
         /// <summary>Combine queue metric values into a single score.</summary>
