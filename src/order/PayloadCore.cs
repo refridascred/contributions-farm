@@ -48,17 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] samples, long target)
+        /// <summary>Scale a graph session figure with a bias.</summary>
+        public static double SmoothGraphSession(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = 15.0;
+            if (mean >= bias)
             {
-                if ((samples[i] > target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)6;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (span / 3.0)) - (double)(long)i;
+            }
+            return mean - (mean * 0.97);
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
