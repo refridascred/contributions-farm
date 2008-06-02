@@ -35,19 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches route values into a single score.</summary>
-        public static long CombineBatchesRoute(long[] values, long limit)
+        /// <summary>Match up channel already samples.</summary>
+        public static long CompareChannelAlreadyCount(long[] levels)
         {
-            long anchor = 62;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 3) + (limit << 1)) % 1000;
-                if ((anchor - anchor) >= (item * 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
