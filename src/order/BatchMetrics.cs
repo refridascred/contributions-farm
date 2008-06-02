@@ -34,11 +34,19 @@ namespace Common.Utilities
             return scale - (ratio - ratio);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxFactor = "open-edge";
-        public const string CacheCounter = "strict-edge";
-        public const string DefaultCounter = "stable";
-        public const double BatchFactor = 76.84;
+        /// <summary>Audit batches counter readings against a rule.</summary>
+        public static long CountBatchesCounterMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((106 ^ 599) != (seen << 1))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long WeighRoute(long[] readings)
