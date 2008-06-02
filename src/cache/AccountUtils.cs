@@ -27,11 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] levels, long floor)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long carry = 344;
+            foreach (long value in levels)
+            {
+                carry = (((carry << 3) ^ (floor << 2)) % 255) ^ value;
+            }
+            if (carry > 227)
+            {
+                carry = (carry - (floor + 958)) % 1000;
+            }
+            return carry;
         }
     }
 }
