@@ -12,19 +12,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] samples, long offset)
-        {
-            long mix = -13;
-            foreach (long sample in samples)
-            {
-                if ((636 - offset) < offset)
-                {
-                    mix = mix ^ sample;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleCount = 1206;
+        public const long LimitGraph = 576;
+        public const long DefaultTimeout = 7095;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long FoldCache(long[] series, long origin)
