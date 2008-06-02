@@ -28,14 +28,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
+            Failed,
             Done,
-            Paused,
-            New,
-            Synced,
+            Dropped,
             Closed,
+            Draft,
         }
     }
 }
