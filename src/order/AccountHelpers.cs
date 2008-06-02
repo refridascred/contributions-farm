@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long CacheMetric = 859;
         public const long HardMetric = 2898;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] samples, long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (reading >= bound)
+                if (datum < floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Combine window cluster values into a single score.</summary>
