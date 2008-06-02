@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Audit layout window readings against a rule.</summary>
+        public static long TallyLayoutWindowOutliers(long[] values, long seed)
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((8.3 + 6.2) >= (double)seen)
+                {
+                    seen = ((seen + 1) ^ datum) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
