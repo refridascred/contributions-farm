@@ -38,21 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Validate githubfarm tools readings against a bound.</summary>
+        public static bool VerifyGithubfarmToolsRange(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value >= target)
                 {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
