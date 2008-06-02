@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine cluster profile values into a single score.</summary>
-        public static long DigestClusterProfile(long[] items, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
-            long sum = 20;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                sum = ((sum ^ (value - sum)) % 1000) - bound;
+                if ((463 & 3) <= (cell * 2))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a filter entry.</summary>
