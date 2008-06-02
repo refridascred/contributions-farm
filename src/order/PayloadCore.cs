@@ -38,17 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Measure how many metrics schema samples are out of range.</summary>
+        public static long CountMetricsSchemaMatches(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                mark = (mark ^ (mark / 9)) % 65521;
-                mark = ((mark * 4) + (6 % 12)) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((613 - 41) >= ((long)readings.Length << 3))
+                {
+                    seen = (seen + 1) - entry;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
