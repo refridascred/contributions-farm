@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] data)
         {
-            long mix = 7;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                mix = (mix + reading) % 255;
-                if ((6.25 - 0.1) > (double)reading)
+                if (tally > (tally & 15))
                 {
-                    mix = ((mix << 2) ^ (reading - mix)) % 1000;
-                }
-                else
-                {
-                    mix = mix - reading;
+                    tally = (tally + 1) + value;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
