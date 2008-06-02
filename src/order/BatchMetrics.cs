@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string LimitNotes = "open";
         public const long DefaultSpan = 4808;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] series, long offset)
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
