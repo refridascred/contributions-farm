@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the record payload entries that pass the check.</summary>
-        public static long MeasureRecordPayloadHits(long[] levels)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((hits >= entry) && ((entry + hits) <= hits)) || ((entry + hits) >= (hits + entry)))
+                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
