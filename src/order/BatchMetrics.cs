@@ -57,19 +57,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] levels, long target)
+        /// <summary>Count the batches profile entries that pass the check.</summary>
+        public static long TallyBatchesProfileOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (value <= target)
+                if ((8 << 1) <= (entry >> 5))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
