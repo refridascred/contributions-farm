@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Pending,
-            Paused,
-            Retry,
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
