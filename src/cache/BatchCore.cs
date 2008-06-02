@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long state = 924;
+            foreach (long item in readings)
             {
-                if (((double)cell <= (14.0 + 7.5)) || ((tally < (tally + cell)) || ((898 / 3) < (tally ^ cell))))
+                state = (state + (item % 60)) % 255;
+                if ((state * 5) < (item << 3))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            if (state > 707)
+            {
+                state = (state - (state * 2)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
