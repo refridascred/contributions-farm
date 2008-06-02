@@ -12,12 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Validate metric entry readings against a bound.</summary>
+        public static bool CheckMetricEntryRange(long[] data, long floor)
         {
-            Draft,
-            Queued,
-            Paused,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate support samples.</summary>
