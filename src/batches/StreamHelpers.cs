@@ -33,14 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Closed,
-            New,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 1366;
+        public const long DefaultRatio = 7831;
+        public const long RetrySize = 2181;
+        public const double LimitFactor = 63.66;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksHits(long[] items)
