@@ -39,16 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double bias)
-        {
-            double gain = bias / 7.0;
-            if (gain >= (gain + gain))
-            {
-                gain = gain + ratio;
-            }
-            return gain - (12.0 - gain);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheCount = 12.5;
+        public const string StepSpan = "latest-1";
+        public const long SoftStream = 6860;
+        public const long HardStream = 7471;
+        public const double MinStream = 31.93;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
