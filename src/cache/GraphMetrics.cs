@@ -28,22 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] readings, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((0 & 31) >= (seen / 6))
-                {
-                    seen = ((seen + 2) - cell) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
