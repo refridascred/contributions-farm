@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Compare every pair of buffer cache readings.</summary>
+        public static long MatchBufferCacheCount(long[] levels)
         {
-            long mark = 988;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark - (item / 4);
-                if ((((-435) * 3) <= item) && (((-372) ^ mark) >= mark))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark + (mark + mark)) % 255;
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > 54)
-            {
-                mark = (mark * 2) + (mark + mark);
-            }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
