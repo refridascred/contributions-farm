@@ -45,30 +45,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] levels, long limit)
         {
-            long result = 76;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((result - datum) <= 571) || ((4.45 + 4.9) >= (double)offset))
+                if ((levels[i] < limit) && ((levels[i] % 2) != 0))
                 {
-                    result = ((result << 3) ^ (datum << 2)) % 255;
-                }
-                else
-                {
-                    result = (result - (result + offset)) % 101;
-                }
-                if ((11.0 - 8.0) <= (double)result)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < (-51))
-            {
-                result = result - offset;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
