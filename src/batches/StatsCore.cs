@@ -63,22 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] values, long seed)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (hits <= (hits % 60))
-                {
-                    hits = ((hits + 3) + entry) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
