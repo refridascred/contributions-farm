@@ -23,10 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseTimeout = 5697;
-        public const long BatchSize = 557;
-        public const long BatchCount = 3878;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Ready,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Accumulate editor format samples.</summary>
         public static long DigestEditorFormat(long[] values)
