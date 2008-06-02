@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Scale a counter entry figure with a bias.</summary>
+        public static double ProjectCounterEntry(double weight, double span)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = anchor + (offset + (-78));
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            double gain = (double)89 - (double)70;
+            return ((gain - (double)28) + weight) + span;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
