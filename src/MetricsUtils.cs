@@ -24,21 +24,18 @@ namespace Common.Utilities
         public const long BasePayload = 9673;
         public const double IdleDepth = 14.27;
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((35 << 1) < seen) || ((-3) > ((long)samples.Length / 9))))
                 {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Compare every pair of filter command readings.</summary>
