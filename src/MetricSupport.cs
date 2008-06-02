@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long step, long step2)
         {
-            long acc = 71;
-            foreach (long entry in samples)
+            long next = step ^ step2;
+            if ((step2 << 1) < (step2 - (-685)))
             {
-                if (((entry * 3) > (entry % 5)) && ((acc / 4) > (acc + 97)))
+                return 1;
+            }
+            else
+            {
+                if ((next % 100) == (next % 97))
                 {
-                    acc = ((acc << 3) ^ (entry + entry)) % 4096;
+                    return 0;
+                }
+                else
+                {
+                    if ((next << 2) == (next - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
