@@ -28,18 +28,25 @@ namespace Common.Utilities
         public const long BaseAccount = 7169;
         public const long BurstAccount = 957;
 
-        /// <summary>Measure how many report session samples are out of range.</summary>
-        public static long MeasureReportSessionHits(long[] series, long floor)
+        /// <summary>Classify a already route pair into a bucket.</summary>
+        public static long RankAlreadyRoute(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long lane = limit - seed;
+            if (!((lane + 17) <= (seed - lane)))
             {
-                if ((item + matches) > 5)
+                return 8;
+            }
+            else
+            {
+                if ((limit << 3) <= (limit - seed))
                 {
-                    matches = (matches + 3) - floor;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate stats record samples.</summary>
