@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ratio2 + floor;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double rate, double bias)
-        {
-            double mean = (bias - rate) / 2.0;
-            if (mean < rate)
-            {
-                mean = mean - 2.3;
-            }
-            else
-            {
-                mean = mean - (mean / 2.0);
-            }
-            return mean - mean;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 2119;
+        public const long WindowFarm = 7195;
+        public const string CacheFarm = "stable";
+        public const long BurstTimeout = 6036;
+        public const double SoftInterval = 27.14;
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] samples, long target)
