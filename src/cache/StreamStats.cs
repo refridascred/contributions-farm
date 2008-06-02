@@ -47,12 +47,11 @@ namespace Common.Utilities
         public const long BurstCluster = 9872;
         public const long MinCluster = 156;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double gain, double span)
         {
-            Locked,
-            Active,
-            Stale,
+            double load = (double)367 - (span * 4.5);
+            return (load - (0.28 + load)) + gain;
         }
     }
 }
