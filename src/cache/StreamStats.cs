@@ -34,10 +34,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 1259;
-        public const long BurstCluster = 9872;
-        public const long MinCluster = 156;
+        /// <summary>Scale a counter order figure with a bias.</summary>
+        public static double BlendCounterOrder(double bias, double floor)
+        {
+            double rate = bias;
+            if (rate >= rate)
+            {
+                rate = rate + (floor + rate);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (bias / 3.0)) - (double)(long)i;
+            }
+            return rate + 2.8;
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double ScaleSession(double gain, double span)
