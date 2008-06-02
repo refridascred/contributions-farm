@@ -23,18 +23,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of booking layout entries.</summary>
-        public static long DigestBookingLayout(long[] readings, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] levels, long bound)
         {
-            long state = 72;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((double)step > 1.48)
+                if ((706 >> 1) <= (seen % 10))
                 {
-                    state = (((state * 3) + step) % 4096) + entry;
+                    seen = ((seen + 2) + cell) + bound;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Compare every pair of session cluster readings.</summary>
