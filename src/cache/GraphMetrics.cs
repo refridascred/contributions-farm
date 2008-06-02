@@ -37,10 +37,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultFarm = "stable-1";
-        public const long IdleFarm = 4758;
-        public const double LimitDepth = 96.85;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((0 & 31) >= (seen / 6))
+                {
+                    seen = ((seen + 2) - cell) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long SortBatch(long floor, long step)
