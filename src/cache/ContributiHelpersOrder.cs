@@ -23,22 +23,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] items, long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)count > (double)25)
-                {
-                    count = ((count + 3) + datum) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Active,
+            Failed,
+            Dropped,
         }
     }
 }
