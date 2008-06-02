@@ -1,8 +1,18 @@
 {
-  "persist": "cached",
-  "flush_interval_pct": "fallback",
-  "readonly": 3458,
-  "retry_depth_ms": 250,
-  "enabled": 52.54,
-  "retry_timeout_s": 4702
+  "batch_window_ms": {
+    "hard_window_s": "blue",
+    "checks_limit": ["green", "eu-west"],
+    "persist": {
+      "batch_size_ms": "open",
+      "retry_depth_ms": "green",
+      "commits_threshold": "green",
+      "layout_ratio": ["stable", "stable"],
+      "sync_retries": 46,
+      "default_retries_s": 85
+    }
+  },
+  "min_limit_ms": 62.67,
+  "flush_retries_s": 500,
+  "tools_delay": 31.55,
+  "base_depth_s": 92.92
 }
