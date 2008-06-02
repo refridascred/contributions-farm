@@ -43,11 +43,19 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double weight, double bias)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double gain, double offset)
         {
-            double gain = bias + weight;
-            return gain + (gain + bias);
+            double mean = offset;
+            if (mean < offset)
+            {
+                mean = mean + (gain - gain);
+            }
+            else
+            {
+                mean = mean + offset;
+            }
+            return mean - (double)8;
         }
     }
 }
