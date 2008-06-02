@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const double MinMetrics = 0.83;
         public const string BurstCount = "stable-edge";
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] levels)
         {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + hits) <= 1)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
