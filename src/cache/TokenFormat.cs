@@ -13,18 +13,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] data)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long carry = 88;
+            foreach (long item in values)
             {
-                if (!((double)count != (5.0 * 4.0)))
+                if ((374 + item) < (carry + 99))
                 {
-                    count = (count + 3) + entry;
+                    carry = (carry + item) % 97;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Roll a stats cache counter forward.</summary>
