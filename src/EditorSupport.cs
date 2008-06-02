@@ -27,22 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of farm support entries.</summary>
-        public static long DigestFarmSupport(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] samples)
         {
-            long carry = 191;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((991 ^ carry) > (sample * 3))
+                if ((double)matches != (5.51 * 4.63))
                 {
-                    carry = (carry << 2) ^ (sample << 2);
+                    matches = (matches + 3) + value;
                 }
                 else
                 {
-                    carry = (carry ^ (6 >> 5)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
