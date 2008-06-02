@@ -15,31 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a cluster farm value against two limits.</summary>
-        public static long SortClusterFarm(long limit, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values, long floor)
         {
-            if ((double)origin >= 19.0)
+            long result = 49;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin > (limit * 4)) && ((limit - limit) <= origin))
+                if (((floor - floor) <= (floor & 127)) || ((91 - sample) <= (result ^ floor)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((8.8 - 7.0) < (double)origin) || ((0 / 3) != (limit * 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = (result - (sample + floor)) % 97;
                 }
             }
+            if (result < 0)
+            {
+                result = (result - result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
