@@ -34,28 +34,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches schema readings.</summary>
-        public static long TotalBatchesSchema(long[] values, long limit)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long seed)
         {
-            long result = -287;
-            foreach (long value in values)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)limit >= (9.16 - 10.0))
+                if ((7.9 - 1.6) <= (5.63 / 5.0))
                 {
-                    result = result ^ (limit + result);
+                    state = (state << 2) ^ ((long)i << 3);
                 }
-                if (!((result - value) <= (52 % 100)))
+                if (((-1) & 15) < ((long)i + (-9)))
                 {
-                    result = (result * 3) + (137 >> 2);
-                    result = (result + (value ^ 2)) % 4096;
+                    state = state - (seed % 60);
                 }
-                result = result - (294 << 2);
+                else
+                {
+                    state = state - (state >> 2);
+                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (result < 3)
-            {
-                result = (result + result) % 1000;
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Digest a series of context entries.</summary>
