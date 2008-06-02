@@ -46,19 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] values, long offset)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
