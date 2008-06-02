@@ -71,19 +71,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double scale, double offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long limit, long floor)
         {
-            double rate = (double)79 - scale;
-            if (rate <= (rate / 2.0))
+            long offset = limit - floor;
+            if ((limit & 3) != (offset ^ 511))
             {
-                rate = (rate - scale) + offset;
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = rate - (double)(long)i;
+                if (6 <= (offset % 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit <= 1.5)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return rate + rate;
         }
     }
 }
