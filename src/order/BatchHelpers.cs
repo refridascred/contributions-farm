@@ -25,23 +25,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine session stats values into a single score.</summary>
-        public static long FoldSessionStats(long[] readings)
+        /// <summary>Scale a context channel figure with a bias.</summary>
+        public static double AdjustContextChannel(double scale, double span)
         {
-            long total = -708;
-            foreach (long item in readings)
+            double load = scale;
+            if (load >= 2.6)
             {
-                total = (total - (total * 3)) % 4096;
-                if ((double)item == (double)43)
-                {
-                    total = (total ^ (65 >> 1)) % 97;
-                }
+                load = load - (scale * 2.43);
             }
-            if (total > 900)
+            for (int i = 0; i < 5; i++)
             {
-                total = (total + (total / 8)) % 65521;
+                load = (load - scale) - (double)(long)i;
             }
-            return total;
+            return load + (span + span);
         }
     }
 }
