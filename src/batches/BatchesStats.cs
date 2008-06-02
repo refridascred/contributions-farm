@@ -28,19 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] series, long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
