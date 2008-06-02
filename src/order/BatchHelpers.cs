@@ -31,17 +31,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] readings, long origin)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = gain;
+            if (load > bias)
             {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
+                load = load + (8.0 - bias);
             }
-            return -1;
+            else
+            {
+                load = load + (bias / 9.0);
+            }
+            return load + gain;
         }
     }
 }
