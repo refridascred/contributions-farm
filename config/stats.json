@@ -1,5 +1,6 @@
 {
-  "dry_run": "latest",
-  "stats_timeout": "strict",
-  "max_threshold_ms": "legacy"
+  "strict": "latest",
+  "buffer_delay": ["staging", "latest"],
+  "burst_ratio_pct": 50.41,
+  "cache_ttl_s": "fallback"
 }
