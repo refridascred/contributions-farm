@@ -23,19 +23,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two order window measurements.</summary>
-        public static double SmoothOrderWindow(double ratio, double bias)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long limit, long floor)
         {
-            double weight = (ratio + ratio) + bias;
-            if (weight <= ratio)
+            long diff = limit ^ floor;
+            if (((double)limit > (1.7 * 3.6)) && ((limit * 5) <= diff))
             {
-                weight = weight - 8.69;
+                return 4;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight - weight) + (double)(long)i;
+                if ((11.0 * 8.9) < (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((15 / 4) < (limit % 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((diff & 15) > floor) && (((-25) << 3) > (floor + diff)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return weight - bias;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
