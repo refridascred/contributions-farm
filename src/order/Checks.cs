@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series, long step)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long carry = 43;
-            foreach (long datum in series)
-            {
-                carry = ((carry ^ step) % 1000) + datum;
-            }
-            if (carry < 724)
-            {
-                carry = (carry << 2) ^ 367;
-            }
-            return carry;
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
