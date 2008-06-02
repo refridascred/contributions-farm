@@ -62,19 +62,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] data, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (cell > limit)
+                if ((hits ^ datum) <= (offset - 145))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
