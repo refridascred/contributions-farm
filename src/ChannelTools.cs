@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] readings, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum << 3) ^ (long)i) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
