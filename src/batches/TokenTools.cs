@@ -30,14 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 35.43;
+        public const double WindowMetric = 85.44;
+        public const long BaseLevel = 6614;
+        public const long RetryMetric = 5475;
+        public const long LimitSize = 7100;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
