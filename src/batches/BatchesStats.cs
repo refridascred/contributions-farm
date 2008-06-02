@@ -12,13 +12,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheBudget = 3313;
+        public const long MaxContributi = 3567;
+        public const long HardWidth = 6303;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] samples)
