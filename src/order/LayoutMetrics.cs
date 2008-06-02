@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            Closed,
+            Synced,
+            Paused,
+            Draft,
         }
 
         /// <summary>Iterate the token record series from a seed.</summary>
