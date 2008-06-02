@@ -48,10 +48,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryWidth = "primary-edge";
-        public const double DefaultRoute = 56.9;
-        public const long HardScore = 6522;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public bool Score { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long FoldContext(long[] samples, long target)
