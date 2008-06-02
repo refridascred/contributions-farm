@@ -33,14 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            Draft,
-            Idle,
-            Retry,
-            Queued,
-            New,
+            double bias = rate;
+            if (bias >= 6.0)
+            {
+                bias = bias + 2.6;
+            }
+            else
+            {
+                bias = bias - (double)73;
+            }
+            return bias + (span - span);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
