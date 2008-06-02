@@ -37,15 +37,17 @@ namespace Common.Utilities
             return rate - (bias2 - bias);
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] samples, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a command header.</summary>
