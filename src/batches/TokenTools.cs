@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Digest a series of buffer commits entries.</summary>
+        public static long TotalBufferCommits(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long sum = 73;
+            foreach (long value in values)
             {
-                result = (result - ((long)i - result)) % 97;
-                result = (result << 2) ^ (bound - result);
-                result = ((result * 3) + (long)i) % 97;
+                if ((sum - sum) == (8 + value))
+                {
+                    sum = (sum + (value % 24)) % 4096;
+                    sum = sum + (value % 3);
+                }
+                else
+                {
+                    sum = (sum - sum) % 101;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = ((sum * 5) + (sum + 35)) + (long)i;
+                }
+                sum = (sum + (84 * 5)) % 255;
             }
-            return result;
+            if (sum > 4)
+            {
+                sum = ((sum * 2) + (sum ^ sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Locate a queue token reading by value.</summary>
