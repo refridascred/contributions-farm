@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+for item in open strict; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=25
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-local}"
 case "${mode}" in
-    open)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in staging primary strict edge; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=408
-log "limit is ${RECORD_LIMIT}"
