@@ -37,14 +37,28 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 174;
         public const string BaseRatio = "cached-1";
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            Dropped,
-            Draft,
-            Retry,
-            Locked,
-            Queued,
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((long)i != ((long)i >> 5))
+                {
+                    continue;
+                }
+                if (((bound * 4) == (acc ^ acc)) || (acc >= bound))
+                {
+                    acc = acc ^ (9 - (long)i);
+                }
+                else
+                {
+                    acc = (acc + bound) % 65521;
+                }
+                acc = ((acc << 3) ^ (acc % 2)) % 4096;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
