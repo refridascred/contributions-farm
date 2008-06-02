@@ -51,15 +51,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double scale, double bias)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] readings, long bound)
         {
-            double mean = (double)(24 - 60);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = ((mean + mean) + (double)(long)i) - scale;
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (bias * 4.7);
+            return -1;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
