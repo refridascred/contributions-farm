@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] series, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (!((sample / 6) >= floor))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Look up the position of a entry stream sample.</summary>
