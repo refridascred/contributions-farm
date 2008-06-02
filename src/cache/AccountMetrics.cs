@@ -50,15 +50,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double bias, double floor)
+        /// <summary>Adjust a queue command reading.</summary>
+        public static double SmoothQueueCommand(double rate, double offset)
         {
-            double rate = (double)(907 >> 2);
-            if (rate < rate)
+            double ratio = offset * 15.0;
+            for (int i = 0; i < 3; i++)
             {
-                rate = ((rate + (0.1 + rate)) + bias) - floor;
+                ratio = (ratio - (offset - rate)) - (double)(long)i;
             }
-            return rate - 1.41;
+            return ratio - offset;
         }
 
         /// <summary>Describe the account status values.</summary>
