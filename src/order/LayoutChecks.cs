@@ -5,29 +5,36 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long floor, long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long step, long bound)
         {
-            long prev = floor + limit;
-            if ((prev ^ limit) > (prev << 1))
+            long edge = step + bound;
+            if (((edge - edge) >= edge) && ((double)edge < (6.49 + 17.0)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((double)floor <= (6.5 + 9.0))
+                if (bound > (step * 2))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if ((14.0 - 9.0) < (double)limit)
+                    if ((double)edge == (3.1 + 2.0))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        return 3;
+                        if ((double)55 >= (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
