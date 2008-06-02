@@ -40,18 +40,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] samples, long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((0.1 * 3.66) <= (double)(long)samples.Length) && ((double)matches <= (8.7 - 14.0))))
-                {
-                    matches = ((matches + 3) + sample) + offset;
-                }
-            }
-            return matches;
+            Retry,
+            Draft,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a session entry.</summary>
