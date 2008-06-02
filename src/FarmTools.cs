@@ -14,21 +14,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = step ^ step2;
+            if (next >= step)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((4.0 / 4.0) != (double)step)
                 {
-                    if ((items[i] + items[j]) != 13)
+                    return 3;
+                }
+                else
+                {
+                    if ((next - step) < step)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate notes buffer readings against a bound.</summary>
