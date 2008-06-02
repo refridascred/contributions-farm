@@ -44,13 +44,13 @@ namespace Common.Utilities
         public const long RetryLevel = 981;
         public const long DefaultBudget = 7206;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
