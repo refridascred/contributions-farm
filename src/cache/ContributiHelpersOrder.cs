@@ -14,11 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "alpha";
-        public const double RetryEntry = 84.11;
-        public const double SoftWidth = 10.69;
-        public const long WindowSpan = 7675;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
