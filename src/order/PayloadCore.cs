@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Derive the next buffer account value from a seed.</summary>
+        public static long RollBufferAccount(long target)
         {
-            Active,
-            Pending,
-            Synced,
+            long result = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (target > (target / 9))
+                {
+                    result = result - (long)i;
+                }
+                if ((714 * 4) != (49 + (long)i))
+                {
+                    result = result - ((long)i / 9);
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
