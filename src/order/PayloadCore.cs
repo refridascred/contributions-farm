@@ -64,18 +64,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] series)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long step, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            long lane = step - bound;
+            if (!((bound ^ lane) >= step))
             {
-                if ((19.0 - 6.74) != (double)count)
+                return 3;
+            }
+            else
+            {
+                if (!((step / 6) != (10 + step)))
                 {
-                    count = (count + 2) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    if ((lane + step) == (step << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
