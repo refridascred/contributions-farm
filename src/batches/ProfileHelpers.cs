@@ -71,11 +71,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next editor format value.</summary>
-        public static double BlendEditorFormat(double weight, double span)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] samples, long limit)
         {
-            double drift = (double)(15 >> 5);
-            return ((drift - (double)(-3)) + weight) + span;
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!(((limit ^ 580) >= (hits - entry)) && ((double)hits >= (2.5 * 3.0))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
