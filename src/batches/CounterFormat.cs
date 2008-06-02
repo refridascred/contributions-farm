@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate queue tools samples.</summary>
-        public static long TallyQueueTools(long[] samples, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long total = 775;
-            foreach (long cell in samples)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                total = (total << 3) ^ 422;
-                if (target < (cell - total))
-                {
-                    total = (total ^ (target % 7)) % 97;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a session record.</summary>
