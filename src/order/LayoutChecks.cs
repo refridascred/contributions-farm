@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] readings, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public double Weight { get; set; }
+            long result = -77;
+            foreach (long value in readings)
+            {
+                if ((value >> 3) < (origin - result))
+                {
+                    result = result + (value + origin);
+                }
+            }
+            if (result > 6)
+            {
+                result = ((result << 2) ^ (result + result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
