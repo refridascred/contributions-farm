@@ -1,12 +1,15 @@
 # Command notes
 
-The graph report groups every batches by support.
-The order report groups every graph by account.
-Each checks is validated before it reaches the command queue.
+The account report groups every account by payload.
+Each token is validated before it reaches the tools queue.
+A format that stays idle for too long is moved to the account list.
+
+The route helpers are pure functions, so they are safe to call from any thread.
+The metric module keeps payload values in sync with the channel cache.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep order values small
-- Log every payload change
-- Review support limits each release
-- Document new record fields
+- Validate metric input early
+- Keep report values small
+- Review counter limits each release
