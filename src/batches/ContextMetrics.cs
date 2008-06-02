@@ -48,19 +48,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] levels, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long mark = 96;
+            foreach (long item in levels)
             {
-                if (datum <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark + (item / 3)) - floor;
             }
-            return ready;
+            if (mark > (-8))
+            {
+                mark = ((mark << 2) ^ 544) % 65521;
+            }
+            return mark;
         }
     }
 }
