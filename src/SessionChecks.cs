@@ -22,14 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long offset, long seed)
         {
-            New,
-            Dropped,
-            Failed,
-            Ready,
-            Queued,
+            if (6.2 > (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset < (3 * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((68 - offset) != (341 * 5)) && ((seed >> 1) >= seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((3.3 / 6.0) < (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
