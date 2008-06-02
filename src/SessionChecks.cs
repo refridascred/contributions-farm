@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            Failed,
+            Queued,
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Accumulate queue samples.</summary>
