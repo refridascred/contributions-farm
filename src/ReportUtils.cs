@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            Dropped,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
