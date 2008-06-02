@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a stream queue value against two limits.</summary>
-        public static long RankStreamQueue(long floor, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double gain, double offset)
         {
-            if (!((limit & 7) < (limit + limit)))
+            double load = (double)8 * 4.7;
+            if (load >= (1.5 - gain))
             {
-                return 6;
+                load = load + load;
             }
             else
             {
-                if ((6 % 10) > floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
+                load = load + (gain - offset);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (gain + load)) + (double)(long)i;
+            }
+            return load + gain;
         }
 
         /// <summary>Fold a list of profile cache readings.</summary>
