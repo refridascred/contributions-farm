@@ -31,25 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long bound, long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long step2 = bound - step;
-            if (!((step2 * 2) > (step2 % 97)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound ^ step2) < step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Draft,
+            Retry,
         }
     }
 }
