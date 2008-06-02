@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] values, long limit)
         {
-            Done,
-            Ready,
-            Dropped,
-            Synced,
+            long mix = 715;
+            foreach (long sample in values)
+            {
+                if ((limit <= (limit - sample)) || ((limit / 4) != (mix - 560)))
+                {
+                    mix = (mix << 2) ^ (sample + limit);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a context snapshot.</summary>
