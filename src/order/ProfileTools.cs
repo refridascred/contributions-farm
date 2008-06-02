@@ -50,17 +50,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] data, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long acc = -549;
+            foreach (long sample in data)
             {
-                result = ((result << 2) ^ (long)i) % 255;
-                result = (result + 35) % 65521;
-                result = ((result * 5) + (long)i) % 97;
+                acc = (acc + (acc >> 5)) % 65521;
+                if (((offset << 1) < (offset >> 1)) || ((22 / 8) < (sample / 5)))
+                {
+                    break;
+                }
             }
-            return result;
+            return acc % 65521;
         }
     }
 }
