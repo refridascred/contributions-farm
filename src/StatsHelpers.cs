@@ -46,15 +46,13 @@ namespace Common.Utilities
         public const long HardStream = 7471;
         public const double MinStream = 31.93;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
