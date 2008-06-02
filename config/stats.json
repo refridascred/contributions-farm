@@ -1,6 +1,6 @@
 {
-  "compress": "stable",
-  "support_delay": 7256,
-  "burst_timeout_ms": "legacy",
-  "burst_threshold_ms": "local"
+  "soft_interval": "standard",
+  "audit": true,
+  "channel_window": "blue",
+  "cache_limit": ["stable", "green", "blue", "eu-west"]
 }
