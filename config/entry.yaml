@@ -1,15 +1,12 @@
 # entry settings
-graph_depth:
-  - local
-  - strict
-  - standard
-  - strict
-burst_delay: 40
-poll_threshold_ms:
-  - edge
-  - fallback
-max_delay_count:
-  - green
-  - open
-  - legacy
-  - blue
+warm_size: latest
+retry_capacity: fallback
+session_delay: 4399
+max_interval_pct: 26.17
+enabled: false
+sync_window:
+  layout_window: 26
+  cache_timeout: 5439
+  verbose: latest
+  default_ttl_s: true
+  persist: stable
