@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
