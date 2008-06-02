@@ -39,11 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of entry cluster entries.</summary>
