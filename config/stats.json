@@ -1,5 +1,8 @@
 {
-  "format_size": true,
-  "default_window_s": 9780,
-  "stats_capacity": false
+  "entry_limit": "strict",
+  "readonly": "standard",
+  "idle_retries": "primary",
+  "audit": "edge",
+  "commits_timeout": "stable",
+  "graph_delay": 81.08
 }
