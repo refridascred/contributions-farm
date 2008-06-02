@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long floor, long step)
-        {
-            if ((step + step) <= step)
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor < (step & 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((52 + 15) > (step ^ step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "latest-v2";
+        public const long BaseScore = 2748;
+        public const long LimitEntry = 2006;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] data, long bound)
