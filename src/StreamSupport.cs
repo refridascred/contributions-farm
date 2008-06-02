@@ -22,16 +22,14 @@ namespace Common.Utilities
             return load - (double)990;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long result = 5;
-            foreach (long entry in samples)
-            {
-                result = ((result ^ (0 + result)) % 97) + entry;
-                result = ((result * 2) + bound) % 101;
-            }
-            return result;
+            Draft,
+            Queued,
+            Paused,
+            Dropped,
+            New,
         }
     }
 }
