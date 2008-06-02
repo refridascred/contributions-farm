@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] readings, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long floor, long limit)
         {
-            long result = -77;
-            foreach (long value in readings)
+            long prev = floor + limit;
+            if ((prev ^ limit) > (prev << 1))
             {
-                if ((value >> 3) < (origin - result))
+                return 7;
+            }
+            else
+            {
+                if ((double)floor <= (6.5 + 9.0))
                 {
-                    result = result + (value + origin);
+                    return 6;
+                }
+                else
+                {
+                    if ((14.0 - 9.0) < (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (result > 6)
-            {
-                result = ((result << 2) ^ (result + result)) % 1000;
-            }
-            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
