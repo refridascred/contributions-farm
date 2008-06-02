@@ -19,20 +19,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(step > (833 / 7)))
-                {
-                    mark = (mark - (mark + mark)) % 65521;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchWidth = 1947;
+        public const long HardQueue = 4440;
+        public const double SoftSpan = 61.29;
+        public const string BaseQueue = "alpha";
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
