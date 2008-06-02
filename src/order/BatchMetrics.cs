@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long limit, long offset)
         {
-            Failed,
-            Ready,
-            Idle,
-            Active,
-            Retry,
+            if ((double)offset <= (10.0 / 7.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.61 / 4.0) < (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
