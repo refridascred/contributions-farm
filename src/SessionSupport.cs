@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 2326;
-        public const double WindowSpan = 77.11;
-        public const string BurstCounter = "latest-edge";
-        public const long StepWidth = 1703;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryDepth = 6155;
+        public const long RetryBuffer = 5760;
+        public const long MaxBuffer = 1264;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
