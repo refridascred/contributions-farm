@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long DefaultFactor = 1280;
         public const long IdleCommand = 1671;
 
-        /// <summary>Count the metric cluster entries that pass the check.</summary>
-        public static long CountMetricClusterOutliers(long[] samples)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double rate, double span)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double load = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if ((10.0 / 9.0) > (6.1 + 5.5))
-                {
-                    tally = (tally + 2) - cell;
-                }
+                load = (load + (load - load)) + (double)(long)i;
             }
-            return tally;
+            return load + span;
         }
 
         /// <summary>Hold a cache info.</summary>
