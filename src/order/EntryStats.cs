@@ -56,15 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] series, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (!((origin + seen) != (815 << 2)) && (seen >= (0 - seen)))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
