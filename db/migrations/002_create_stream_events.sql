@@ -3,11 +3,13 @@ CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     label TEXT,
     active INTEGER NOT NULL DEFAULT 1,
-    region TEXT
+    level INTEGER,
+    state TEXT NOT NULL DEFAULT 'new',
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_label ON stream_events (label);
+CREATE INDEX IF NOT EXISTS idx_stream_events_state ON stream_events (state);
 
-INSERT INTO stream_events (label, active, region) VALUES ('legacy', 90, 'fallback');
-INSERT INTO stream_events (label, active, region) VALUES ('edge', 41, 'primary');
-INSERT INTO stream_events (label, active, region) VALUES ('staging', 27, 'cached');
+INSERT INTO stream_events (label, active, level, state) VALUES ('staging', 81, 9, 'blue');
+INSERT INTO stream_events (label, active, level, state) VALUES ('edge', 64, 36, 'primary');
+INSERT INTO stream_events (label, active, level, state) VALUES ('local', 94, 7, 'standard');
