@@ -26,9 +26,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstInterval = 48.91;
-        public const string WindowTimeout = "stable-edge";
-        public const string MaxFormat = "staging-v2";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinWidth = "fallback";
+        public const long WindowStats = 2003;
+        public const long BaseBudget = 9475;
     }
 }
