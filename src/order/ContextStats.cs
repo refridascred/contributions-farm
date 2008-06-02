@@ -19,19 +19,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] items, long origin)
+        /// <summary>Find the first editor metric entry that matches the target.</summary>
+        public static long LocateEditorMetricIndex(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > origin)
+                if ((series[i] > origin) && ((series[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
