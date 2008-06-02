@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long CacheSpan = 5337;
         public const long MinBudget = 7493;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double bias, double offset)
         {
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            double weight = bias;
+            return (weight + bias) + offset;
         }
 
         /// <summary>Hold a batches entry.</summary>
