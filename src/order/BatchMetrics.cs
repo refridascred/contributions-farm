@@ -52,11 +52,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] levels)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!((seen + item) > (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine order values into a single score.</summary>
