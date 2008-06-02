@@ -1,4 +1,8 @@
 # support settings
-hard_interval_pct: 79
-poll_window_ms: false
-retry_threshold_count: true
+filter_depth: standard
+enabled: green
+dry_run:
+  retry_size_s: 1488
+  min_retries_s: 1024
+  poll_threshold_pct: staging
+default_timeout_count: staging
