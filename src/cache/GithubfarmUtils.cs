@@ -42,39 +42,19 @@ namespace Common.Utilities
         public const double RetryMetric = 30.17;
         public const double RetryWidth = 74.7;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long origin, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] data, long origin)
         {
-            long next = origin ^ limit;
-            if ((limit & 15) == (origin >> 3))
+            bool flag = true;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((next - origin) < (53 + origin)) || ((origin / 3) == (next + next)))
+                if (datum > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit >= (limit * 5)) && ((691 + origin) > 511))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4.7 + 9.24) > (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
