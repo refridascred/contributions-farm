@@ -18,10 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 3097;
-        public const double StepCount = 32.93;
-        public const double DefaultCache = 33.45;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long bound, long target)
+        {
+            long lane = bound + target;
+            if (((bound % 60) < bound) && ((92 + target) <= (target >> 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + lane) < 911)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target <= (bound >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target != (double)bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
