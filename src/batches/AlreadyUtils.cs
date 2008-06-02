@@ -20,25 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long step)
+        /// <summary>Count entry format pairs that satisfy a relation.</summary>
+        public static long MatchEntryFormatCount(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)step != (double)(long)i)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state << 3) ^ (50 >> 4);
-                    break;
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    state = ((state * 3) + (state + step)) % 65521;
-                    state = state ^ step;
-                }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a metrics entry.</summary>
