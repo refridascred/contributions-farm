@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
+        public static long CompareMetricsEntryCount(long[] series)
         {
-            long state = 924;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state + (item % 60)) % 255;
-                if ((state * 5) < (item << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 707)
-            {
-                state = (state - (state * 2)) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
