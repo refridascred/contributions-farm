@@ -23,11 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxSize = 72.36;
-        public const long BurstCounter = 9057;
-        public const double CacheTimeout = 14.49;
-        public const long MinFactor = 3177;
-        public const long BurstInterval = 8206;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public bool Label { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
