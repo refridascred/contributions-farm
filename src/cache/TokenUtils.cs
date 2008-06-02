@@ -21,19 +21,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double weight, double bias)
-        {
-            double drift = 0.2;
-            if (drift >= bias)
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (weight - weight)) + (double)(long)i;
-            }
-            return drift + (weight / 6.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 42.08;
+        public const string BatchCommits = "standard-v2";
+        public const long SoftInterval = 1634;
+        public const string BatchCount = "strict-1";
     }
 }
