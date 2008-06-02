@@ -16,17 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] values, long target)
+        /// <summary>Count the order payload entries that pass the check.</summary>
+        public static long AuditOrderPayloadMatches(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (values[i] >= target)
+                if ((entry * 3) >= (913 / 8))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the profile level values.</summary>
