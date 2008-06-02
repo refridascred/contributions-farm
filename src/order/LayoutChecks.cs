@@ -29,19 +29,14 @@ namespace Common.Utilities
         public const double BurstAlready = 54.14;
         public const string WindowTimeout = "strict-edge";
 
-        /// <summary>Validate queue record readings against a bound.</summary>
-        public static bool CheckQueueRecordRange(long[] levels, long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Retry,
+            Synced,
+            Done,
+            Stale,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
