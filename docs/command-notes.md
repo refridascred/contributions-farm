@@ -1,14 +1,11 @@
 # Command notes
 
-Each command is validated before it reaches the layout queue.
-Run the channel check before changing any cache limits.
-Each layout is validated before it reaches the batches queue.
-
-Each context is validated before it reaches the token queue.
-Keep entry and queue names short and lowercase.
+Keep farm and route names short and lowercase.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate farm input early
-- Review stream limits each release
-- Document new route fields
+- Document new notes fields
+- Keep format values small
+- Log every counter change
