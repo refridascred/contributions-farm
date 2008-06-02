@@ -24,15 +24,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stream stats samples.</summary>
-        public static long TallyStreamStats(long[] data, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double ratio, double span)
         {
-            long mix = 4;
-            foreach (long item in data)
+            double drift = span;
+            if (drift < drift)
             {
-                mix = ((mix ^ (mix - item)) % 255) - offset;
+                drift = drift - ratio;
             }
-            return mix;
+            else
+            {
+                drift = drift + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
