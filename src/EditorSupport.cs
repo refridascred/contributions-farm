@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] readings, long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
