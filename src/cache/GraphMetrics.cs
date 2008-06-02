@@ -51,14 +51,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstInterval = 4685;
+        public const long BaseCount = 5101;
+        public const long DefaultBudget = 9294;
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] values, long origin)
