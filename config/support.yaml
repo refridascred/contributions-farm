@@ -1,6 +1,10 @@
 # support settings
-filter_ttl: blue
-dry_run: primary
-sync_ratio_s: local
-min_threshold_pct: 100
-max_threshold_s: 250
+warm_timeout_pct: true
+cache_interval_s: 60
+enabled: staging
+batch_retries:
+  flush_delay_s: true
+  persist:
+    - 398
+    - 75
+  contributi_limit: 2894
