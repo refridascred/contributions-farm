@@ -88,38 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long seed, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] readings)
         {
-            if (5.0 >= (double)seed)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.0 + 15.0) < (double)limit)
+                if ((tally << 3) <= (value >> 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(seed <= limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed + 71) == (seed % 100))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
