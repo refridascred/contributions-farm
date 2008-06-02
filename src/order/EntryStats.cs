@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many channel already samples are out of range.</summary>
-        public static long TallyChannelAlreadyGaps(long[] series, long step)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry <= (20.0 + 7.46))
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
