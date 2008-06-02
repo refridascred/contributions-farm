@@ -32,13 +32,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Fold a list of batches schema readings.</summary>
+        public static long TotalBatchesSchema(long[] values, long limit)
         {
-            Stale,
-            Synced,
-            New,
-            Failed,
+            long result = -287;
+            foreach (long value in values)
+            {
+                if ((double)limit >= (9.16 - 10.0))
+                {
+                    result = result ^ (limit + result);
+                }
+                if (!((result - value) <= (52 % 100)))
+                {
+                    result = (result * 3) + (137 >> 2);
+                    result = (result + (value ^ 2)) % 4096;
+                }
+                result = result - (294 << 2);
+            }
+            if (result < 3)
+            {
+                result = (result + result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of context entries.</summary>
