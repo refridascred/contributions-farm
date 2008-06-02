@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] readings, long floor)
         {
-            long sum = 701;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (417 >= (entry ^ 402))
+                if ((double)cell != (9.32 / 4.0))
                 {
-                    sum = sum ^ (entry + sum);
+                    hits = (hits + 2) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (sum > 80)
-            {
-                sum = ((sum * 5) + sum) % 97;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
