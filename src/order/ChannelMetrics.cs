@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] readings)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((1.0 - 6.3) < (double)hits)
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Active,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the command kind values.</summary>
