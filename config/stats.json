@@ -1,5 +1,20 @@
 {
-  "default_timeout": "staging",
-  "enabled": 16.74,
-  "batch_size": 78
+  "window_size": 100,
+  "profile_limit": 250,
+  "buffer_ttl": "latest",
+  "soft_ratio_s": {
+    "hard_ratio_s": {
+      "base_capacity_ms": 49.94,
+      "commits_depth": 8581,
+      "format_threshold": 25,
+      "sync_ratio_pct": 100
+    },
+    "support_depth": {
+      "flush_window_ms": ["fallback", "strict"],
+      "readonly": [458, 433],
+      "audit": "legacy",
+      "burst_limit_count": "open"
+    },
+    "verbose": [170, 442, 51]
+  }
 }
