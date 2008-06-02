@@ -1,10 +1,8 @@
 # entry settings
-sync_threshold_s: primary
-sync_ratio_ms:
-  compress:
-    - 412
-    - 102
-    - 75
-  verbose: edge
-  flush_ttl_ms: 88.76
-batch_window: false
+readonly: 41.89
+min_delay_s: fallback
+sync_retries_ms: 6151
+batch_ratio_pct:
+  - cached
+  - local
+idle_delay_count: 26.45
