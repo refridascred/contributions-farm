@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Combine already schema values into a single score.</summary>
+        public static long DigestAlreadySchema(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long state = -811;
+            foreach (long value in readings)
             {
-                if ((6 >= (score - score)) || ((score % 7) != (limit % 8)))
-                {
-                    score = ((score * 2) + (limit * 2)) % 1000;
-                }
-                else
-                {
-                    score = (score - (limit - (long)i)) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                state = ((state << 3) ^ (state % 100)) + value;
             }
-            return score;
+            if (state > 40)
+            {
+                state = ((state << 2) ^ (state << 3)) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Scale a record command figure with a bias.</summary>
