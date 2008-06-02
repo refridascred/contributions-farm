@@ -1,9 +1,27 @@
 # support settings
-burst_ttl:
-  cluster_interval: 47
-  burst_window: blue
-  compress: 250
-  format_ratio: 30
-base_size: true
-contributi_size: 48.45
-support_threshold: fallback
+sync_window: eu-west
+burst_size_pct: false
+account_ttl:
+  payload_size:
+    idle_limit_count: strict
+    dry_run: 7034
+    burst_threshold: edge
+    route_window: open
+    base_capacity_pct: 46.85
+    queue_timeout: 37.35
+  dry_run: latest
+  enabled:
+    batch_timeout: cached
+    enabled: cached
+    checks_capacity:
+      - 116
+      - 338
+      - 477
+      - 458
+    retry_ttl_s: 28.52
+    poll_size_pct: 80
+    default_window: 51
+batch_delay_ms:
+  - cached
+  - latest
+  - strict
