@@ -22,13 +22,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Closed,
+            Queued,
+            Idle,
+            Paused,
             Stale,
-            Ready,
-            Failed,
+            New,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
