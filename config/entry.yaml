@@ -1,11 +1,8 @@
 # entry settings
-tools_capacity:
-  - staging
-  - local
-  - latest
-  - stable
-payload_size:
+poll_capacity:
+  - standard
   - fallback
-  - legacy
-base_delay_pct: primary
-cache_window: true
+  - eu-west
+hard_ttl: 60
+compress: 39
+audit: 9666
