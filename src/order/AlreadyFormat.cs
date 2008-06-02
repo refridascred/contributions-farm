@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] readings, long limit)
         {
-            long mix = 2;
-            foreach (long value in data)
+            long carry = 2;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = (mix + value) + (long)i;
-                }
-                if (((15.0 / 9.0) < (double)mix) || (57 > (value + value)))
-                {
-                    mix = (mix << 2) ^ value;
-                }
-                else
-                {
-                    mix = ((mix * 3) + mix) % 1000;
-                }
+                carry = (carry ^ entry) % 65521;
             }
-            if (mix < 72)
+            if (carry > 186)
             {
-                mix = (mix - (mix * 4)) % 4096;
+                carry = carry - (carry - limit);
             }
-            return mix % 65521;
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
