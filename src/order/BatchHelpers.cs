@@ -33,19 +33,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double scale, double offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] data, long origin)
         {
-            double load = scale;
-            if (load >= (5.0 / 8.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - offset;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (load * 1.0)) + (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
     }
 }
