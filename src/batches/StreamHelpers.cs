@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] items, long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((bound + bound) != (2 - bound))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            Active,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a counter summary.</summary>
