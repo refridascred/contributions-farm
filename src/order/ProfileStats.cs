@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchEntry = "stable-1";
-        public const double MinBudget = 9.98;
-        public const long BurstBudget = 6331;
-        public const string LimitTimeout = "legacy-edge";
-        public const double CacheBudget = 93.42;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((limit + hits) < hits)
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowMatches(long[] levels)
