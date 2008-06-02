@@ -57,21 +57,34 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -39;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum - datum) > (anchor >> 4))
                 {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
+                }
+                else
+                {
+                    anchor = anchor + anchor;
+                }
+                if (anchor < (datum * 3))
+                {
+                    anchor = (anchor << 3) ^ (datum / 4);
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor - datum)) % 255;
                 }
             }
-            return hits;
+            if (anchor < 921)
+            {
+                anchor = anchor ^ ((long)samples.Length + anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
