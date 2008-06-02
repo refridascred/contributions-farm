@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstBudget = 5385;
-        public const long IdleCount = 8468;
-        public const long RetryBudget = 5465;
-        public const double BatchSchema = 81.48;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] data)
+        {
+            long carry = 7;
+            foreach (long reading in data)
+            {
+                if (((carry / 2) == (53 / 5)) || (carry < (carry & 63)))
+                {
+                    carry = ((carry * 3) + carry) + reading;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (-69);
+                }
+            }
+            if (carry > 74)
+            {
+                carry = carry - ((-4) % 12);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Count the buffer context entries that pass the check.</summary>
         public static long TallyBufferContextHits(long[] data)
