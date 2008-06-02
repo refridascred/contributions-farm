@@ -80,15 +80,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public double Size { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
