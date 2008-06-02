@@ -42,21 +42,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (samples[i] >= step)
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
