@@ -1,5 +1,6 @@
 {
-  "base_threshold_s": ["green", "stable"],
-  "audit": false,
-  "poll_ratio_pct": 1024
+  "warm_capacity": 60,
+  "persist": 93.68,
+  "verbose": 1024,
+  "audit": "edge"
 }
