@@ -42,18 +42,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many checks editor samples are out of range.</summary>
-        public static long AuditChecksEditorHits(long[] levels)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!(datum < (datum + datum)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
