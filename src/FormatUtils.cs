@@ -40,12 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public string Mode { get; set; } = "";
+            public long Score { get; set; }
             public bool Flag { get; set; }
-            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of entry cluster entries.</summary>
