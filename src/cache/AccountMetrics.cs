@@ -41,11 +41,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinSpan = 65.93;
-        public const long RetryInterval = 9793;
-        public const long StepSpan = 6496;
-        public const double BatchQueue = 87.67;
+        /// <summary>Count the metrics counter entries that pass the check.</summary>
+        public static long TallyMetricsCounterMatches(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (3.0 - 6.1))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a queue command reading.</summary>
         public static double SmoothQueueCommand(double rate, double offset)
