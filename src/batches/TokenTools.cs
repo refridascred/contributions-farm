@@ -30,19 +30,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] series, long limit)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long seed, long target)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            if ((double)seed <= (0.1 - 6.0))
             {
-                if (reading <= limit)
+                return 7;
+            }
+            else
+            {
+                if ((seed * 4) == (seed + 6))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the tools phase values.</summary>
