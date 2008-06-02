@@ -24,20 +24,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftDepth = 96.27;
+        public const long HardMetrics = 8042;
+        public const long SoftWidth = 5705;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long CombineEditor(long[] series, long seed)
