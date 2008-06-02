@@ -1,31 +1,14 @@
 # support settings
-retry_delay_s:
-  base_ratio_ms: 6
-  strict:
-    default_threshold_ms: 5042
-    enabled: latest
-    graph_capacity: 3488
-    hard_threshold: staging
-    stats_threshold: 30
-  metrics_ratio: 7.25
-  payload_retries:
-    strict:
-      - stable
-      - blue
-    notes_timeout: stable
-    hard_limit_ms: 250
-    soft_limit_s: fallback
-    metric_threshold: standard
-    filter_limit: edge
-  idle_window: 47.7
-  audit:
-    warm_timeout_count: latest
-    soft_capacity_ms: 60
-    strict: fallback
-idle_timeout_s: 50.6
-verbose:
-  strict: edge
-  audit: standard
-  record_ttl: 7070
-  compress: 250
-cache_window_s: 29
+support_interval: stable
+flush_depth: eu-west
+counter_window:
+  poll_retries_ms:
+    - edge
+    - blue
+    - primary
+    - primary
+  batch_retries_count: 6344
+  batches_threshold: eu-west
+warm_retries_pct: open
+retry_capacity: 7.94
+support_retries: 37
