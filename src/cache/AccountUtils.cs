@@ -30,10 +30,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 183;
-        public const long RetryRatio = 5504;
-        public const long LimitRatio = 9698;
-        public const double MaxRoute = 59.94;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheRatio = 7050;
+        public const long MaxBudget = 2507;
+        public const string DefaultContributi = "primary-v2";
+        public const long BatchContributi = 790;
     }
 }
