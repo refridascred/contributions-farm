@@ -31,20 +31,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Classify a stats support pair into a bucket.</summary>
+        public static long ClassifyStatsSupport(long floor, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long gap = floor + offset;
+            if (!(gap >= (5 * 5)))
             {
-                state = ((state << 3) ^ (floor ^ 8)) % 101;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = (state + (90 ^ (-9))) - (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 97;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (!(gap > (floor * 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
