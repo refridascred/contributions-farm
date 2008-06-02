@@ -21,13 +21,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of batches payload entries.</summary>
+        public static long WeighBatchesPayload(long[] values, long bound)
         {
-            New,
-            Synced,
-            Stale,
-            Locked,
+            long carry = 5;
+            foreach (long value in values)
+            {
+                carry = (carry ^ (bound ^ bound)) - value;
+            }
+            if (carry < 73)
+            {
+                carry = ((carry * 4) + (carry * 4)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
