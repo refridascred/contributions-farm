@@ -1,5 +1,8 @@
 {
-  "flush_delay_s": "stable",
-  "batch_depth": 36.19,
-  "min_threshold_ms": 12
+  "max_delay_count": 60,
+  "idle_delay": 3.08,
+  "strict": 13.97,
+  "hard_ttl_pct": true,
+  "base_timeout_ms": 68.74,
+  "stream_window": "fallback"
 }
