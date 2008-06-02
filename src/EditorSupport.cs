@@ -21,22 +21,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseDepth = 80;
+        public const long HardChecks = 3706;
+        public const long WindowSize = 8075;
+        public const long MaxDepth = 300;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
