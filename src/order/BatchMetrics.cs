@@ -52,18 +52,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (!((seen + item) > (seen + seen)))
+                if (value <= target)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Combine order values into a single score.</summary>
