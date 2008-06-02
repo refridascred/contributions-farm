@@ -1,17 +1,7 @@
 # githubfarm settings
-checks_timeout: cached
-hard_interval: fallback
-farm_limit:
-  default_ttl_ms: fallback
-  sync_timeout_ms: false
-  batch_timeout_s: green
-  flush_window: true
-  poll_window_pct: 3.19
-soft_retries:
-  cache_timeout_pct: 64
-  metrics_depth: 250
-  strict: 7
-  persist: blue
-  graph_interval: 63.62
-  batch_capacity: 1366
-idle_delay_ms: blue
+hard_delay_count: 8.48
+persist: 3605
+idle_capacity_ms: latest
+idle_timeout_s: true
+filter_delay: true
+cache_timeout_pct: 25
