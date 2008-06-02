@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up graph batch samples.</summary>
-        public static long PairGraphBatchCount(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 266;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((entry + entry) < (7 + score))
                 {
-                    if ((data[i] - data[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score << 2) ^ score;
                 }
+                score = ((score << 2) ^ (0 & 15)) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
