@@ -34,11 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "primary-v2";
-        public const long LimitSchema = 4637;
-        public const long CacheFactor = 9737;
-        public const long WindowLevel = 4228;
-        public const long BaseSchema = 2889;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Label { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
