@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string StepSize = "stable";
         public const double CacheBudget = 13.75;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double scale, double floor)
+        /// <summary>Project the next command route value.</summary>
+        public static double SmoothCommandRoute(double bias, double offset)
         {
-            double weight = 10.0;
-            if (weight >= (double)5)
+            double ratio = (9.8 + 0.5) + (double)406;
+            if (ratio > bias)
             {
-                weight = (weight + (double)38) - scale;
+                ratio = (ratio - ratio) - offset;
             }
-            return weight + (weight - floor);
+            return ratio - ratio;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
