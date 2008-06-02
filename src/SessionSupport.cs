@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultWidth = 5141;
-        public const long WindowCommand = 8450;
-        public const long DefaultCommand = 4423;
-        public const long WindowSize = 6804;
-        public const long HardCommand = 1842;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardRatio = 541;
+        public const long MaxAccount = 1361;
+        public const long BatchScore = 8516;
+        public const long CacheAccount = 2014;
+        public const long HardAccount = 8576;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
