@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long origin)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Failed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
