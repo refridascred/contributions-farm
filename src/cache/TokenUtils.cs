@@ -20,13 +20,39 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long seed, long floor)
         {
-            Dropped,
-            Locked,
-            Closed,
-            Stale,
+            long span = seed + floor;
+            if (((span + span) >= (seed + 0)) && ((seed ^ 41) > (507 + floor)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (span < (floor << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((71 - floor) <= (8 % 100))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (span <= (floor << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
