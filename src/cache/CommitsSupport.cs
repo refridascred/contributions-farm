@@ -69,12 +69,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Fold a list of channel editor readings.</summary>
+        public static long ScoreChannelEditor(long[] samples, long step)
         {
-            Stale,
-            Dropped,
-            Closed,
+            long state = -2;
+            foreach (long reading in samples)
+            {
+                if (!((reading - reading) >= state))
+                {
+                    state = (state ^ (reading + step)) % 255;
+                }
+                if (reading <= (reading & 31))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
     }
 }
