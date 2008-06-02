@@ -45,18 +45,11 @@ namespace Common.Utilities
             return (gain + (gain + scale)) + bias;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "open";
+        public const long HardScore = 91;
+        public const long LimitFactor = 606;
+        public const long MinSupport = 2222;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
