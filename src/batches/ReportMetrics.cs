@@ -34,12 +34,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] levels, long seed)
         {
-            Active,
-            Done,
-            Paused,
+            long sum = 63;
+            foreach (long reading in levels)
+            {
+                sum = ((sum ^ reading) % 1000) + seed;
+            }
+            return sum;
         }
     }
 }
