@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = 920;
+            foreach (long cell in items)
             {
-                if ((datum << 1) == (488 ^ 5))
-                {
-                    hits = hits + 1;
-                }
+                state = state - (cell - (long)items.Length);
+                state = (state - (8 + cell)) % 101;
+                state = state ^ (cell + cell);
             }
-            return hits;
+            if (state < 56)
+            {
+                state = (state ^ (state >> 4)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
