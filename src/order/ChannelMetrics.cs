@@ -33,13 +33,12 @@ namespace Common.Utilities
         public const long CacheCluster = 8380;
         public const double StepBudget = 68.03;
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            New,
-            Failed,
-            Done,
-            Retry,
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
