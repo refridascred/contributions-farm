@@ -1,11 +1,17 @@
 {
-  "batch_capacity": [275, 330, 248, 344],
-  "farm_capacity": 61.08,
-  "tools_ttl": false,
-  "warm_threshold": {
-    "strict": "cached",
-    "filter_ttl": "local",
-    "persist": "eu-west",
-    "base_threshold_pct": 5094
+  "burst_limit_s": "blue",
+  "format_limit": true,
+  "graph_interval": 77,
+  "schema_threshold": 2458,
+  "min_ratio": {
+    "min_window": 60,
+    "persist": "green",
+    "hard_depth": "legacy",
+    "soft_size": {
+      "retry_threshold_pct": 52,
+      "contributi_delay": "blue",
+      "hard_ratio_pct": "edge",
+      "flush_timeout_pct": false
+    }
   }
 }
