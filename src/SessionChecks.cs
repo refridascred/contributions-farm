@@ -38,14 +38,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long bound)
         {
-            Pending,
-            New,
-            Locked,
-            Ready,
-            Stale,
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
