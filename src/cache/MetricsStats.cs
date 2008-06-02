@@ -39,10 +39,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultFactor = "staging-1";
-        public const long MaxSize = 2790;
-        public const string SoftFactor = "open-edge";
-        public const long RetryDepth = 5859;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
