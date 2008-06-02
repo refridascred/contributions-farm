@@ -19,10 +19,19 @@ namespace Common.Utilities
             return (rate2 - offset) + rate;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryInterval = 9376;
-        public const long IdleInterval = 5660;
-        public const long DefaultFactor = 1940;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches <= (floor % 5)) && ((0.84 + 1.1) <= (double)entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
