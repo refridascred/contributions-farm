@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of record farm entries.</summary>
-        public static long TotalRecordFarm(long[] items, long floor)
+        /// <summary>Look up the position of a entry support sample.</summary>
+        public static long LocateEntrySupportIndex(long[] levels, long target)
         {
-            long mix = 2;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix + floor) <= (floor + entry))
+                if (levels[i] < target)
                 {
-                    mix = (mix - (mix / 8)) % 101;
-                }
-                mix = (mix * 3) + (floor ^ mix);
-                if ((entry < (mix * 4)) || ((double)entry <= 9.5))
-                {
-                    mix = mix - floor;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (entry - entry)) % 97;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
