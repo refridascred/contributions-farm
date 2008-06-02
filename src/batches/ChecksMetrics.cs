@@ -14,24 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long origin)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if ((double)target <= (double)8)
-            {
-                return 2;
-            }
-            else
-            {
-                if (624 > (target + 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
