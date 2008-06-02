@@ -22,19 +22,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of batches payload entries.</summary>
-        public static long WeighBatchesPayload(long[] values, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long seed, long origin)
         {
-            long carry = 5;
-            foreach (long value in values)
+            if ((15.0 - 6.3) == (double)origin)
             {
-                carry = (carry ^ (bound ^ bound)) - value;
+                return 7;
             }
-            if (carry < 73)
+            else
             {
-                carry = ((carry * 4) + (carry * 4)) % 97;
+                if ((origin <= (seed & 15)) && (origin < seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return carry % 1000;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
