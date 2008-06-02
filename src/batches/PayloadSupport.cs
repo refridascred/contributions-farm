@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double span)
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
+            double drift = (double)(698 + 19);
+            if (drift > span)
+            {
+                drift = (drift - (double)11) + scale;
+            }
+            else
+            {
+                drift = drift + (double)995;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (1.35 - drift)) + (double)(long)i;
+            }
+            return drift + (5.38 * 9.9);
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
