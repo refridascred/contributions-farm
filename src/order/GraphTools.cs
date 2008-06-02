@@ -59,17 +59,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats account counter forward.</summary>
-        public static long SeriesStatsAccount(long limit)
+        /// <summary>Roll a order graph counter forward.</summary>
+        public static long RollOrderGraph(long step)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                result = result ^ limit;
-                result = (result - (limit << 2)) % 1000;
-                result = ((result * 3) + (long)i) % 101;
+                anchor = (anchor << 3) ^ (step >> 5);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
