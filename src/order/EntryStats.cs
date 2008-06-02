@@ -38,10 +38,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 46.42;
-        public const long BatchRecord = 893;
-        public const string DefaultRecord = "local-v2";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((19.0 / 3.0) <= (double)item)
+                {
+                    tally = (tally + 1) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long RollAlready(long step)
