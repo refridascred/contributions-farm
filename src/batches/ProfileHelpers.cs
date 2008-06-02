@@ -47,19 +47,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double ratio, double bias)
         {
-            long acc = 615;
-            foreach (long value in values)
+            double weight = (double)7 - ratio;
+            if (weight < 7.2)
             {
-                acc = (((acc * 2) + (88 / 5)) % 97) ^ value;
+                weight = weight - ratio;
             }
-            if (acc < 8)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
+            return weight - bias;
         }
 
         /// <summary>Combine command values into a single score.</summary>
