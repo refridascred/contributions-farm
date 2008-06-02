@@ -1,7 +1,7 @@
-id,score,count,level,weight
-1,14.51,751,261,109
-2,52.4,914,primary,open
-3,fallback,1.62,69.12,34.26
-4,stable,97.67,cached,49.4
-5,823,standard,edge,302
-6,235,784,61.53,994
+id,region,count,active,state
+1,cached,2.83,latest,blue
+2,strict,cached,88.25,open
+3,stable,154,strict,42
+4,22.81,18.44,859,328
+5,28.6,407,16.55,149
+6,7.68,eu-west,legacy,334
