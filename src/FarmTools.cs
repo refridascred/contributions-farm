@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] data)
         {
-            double bias2 = ratio;
-            if (bias2 <= bias)
+            long tally = 0;
+            foreach (long item in data)
             {
-                bias2 = bias2 - (bias2 * 7.0);
+                if ((double)item >= 0.57)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias + bias2);
-            }
-            return bias2 + 1.12;
+            return tally;
         }
 
         /// <summary>Validate notes tools readings against a bound.</summary>
