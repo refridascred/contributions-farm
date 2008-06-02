@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            Idle,
+            Active,
+            Done,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the schema phase values.</summary>
