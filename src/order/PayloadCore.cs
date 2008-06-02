@@ -47,21 +47,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)target >= (5.08 / 7.0))
                 {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
