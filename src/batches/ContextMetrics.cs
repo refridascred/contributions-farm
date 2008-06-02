@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values, long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long result = 49;
-            foreach (long sample in values)
-            {
-                if (((floor - floor) <= (floor & 127)) || ((91 - sample) <= (result ^ floor)))
-                {
-                    result = (result - (sample + floor)) % 97;
-                }
-            }
-            if (result < 0)
-            {
-                result = (result - result) % 101;
-            }
-            return result;
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the checks cache series from a seed.</summary>
