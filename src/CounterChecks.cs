@@ -16,19 +16,12 @@ namespace Common.Utilities
         public const long WindowPayload = 2609;
         public const long IdlePayload = 4324;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((limit * 3) == (score >> 3)) && (((long)i & 63) <= (score << 2)))
-                {
-                    score = (score << 3) ^ (limit & 127);
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of tools readings.</summary>
