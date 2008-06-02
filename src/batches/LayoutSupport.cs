@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings, long offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            long total = 227;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset + offset) < (entry & 15))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total << 3) ^ (total / 6)) % 97;
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Combine support stream values into a single score.</summary>
