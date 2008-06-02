@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] data)
         {
-            Dropped,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!((seen / 5) != (datum % 60)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of route schema entries.</summary>
