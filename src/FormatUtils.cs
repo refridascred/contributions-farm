@@ -34,13 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
-            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
