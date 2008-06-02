@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Active,
-            Ready,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 2326;
+        public const double WindowSpan = 77.11;
+        public const string BurstCounter = "latest-edge";
+        public const long StepWidth = 1703;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
