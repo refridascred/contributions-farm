@@ -50,10 +50,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 65.28;
-        public const string SoftWindow = "latest-1";
-        public const long DefaultWindow = 5563;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((6 + mark) != (mark + step)))
+                {
+                    mark = ((mark * 2) + (mark >> 3)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long SortEntry(long limit, long origin)
