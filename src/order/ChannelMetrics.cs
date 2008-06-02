@@ -30,27 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor format samples.</summary>
-        public static long DigestEditorFormat(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] samples, long floor)
         {
-            long mix = 183;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((mix & 127) <= value)
+                if ((80 / 4) < (reading - tally))
                 {
-                    continue;
+                    tally = (tally + 1) - floor;
                 }
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = (mix - (mix ^ mix)) - (long)i;
-                }
-                mix = (mix ^ 2) % 4096;
             }
-            if (mix < 189)
-            {
-                mix = ((mix << 2) ^ mix) % 101;
-            }
-            return mix % 1000;
+            return tally;
         }
     }
 }
