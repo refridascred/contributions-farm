@@ -29,17 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] samples, long step)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
