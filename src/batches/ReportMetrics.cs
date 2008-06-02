@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long RetryBudget = 5465;
         public const double BatchSchema = 81.48;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double scale, double floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double scale, double bias)
         {
-            double gain = floor;
-            if (gain <= floor)
-            {
-                gain = gain + (double)26;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (scale + gain)) + (double)(long)i;
-            }
-            return gain - (double)436;
+            double gain = (double)9 / 2.0;
+            return (gain - (gain + bias)) + scale;
         }
 
         /// <summary>Hold a command options.</summary>
