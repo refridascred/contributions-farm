@@ -86,13 +86,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Draft,
-            Pending,
-            Active,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepWidth = 3627;
+        public const long BatchAccount = 5358;
+        public const string BurstScore = "fallback-v2";
+        public const long RetryFactor = 80;
+        public const long RetryAccount = 1145;
     }
 }
