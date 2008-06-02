@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] values)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (!((tally * 4) >= (cell + cell)) && !((double)tally == (1.85 - 7.2)))
+                if (entry != step)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a cluster entry.</summary>
