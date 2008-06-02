@@ -23,13 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Measure how many counter notes samples are out of range.</summary>
+        public static long CountCounterNotesGaps(long[] series, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (value <= (matches % 16))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the editor phase values.</summary>
