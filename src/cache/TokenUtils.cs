@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] data, long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long bound, long offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long next = bound ^ offset;
+            if (offset >= (-586))
             {
-                if (cell <= seed)
+                return 7;
+            }
+            else
+            {
+                if ((next + offset) >= (offset * 3))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
