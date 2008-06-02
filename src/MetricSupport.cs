@@ -40,11 +40,17 @@ namespace Common.Utilities
         public const long BaseScore = 6539;
         public const long LimitDepth = 214;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseBudget = 291;
-        public const long WindowCounter = 4222;
-        public const string MinCounter = "latest-edge";
-        public const long HardCounter = 174;
-        public const long MinSize = 9562;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
