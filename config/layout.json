@@ -1,9 +1,6 @@
 {
-  "entry_depth": [216, 369, 440],
-  "soft_delay_count": 50,
-  "stats_timeout": {
-    "flush_ratio_pct": 12.01,
-    "retry_interval_pct": 64.75,
-    "flush_interval_pct": false
-  }
+  "token_delay": 6735,
+  "already_capacity": 66.41,
+  "soft_interval": 1024,
+  "audit": "latest"
 }
