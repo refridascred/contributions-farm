@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] series, long offset)
         {
-            Retry,
-            Draft,
-            New,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine checks githubfarm values into a single score.</summary>
