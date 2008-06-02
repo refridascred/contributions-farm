@@ -1,8 +1,5 @@
 {
-  "githubfarm_capacity": [345, 317, 472],
-  "max_window_count": 52.47,
-  "notes_depth": "legacy",
-  "retry_limit_count": "legacy",
-  "readonly": 59.15,
-  "strict": "blue"
+  "max_ratio": 27,
+  "min_threshold": true,
+  "idle_threshold_ms": true
 }
