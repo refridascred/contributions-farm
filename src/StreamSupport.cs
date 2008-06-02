@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long CacheSpan = 5337;
         public const long MinBudget = 7493;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double bias, double bias2)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            double load = (double)((-3) * 4);
-            if (load <= (7.0 + load))
-            {
-                load = ((load - (double)0) + bias) + bias2;
-            }
-            return load - (double)990;
+            Pending,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the window class values.</summary>
