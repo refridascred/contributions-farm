@@ -41,19 +41,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate context graph readings against a bound.</summary>
-        public static bool ValidateContextGraphBounds(long[] values, long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Pending,
+            Retry,
+            Draft,
         }
     }
 }
