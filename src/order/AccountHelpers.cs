@@ -13,18 +13,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] levels)
+        /// <summary>Roll a graph farm counter forward.</summary>
+        public static long RollGraphFarm(long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits - 680) <= reading)
+                if (!((carry ^ 8) > (carry / 3)))
                 {
-                    hits = hits + 3;
+                    carry = (carry * 3) + ((long)i >> 3);
+                    carry = ((carry * 4) + carry) % 101;
                 }
+                else
+                {
+                    carry = carry + (target - 60);
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the graph state values.</summary>
