@@ -45,19 +45,17 @@ namespace Common.Utilities
         public const long DefaultCache = 5619;
         public const double CacheSpan = 74.72;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double gain, double span)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] values, long limit)
         {
-            double rate = gain;
-            if (rate >= (double)7)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - gain) - span;
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - gain) + (double)(long)i;
-            }
-            return rate - gain;
+            return -1;
         }
     }
 }
