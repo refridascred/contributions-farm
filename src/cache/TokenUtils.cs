@@ -26,19 +26,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] series, long target)
+        /// <summary>Combine checks githubfarm values into a single score.</summary>
+        public static long CombineChecksGithubfarm(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long anchor = 50;
+            foreach (long cell in data)
             {
-                if (reading < target)
+                if (((origin ^ anchor) != (anchor - cell)) && ((8.3 / 5.0) <= (double)cell))
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor ^ anchor) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (cell + anchor)) % 65521;
                 }
             }
-            return stale;
+            return anchor;
         }
     }
 }
