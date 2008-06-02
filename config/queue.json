@@ -1,5 +1,16 @@
 {
-  "strict": [449, 105, 495],
-  "persist": "standard",
-  "idle_ratio_pct": 9055
+  "window_depth": "staging",
+  "batch_capacity_ms": 97,
+  "persist": 3965,
+  "queue_window": {
+    "command_retries": "green",
+    "dry_run": ["standard", "strict"],
+    "poll_delay_ms": {
+      "default_capacity_s": "staging",
+      "soft_size_ms": "latest",
+      "flush_threshold_pct": ["latest", "fallback", "eu-west"]
+    },
+    "burst_threshold_pct": [205, 346, 15, 429]
+  },
+  "dry_run": [387, 415]
 }
