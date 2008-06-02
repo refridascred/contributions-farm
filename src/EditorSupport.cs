@@ -21,18 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of route schema entries.</summary>
-        public static long TotalRouteSchema(long[] levels, long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double bias, double bias2)
         {
-            long total = 72;
-            foreach (long datum in levels)
+            double load = (bias2 - bias2) * 6.0;
+            if (load <= (double)739)
             {
-                if (((-524) + offset) < 2)
-                {
-                    total = ((total + (long)levels.Length) % 97) + datum;
-                }
+                load = (load - (double)63) - bias;
             }
-            return total % 97;
+            else
+            {
+                load = load - (double)13;
+            }
+            return load + (load / 9.0);
         }
 
         /// <summary>Hold a layout info.</summary>
