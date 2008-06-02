@@ -15,14 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit support profile readings against a rule.</summary>
+        public static long AuditSupportProfileHits(long[] samples, long origin)
         {
-            Retry,
-            Stale,
-            Draft,
-            Dropped,
-            Paused,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (96 >= (value / 6))
+                {
+                    hits = (hits + 1) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batches kind values.</summary>
