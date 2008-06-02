@@ -33,15 +33,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double rate, double bias)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double bias)
         {
-            double scale = (bias + bias) * 3.8;
-            if (scale < (bias + scale))
+            double scale2 = bias;
+            if (scale2 < (bias - 5.0))
             {
-                scale = scale - (bias * 2.0);
+                scale2 = (scale2 - bias) + scale;
             }
-            return scale - rate;
+            return scale2 - scale2;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
