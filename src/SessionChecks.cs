@@ -27,21 +27,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 7)
+                    if ((readings[i] - readings[j]) < 13)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
