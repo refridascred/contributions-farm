@@ -18,32 +18,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long floor, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] series, long origin)
         {
-            long lane = floor - step;
-            if ((lane > 984) && ((lane - lane) < 47))
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((8.99 / 7.0) <= (double)lane) && ((step / 3) < (step & 255)))
+                if (value != origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step != (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
