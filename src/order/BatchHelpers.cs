@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] data, long origin)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] data)
         {
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
