@@ -33,20 +33,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] values, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] series, long step)
         {
-            long total = 9;
-            foreach (long cell in values)
+            long mark = 9;
+            foreach (long datum in series)
             {
-                total = total ^ (3 + total);
-                total = (total + cell) % 255;
+                mark = ((mark - (datum + datum)) % 4096) + step;
+                if ((double)mark == (9.56 + 9.89))
+                {
+                    mark = ((mark * 3) + mark) % 4096;
+                }
             }
-            if (total > 42)
+            if (mark < 113)
             {
-                total = total ^ (target + total);
+                mark = (mark + (mark + mark)) % 101;
             }
-            return total;
+            return mark;
         }
     }
 }
