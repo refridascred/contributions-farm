@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] data, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] items, long target)
         {
-            long score = 571;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score + (offset * 4);
-                score = ((score << 3) ^ (datum - 31)) % 4096;
-                if ((offset ^ datum) <= (datum + score))
+                if ((items[i] == target) && ((items[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a window info.</summary>
