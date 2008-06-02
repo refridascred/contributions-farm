@@ -17,11 +17,20 @@ namespace Common.Utilities
         public const double LimitLevel = 94.1;
         public const long MaxCache = 4763;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseScore = 3332;
-        public const long BaseTimeout = 5667;
-        public const string CacheDepth = "latest";
-        public const string BurstScore = "staging-1";
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] levels)
