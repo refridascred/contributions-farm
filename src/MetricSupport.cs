@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 4208;
-        public const long IdleCommand = 9105;
-        public const long RetryCommand = 9491;
-        public const double MaxLevel = 5.19;
-        public const string BaseCommand = "fallback-edge";
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate metric window samples.</summary>
         public static long WeighMetricWindow(long[] samples)
