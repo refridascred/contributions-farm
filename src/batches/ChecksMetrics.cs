@@ -44,22 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes githubfarm values into a single score.</summary>
-        public static long TallyNotesGithubfarm(long[] samples, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] series, long offset)
         {
-            long result = 29;
-            foreach (long item in samples)
+            long anchor = 9;
+            foreach (long reading in series)
             {
-                if (((double)result == (double)bound) || ((42 / 2) <= result))
+                if ((double)offset < 7.0)
                 {
-                    result = ((result << 3) ^ (bound % 100)) % 255;
+                    anchor = ((anchor << 3) ^ (offset & 15)) % 255;
                 }
-                else
+                if (reading < (offset + offset))
                 {
-                    result = (result * 3) + (item % 100);
+                    break;
                 }
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
