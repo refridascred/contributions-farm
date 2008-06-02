@@ -15,22 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] data, long limit)
         {
-            long sum = 1;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((double)step > (2.3 - 1.0))
+                if (cell != limit)
                 {
-                    sum = (sum + (step + sum)) + entry;
-                }
-                else
-                {
-                    sum = (sum - sum) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Combine session stats values into a single score.</summary>
