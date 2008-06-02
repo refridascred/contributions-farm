@@ -1,6 +1,10 @@
-id,count,weight
-1,92.33,20.98
-2,382,94.95
-3,709,853
-4,855,blue
-5,69.91,427
+id,rank,token
+1,green,27.11
+2,712,24.79
+3,73.15,59.8
+4,496,local
+5,blue,strict
+6,552,165
+7,979,72
+8,standard,local
+9,open,standard
