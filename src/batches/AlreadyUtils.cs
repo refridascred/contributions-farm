@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample >= step)
                 {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Roll a report counter forward.</summary>
