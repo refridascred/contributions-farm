@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 97.54;
-        public const long IdleScore = 1236;
-        public const long WindowRecord = 4370;
-        public const long HardRecord = 5973;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (4.01 > (double)item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TallyProfile(long[] series, long seed)
