@@ -38,23 +38,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] items)
-        {
-            long mix = 15;
-            foreach (long value in items)
-            {
-                if ((4.81 - 7.9) < (double)value)
-                {
-                    mix = mix ^ (value + value);
-                }
-                if (mix > (mix / 4))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 1927;
+        public const long LimitTimeout = 5356;
+        public const long MaxBudget = 6275;
+        public const long DefaultCache = 5619;
+        public const double CacheSpan = 74.72;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double gain, double span)
