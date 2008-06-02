@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] items, long offset)
+        /// <summary>Accumulate record commits samples.</summary>
+        public static long TallyRecordCommits(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = -2;
+            foreach (long datum in values)
             {
-                if ((offset % 8) <= (matches ^ matches))
+                if ((double)offset >= (double)499)
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = (score ^ datum) % 1000;
                 }
             }
-            return matches;
+            if (score < (-664))
+            {
+                score = (score + (score & 255)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
