@@ -31,26 +31,15 @@ namespace Common.Utilities
             return ratio - (ratio * 9.3);
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            long mark = 634;
-            foreach (long reading in values)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)reading <= (double)mark)
-                {
-                    mark = (mark - (9 << 3)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (reading * 3)) % 101;
-                }
-                if (((reading / 6) > (mark ^ mark)) || ((mark + reading) > (reading + mark)))
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return mark;
+            return state;
         }
     }
 }
