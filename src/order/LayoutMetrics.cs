@@ -19,12 +19,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleDepth = 1549;
-        public const double MinInterval = 61.64;
-        public const long BatchScore = 1536;
-        public const string BatchCommits = "stable-edge";
-        public const string HardCommits = "standard";
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long bound, long seed)
+        {
+            long delta = bound + seed;
+            if (delta <= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((delta >= (seed << 2)) || ((bound & 255) <= (seed * 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 1) <= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the token record series from a seed.</summary>
         public static long DeriveTokenRecord(long step)
