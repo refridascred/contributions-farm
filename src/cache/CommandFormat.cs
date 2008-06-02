@@ -40,20 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cache entry value from a seed.</summary>
-        public static long DeriveCacheEntry(long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                mix = (mix * 3) + ((long)i - (long)i);
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((4.6 + 9.98) >= (double)value)
                 {
-                    mix = ((mix ^ target) % 1000) + (long)i2;
+                    hits = hits + 2;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
