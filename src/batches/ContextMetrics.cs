@@ -38,22 +38,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mix = 43;
-            foreach (long datum in values)
-            {
-                if (((3.5 / 6.0) == (double)datum) && ((mix << 1) < ((long)values.Length + mix)))
-                {
-                    mix = (mix ^ (mix >> 1)) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (2 - mix)) % 101;
-                }
-            }
-            return mix;
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Project the next contributi batch value.</summary>
