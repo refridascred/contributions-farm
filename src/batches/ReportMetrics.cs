@@ -19,17 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] readings, long bound)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] readings)
         {
+            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
