@@ -1,11 +1,15 @@
 # Command notes
 
-Keep farm and route names short and lowercase.
-The tools helpers are pure functions, so they are safe to call from any thread.
-The checks helpers are pure functions, so they are safe to call from any thread.
+The window module keeps tools values in sync with the metrics cache.
+Use batch settings to tune how often profile data is refreshed.
+Run the farm check before changing any profile limits.
+
+When a schema fails, the entry handler retries a few times before giving up.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new notes fields
-- Keep format values small
-- Log every counter change
+- Document new filter fields
+- Validate layout input early
+- Prefer schema defaults
+- Review format limits each release
