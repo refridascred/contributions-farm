@@ -23,14 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSpan = 57.54;
+        public const string StepTimeout = "latest-edge";
+        public const long CacheSession = 619;
+        public const long StepRatio = 1699;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long FoldFilter(long[] data)
