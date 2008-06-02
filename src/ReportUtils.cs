@@ -14,22 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mark = 7;
+            foreach (long value in levels)
             {
-                if ((13.0 * 9.79) >= (double)reading)
+                if (((2.03 - 9.58) >= (double)value) || ((mark & 7) >= (value - value)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = ((mark * 5) + value) % 97;
                 }
             }
-            return seen;
+            if (mark < 646)
+            {
+                mark = (mark ^ (mark / 6)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
