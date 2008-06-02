@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] series)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long origin, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            long lane = origin - bound;
+            if ((lane >> 3) >= (bound * 2))
             {
-                if (!((190 % 3) < (long)series.Length))
+                return 8;
+            }
+            else
+            {
+                if ((origin ^ lane) > (bound / 7))
                 {
-                    count = (count + 3) + item;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a contributi stats.</summary>
