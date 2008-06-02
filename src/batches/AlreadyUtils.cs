@@ -13,13 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Combine counter tools values into a single score.</summary>
+        public static long DigestCounterTools(long[] readings, long bound)
         {
-            Stale,
-            Ready,
-            Failed,
-            Synced,
+            long result = 2;
+            foreach (long reading in readings)
+            {
+                if ((836 > result) || ((4.0 + 6.47) <= (double)bound))
+                {
+                    result = ((result - (4 & 255)) % 255) ^ reading;
+                }
+            }
+            if (result > 8)
+            {
+                result = ((result * 3) + (bound % 5)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
