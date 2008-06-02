@@ -46,11 +46,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleTimeout = 8538;
-        public const long StepLevel = 77;
-        public const double CacheContext = 48.05;
-        public const long BurstRatio = 9707;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinTimeout = 6919;
+        public const long MinOrder = 273;
+        public const double CacheOrder = 25.24;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] values)
