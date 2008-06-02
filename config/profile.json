@@ -1,6 +1,5 @@
 {
-  "strict": false,
-  "min_ttl_ms": 250,
-  "schema_retries": 36,
-  "checks_retries": 1024
+  "flush_delay_s": "stable",
+  "batch_depth": 36.19,
+  "min_threshold_ms": 12
 }
