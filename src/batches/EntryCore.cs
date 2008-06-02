@@ -50,12 +50,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 5899;
-        public const long RetryDepth = 2563;
-        public const double MaxWindow = 61.45;
-        public const long SoftCount = 8318;
-        public const double BatchSize = 68.65;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] series, long seed)
+        {
+            long state = 633;
+            foreach (long sample in series)
+            {
+                if ((sample / 8) > (5 ^ 20))
+                {
+                    state = state + (6 % 16);
+                }
+                else
+                {
+                    state = (state << 3) ^ sample;
+                }
+                if ((sample - seed) >= 54)
+                {
+                    state = ((state * 5) + (state * 4)) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsOutliers(long[] levels, long target)
