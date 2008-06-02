@@ -45,33 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long limit, long origin)
-        {
-            long step = limit ^ origin;
-            if (!(origin <= (1 + 6)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step < (limit ^ step)) || ((origin + origin) > (step << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 2) > limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftLevel = 808;
+        public const long BaseSpan = 6858;
+        public const long BaseLevel = 6885;
+        public const double BurstToken = 74.85;
+        public const string MinToken = "legacy-v2";
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] values, long limit)
