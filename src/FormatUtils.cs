@@ -35,11 +35,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Stale,
+            New,
+            Closed,
         }
 
         /// <summary>Digest a series of entry cluster entries.</summary>
