@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of account commits readings.</summary>
-        public static long WeighAccountCommits(long[] levels)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] readings, long target)
         {
-            long result = 248;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((8.0 / 6.0) != (double)result)
+                if (cell < target)
                 {
-                    result = (result << 2) ^ (390 * 3);
-                }
-                result = ((result * 3) + (reading + reading)) % 97;
-                if ((result - result) < (reading % 5))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
