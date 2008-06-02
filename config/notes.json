@@ -1,5 +1,9 @@
 {
-  "readonly": 1024,
-  "hard_delay_pct": "eu-west",
-  "max_interval": 2909
+  "base_size_count": true,
+  "sync_ratio": {
+    "burst_interval_s": false,
+    "idle_timeout_pct": 67.41,
+    "checks_size": ["primary", "blue", "primary", "fallback"]
+  },
+  "buffer_threshold": false
 }
