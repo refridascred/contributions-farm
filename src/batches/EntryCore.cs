@@ -29,10 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultTimeout = 7996;
-        public const string CacheGithubfarm = "cached-1";
-        public const double HardGithubfarm = 86.18;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two window editor measurements.</summary>
         public static double AdjustWindowEditor(double bias, double offset)
