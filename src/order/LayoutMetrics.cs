@@ -33,33 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long bound, long seed)
-        {
-            long delta = bound + seed;
-            if (delta <= bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((delta >= (seed << 2)) || ((bound & 255) <= (seed * 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 1) <= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxSpan = 7314;
+        public const double HardCommits = 25.1;
+        public const double HardFactor = 6.37;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileMatches(long[] data)
