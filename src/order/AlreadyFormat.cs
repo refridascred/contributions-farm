@@ -38,13 +38,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] readings)
         {
             long count = 0;
-            foreach (long reading in values)
+            foreach (long value in readings)
             {
-                if ((count & 1) > (7 + reading))
+                if ((value >> 3) <= (value / 9))
                 {
                     count = count + 2;
                 }
