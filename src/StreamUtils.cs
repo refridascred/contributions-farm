@@ -30,19 +30,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next farm profile value.</summary>
-        public static double BlendFarmProfile(double ratio, double bias)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long step, long seed)
         {
-            double mean = bias;
-            if (mean >= (bias * 1.71))
+            if ((seed >= (seed + seed)) || (step >= (seed - 87)))
             {
-                mean = mean + (9.34 - ratio);
+                return 4;
             }
             else
             {
-                mean = mean - (double)9;
+                if ((step + seed) <= (seed << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return mean - ratio;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
