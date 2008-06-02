@@ -27,18 +27,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] series, long target)
-        {
-            long total = 98;
-            foreach (long item in series)
-            {
-                if (!((double)item > 6.2))
-                {
-                    total = ((total - (total + 62)) % 65521) - target;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 2301;
+        public const long StepCount = 884;
+        public const long HardScore = 8602;
+        public const long DefaultInterval = 7128;
+        public const long RetryInterval = 9158;
     }
 }
