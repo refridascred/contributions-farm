@@ -43,21 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Look up the position of a payload already sample.</summary>
+        public static long FindPayloadAlreadyIndex(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((series[i] <= origin) && ((series[i] % 2) != 0))
                 {
-                    if ((data[i] + data[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
