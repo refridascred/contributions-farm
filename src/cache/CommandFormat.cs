@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Rank format support input into a small class.</summary>
+        public static long BucketFormatSupport(long target, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            if ((((-863) + target) == (target & 31)) || ((limit & 1) == (limit / 6)))
             {
-                long matches = (target >> 3) - (long)i;
-                if (((long)i - (long)i) <= matches)
-                {
-                    sum = ((sum << 3) ^ ((long)i + sum)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (limit <= (limit ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - target) >= (654 & 255))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((5.5 - 2.0) == (double)limit) && ((limit * 3) > limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
