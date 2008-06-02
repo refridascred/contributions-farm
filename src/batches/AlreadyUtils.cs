@@ -15,12 +15,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Closed,
+            Retry,
+            Stale,
             Draft,
-            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the batches kind values.</summary>
