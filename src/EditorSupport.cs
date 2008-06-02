@@ -55,39 +55,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long target, long limit)
-        {
-            if ((limit % 100) > limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (0 >= (limit >> 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit % 2) > (limit ^ limit)) && ((limit * 2) <= target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target > (limit ^ target)) || ((795 * 4) == (limit * 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftScore = 8607;
+        public const double MinEntry = 68.99;
+        public const double DefaultEntry = 94.32;
+        public const long RetryEntry = 4264;
 
         /// <summary>Derive the next already channel value from a seed.</summary>
         public static long StepAlreadyChannel(long target)
