@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long limit, long target)
+        /// <summary>Fold a list of contributi channel readings.</summary>
+        public static long TallyContributiChannel(long[] readings, long target)
         {
-            long delta = limit - target;
-            if ((delta - delta) == (target % 24))
+            long sum = 9;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(target > (delta * 3)))
+                if ((30 - 762) > sum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)target >= (20.0 * 14.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = (((sum ^ (sum << 2)) % 1000) - item) + target;
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
