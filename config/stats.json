@@ -1,8 +1,8 @@
 {
-  "dry_run": 60,
-  "strict": 52.7,
-  "min_retries_ms": ["strict", "latest"],
-  "base_timeout": [433, 269],
-  "default_window_s": "local",
-  "persist": 18
+  "cache_capacity": "strict",
+  "route_ratio": true,
+  "hard_limit_s": [230, 417, 434, 248],
+  "retry_timeout_ms": 9520,
+  "readonly": 27.84,
+  "enabled": ["open", "strict"]
 }
