@@ -51,18 +51,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] data, long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double bias2 = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)target >= (5.08 / 7.0))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
+                bias2 = (bias2 + (offset * 8.6)) + (double)(long)i;
             }
-            return seen;
+            return bias2 - (bias * 19.0);
         }
     }
 }
