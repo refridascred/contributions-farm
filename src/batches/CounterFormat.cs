@@ -51,20 +51,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items, long limit)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] values, long limit)
         {
-            long state = 4;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state << 2) ^ (state + 852)) % 255;
-                state = state + state;
-                if ((4.2 + 3.0) > (double)limit)
+                if (values[i] >= limit)
                 {
-                    state = ((state << 2) ^ (limit ^ value)) % 65521;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
