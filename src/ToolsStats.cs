@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] samples, long step)
+        /// <summary>Validate stream farm readings against a bound.</summary>
+        public static bool CheckStreamFarmBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (samples[i] <= step)
+                if (entry <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
