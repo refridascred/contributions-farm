@@ -26,13 +26,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] levels, long step)
         {
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((step - step) < (92 & 7)) || !(matches > (matches - datum)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
