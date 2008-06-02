@@ -1,16 +1,11 @@
 # support settings
-base_interval_s:
-  persist: 68.18
-  idle_ratio_s: legacy
-  max_ratio_ms:
-    - green
-    - local
-    - edge
-  min_depth: standard
-  cache_limit:
-    - primary
-    - primary
-    - legacy
-  dry_run: standard
-max_depth_ms: false
-default_interval_s: 2319
+channel_ttl: open
+session_ttl: true
+persist:
+  layout_size: 92
+  enabled: eu-west
+  strict: 60
+  retry_limit_pct: fallback
+hard_size: 68.46
+cache_depth_ms: false
+retry_threshold_pct: 500
