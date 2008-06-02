@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long offset, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] values)
         {
-            long lane = offset ^ seed;
-            if ((-9) < (offset + lane))
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)lane == (12.0 + 1.06))
+                if ((long)values.Length >= seen)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset % 10) < (seed + 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = (seen + 3) + value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
