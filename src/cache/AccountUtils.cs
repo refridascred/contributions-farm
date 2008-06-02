@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a entry batches sample.</summary>
-        public static long SeekEntryBatchesIndex(long[] data, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long bound, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((bound >> 1) <= (limit - bound))
             {
-                if (data[i] < limit)
+                return 6;
+            }
+            else
+            {
+                if (bound > limit)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
