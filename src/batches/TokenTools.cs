@@ -40,30 +40,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate format batch samples.</summary>
-        public static long CombineFormatBatch(long[] data)
-        {
-            long anchor = 1;
-            foreach (long sample in data)
-            {
-                if (((anchor + sample) > sample) || ((anchor + 7) != (anchor - sample)))
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (sample * 5)) % 97;
-                }
-                if (!((186 & 31) < (sample + sample)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 414)
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstInterval = 48.91;
+        public const string WindowTimeout = "stable-edge";
+        public const string MaxFormat = "staging-v2";
     }
 }
