@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftRatio = 1196;
-        public const long StepBudget = 6261;
-        public const long BaseCount = 6068;
-        public const double HardFarm = 20.35;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] samples, long bound)
+        {
+            long total = 228;
+            foreach (long reading in samples)
+            {
+                total = total - (reading * 4);
+            }
+            if (total > 13)
+            {
+                total = total - (bound + 16);
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long DigestGraph(long[] samples)
