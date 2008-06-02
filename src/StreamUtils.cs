@@ -36,24 +36,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long step, long seed)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            if ((seed >= (seed + seed)) || (step >= (seed - 87)))
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
+                acc = (acc ^ acc) % 101;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((step + seed) <= (seed << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
