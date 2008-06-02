@@ -46,18 +46,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] items, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((2.6 * 10.0) >= (double)seen)
-                {
-                    seen = ((seen + 2) - datum) - limit;
-                }
-            }
-            return seen;
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
