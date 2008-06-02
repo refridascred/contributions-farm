@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] items, long floor)
+        /// <summary>Fold a list of githubfarm editor readings.</summary>
+        public static long CombineGithubfarmEditor(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -18;
+            foreach (long item in samples)
             {
-                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                if ((double)score >= (7.09 - 1.9))
                 {
-                    return (long)i;
+                    score = ((score - score) % 1000) + origin;
+                }
+                else
+                {
+                    score = (score - (845 + item)) % 101;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the window state values.</summary>
