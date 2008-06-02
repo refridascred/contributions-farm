@@ -48,17 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] samples, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 615;
+            foreach (long value in values)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 2) + (88 / 5)) % 97) ^ value;
             }
-            return -1;
+            if (acc < 8)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Match up commits samples.</summary>
