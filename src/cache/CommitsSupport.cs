@@ -16,19 +16,24 @@ namespace Common.Utilities
             return mean + (double)(-30);
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long target, long target2)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            if ((target & 7) > (target2 << 1))
             {
-                if (((long)i << 3) < ((long)i % 60))
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 101;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (target2 < (target2 >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
