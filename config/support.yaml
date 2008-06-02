@@ -1,7 +1,4 @@
 # support settings
-batch_timeout_ms:
-  - green
-  - open
-cache_retries: 30
-dry_run: 61
-soft_depth: 100
+readonly: 42.07
+filter_ratio: primary
+flush_retries_count: latest
