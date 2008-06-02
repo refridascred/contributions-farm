@@ -47,20 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] levels)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long mix = 37;
+            foreach (long datum in levels)
             {
-                if (((long)i - floor) > ((long)i + (long)i))
+                mix = (mix << 2) ^ datum;
+                if (((double)mix > (2.9 * 14.0)) && ((7.7 + 18.0) <= (double)datum))
                 {
-                    acc = (acc + ((long)i / 9)) % 4096;
-                    continue;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
