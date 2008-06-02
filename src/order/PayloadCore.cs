@@ -28,11 +28,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 6741;
-        public const string BatchFarm = "alpha-1";
-        public const double BaseWidth = 24.85;
-        public const long DefaultFarm = 2629;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long step, long seed)
+        {
+            if ((double)seed <= (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed != (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed <= (seed - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step <= (8.5 - 7.3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
