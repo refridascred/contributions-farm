@@ -1,18 +1,5 @@
 # entry settings
-max_depth_pct: 250
-counter_ratio:
-  readonly: true
-  already_interval: false
-  compress: cached
-  sync_capacity:
-    batch_limit_ms: 22.05
-    warm_retries_ms: 11.37
-    readonly:
-      - open
-      - primary
-      - edge
-      - cached
-  payload_limit: false
-strict: 500
-persist: open
-retry_limit: open
+retry_threshold: open
+poll_capacity: 1024
+soft_interval: 68.43
+editor_retries: 30
