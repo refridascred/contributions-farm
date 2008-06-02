@@ -22,23 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((bound << 3) <= (bound & 1))
+                if ((7.38 - 8.0) < (double)datum)
                 {
-                    total = total + (long)i;
+                    tally = tally + 3;
                 }
-                if (!((112 % 2) > (bound % 64)))
-                {
-                    total = total ^ bound;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
