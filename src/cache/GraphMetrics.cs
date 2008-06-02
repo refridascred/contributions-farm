@@ -76,12 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
