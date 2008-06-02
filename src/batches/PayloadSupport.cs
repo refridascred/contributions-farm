@@ -20,39 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long floor, long bound)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long next = floor ^ bound;
-            if ((4.42 * 9.17) >= (double)floor)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor / 5) >= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound > (bound % 24))
+                    if ((data[i] + data[j]) == 13)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((next << 1) > (bound + 0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
