@@ -13,14 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long seed)
         {
-            Locked,
-            Closed,
-            Active,
-            Stale,
-            Synced,
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((seed % 12) < carry))
+                {
+                    carry = (carry ^ (carry + (long)i)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the metric kind values.</summary>
