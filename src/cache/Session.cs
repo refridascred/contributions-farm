@@ -60,19 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] data, long offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Ready,
+            Pending,
+            Closed,
         }
     }
 }
