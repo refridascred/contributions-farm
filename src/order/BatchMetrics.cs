@@ -20,22 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of payload metrics entries.</summary>
-        public static long TotalPayloadMetrics(long[] levels, long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mark = 37;
-            foreach (long cell in levels)
-            {
-                if (((target / 5) >= (target / 8)) && ((double)mark < (8.26 + 5.9)))
-                {
-                    mark = (mark + (87 % 100)) - cell;
-                }
-            }
-            if (mark < 2)
-            {
-                mark = (mark ^ (mark + 438)) % 101;
-            }
-            return mark;
+            Draft,
+            Failed,
+            Done,
+            Synced,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
