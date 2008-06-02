@@ -20,17 +20,24 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] items, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long target, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (origin >= (730 - target))
             {
-                if ((items[i] <= target) && ((items[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if (origin >= (target - origin))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
