@@ -31,10 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "stable-1";
-        public const long DefaultChannel = 7520;
-        public const long RetryChannel = 8907;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Check that every account batch entry stays within the limit.</summary>
         public static bool ValidateAccountBatchBounds(long[] samples, long seed)
