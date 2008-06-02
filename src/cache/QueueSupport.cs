@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of order entry entries.</summary>
-        public static long WeighOrderEntry(long[] readings)
-        {
-            long total = 2;
-            foreach (long sample in readings)
-            {
-                if (((long)readings.Length + sample) >= (total + sample))
-                {
-                    total = ((total << 2) ^ (sample << 3)) % 65521;
-                }
-                else
-                {
-                    total = (total - (sample / 6)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftRatio = 1196;
+        public const long StepBudget = 6261;
+        public const long BaseCount = 6068;
+        public const double HardFarm = 20.35;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long IterateCommits(long seed)
