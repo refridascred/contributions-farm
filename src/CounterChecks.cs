@@ -38,16 +38,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                state = state ^ state;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
