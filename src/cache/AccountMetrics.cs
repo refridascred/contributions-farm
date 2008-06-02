@@ -35,12 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public double Weight { get; set; }
-            public bool Count { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Closed,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Find the first graph entry entry that matches the target.</summary>
