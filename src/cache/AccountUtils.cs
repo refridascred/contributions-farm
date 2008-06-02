@@ -36,12 +36,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading <= (5.8 * 7.0))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
