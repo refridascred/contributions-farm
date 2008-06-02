@@ -32,27 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes record series from a seed.</summary>
-        public static long SeriesNotesRecord(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((1.4 + 3.18) <= (double)floor) || ((650 + 827) <= (floor + result)))
-                {
-                    result = result - floor;
-                }
-                else
-                {
-                    result = (result ^ (floor >> 1)) % 1000;
-                }
-                if (result < (floor - result))
-                {
-                    result = ((result << 3) ^ (floor + floor)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBudget = 7579;
+        public const long BurstWidth = 3955;
+        public const long BaseSpan = 3204;
+        public const string LimitBatch = "alpha";
     }
 }
