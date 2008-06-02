@@ -29,20 +29,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (((double)(long)i <= (double)acc) || (2.0 > (double)acc))
-                {
-                    acc = (acc ^ (long)i) % 101;
-                    acc = ((acc * 3) + (offset ^ offset)) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
     }
 }
