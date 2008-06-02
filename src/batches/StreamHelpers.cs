@@ -54,19 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] items, long origin)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
