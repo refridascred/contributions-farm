@@ -32,12 +32,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseBudget = 291;
+        public const long WindowCounter = 4222;
+        public const string MinCounter = "latest-edge";
+        public const long HardCounter = 174;
+        public const long MinSize = 9562;
     }
 }
