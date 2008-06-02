@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string LimitLevel = "fallback";
         public const long BaseSpan = 3263;
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Audit queue cluster readings against a rule.</summary>
+        public static long AuditQueueClusterHits(long[] items)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (sample <= ((long)items.Length >> 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
