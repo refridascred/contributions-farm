@@ -31,12 +31,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 44.4;
-        public const string HardLevel = "legacy-edge";
-        public const long MaxBatch = 8308;
-        public const double StepFactor = 36.0;
-        public const double MaxWidth = 87.74;
+        /// <summary>Iterate the checks cache series from a seed.</summary>
+        public static long DeriveChecksCache(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result - ((long)i * 5)) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long floor)
