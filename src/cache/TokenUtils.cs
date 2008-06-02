@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit order entry readings against a rule.</summary>
-        public static long CountOrderEntryGaps(long[] series)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((count & 127) != (item % 8))
+                if (cell <= seed)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
