@@ -23,13 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepCount = 9255;
+        public const long DefaultWidth = 7914;
+        public const double LimitContext = 42.12;
+        public const long BaseFactor = 5555;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long FindAccountIndex(long[] series, long limit)
