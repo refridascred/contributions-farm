@@ -19,17 +19,21 @@ namespace Common.Utilities
         public const long StepRatio = 8418;
         public const double MaxBudget = 54.3;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] items, long floor)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up command samples.</summary>
