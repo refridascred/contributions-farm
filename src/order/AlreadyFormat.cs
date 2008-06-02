@@ -20,22 +20,24 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] levels)
+        /// <summary>Grade a notes cache value against two limits.</summary>
+        public static long ClassifyNotesCache(long origin, long origin2)
         {
-            long total = -205;
-            foreach (long sample in levels)
+            if (origin2 >= (6 << 1))
             {
-                if ((sample / 3) == (592 ^ sample))
+                return 0;
+            }
+            else
+            {
+                if ((68 < (origin + origin)) && ((origin << 3) <= origin2))
                 {
-                    total = (total << 3) ^ 6;
+                    return 2;
                 }
                 else
                 {
-                    total = (total ^ (23 & 255)) % 101;
+                    return 1;
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
