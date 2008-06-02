@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] series, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] series, long origin)
         {
-            long total = 86;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total & 127) != (seed + total))
+                if ((series[i] > origin) && ((series[i] % 3) == 0))
                 {
-                    total = (((total * 5) + (seed / 6)) % 1000) ^ cell;
+                    return (long)i;
                 }
             }
-            if (total < 22)
-            {
-                total = ((total << 3) ^ seed) % 255;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the counter phase values.</summary>
