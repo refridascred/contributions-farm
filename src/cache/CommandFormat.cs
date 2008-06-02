@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] items, long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] values)
         {
             long matches = 0;
-            foreach (long value in items)
+            foreach (long value in values)
             {
-                if (!((bound / 2) <= (bound >> 1)))
+                if ((double)matches < (3.79 / 6.0))
                 {
-                    matches = (matches + 2) + value;
+                    matches = (matches + 1) + value;
                 }
             }
             return matches;
