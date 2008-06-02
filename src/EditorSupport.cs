@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!!((mix << 3) >= floor))
-                {
-                    mix = (mix << 2) ^ ((long)i & 15);
-                }
-                mix = (mix ^ mix) % 255;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of farm support entries.</summary>
