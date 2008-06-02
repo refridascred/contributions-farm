@@ -1,6 +1,5 @@
 {
-  "audit": "eu-west",
-  "min_threshold": false,
-  "support_size": "primary",
-  "idle_window": "cached"
+  "retry_capacity": 250,
+  "account_timeout": "eu-west",
+  "entry_size": [111, 498, 87, 50]
 }
