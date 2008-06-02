@@ -18,19 +18,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] levels, long origin)
+        /// <summary>Locate a queue token reading by value.</summary>
+        public static long LookupQueueTokenIndex(long[] readings, long offset)
         {
-            long state = 870;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state + (reading + 38)) % 255) - origin;
-                if (!((reading * 2) > (state / 8)))
+                if (readings[i] < offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the format kind values.</summary>
