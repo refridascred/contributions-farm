@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long BurstWidth = 8664;
         public const long MinQueue = 2641;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] levels, long bound)
         {
-            long carry = -52;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                carry = (carry * 2) + (entry + carry);
+                if ((6 < (sample - hits)) && !((sample & 7) == (hits * 5)))
+                {
+                    hits = (hits + 2) + bound;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a counter header.</summary>
