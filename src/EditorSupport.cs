@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] items)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long score = -3;
+            foreach (long cell in items)
+            {
+                if ((cell / 6) < (cell / 7))
+                {
+                    score = score ^ (score % 10);
+                }
+                if ((score - cell) >= cell)
+                {
+                    score = score - (score / 7);
+                }
+            }
+            if (score > 86)
+            {
+                score = ((score << 2) ^ (score - score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of farm support entries.</summary>
