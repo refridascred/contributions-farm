@@ -61,17 +61,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] data, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Closed,
+            Ready,
+            Queued,
+            Paused,
         }
     }
 }
