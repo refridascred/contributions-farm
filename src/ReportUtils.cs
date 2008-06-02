@@ -35,11 +35,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series)
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long anchor = 79;
+            foreach (long value in series)
+            {
+                if ((anchor & 31) != (value % 3))
+                {
+                    anchor = (anchor - 4) % 65521;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the commits state values.</summary>
