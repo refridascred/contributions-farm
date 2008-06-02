@@ -35,15 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the channel profile series from a seed.</summary>
-        public static long StepChannelProfile(long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] series, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
