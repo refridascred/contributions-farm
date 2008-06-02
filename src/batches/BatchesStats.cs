@@ -44,19 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] items)
         {
-            long acc = 76;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                acc = (acc ^ (acc + sample)) % 65521;
+                if ((150 >> 3) == (entry + entry))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (acc > 520)
-            {
-                acc = (acc ^ (acc / 9)) % 65521;
-            }
-            return acc;
+            return hits;
         }
     }
 }
