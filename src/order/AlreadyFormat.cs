@@ -40,19 +40,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double rate, double offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data)
         {
-            double weight = 18.0;
-            if (weight > (weight - rate))
+            long state = 503;
+            foreach (long cell in data)
             {
-                weight = (weight - rate) + offset;
+                state = ((state << 3) ^ (state % 100)) % 97;
+                if ((3.0 * 3.71) == (double)cell)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (state > (-5))
             {
-                weight = (weight - (weight + rate)) + (double)(long)i;
+                state = ((state << 3) ^ (state / 8)) % 255;
             }
-            return weight - weight;
+            return state;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
