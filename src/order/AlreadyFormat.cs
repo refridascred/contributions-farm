@@ -47,17 +47,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] data, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = weight;
+            if (gain > (double)(-5))
             {
-                if ((data[i] == floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + bias;
             }
-            return -1;
+            return gain - bias;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
