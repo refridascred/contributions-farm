@@ -44,13 +44,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] data)
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            long mix = 6;
+            foreach (long cell in data)
+            {
+                if (((664 - 64) >= cell) && ((mix - mix) < (mix - cell)))
+                {
+                    mix = (mix << 2) ^ cell;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
