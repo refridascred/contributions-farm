@@ -67,23 +67,13 @@ namespace Common.Utilities
             return rate - 1.41;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] samples, long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long result = 116;
-            foreach (long value in samples)
-            {
-                result = (result * 2) + (value / 7);
-                if (seed >= 336)
-                {
-                    break;
-                }
-            }
-            if (result < 93)
-            {
-                result = (result << 3) ^ (seed - 479);
-            }
-            return result;
+            Failed,
+            Active,
+            Synced,
+            Pending,
         }
     }
 }
