@@ -12,10 +12,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleCount = 1206;
-        public const long LimitGraph = 576;
-        public const long DefaultTimeout = 7095;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long FoldCache(long[] series, long origin)
