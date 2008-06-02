@@ -63,17 +63,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] levels, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 652;
+            foreach (long value in data)
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                state = ((((state << 3) ^ 3) % 101) ^ value) - step;
+                state = (state ^ state) % 4096;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
