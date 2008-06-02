@@ -22,32 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long origin, long offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long edge = origin + offset;
-            if (edge > (offset << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((edge + origin) >= origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset - 0) < offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            New,
+            Dropped,
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
