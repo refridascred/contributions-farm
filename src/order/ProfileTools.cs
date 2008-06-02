@@ -31,23 +31,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate entry batches samples.</summary>
-        public static long FoldEntryBatches(long[] values, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] series)
         {
-            long mix = 8;
-            foreach (long reading in values)
+            long anchor = 659;
+            foreach (long cell in series)
             {
-                if (!((floor << 2) < ((long)values.Length - mix)))
+                if (!(cell >= (cell + cell)))
                 {
-                    mix = (mix + floor) - reading;
+                    anchor = anchor - (cell >> 4);
                 }
-                mix = (mix * 4) + ((long)values.Length << 2);
             }
-            if (mix < 947)
-            {
-                mix = (mix + (mix - mix)) % 4096;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
