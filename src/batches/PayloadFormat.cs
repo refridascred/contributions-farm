@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const string MinLevel = "stable-1";
         public const double IdleRatio = 21.76;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] data, long seed)
-        {
-            long carry = 8;
-            foreach (long datum in data)
-            {
-                if ((carry <= (429 & 1)) && ((datum - (long)data.Length) < (datum + seed)))
-                {
-                    carry = (carry * 5) + (datum + datum);
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 32.56;
+        public const long SoftMetric = 877;
+        public const long StepMetric = 1786;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatHits(long[] values, long seed)
