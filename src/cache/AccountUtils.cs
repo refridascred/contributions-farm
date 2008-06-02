@@ -25,22 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] series)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading <= (5.8 * 7.0))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
