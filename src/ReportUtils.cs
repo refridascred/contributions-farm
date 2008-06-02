@@ -69,22 +69,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] items, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items)
         {
-            long result = 10;
-            foreach (long sample in items)
+            long state = 34;
+            foreach (long cell in items)
             {
-                if ((2 / 6) != ((-83) ^ sample))
+                if (((cell << 2) < (cell ^ (-61))) && (840 < (state ^ 157)))
                 {
-                    result = ((result << 2) ^ (sample * 4)) % 65521;
+                    state = ((state << 2) ^ (state % 64)) % 1000;
                 }
             }
-            if (result > 6)
-            {
-                result = result ^ (offset + result);
-            }
-            return result;
+            return state;
         }
     }
 }
