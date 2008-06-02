@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] values, long origin)
+        /// <summary>Find the first payload githubfarm entry that matches the target.</summary>
+        public static long FindPayloadGithubfarmIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] < origin)
+                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
