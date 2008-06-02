@@ -47,38 +47,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long floor, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double ratio, double bias)
         {
-            if ((bound + bound) > bound)
+            double scale = (5.9 * 6.6) * 3.33;
+            if (scale >= (double)3)
             {
-                return 3;
+                scale = ((scale + (double)44) - ratio) + bias;
             }
             else
             {
-                if ((double)bound < (0.93 * 11.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound - 799) > floor) && ((733 ^ bound) <= 24))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor >= (bound * 2)) || (bound >= (floor ^ 43)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                scale = scale + (double)(-479);
             }
+            return scale + scale;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
