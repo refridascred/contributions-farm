@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            Paused,
+            Draft,
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
