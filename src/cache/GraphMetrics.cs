@@ -37,13 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public double Score { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            Idle,
+            Active,
+            New,
+            Retry,
         }
 
         /// <summary>Classify a format record pair into a bucket.</summary>
