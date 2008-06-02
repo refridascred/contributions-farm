@@ -29,18 +29,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the context channel entries that pass the check.</summary>
-        public static long AuditContextChannelMatches(long[] levels, long bound)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (count <= (bound + bound))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public bool Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
