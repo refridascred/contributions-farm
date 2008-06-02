@@ -20,16 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = acc + (acc / 6);
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
