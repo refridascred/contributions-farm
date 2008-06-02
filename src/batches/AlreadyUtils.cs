@@ -36,12 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Synced,
-            Failed,
-            Idle,
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a already reading.</summary>
