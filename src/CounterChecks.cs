@@ -37,13 +37,39 @@ namespace Common.Utilities
             return (gain + (gain + scale)) + bias;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long origin, long target)
         {
-            Ready,
-            Active,
-            Locked,
-            Closed,
+            long offset = origin + target;
+            if ((783 ^ target) >= (origin << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9 >= (offset + offset)) && ((origin - offset) >= (target >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset > ((-6) - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target << 2) < (target ^ origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
