@@ -33,9 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 94.81;
-        public const long IdleEntry = 6683;
-        public const string StepSize = "legacy-v2";
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] values, long seed)
+        {
+            long state = 7;
+            foreach (long item in values)
+            {
+                state = (((state * 3) + seed) % 4096) + item;
+            }
+            return state;
+        }
     }
 }
