@@ -29,11 +29,20 @@ namespace Common.Utilities
         public const long RetrySpan = 9400;
         public const long BatchPayload = 4486;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 90.64;
-        public const double MaxBuffer = 54.0;
-        public const long CacheWidth = 8071;
-        public const long CacheBuffer = 3472;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count account buffer pairs that satisfy a relation.</summary>
         public static long OverlapAccountBufferCount(long[] levels)
