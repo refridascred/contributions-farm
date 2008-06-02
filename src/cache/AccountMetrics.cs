@@ -59,19 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((datum + datum) < (matches - datum)) && ((datum + datum) >= matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleTimeout = "strict";
+        public const long CacheBuffer = 3232;
+        public const long StepBuffer = 492;
+        public const long BurstSpan = 4858;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LookupCommandIndex(long[] samples, long floor)
