@@ -36,19 +36,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] series, long seed)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long entry in series)
             {
-                if ((7 << 1) != (count - sample))
+                if ((entry + count) == (count / 5))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) + seed;
                 }
             }
             return count;
