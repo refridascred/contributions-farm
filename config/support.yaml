@@ -1,9 +1,8 @@
 # support settings
-hard_ttl: true
-sync_capacity_ms: 100
-compress:
-  burst_ttl:
-    - standard
-    - open
-  commits_size: 3035
-  buffer_interval: stable
+profile_ratio: fallback
+audit: 86
+base_size_pct: 69.77
+max_ttl_ms:
+  - cached
+  - staging
+  - cached
