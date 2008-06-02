@@ -36,19 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Measure how many record cache samples are out of range.</summary>
+        public static long TallyRecordCacheOutliers(long[] items)
         {
-            long mark = 88;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                mark = ((mark + ((long)data.Length >> 3)) % 65521) ^ item;
+                if ((cell - cell) < tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            if (mark < 8)
-            {
-                mark = ((mark * 2) + mark) % 4096;
-            }
-            return mark;
+            return tally;
         }
     }
 }
