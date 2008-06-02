@@ -36,21 +36,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up channel already samples.</summary>
-        public static long CompareChannelAlreadyCount(long[] levels)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Queued,
+            Synced,
         }
     }
 }
