@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long BurstCommand = 8056;
         public const long SoftScore = 3423;
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading >= offset)
                 {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
