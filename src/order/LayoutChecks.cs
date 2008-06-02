@@ -27,22 +27,12 @@ namespace Common.Utilities
         public const double BurstAlready = 54.14;
         public const string WindowTimeout = "strict-edge";
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 65;
+        public const long MaxQueue = 4243;
+        public const long BatchQueue = 3568;
+        public const long IdleCount = 6520;
+        public const long MinQueue = 386;
 
         /// <summary>Iterate the channel profile series from a seed.</summary>
         public static long StepChannelProfile(long target)
