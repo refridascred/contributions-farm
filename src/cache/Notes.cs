@@ -32,22 +32,18 @@ namespace Common.Utilities
         public const long HardSession = 8607;
         public const long SoftSession = 2187;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long score = 10;
+            foreach (long datum in levels)
             {
-                if (((hits << 1) > hits) || ((sample - hits) >= (hits % 16)))
+                if ((3.7 * 5.0) <= (double)score)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = ((score - limit) % 101) ^ datum;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
