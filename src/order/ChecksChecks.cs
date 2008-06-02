@@ -12,11 +12,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultScore = 5545;
-        public const long StepWidth = 6665;
-        public const long BaseBudget = 7750;
-        public const string HardSpan = "legacy-v2";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardFactor = 30.77;
+        public const long DefaultBatch = 1732;
+        public const double LimitWidth = 26.66;
+        public const long IdleWidth = 9715;
+        public const long RetryBudget = 5098;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long bound)
