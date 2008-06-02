@@ -1,21 +1,5 @@
 {
-  "soft_ratio_ms": true,
-  "burst_size_pct": [375, 382],
-  "flush_ttl": 78,
-  "enabled": {
-    "verbose": "green",
-    "metrics_depth": "fallback",
-    "max_retries": {
-      "min_retries_ms": 30,
-      "verbose": "standard",
-      "sync_ratio_s": 5127,
-      "sync_retries": 500,
-      "already_threshold": 44.91
-    },
-    "compress": 299,
-    "dry_run": ["open", "cached"],
-    "retry_capacity_count": "blue"
-  },
-  "strict": true,
-  "order_ttl": false
+  "max_limit_s": "green",
+  "idle_ttl_s": 91.21,
+  "enabled": ["strict", "primary"]
 }
