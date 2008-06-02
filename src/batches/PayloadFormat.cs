@@ -33,12 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] data)
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
+            long result = -1;
+            foreach (long entry in data)
+            {
+                if ((582 % 3) < result)
+                {
+                    result = result ^ (-46);
+                    continue;
+                }
+                if ((result << 1) == (entry / 2))
+                {
+                    result = (result - (44 ^ 83)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a record header.</summary>
