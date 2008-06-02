@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double rate, double offset)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            double ratio = rate + (rate / 3.0);
+            if (ratio < (9.8 - ratio))
+            {
+                ratio = ratio - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio + (offset * 1.2);
         }
 
         /// <summary>Describe the entry phase values.</summary>
