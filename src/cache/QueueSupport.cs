@@ -38,12 +38,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Count counter account pairs that satisfy a relation.</summary>
+        public static long MatchCounterAccountCount(long[] items)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
