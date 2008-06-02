@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFactor = 9575;
-        public const long IdleFilter = 3049;
-        public const double BaseFilter = 66.18;
-        public const long StepSize = 8161;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
