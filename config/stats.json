@@ -1,16 +1,7 @@
 {
-  "checks_timeout": 7.49,
-  "enabled": [73, 356, 217],
-  "idle_retries_pct": {
-    "cache_ratio": 500,
-    "counter_capacity": {
-      "sync_delay_count": 57,
-      "default_retries": "primary",
-      "strict": 4999,
-      "warm_depth": 7018
-    },
-    "retry_interval_ms": 81.88
-  },
-  "warm_timeout_ms": 100,
-  "min_threshold_ms": [8, 351, 176]
+  "cache_ratio_count": 500,
+  "sync_capacity_ms": "staging",
+  "sync_timeout": "staging",
+  "poll_limit_pct": 100,
+  "sync_depth_pct": false
 }
