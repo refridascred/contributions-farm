@@ -44,18 +44,21 @@ namespace Common.Utilities
         public const string RetryFactor = "local-v2";
         public const string LimitSpan = "local-edge";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] data, long offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry - entry) == (count % 97))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) - offset;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Roll a metrics account counter forward.</summary>
