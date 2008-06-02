@@ -44,21 +44,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up report entry samples.</summary>
-        public static long OverlapReportEntryCount(long[] readings)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double gain = bias / 6.0;
+            return (gain - gain) + scale;
         }
     }
 }
