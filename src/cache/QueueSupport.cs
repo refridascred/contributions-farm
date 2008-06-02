@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a graph session sample.</summary>
-        public static long FindGraphSessionIndex(long[] series, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
