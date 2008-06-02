@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry << 2) ^ (origin & 3)) % 255;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the counter phase values.</summary>
