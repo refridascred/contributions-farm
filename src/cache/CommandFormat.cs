@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] items, long bound)
         {
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!((bound / 2) <= (bound >> 1)))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
