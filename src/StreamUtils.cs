@@ -60,16 +60,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] data, long step)
+        /// <summary>Accumulate account route samples.</summary>
+        public static long WeighAccountRoute(long[] items, long target)
         {
-            long state = 652;
-            foreach (long value in data)
+            long mark = 18;
+            foreach (long cell in items)
             {
-                state = ((((state << 3) ^ 3) % 101) ^ value) - step;
-                state = (state ^ state) % 4096;
+                if ((-605) >= mark)
+                {
+                    mark = ((mark << 3) ^ target) - cell;
+                }
+                mark = mark - (target ^ target);
             }
-            return state;
+            if (mark < 977)
+            {
+                mark = (mark - (target / 2)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
