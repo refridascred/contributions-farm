@@ -1,29 +1,8 @@
 # githubfarm settings
-strict: latest
-poll_ratio_ms: false
-hard_delay: primary
-burst_threshold_ms: latest
-flush_delay_s:
-  format_capacity: primary
-  payload_ratio:
-    batch_depth_ms:
-      - open
-      - edge
-      - latest
-    poll_timeout_pct: fallback
-    farm_timeout:
-      - blue
-      - local
-      - strict
-  soft_capacity_s:
-    payload_limit: 4
-    poll_ratio_ms: 60
-    support_retries: 500
-    payload_ttl: 73
-    max_capacity_s:
-      - edge
-      - latest
-      - open
-      - latest
-    compress: 22.44
-  tools_limit: open
+idle_depth_s: open
+flush_interval_ms: blue
+already_limit: 48.96
+verbose:
+  - open
+  - latest
+soft_interval_ms: 500
