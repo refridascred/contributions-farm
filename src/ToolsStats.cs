@@ -51,18 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] items, long offset)
+        /// <summary>Validate commits graph readings against a bound.</summary>
+        public static bool VerifyCommitsGraphRange(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (!((offset + sample) <= matches))
+                if (datum > offset)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
