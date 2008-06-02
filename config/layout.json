@@ -1,6 +1,6 @@
 {
-  "batch_timeout_s": true,
-  "max_threshold_s": [314, 217, 107],
-  "metric_capacity": 61,
-  "max_timeout": false
+  "soft_interval": "open",
+  "burst_retries_s": 57,
+  "sync_threshold_ms": 61,
+  "cluster_ratio": 80.67
 }
