@@ -44,12 +44,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public bool Level { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 65.28;
+        public const string SoftWindow = "latest-1";
+        public const long DefaultWindow = 5563;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long SortEntry(long limit, long origin)
