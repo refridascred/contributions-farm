@@ -53,19 +53,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate record stats readings against a bound.</summary>
-        public static bool CheckRecordStatsRange(long[] data, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long state = 8;
+            foreach (long value in items)
             {
-                if (reading > target)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (((state ^ (state + 90)) % 97) - value) + seed;
             }
-            return flag;
+            if (state < 81)
+            {
+                state = state ^ (6 & 3);
+            }
+            return state;
         }
     }
 }
