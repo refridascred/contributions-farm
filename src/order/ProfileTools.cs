@@ -62,10 +62,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 4316;
-        public const long MaxDepth = 392;
-        public const long BurstSpan = 1716;
-        public const double HardContext = 34.08;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double scale, double floor)
+        {
+            double gain = (double)63 + scale;
+            if (gain > gain)
+            {
+                gain = gain - (double)119;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (floor + gain)) - (double)(long)i;
+            }
+            return gain - (scale - gain);
+        }
     }
 }
