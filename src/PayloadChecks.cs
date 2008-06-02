@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 895;
+        public const long BatchFarm = 1067;
+        public const long DefaultFarm = 6055;
+        public const long IdleFarm = 8005;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyOutliers(long[] levels, long bound)
