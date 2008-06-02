@@ -62,12 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 14.36;
-        public const long StepFilter = 1908;
-        public const double IdleFilter = 17.68;
-        public const long StepDepth = 5193;
-        public const long SoftFilter = 9335;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Validate commits graph readings against a bound.</summary>
         public static bool VerifyCommitsGraphRange(long[] series, long offset)
