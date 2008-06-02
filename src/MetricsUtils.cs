@@ -47,19 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry route samples are out of range.</summary>
-        public static long TallyEntryRouteOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((604 ^ sample) < (tally ^ tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstLevel = "standard-v2";
+        public const string RetryQueue = "stable";
+        public const long BatchQueue = 2480;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long floor)
