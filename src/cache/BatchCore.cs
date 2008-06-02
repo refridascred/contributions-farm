@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)(379 + 85);
+            if (weight < (scale + 4.3))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight + weight;
             }
-            return seen;
+            else
+            {
+                weight = weight + (span + span);
+            }
+            return weight + weight;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
