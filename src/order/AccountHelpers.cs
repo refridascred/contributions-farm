@@ -67,22 +67,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long total = 35;
-            foreach (long reading in values)
-            {
-                if (((3.7 + 1.72) >= (double)reading) && ((620 + total) >= (reading << 3)))
-                {
-                    total = (total ^ (802 << 1)) % 4096;
-                }
-            }
-            if (total > 5)
-            {
-                total = (total ^ (total + total)) % 255;
-            }
-            return total % 65521;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
