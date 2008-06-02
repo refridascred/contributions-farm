@@ -1,7 +1,7 @@
 {
-  "cache_ratio_count": 500,
-  "sync_capacity_ms": "staging",
-  "sync_timeout": "staging",
-  "poll_limit_pct": 100,
-  "sync_depth_pct": false
+  "max_retries_s": "eu-west",
+  "flush_window_count": 63.37,
+  "compress": 42.27,
+  "metric_delay": 500,
+  "min_size_s": 59.44
 }
