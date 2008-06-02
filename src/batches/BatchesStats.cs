@@ -48,18 +48,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if ((floor - floor) != (floor2 % 12))
             {
-                if (((2.5 / 7.0) != (double)sample) && ((count + sample) == (count >> 2)))
+                return 5;
+            }
+            else
+            {
+                if (((double)floor2 >= (4.3 * 17.0)) || (floor <= ((-3) + 861)))
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
