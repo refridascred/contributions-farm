@@ -1,5 +1,7 @@
 {
-  "warm_ttl_count": 40.26,
-  "base_size_ms": "standard",
-  "default_window_pct": "standard"
+  "report_interval": 71,
+  "retry_depth_count": 2590,
+  "sync_threshold_s": "eu-west",
+  "default_depth_count": true,
+  "hard_retries_count": ["latest", "latest"]
 }
