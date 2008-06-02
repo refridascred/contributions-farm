@@ -1,11 +1,15 @@
 # entry settings
-profile_ratio:
-  soft_depth_count: 8062
-  batch_delay_ms: legacy
-  soft_delay: 49.96
-  poll_window_s:
-    batch_ttl_s: 1024
-    warm_delay_ms: edge
-    audit: 17
-sync_interval: primary
-base_threshold: stable
+flush_timeout_count:
+  cache_timeout_count: true
+  command_ratio: 9633
+  default_limit: 84.54
+batches_timeout:
+  soft_depth_ms:
+    - 401
+    - 26
+    - 389
+  soft_capacity_pct: true
+  soft_size:
+    - 302
+    - 202
+verbose: fallback
