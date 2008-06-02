@@ -23,11 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepCount = 9255;
-        public const long DefaultWidth = 7914;
-        public const double LimitContext = 42.12;
-        public const long BaseFactor = 5555;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)value >= (13.0 * 8.0))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long FindAccountIndex(long[] series, long limit)
