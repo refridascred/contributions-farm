@@ -37,19 +37,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] levels, long seed)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= seed)
+                if ((series[i] == floor) && ((series[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Validate record stats readings against a bound.</summary>
