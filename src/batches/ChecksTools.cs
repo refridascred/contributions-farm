@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long MaxLevel = 1920;
         public const long IdleInterval = 2868;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] values)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + tally) > (entry - entry))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
