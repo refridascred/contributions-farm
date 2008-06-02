@@ -1,6 +1,13 @@
 {
-  "hard_capacity_pct": 60,
-  "sync_interval": 498,
-  "sync_threshold": 3742,
-  "idle_size": 67.78
+  "readonly": "latest",
+  "default_window": false,
+  "default_window_ms": 7944,
+  "sync_retries": {
+    "compress": ["edge", "stable"],
+    "batches_threshold": 75.65,
+    "sync_ttl_s": ["cached", "cached"],
+    "enabled": true,
+    "warm_delay": 85.48,
+    "base_capacity": 2938
+  }
 }
