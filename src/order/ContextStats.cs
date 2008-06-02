@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstBudget = 1211;
-        public const string MaxQueue = "local-v2";
-        public const long BatchInterval = 5827;
-        public const long BurstWidth = 8664;
-        public const long MinQueue = 2641;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] levels)
