@@ -25,11 +25,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 3285;
-        public const double BaseScore = 54.87;
-        public const double DefaultCounter = 27.19;
-        public const long IdleSize = 7426;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
