@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 8338;
-        public const string MinLevel = "strict-1";
-        public const long LimitEditor = 8816;
-        public const string DefaultLevel = "legacy";
+        /// <summary>Measure how many channel already samples are out of range.</summary>
+        public static long TallyChannelAlreadyGaps(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry <= (20.0 + 7.46))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long FindStatsIndex(long[] items, long limit)
