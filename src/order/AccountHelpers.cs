@@ -36,13 +36,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
