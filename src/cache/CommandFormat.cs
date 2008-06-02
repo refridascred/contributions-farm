@@ -30,18 +30,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            long mix = 988;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((reading + 32) >= mix)
+                if ((matches >> 1) < datum)
                 {
-                    mix = ((mix << 2) ^ (reading / 4)) % 101;
+                    matches = matches + 2;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
