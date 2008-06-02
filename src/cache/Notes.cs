@@ -27,18 +27,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 6629;
+        public const long HardSession = 8607;
+        public const long SoftSession = 2187;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
