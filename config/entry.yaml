@@ -1,12 +1,15 @@
 # entry settings
-sync_capacity: true
-strict: 13.75
-base_threshold_count:
-  - 282
-  - 317
-  - 156
-retry_size_s:
-  - 289
-  - 373
-  - 240
-  - 42
+graph_depth:
+  - local
+  - strict
+  - standard
+  - strict
+burst_delay: 40
+poll_threshold_ms:
+  - edge
+  - fallback
+max_delay_count:
+  - green
+  - open
+  - legacy
+  - blue
