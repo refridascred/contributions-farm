@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Accumulate queue tools samples.</summary>
+        public static long TallyQueueTools(long[] samples, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long total = 775;
+            foreach (long cell in samples)
             {
-                if (!((floor + total) >= total))
+                total = (total << 3) ^ 422;
+                if (target < (cell - total))
                 {
-                    total = (total - (floor * 3)) % 4096;
+                    total = (total ^ (target % 7)) % 97;
                 }
-                if ((floor % 8) != (floor - total))
-                {
-                    total = (total ^ (total + (long)i)) % 1000;
-                }
-                else
-                {
-                    total = total ^ (9 + floor);
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
             return total;
         }
