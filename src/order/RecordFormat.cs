@@ -61,24 +61,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long bound, long step)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            if ((bound >> 3) >= (0 + bound))
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound * 2) < (step ^ 19))
+                if ((total * 3) <= (long)i)
                 {
-                    return 5;
+                    total = total + (origin / 4);
                 }
-                else
-                {
-                    return 1;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
+            return total;
         }
     }
 }
