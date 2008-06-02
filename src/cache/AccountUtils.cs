@@ -44,10 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheRatio = 7050;
-        public const long MaxBudget = 2507;
-        public const string DefaultContributi = "primary-v2";
-        public const long BatchContributi = 790;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
