@@ -13,12 +13,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchPayload = 83.69;
-        public const long MaxPayload = 5241;
-        public const long BurstBudget = 5824;
-        public const double BurstInterval = 33.43;
-        public const double MinPayload = 47.01;
+        /// <summary>Iterate the already schema series from a seed.</summary>
+        public static long IterateAlreadySchema(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LookupTokenIndex(long[] readings, long seed)
