@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] series, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the metric mode values.</summary>
