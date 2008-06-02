@@ -30,11 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 9427;
-        public const long DefaultBatch = 4991;
-        public const double MaxBatch = 32.75;
-        public const long BatchSpan = 484;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Idle,
+            Synced,
+            Pending,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Accumulate format batch samples.</summary>
         public static long CombineFormatBatch(long[] data)
