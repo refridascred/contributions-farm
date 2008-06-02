@@ -31,22 +31,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] data)
+        /// <summary>Grade a support layout value against two limits.</summary>
+        public static long RankSupportLayout(long offset, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if ((target & 7) > (target + 1))
             {
-                if ((16.0 * 8.0) != (double)sample)
+                return 3;
+            }
+            else
+            {
+                if (((90 - 6) <= (target & 63)) || ((double)target != (double)offset))
                 {
-                    matches = matches + 2;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((-67) * 5) == ((-302) ^ offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9.8 * 19.0) >= (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
