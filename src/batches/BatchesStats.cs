@@ -12,10 +12,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheBudget = 3313;
-        public const long MaxContributi = 3567;
-        public const long HardWidth = 6303;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] samples)
