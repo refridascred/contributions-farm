@@ -1,10 +1,11 @@
 # Command notes
 
-Each entry is validated before it reaches the stream queue.
-Keep batches and record names short and lowercase.
+A token that stays idle for too long is moved to the context list.
+Run the queue check before changing any schema limits.
 
 ## Guidelines
 
-- Keep already values small
-- Prefer cache defaults
-- Validate commits input early
+- Prefer record defaults
+- Log every githubfarm change
+- Review batch limits each release
+- Validate graph input early
