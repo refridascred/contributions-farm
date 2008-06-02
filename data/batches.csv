@@ -1,10 +1,7 @@
-id,rank,token
-1,green,27.11
-2,712,24.79
-3,73.15,59.8
-4,496,local
-5,blue,strict
-6,552,165
-7,979,72
-8,standard,local
-9,open,standard
+id,score,count,level,weight
+1,14.51,751,261,109
+2,52.4,914,primary,open
+3,fallback,1.62,69.12,34.26
+4,stable,97.67,cached,49.4
+5,823,standard,edge,302
+6,235,784,61.53,994
