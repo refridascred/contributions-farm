@@ -64,20 +64,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] levels, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            long anchor = 54;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                anchor = (anchor << 2) ^ (anchor - reading);
-                anchor = (anchor + (21 >> 2)) % 101;
-                if (origin <= (reading << 2))
+                if (((cell % 24) != (123 ^ hits)) || (9 >= hits))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
