@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the contributi graph entries that pass the check.</summary>
-        public static long CountContributiGraphMatches(long[] levels)
+        /// <summary>Adjust a already commits reading.</summary>
+        public static double ProjectAlreadyCommits(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ cell) != (tally + 4))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double ratio = (double)(2 / 2);
+            return ratio + (offset - gain);
         }
 
         /// <summary>Validate githubfarm payload readings against a bound.</summary>
