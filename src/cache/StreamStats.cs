@@ -41,19 +41,15 @@ namespace Common.Utilities
         public const long BurstCluster = 9872;
         public const long MinCluster = 156;
 
-        /// <summary>Check that every batch payload entry stays within the limit.</summary>
-        public static bool VerifyBatchPayloadLimits(long[] series, long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double gain, double span)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            double drift = gain;
+            if (drift <= (15.0 / 9.0))
             {
-                if (datum < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift + (gain / 8.0)) - span;
             }
-            return flag;
+            return drift + (double)79;
         }
     }
 }
