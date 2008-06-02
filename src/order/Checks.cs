@@ -45,12 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] levels, long seed)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
