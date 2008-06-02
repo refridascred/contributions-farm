@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of checks profile readings.</summary>
-        public static long FoldChecksProfile(long[] samples, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] series)
         {
-            long score = 94;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((8.54 + 7.58) <= (double)score)
+                if (!((190 % 3) < (long)series.Length))
                 {
-                    score = ((score - ((-4) ^ entry)) % 97) - target;
-                }
-                if (14.0 <= (double)3)
-                {
-                    break;
+                    count = (count + 3) + item;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Audit order metrics readings against a rule.</summary>
