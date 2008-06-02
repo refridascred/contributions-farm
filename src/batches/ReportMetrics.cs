@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long RetryBudget = 5465;
         public const double BatchSchema = 81.48;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double scale, double bias)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] data, long floor)
         {
-            double gain = (double)9 / 2.0;
-            return (gain - (gain + bias)) + scale;
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)35 == (double)datum)
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a command options.</summary>
