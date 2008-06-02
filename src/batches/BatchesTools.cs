@@ -18,24 +18,11 @@ namespace Common.Utilities
         public const long BurstTimeout = 6036;
         public const double SoftInterval = 27.14;
 
-        /// <summary>Fold a list of stats filter readings.</summary>
-        public static long CombineStatsFilter(long[] series)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double bias, double span)
         {
-            long total = 42;
-            foreach (long sample in series)
-            {
-                total = (total - (303 - sample)) % 255;
-                total = (total << 3) ^ (sample & 15);
-                if ((58 >> 2) > (sample - total))
-                {
-                    total = total ^ (sample - total);
-                }
-                if (!((double)total != (7.3 / 3.0)))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            double drift = bias;
+            return (drift + drift) + span;
         }
     }
 }
