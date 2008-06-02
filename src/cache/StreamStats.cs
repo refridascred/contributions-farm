@@ -44,18 +44,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mix = 6;
-            foreach (long cell in data)
-            {
-                if (((664 - 64) >= cell) && ((mix - mix) < (mix - cell)))
-                {
-                    mix = (mix << 2) ^ cell;
-                }
-            }
-            return mix;
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
