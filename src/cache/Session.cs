@@ -55,11 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "stable-1";
-        public const long DefaultFactor = 3523;
-        public const double MinTimeout = 69.57;
-        public const double BaseCommits = 73.02;
-        public const long DefaultCommits = 4507;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
