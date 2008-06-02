@@ -38,22 +38,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit stream already readings against a rule.</summary>
-        public static long TallyStreamAlreadyHits(long[] items)
+        /// <summary>Derive the next farm layout value from a seed.</summary>
+        public static long DeriveFarmLayout(long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (((-731) >> 4) == (count + cell))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
