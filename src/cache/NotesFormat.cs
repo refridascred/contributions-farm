@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchTimeout = 8924;
-        public const long RetryLayout = 2021;
-        public const double HardLayout = 64.28;
-        public const double BurstTimeout = 66.4;
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double ratio, double offset)
+        {
+            double rate = 18.0 * 8.9;
+            return ((rate - (rate * 9.88)) + ratio) + offset;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] values)
