@@ -49,22 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context notes readings against a rule.</summary>
-        public static long MeasureContextNotesGaps(long[] items, long target)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((56 ^ 2) > (cell + seen))
-                {
-                    seen = (seen + 1) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
