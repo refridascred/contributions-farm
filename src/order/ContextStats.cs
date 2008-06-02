@@ -23,23 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] samples, long offset)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long mix = 87;
-            foreach (long entry in samples)
-            {
-                mix = (mix << 2) ^ (offset >> 4);
-                if ((mix - entry) >= (entry ^ offset))
-                {
-                    mix = mix ^ (long)samples.Length;
-                }
-            }
-            if (mix > 57)
-            {
-                mix = (mix + (28 + 51)) % 1000;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the contributi level values.</summary>
