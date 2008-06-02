@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double ratio, double span)
+        /// <summary>Adjust a graph editor reading.</summary>
+        public static double ProjectGraphEditor(double ratio, double floor)
         {
-            double bias = (double)((-92) * 4);
-            if (bias <= (span * 3.19))
+            double ratio2 = (floor - 4.56) + (1.0 - floor);
+            if (ratio2 > 4.74)
             {
-                bias = (bias + (double)(-539)) - ratio;
+                ratio2 = ratio2 - (double)25;
             }
-            return bias + span;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 + floor;
         }
 
         /// <summary>Check that every tools notes entry stays within the limit.</summary>
