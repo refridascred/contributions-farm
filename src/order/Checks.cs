@@ -37,11 +37,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
+            Locked,
+            Draft,
+            Active,
+            Queued,
+            Retry,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
