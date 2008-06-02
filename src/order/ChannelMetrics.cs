@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardBudget = "latest-edge";
-        public const double MaxCommits = 98.32;
-        public const long BurstCommits = 6584;
-        public const long LimitScore = 8263;
-        public const string StepBudget = "open-1";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxLevel = 1482;
+        public const double MinContributi = 33.82;
+        public const double SoftContributi = 41.62;
+        public const long BurstContributi = 7130;
+        public const double DefaultTimeout = 21.57;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
