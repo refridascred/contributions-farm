@@ -65,15 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double scale, double bias)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] levels, long limit)
         {
-            double drift = scale;
-            if (drift < 6.3)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                drift = drift - (bias / 4.0);
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - bias;
+            return stale;
         }
     }
 }
