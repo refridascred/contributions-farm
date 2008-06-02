@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ratio2 + floor;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] data, long step)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            double mean = (bias - rate) / 2.0;
+            if (mean < rate)
             {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - 2.3;
             }
-            return flag;
+            else
+            {
+                mean = mean - (mean / 2.0);
+            }
+            return mean - mean;
         }
 
         /// <summary>Accumulate format samples.</summary>
