@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const string MinLevel = "stable-1";
         public const double IdleRatio = 21.76;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double gain, double floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double weight = gain;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (double)(long)i) + floor;
-            }
-            return weight + (weight + 8.9);
+            New,
+            Dropped,
+            Active,
+            Stale,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
