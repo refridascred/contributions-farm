@@ -61,13 +61,15 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double scale, double bias)
         {
-            Failed,
-            Active,
-            Synced,
-            Pending,
+            double drift = scale;
+            if (drift < 6.3)
+            {
+                drift = drift - (bias / 4.0);
+            }
+            return drift - bias;
         }
     }
 }
