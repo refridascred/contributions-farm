@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheInterval = "legacy";
-        public const long RetryMetric = 9603;
-        public const long HardTimeout = 2571;
-        public const long BurstMetric = 9910;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long ScoreCommits(long[] values, long seed)
