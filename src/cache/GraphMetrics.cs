@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstBudget = 38.78;
-        public const string CacheMetrics = "cached";
-        public const long BaseMetrics = 3964;
-        public const double BatchMetrics = 0.94;
-        public const long CacheTimeout = 753;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up graph batch samples.</summary>
         public static long PairGraphBatchCount(long[] data)
