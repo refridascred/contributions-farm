@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstFactor = "open";
+        public const long MinBatches = 7153;
+        public const long RetryBatches = 8671;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double HardFactor = 30.77;
