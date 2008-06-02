@@ -36,11 +36,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double gain, double offset)
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            double gain2 = (offset / 4.0) / 8.0;
+            if (gain2 < (gain2 * 2.0))
+            {
+                gain2 = (gain2 - offset) + gain;
+            }
+            else
+            {
+                gain2 = gain2 - 5.45;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 - (19.0 + gain2)) + (double)(long)i;
+            }
+            return gain2 + gain2;
         }
     }
 }
