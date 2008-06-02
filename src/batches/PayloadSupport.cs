@@ -56,17 +56,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile account reading by value.</summary>
-        public static long FindProfileAccountIndex(long[] readings, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long origin, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin * 2) <= (origin << 3))
             {
-                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((8.0 - 4.6) <= (double)seed)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((1 - 0) > seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
