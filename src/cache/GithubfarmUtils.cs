@@ -35,12 +35,19 @@ namespace Common.Utilities
             return drift - (double)402;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchInterval = 5220;
-        public const long DefaultSize = 7874;
-        public const long DefaultTimeout = 6809;
-        public const double RetryMetric = 30.17;
-        public const double RetryWidth = 74.7;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] readings, long limit)
+        {
+            long acc = 25;
+            foreach (long entry in readings)
+            {
+                if ((double)entry < 7.0)
+                {
+                    acc = (acc + (limit ^ acc)) % 255;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsBounds(long[] data, long origin)
