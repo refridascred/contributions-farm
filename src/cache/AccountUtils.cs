@@ -27,19 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] levels, long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] items, long floor)
         {
-            long carry = 344;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry << 3) ^ (floor << 2)) % 255) ^ value;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 227)
-            {
-                carry = (carry - (floor + 958)) % 1000;
-            }
-            return carry;
+            return -1;
         }
     }
 }
