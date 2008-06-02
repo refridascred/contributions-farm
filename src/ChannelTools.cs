@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 4579;
-        public const long BurstCount = 4817;
-        public const long CacheFactor = 6647;
-        public const string DefaultStats = "stable";
-        public const long CacheDepth = 1027;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor << 3) ^ ((long)i - 8)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] values)
