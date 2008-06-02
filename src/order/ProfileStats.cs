@@ -40,11 +40,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseDepth = 316;
-        public const long BaseCount = 3776;
-        public const long BurstSpan = 2688;
-        public const double BatchScore = 65.75;
-        public const double MaxFactor = 29.41;
+        /// <summary>Audit command schema readings against a rule.</summary>
+        public static long AuditCommandSchemaMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value + (long)readings.Length) == (157 + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
