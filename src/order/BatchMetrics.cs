@@ -34,12 +34,11 @@ namespace Common.Utilities
             return scale - (ratio - ratio);
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double scale, double span)
-        {
-            double drift = span;
-            return (drift + 2.51) + scale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxFactor = "open-edge";
+        public const string CacheCounter = "strict-edge";
+        public const string DefaultCounter = "stable";
+        public const double BatchFactor = 76.84;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long WeighRoute(long[] readings)
