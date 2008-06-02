@@ -14,22 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] samples, long limit)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches - 0) < (matches & 15))
+                if ((data[i] >= origin) && ((data[i] % 3) != 0))
                 {
-                    matches = ((matches + 1) + reading) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
