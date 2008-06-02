@@ -29,19 +29,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] series, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long mix = 43;
+            foreach (long datum in values)
             {
-                if (value < offset)
+                if (((3.5 / 6.0) == (double)datum) && ((mix << 1) < ((long)values.Length + mix)))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ (mix >> 1)) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ (2 - mix)) % 101;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Project the next contributi batch value.</summary>
