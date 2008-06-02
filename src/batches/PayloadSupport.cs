@@ -21,12 +21,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Retry,
-            Pending,
-            Synced,
+            Dropped,
+            Closed,
+            Done,
+            Stale,
+            Paused,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
