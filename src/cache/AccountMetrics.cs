@@ -43,17 +43,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first graph entry entry that matches the target.</summary>
-        public static long LocateGraphEntryIndex(long[] samples, long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
