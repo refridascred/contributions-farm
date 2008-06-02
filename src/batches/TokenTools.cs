@@ -36,28 +36,30 @@ namespace Common.Utilities
         public const double MaxBatch = 32.75;
         public const long BatchSpan = 484;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Accumulate format batch samples.</summary>
+        public static long CombineFormatBatch(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            long anchor = 1;
+            foreach (long sample in data)
             {
-                if ((long)i != ((long)i >> 5))
+                if (((anchor + sample) > sample) || ((anchor + 7) != (anchor - sample)))
                 {
-                    continue;
-                }
-                if (((bound * 4) == (acc ^ acc)) || (acc >= bound))
-                {
-                    acc = acc ^ (9 - (long)i);
+                    anchor = (anchor * 4) + anchor;
                 }
                 else
                 {
-                    acc = (acc + bound) % 65521;
+                    anchor = ((anchor << 3) ^ (sample * 5)) % 97;
                 }
-                acc = ((acc << 3) ^ (acc % 2)) % 4096;
-                acc = ((acc * 4) + (long)i) % 101;
+                if (!((186 & 31) < (sample + sample)))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (anchor > 414)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor;
         }
     }
 }
