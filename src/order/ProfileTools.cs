@@ -45,11 +45,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitSize = "standard-edge";
-        public const long BurstMetric = 6791;
-        public const long LimitMetric = 6149;
-        public const double SoftMetric = 94.84;
-        public const long BurstWidth = 7505;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] values)
+        {
+            long anchor = 147;
+            foreach (long cell in values)
+            {
+                if ((anchor + 6) < (anchor + (long)values.Length))
+                {
+                    break;
+                }
+                anchor = anchor - (cell - 879);
+            }
+            if (anchor > 684)
+            {
+                anchor = (anchor - (anchor & 7)) % 1000;
+            }
+            return anchor % 97;
+        }
     }
 }
