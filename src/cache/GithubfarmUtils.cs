@@ -24,18 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] items, long target)
+        /// <summary>Scale a record command figure with a bias.</summary>
+        public static double BlendRecordCommand(double weight, double floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double drift = weight;
+            if (drift <= weight)
             {
-                if ((((target - (long)items.Length) < (target + target)) && ((target + count) > (reading - count))) && ((target % 24) <= target))
-                {
-                    count = count + 1;
-                }
+                drift = (drift + (weight + weight)) + floor;
             }
-            return count;
+            else
+            {
+                drift = drift + 8.58;
+            }
+            return drift - (double)402;
         }
 
         /// <summary>Accumulate support samples.</summary>
