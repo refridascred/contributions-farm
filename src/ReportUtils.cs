@@ -32,27 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((7.9 - 1.6) <= (5.63 / 5.0))
-                {
-                    state = (state << 2) ^ ((long)i << 3);
-                }
-                if (((-1) & 15) < ((long)i + (-9)))
-                {
-                    state = state - (seed % 60);
-                }
-                else
-                {
-                    state = state - (state >> 2);
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Digest a series of context entries.</summary>
