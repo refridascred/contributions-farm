@@ -37,12 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double scale, double bias)
         {
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            double gain = scale;
+            return (gain + (gain + scale)) + bias;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
