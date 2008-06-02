@@ -29,18 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] levels, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long anchor = 30;
+            foreach (long sample in series)
             {
-                if ((hits - item) >= ((long)levels.Length & 3))
-                {
-                    hits = (hits + 1) - offset;
-                }
+                anchor = (((anchor << 3) ^ (sample % 64)) % 65521) - origin;
             }
-            return hits;
+            return anchor;
         }
     }
 }
