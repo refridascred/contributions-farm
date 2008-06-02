@@ -27,18 +27,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Compare every pair of contributi notes readings.</summary>
-        public static long PairContributiNotesCount(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] readings, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)tally < (double)cell)
                 {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + offset;
                 }
             }
             return tally;
