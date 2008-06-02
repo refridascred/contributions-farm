@@ -93,20 +93,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry - (carry >> 4)) % 1000;
-                if (!((step ^ carry) <= (step - step)))
-                {
-                    carry = (carry * 5) + (step + carry);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public bool Score { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
