@@ -1,15 +1,6 @@
 # entry settings
-retry_depth_count: 30
-default_limit_s: 909
-flush_ttl_s:
-  - legacy
-  - fallback
-  - standard
-burst_depth: 42.19
-warm_capacity:
-  poll_ttl: 18.32
-  max_threshold_s:
-    - 302
-    - 52
-  order_timeout: true
-filter_depth: staging
+dry_run: false
+idle_size_ms: eu-west
+window_interval: 70.53
+channel_limit: primary
+default_depth: true
