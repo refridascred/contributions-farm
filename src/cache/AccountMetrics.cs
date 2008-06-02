@@ -37,18 +37,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] samples, long floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits - floor) == (hits - (long)samples.Length))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the notes level values.</summary>
