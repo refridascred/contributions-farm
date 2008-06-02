@@ -34,18 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metric counter entries that pass the check.</summary>
-        public static long MeasureMetricCounterHits(long[] items, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (entry >= (entry & 3))
+                if (cell < step)
                 {
-                    hits = (hits + 1) - target;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
