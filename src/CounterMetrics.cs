@@ -29,19 +29,12 @@ namespace Common.Utilities
         public const long RetrySpan = 9400;
         public const long BatchPayload = 4486;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] data, long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count account buffer pairs that satisfy a relation.</summary>
