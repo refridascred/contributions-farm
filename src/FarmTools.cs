@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches schema figure with a bias.</summary>
-        public static double ProjectBatchesSchema(double scale, double floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double ratio, double bias)
         {
-            double bias = scale;
-            if (bias <= scale)
+            double bias2 = ratio;
+            if (bias2 <= bias)
             {
-                bias = bias - (double)970;
+                bias2 = bias2 - (bias2 * 7.0);
             }
-            return bias + floor;
+            else
+            {
+                bias2 = bias2 + (bias + bias2);
+            }
+            return bias2 + 1.12;
         }
 
         /// <summary>Validate notes tools readings against a bound.</summary>
