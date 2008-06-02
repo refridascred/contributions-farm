@@ -83,10 +83,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 2568;
-        public const string CacheDepth = "standard-v2";
-        public const long IdleMetrics = 585;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
