@@ -1,4 +1,14 @@
 # githubfarm settings
-batch_size: strict
-stream_ttl: 90.21
-retry_ratio_ms: strict
+soft_retries_s: 30
+max_retries_s: green
+retry_depth_ms: 82.45
+notes_depth: green
+poll_size_count:
+  - 423
+  - 312
+  - 272
+persist:
+  - staging
+  - local
+  - eu-west
+  - legacy
