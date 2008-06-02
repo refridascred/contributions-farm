@@ -55,19 +55,9 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double weight, double floor)
-        {
-            double gain = (double)(75 >> 4);
-            if (gain <= (floor - 0.6))
-            {
-                gain = (gain + (gain * 2.0)) + weight;
-            }
-            else
-            {
-                gain = gain - floor;
-            }
-            return gain - floor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryScore = "standard-1";
+        public const long StepAlready = 546;
+        public const double WindowInterval = 85.71;
     }
 }
