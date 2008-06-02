@@ -28,15 +28,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long bound, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            if ((9.36 * 0.1) == (double)floor)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (!(floor <= (bound - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((floor ^ bound) < (bound * 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound % 5) <= (floor + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
