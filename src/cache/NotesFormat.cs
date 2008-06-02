@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next cluster format value from a seed.</summary>
-        public static long IterateClusterFormat(long bound)
+        /// <summary>Fold a list of checks profile readings.</summary>
+        public static long FoldChecksProfile(long[] samples, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            long score = 94;
+            foreach (long entry in samples)
             {
-                if (((bound - bound) != ((long)i >> 1)) && ((20 + bound) <= 4))
+                if ((8.54 + 7.58) <= (double)score)
                 {
-                    state = (state << 2) ^ (long)i;
+                    score = ((score - ((-4) ^ entry)) % 97) - target;
                 }
-                state = (state - (bound * 3)) % 1000;
-                state = ((state * 5) + (long)i) % 97;
+                if (14.0 <= (double)3)
+                {
+                    break;
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Validate support already readings against a bound.</summary>
