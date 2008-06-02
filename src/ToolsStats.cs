@@ -28,19 +28,12 @@ namespace Common.Utilities
         public const long BaseAccount = 7169;
         public const long BurstAccount = 957;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally + 2) >= (tally * 4))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "staging-edge";
+        public const string MinRatio = "staging-v2";
+        public const double BurstWidth = 97.06;
+        public const long HardTools = 1349;
+        public const string MaxTools = "latest-1";
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long SeriesTools(long offset)
