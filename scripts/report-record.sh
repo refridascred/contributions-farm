@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+RECORD_LIMIT=357
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-local}"
+for item in edge staging; do
+    log "checking ${item}"
+done
+
+mode="${1:-cached}"
 case "${mode}" in
-    standard)
+    stable)
         log "fast path"
         ;;
     *)
