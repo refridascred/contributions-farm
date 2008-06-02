@@ -1,7 +1,7 @@
-id,ratio,level,token
-1,579,274,356
-2,27,cached,eu-west
-3,199,2,894
-4,41.66,74.07,fallback
-5,39,652,open
-6,792,strict,20.71
+id,active,owner
+1,135,606
+2,primary,206
+3,32.44,73.15
+4,blue,147
+5,81.26,27.31
+6,19.79,legacy
