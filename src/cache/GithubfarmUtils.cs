@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
