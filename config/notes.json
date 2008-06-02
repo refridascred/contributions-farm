@@ -1,8 +1,6 @@
 {
-  "default_capacity": [296, 410, 22, 164],
-  "cache_depth_count": "fallback",
-  "poll_ratio": "strict",
-  "base_interval_s": [123, 499, 187],
-  "support_limit": "eu-west",
-  "soft_retries_s": "cached"
+  "hard_delay": "legacy",
+  "sync_depth": [452, 468, 26, 139],
+  "warm_capacity": 4727,
+  "dry_run": "local"
 }
