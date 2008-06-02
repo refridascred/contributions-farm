@@ -38,9 +38,9 @@ namespace Common.Utilities
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
         {
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
