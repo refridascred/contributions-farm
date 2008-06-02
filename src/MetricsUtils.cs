@@ -47,31 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long origin, long floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double ratio, double offset)
         {
-            if ((origin % 5) < (origin + 0))
+            double drift = (double)(193 & 255);
+            if (drift > ratio)
             {
-                return 8;
+                drift = (drift + (drift * 12.0)) + offset;
             }
             else
             {
-                if (!((origin + floor) > (origin - floor)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((36 - origin) > (4 + origin)) || ((floor << 1) != ((-5) >> 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                drift = drift - (0.14 - ratio);
             }
+            return drift + ratio;
         }
 
         /// <summary>Locate a format reading by value.</summary>
