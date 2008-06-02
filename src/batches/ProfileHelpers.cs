@@ -59,18 +59,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route tools samples are out of range.</summary>
-        public static long MeasureRouteToolsOutliers(long[] values, long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long item in values)
+            if (6.66 >= (double)limit)
             {
-                if (((count << 1) > item) && !((count + item) == (target & 63)))
+                return 7;
+            }
+            else
+            {
+                if (((3.5 * 9.0) != (double)limit) || ((5 + 65) == (limit2 + (-307))))
                 {
-                    count = count + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit2 + 44) >= (-2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the graph level values.</summary>
