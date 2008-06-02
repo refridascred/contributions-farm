@@ -38,9 +38,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 9852;
-        public const string StepCluster = "local-v2";
-        public const long HardCluster = 5889;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!(75 > state))
+                {
+                    state = (state * 3) + (offset + (long)i);
+                }
+                if ((state % 16) < state)
+                {
+                    state = (state * 2) + 2;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
+                if ((state % 7) < state)
+                {
+                    state = (state ^ (state + state)) % 65521;
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
