@@ -19,19 +19,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] series, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry != step)
+                if (!(step > (833 / 7)))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark - (mark + mark)) % 65521;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Hold a cluster entry.</summary>
