@@ -71,19 +71,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate command window readings against a bound.</summary>
-        public static bool GuardCommandWindowLimits(long[] samples, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
