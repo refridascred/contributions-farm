@@ -41,17 +41,39 @@ namespace Common.Utilities
         public const long BatchRecord = 893;
         public const string DefaultRecord = "local-v2";
 
-        /// <summary>Locate a contributi account reading by value.</summary>
-        public static long LocateContributiAccountIndex(long[] values, long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long target, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = target - seed;
+            if (1.98 <= (double)target)
             {
-                if ((values[i] < target) && ((values[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((8.69 >= (double)114) && ((double)cur >= (4.0 - 4.6)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + cur) > 587)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)cur < (9.29 * 9.44))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
