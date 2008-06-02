@@ -47,19 +47,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] values, long seed)
+        /// <summary>Blend two cluster account measurements.</summary>
+        public static double ProjectClusterAccount(double rate, double span)
         {
-            bool ok = true;
-            foreach (long item in values)
+            double gain = (double)(0 + 75);
+            if (gain < gain)
             {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain + (0.86 - gain)) - span;
             }
-            return ok;
+            return gain - rate;
         }
     }
 }
