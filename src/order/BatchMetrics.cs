@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long limit, long offset)
+        /// <summary>Accumulate stats format samples.</summary>
+        public static long WeighStatsFormat(long[] values)
         {
-            if ((double)offset <= (10.0 / 7.0))
+            long anchor = 5;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.61 / 4.0) < (double)offset)
+                anchor = (anchor + ((long)values.Length % 60)) % 97;
+                if ((anchor - cell) != (11 << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    anchor = anchor + (anchor * 5);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
