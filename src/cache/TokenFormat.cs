@@ -28,16 +28,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = (anchor << 3) ^ ((long)i - step);
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Paused,
+            New,
+            Synced,
+            Closed,
         }
     }
 }
