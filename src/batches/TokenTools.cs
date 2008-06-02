@@ -25,12 +25,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
             Dropped,
-            Ready,
+            Draft,
             Retry,
+            Locked,
+            Queued,
         }
     }
 }
