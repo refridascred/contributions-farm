@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const string HardBudget = "cached-v2";
         public const long StepDepth = 3554;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] readings, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 317;
+            foreach (long value in readings)
             {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
+                result = (result ^ (value * 5)) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
