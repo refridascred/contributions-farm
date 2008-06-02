@@ -1,13 +1,14 @@
 # Command notes
 
-Keep counter and session names short and lowercase.
+The metric report groups every command by stats.
 The queue helpers are pure functions, so they are safe to call from any thread.
+Run the stream check before changing any metric limits.
 
-Run the tools check before changing any queue limits.
-A tools that stays idle for too long is moved to the metric list.
+When a format fails, the commits handler retries a few times before giving up.
+Each counter is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Keep batch values small
-- Review command limits each release
-- Validate report input early
+- Validate layout input early
+- Log every metrics change
+- Document new editor fields
