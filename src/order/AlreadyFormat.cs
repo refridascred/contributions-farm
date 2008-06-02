@@ -46,19 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache command readings against a rule.</summary>
-        public static long MeasureCacheCommandHits(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count & 31) <= (datum - bound))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseLevel = 9548;
+        public const long DefaultCommand = 9917;
+        public const string RetrySpan = "standard-v2";
+        public const long RetryWidth = 7349;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadBounds(long[] items, long origin)
