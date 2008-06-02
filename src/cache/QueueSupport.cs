@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long step, long floor)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double rate, double bias)
         {
-            if ((floor <= 9) || ((step & 1) <= step))
+            double weight = rate;
+            for (int i = 0; i < 2; i++)
             {
-                return 4;
+                weight = ((weight + (rate + rate)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((floor > (24 - 254)) && ((step + step) >= (step ^ floor)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor ^ (-55)) <= (floor + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step >> 4) > (floor + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return weight - (double)311;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
