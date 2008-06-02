@@ -14,21 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((long)i > (total - offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total - total) % 255;
-                    total = (total + ((long)i - total)) % 101;
-                    break;
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Rank account record input into a small class.</summary>
