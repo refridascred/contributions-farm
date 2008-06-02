@@ -42,14 +42,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] items)
         {
-            New,
-            Queued,
-            Retry,
-            Active,
-            Paused,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (sample <= count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
