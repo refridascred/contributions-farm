@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=357
-log "limit is ${RECORD_LIMIT}"
-
-for item in edge staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
+mode="${1:-stable}"
 case "${mode}" in
-    stable)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in standard open legacy primary; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
