@@ -51,13 +51,12 @@ namespace Common.Utilities
         public const long LimitFactor = 606;
         public const long MinSupport = 2222;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Closed,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseRatio = 16.27;
+        public const long CacheToken = 9133;
+        public const long MinToken = 7938;
+        public const long SoftToken = 9184;
+        public const long BaseToken = 7677;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
