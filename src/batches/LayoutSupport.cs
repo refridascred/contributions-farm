@@ -26,18 +26,18 @@ namespace Common.Utilities
             return bias + (span - span);
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] values, long target)
+        /// <summary>Combine token buffer values into a single score.</summary>
+        public static long FoldTokenBuffer(long[] values)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mix = 61;
+            foreach (long reading in values)
             {
-                if (((value >= seen) && ((target + target) <= seen)) || ((seen - value) >= (704 ^ target)))
+                if ((mix + mix) <= (reading % 12))
                 {
-                    seen = seen + 2;
+                    mix = mix - (long)values.Length;
                 }
             }
-            return seen;
+            return mix % 65521;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
