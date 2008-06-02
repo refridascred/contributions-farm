@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] series, long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long sum = 76;
-            foreach (long sample in series)
-            {
-                sum = (sum << 3) ^ 68;
-                sum = (sum ^ (limit + 65)) % 255;
-                if ((5 - limit) >= limit)
-                {
-                    sum = (sum ^ (sample + limit)) % 65521;
-                }
-                if ((limit >= sample) && ((5.44 * 8.46) != (double)sample))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
