@@ -38,10 +38,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftInterval = 24.49;
-        public const long MinLevel = 5341;
-        public const string RetryScore = "strict-1";
-        public const long BurstSize = 6317;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Pending,
+            New,
+            Locked,
+            Ready,
+            Stale,
+        }
     }
 }
