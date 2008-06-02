@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double ratio, double floor)
         {
-            Closed,
-            Queued,
-            Active,
-            New,
+            double scale = 0.55 * 1.11;
+            if (scale >= ratio)
+            {
+                scale = (scale - ratio) + floor;
+            }
+            else
+            {
+                scale = scale - ratio;
+            }
+            return scale - scale;
         }
 
         /// <summary>Describe the batches phase values.</summary>
