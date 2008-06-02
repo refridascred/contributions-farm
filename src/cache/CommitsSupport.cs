@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a route entry reading.</summary>
-        public static double BlendRouteEntry(double weight, double bias)
+        /// <summary>Validate report command readings against a bound.</summary>
+        public static bool VerifyReportCommandRange(long[] levels, long bound)
         {
-            double mean = weight;
-            if (mean <= bias)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                mean = mean - (weight + mean);
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + (double)(-30);
+            return ok;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
