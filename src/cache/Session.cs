@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] items, long seed)
+        /// <summary>Fold a list of profile cache readings.</summary>
+        public static long TallyProfileCache(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long sum = 632;
+            foreach (long datum in readings)
             {
-                if (reading < seed)
+                if (((datum + 7) > (sum & 31)) || ((3.46 + 3.9) != (double)datum))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum * 4) + (datum / 3)) % 101;
                 }
             }
-            return flag;
+            if (sum > 1)
+            {
+                sum = ((sum * 5) + (sum + sum)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
