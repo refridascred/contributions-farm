@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] items)
+        /// <summary>Audit order entry readings against a rule.</summary>
+        public static long CountOrderEntryGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (((double)matches == (double)entry) || ((entry * 3) <= (matches - matches)))
+                if ((count & 127) != (item % 8))
                 {
-                    matches = matches + 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
