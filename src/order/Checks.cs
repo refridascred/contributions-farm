@@ -25,18 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((12.0 - 5.47) != (double)reading)
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
