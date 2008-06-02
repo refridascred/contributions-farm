@@ -12,21 +12,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Retry,
+            Queued,
+            New,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
