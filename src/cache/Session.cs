@@ -57,22 +57,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] items)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally <= 9.4)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
