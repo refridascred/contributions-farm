@@ -25,19 +25,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a context channel figure with a bias.</summary>
-        public static double AdjustContextChannel(double scale, double span)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double load = scale;
-            if (load >= 2.6)
-            {
-                load = load - (scale * 2.43);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - scale) - (double)(long)i;
-            }
-            return load + (span + span);
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
