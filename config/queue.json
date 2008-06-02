@@ -1,8 +1,12 @@
 {
-  "strict": false,
-  "persist": 2504,
-  "idle_ratio_count": "staging",
-  "batch_threshold_pct": ["latest", "fallback", "fallback"],
-  "retry_ttl": 7681,
-  "soft_ttl": [61, 266, 304]
+  "base_ratio_count": {
+    "order_window": 100,
+    "compress": "fallback",
+    "audit": "strict",
+    "checks_ratio": ["fallback", "open", "primary"]
+  },
+  "min_size_ms": "staging",
+  "strict": 60,
+  "dry_run": 47,
+  "enabled": true
 }
