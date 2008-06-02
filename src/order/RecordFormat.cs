@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] values, long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((((tally / 3) >= (seed + seed)) || ((value << 2) <= (seed + tally))) || !((double)seed > 8.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
