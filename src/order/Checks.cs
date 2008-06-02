@@ -46,21 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item > offset)
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
