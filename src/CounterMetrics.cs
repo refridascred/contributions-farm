@@ -16,18 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the order payload entries that pass the check.</summary>
-        public static long AuditOrderPayloadMatches(long[] values, long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry * 3) >= (913 / 8))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
