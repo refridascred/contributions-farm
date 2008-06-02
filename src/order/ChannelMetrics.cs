@@ -27,23 +27,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Scale a metric format figure with a bias.</summary>
-        public static double AdjustMetricFormat(double rate, double floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] values, long step)
         {
-            double gain = (double)(82 & 31);
-            if (gain < floor)
+            bool found = true;
+            foreach (long reading in values)
             {
-                gain = (gain - floor) - rate;
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + 2.6) - (double)(long)i;
-            }
-            return gain + (gain - gain);
+            return found;
         }
 
         /// <summary>Fold a list of account editor readings.</summary>
