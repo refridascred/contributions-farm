@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count metric profile pairs that satisfy a relation.</summary>
-        public static long PairMetricProfileCount(long[] values)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry / 9) >= tally)
                 {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
