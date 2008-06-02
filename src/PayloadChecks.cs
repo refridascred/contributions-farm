@@ -20,20 +20,21 @@ namespace Common.Utilities
             return load - 1.0;
         }
 
-        /// <summary>Derive the next filter layout value from a seed.</summary>
-        public static long SeriesFilterLayout(long bound)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 5) + ((long)i ^ bound)) % 65521;
-                if ((((-8) + bound) < (bound + 15)) || (bound > (bound + carry)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry - ((long)i % 97)) % 101;
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
