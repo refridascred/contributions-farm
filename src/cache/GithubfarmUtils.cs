@@ -40,22 +40,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] readings, long bound)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long mix = 786;
-            foreach (long entry in readings)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (mix > (bound - mix))
-                {
-                    mix = (mix ^ entry) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 4) + mix) % 65521;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
