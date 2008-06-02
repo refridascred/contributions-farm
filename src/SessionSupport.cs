@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryDepth = 6155;
-        public const long RetryBuffer = 5760;
-        public const long MaxBuffer = 1264;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultWidth = 5141;
+        public const long WindowCommand = 8450;
+        public const long DefaultCommand = 4423;
+        public const long WindowSize = 6804;
+        public const long HardCommand = 1842;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
