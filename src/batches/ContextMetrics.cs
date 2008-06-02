@@ -28,23 +28,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of stream support readings.</summary>
-        public static long DigestStreamSupport(long[] items)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double bias, double bias2)
         {
-            long mix = 4;
-            foreach (long reading in items)
+            double rate = bias2;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix * 5) + reading) % 97;
-                if ((0 > reading) || ((reading & 3) > (mix << 2)))
-                {
-                    break;
-                }
+                rate = (rate + bias2) - (double)(long)i;
             }
-            if (mix > (-535))
-            {
-                mix = (mix ^ 0) % 101;
-            }
-            return mix % 4096;
+            return rate - (bias2 - bias);
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
