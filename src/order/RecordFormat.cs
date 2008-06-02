@@ -42,24 +42,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] data, long limit)
         {
-            long total = 2;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((total <= (total & 127)) || ((2.0 / 7.0) > (double)total))
+                if (entry >= (490 >> 3))
                 {
-                    break;
+                    tally = (tally + 1) + limit;
                 }
-                for (int i = 0; i < 11; i++)
+                else
                 {
-                    total = ((total ^ total) + (long)i) - cell;
-                    total = total ^ ((long)samples.Length + total);
+                    tally = tally - 1;
                 }
-                total = (total ^ total) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
