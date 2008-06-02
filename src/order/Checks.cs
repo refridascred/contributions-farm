@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            Active,
+            Retry,
+            Queued,
+            Paused,
         }
 
         /// <summary>Audit layout window readings against a rule.</summary>
