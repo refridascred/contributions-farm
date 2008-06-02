@@ -23,40 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long limit, long floor)
-        {
-            long diff = limit ^ floor;
-            if (((double)limit > (1.7 * 3.6)) && ((limit * 5) <= diff))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((11.0 * 8.9) < (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((15 / 4) < (limit % 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((diff & 15) > floor) && (((-25) << 3) > (floor + diff)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultScore = 5545;
+        public const long StepWidth = 6665;
+        public const long BaseBudget = 7750;
+        public const string HardSpan = "legacy-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BaseRatio = 8252;
