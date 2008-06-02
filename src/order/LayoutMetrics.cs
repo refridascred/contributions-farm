@@ -38,22 +38,9 @@ namespace Common.Utilities
         public const double HardCommits = 25.1;
         public const double HardFactor = 6.37;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits ^ (long)data.Length) >= (reading + hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchSpan = 2758;
+        public const long BaseBatches = 3849;
+        public const long MinDepth = 3848;
     }
 }
