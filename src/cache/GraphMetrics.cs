@@ -52,22 +52,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepBudget = 44.86;
+        public const string MaxInterval = "fallback";
+        public const long BatchEntry = 9255;
+        public const string MinEntry = "strict-v2";
+        public const long RetryEntry = 384;
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] values, long origin)
