@@ -1,12 +1,6 @@
 {
-  "entry_ratio": 65,
-  "hard_window_s": "staging",
-  "soft_timeout_ms": [456, 70, 411],
-  "metric_window": {
-    "poll_size_ms": 14.12,
-    "idle_interval": 47.17,
-    "warm_ttl": 1024
-  },
-  "compress": [379, 187],
-  "audit": 7140
+  "strict": "primary",
+  "audit": 10.04,
+  "max_interval_count": "blue",
+  "hard_depth": false
 }
