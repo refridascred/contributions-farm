@@ -35,17 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = (mark * 3) + 79;
-                mark = (mark + (target + (long)i)) % 101;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Failed,
+            Retry,
+            Locked,
+            Pending,
         }
     }
 }
