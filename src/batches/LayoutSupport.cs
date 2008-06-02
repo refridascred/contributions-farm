@@ -26,18 +26,18 @@ namespace Common.Utilities
             return bias + (span - span);
         }
 
-        /// <summary>Combine token buffer values into a single score.</summary>
-        public static long FoldTokenBuffer(long[] values)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] readings)
         {
-            long mix = 61;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((mix + mix) <= (reading % 12))
+                if ((cell + hits) == (hits - (long)readings.Length))
                 {
-                    mix = mix - (long)values.Length;
+                    hits = hits + 2;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Describe the metric level values.</summary>
