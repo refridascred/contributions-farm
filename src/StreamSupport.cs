@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 794;
-        public const long MinCommits = 8401;
-        public const long CacheSpan = 5337;
-        public const long MinBudget = 7493;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 6818;
+        public const string MaxChannel = "primary-v2";
+        public const long BurstScore = 5373;
+        public const double HardChannel = 63.72;
 
         /// <summary>Compare every pair of graph channel readings.</summary>
         public static long OverlapGraphChannelCount(long[] levels)
