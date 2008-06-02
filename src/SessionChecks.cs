@@ -18,13 +18,14 @@ namespace Common.Utilities
         public const double DefaultSize = 27.38;
         public const long DefaultDepth = 2344;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Active,
             Draft,
+            Active,
+            Retry,
+            Locked,
             Queued,
-            Pending,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
