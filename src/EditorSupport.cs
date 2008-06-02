@@ -27,11 +27,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 87.75;
-        public const double MaxAccount = 51.9;
-        public const long DefaultCount = 691;
-        public const string HardAccount = "fallback";
+        /// <summary>Digest a series of route schema entries.</summary>
+        public static long TotalRouteSchema(long[] levels, long offset)
+        {
+            long total = 72;
+            foreach (long datum in levels)
+            {
+                if (((-524) + offset) < 2)
+                {
+                    total = ((total + (long)levels.Length) % 97) + datum;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
