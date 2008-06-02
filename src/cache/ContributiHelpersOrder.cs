@@ -21,22 +21,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] series, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((entry & 63) >= seed)
+                if ((double)count > (double)25)
                 {
-                    hits = hits + 2;
+                    count = ((count + 3) + datum) + target;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
