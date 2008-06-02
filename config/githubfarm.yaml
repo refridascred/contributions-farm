@@ -1,7 +1,9 @@
 # githubfarm settings
-sync_interval_pct: 29
-base_ttl_ms: 31
-warm_timeout_ms: staging
-batch_interval: true
-default_size_ms: latest
-session_retries: latest
+warm_window_count:
+  - open
+  - stable
+  - open
+  - cached
+burst_depth: 0.69
+readonly: green
+graph_capacity: 83.02
