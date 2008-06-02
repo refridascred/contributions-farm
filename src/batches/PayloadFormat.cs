@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleDepth = 1479;
-        public const long DefaultWidth = 3502;
-        public const double SoftSize = 65.38;
-        public const long SoftRoute = 1267;
-        public const double LimitTimeout = 46.93;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum << 1) == (488 ^ 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandOutliers(long[] series, long offset)
