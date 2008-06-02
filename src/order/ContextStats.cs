@@ -50,15 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double bias)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            double weight = scale / 5.0;
+            if (weight > weight)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                weight = weight + (weight / 5.0);
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (9.8 + weight)) + (double)(long)i;
+            }
+            return weight - (bias - weight);
         }
     }
 }
