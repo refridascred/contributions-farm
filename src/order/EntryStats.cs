@@ -37,18 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] readings)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long step)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (((matches ^ 474) < matches) && ((value / 4) == (value << 3)))
-                {
-                    matches = matches + 1;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
