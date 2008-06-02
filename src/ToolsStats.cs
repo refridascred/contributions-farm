@@ -42,18 +42,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats record samples.</summary>
-        public static long CombineStatsRecord(long[] readings, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            long score = -82;
-            foreach (long item in readings)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((item / 2) <= (score - offset))
+                carry = carry + (carry + 7);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    score = (score ^ item) % 101;
+                    carry = ((carry << 2) ^ (carry + carry)) - (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
