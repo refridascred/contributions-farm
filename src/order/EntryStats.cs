@@ -36,16 +36,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] readings, long target)
-        {
-            long total = -475;
-            foreach (long sample in readings)
-            {
-                total = (((total << 2) ^ target) % 255) + sample;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 46.42;
+        public const long BatchRecord = 893;
+        public const string DefaultRecord = "local-v2";
 
         /// <summary>Locate a contributi account reading by value.</summary>
         public static long LocateContributiAccountIndex(long[] values, long target)
