@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] levels)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits << 1) == (hits * 3))
+                if (((double)(long)i == (15.0 / 2.0)) && ((floor * 4) <= floor))
                 {
-                    hits = (hits + 2) + value;
+                    mark = (mark - floor) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = (mark ^ (7 + mark)) % 1000;
                 }
+                mark = (mark + (mark + floor)) % 4096;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a session info.</summary>
