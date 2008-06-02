@@ -40,11 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "strict-v2";
-        public const double BaseSize = 85.79;
-        public const long RetryEntry = 2735;
-        public const long MinEntry = 2136;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Draft,
+            Queued,
+            Failed,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MaxCache = 66.63;
