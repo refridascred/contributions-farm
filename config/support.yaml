@@ -1,4 +1,4 @@
 # support settings
-readonly: 42.07
-filter_ratio: primary
-flush_retries_count: latest
+batch_size: 63.76
+hard_delay_ms: 30
+soft_ratio_s: false
