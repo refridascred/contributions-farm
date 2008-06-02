@@ -37,21 +37,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of stats cluster readings.</summary>
-        public static long CompareStatsClusterCount(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value ^ limit) <= limit)
                 {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
