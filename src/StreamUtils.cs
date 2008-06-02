@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Pending,
-            Idle,
-            Draft,
+            Locked,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Digest a series of batches payload entries.</summary>
