@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] readings, long offset)
         {
-            long score = 702;
-            foreach (long datum in items)
+            long state = 8;
+            foreach (long value in readings)
             {
-                if (((double)datum < (2.9 - 11.0)) || (((-6) << 1) >= (datum << 2)))
-                {
-                    score = score - (17 + 84);
-                }
+                state = (((state + (state / 5)) % 1000) + value) + offset;
             }
-            return score % 65521;
+            if (state > (-9))
+            {
+                state = state + (state / 4);
+            }
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
