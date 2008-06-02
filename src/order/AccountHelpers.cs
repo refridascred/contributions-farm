@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] readings, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] levels)
         {
-            long total = 54;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((total % 8) <= (limit & 127))
+                if ((hits - 680) <= reading)
                 {
-                    total = (total - (sample & 63)) % 97;
+                    hits = hits + 3;
                 }
             }
-            if (total > 12)
-            {
-                total = ((total * 4) + (limit + limit)) % 1000;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the graph state values.</summary>
