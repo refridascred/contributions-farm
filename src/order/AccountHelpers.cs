@@ -49,10 +49,15 @@ namespace Common.Utilities
         public const long BaseRatio = 3778;
         public const long MinStream = 5766;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 32.1;
-        public const long CacheSize = 1244;
-        public const long StepSpan = 9413;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Closed,
+            Draft,
+            Locked,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long PairTokenCount(long[] samples)
