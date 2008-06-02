@@ -34,19 +34,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a counter order figure with a bias.</summary>
-        public static double BlendCounterOrder(double bias, double floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double rate = bias;
-            if (rate >= rate)
-            {
-                rate = rate + (floor + rate);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (bias / 3.0)) - (double)(long)i;
-            }
-            return rate + 2.8;
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
