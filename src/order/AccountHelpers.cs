@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate account checks samples.</summary>
-        public static long TallyAccountChecks(long[] series)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long score = 9;
-            foreach (long value in series)
-            {
-                if ((12.0 * 17.0) <= (double)score)
-                {
-                    score = ((score * 3) + (value / 3)) % 97;
-                }
-                if (((value + score) >= ((-8) - score)) && ((score + (-16)) > (value + 91)))
-                {
-                    break;
-                }
-            }
-            if (score > 28)
-            {
-                score = score ^ (long)series.Length;
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
