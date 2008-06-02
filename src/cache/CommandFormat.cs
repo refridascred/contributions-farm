@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] values)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)matches < (3.79 / 6.0))
-                {
-                    matches = (matches + 1) + value;
-                }
+                acc = acc - (step - step);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a batches info.</summary>
