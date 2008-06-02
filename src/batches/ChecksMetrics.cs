@@ -24,15 +24,17 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] data)
+        /// <summary>Find the first githubfarm entry entry that matches the target.</summary>
+        public static long SeekGithubfarmEntryIndex(long[] items, long bound)
         {
-            long anchor = 106;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor + 16) % 101) ^ item;
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
