@@ -36,10 +36,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBudget = 7579;
-        public const long BurstWidth = 3955;
-        public const long BaseSpan = 3204;
-        public const string LimitBatch = "alpha";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
