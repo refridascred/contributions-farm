@@ -79,26 +79,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] readings, long offset)
-        {
-            long anchor = 6;
-            foreach (long datum in readings)
-            {
-                if ((datum + offset) > (offset + offset))
-                {
-                    anchor = anchor ^ (855 ^ datum);
-                }
-                else
-                {
-                    anchor = (anchor ^ offset) % 65521;
-                }
-            }
-            if (anchor < 40)
-            {
-                anchor = (anchor * 2) + (offset + offset);
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheSize = "cached-edge";
+        public const long BurstCounter = 4452;
+        public const long BaseCounter = 9159;
+        public const double IdleCounter = 86.12;
+        public const string LimitCounter = "primary-1";
     }
 }
