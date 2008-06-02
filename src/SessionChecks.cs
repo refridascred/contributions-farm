@@ -12,10 +12,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "standard-1";
-        public const long BurstScore = 610;
-        public const long DefaultSupport = 4869;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 6784;
+        public const long BaseDepth = 3767;
+        public const long StepScore = 5061;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
