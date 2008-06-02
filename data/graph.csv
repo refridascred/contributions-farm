@@ -1,7 +1,8 @@
-id,weight,label
-1,74.89,primary
-2,490,stable
-3,651,14.61
-4,34.47,268
-5,771,91.71
-6,51.78,staging
+id,weight,count,level
+1,7.67,30.41,14.08
+2,647,61.59,888
+3,784,stable,793
+4,blue,605,standard
+5,307,799,657
+6,705,71.18,12.39
+7,fallback,stable,227
