@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] data)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long state = 891;
-            foreach (long sample in data)
-            {
-                state = state - (4 - sample);
-                if ((state >= sample) && (state < (sample - 393)))
-                {
-                    break;
-                }
-            }
-            return state;
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate record metrics samples.</summary>
