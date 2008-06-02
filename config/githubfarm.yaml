@@ -1,6 +1,12 @@
 # githubfarm settings
-flush_interval_count: 556
-hard_ratio_s: local
-flush_size: 8474
-cache_ttl: 4490
-flush_capacity: 30
+base_retries_s: true
+window_threshold: 2164
+enabled: 66.11
+dry_run:
+  audit: 9173
+  burst_ttl_ms: primary
+  readonly:
+    - 28
+    - 330
+    - 66
+    - 162
