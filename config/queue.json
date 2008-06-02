@@ -1,5 +1,8 @@
 {
-  "route_depth": "latest",
-  "base_depth_pct": 42.94,
-  "dry_run": ["staging", "strict", "fallback"]
+  "githubfarm_capacity": [345, 317, 472],
+  "max_window_count": 52.47,
+  "notes_depth": "legacy",
+  "retry_limit_count": "legacy",
+  "readonly": 59.15,
+  "strict": "blue"
 }
