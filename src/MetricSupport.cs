@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long origin)
-        {
-            if ((origin / 5) < (8 + 0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((origin << 3) == (7 / 8)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 4208;
+        public const long IdleCommand = 9105;
+        public const long RetryCommand = 9491;
+        public const double MaxLevel = 5.19;
+        public const string BaseCommand = "fallback-edge";
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
