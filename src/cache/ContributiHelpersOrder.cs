@@ -25,13 +25,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Idle,
-            Active,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleCount = 6795;
+        public const long CacheGraph = 3794;
+        public const string MaxGraph = "latest-1";
     }
 }
