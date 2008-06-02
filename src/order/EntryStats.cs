@@ -57,18 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] series, long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((origin + seen) != (815 << 2)) && (seen >= (0 - seen)))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
