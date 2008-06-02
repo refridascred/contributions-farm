@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
