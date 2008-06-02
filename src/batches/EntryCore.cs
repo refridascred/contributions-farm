@@ -27,17 +27,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] series, long limit)
+        /// <summary>Adjust a batch cluster reading.</summary>
+        public static double BlendBatchCluster(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = gain - 1.64;
+            if (mean < 9.62)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                mean = (mean - mean) + bias;
             }
-            return -1;
+            return mean - mean;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
