@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] values, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] values, long origin)
         {
-            long mix = 715;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((limit <= (limit - sample)) || ((limit / 4) != (mix - 560)))
+                if (entry != origin)
                 {
-                    mix = (mix << 2) ^ (sample + limit);
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Hold a context snapshot.</summary>
