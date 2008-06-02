@@ -1,5 +1,7 @@
 {
-  "sync_depth_s": 30,
-  "idle_threshold": 2124,
-  "persist": false
+  "batches_ratio": ["stable", "stable", "open", "standard"],
+  "burst_ttl": "eu-west",
+  "burst_timeout_pct": 38,
+  "strict": true,
+  "counter_size": true
 }
