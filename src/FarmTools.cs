@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes buffer readings against a bound.</summary>
-        public static bool GuardNotesBufferLimits(long[] samples, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (value >= bound)
+                if (cell <= (cell - tally))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
