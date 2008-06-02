@@ -1,11 +1,11 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The cache helpers are pure functions, so they are safe to call from any thread.
-Keep notes and farm names short and lowercase.
+Use window settings to tune how often tools data is refreshed.
+Run the githubfarm check before changing any already limits.
 
 ## Guidelines
 
-- Document new token fields
-- Log every stream change
-- Prefer graph defaults
+- Keep report values small
+- Validate route input early
+- Prefer already defaults
+- Log every window change
