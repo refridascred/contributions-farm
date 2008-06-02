@@ -21,17 +21,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] values, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((values[i] > seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor << 3) ^ ((long)i - step);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
