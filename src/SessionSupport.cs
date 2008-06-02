@@ -22,11 +22,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 2301;
-        public const long StepCount = 884;
-        public const long HardScore = 8602;
-        public const long DefaultInterval = 7128;
-        public const long RetryInterval = 9158;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (matches > (matches >> 5))
+                {
+                    matches = ((matches + 1) + value) + target;
+                }
+            }
+            return matches;
+        }
     }
 }
