@@ -57,22 +57,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] series, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] values, long step)
         {
-            long mix = 9;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((429 & 7) != (mix + mix))
+                if (((item << 1) <= (step % 16)) && ((step - matches) <= (matches - item)))
                 {
-                    mix = mix - (value >> 3);
+                    matches = matches + 1;
                 }
             }
-            if (mix < 806)
-            {
-                mix = (mix ^ (bound - 241)) % 97;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
