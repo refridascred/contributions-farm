@@ -27,17 +27,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (values[i] <= bound)
+                if (entry > target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
