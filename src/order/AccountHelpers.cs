@@ -27,22 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window cluster values into a single score.</summary>
-        public static long DigestWindowCluster(long[] readings)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long mark = 158;
-            foreach (long sample in readings)
-            {
-                if (mark < (mark << 3))
-                {
-                    mark = (mark * 4) + (sample ^ (-6));
-                }
-                else
-                {
-                    mark = mark - 31;
-                }
-            }
-            return mark % 4096;
+            Dropped,
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a tools summary.</summary>
