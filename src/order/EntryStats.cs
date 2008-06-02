@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long LimitEditor = 8816;
         public const string DefaultLevel = "legacy";
 
-        /// <summary>Iterate the already schema series from a seed.</summary>
-        public static long IterateAlreadySchema(long target)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] items, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
