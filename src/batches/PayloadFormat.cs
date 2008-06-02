@@ -40,21 +40,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long bound, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step2 = bound - step;
+            if (!((step2 * 2) > (step2 % 97)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound ^ step2) < step)
                 {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
     }
 }
