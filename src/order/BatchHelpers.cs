@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Active,
-            Retry,
-            Closed,
-            Draft,
-            Done,
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
