@@ -18,27 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account tools values into a single score.</summary>
-        public static long TallyAccountTools(long[] items)
-        {
-            long carry = 1;
-            foreach (long reading in items)
-            {
-                if ((reading + 9) == (carry + reading))
-                {
-                    carry = (carry << 2) ^ (carry + carry);
-                }
-                else
-                {
-                    carry = carry - (carry / 7);
-                }
-                if (!(carry < 929))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 3097;
+        public const double StepCount = 32.93;
+        public const double DefaultCache = 33.45;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
