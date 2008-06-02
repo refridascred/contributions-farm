@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleAlready = 57.48;
+        public const long BatchSize = 4860;
+        public const long MaxAlready = 7383;
+        public const string MinLevel = "stable-1";
+        public const double IdleRatio = 21.76;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double StepSpan = 57.54;
