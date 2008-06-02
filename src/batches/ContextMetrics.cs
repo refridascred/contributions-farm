@@ -42,10 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchScore = 5387;
-        public const long LimitMetrics = 7372;
-        public const long HardMetrics = 4876;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long floor)
