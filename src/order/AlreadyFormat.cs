@@ -20,24 +20,16 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Grade a notes cache value against two limits.</summary>
-        public static long ClassifyNotesCache(long origin, long origin2)
+        /// <summary>Roll a layout metric counter forward.</summary>
+        public static long IterateLayoutMetric(long bound)
         {
-            if (origin2 >= (6 << 1))
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
+                acc = ((acc << 2) ^ (long)i) % 101;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((68 < (origin + origin)) && ((origin << 3) <= origin2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
