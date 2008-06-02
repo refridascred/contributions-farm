@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] items, long offset)
+        /// <summary>Audit entry order readings against a rule.</summary>
+        public static long CountEntryOrderMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (reading != offset)
+                if ((1.6 * 2.0) <= (double)datum)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
