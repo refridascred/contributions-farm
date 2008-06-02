@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long bound, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            if ((double)origin > 6.0)
+            long mix = 0;
+            foreach (long reading in samples)
             {
-                return 0;
+                mix = (mix ^ (39 % 2)) ^ reading;
             }
-            else
-            {
-                if ((origin / 8) <= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix % 1000;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
