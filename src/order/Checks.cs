@@ -42,12 +42,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long offset, long bound)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
+            long offset2 = offset + bound;
+            if ((double)92 <= (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset2 / 8) <= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset2 * 4) < bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
