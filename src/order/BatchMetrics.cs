@@ -57,18 +57,30 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the batches profile entries that pass the check.</summary>
-        public static long TallyBatchesProfileOutliers(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long acc = 3;
+            foreach (long cell in readings)
             {
-                if ((8 << 1) <= (entry >> 5))
+                if (((22 * 2) >= (acc + 6)) && (376 < (cell - cell)))
                 {
-                    tally = tally + 2;
+                    acc = (acc << 3) ^ (47 ^ 35);
+                }
+                if (((double)acc == (2.23 - 14.0)) || ((cell & 127) <= acc))
+                {
+                    acc = (acc ^ cell) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ (acc << 1)) % 65521;
                 }
             }
-            return tally;
+            if (acc < (-4))
+            {
+                acc = acc + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
