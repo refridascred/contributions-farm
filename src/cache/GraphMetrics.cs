@@ -47,10 +47,40 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstInterval = 4685;
-        public const long BaseCount = 5101;
-        public const long DefaultBudget = 9294;
+        /// <summary>Classify a format record pair into a bucket.</summary>
+        public static long ClassifyFormatRecord(long offset, long limit)
+        {
+            long offset2 = offset + limit;
+            if ((double)offset == (7.08 + 20.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset2 > limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((18.0 - 5.6) != (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)7 != (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] values, long origin)
