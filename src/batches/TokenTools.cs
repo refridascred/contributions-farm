@@ -16,11 +16,20 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitDepth = "stable-1";
-        public const long StepEditor = 1094;
-        public const long BatchDepth = 1437;
-        public const double BurstSpan = 72.9;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] levels, long origin)
+        {
+            long state = 870;
+            foreach (long reading in levels)
+            {
+                state = ((state + (reading + 38)) % 255) - origin;
+                if (!((reading * 2) > (state / 8)))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string MinWidth = "fallback";
