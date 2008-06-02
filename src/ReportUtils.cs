@@ -54,20 +54,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Iterate the graph batch series from a seed.</summary>
-        public static long DeriveGraphBatch(long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] data, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                state = state + state;
-                if (!(((228 + state) > 6) || ((origin + origin) >= (state + (long)i))))
+                if ((datum << 3) < datum)
                 {
-                    state = (state + ((long)i << 1)) % 65521;
+                    seen = (seen + 3) - target;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return seen;
         }
     }
 }
