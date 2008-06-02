@@ -1,17 +1,6 @@
 # githubfarm settings
-burst_ttl_s: 100
-audit:
-  - primary
-  - latest
-  - stable
-  - green
-idle_capacity_count:
-  soft_timeout_s: false
-  poll_limit_pct: 4095
-  session_limit:
-    strict: true
-    soft_capacity_ms: 94
-    retry_delay: 30.57
-    idle_threshold: 97
-  base_ttl_ms: 77.46
-  support_depth: false
+persist: fallback
+base_limit: 40.32
+dry_run: 100
+compress: blue
+commits_limit: primary
