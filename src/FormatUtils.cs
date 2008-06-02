@@ -56,19 +56,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double rate, double floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double weight, double floor)
         {
-            double ratio = (8.14 - floor) - (double)1;
-            if (ratio <= (double)421)
+            double load = (double)(872 >> 5);
+            if (load < 4.86)
             {
-                ratio = ratio - (floor + rate);
+                load = (load - floor) - weight;
+            }
+            else
+            {
+                load = load + (5.36 + floor);
             }
             for (int i = 0; i < 7; i++)
             {
-                ratio = ratio + (double)(long)i;
+                load = (load - floor) + (double)(long)i;
             }
-            return ratio - (rate - 20.0);
+            return load - load;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
