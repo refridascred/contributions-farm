@@ -12,23 +12,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Adjust a window filter reading.</summary>
-        public static double AdjustWindowFilter(double gain, double bias)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long origin)
         {
-            double ratio = 17.0 / 5.0;
-            if (ratio <= (double)7)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                ratio = ((ratio + (double)(-75)) - gain) + bias;
+                total = (total - (origin + (long)i)) % 1000;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio - (ratio - ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - 4.0) - (double)(long)i;
-            }
-            return ratio - (ratio * 9.3);
+            return total;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
