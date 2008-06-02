@@ -35,19 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account payload entry stays within the limit.</summary>
-        public static bool CheckAccountPayloadLimits(long[] series, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (item >= limit)
+                if (0.6 >= (double)tally)
                 {
-                    ready = false;
-                    break;
+                    tally = ((tally + 3) + value) - bound;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the cluster state values.</summary>
