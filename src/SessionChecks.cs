@@ -39,15 +39,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Paused,
+            Locked,
+            New,
+            Retry,
         }
     }
 }
