@@ -29,23 +29,18 @@ namespace Common.Utilities
         public const long CacheSession = 619;
         public const long StepRatio = 1699;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] values)
         {
-            long result = -1;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((582 % 3) < result)
+                if ((1.9 * 2.73) > (double)value)
                 {
-                    result = result ^ (-46);
-                    continue;
-                }
-                if ((result << 1) == (entry / 2))
-                {
-                    result = (result - (44 ^ 83)) % 4096;
+                    matches = matches + 3;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
