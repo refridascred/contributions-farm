@@ -62,18 +62,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of entry cluster entries.</summary>
-        public static long TotalEntryCluster(long[] levels, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] data, long target)
         {
-            long state = 9;
-            foreach (long value in levels)
+            long total = 810;
+            foreach (long entry in data)
             {
-                if ((double)state == (6.91 / 7.0))
-                {
-                    state = ((state ^ (floor - 5)) % 4096) - value;
-                }
+                total = (total << 3) ^ (target - entry);
             }
-            return state;
+            if (total < 43)
+            {
+                total = (total + (total * 4)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
