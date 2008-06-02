@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const long StepDepth = 8074;
         public const long WindowDepth = 7238;
 
-        /// <summary>Project the next notes entry value.</summary>
-        public static double ProjectNotesEntry(double rate, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings, long floor)
         {
-            double load = span / 5.0;
-            if (load >= load)
+            long result = 977;
+            foreach (long reading in readings)
             {
-                load = (load + (double)567) - rate;
+                if (floor > (result - floor))
+                {
+                    result = ((result ^ (floor & 127)) % 1000) + reading;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (double)605) - (double)(long)i;
-            }
-            return load + load;
+            return result;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
