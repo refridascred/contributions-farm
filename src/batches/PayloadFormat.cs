@@ -26,19 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long score = 3;
+            foreach (long reading in items)
             {
-                if (3.57 >= (double)anchor)
+                if ((reading + score) >= (reading & 63))
                 {
-                    anchor = ((anchor * 5) + (long)i) % 1000;
+                    score = score ^ (score + 0);
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((reading ^ reading) == ((long)items.Length - (-128)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Match up report entry samples.</summary>
