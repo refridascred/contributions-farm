@@ -55,11 +55,9 @@ namespace Common.Utilities
         public const string LimitWidth = "primary-edge";
         public const long MinFactor = 9273;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultRatio = 2410;
+        public const long DefaultCounter = 8512;
+        public const long IdleCounter = 4213;
     }
 }
