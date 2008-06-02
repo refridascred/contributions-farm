@@ -37,19 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double weight, double bias)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double gain = 8.57;
-            if (gain <= weight)
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (weight / 5.0)) + (double)(long)i;
-            }
-            return gain - (gain * 0.6);
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
