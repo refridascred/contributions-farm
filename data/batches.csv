@@ -1,9 +1,6 @@
-id,score,rank
-1,primary,115
-2,standard,24.83
-3,42.86,46.59
-4,latest,stable
-5,118,80.12
-6,edge,72.13
-7,stable,legacy
-8,24.93,24.81
+id,count,weight
+1,92.33,20.98
+2,382,94.95
+3,709,853
+4,855,blue
+5,69.91,427
