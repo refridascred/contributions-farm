@@ -14,16 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
-            {
-                total = total + target;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            New,
+            Done,
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
