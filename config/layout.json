@@ -1,5 +1,6 @@
 {
-  "warm_depth": 42,
-  "readonly": 61.24,
-  "sync_delay_s": false
+  "verbose": 500,
+  "batch_ttl_s": 500,
+  "enabled": 40.22,
+  "report_retries": 44.09
 }
