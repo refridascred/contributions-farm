@@ -57,19 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] series, long origin)
+        /// <summary>Classify a notes tools pair into a bucket.</summary>
+        public static long RankNotesTools(long offset, long floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            if ((floor < (-6)) || ((double)offset <= 18.0))
             {
-                if (datum < origin)
+                return 3;
+            }
+            else
+            {
+                if (!((floor % 64) < (offset ^ floor)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
