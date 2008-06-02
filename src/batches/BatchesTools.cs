@@ -16,11 +16,19 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Check that every tools notes entry stays within the limit.</summary>
+        public static bool CheckToolsNotesLimits(long[] samples, long floor)
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate format samples.</summary>
