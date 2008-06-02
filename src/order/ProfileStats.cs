@@ -38,18 +38,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit command schema readings against a rule.</summary>
-        public static long AuditCommandSchemaMatches(long[] readings)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double gain, double span)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double load = (double)0;
+            if (load < gain)
             {
-                if ((value + (long)readings.Length) == (157 + tally))
-                {
-                    tally = tally + 1;
-                }
+                load = load - (gain - gain);
             }
-            return tally;
+            else
+            {
+                load = load - span;
+            }
+            return load - (load * 20.0);
         }
     }
 }
