@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double scale, double span)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double weight = (double)(379 + 85);
-            if (weight < (scale + 4.3))
-            {
-                weight = weight + weight;
-            }
-            else
-            {
-                weight = weight + (span + span);
-            }
-            return weight + weight;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
