@@ -17,19 +17,21 @@ namespace Common.Utilities
         public const double LimitLevel = 94.1;
         public const long MaxCache = 4763;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] data, long limit)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Match up checks samples.</summary>
