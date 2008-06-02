@@ -49,38 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long offset, long offset2)
+        /// <summary>Audit cache command readings against a rule.</summary>
+        public static long MeasureCacheCommandHits(long[] data, long bound)
         {
-            if ((double)offset < (5.3 / 5.0))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)offset2 != (9.0 / 7.0)))
+                if ((count & 31) <= (datum - bound))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 1) >= (8 + offset2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset - (-8)) == (offset + offset2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the notes phase values.</summary>
