@@ -23,21 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Validate githubfarm payload readings against a bound.</summary>
+        public static bool CheckGithubfarmPayloadBounds(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell > origin)
                 {
-                    if ((readings[i] - readings[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Project the next support value.</summary>
