@@ -31,25 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank account record input into a small class.</summary>
-        public static long ClassifyAccountRecord(long target, long bound)
+        /// <summary>Validate notes buffer readings against a bound.</summary>
+        public static bool GuardNotesBufferLimits(long[] samples, long bound)
         {
-            long slot = target ^ bound;
-            if ((bound >> 1) == (target + slot))
+            bool ok = true;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot >= 5) || ((target + slot) >= 5))
+                if (value >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
