@@ -1,11 +1,11 @@
 # Command notes
 
-Each buffer is validated before it reaches the cluster queue.
-Each stream is validated before it reaches the metrics queue.
+Use stats settings to tune how often layout data is refreshed.
+Each context is validated before it reaches the stream queue.
+Each format is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Keep profile values small
-- Review stream limits each release
-- Validate support input early
-- Prefer schema defaults
+- Prefer graph defaults
+- Document new window fields
+- Validate stats input early
