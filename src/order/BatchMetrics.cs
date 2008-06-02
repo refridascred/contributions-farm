@@ -61,14 +61,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Draft,
-            Stale,
-            Retry,
-            Queued,
-            Pending,
+            public bool Total { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Adjust a stream reading.</summary>
