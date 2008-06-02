@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const long BurstCommand = 8056;
         public const long SoftScore = 3423;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 3)
+                    if ((readings[i] ^ readings[j]) != 6)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
