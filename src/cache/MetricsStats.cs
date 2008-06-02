@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Locate a buffer farm reading by value.</summary>
+        public static long LocateBufferFarmIndex(long[] values, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine account tools values into a single score.</summary>
