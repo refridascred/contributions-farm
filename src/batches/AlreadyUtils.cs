@@ -37,13 +37,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] data, long offset)
         {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
