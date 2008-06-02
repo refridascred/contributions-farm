@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank contributi graph input into a small class.</summary>
-        public static long ClassifyContributiGraph(long target, long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            if (9 >= target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)limit > (double)target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target == (0.41 - 0.5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((0.6 / 6.0) < (double)target) && ((9.0 - 0.31) >= (double)target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
