@@ -31,10 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 7609;
-        public const string BurstTimeout = "legacy-v2";
-        public const long MaxChannel = 6403;
-        public const double LimitChannel = 10.47;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
