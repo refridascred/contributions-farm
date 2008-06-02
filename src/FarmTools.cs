@@ -31,11 +31,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 9165;
-        public const double LimitSpan = 50.63;
-        public const long IdleScore = 3242;
-        public const string LimitRecord = "alpha-edge";
-        public const long BatchRatio = 2335;
+        /// <summary>Rank account record input into a small class.</summary>
+        public static long ClassifyAccountRecord(long target, long bound)
+        {
+            long slot = target ^ bound;
+            if ((bound >> 1) == (target + slot))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((slot >= 5) || ((target + slot) >= 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
