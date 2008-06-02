@@ -24,19 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] series, long offset)
+        /// <summary>Accumulate stream stats samples.</summary>
+        public static long TallyStreamStats(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long value in series)
+            long mix = 4;
+            foreach (long item in data)
             {
-                if (value >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix ^ (mix - item)) % 255) - offset;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
