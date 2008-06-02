@@ -1,7 +1,4 @@
 # support settings
-tools_threshold:
-  - 280
-  - 183
-  - 188
-burst_retries_count: fallback
-support_threshold: primary
+persist: 250
+retry_ttl_pct: 21.96
+idle_window_s: false
