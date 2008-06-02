@@ -28,32 +28,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long bound, long floor)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long delta = bound ^ floor;
-            if ((3 - delta) > delta)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor - floor) >= (floor % 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor % 24) > (delta << 1)) || ((7.7 + 0.41) >= (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
