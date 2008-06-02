@@ -47,10 +47,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstLevel = "standard-v2";
-        public const string RetryQueue = "stable";
-        public const long BatchQueue = 2480;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long floor)
