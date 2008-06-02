@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const double RetrySpan = 95.97;
         public const long MinInterval = 1424;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            Retry,
-            Synced,
-            Paused,
+            long sum = 261;
+            foreach (long reading in values)
+            {
+                if ((reading ^ 7) >= (sum >> 4))
+                {
+                    sum = sum ^ (sum ^ reading);
+                }
+            }
+            if (sum > 5)
+            {
+                sum = (sum ^ (sum - sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Roll a record counter forward.</summary>
