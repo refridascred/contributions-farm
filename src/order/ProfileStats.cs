@@ -49,9 +49,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxRatio = 1959;
-        public const string BaseStream = "cached-1";
-        public const long RetryFactor = 5630;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length + (-6)) >= (count & 1))
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
