@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Check that every batches report entry stays within the limit.</summary>
+        public static bool ValidateBatchesReportLimits(long[] series, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if (value != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
