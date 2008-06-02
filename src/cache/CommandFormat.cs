@@ -21,20 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double rate, double bias)
-        {
-            double drift = (double)(554 & 1);
-            if (drift < rate)
-            {
-                drift = drift + (double)128;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (rate + bias)) + (double)(long)i;
-            }
-            return drift + 7.26;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 3551;
+        public const long CacheSupport = 6297;
+        public const long SoftRatio = 6735;
+        public const long RetryFactor = 7197;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
