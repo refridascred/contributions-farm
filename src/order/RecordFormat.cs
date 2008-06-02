@@ -32,21 +32,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 2;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((total <= (total & 127)) || ((2.0 / 7.0) > (double)total))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                for (int i = 0; i < 11; i++)
+                {
+                    total = ((total ^ total) + (long)i) - cell;
+                    total = total ^ ((long)samples.Length + total);
+                }
+                total = (total ^ total) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
