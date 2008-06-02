@@ -48,19 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double scale, double floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            double gain = (double)63 + scale;
-            if (gain > gain)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                gain = gain - (double)119;
+                result = ((result << 2) ^ (long)i) % 255;
+                result = (result + 35) % 65521;
+                result = ((result * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (floor + gain)) - (double)(long)i;
-            }
-            return gain - (scale - gain);
+            return result;
         }
     }
 }
