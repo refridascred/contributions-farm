@@ -58,26 +58,10 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] data)
-        {
-            long acc = 467;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = ((acc * 3) + ((long)i << 1)) % 97;
-                }
-                if ((acc + value) == (acc << 2))
-                {
-                    acc = acc + value;
-                }
-            }
-            if (acc > 595)
-            {
-                acc = (acc + ((-301) % 7)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 4670;
+        public const long RetryTimeout = 4314;
+        public const long BatchFactor = 6331;
+        public const long BaseEntry = 5046;
     }
 }
