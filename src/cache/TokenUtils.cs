@@ -47,14 +47,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] data)
         {
-            Paused,
-            Ready,
-            Queued,
-            Synced,
-            Active,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (value <= (seen - value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
