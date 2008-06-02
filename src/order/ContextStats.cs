@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Locked,
-            Failed,
-            Draft,
-            Active,
-            Dropped,
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
