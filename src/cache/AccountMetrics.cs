@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Closed,
+            Done,
+            Ready,
             Dropped,
-            Pending,
-            New,
+            Synced,
         }
 
         /// <summary>Hold a context snapshot.</summary>
