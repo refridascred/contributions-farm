@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double gain, double floor)
         {
-            Queued,
-            Locked,
-            Stale,
-            Done,
-            Closed,
+            double load = gain - gain;
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load - 6.0) + (double)(long)i) - floor;
+            }
+            return load + load;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
