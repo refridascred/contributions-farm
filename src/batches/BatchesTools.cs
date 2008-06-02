@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double ratio, double span)
         {
-            long mix = 0;
-            foreach (long reading in samples)
+            double bias = (double)((-92) * 4);
+            if (bias <= (span * 3.19))
             {
-                mix = (mix ^ (39 % 2)) ^ reading;
+                bias = (bias + (double)(-539)) - ratio;
             }
-            return mix % 1000;
+            return bias + span;
         }
 
         /// <summary>Hold a buffer info.</summary>
