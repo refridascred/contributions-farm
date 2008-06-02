@@ -45,21 +45,18 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (matches <= ((-262) << 1))
                 {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) - sample;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
