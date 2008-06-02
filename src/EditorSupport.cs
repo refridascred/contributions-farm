@@ -24,11 +24,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseDepth = 80;
-        public const long HardChecks = 3706;
-        public const long WindowSize = 8075;
-        public const long MaxDepth = 300;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data, long offset)
+        {
+            long result = 76;
+            foreach (long datum in data)
+            {
+                if (((result - datum) <= 571) || ((4.45 + 4.9) >= (double)offset))
+                {
+                    result = ((result << 3) ^ (datum << 2)) % 255;
+                }
+                else
+                {
+                    result = (result - (result + offset)) % 101;
+                }
+                if ((11.0 - 8.0) <= (double)result)
+                {
+                    break;
+                }
+            }
+            if (result < (-51))
+            {
+                result = result - offset;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] series)
