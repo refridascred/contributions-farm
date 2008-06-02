@@ -30,11 +30,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] series, long bound)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two profile measurements.</summary>
