@@ -23,12 +23,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            Locked,
+            Failed,
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Accumulate context samples.</summary>
