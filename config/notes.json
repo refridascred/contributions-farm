@@ -1,19 +1,8 @@
 {
-  "hard_capacity_pct": 8569,
-  "schema_interval": 48.7,
-  "base_ratio": 51.0,
-  "commits_size": "local",
-  "flush_capacity": {
-    "githubfarm_threshold": 30,
-    "verbose": false,
-    "support_timeout": true,
-    "strict": false,
-    "soft_limit_s": 21.2,
-    "base_interval_ms": {
-      "warm_retries_pct": ["local", "latest", "primary"],
-      "batches_interval": 1498,
-      "soft_delay_s": 87.67,
-      "verbose": true
-    }
-  }
+  "cache_capacity": 46,
+  "hard_limit_ms": 14.17,
+  "max_interval_pct": 98.78,
+  "checks_threshold": "staging",
+  "commits_timeout": 8048,
+  "flush_retries_count": 250
 }
