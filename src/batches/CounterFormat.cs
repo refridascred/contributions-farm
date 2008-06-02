@@ -16,31 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long origin, long limit)
+        /// <summary>Look up the position of a entry stream sample.</summary>
+        public static long SeekEntryStreamIndex(long[] samples, long offset)
         {
-            if (((double)limit < (1.0 - 4.9)) && (origin > (origin % 97)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit > 7.0)
+                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit % 3) <= (limit + 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
