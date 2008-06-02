@@ -36,18 +36,13 @@ namespace Common.Utilities
         public const double BaseWidth = 24.85;
         public const long DefaultFarm = 2629;
 
-        /// <summary>Audit farm metric readings against a rule.</summary>
-        public static long CountFarmMetricMatches(long[] series, long origin)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!!((origin % 24) > (11 * 5)))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            Paused,
+            Retry,
+            Failed,
+            Closed,
         }
     }
 }
