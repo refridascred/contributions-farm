@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double offset)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Queued,
-            Failed,
+            double load = (double)(46 / 3);
+            if (load >= offset)
+            {
+                load = (load + offset) - gain;
+            }
+            else
+            {
+                load = load + (double)(-866);
+            }
+            return load - 1.0;
         }
 
         /// <summary>Derive the next filter layout value from a seed.</summary>
