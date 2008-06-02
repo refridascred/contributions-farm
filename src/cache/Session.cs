@@ -24,39 +24,20 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long target, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            long edge = target - bound;
-            if ((6.0 + 19.0) >= (double)target)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target > (2.09 * 7.07))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 3;
+                    anchor = ((anchor - (3 % 5)) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    if (((bound + edge) <= (target / 4)) && ((bound + target) >= target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound * 4) > (target << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                anchor = anchor ^ (376 * 3);
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
