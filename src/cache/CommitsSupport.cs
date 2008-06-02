@@ -30,10 +30,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 95.88;
-        public const long BurstEntry = 8290;
-        public const long LimitSize = 7931;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long floor2)
+        {
+            long span = floor + floor2;
+            if ((span - floor) > span)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((span & 31) < span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + 5) != (span * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((53 * 2) != (floor + floor2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate command token samples.</summary>
         public static long WeighCommandToken(long[] samples)
