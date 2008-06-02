@@ -38,19 +38,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every account batch entry stays within the limit.</summary>
-        public static bool ValidateAccountBatchBounds(long[] samples, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (entry > seed)
+                if (cell < floor)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Describe the filter class values.</summary>
