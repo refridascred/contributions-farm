@@ -21,16 +21,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the checks cache series from a seed.</summary>
-        public static long DeriveChecksCache(long floor)
+        /// <summary>Fold a list of stream support readings.</summary>
+        public static long DigestStreamSupport(long[] items)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            long mix = 4;
+            foreach (long reading in items)
             {
-                result = (result - ((long)i * 5)) % 65521;
-                result = ((result * 3) + (long)i) % 65521;
+                mix = ((mix * 5) + reading) % 97;
+                if ((0 > reading) || ((reading & 3) > (mix << 2)))
+                {
+                    break;
+                }
             }
-            return result;
+            if (mix > (-535))
+            {
+                mix = (mix ^ 0) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
