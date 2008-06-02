@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next token filter value from a seed.</summary>
-        public static long StepTokenFilter(long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] items, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                mark = (mark << 2) ^ ((long)i % 5);
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((bound + bound) != (2 - bound))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
