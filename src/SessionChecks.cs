@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first stream buffer entry that matches the target.</summary>
-        public static long SeekStreamBufferIndex(long[] data, long step)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the order phase values.</summary>
