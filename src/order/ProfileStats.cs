@@ -38,19 +38,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double gain, double span)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double bias, double span)
         {
-            double load = (double)0;
-            if (load < gain)
+            double ratio = (double)(8 % 60);
+            for (int i = 0; i < 5; i++)
             {
-                load = load - (gain - gain);
+                ratio = ((ratio + (span + span)) - (double)(long)i) - bias;
             }
-            else
-            {
-                load = load - span;
-            }
-            return load - (load * 20.0);
+            return ratio - (double)46;
         }
     }
 }
