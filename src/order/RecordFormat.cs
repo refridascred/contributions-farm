@@ -31,10 +31,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxInterval = "staging-edge";
-        public const double MinRoute = 28.03;
-        public const string IdleLevel = "local";
-        public const long StepRoute = 8272;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)tally <= (double)60)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
