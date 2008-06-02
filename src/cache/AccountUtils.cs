@@ -13,19 +13,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] levels, long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long target)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                total = total + target;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
