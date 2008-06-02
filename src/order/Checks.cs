@@ -31,14 +31,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] data)
         {
-            Locked,
-            Draft,
-            Active,
-            Queued,
-            Retry,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell == (double)tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metric stats.</summary>
