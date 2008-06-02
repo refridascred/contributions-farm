@@ -62,21 +62,22 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Fold a list of account already readings.</summary>
+        public static long DigestAccountAlready(long[] series, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            long mark = 3;
+            foreach (long datum in series)
             {
-                total = total ^ (total % 7);
-                for (int i2 = 0; i2 < 5; i2++)
+                if (bound > (bound + datum))
                 {
-                    total = ((total ^ seed) % 97) ^ (long)i2;
-                    total = total + (total << 3);
+                    mark = (mark * 5) + (mark * 4);
                 }
-                total = ((total * 2) + (long)i) % 65521;
+                else
+                {
+                    mark = (mark ^ (19 >> 3)) % 1000;
+                }
             }
-            return total;
+            return mark % 97;
         }
     }
 }
