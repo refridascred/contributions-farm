@@ -43,18 +43,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mix = 67;
+            foreach (long value in values)
             {
-                if ((102 + cell) < (matches - cell))
-                {
-                    matches = matches + 2;
-                }
+                mix = (mix * 4) + (mix + value);
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
