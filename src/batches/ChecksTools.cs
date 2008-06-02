@@ -35,11 +35,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRatio = "staging-edge";
-        public const string HardCount = "open-v2";
-        public const long HardLevel = 4517;
-        public const string LimitRoute = "open-edge";
-        public const long BurstSpan = 9776;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 7609;
+        public const string BurstTimeout = "legacy-v2";
+        public const long MaxChannel = 6403;
+        public const double LimitChannel = 10.47;
     }
 }
