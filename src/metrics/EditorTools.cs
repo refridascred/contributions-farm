@@ -29,19 +29,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double bias, double offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] levels, long offset)
         {
-            double mean = 1.9;
-            if (mean <= offset)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                mean = (mean - (double)6) + bias;
+                if (entry <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)7;
-            }
-            return mean - (double)42;
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
