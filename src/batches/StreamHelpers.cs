@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultSpan = "open-v2";
-        public const long WindowAccount = 5495;
-        public const long DefaultBudget = 5600;
-        public const string DefaultDepth = "legacy-1";
-        public const string IdleScore = "fallback";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((long)levels.Length <= (160 * 2))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteBounds(long[] samples, long limit)
