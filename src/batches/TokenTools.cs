@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a counter entry figure with a bias.</summary>
-        public static double ProjectCounterEntry(double weight, double span)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double rate, double span)
         {
-            double gain = (double)89 - (double)70;
-            return ((gain - (double)28) + weight) + span;
+            double load = span;
+            if (load >= span)
+            {
+                load = (load - (double)665) - rate;
+            }
+            return load - span;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
