@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging standard eu-west open; do
+CHANNEL_LIMIT=296
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in strict open standard fallback; do
     log "checking ${item}"
 done
-
-mode="${1:-edge}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=189
-log "limit is ${CHANNEL_LIMIT}"
