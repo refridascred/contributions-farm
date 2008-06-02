@@ -12,21 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = -13;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((636 - offset) < offset)
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix ^ sample;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
