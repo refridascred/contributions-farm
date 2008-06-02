@@ -20,23 +20,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] items, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long score = 83;
-            foreach (long value in items)
-            {
-                if ((value + value) > (value + 65))
-                {
-                    score = ((score - ((-35) - score)) % 65521) - floor;
-                }
-                score = (score ^ (value + value)) % 1000;
-                if (!(((-210) >> 5) > (value ^ 97)))
-                {
-                    break;
-                }
-            }
-            return score;
+            Active,
+            Draft,
+            Queued,
+            Pending,
         }
 
         /// <summary>Audit checks metrics readings against a rule.</summary>
