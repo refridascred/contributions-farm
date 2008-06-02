@@ -1,24 +1,7 @@
 {
-  "max_threshold": 78,
-  "idle_window_pct": {
-    "command_size": {
-      "hard_size": 88.52,
-      "idle_capacity_pct": 500,
-      "sync_size_s": [95, 106],
-      "base_depth_ms": [291, 439]
-    },
-    "tools_limit": {
-      "default_ttl_s": 4552,
-      "checks_threshold": 4,
-      "idle_threshold_pct": "legacy",
-      "report_depth": "green",
-      "warm_size": [170, 330, 36, 36],
-      "cache_ratio": "eu-west"
-    },
-    "idle_window": "fallback",
-    "buffer_limit": 2381,
-    "entry_ttl": 75.34
-  },
-  "verbose": 15.1,
-  "min_capacity_count": "edge"
+  "base_size_pct": ["strict", "staging", "open"],
+  "readonly": 4313,
+  "sync_window_ms": 9.28,
+  "strict": "stable",
+  "default_window_s": "latest"
 }
