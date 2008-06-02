@@ -1,16 +1,7 @@
 {
-  "readonly": {
-    "compress": 11.91,
-    "enabled": "open",
-    "cache_capacity_count": {
-      "cache_window": true,
-      "min_depth_s": true,
-      "support_window": "primary",
-      "burst_retries_pct": [354, 478]
-    }
-  },
-  "warm_window": false,
-  "persist": false,
-  "soft_retries_count": "primary",
-  "warm_delay_ms": "edge"
+  "strict": "legacy",
+  "enabled": "strict",
+  "channel_size": 1024,
+  "sync_depth_s": true,
+  "layout_depth": "edge"
 }
