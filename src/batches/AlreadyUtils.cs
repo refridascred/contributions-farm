@@ -23,17 +23,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a window info.</summary>
