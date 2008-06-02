@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] series, long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the already level values.</summary>
