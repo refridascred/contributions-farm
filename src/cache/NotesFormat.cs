@@ -40,12 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Locked,
-            Done,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 7377;
+        public const long SoftRatio = 1975;
+        public const long BaseSize = 5323;
+        public const double RetrySize = 82.96;
+        public const long SoftAccount = 3004;
     }
 }
