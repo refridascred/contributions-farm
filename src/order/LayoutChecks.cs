@@ -67,25 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes tools pair into a bucket.</summary>
-        public static long RankNotesTools(long offset, long floor)
-        {
-            if ((floor < (-6)) || ((double)offset <= 18.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((floor % 64) < (offset ^ floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardTimeout = 1191;
+        public const long LimitLayout = 3525;
+        public const long HardLayout = 6372;
+        public const long RetryLayout = 3399;
+        public const long BatchSize = 3104;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BurstSpan = 0.09;
