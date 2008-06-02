@@ -43,15 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] values, long step)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
             long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)item != (14.0 - 7.83))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) - step;
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
