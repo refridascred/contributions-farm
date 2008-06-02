@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 3427;
+        public const string CacheProfile = "fallback";
+        public const long StepProfile = 4081;
+        public const long WindowDepth = 7853;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long ScoreCommits(long[] values, long seed)
