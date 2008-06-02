@@ -1,9 +1,6 @@
 {
-  "record_window": 9,
-  "flush_window": {
-    "schema_capacity": 51,
-    "command_threshold": 4048,
-    "base_timeout_s": 21.17
-  },
-  "verbose": "staging"
+  "poll_retries": 89,
+  "layout_threshold": "strict",
+  "sync_timeout": "primary",
+  "batches_delay": ["standard", "eu-west", "strict", "edge"]
 }
