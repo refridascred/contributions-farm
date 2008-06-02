@@ -40,24 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long step, long floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            if (floor >= (step + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor * 2) > (step * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Idle,
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a checks summary.</summary>
