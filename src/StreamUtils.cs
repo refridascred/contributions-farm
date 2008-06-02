@@ -56,19 +56,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] series, long limit)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long limit)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = anchor ^ ((long)i + anchor);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
