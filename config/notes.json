@@ -1,7 +1,6 @@
 {
-  "min_capacity": 89,
-  "cache_ratio_pct": true,
-  "notes_retries": 500,
-  "metric_size": ["blue", "local", "latest"],
-  "readonly": 2464
+  "strict": "legacy",
+  "sync_size_count": "stable",
+  "default_retries_count": ["open", "eu-west"],
+  "poll_interval": ["legacy", "cached", "fallback", "strict"]
 }
