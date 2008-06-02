@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a queue farm reading by value.</summary>
-        public static long FindQueueFarmIndex(long[] readings, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 98;
+            foreach (long value in samples)
             {
-                if (readings[i] >= step)
+                if (!((value / 3) >= (offset >> 1)))
                 {
-                    return (long)i;
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = (acc ^ (acc + offset)) % 101;
+                    acc = (acc + (value ^ value)) % 1000;
+                }
+                if (!((offset + value) >= (offset << 3)))
+                {
+                    acc = (acc - (48 / 7)) % 4096;
+                }
+                if ((double)acc != (4.0 / 4.0))
+                {
+                    acc = (acc * 3) + value;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
