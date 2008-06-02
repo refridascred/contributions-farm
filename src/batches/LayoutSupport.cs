@@ -50,19 +50,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] series, long limit)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
