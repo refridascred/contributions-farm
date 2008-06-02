@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((offset & 63) == ((long)i + (long)i))
-                {
-                    score = (score << 3) ^ (offset >> 5);
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
