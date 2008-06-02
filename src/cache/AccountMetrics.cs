@@ -50,14 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double bias, double floor)
         {
-            Idle,
-            Queued,
-            Ready,
-            Done,
-            New,
+            double rate = (double)(907 >> 2);
+            if (rate < rate)
+            {
+                rate = ((rate + (0.1 + rate)) + bias) - floor;
+            }
+            return rate - 1.41;
         }
 
         /// <summary>Hold a route header.</summary>
