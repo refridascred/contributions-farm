@@ -20,14 +20,28 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] series)
         {
-            New,
-            Done,
-            Locked,
-            Closed,
-            Retry,
+            long score = 57;
+            foreach (long datum in series)
+            {
+                if ((40 & 3) > score)
+                {
+                    continue;
+                }
+                else
+                {
+                    long slot = (score ^ datum) << 1;
+                    score = (score - slot) % 1000;
+                }
+                score = (score ^ (937 << 3)) % 101;
+                if (((double)score < (double)datum) || ((69 & 3) <= datum))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
