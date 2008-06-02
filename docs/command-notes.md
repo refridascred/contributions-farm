@@ -1,12 +1,15 @@
 # Command notes
 
-Use notes settings to tune how often format data is refreshed.
-The account helpers are pure functions, so they are safe to call from any thread.
-Run the order check before changing any token limits.
+Each route is validated before it reaches the token queue.
+The metric report groups every checks by channel.
+
+Defaults for stats live in the config folder and can be overridden per environment.
+Run the graph check before changing any tools limits.
+The schema report groups every filter by githubfarm.
 
 ## Guidelines
 
-- Validate session input early
-- Log every queue change
-- Prefer notes defaults
-- Keep stats values small
+- Log every record change
+- Document new cluster fields
+- Review order limits each release
+- Prefer channel defaults
