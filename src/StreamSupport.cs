@@ -32,11 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a route order figure with a bias.</summary>
-        public static double ProjectRouteOrder(double gain, double span)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double gain2 = (double)((-599) << 1);
-            return ((gain2 + (gain2 + 6.1)) + gain) + span;
+            Queued,
+            Synced,
+            Failed,
         }
     }
 }
