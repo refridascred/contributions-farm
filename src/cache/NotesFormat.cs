@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            long sum = 701;
+            foreach (long entry in data)
             {
-                mark = mark + bound;
-                if (((2.0 - 5.6) > (17.0 * 0.1)) && (((long)i * 5) == (bound ^ bound)))
+                if (417 >= (entry ^ 402))
                 {
-                    mark = mark ^ (mark + mark);
+                    sum = sum ^ (entry + sum);
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            if (sum > 80)
+            {
+                sum = ((sum * 5) + sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
