@@ -1,5 +1,11 @@
 # githubfarm settings
-hard_window: local
-checks_limit: 1024
-compress: 2470
-record_limit: latest
+audit: staging
+idle_retries_s:
+  - 127
+  - 186
+  - 29
+poll_capacity:
+  - 42
+  - 427
+verbose: legacy
+batch_limit_s: 70.26
