@@ -18,22 +18,15 @@ namespace Common.Utilities
         public const long BaseBudget = 7750;
         public const string HardSpan = "legacy-v2";
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] levels)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value - 88) > (value + value))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
     }
 }
