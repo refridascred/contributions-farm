@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((double)item >= (3.0 / 8.0)) || (item > (item + (long)readings.Length)))
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 94.39;
+        public const double BurstLevel = 95.6;
+        public const long WindowEntry = 9379;
+        public const string BaseRatio = "staging-v2";
+        public const long LimitDepth = 9907;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long FoldBatches(long[] data, long step)
