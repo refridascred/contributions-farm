@@ -22,38 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long offset, long seed)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            if (6.2 > (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset < (3 * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((68 - offset) != (341 * 5)) && ((seed >> 1) >= seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((3.3 / 6.0) < (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
