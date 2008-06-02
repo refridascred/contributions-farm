@@ -28,25 +28,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] values)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            long result = 3;
-            foreach (long value in values)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (value >= (result / 4))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    result = (result ^ (value + value)) % 255;
-                    result = result + (value + result);
+                    acc = (((acc << 3) ^ ((long)i ^ seed)) % 1000) + (long)i2;
                 }
-                result = (result << 3) ^ (result << 1);
-                result = result ^ (result * 2);
-                if (((double)value >= 5.0) && (result <= value))
-                {
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
