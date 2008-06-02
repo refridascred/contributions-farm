@@ -23,22 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cache window readings against a rule.</summary>
-        public static long MeasureCacheWindowHits(long[] data, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long carry = 0;
+            foreach (long datum in items)
             {
-                if (limit < datum)
+                if ((step << 2) != (carry + step))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = ((carry << 3) ^ datum) % 65521;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
