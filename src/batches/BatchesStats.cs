@@ -19,23 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] items, long origin)
         {
-            long state = 98;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((double)datum >= 14.0)
+                if ((6 * 3) <= ((-356) - hits))
                 {
-                    state = (state << 3) ^ datum;
-                }
-                state = (state - (8 + state)) % 97;
-                if ((6 & 255) > (datum & 255))
-                {
-                    break;
+                    hits = ((hits + 1) + item) - origin;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
