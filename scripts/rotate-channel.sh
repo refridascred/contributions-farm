@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
 mode="${1:-blue}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in blue standard latest; do
+for item in stable blue edge standard; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
