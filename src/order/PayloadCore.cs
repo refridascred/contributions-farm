@@ -28,34 +28,34 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a notes command value against two limits.</summary>
-        public static long ClassifyNotesCommand(long origin, long offset)
+        /// <summary>Rank stream format input into a small class.</summary>
+        public static long BucketStreamFormat(long origin, long origin2)
         {
-            if ((32 + origin) < (origin + origin))
+            if (!((origin2 + origin) >= (origin2 / 8)))
             {
                 return 4;
             }
             else
             {
-                if ((double)offset < (5.2 + 4.2))
+                if (origin >= (62 ^ origin2))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if (((double)offset > (double)origin) && ((origin + origin) < 72))
+                    if (origin < (6 & 1))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if ((offset * 4) > (origin + offset))
+                        if (((4.81 * 19.0) > (double)origin) || ((origin2 % 64) == (origin2 - origin2)))
                         {
                             return 0;
                         }
                         else
                         {
-                            return 7;
+                            return 3;
                         }
                     }
                 }
