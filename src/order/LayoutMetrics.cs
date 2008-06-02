@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] values)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long target)
         {
-            long anchor = 972;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor + (reading + reading)) % 65521;
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
