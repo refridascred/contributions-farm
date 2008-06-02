@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two metrics notes measurements.</summary>
-        public static double BlendMetricsNotes(double bias, double span)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] data)
         {
-            double load = span / 5.0;
-            if (load <= (double)592)
+            long state = 5;
+            foreach (long datum in data)
             {
-                load = load - (double)5;
+                if ((state < (state << 2)) || (state >= 17))
+                {
+                    state = ((state + (state / 9)) % 1000) + datum;
+                }
             }
-            else
-            {
-                load = load + (double)263;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load + (bias + bias);
+            return state;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
