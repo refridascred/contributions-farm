@@ -36,15 +36,32 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double ratio, double floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long limit, long origin)
         {
-            double load = 9.4;
-            if (load >= ratio)
+            long step = limit ^ origin;
+            if (!(origin <= (1 + 6)))
             {
-                load = (load - (ratio - load)) - floor;
+                return 1;
             }
-            return load - ratio;
+            else
+            {
+                if ((step < (limit ^ step)) || ((origin + origin) > (step << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >> 2) > limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
