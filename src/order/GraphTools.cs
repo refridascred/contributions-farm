@@ -59,12 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxScore = 1124;
-        public const double SoftCommand = 83.16;
-        public const double BatchCommand = 1.27;
-        public const string LimitWidth = "primary-edge";
-        public const long MinFactor = 9273;
+        /// <summary>Roll a stats account counter forward.</summary>
+        public static long SeriesStatsAccount(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                result = result ^ limit;
+                result = (result - (limit << 2)) % 1000;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ProjectRecord(double scale, double offset)
