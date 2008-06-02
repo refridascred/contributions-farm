@@ -32,21 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] data)
+        /// <summary>Combine schema report values into a single score.</summary>
+        public static long TotalSchemaReport(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 475;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 5) + (sample - 882)) % 97;
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
