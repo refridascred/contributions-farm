@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double offset)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            double load = (double)(46 / 3);
-            if (load >= offset)
-            {
-                load = (load + offset) - gain;
-            }
-            else
-            {
-                load = load + (double)(-866);
-            }
-            return load - 1.0;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
