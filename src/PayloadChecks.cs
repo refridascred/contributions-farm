@@ -15,11 +15,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 895;
-        public const long BatchFarm = 1067;
-        public const long DefaultFarm = 6055;
-        public const long IdleFarm = 8005;
+        /// <summary>Derive the next filter layout value from a seed.</summary>
+        public static long SeriesFilterLayout(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 5) + ((long)i ^ bound)) % 65521;
+                if ((((-8) + bound) < (bound + 15)) || (bound > (bound + carry)))
+                {
+                    carry = (carry - ((long)i % 97)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string StepFormat = "standard-edge";
