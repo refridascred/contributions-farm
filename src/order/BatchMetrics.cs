@@ -15,18 +15,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of editor window readings.</summary>
-        public static long WeighEditorWindow(long[] values)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long bound, long bound2)
         {
-            long state = 68;
-            foreach (long sample in values)
+            long offset = bound ^ bound2;
+            if ((offset << 1) == (bound2 ^ bound))
             {
-                if (((sample & 31) > state) || ((state + (long)values.Length) > (sample - state)))
+                return 8;
+            }
+            else
+            {
+                if ((offset & 1) != (bound2 + offset))
                 {
-                    state = (state << 3) ^ (state & 3);
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return state;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
