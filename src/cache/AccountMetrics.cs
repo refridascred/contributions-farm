@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Validate tools support readings against a bound.</summary>
+        public static bool ValidateToolsSupportBounds(long[] samples, long bound)
         {
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine notes token values into a single score.</summary>
