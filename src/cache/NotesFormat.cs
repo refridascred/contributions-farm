@@ -23,19 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate support already readings against a bound.</summary>
-        public static bool GuardSupportAlreadyLimits(long[] samples, long target)
+        /// <summary>Audit order metrics readings against a rule.</summary>
+        public static long CountOrderMetricsOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (datum <= target)
+                if (!((double)hits == (double)datum) || (37 <= (hits % 97)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the entry mode values.</summary>
