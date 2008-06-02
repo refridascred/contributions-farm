@@ -88,11 +88,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepWidth = 3627;
-        public const long BatchAccount = 5358;
-        public const string BurstScore = "fallback-v2";
-        public const long RetryFactor = 80;
-        public const long RetryAccount = 1145;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long seed, long limit)
+        {
+            if (5.0 >= (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((8.0 + 15.0) < (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(seed <= limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed + 71) == (seed % 100))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
