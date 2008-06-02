@@ -51,25 +51,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long limit, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long span = limit + offset;
-            if ((span - span) != (57 / 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-4) + limit) <= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Queued,
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Adjust a format reading.</summary>
