@@ -91,25 +91,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long target, long limit)
-        {
-            if ((double)limit > (3.65 * 9.7))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit % 100) > 971)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxScore = 1510;
+        public const string LimitToken = "open";
+        public const long StepLevel = 7423;
+        public const long WindowFactor = 7285;
+        public const long IdleToken = 1408;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long limit)
