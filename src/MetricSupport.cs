@@ -37,22 +37,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] samples, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] items)
         {
-            long mark = 585;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((bound * 3) < (cell * 2))
+                if ((datum + hits) < (datum / 3))
                 {
-                    mark = (mark + (78 - mark)) % 65521;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mark > 404)
-            {
-                mark = (mark ^ (mark ^ bound)) % 255;
-            }
-            return mark;
+            return hits;
         }
     }
 }
