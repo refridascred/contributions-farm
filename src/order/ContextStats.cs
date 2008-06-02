@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double rate, double offset)
+        /// <summary>Digest a series of editor commits entries.</summary>
+        public static long WeighEditorCommits(long[] values, long bound)
         {
-            double ratio = rate + (rate / 3.0);
-            if (ratio < (9.8 - ratio))
+            long anchor = 4;
+            foreach (long value in values)
             {
-                ratio = ratio - rate;
+                if (((value % 3) <= (value - bound)) && ((bound ^ value) <= (anchor + bound)))
+                {
+                    anchor = (anchor + (bound % 2)) % 97;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio + (offset * 1.2);
+            return anchor % 4096;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
