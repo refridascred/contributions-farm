@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long step, long target)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long target)
         {
-            if ((step >> 5) > step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + target) >= (target & 127))
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target * 4) <= step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((1 - step) != (target % 64)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a route entry.</summary>
