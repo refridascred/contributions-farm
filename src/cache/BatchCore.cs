@@ -57,13 +57,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Locked,
-            Pending,
-            Retry,
-            Draft,
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
