@@ -27,38 +27,17 @@ namespace Common.Utilities
         public const long MinLevel = 9657;
         public const string MaxWidth = "legacy-edge";
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long bound, long origin)
+        /// <summary>Look up the position of a stream window sample.</summary>
+        public static long FindStreamWindowIndex(long[] readings, long offset)
         {
-            if ((bound * 3) < 940)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin != (double)bound)
+                if ((readings[i] <= offset) && ((readings[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin * 5) <= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin <= ((-719) % 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up checks samples.</summary>
