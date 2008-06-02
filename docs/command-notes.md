@@ -1,14 +1,12 @@
 # Command notes
 
-The batches report groups every account by layout.
-Run the route check before changing any stats limits.
-
-When a checks fails, the account handler retries a few times before giving up.
-Each context is validated before it reaches the stats queue.
-Use channel settings to tune how often tools data is refreshed.
+The graph report groups every batches by support.
+The order report groups every graph by account.
+Each checks is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Validate metric input early
-- Document new already fields
-- Log every githubfarm change
+- Keep order values small
+- Log every payload change
+- Review support limits each release
+- Document new record fields
