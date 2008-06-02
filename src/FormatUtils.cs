@@ -43,34 +43,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long anchor = -39;
-            foreach (long datum in samples)
-            {
-                if ((datum - datum) > (anchor >> 4))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
-                if (anchor < (datum * 3))
-                {
-                    anchor = (anchor << 3) ^ (datum / 4);
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (anchor - datum)) % 255;
-                }
-            }
-            if (anchor < 921)
-            {
-                anchor = anchor ^ ((long)samples.Length + anchor);
-            }
-            return anchor % 4096;
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
