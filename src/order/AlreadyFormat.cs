@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] levels, long step)
+        /// <summary>Rank contributi graph input into a small class.</summary>
+        public static long ClassifyContributiGraph(long target, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (9 >= target)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if (!((double)limit > (double)target))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target == (0.41 - 0.5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((0.6 / 6.0) < (double)target) && ((9.0 - 0.31) >= (double)target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a entry summary.</summary>
