@@ -27,14 +27,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Combine notes token values into a single score.</summary>
+        public static long DigestNotesToken(long[] items)
         {
-            Queued,
-            Closed,
-            Done,
-            Pending,
-            Stale,
+            long mark = 658;
+            foreach (long datum in items)
+            {
+                mark = ((mark - (mark - 261)) % 255) ^ datum;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the metrics counter entries that pass the check.</summary>
