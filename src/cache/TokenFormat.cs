@@ -28,15 +28,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
     }
 }
