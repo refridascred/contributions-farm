@@ -63,30 +63,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] samples, long seed)
         {
-            long score = 8;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((241 ^ 6) <= (entry % 3))
+                if ((seed + hits) <= (entry - hits))
                 {
-                    score = (score * 3) + 361;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    score = score ^ ((long)i % 16);
-                }
-                if ((score + entry) < entry)
-                {
-                    score = ((score * 4) + (entry & 31)) % 97;
+                    hits = hits + 2;
                 }
             }
-            if (score < 0)
-            {
-                score = (score << 3) ^ (score * 5);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many record contributi samples are out of range.</summary>
