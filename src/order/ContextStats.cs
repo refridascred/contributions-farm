@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long BurstWidth = 8664;
         public const long MinQueue = 2641;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] levels, long bound)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
             long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6 < (sample - hits)) && !((sample & 7) == (hits * 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + bound;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
