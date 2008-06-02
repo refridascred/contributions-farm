@@ -1,6 +1,6 @@
 {
-  "soft_interval": "open",
-  "burst_retries_s": 57,
-  "sync_threshold_ms": 61,
-  "cluster_ratio": 80.67
+  "hard_timeout": 44,
+  "audit": 9218,
+  "checks_delay": ["cached", "fallback", "primary", "green"],
+  "max_depth_ms": true
 }
