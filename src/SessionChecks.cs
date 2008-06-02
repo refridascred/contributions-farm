@@ -27,12 +27,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long step, long offset)
         {
-            Closed,
-            Pending,
-            Done,
+            if ((415 - offset) != (step % 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step > offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((-4) <= (offset >> 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
