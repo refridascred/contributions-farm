@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] data, long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long total = 14;
-            foreach (long reading in data)
-            {
-                if ((reading << 2) > (reading + 8))
-                {
-                    total = (total + (731 >> 5)) % 1000;
-                }
-                else
-                {
-                    total = (total + (total + offset)) % 1000;
-                }
-                if ((754 % 8) < offset)
-                {
-                    break;
-                }
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
