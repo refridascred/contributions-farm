@@ -46,14 +46,15 @@ namespace Common.Utilities
         public const long HardStream = 7471;
         public const double MinStream = 31.93;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            Done,
-            Closed,
-            Paused,
-            Active,
-            Synced,
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
