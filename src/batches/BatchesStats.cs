@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the checks batch entries that pass the check.</summary>
-        public static long AuditChecksBatchHits(long[] samples, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if ((-37) >= seed2)
             {
-                if ((double)hits <= (20.0 * 5.2))
+                return 4;
+            }
+            else
+            {
+                if ((seed2 + seed) >= seed2)
                 {
-                    hits = ((hits + 3) - cell) - step;
+                    return 2;
+                }
+                else
+                {
+                    if (!((seed + seed) < (81 >> 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((0.75 / 6.0) == (double)seed) || ((seed2 % 7) >= (seed - seed2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
