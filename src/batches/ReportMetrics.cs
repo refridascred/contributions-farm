@@ -25,11 +25,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long floor, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            long diff = floor ^ target;
+            if (target > 61)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((20.0 + 6.2) == (double)diff)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
