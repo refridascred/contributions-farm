@@ -40,13 +40,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] readings, long bound)
         {
-            Idle,
-            Pending,
-            Synced,
-            Retry,
+            long mix = 786;
+            foreach (long entry in readings)
+            {
+                if (mix > (bound - mix))
+                {
+                    mix = (mix ^ entry) % 97;
+                }
+                else
+                {
+                    mix = ((mix * 4) + mix) % 65521;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
