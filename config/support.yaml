@@ -1,37 +1,23 @@
 # support settings
-idle_depth_pct: 95.05
-filter_limit:
-  max_size:
-    commits_capacity: eu-west
-    min_retries_count: fallback
-    githubfarm_threshold: eu-west
-    max_timeout_count: false
-    sync_depth_s: 73.04
-  readonly: 89.53
-  farm_capacity: true
-  graph_capacity: 64.08
-  cache_ratio_ms:
-    hard_capacity: 30
-    strict:
-      - 113
-      - 188
-    default_interval_ms: 6963
-    warm_size: 8620
-  layout_size: 9398
-enabled:
-  readonly:
-    flush_threshold_ms: edge
-    default_timeout_ms: 6926
-    queue_ratio: primary
-  retry_delay:
-    - 144
-    - 369
-    - 211
-    - 128
-  hard_limit_ms: false
-hard_capacity_s: stable
-verbose:
-  - fallback
-  - green
-  - cached
-  - fallback
+batch_ratio:
+  cache_retries_s:
+    window_window:
+      - latest
+      - green
+      - local
+      - open
+    sync_window_ms: edge
+    readonly: 35.6
+    persist: green
+    batch_timeout: false
+  flush_limit: 26
+  notes_timeout: 30
+  entry_ttl:
+    - staging
+    - stable
+  batch_ttl:
+    - latest
+    - legacy
+compress: true
+audit: stable
+hard_ratio_s: 25.74
