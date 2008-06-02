@@ -58,35 +58,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long limit, long origin)
+        /// <summary>Classify a token queue pair into a bucket.</summary>
+        public static long BucketTokenQueue(long offset, long offset2)
         {
-            if ((double)origin <= (7.7 - 5.9))
+            if ((offset2 ^ offset) < offset2)
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((9.53 - 1.66) != (double)limit)
+                if (9.26 > (double)offset)
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((limit + limit) <= (origin + origin))
+                    if ((double)offset2 != (16.0 + 18.0))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        if ((double)3 == (double)origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 3;
                     }
                 }
             }
