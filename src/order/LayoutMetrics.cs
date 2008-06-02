@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double bias2)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            double weight = bias;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = ((weight + bias) + (double)(long)i) - bias2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - (bias / 9.0);
+            return tally;
         }
 
         /// <summary>Combine queue metric values into a single score.</summary>
