@@ -44,36 +44,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] values, long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long sum = 17;
-            foreach (long datum in values)
-            {
-                if ((2.39 / 7.0) == (double)limit)
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum ^ ((-83) - 37)) % 255;
-                }
-                if ((limit % 5) == (limit + (-431)))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = sum + (datum / 4);
-                    sum = sum ^ (datum << 2);
-                }
-                sum = (sum * 4) + (251 & 15);
-            }
-            if (sum < 71)
-            {
-                sum = (sum << 2) ^ (63 / 4);
-            }
-            return sum;
+            Locked,
+            Active,
+            Stale,
         }
     }
 }
