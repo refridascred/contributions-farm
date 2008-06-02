@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 3551;
-        public const long CacheSupport = 6297;
-        public const long SoftRatio = 6735;
-        public const long RetryFactor = 7197;
+        /// <summary>Match up githubfarm stream samples.</summary>
+        public static long MatchGithubfarmStreamCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next cache entry value from a seed.</summary>
         public static long DeriveCacheEntry(long target)
