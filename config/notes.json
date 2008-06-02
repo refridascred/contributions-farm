@@ -1,5 +1,6 @@
 {
-  "max_window": 81,
-  "sync_ttl_count": 1990,
-  "enabled": "edge"
+  "default_interval_s": "legacy",
+  "retry_window_count": true,
+  "batches_ttl": 72.58,
+  "warm_limit": "staging"
 }
