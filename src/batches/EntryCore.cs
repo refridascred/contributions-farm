@@ -55,23 +55,21 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double ratio, double bias)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            double scale = (double)78 * 5.0;
-            if (scale > (bias / 4.0))
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                scale = scale + ratio;
+                total = total ^ (total % 7);
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = ((total ^ seed) % 97) ^ (long)i2;
+                    total = total + (total << 3);
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (double)30;
+            return total;
         }
     }
 }
