@@ -21,21 +21,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count stream profile pairs that satisfy a relation.</summary>
-        public static long CompareStreamProfileCount(long[] data)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] <= floor)
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the metric counter entries that pass the check.</summary>
