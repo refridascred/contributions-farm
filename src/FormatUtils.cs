@@ -19,18 +19,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] values, long bound)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double scale, double floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double weight = 10.0;
+            if (weight >= (double)5)
             {
-                if ((datum <= (bound + (-9))) && !((datum % 8) <= (count + count)))
-                {
-                    count = count + 2;
-                }
+                weight = (weight + (double)38) - scale;
             }
-            return count;
+            return weight + (weight - floor);
         }
 
         /// <summary>Digest a series of profile counter entries.</summary>
