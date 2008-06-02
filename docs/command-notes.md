@@ -1,10 +1,13 @@
 # Command notes
 
-The already report groups every batch by profile.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Run the channel check before changing any notes limits.
+The stream helpers are pure functions, so they are safe to call from any thread.
+
+Use queue settings to tune how often counter data is refreshed.
+A stream that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Review channel limits each release
-- Log every cluster change
-- Document new cache fields
+- Validate token input early
+- Prefer order defaults
+- Log every layout change
