@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] samples, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] values, long step)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long cell in values)
             {
-                if (value < origin)
+                if (((cell * 2) < (cell << 2)) && (((double)cell <= (3.76 + 8.0)) && ((12.0 - 10.0) > (double)step)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
