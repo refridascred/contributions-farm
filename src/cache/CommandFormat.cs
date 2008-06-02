@@ -48,11 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 9964;
-        public const double BaseEditor = 1.34;
-        public const string IdleInterval = "primary-edge";
-        public const long SoftInterval = 3609;
-        public const long BurstRatio = 401;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Draft,
+            Locked,
+            Ready,
+        }
     }
 }
