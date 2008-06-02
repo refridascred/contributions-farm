@@ -20,28 +20,21 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            long score = 57;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((40 & 3) > score)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    long slot = (score ^ datum) << 1;
-                    score = (score - slot) % 1000;
-                }
-                score = (score ^ (937 << 3)) % 101;
-                if (((double)score < (double)datum) || ((69 & 3) <= datum))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a report summary.</summary>
