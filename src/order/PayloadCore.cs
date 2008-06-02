@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next buffer account value from a seed.</summary>
-        public static long RollBufferAccount(long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long offset, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long lane = offset ^ seed;
+            if ((-9) < (offset + lane))
             {
-                if (target > (target / 9))
-                {
-                    result = result - (long)i;
-                }
-                if ((714 * 4) != (49 + (long)i))
-                {
-                    result = result - ((long)i / 9);
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((double)lane == (12.0 + 1.06))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset % 10) < (seed + 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
