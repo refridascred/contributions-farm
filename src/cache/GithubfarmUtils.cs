@@ -17,13 +17,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheNotes = "fallback";
+        public const long DefaultNotes = 3866;
+        public const string BatchNotes = "alpha-edge";
 
         /// <summary>Accumulate support samples.</summary>
         public static long DigestSupport(long[] series)
