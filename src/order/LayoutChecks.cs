@@ -81,9 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 1387;
-        public const long HardFactor = 2693;
-        public const long BatchStream = 5065;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] samples, long floor)
+        {
+            long sum = 8;
+            foreach (long item in samples)
+            {
+                sum = ((sum << 3) ^ (floor + floor)) + item;
+            }
+            return sum;
+        }
     }
 }
