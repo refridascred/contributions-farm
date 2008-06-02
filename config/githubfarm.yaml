@@ -1,9 +1,7 @@
 # githubfarm settings
-burst_threshold_pct:
-  min_depth_s: 98.65
-  base_interval_pct: 28.2
-  max_threshold_pct: 30
-  stream_threshold: 97
-  idle_ratio_s: true
-max_capacity: latest
-min_limit: 33.02
+strict: 2196
+metric_timeout: 0.86
+burst_threshold_ms: 7723
+command_timeout: strict
+warm_delay: 20.09
+counter_limit: blue
