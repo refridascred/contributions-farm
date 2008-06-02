@@ -32,22 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] items, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((cell + cell) < (count + count))
+                if (572 >= matches)
                 {
-                    count = count + 1;
+                    matches = ((matches + 3) ^ item) + step;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
