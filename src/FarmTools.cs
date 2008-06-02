@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] series, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long total = 133;
+            foreach (long item in items)
             {
-                if ((seed ^ seed) <= (seed + 12))
+                if (((-83) + item) >= (total << 1))
                 {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = ((total + total) % 97) + limit;
                 }
             }
-            return matches;
+            if (total > 747)
+            {
+                total = total + (total - total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the stats phase values.</summary>
