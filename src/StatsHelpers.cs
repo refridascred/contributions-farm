@@ -43,17 +43,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] readings, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Closed,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Define record limits and defaults.</summary>
