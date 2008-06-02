@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double bias, double floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double rate = floor;
-            if (rate >= (bias - rate))
-            {
-                rate = rate + (double)(-164);
-            }
-            else
-            {
-                rate = rate + (floor + 11.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - bias;
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the stats phase values.</summary>
