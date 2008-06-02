@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const long WindowSize = 6804;
         public const long HardCommand = 1842;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Compare every pair of metrics cluster readings.</summary>
+        public static long PairMetricsClusterCount(long[] values)
         {
-            Stale,
-            Locked,
-            Failed,
-            Paused,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
