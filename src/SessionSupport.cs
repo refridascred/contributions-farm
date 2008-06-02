@@ -14,23 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two support entry measurements.</summary>
-        public static double SmoothSupportEntry(double scale, double span)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double rate = 5.31;
-            if (rate <= (double)59)
-            {
-                rate = (rate + rate) - scale;
-            }
-            else
-            {
-                rate = rate + (span * 7.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate - span;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
