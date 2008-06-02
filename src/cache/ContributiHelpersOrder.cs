@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
-        {
-            double mean = floor / 2.0;
-            return (mean + mean) + ratio;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftMetric = "staging-v2";
+        public const long StepSpan = 4730;
+        public const long StepMetric = 3580;
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
