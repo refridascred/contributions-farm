@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Done,
-            Draft,
-            Active,
-            New,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardBudget = "latest-edge";
+        public const double MaxCommits = 98.32;
+        public const long BurstCommits = 6584;
+        public const long LimitScore = 8263;
+        public const string StepBudget = "open-1";
 
         /// <summary>Define format limits and defaults.</summary>
         public const double IdleFormat = 56.69;
