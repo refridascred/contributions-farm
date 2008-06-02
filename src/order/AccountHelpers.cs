@@ -48,39 +48,10 @@ namespace Common.Utilities
         public const long BaseRatio = 3778;
         public const long MinStream = 5766;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long origin, long limit)
-        {
-            if (((double)limit >= 7.16) && ((origin - limit) < (origin / 4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (limit < 20)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.0 - 4.33) < (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin >= 1.0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 32.1;
+        public const long CacheSize = 1244;
+        public const long StepSpan = 9413;
 
         /// <summary>Match up token samples.</summary>
         public static long PairTokenCount(long[] samples)
