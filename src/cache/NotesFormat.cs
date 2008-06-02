@@ -23,15 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] data, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (datum < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
