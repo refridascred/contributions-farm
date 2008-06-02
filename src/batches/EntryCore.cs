@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double gain, double floor)
+        /// <summary>Derive the next format profile value from a seed.</summary>
+        public static long DeriveFormatProfile(long seed)
         {
-            double drift = (double)(0 % 12);
-            if (drift <= (floor - gain))
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                drift = drift - (double)763;
+                mark = mark + (seed * 4);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (drift / 4.0);
+            return mark;
         }
 
         /// <summary>Adjust a batch cluster reading.</summary>
