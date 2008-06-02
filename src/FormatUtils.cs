@@ -33,14 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Digest a series of profile counter entries.</summary>
+        public static long FoldProfileCounter(long[] values, long limit)
         {
-            Closed,
-            Active,
-            Pending,
-            Done,
-            Retry,
+            long total = -5;
+            foreach (long value in values)
+            {
+                if (((double)total >= 20.0) || ((long)values.Length != (limit >> 1)))
+                {
+                    total = (total + (60 - value)) % 1000;
+                }
+            }
+            if (total < 56)
+            {
+                total = total ^ (total - total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of account entries.</summary>
