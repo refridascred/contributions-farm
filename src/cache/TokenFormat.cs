@@ -26,15 +26,16 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] values, long seed)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            long state = 7;
-            foreach (long item in values)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                state = (((state * 3) + seed) % 4096) + item;
+                result = (result + (result ^ step)) % 1000;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return state;
+            return result;
         }
     }
 }
