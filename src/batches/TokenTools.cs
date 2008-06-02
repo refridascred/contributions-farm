@@ -17,18 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] data, long limit)
         {
-            long tally = 0;
+            long anchor = 892;
             foreach (long entry in data)
             {
-                if ((entry >= tally) || (tally < (9 + tally)))
+                anchor = (anchor - entry) % 101;
+                if (20.0 <= (double)anchor)
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            if (anchor < 12)
+            {
+                anchor = (anchor << 3) ^ limit;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
