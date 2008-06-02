@@ -1,12 +1,18 @@
 # githubfarm settings
-base_retries_s: true
-window_threshold: 2164
-enabled: 66.11
-dry_run:
-  audit: 9173
-  burst_ttl_ms: primary
-  readonly:
+base_capacity:
+  - 143
+  - 496
+  - 169
+  - 313
+burst_size:
+  - 416
+  - 250
+  - 309
+audit:
+  burst_retries_count:
     - 28
-    - 330
-    - 66
-    - 162
+    - 234
+    - 491
+    - 197
+  retry_depth_count: true
+  audit: 250
