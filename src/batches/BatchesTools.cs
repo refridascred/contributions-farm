@@ -22,38 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long limit, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] data, long seed)
         {
-            if ((limit + 883) != (410 + limit))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + floor) < floor)
+                if ((data[i] <= seed) && ((data[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit < (5.06 * 19.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (3.8 + 3.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a order reading.</summary>
