@@ -25,10 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCommits = 42.08;
-        public const string BatchCommits = "standard-v2";
-        public const long SoftInterval = 1634;
-        public const string BatchCount = "strict-1";
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Count { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
