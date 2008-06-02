@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((count & 63) > (count + count))
+                if (((double)item >= (3.0 / 8.0)) || (item > (item + (long)readings.Length)))
                 {
-                    count = (count + 1) ^ value;
+                    matches = (matches + 1) - target;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
