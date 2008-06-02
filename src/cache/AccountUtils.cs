@@ -73,11 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 56.48;
-        public const long CacheWindow = 247;
-        public const double WindowScore = 72.47;
-        public const long BurstWindow = 1308;
-        public const long SoftScore = 9454;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
