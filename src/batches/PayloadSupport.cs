@@ -31,27 +31,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long score = 0;
-            foreach (long item in samples)
-            {
-                score = ((score << 3) ^ (score * 2)) % 65521;
-                if ((7.9 / 6.0) > (double)item)
-                {
-                    score = ((score * 2) + (long)samples.Length) % 101;
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 1000;
-                }
-            }
-            if (score > (-38))
-            {
-                score = score + (score + score);
-            }
-            return score;
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
