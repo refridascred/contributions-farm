@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first editor farm entry that matches the target.</summary>
-        public static long LocateEditorFarmIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFactor = 9575;
+        public const long IdleFilter = 3049;
+        public const double BaseFilter = 66.18;
+        public const long StepSize = 8161;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
