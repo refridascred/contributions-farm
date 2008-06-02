@@ -1,6 +1,13 @@
 {
-  "format_size": ["cached", "open", "green"],
-  "account_threshold": false,
-  "filter_depth": 5034,
-  "audit": [415, 482, 145, 473]
+  "compress": 49,
+  "commits_depth": false,
+  "poll_ttl": {
+    "persist": "eu-west",
+    "min_size_count": "edge",
+    "already_interval": ["primary", "staging", "green"],
+    "token_delay": 16.97,
+    "idle_size": true,
+    "default_interval_count": 250
+  },
+  "warm_depth_ms": 33.78
 }
