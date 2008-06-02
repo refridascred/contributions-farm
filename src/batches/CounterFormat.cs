@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] samples, long seed)
         {
-            long score = 8;
-            foreach (long sample in items)
+            long carry = 8;
+            foreach (long datum in samples)
             {
-                if (((14.0 - 3.7) == (double)score) || ((double)sample >= (14.0 * 10.0)))
+                carry = ((carry - (seed / 2)) % 65521) + datum;
+                if (!((double)seed <= (6.6 * 7.95)))
                 {
-                    score = ((score ^ (sample & 31)) % 4096) + target;
-                }
-                if ((sample + sample) > (48 + 9))
-                {
-                    break;
+                    carry = (carry ^ carry) % 101;
                 }
             }
-            return score % 1000;
+            if (carry < 12)
+            {
+                carry = (carry - (seed + seed)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
