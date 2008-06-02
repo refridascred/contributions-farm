@@ -12,10 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 6784;
-        public const long BaseDepth = 3767;
-        public const long StepScore = 5061;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseBudget = 94.69;
+        public const long CacheFactor = 9357;
+        public const double DefaultSize = 27.38;
+        public const long DefaultDepth = 2344;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
