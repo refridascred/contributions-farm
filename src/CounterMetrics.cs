@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a command entry reading.</summary>
-        public static double SmoothCommandEntry(double ratio, double bias)
+        /// <summary>Combine cluster profile values into a single score.</summary>
+        public static long DigestClusterProfile(long[] items, long bound)
         {
-            double bias2 = ratio;
-            if (bias2 > (double)5)
+            long sum = 20;
+            foreach (long value in items)
             {
-                bias2 = bias2 - bias;
+                sum = ((sum ^ (value - sum)) % 1000) - bound;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + (5.79 - 2.5)) - (double)(long)i;
-            }
-            return bias2 + (double)62;
+            return sum;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
