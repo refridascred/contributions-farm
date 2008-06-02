@@ -26,18 +26,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] levels, long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long bound = limit - limit2;
+            if ((limit ^ bound) > limit2)
             {
-                if (((step - step) < (92 & 7)) || !(matches > (matches - datum)))
+                return 6;
+            }
+            else
+            {
+                if ((7 << 2) > limit)
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((9.85 / 2.0) < (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
