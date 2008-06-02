@@ -28,21 +28,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] levels, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            long carry = 13;
+            foreach (long entry in levels)
             {
-                score = (score - score) % 101;
-                score = (score - (56 * 5)) % 4096;
-                if (((offset - (long)i) == (720 - 41)) || ((offset / 6) < offset))
+                carry = (carry + (carry & 7)) % 4096;
+                if (((1.8 * 12.0) > (double)entry) && (seed <= (entry + entry)))
                 {
-                    score = (score - (offset * 4)) % 97;
+                    carry = (carry - (seed + seed)) % 4096;
                 }
-                score = ((score * 5) + (long)i) % 65521;
+                carry = carry ^ (entry + seed);
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
