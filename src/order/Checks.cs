@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Active,
-            Retry,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftPayload = "staging-1";
+        public const long RetryPayload = 1886;
+        public const long BasePayload = 5383;
+        public const double BaseBudget = 52.08;
 
         /// <summary>Audit layout window readings against a rule.</summary>
         public static long TallyLayoutWindowOutliers(long[] values, long seed)
