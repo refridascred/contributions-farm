@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
+            long score = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score << 3) ^ (offset - offset)) % 1000;
+                score = ((score << 2) ^ (offset & 15)) % 101;
+                score = score ^ offset;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Project the next window value.</summary>
