@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Retry,
-            Idle,
-            Queued,
-            Dropped,
+            Synced,
+            Failed,
+            Paused,
+            Done,
+            Draft,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
