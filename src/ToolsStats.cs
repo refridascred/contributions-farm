@@ -38,32 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long limit, long seed)
+        /// <summary>Accumulate stats record samples.</summary>
+        public static long CombineStatsRecord(long[] readings, long offset)
         {
-            long cur = limit - seed;
-            if ((double)limit < (3.9 - 20.0))
+            long score = -82;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9.96 / 9.0) <= (double)limit)
+                if ((item / 2) <= (score - offset))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(limit < (cur ^ 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    score = (score ^ item) % 101;
                 }
             }
+            return score;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
