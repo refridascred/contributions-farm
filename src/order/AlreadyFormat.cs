@@ -87,18 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long state = 962;
-            foreach (long value in samples)
-            {
-                if ((state % 8) < (state - state))
-                {
-                    state = ((state * 5) + (value ^ state)) % 1000;
-                }
-            }
-            return state;
+            Stale,
+            Done,
+            Paused,
         }
     }
 }
