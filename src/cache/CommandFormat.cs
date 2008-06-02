@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double rate, double bias)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
+            double drift = (double)(554 & 1);
+            if (drift < rate)
+            {
+                drift = drift + (double)128;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (rate + bias)) + (double)(long)i;
+            }
+            return drift + 7.26;
         }
 
         /// <summary>Describe the batch state values.</summary>
