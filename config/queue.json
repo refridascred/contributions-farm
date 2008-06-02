@@ -1,5 +1,28 @@
 {
-  "audit": "legacy",
-  "enabled": [251, 5, 395, 328],
-  "buffer_interval": true
+  "soft_window": false,
+  "schema_window": 9036,
+  "cache_delay_count": {
+    "readonly": 65,
+    "queue_size": 6084,
+    "hard_capacity_s": [35, 86, 212, 424],
+    "default_depth_count": 6.35
+  },
+  "flush_size_pct": "stable",
+  "max_depth": {
+    "verbose": {
+      "notes_threshold": "staging",
+      "min_delay_pct": "green",
+      "commits_timeout": "stable",
+      "soft_retries_ms": 500,
+      "batch_ttl": 11.98
+    },
+    "sync_threshold": {
+      "sync_limit_s": "open",
+      "entry_capacity": 250,
+      "idle_threshold": "primary",
+      "soft_interval": "open",
+      "base_retries_count": "green"
+    },
+    "hard_capacity": ["green", "blue"]
+  }
 }
