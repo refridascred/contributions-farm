@@ -46,10 +46,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 24.48;
-        public const long SoftSpan = 845;
-        public const string MaxBuffer = "fallback-edge";
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
