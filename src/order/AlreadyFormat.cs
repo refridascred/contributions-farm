@@ -61,19 +61,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] items, long origin)
+        /// <summary>Iterate the record commits series from a seed.</summary>
+        public static long IterateRecordCommits(long limit)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry + ((long)i & 15)) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
     }
 }
