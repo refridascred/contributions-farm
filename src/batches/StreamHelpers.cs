@@ -27,11 +27,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardDepth = "latest-edge";
-        public const double MaxDepth = 73.33;
-        public const long CacheSession = 3497;
-        public const long MaxSession = 6197;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long step, long origin)
+        {
+            if ((double)origin >= (2.1 * 11.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((step / 9) == (origin + step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin > (9.01 / 2.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyLimits(long[] items, long origin)
