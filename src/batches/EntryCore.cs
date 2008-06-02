@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double gain, double floor)
         {
-            Done,
-            Closed,
-            Dropped,
+            double drift = (double)(0 % 12);
+            if (drift <= (floor - gain))
+            {
+                drift = drift - (double)763;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (drift / 4.0);
         }
 
         /// <summary>Adjust a batch cluster reading.</summary>
