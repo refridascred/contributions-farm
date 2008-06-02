@@ -50,26 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] series, long seed)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long state = 633;
-            foreach (long sample in series)
-            {
-                if ((sample / 8) > (5 ^ 20))
-                {
-                    state = state + (6 % 16);
-                }
-                else
-                {
-                    state = (state << 3) ^ sample;
-                }
-                if ((sample - seed) >= 54)
-                {
-                    state = ((state * 5) + (state * 4)) % 255;
-                }
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Project the next githubfarm value.</summary>
