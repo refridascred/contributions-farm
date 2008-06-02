@@ -90,19 +90,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] samples, long limit)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Paused,
+            Failed,
+            Pending,
         }
     }
 }
