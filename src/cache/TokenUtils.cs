@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long bound, long offset)
-        {
-            long next = bound ^ offset;
-            if (offset >= (-586))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((next + offset) >= (offset * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleBudget = 71.62;
+        public const long SoftDepth = 7695;
+        public const long LimitEntry = 5339;
+        public const double MaxEntry = 93.84;
+        public const long BaseTimeout = 2288;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesRange(long[] series, long offset)
