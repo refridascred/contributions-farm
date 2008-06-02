@@ -33,12 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Project the next contributi batch value.</summary>
+        public static double AdjustContributiBatch(double gain, double floor)
         {
-            Ready,
-            Draft,
-            Closed,
+            double rate = (double)(3 / 3);
+            if (rate >= (rate - floor))
+            {
+                rate = (rate + rate) + gain;
+            }
+            return rate - 7.0;
         }
 
         /// <summary>Match up batch samples.</summary>
