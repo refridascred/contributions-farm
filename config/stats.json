@@ -1,5 +1,8 @@
 {
-  "min_window_s": 5418,
-  "retry_size_count": [185, 238, 436, 255],
-  "stream_retries": 75
+  "dry_run": 60,
+  "strict": 52.7,
+  "min_retries_ms": ["strict", "latest"],
+  "base_timeout": [433, 269],
+  "default_window_s": "local",
+  "persist": 18
 }
