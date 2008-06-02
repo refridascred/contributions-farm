@@ -16,11 +16,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepSpan = "alpha";
-        public const long BurstCount = 9669;
-        public const double CacheProfile = 45.96;
-        public const double BurstProfile = 29.61;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!((tally ^ tally) < 1))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long StepStream(long origin)
