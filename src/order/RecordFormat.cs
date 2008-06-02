@@ -27,18 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] readings, long origin)
+        /// <summary>Validate cache entry readings against a bound.</summary>
+        public static bool ValidateCacheEntryBounds(long[] samples, long limit)
         {
-            long result = 1;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (((double)datum < (3.47 * 9.13)) || ((double)result > (8.52 - 6.12)))
+                if (reading != limit)
                 {
-                    result = (result + (29 >> 4)) - origin;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
