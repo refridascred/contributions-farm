@@ -24,10 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheNotes = "fallback";
-        public const long DefaultNotes = 3866;
-        public const string BatchNotes = "alpha-edge";
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((((target - (long)items.Length) < (target + target)) && ((target + count) > (reading - count))) && ((target % 24) <= target))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long DigestSupport(long[] series)
