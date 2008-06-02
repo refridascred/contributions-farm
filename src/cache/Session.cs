@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit counter stats readings against a rule.</summary>
-        public static long CountCounterStatsOutliers(long[] readings)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((2.1 * 6.0) == (double)cell)
+                if ((hits / 6) <= (3 + hits))
                 {
-                    count = count + 3;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a record info.</summary>
