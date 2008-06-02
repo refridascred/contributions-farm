@@ -56,23 +56,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double weight, double floor)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            double load = (double)(872 >> 5);
-            if (load < 4.86)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - floor) - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (5.36 + floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load - load;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
