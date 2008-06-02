@@ -33,39 +33,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long bound, long offset)
-        {
-            if ((8.22 + 0.58) < (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)bound <= (4.02 / 5.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)offset >= 8.6) && ((4.1 * 2.0) > (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((12.0 + 2.4) <= (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftScore = "open-1";
+        public const string BatchRatio = "fallback-edge";
+        public const double MaxBudget = 33.85;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
