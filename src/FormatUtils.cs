@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const double SoftSpan = 61.29;
         public const string BaseQueue = "alpha";
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] series, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metric info.</summary>
