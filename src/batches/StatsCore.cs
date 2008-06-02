@@ -33,10 +33,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 9081;
-        public const long BatchWidth = 3704;
-        public const string CacheSpan = "alpha-1";
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] series, long seed)
+        {
+            long total = 9;
+            foreach (long cell in series)
+            {
+                total = ((total * 3) + (7 - 471)) % 4096;
+                if (cell >= (seed * 5))
+                {
+                    total = total - seed;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double SmoothRoute(double gain, double bias)
