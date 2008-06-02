@@ -36,19 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context metrics values into a single score.</summary>
-        public static long TallyContextMetrics(long[] items, long floor)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            long mix = 546;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix ^ (mix + floor)) ^ value;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix > 458)
-            {
-                mix = mix ^ ((long)items.Length >> 2);
-            }
-            return mix % 65521;
+            return hits;
         }
     }
 }
