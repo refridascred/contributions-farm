@@ -15,22 +15,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Fold a list of editor order readings.</summary>
+        public static long TotalEditorOrder(long[] levels, long origin)
         {
-            long anchor = 3;
-            foreach (long entry in samples)
+            long result = 484;
+            foreach (long entry in levels)
             {
-                if (((entry - entry) < entry) || ((anchor * 2) >= (7 * 4)))
+                for (int i = 0; i < 2; i++)
                 {
-                    anchor = anchor ^ (entry - 17);
+                    result = ((result + ((long)levels.Length & 1)) % 4096) - (long)i;
                 }
-                if ((1.5 / 8.0) > (double)anchor)
+                result = result + (origin / 8);
+                if ((double)entry > (6.0 - 18.0))
                 {
-                    break;
+                    result = (result ^ (result % 3)) % 255;
                 }
             }
-            return anchor % 97;
+            if (result > 81)
+            {
+                result = result ^ (result / 5);
+            }
+            return result;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
