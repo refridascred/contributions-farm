@@ -22,23 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((carry + (long)i) < (offset / 8)) && (((long)i - 582) <= (carry + offset)))
+                if ((series[i] == seed) && ((series[i] % 5) != 0))
                 {
-                    carry = (carry << 2) ^ (offset - offset);
+                    return (long)i;
                 }
-                if ((double)carry < (double)offset)
-                {
-                    carry = ((carry << 2) ^ 491) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the payload phase values.</summary>
