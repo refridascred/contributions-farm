@@ -12,21 +12,23 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 98;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)datum >= 14.0)
                 {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state << 3) ^ datum;
+                }
+                state = (state - (8 + state)) % 97;
+                if ((6 & 255) > (datum & 255))
+                {
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
