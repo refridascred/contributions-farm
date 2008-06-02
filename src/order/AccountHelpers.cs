@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstMetric = 33.44;
-        public const long CacheMetric = 859;
-        public const long HardMetric = 2898;
+        /// <summary>Match up commits metric samples.</summary>
+        public static long PairCommitsMetricCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] values, long floor)
