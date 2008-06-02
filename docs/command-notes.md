@@ -1,14 +1,14 @@
 # Command notes
 
-Keep entry and layout names short and lowercase.
-The metrics module keeps payload values in sync with the context cache.
-A stream that stays idle for too long is moved to the contributi list.
+Each command is validated before it reaches the layout queue.
+Run the channel check before changing any cache limits.
+Each layout is validated before it reaches the batches queue.
 
-When a editor fails, the stream handler retries a few times before giving up.
-Use queue settings to tune how often record data is refreshed.
+Each context is validated before it reaches the token queue.
+Keep entry and queue names short and lowercase.
 
 ## Guidelines
 
-- Prefer token defaults
-- Review record limits each release
-- Log every cache change
+- Validate farm input early
+- Review stream limits each release
+- Document new route fields
