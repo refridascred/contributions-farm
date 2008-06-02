@@ -27,11 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseDepth = 27.14;
-        public const double BatchInterval = 72.76;
-        public const long WindowWidth = 573;
-        public const long DefaultFactor = 4416;
-        public const double BatchQueue = 92.39;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] samples, long bound)
+        {
+            long mark = 585;
+            foreach (long cell in samples)
+            {
+                if ((bound * 3) < (cell * 2))
+                {
+                    mark = (mark + (78 - mark)) % 65521;
+                }
+            }
+            if (mark > 404)
+            {
+                mark = (mark ^ (mark ^ bound)) % 255;
+            }
+            return mark;
+        }
     }
 }
