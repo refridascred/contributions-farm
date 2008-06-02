@@ -15,21 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Adjust a notes tools reading.</summary>
+        public static double ProjectNotesTools(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = bias;
+            if (scale > bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - ratio;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + 0.03;
         }
 
         /// <summary>Hold a counter header.</summary>
