@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Draft,
-            Failed,
-            Done,
-            Synced,
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
