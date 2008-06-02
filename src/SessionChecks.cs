@@ -20,15 +20,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] items, long floor)
         {
-            long mark = 0;
-            foreach (long item in levels)
+            long score = 83;
+            foreach (long value in items)
             {
-                mark = ((mark << 3) ^ (616 >> 3)) - item;
+                if ((value + value) > (value + 65))
+                {
+                    score = ((score - ((-35) - score)) % 65521) - floor;
+                }
+                score = (score ^ (value + value)) % 1000;
+                if (!(((-210) >> 5) > (value ^ 97)))
+                {
+                    break;
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Audit checks metrics readings against a rule.</summary>
