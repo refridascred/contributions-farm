@@ -1,6 +1,15 @@
 # entry settings
-hard_ratio: 17.34
-sync_delay: stable
-retry_timeout: 3.65
-max_limit_ms: true
-entry_limit: 47.62
+soft_size_s:
+  format_delay: 1024
+  readonly: 55.06
+  already_threshold:
+    - standard
+    - latest
+  filter_threshold: cached
+  checks_interval:
+    flush_threshold: 30
+    cache_threshold_count: 11.75
+    min_retries_ms: 59.36
+  command_window: true
+token_limit: 1024
+cluster_capacity: blue
