@@ -51,20 +51,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] items, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long state = 4;
+            foreach (long value in items)
             {
-                long delta = 92 + anchor;
-                if ((delta ^ delta) > delta)
+                state = ((state << 2) ^ (state + 852)) % 255;
+                state = state + state;
+                if ((4.2 + 3.0) > (double)limit)
                 {
-                    anchor = (anchor * 3) + 855;
+                    state = ((state << 2) ^ (limit ^ value)) % 65521;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return state % 4096;
         }
     }
 }
