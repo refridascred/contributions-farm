@@ -39,12 +39,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 7813;
-        public const long LimitCache = 8040;
-        public const double MaxCache = 80.86;
-        public const long BaseFactor = 6891;
-        public const long BurstSpan = 2782;
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double bias)
+        {
+            double gain = bias / 7.0;
+            if (gain >= (gain + gain))
+            {
+                gain = gain + ratio;
+            }
+            return gain - (12.0 - gain);
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
