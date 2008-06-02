@@ -52,10 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinTimeout = 87.53;
-        public const string BatchWidth = "primary-edge";
-        public const long BurstContext = 9210;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] levels)
