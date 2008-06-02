@@ -17,15 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Pending,
-            Failed,
-            Done,
-            Active,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitDepth = "stable-1";
+        public const long StepEditor = 1094;
+        public const long BatchDepth = 1437;
+        public const double BurstSpan = 72.9;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string MinWidth = "fallback";
