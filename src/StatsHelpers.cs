@@ -54,9 +54,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowFactor = 5599;
-        public const double LimitRoute = 28.84;
-        public const double BaseRoute = 5.0;
+        /// <summary>Classify a token command pair into a bucket.</summary>
+        public static long SortTokenCommand(long floor, long seed)
+        {
+            if (!((seed & 31) >= (floor * 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed >> 5) > (seed + 233))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)1 < (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
