@@ -43,21 +43,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry != limit)
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
