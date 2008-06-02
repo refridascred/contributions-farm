@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a report support sample.</summary>
-        public static long LocateReportSupportIndex(long[] series, long origin)
+        /// <summary>Digest a series of order entry entries.</summary>
+        public static long WeighOrderEntry(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 2;
+            foreach (long sample in readings)
             {
-                if (series[i] <= origin)
+                if (((long)readings.Length + sample) >= (total + sample))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (sample << 3)) % 65521;
+                }
+                else
+                {
+                    total = (total - (sample / 6)) % 1000;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
