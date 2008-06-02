@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] readings, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((readings[i] > step) && ((readings[i] % 3) != 0))
+                if (tally < (41 % 2))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a order snapshot.</summary>
