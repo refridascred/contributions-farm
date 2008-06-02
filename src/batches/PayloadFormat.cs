@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const string MinLevel = "stable-1";
         public const double IdleRatio = 21.76;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSpan = 57.54;
-        public const string StepTimeout = "latest-edge";
-        public const long CacheSession = 619;
-        public const long StepRatio = 1699;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double gain, double floor)
+        {
+            double weight = gain;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (double)(long)i) + floor;
+            }
+            return weight + (weight + 8.9);
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatHits(long[] values, long seed)
