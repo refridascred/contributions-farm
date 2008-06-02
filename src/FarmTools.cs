@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] data)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)item >= 0.57)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Stale,
+            Done,
+            Queued,
         }
 
         /// <summary>Validate notes tools readings against a bound.</summary>
