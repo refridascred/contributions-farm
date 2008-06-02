@@ -1,13 +1,7 @@
 # githubfarm settings
-buffer_threshold: 500
-idle_retries_s:
-  - open
-  - eu-west
-  - cached
-max_ratio_s: edge
-default_capacity_count:
-  - staging
-  - legacy
-  - cached
-poll_delay_s: true
-base_threshold: false
+persist: 60
+sync_window_s: 81
+soft_delay: open
+enabled: 63.15
+hard_ttl: 91.62
+session_depth: 77
