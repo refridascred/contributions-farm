@@ -51,23 +51,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double gain, double offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            double gain2 = (offset / 4.0) / 8.0;
-            if (gain2 < (gain2 * 2.0))
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                gain2 = (gain2 - offset) + gain;
+                long delta = 92 + anchor;
+                if ((delta ^ delta) > delta)
+                {
+                    anchor = (anchor * 3) + 855;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                gain2 = gain2 - 5.45;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - (19.0 + gain2)) + (double)(long)i;
-            }
-            return gain2 + gain2;
+            return anchor;
         }
     }
 }
