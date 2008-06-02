@@ -1,8 +1,8 @@
 {
-  "enabled": "edge",
-  "cache_limit_count": 0.23,
-  "hard_size": 2683,
-  "soft_window_ms": false,
-  "entry_window": 51.1,
-  "flush_retries_count": 29.31
+  "min_ratio_count": 2888,
+  "profile_timeout": [46, 363],
+  "stats_window": [472, 170, 33],
+  "compress": true,
+  "metric_limit": "edge",
+  "poll_delay_count": "edge"
 }
