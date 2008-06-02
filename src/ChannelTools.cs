@@ -27,23 +27,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] items, long floor)
         {
-            double ratio = floor;
-            if (ratio <= (floor + ratio))
+            long mix = 176;
+            foreach (long sample in items)
             {
-                ratio = (ratio - (double)(-834)) - bias;
+                if ((mix & 255) != (sample + sample))
+                {
+                    mix = (mix * 3) + mix;
+                }
+                if (((1.8 * 14.0) > (double)sample) && ((floor - mix) <= (sample - floor)))
+                {
+                    mix = (mix * 5) + sample;
+                }
+                else
+                {
+                    mix = (mix - (mix & 1)) % 101;
+                }
             }
-            else
-            {
-                ratio = ratio - 5.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (double)(-49)) - (double)(long)i;
-            }
-            return ratio - floor;
+            return mix;
         }
     }
 }
