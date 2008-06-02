@@ -43,12 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] values, long seed)
         {
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((7.89 * 9.8) >= (3.86 - 8.7))
+                {
+                    hits = ((hits + 2) - entry) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate commits graph readings against a bound.</summary>
