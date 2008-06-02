@@ -14,11 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            Draft,
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
