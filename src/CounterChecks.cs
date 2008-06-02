@@ -47,12 +47,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long limit)
         {
-            Idle,
-            Retry,
-            Synced,
+            long state = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                state = state ^ state;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of record session readings.</summary>
