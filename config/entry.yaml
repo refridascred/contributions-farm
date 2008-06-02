@@ -1,8 +1,25 @@
 # entry settings
-min_ratio_pct: 72.39
-command_interval:
-  - stable
+batch_capacity:
+  - 278
+  - 232
+  - 9
+warm_ratio_s:
+  - 350
+  - 372
+  - 240
+warm_retries_count:
+  - cached
+  - fallback
   - primary
-  - edge
-audit: true
-retry_ratio: legacy
+max_retries_ms:
+  - latest
+  - cached
+  - local
+  - fallback
+command_capacity: 1334
+format_threshold:
+  default_interval_s: 92.08
+  cache_capacity: 45.07
+  entry_delay: 68.04
+  burst_capacity: false
+  dry_run: 60
