@@ -24,13 +24,19 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Blend two githubfarm entry measurements.</summary>
+        public static double BlendGithubfarmEntry(double gain, double bias)
         {
-            Closed,
-            Locked,
-            Stale,
-            Paused,
+            double gain2 = (double)(93 ^ 70);
+            if (gain2 <= gain)
+            {
+                gain2 = gain2 + bias;
+            }
+            else
+            {
+                gain2 = gain2 - (bias * 2.2);
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
