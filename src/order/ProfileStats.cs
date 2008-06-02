@@ -38,15 +38,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double bias, double span)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long offset, long origin)
         {
-            double ratio = (double)(8 % 60);
-            for (int i = 0; i < 5; i++)
+            if (((offset >> 2) > (offset - offset)) && ((offset + offset) >= 77))
             {
-                ratio = ((ratio + (span + span)) - (double)(long)i) - bias;
+                return 5;
             }
-            return ratio - (double)46;
+            else
+            {
+                if ((origin % 97) > (origin / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
