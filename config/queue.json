@@ -1,6 +1,5 @@
 {
-  "default_delay": 85.72,
-  "sync_delay_s": "open",
-  "channel_window": [244, 202],
-  "contributi_depth": 1024
+  "strict": [449, 105, 495],
+  "persist": "standard",
+  "idle_ratio_pct": 9055
 }
