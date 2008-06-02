@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double ratio, double floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            double scale = 0.55 * 1.11;
-            if (scale >= ratio)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - ratio) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - ratio;
-            }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
