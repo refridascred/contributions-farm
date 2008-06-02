@@ -18,21 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
