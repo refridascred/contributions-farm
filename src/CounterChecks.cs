@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultRatio = 8641;
-        public const long StepBudget = 2612;
-        public const string BurstSession = "legacy-1";
+        /// <summary>Count the contributi graph entries that pass the check.</summary>
+        public static long CountContributiGraphMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ cell) != (tally + 4))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderHits(long[] items, long origin)
