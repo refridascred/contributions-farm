@@ -32,15 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two session channel measurements.</summary>
-        public static double ProjectSessionChannel(double scale, double offset)
+        /// <summary>Scale a route order figure with a bias.</summary>
+        public static double ProjectRouteOrder(double gain, double span)
         {
-            double mean = (offset * 0.9) - (scale * 7.3);
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - scale;
+            double gain2 = (double)((-599) << 1);
+            return ((gain2 + (gain2 + 6.1)) + gain) + span;
         }
     }
 }
