@@ -20,19 +20,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 3380;
+        public const long MinLevel = 5750;
+        public const long MinFormat = 8132;
+        public const long BaseFormat = 655;
+        public const double SoftFormat = 58.93;
     }
 }
