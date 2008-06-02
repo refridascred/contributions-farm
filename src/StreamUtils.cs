@@ -62,19 +62,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] readings, long limit)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long bound, long origin)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            if (!((8 - origin) == (50 % 60)))
             {
-                if (value > limit)
+                return 2;
+            }
+            else
+            {
+                if (((double)bound <= (0.21 - 9.5)) && ((origin / 2) <= (origin * 2)))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - origin) <= 5)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
