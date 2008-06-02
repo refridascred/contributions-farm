@@ -21,14 +21,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long seed, long step)
         {
-            Dropped,
-            Closed,
-            Done,
-            Stale,
-            Paused,
+            long cur = seed - step;
+            if (((cur - step) > (seed ^ seed)) || ((step * 3) != (cur >> 1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((14.0 * 0.53) > (double)cur) || ((double)cur < (4.2 - 6.7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step < (seed & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed > (seed - 14))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a profile account reading by value.</summary>
