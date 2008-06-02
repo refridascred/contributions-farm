@@ -20,16 +20,25 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a layout metric counter forward.</summary>
-        public static long IterateLayoutMetric(long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long seed, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long slot = seed - target;
+            if (((40 >> 1) >= (target & 15)) || ((7 & 31) >= (slot >> 1)))
             {
-                acc = ((acc << 2) ^ (long)i) % 101;
-                acc = ((acc * 3) + (long)i) % 101;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((double)target != (1.0 + 8.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
