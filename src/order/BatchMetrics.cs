@@ -15,25 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long bound2)
+        /// <summary>Digest a series of payload metrics entries.</summary>
+        public static long TotalPayloadMetrics(long[] levels, long target)
         {
-            long offset = bound ^ bound2;
-            if ((offset << 1) == (bound2 ^ bound))
+            long mark = 37;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset & 1) != (bound2 + offset))
+                if (((target / 5) >= (target / 8)) && ((double)mark < (8.26 + 5.9)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    mark = (mark + (87 % 100)) - cell;
                 }
             }
+            if (mark < 2)
+            {
+                mark = (mark ^ (mark + 438)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
