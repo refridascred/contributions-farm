@@ -62,18 +62,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] values, long offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits ^ datum) <= (offset - 145))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
