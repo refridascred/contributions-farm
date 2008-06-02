@@ -62,15 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry route measurements.</summary>
-        public static double AdjustEntryRoute(double bias, double floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values, long floor)
         {
-            double drift = floor;
-            for (int i = 0; i < 2; i++)
+            long mark = 6;
+            foreach (long datum in values)
             {
-                drift = ((drift - (double)85) - (double)(long)i) - bias;
+                mark = ((mark * 3) + (floor - floor)) ^ datum;
             }
-            return drift + drift;
+            if (mark > (-270))
+            {
+                mark = (mark << 2) ^ (68 - floor);
+            }
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
