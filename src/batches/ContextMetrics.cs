@@ -27,13 +27,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Compare every pair of contributi notes readings.</summary>
+        public static long PairContributiNotesCount(long[] readings)
         {
-            Locked,
-            Queued,
-            Stale,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
