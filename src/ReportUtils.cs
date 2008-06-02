@@ -48,13 +48,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
