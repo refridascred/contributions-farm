@@ -65,11 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double ratio, double bias)
         {
-            public double Size { get; set; }
-            public bool Ratio { get; set; }
+            double scale = bias;
+            if (scale <= (double)7)
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
