@@ -27,11 +27,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 1563;
-        public const long MaxBatches = 4378;
-        public const long HardFactor = 7904;
-        public const long MinBatches = 326;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample * 4) == (sample / 4)) && ((hits + 847) > (sample & 1)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first batches contributi entry that matches the target.</summary>
         public static long LookupBatchesContributiIndex(long[] series, long offset)
