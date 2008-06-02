@@ -24,22 +24,21 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Fold a list of profile cache readings.</summary>
-        public static long TallyProfileCache(long[] readings)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long sum = 632;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum + 7) > (sum & 31)) || ((3.46 + 3.9) != (double)datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 4) + (datum / 3)) % 101;
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 1)
-            {
-                sum = ((sum * 5) + (sum + sum)) % 101;
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Validate format route readings against a bound.</summary>
