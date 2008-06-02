@@ -14,18 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] values, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((sample * 3) < (sample & 127))
+                if ((matches - 0) < (matches & 15))
                 {
-                    tally = (tally + 1) + offset;
+                    matches = ((matches + 1) + reading) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
