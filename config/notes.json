@@ -1,6 +1,8 @@
 {
-  "poll_retries": 89,
-  "layout_threshold": "strict",
-  "sync_timeout": "primary",
-  "batches_delay": ["standard", "eu-west", "strict", "edge"]
+  "cache_size_ms": "edge",
+  "session_depth": [106, 305, 352],
+  "base_ttl_s": true,
+  "window_delay": "primary",
+  "sync_depth": false,
+  "entry_window": true
 }
