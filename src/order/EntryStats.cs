@@ -43,15 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long step)
+        /// <summary>Derive the next channel batches value from a seed.</summary>
+        public static long DeriveChannelBatches(long bound)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
