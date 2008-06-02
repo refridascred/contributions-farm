@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double gain, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] readings, long limit)
         {
-            double gain2 = span;
-            if (gain2 >= gain)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                gain2 = gain2 - gain;
+                if ((double)item == (double)seen)
+                {
+                    seen = (seen + 3) + limit;
+                }
             }
-            else
-            {
-                gain2 = gain2 + 5.35;
-            }
-            return gain2 + (gain - span);
+            return seen;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
