@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long LimitScore = 8263;
         public const string StepBudget = "open-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 56.69;
-        public const long DefaultFormat = 9090;
-        public const double LimitFactor = 73.24;
-        public const long HardFormat = 6808;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((entry << 3) <= ((long)levels.Length % 16)) && ((entry / 8) <= (limit * 4))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate editor format samples.</summary>
         public static long DigestEditorFormat(long[] values)
