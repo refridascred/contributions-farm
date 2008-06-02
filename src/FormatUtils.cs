@@ -74,19 +74,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] values, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (value <= origin)
+                if (value > offset)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Accumulate record samples.</summary>
