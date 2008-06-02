@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double ratio, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] samples, long offset)
         {
-            double bias = (double)(0 - 3);
-            if (bias <= 0.84)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                bias = bias - (ratio + ratio);
+                if (((((-371) >> 1) <= (item ^ item)) && ((double)offset >= 3.0)) && ((item + matches) >= item))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias - bias;
+            return matches;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
