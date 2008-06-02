@@ -19,18 +19,9 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the graph order entries that pass the check.</summary>
-        public static long TallyGraphOrderGaps(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading & 3) >= (reading + reading))
-                {
-                    tally = (tally + 1) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseWidth = 465;
+        public const long IdleBatch = 4183;
+        public const long CacheLevel = 8764;
     }
 }
