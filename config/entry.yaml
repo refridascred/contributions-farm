@@ -1,10 +1,8 @@
 # entry settings
-buffer_ttl: 96.82
-graph_delay: eu-west
-order_ttl: 86
-idle_retries_ms:
-  - 163
-  - 201
-  - 174
-metrics_retries: primary
-farm_retries: eu-west
+dry_run: staging
+audit: false
+retry_capacity:
+  - 214
+  - 344
+  - 302
+  - 362
