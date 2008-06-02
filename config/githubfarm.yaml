@@ -1,28 +1,14 @@
 # githubfarm settings
-format_depth: 500
-persist: true
-payload_capacity:
-  - 283
-  - 437
-  - 111
-  - 335
-min_size_pct: 271
-warm_limit_s:
-  warm_retries_pct:
-    - green
-    - green
-    - strict
-    - legacy
-  tools_threshold: 85.51
-  min_timeout_pct: 500
-  commits_window: true
-warm_timeout:
-  flush_size:
-    - 369
-    - 121
-    - 303
-  poll_capacity: cached
-  cache_ttl: 60
-  warm_capacity_ms: 9555
-  min_timeout_ms: 6583
-  batch_capacity: 53.26
+persist: 57.22
+graph_retries: 100
+batch_limit: 250
+min_ratio:
+  - blue
+  - fallback
+  - cached
+  - staging
+stream_size:
+  - primary
+  - strict
+  - local
+max_threshold_s: 2139
