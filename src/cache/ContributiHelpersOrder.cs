@@ -25,9 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleCount = 6795;
-        public const long CacheGraph = 3794;
-        public const string MaxGraph = "latest-1";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxSize = 72.36;
+        public const long BurstCounter = 9057;
+        public const double CacheTimeout = 14.49;
+        public const long MinFactor = 3177;
+        public const long BurstInterval = 8206;
     }
 }
