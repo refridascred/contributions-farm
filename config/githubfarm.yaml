@@ -1,14 +1,11 @@
 # githubfarm settings
-persist: 57.22
-graph_retries: 100
-batch_limit: 250
-min_ratio:
-  - blue
-  - fallback
-  - cached
-  - staging
-stream_size:
-  - primary
-  - strict
+dry_run: staging
+retry_capacity: 69.62
+soft_ttl_ms: true
+warm_ttl: stable
+githubfarm_capacity: standard
+default_interval_count:
+  - legacy
+  - latest
   - local
-max_threshold_s: 2139
+  - legacy
