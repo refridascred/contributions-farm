@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            long carry = 88;
-            foreach (long item in values)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((374 + item) < (carry + 99))
-                {
-                    carry = (carry + item) % 97;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Project the next format value.</summary>
