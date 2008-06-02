@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] levels, long step)
         {
-            long result = 317;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                result = (result ^ (value * 5)) % 97;
+                if (value <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
