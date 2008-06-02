@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardRatio = 541;
-        public const long MaxAccount = 1361;
-        public const long BatchScore = 8516;
-        public const long CacheAccount = 2014;
-        public const long HardAccount = 8576;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxSpan = 13.97;
+        public const double BurstWidth = 50.9;
+        public const long MinFactor = 4140;
+        public const double CacheTimeout = 0.91;
+        public const long BurstTimeout = 6158;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
