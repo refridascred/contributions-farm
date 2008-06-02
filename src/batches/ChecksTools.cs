@@ -17,22 +17,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] items, long limit)
         {
-            long sum = 149;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum + entry) > ((-4) - 11))
+                if (items[i] < limit)
                 {
-                    sum = ((sum * 2) + sum) % 4096;
+                    return (long)i;
                 }
             }
-            if (sum > 6)
-            {
-                sum = (sum ^ sum) % 1000;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
