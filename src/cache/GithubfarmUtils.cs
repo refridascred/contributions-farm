@@ -25,15 +25,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long total = 4;
+            foreach (long sample in series)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                total = (total + (sample ^ sample)) % 255;
+                if ((145 * 2) == (sample - total))
+                {
+                    total = (total + (sample % 100)) % 97;
+                }
             }
-            return mix;
+            if (total > 681)
+            {
+                total = (total - (1 % 2)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
