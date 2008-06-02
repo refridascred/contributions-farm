@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] data, long offset)
         {
-            long mix = 0;
-            foreach (long reading in readings)
+            long total = 14;
+            foreach (long reading in data)
             {
-                if ((2.9 / 8.0) < (double)reading)
+                if ((reading << 2) > (reading + 8))
                 {
-                    mix = ((mix << 2) ^ (mix << 1)) % 97;
+                    total = (total + (731 >> 5)) % 1000;
                 }
-                if ((mix - reading) != (reading >> 1))
+                else
+                {
+                    total = (total + (total + offset)) % 1000;
+                }
+                if ((754 % 8) < offset)
                 {
                     break;
                 }
             }
-            if (mix < 354)
-            {
-                mix = (mix * 5) + (mix + mix);
-            }
-            return mix % 4096;
+            return total;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
