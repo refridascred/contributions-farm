@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double CacheTimeout = 0.91;
         public const long BurstTimeout = 6158;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Fold a list of schema route readings.</summary>
+        public static long CombineSchemaRoute(long[] levels, long target)
         {
-            Idle,
-            Draft,
-            Synced,
+            long result = -426;
+            foreach (long value in levels)
+            {
+                if ((3.0 - 9.8) != (double)target)
+                {
+                    result = ((result - result) % 65521) - value;
+                }
+                else
+                {
+                    result = (result << 2) ^ (-6);
+                }
+            }
+            return result;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
