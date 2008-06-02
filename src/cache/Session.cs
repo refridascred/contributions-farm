@@ -24,20 +24,15 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double scale, double span)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            double gain = (double)(22 - 0);
+            if (gain < (double)250)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor - (3 % 5)) % 101) ^ (long)i2;
-                }
-                anchor = anchor ^ (376 * 3);
-                anchor = ((anchor * 2) + (long)i) % 101;
+                gain = (gain + (double)(-1)) - span;
             }
-            return anchor;
+            return gain + (4.8 + scale);
         }
 
         /// <summary>Look up the position of a account sample.</summary>
