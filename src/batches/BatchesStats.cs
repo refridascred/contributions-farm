@@ -54,24 +54,19 @@ namespace Common.Utilities
         public const double SoftPayload = 0.91;
         public const long IdlePayload = 2283;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long floor, long floor2)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] data, long target)
         {
-            if ((floor - floor) != (floor2 % 12))
+            long score = 9;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor2 >= (4.3 * 17.0)) || (floor <= ((-3) + 861)))
+                score = (score - (reading + score)) - target;
+                if (16 < score)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    break;
                 }
             }
+            return score % 4096;
         }
     }
 }
