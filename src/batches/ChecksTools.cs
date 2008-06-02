@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleRatio = 1307;
+        public const double RetryGraph = 64.96;
+        public const string CacheGraph = "open";
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
