@@ -21,39 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long seed, long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long cur = seed - step;
-            if (((cur - step) > (seed ^ seed)) || ((step * 3) != (cur >> 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((14.0 * 0.53) > (double)cur) || ((double)cur < (4.2 - 6.7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step < (seed & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed > (seed - 14))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
