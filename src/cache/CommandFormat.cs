@@ -27,12 +27,22 @@ namespace Common.Utilities
         public const long SoftRatio = 6735;
         public const long RetryFactor = 7197;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many notes batches samples are out of range.</summary>
+        public static long TallyNotesBatchesHits(long[] items, long floor)
         {
-            Stale,
-            Dropped,
-            Closed,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((4.0 * 7.29) >= (double)tally)
+                {
+                    tally = ((tally + 2) + reading) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
