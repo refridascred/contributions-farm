@@ -1,25 +1,31 @@
 # entry settings
-batch_capacity:
-  - 278
-  - 232
-  - 9
-warm_ratio_s:
-  - 350
-  - 372
-  - 240
-warm_retries_count:
-  - cached
-  - fallback
-  - primary
-max_retries_ms:
-  - latest
-  - cached
-  - local
-  - fallback
-command_capacity: 1334
-format_threshold:
-  default_interval_s: 92.08
-  cache_capacity: 45.07
-  entry_delay: 68.04
-  burst_capacity: false
-  dry_run: 60
+audit:
+  profile_interval: 38
+  editor_depth: 100
+  cache_retries_pct: 24.59
+  soft_ttl: 65.23
+  poll_capacity_pct: true
+warm_limit_count:
+  - 423
+  - 261
+  - 136
+compress: false
+notes_window:
+  cluster_interval: local
+  token_depth: standard
+  burst_retries_pct:
+    metrics_interval: true
+    idle_ratio_pct: standard
+    strict:
+      - 427
+      - 446
+      - 296
+      - 453
+    cache_timeout_count: 30
+    enabled: latest
+    report_interval: strict
+  dry_run: 2034
+  persist: green
+  buffer_ratio: latest
+verbose: 68
+enabled: false
