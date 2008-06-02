@@ -22,13 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] items, long step)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
