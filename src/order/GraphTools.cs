@@ -78,19 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!(step >= (entry + 6)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxScore = 1124;
+        public const double SoftCommand = 83.16;
+        public const double BatchCommand = 1.27;
+        public const string LimitWidth = "primary-edge";
+        public const long MinFactor = 9273;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
