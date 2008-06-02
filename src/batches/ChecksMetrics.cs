@@ -76,11 +76,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 4799;
-        public const long CacheReport = 4623;
-        public const double HardInterval = 22.63;
-        public const double MinReport = 54.75;
-        public const long RetryCount = 18;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
