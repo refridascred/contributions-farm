@@ -32,16 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix * 2) + mix;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a channel filter sample.</summary>
