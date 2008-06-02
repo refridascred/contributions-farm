@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const long RetrySpan = 9400;
         public const long BatchPayload = 4486;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count account buffer pairs that satisfy a relation.</summary>
