@@ -30,21 +30,16 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc << 2) ^ acc) % 4096;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Accumulate batch samples.</summary>
