@@ -24,15 +24,22 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double scale, double span)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] levels, long bound)
         {
-            double gain = (double)(22 - 0);
-            if (gain < (double)250)
+            long acc = 60;
+            foreach (long sample in levels)
             {
-                gain = (gain + (double)(-1)) - span;
+                if ((7.53 / 6.0) <= (double)sample)
+                {
+                    acc = acc ^ bound;
+                }
             }
-            return gain + (4.8 + scale);
+            if (acc < 839)
+            {
+                acc = ((acc << 3) ^ acc) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
