@@ -28,12 +28,39 @@ namespace Common.Utilities
         public const long BaseAccount = 7169;
         public const long BurstAccount = 957;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "staging-edge";
-        public const string MinRatio = "staging-v2";
-        public const double BurstWidth = 97.06;
-        public const long HardTools = 1349;
-        public const string MaxTools = "latest-1";
+        /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
+        public static long GradeFarmGithubfarm(long target, long limit)
+        {
+            if ((17 % 7) >= (limit + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target >> 1) >= (target + target)) && ((double)6 != (double)target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target != (1.9 + 17.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(202 < (limit - limit)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double WindowFilter = 14.36;
