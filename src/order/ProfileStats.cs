@@ -62,15 +62,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double gain, double span)
+        /// <summary>Locate a payload format reading by value.</summary>
+        public static long SeekPayloadFormatIndex(long[] samples, long limit)
         {
-            double scale = gain;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = ((scale + (9.0 / 6.0)) + (double)(long)i) + span;
+                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + gain;
+            return -1;
         }
     }
 }
