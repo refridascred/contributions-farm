@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum == (7.49 / 2.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
