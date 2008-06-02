@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long anchor = 1;
+            foreach (long entry in levels)
             {
-                if ((sample + 174) == (sample & 3))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 4) + (entry % 100)) % 1000;
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
