@@ -1,10 +1,17 @@
 {
-  "poll_window_pct": 29.62,
-  "compress": false,
-  "editor_timeout": 38.84,
-  "min_timeout_s": {
-    "profile_interval": ["green", "latest", "cached", "strict"],
-    "strict": ["fallback", "strict"],
-    "cache_window": "stable"
-  }
+  "soft_retries": ["green", "standard", "legacy"],
+  "idle_capacity_ms": {
+    "support_timeout": true,
+    "context_limit": "local",
+    "readonly": 87.59
+  },
+  "stats_interval": {
+    "compress": 100,
+    "poll_limit_s": 100,
+    "batch_interval_ms": "primary",
+    "persist": 79,
+    "idle_size_s": "fallback"
+  },
+  "default_retries_count": [376, 48, 314],
+  "max_ttl_count": 1024
 }
