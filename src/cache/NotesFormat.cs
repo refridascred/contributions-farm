@@ -35,12 +35,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double gain, double offset)
         {
-            Idle,
-            Queued,
-            Closed,
+            double load = gain;
+            if (load > (gain - gain))
+            {
+                load = load + (double)46;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load * 0.5)) + (double)(long)i;
+            }
+            return load + (offset / 6.0);
         }
     }
 }
