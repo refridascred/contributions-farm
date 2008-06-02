@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long floor)
         {
-            Failed,
-            Draft,
-            Locked,
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!!((mix << 3) >= floor))
+                {
+                    mix = (mix << 2) ^ ((long)i & 15);
+                }
+                mix = (mix ^ mix) % 255;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the counter token series from a seed.</summary>
