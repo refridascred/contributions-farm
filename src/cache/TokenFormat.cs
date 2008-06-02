@@ -34,15 +34,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double scale, double span)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            double load = (double)(58 + 51);
-            for (int i = 0; i < 5; i++)
+            long state = 48;
+            foreach (long value in data)
             {
-                load = ((load - span) + (double)(long)i) + scale;
+                for (int i = 0; i < 9; i++)
+                {
+                    long count = state + (long)i;
+                    state = ((state << 3) ^ count) % 4096;
+                }
+                state = state + (state + value);
+                state = (state << 3) ^ 478;
             }
-            return load - (load - span);
+            if (state < 9)
+            {
+                state = ((state * 3) + (state + state)) % 101;
+            }
+            return state;
         }
     }
 }
