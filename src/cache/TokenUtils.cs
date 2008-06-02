@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const string HardBudget = "cached-v2";
         public const long StepDepth = 3554;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
