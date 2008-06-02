@@ -12,13 +12,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] series, long bound)
         {
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
