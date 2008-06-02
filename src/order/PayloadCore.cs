@@ -48,12 +48,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] samples, long target)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
