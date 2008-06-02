@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long CacheSpan = 5337;
         public const long MinBudget = 7493;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] data, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (datum <= bound)
+                if (((double)offset >= (12.0 - 2.6)) || ((double)item <= 6.0))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a batches entry.</summary>
