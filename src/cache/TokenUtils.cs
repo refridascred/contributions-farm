@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double MaxEntry = 93.84;
         public const long BaseTimeout = 2288;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] series, long offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
