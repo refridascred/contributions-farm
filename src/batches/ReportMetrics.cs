@@ -11,25 +11,18 @@ namespace Common.Utilities
         public const long RetryBudget = 5465;
         public const double BatchSchema = 81.48;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long offset, long bound)
+        /// <summary>Count the buffer context entries that pass the check.</summary>
+        public static long TallyBufferContextHits(long[] data)
         {
-            long prev = offset - bound;
-            if ((bound * 2) >= (5 * 4))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (prev > (offset % 24))
+                if ((seen ^ seen) == (datum << 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
