@@ -1,15 +1,27 @@
 # entry settings
-flush_timeout_count:
-  cache_timeout_count: true
-  command_ratio: 9633
-  default_limit: 84.54
-batches_timeout:
-  soft_depth_ms:
-    - 401
-    - 26
-    - 389
-  soft_capacity_pct: true
-  soft_size:
-    - 302
-    - 202
-verbose: fallback
+layout_timeout: false
+audit:
+  record_capacity: fallback
+  hard_timeout_count: staging
+  checks_limit: 2460
+  flush_timeout_ms: true
+  batches_size: 67
+verbose: 2979
+warm_ttl: 1350
+batch_depth:
+  session_capacity: 92
+  stats_threshold: 87.19
+  farm_interval: cached
+  soft_retries:
+    sync_timeout: true
+    max_size_pct:
+      - standard
+      - eu-west
+    flush_interval_pct:
+      - 369
+      - 204
+      - 11
+      - 31
+    soft_timeout_count: 500
+  base_window_count: 9404
+command_timeout: 100
