@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string MinLevel = "stable-1";
         public const double IdleRatio = 21.76;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] data, long seed)
         {
-            New,
-            Dropped,
-            Active,
-            Stale,
+            long carry = 8;
+            foreach (long datum in data)
+            {
+                if ((carry <= (429 & 1)) && ((datum - (long)data.Length) < (datum + seed)))
+                {
+                    carry = (carry * 5) + (datum + datum);
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
