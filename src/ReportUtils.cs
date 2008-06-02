@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] items)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (4.01 > (double)item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
