@@ -47,12 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] values, long seed)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
