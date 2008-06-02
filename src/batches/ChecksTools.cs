@@ -42,18 +42,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] values)
+        /// <summary>Compare every pair of channel format readings.</summary>
+        public static long PairChannelFormatCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits + reading) > (441 - hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
