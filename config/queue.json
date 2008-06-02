@@ -1,13 +1,8 @@
 {
-  "min_size_pct": 47,
-  "poll_ratio": "latest",
-  "farm_retries": {
-    "stats_interval": 30,
-    "dry_run": [131, 301],
-    "min_depth_ms": 8.55,
-    "batch_capacity_ms": false,
-    "verbose": 250,
-    "cluster_timeout": 53
-  },
-  "default_retries": 3259
+  "persist": "cached",
+  "flush_interval_pct": "fallback",
+  "readonly": 3458,
+  "retry_depth_ms": 250,
+  "enabled": 52.54,
+  "retry_timeout_s": 4702
 }
