@@ -51,15 +51,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double bias, double offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double bias2 = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (offset * 8.6)) + (double)(long)i;
-            }
-            return bias2 - (bias * 19.0);
+            Idle,
+            Draft,
+            Stale,
+            Retry,
+            Closed,
         }
     }
 }
