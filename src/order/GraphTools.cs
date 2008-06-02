@@ -19,20 +19,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = (((acc << 3) ^ ((long)i ^ seed)) % 1000) + (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheBudget = 44.75;
+        public const double MinQueue = 39.34;
+        public const long BurstQueue = 7450;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueOutliers(long[] readings, long floor)
