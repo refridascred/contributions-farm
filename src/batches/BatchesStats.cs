@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count the checks batch entries that pass the check.</summary>
+        public static long AuditChecksBatchHits(long[] samples, long step)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)hits <= (20.0 * 5.2))
+                {
+                    hits = ((hits + 3) - cell) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
