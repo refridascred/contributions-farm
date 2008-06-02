@@ -1,8 +1,5 @@
 {
-  "cache_size_ms": "edge",
-  "session_depth": [106, 305, 352],
-  "base_ttl_s": true,
-  "window_delay": "primary",
-  "sync_depth": false,
-  "entry_window": true
+  "farm_depth": true,
+  "warm_window_s": 43.78,
+  "min_timeout": [389, 29]
 }
