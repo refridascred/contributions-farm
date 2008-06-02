@@ -37,17 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] series, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 16;
+            foreach (long entry in samples)
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (entry / 8)) % 4096;
             }
-            return -1;
+            if (carry < 74)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate record stats readings against a bound.</summary>
