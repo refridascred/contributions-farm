@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleBudget = 71.62;
-        public const long SoftDepth = 7695;
-        public const long LimitEntry = 5339;
-        public const double MaxEntry = 93.84;
-        public const long BaseTimeout = 2288;
+        /// <summary>Match up githubfarm payload samples.</summary>
+        public static long PairGithubfarmPayloadCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
