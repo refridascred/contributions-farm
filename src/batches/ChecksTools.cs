@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const double RetryGraph = 64.96;
         public const string CacheGraph = "open";
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public double Owner { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
