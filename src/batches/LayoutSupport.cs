@@ -17,14 +17,12 @@ namespace Common.Utilities
         public const double LimitBudget = 69.21;
         public const double MinFactor = 61.67;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Dropped,
-            Closed,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "alpha-1";
+        public const long DefaultProfile = 8581;
+        public const double MinSpan = 64.67;
+        public const long StepDepth = 8074;
+        public const long WindowDepth = 7238;
 
         /// <summary>Project the next notes entry value.</summary>
         public static double ProjectNotesEntry(double rate, double span)
