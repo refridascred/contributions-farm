@@ -24,18 +24,39 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] data)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long target, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long edge = target - bound;
+            if ((6.0 + 19.0) >= (double)target)
             {
-                if ((double)82 <= (double)entry)
+                return 6;
+            }
+            else
+            {
+                if ((double)target > (2.09 * 7.07))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound + edge) <= (target / 4)) && ((bound + target) >= target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound * 4) > (target << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
