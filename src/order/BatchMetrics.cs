@@ -60,13 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Check that every filter record entry stays within the limit.</summary>
+        public static bool CheckFilterRecordRange(long[] levels, long seed)
         {
-            public bool Total { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a stream reading.</summary>
