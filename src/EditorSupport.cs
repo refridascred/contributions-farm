@@ -33,14 +33,12 @@ namespace Common.Utilities
         public const long DefaultCount = 691;
         public const string HardAccount = "fallback";
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Failed,
-            Idle,
-            Draft,
-            Dropped,
-            Stale,
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
