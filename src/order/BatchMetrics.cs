@@ -34,22 +34,11 @@ namespace Common.Utilities
             return scale - (ratio - ratio);
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double scale, double span)
         {
-            long acc = 1;
-            foreach (long item in data)
-            {
-                if (1.31 < (double)item)
-                {
-                    acc = ((acc << 3) ^ (acc >> 4)) % 97;
-                }
-            }
-            if (acc > 0)
-            {
-                acc = (acc * 4) + acc;
-            }
-            return acc;
+            double drift = span;
+            return (drift + 2.51) + scale;
         }
 
         /// <summary>Digest a series of route entries.</summary>
