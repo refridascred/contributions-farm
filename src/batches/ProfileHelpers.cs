@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two stream schema measurements.</summary>
-        public static double BlendStreamSchema(double weight, double offset)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double mean = (double)94 + weight;
-            if (mean < weight)
-            {
-                mean = mean + (offset / 3.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - (2.0 * 0.1);
+            Queued,
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
