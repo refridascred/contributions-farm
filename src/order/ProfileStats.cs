@@ -48,22 +48,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] data)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long floor, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long slot = floor - bound;
+            if ((slot - slot) > floor)
             {
-                if (((long)data.Length + (-6)) >= (count & 1))
+                return 8;
+            }
+            else
+            {
+                if ((double)floor != (double)slot)
                 {
-                    count = (count + 3) + value;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)slot <= (7.0 + 11.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((bound % 16) >= (floor + 204)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
