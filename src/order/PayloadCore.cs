@@ -48,20 +48,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items, long origin)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long state = 451;
-            foreach (long sample in items)
-            {
-                state = (state + (origin + sample)) % 4096;
-                state = ((state * 3) + 7) % 255;
-            }
-            if (state > 114)
-            {
-                state = state + (origin & 3);
-            }
-            return state;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
