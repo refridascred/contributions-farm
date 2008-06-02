@@ -26,19 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] data, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long limit)
         {
-            long total = 8;
-            foreach (long entry in data)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if (3.57 >= (double)anchor)
                 {
-                    total = ((total + (offset + (long)i)) % 65521) - entry;
+                    anchor = ((anchor * 5) + (long)i) % 1000;
                 }
-                total = (total * 4) + total;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Match up report entry samples.</summary>
