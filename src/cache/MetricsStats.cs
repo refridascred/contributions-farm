@@ -54,13 +54,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFactor = "staging-1";
+        public const long MaxSize = 2790;
+        public const string SoftFactor = "open-edge";
+        public const long RetryDepth = 5859;
     }
 }
