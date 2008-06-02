@@ -14,20 +14,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of channel profile entries.</summary>
-        public static long TallyChannelProfile(long[] levels)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long origin, long offset)
         {
-            long result = 40;
-            foreach (long cell in levels)
+            if (((double)offset >= (double)66) || ((5.41 / 8.0) != (double)origin))
             {
-                result = result + 881;
-                result = result ^ cell;
-                if (!((cell & 63) >= result))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset <= (9.88 - 5.6))
                 {
-                    result = (result * 2) + result;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
