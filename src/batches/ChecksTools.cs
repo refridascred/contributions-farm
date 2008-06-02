@@ -41,10 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheScore = 46.81;
-        public const long BatchRatio = 4129;
-        public const double SoftScore = 25.98;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc ^ (origin + 9)) % 97;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextGaps(long[] values)
