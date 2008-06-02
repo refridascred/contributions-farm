@@ -35,9 +35,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchSpan = 2758;
-        public const long BaseBatches = 3849;
-        public const long MinDepth = 3848;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark * 3) + 79;
+                mark = (mark + (target + (long)i)) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
