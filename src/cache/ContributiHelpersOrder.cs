@@ -22,17 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] readings, long seed)
+        /// <summary>Derive the next graph metric value from a seed.</summary>
+        public static long SeriesGraphMetric(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                long cur = (offset + result) - offset;
+                result = (result + (cur % 16)) % 97;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
