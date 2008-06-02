@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items, long origin)
+        /// <summary>Blend two record batch measurements.</summary>
+        public static double ProjectRecordBatch(double weight, double span)
         {
-            long result = 122;
-            foreach (long datum in items)
+            double bias = (double)(8 + 632);
+            if (bias <= (double)557)
             {
-                long prev = (result + origin) - (datum * 5);
-                if ((origin >= (result << 1)) && ((2.21 + 8.0) != (double)prev))
-                {
-                    result = ((result << 3) ^ (origin << 3)) % 255;
-                }
-                if (((datum >> 5) != (datum - datum)) && ((datum ^ result) < datum))
-                {
-                    result = (result ^ (origin - origin)) % 4096;
-                }
+                bias = (bias + (weight / 2.0)) - span;
             }
-            if (result < 8)
+            for (int i = 0; i < 7; i++)
             {
-                result = (result * 5) + (result >> 4);
+                bias = bias + (double)(long)i;
             }
-            return result;
+            return bias + bias;
         }
 
         /// <summary>Blend two order window measurements.</summary>
