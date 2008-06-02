@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] items, long bound)
         {
-            long carry = 7;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (((carry / 2) == (53 / 5)) || (carry < (carry & 63)))
+                if ((bound + 79) < (6 ^ value))
                 {
-                    carry = ((carry * 3) + carry) + reading;
+                    count = count + 3;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ (-69);
+                    count = count - 1;
                 }
             }
-            if (carry > 74)
-            {
-                carry = carry - ((-4) % 12);
-            }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Fold a list of graph report readings.</summary>
