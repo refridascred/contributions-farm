@@ -1,5 +1,12 @@
 # entry settings
-filter_depth: 1024
-poll_limit_pct: 95
-base_depth: 652
-flush_size_s: strict
+queue_size:
+  - 169
+  - 385
+  - 198
+  - 374
+window_limit:
+  - legacy
+  - open
+  - stable
+  - primary
+verbose: staging
