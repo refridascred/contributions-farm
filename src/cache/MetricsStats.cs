@@ -50,11 +50,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
+            Failed,
+            Draft,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
