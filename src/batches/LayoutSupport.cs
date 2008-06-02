@@ -51,13 +51,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] series, long limit)
         {
-            Dropped,
-            Idle,
-            Done,
-            Queued,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
