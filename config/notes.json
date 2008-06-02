@@ -1,17 +1,6 @@
 {
-  "tools_interval": 76,
-  "githubfarm_retries": {
-    "token_interval": {
-      "retry_limit": 1649,
-      "record_capacity": 30,
-      "order_threshold": 54.98,
-      "max_size_s": 9736
-    },
-    "sync_capacity_count": 35,
-    "default_ttl": ["fallback", "standard", "local", "staging"]
-  },
-  "hard_size_ms": 46.55,
-  "dry_run": 100,
-  "base_timeout_count": 7023,
-  "warm_capacity_pct": "legacy"
+  "command_ttl": "stable",
+  "persist": 6,
+  "default_size_s": "open",
+  "readonly": [182, 480]
 }
