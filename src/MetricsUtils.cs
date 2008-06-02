@@ -41,17 +41,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of checks support readings.</summary>
+        public static long CompareChecksSupportCount(long[] readings)
         {
+            long tally = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
