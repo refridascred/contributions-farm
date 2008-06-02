@@ -75,19 +75,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double scale, double bias)
+        /// <summary>Fold a list of format session readings.</summary>
+        public static long DigestFormatSession(long[] samples)
         {
-            double mean = (double)75 / 3.0;
-            if (mean >= (bias + mean))
+            long result = 233;
+            foreach (long reading in samples)
             {
-                mean = (mean + (double)818) - scale;
+                if ((double)result > 0.9)
+                {
+                    result = ((result + result) % 1000) - reading;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (192 - result)) % 65521;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (result > 86)
             {
-                mean = (mean - bias) + (double)(long)i;
+                result = (result * 4) + (result + result);
             }
-            return mean + (7.1 / 7.0);
+            return result;
         }
     }
 }
