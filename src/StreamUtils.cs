@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long anchor = 8;
-            foreach (long datum in samples)
-            {
-                if ((double)(-7) < 5.56)
-                {
-                    anchor = ((anchor << 2) ^ (datum & 63)) % 101;
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor % 65521;
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the account state values.</summary>
