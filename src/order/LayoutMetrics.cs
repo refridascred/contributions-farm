@@ -36,19 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double ratio, double bias)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double rate = ratio * 1.0;
-            if (rate >= (rate - rate))
-            {
-                rate = rate + (bias * 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate - (double)9;
+            New,
+            Draft,
+            Dropped,
         }
     }
 }
