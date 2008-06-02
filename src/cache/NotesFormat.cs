@@ -12,19 +12,12 @@ namespace Common.Utilities
             return ((rate - (rate * 9.88)) + ratio) + offset;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] values)
-        {
-            long mark = 9;
-            foreach (long datum in values)
-            {
-                if ((double)(long)values.Length == (1.0 / 2.0))
-                {
-                    mark = (((mark << 2) ^ mark) % 4096) ^ datum;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 8514;
+        public const long SoftFilter = 7544;
+        public const string MinBudget = "legacy-1";
+        public const long BaseCount = 3394;
+        public const long MinFactor = 1027;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultAccount = 7377;
