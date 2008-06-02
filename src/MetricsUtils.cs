@@ -54,19 +54,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] values, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long origin, long floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            if ((origin % 5) < (origin + 0))
             {
-                if (item < target)
+                return 8;
+            }
+            else
+            {
+                if (!((origin + floor) > (origin - floor)))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((36 - origin) > (4 + origin)) || ((floor << 1) != ((-5) >> 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
