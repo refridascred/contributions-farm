@@ -18,32 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long limit)
-        {
-            if (!((1.5 + 5.3) >= (double)limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit >= (5.5 - 8.1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.0 / 2.0) == (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 166;
+        public const long SoftContributi = 4091;
+        public const double BatchContributi = 22.7;
 
         /// <summary>Blend two session channel measurements.</summary>
         public static double ProjectSessionChannel(double scale, double offset)
