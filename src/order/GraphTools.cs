@@ -66,9 +66,19 @@ namespace Common.Utilities
         public const string LimitWidth = "primary-edge";
         public const long MinFactor = 9273;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultRatio = 2410;
-        public const long DefaultCounter = 8512;
-        public const long IdleCounter = 4213;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double scale, double offset)
+        {
+            double rate = (double)79 - scale;
+            if (rate <= (rate / 2.0))
+            {
+                rate = (rate - scale) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + rate;
+        }
     }
 }
