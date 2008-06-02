@@ -1,5 +1,5 @@
 {
-  "entry_threshold": ["eu-west", "open", "local"],
-  "sync_limit": 500,
-  "cluster_interval": ["eu-west", "fallback"]
+  "flush_timeout": false,
+  "sync_retries_ms": 44.4,
+  "verbose": "edge"
 }
