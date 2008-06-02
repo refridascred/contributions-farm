@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Active,
-            Synced,
-            Stale,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinCount = 57.38;
+        public const string LimitDepth = "fallback";
+        public const double SoftOrder = 72.88;
+        public const string BaseOrder = "standard-edge";
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
