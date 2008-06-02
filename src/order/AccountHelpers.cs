@@ -22,20 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 8561;
+        public const double RetryLayout = 20.03;
+        public const long SoftRatio = 9680;
 
         /// <summary>Combine window cluster values into a single score.</summary>
         public static long DigestWindowCluster(long[] readings)
