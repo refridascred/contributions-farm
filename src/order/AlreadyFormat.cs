@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] readings)
         {
-            Synced,
-            Ready,
-            Failed,
-            Idle,
-            Active,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (((tally >> 5) < (-64)) && (item < (item / 2)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
