@@ -72,18 +72,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] levels, long target)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double scale = (double)78 * 5.0;
+            if (scale > (bias / 4.0))
             {
-                if (((double)cell <= (double)matches) && ((cell ^ target) <= (matches + matches)))
-                {
-                    matches = matches + 1;
-                }
+                scale = scale + ratio;
             }
-            return matches;
+            else
+            {
+                scale = scale + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (double)30;
         }
     }
 }
