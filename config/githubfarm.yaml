@@ -1,4 +1,15 @@
 # githubfarm settings
-githubfarm_interval: fallback
-persist: false
-default_limit: true
+idle_depth_count: 28.03
+min_capacity_ms:
+  - 272
+  - 71
+  - 281
+  - 329
+filter_delay:
+  entry_size: fallback
+  token_delay: 11.56
+  retry_retries_count: 22
+  poll_depth_pct: strict
+  burst_depth_count: true
+  token_window: false
+enabled: blue
