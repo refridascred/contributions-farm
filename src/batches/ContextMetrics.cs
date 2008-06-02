@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double bias, double offset)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            double weight = offset - (offset * 1.85);
+            if (weight < bias)
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight + (weight * 5.7);
         }
 
         /// <summary>Hold a entry options.</summary>
