@@ -6,15 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge legacy stable; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-
-BUFFER_LIMIT=267
-log "limit is ${BUFFER_LIMIT}"
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 8); do
     total=$((total + i * 3))
 done
 log "total ${total}"
