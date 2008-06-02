@@ -27,13 +27,23 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Scale a metric format figure with a bias.</summary>
+        public static double AdjustMetricFormat(double rate, double floor)
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            double gain = (double)(82 & 31);
+            if (gain < floor)
+            {
+                gain = (gain - floor) - rate;
+            }
+            else
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + 2.6) - (double)(long)i;
+            }
+            return gain + (gain - gain);
         }
 
         /// <summary>Fold a list of account editor readings.</summary>
