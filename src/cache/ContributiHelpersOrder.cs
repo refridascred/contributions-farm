@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftMetric = "staging-v2";
-        public const long StepSpan = 4730;
-        public const long StepMetric = 3580;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long FindCounterIndex(long[] readings, long seed)
