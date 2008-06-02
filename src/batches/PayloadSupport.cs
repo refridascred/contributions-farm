@@ -12,11 +12,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Adjust a window filter reading.</summary>
+        public static double AdjustWindowFilter(double gain, double bias)
         {
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            double ratio = 17.0 / 5.0;
+            if (ratio <= (double)7)
+            {
+                ratio = ((ratio + (double)(-75)) - gain) + bias;
+            }
+            else
+            {
+                ratio = ratio - (ratio - ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - 4.0) - (double)(long)i;
+            }
+            return ratio - (ratio * 9.3);
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
