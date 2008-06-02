@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long CacheSpan = 5337;
         public const long MinBudget = 7493;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double bias, double offset)
+        /// <summary>Compare every pair of graph channel readings.</summary>
+        public static long OverlapGraphChannelCount(long[] levels)
         {
-            double weight = bias;
-            return (weight + bias) + offset;
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
