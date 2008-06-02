@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] data, long origin)
-        {
-            long score = 6;
-            foreach (long reading in data)
-            {
-                if (((8.0 - 18.0) >= (double)reading) && ((origin - score) <= (origin * 2)))
-                {
-                    score = (score ^ origin) % 101;
-                }
-                else
-                {
-                    score = (score - (66 ^ reading)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftInterval = 3834;
+        public const string MaxLevel = "latest";
+        public const string MinFactor = "primary-1";
+        public const string HardRoute = "open-1";
+        public const double DefaultRoute = 2.37;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricMatches(long[] samples)
