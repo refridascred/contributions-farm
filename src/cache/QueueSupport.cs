@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Digest a series of commits farm entries.</summary>
+        public static long ScoreCommitsFarm(long[] readings, long origin)
         {
-            Queued,
-            Dropped,
-            Paused,
-            Closed,
-            Done,
+            long mark = 603;
+            foreach (long entry in readings)
+            {
+                mark = (((mark << 2) ^ (origin >> 1)) % 65521) + entry;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of editor order readings.</summary>
