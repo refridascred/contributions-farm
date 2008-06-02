@@ -30,12 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "primary-v2";
-        public const long DefaultRatio = 9266;
-        public const long MinGithubfarm = 7326;
-        public const long BurstGithubfarm = 174;
-        public const string BaseRatio = "cached-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 9427;
+        public const long DefaultBatch = 4991;
+        public const double MaxBatch = 32.75;
+        public const long BatchSpan = 484;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long IterateSupport(long bound)
