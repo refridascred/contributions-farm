@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer route entry stays within the limit.</summary>
-        public static bool ValidateBufferRouteBounds(long[] series, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (reading != seed)
+                if (((hits - item) > (item - target)) && ((double)1 >= (double)hits))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Combine account values into a single score.</summary>
