@@ -20,11 +20,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 3380;
-        public const long MinLevel = 5750;
-        public const long MinFormat = 8132;
-        public const long BaseFormat = 655;
-        public const double SoftFormat = 58.93;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            New,
+            Ready,
+            Dropped,
+            Done,
+        }
     }
 }
