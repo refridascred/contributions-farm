@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const double BurstAlready = 54.14;
         public const string WindowTimeout = "strict-edge";
 
-        /// <summary>Measure how many session buffer samples are out of range.</summary>
-        public static long TallySessionBufferOutliers(long[] items, long origin)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
             long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)matches <= 4.32) || (64 >= (reading - 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) - origin;
+                    if ((readings[i] - readings[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
