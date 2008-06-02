@@ -34,17 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] values, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (values[i] > target)
+                if (((2.5 / 7.0) != (double)sample) && ((count + sample) == (count >> 2)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
