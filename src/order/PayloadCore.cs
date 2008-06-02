@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] values)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((long)values.Length >= seen)
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
