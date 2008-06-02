@@ -1,11 +1,15 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Use metric settings to tune how often command data is refreshed.
+When a batches fails, the checks handler retries a few times before giving up.
+Each session is validated before it reaches the notes queue.
+Use account settings to tune how often farm data is refreshed.
+
+The batch report groups every stream by stats.
+The queue module keeps route values in sync with the buffer cache.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Validate account input early
-- Document new editor fields
-- Keep cache values small
+- Log every checks change
+- Document new queue fields
+- Validate filter input early
+- Review entry limits each release
