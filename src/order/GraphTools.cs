@@ -78,30 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] values, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] data, long step)
         {
-            long acc = 929;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 5; i++)
+                if (!(step >= (entry + 6)))
                 {
-                    acc = ((acc - value) % 4096) ^ (long)i;
-                }
-                if (((double)acc <= (1.44 - 7.73)) && (step > (acc + value)))
-                {
-                    acc = (acc * 5) + acc;
-                }
-                else
-                {
-                    acc = acc + (acc + step);
+                    hits = hits + 1;
                 }
             }
-            if (acc > 1)
-            {
-                acc = (acc ^ (step << 3)) % 4096;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a graph info.</summary>
