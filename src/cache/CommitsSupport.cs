@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double gain, double bias)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double weight, double floor)
         {
-            double weight = (bias / 4.0) / 6.0;
-            if (weight < 7.9)
+            double mean = floor;
+            for (int i = 0; i < 5; i++)
             {
-                weight = (weight - bias) + gain;
+                mean = ((mean + (mean + floor)) - (double)(long)i) + weight;
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + 0.1;
+            return mean + floor;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
