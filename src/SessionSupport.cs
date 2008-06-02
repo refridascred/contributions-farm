@@ -27,19 +27,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double ratio, double span)
-        {
-            double rate = span;
-            if (rate > 18.0)
-            {
-                rate = rate + ratio;
-            }
-            else
-            {
-                rate = rate - (double)63;
-            }
-            return rate + ratio;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftInterval = 3121;
+        public const double DefaultDepth = 15.97;
+        public const long IdleRecord = 3101;
+        public const string CacheRecord = "alpha";
+        public const long IdleFactor = 3861;
     }
 }
