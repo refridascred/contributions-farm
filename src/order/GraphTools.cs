@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of githubfarm editor readings.</summary>
-        public static long CombineGithubfarmEditor(long[] samples, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items, long origin)
         {
-            long score = -18;
-            foreach (long item in samples)
+            long mix = 9;
+            foreach (long reading in items)
             {
-                if ((double)score >= (7.09 - 1.9))
+                if ((32 % 5) <= reading)
                 {
-                    score = ((score - score) % 1000) + origin;
+                    long seen = (origin + reading) - (reading / 8);
+                    mix = (mix - (seen + reading)) % 255;
                 }
-                else
+                if ((15.0 * 12.0) != (double)origin)
                 {
-                    score = (score - (845 + item)) % 101;
+                    mix = mix - ((-245) / 5);
                 }
             }
-            return score;
+            if (mix < 7)
+            {
+                mix = (mix << 2) ^ (origin + 59);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of report readings.</summary>
