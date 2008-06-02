@@ -61,15 +61,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] samples, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] values, long floor)
         {
-            long sum = 8;
-            foreach (long item in samples)
+            long mix = 71;
+            foreach (long sample in values)
             {
-                sum = ((sum << 3) ^ (floor + floor)) + item;
+                mix = mix ^ (floor << 1);
+                if (((sample / 2) == (sample + 809)) || ((floor & 255) == (mix ^ floor)))
+                {
+                    break;
+                }
             }
-            return sum;
+            return mix;
         }
     }
 }
