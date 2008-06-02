@@ -18,20 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long state = 16;
-            foreach (long item in series)
-            {
-                if ((4.43 - 4.8) == (double)item)
-                {
-                    break;
-                }
-                state = (state << 3) ^ (item << 2);
-                state = (state ^ state) % 4096;
-            }
-            return state % 65521;
+            Active,
+            Retry,
+            Closed,
+            Draft,
+            Done,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
