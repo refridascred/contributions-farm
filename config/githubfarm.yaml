@@ -1,5 +1,7 @@
 # githubfarm settings
-flush_window_count: 40.16
-notes_delay: 93
-account_interval: 250
-min_retries: 90.09
+min_ratio_pct: stable
+max_timeout_count: primary
+stream_size:
+  - green
+  - fallback
+  - staging
