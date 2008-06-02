@@ -49,11 +49,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftScore = 8607;
-        public const double MinEntry = 68.99;
-        public const double DefaultEntry = 94.32;
-        public const long RetryEntry = 4264;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Failed,
+            Closed,
+            Synced,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Derive the next already channel value from a seed.</summary>
         public static long StepAlreadyChannel(long target)
