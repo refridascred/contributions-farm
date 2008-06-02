@@ -1,20 +1,13 @@
 {
-  "window_size": 100,
-  "profile_limit": 250,
-  "buffer_ttl": "latest",
-  "soft_ratio_s": {
-    "hard_ratio_s": {
-      "base_capacity_ms": 49.94,
-      "commits_depth": 8581,
-      "format_threshold": 25,
-      "sync_ratio_pct": 100
-    },
-    "support_depth": {
-      "flush_window_ms": ["fallback", "strict"],
-      "readonly": [458, 433],
-      "audit": "legacy",
-      "burst_limit_count": "open"
-    },
-    "verbose": [170, 442, 51]
-  }
+  "idle_ratio_pct": 1188,
+  "hard_limit_s": "legacy",
+  "entry_capacity": 73,
+  "batch_size_s": 5498,
+  "flush_limit_pct": {
+    "profile_ratio": false,
+    "flush_depth": 60,
+    "commits_delay": ["blue", "blue"],
+    "default_depth_count": ["strict", "standard", "staging"]
+  },
+  "persist": false
 }
