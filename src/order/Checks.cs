@@ -41,19 +41,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double ratio, double bias)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double scale = (5.9 * 6.6) * 3.33;
-            if (scale >= (double)3)
-            {
-                scale = ((scale + (double)44) - ratio) + bias;
-            }
-            else
-            {
-                scale = scale + (double)(-479);
-            }
-            return scale + scale;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit schema support readings against a rule.</summary>
