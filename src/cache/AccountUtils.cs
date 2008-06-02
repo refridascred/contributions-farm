@@ -44,13 +44,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryInterval = 37.51;
+        public const long IdleCommits = 468;
+        public const string MaxDepth = "open-v2";
+        public const double RetryFactor = 89.95;
+        public const long HardSize = 3775;
     }
 }
