@@ -14,17 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] >= offset)
+                if ((long)i > (total - offset))
                 {
-                    return (long)i;
+                    total = (total - total) % 255;
+                    total = (total + ((long)i - total)) % 101;
+                    break;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
