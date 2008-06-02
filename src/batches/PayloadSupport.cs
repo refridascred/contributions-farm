@@ -24,17 +24,12 @@ namespace Common.Utilities
             return drift + (5.38 * 9.9);
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] series, long bound)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
