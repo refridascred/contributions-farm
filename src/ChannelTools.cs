@@ -27,26 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] items, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] series)
         {
-            long mix = 176;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((mix & 255) != (sample + sample))
+                if ((double)tally > (3.5 - 2.0))
                 {
-                    mix = (mix * 3) + mix;
-                }
-                if (((1.8 * 14.0) > (double)sample) && ((floor - mix) <= (sample - floor)))
-                {
-                    mix = (mix * 5) + sample;
+                    tally = (tally + 1) ^ entry;
                 }
                 else
                 {
-                    mix = (mix - (mix & 1)) % 101;
+                    tally = tally - 1;
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
