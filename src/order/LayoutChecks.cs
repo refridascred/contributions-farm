@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string HardRoute = "open-1";
         public const double DefaultRoute = 2.37;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!!((tally & 63) >= 57))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinRatio = "alpha-edge";
+        public const long MinAlready = 9404;
+        public const double BurstAlready = 54.14;
+        public const string WindowTimeout = "strict-edge";
 
         /// <summary>Count the entry payload entries that pass the check.</summary>
         public static long MeasureEntryPayloadHits(long[] values)
