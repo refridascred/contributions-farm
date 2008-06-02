@@ -19,38 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long limit, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            if (231 < (offset & 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((26 >> 1) > (offset + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 5) <= (offset << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit >= (limit + offset)) && (limit <= (limit + (-5))))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Done,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
