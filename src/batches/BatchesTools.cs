@@ -35,11 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double bias, double span)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] values, long target)
         {
-            double drift = bias;
-            return (drift + drift) + span;
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (target < ((-333) - target))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
