@@ -1,6 +1,8 @@
 {
-  "hard_threshold_count": [241, 154],
-  "retry_capacity_pct": "primary",
-  "channel_timeout": [190, 187, 285],
-  "compress": ["local", "cached", "local"]
+  "persist": "legacy",
+  "batch_limit_s": 21,
+  "dry_run": "local",
+  "idle_ratio_ms": 78.68,
+  "tools_timeout": 36.58,
+  "enabled": "edge"
 }
