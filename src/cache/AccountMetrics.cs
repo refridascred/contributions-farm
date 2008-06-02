@@ -67,18 +67,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] values, long floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!((double)floor <= (2.0 * 3.81)))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
