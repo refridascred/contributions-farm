@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Combine checks githubfarm values into a single score.</summary>
