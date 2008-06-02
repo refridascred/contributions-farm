@@ -30,12 +30,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 35.43;
-        public const double WindowMetric = 85.44;
-        public const long BaseLevel = 6614;
-        public const long RetryMetric = 5475;
-        public const long LimitSize = 7100;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] series, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
