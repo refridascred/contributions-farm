@@ -65,9 +65,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 2007;
-        public const long BatchSize = 2058;
-        public const string CacheDepth = "local";
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long bound, long step)
+        {
+            if ((bound >> 3) >= (0 + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound * 2) < (step ^ 19))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
