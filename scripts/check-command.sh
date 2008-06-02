@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=492
-log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-green}"
+mode="${1:-fallback}"
 case "${mode}" in
-    local)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=232
+log "limit is ${COMMAND_LIMIT}"
+
+for item in blue eu-west; do
+    log "checking ${item}"
+done
