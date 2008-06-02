@@ -30,23 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double span)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] values, long seed)
         {
-            double scale = (double)(3 + (-496));
-            if (scale < (double)19)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale + bias) + span;
+                if ((values[i] > seed) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + 2.4;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + 8.69) + (double)(long)i;
-            }
-            return scale - 5.25;
+            return -1;
         }
     }
 }
