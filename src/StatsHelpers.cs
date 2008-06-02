@@ -54,11 +54,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchBudget = 8623;
-        public const long DefaultLevel = 4699;
-        public const double DefaultRecord = 56.63;
-        public const long BatchRecord = 936;
-        public const long BaseDepth = 9562;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowFactor = 5599;
+        public const double LimitRoute = 28.84;
+        public const double BaseRoute = 5.0;
     }
 }
