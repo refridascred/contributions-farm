@@ -1,9 +1,6 @@
-id,label,active,rank
-1,20.55,green,594
-2,eu-west,61.82,766
-3,423,46.76,58.96
-4,fallback,strict,strict
-5,594,588,754
-6,205,643,stable
-7,fallback,80.61,fallback
-8,edge,88.06,stable
+id,level,ratio
+1,93.41,645
+2,11.14,55
+3,71.08,63.57
+4,legacy,359
+5,42,eu-west
