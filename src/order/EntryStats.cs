@@ -12,17 +12,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] items, long limit)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Synced,
+            Draft,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
