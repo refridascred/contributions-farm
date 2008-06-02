@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long step, long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long floor, long bound)
         {
-            if ((1.4 / 7.0) >= (15.0 + 18.0))
+            if ((double)bound <= 4.9)
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (!((step / 8) > 13))
+                if ((bound + 733) < floor)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    return 0;
+                    if (((90 + floor) <= bound) && ((floor << 2) > (floor & 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
