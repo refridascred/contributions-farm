@@ -30,15 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Ready,
-            Queued,
-            Draft,
-            Active,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "primary-v2";
+        public const long DefaultRatio = 9266;
+        public const long MinGithubfarm = 7326;
+        public const long BurstGithubfarm = 174;
+        public const string BaseRatio = "cached-1";
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
