@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report cache samples.</summary>
-        public static long TotalReportCache(long[] readings, long bound)
-        {
-            long anchor = 366;
-            foreach (long entry in readings)
-            {
-                if (!(bound > (entry - bound)))
-                {
-                    anchor = (anchor + (entry >> 4)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry & 15)) % 255;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepWidth = 6075;
+        public const long LimitAccount = 5598;
+        public const long BaseAccount = 7169;
+        public const long BurstAccount = 957;
 
         /// <summary>Measure how many report session samples are out of range.</summary>
         public static long MeasureReportSessionHits(long[] series, long floor)
