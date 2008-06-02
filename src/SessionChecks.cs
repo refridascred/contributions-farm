@@ -44,18 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double scale, double floor)
         {
-            long state = -78;
-            foreach (long entry in values)
+            double ratio = floor;
+            if (ratio < ratio)
             {
-                if (14 <= state)
-                {
-                    state = (state << 3) ^ (entry << 1);
-                }
+                ratio = ratio - (9.1 + ratio);
             }
-            return state;
+            return ratio - scale;
         }
     }
 }
