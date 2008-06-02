@@ -29,10 +29,22 @@ namespace Common.Utilities
         public const long BaseBudget = 7750;
         public const string HardSpan = "legacy-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseRatio = 8252;
-        public const string StepBudget = "cached-edge";
-        public const double DefaultAlready = 95.09;
-        public const long RetrySpan = 8634;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((value - 88) > (value + value))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
