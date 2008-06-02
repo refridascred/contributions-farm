@@ -20,10 +20,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseRatio = 7602;
-        public const long BaseSpan = 2665;
-        public const string MinBatch = "cached";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!(59 > (tally / 4)))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileRange(long[] series, long origin)
