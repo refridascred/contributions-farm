@@ -22,31 +22,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long origin, long limit)
+        /// <summary>Digest a series of notes filter entries.</summary>
+        public static long TallyNotesFilter(long[] samples, long floor)
         {
-            if (!((447 & 15) != (origin + origin)))
+            long sum = 67;
+            foreach (long datum in samples)
             {
-                return 2;
+                if (datum >= (datum + datum))
+                {
+                    sum = (sum + (datum / 9)) % 65521;
+                }
+                sum = sum + (datum ^ floor);
             }
-            else
+            if (sum < (-71))
             {
-                if (!(origin > (limit - origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((187 + limit) > origin) && ((limit >> 5) >= (origin + 63)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                sum = sum + (floor << 1);
             }
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
