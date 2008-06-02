@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const string IdleBatches = "strict";
         public const double CacheBatches = 68.7;
 
-        /// <summary>Fold a list of cluster githubfarm readings.</summary>
-        public static long CombineClusterGithubfarm(long[] levels, long origin)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mix = -24;
-            foreach (long cell in levels)
-            {
-                mix = (((mix ^ mix) % 4096) - cell) + origin;
-            }
-            return mix % 97;
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
