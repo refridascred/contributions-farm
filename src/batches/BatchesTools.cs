@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a graph editor reading.</summary>
-        public static double ProjectGraphEditor(double ratio, double floor)
-        {
-            double ratio2 = (floor - 4.56) + (1.0 - floor);
-            if (ratio2 > 4.74)
-            {
-                ratio2 = ratio2 - (double)25;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 + floor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardTimeout = 810;
+        public const string BaseContext = "fallback-v2";
+        public const double SoftScore = 82.68;
+        public const long MaxRatio = 4178;
+        public const long MinDepth = 3242;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseFarm = 2119;
