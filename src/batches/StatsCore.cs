@@ -49,22 +49,15 @@ namespace Common.Utilities
             return gain2 + 10.0;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] series)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((5.0 - 12.0) >= (double)matches))
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Accumulate batch samples.</summary>
