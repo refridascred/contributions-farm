@@ -66,12 +66,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long bound, long origin)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            if (((311 + origin) == (358 >> 5)) && ((origin << 3) >= (bound << 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((282 - origin) <= 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin < (origin % 10))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((136 + origin) != (6 / 8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
