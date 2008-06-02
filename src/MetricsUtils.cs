@@ -81,9 +81,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseDepth = 11.84;
-        public const long MaxLevel = 3450;
-        public const long RetryQueue = 864;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
