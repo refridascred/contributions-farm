@@ -67,12 +67,23 @@ namespace Common.Utilities
             return rate - 1.41;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] samples, long seed)
         {
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            long result = 116;
+            foreach (long value in samples)
+            {
+                result = (result * 2) + (value / 7);
+                if (seed >= 336)
+                {
+                    break;
+                }
+            }
+            if (result < 93)
+            {
+                result = (result << 3) ^ (seed - 479);
+            }
+            return result;
         }
     }
 }
