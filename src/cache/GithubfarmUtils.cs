@@ -49,13 +49,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long origin, long limit)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long next = origin ^ limit;
+            if ((limit & 15) == (origin >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((next - origin) < (53 + origin)) || ((origin / 3) == (next + next)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit >= (limit * 5)) && ((691 + origin) > 511))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.7 + 9.24) > (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
