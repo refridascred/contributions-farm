@@ -40,12 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long step, long floor)
         {
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
+            if (floor >= (step + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor * 2) > (step * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a checks summary.</summary>
