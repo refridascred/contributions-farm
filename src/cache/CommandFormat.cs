@@ -28,15 +28,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] items, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
