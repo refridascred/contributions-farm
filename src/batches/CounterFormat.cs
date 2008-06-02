@@ -43,26 +43,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long anchor = 381;
-            foreach (long cell in readings)
-            {
-                if (((double)anchor < (17.0 + 1.0)) || ((double)(long)readings.Length <= (double)cell))
-                {
-                    anchor = anchor - (anchor ^ cell);
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + cell)) % 255;
-                }
-            }
-            if (anchor < 4)
-            {
-                anchor = (anchor ^ (anchor & 7)) % 4096;
-            }
-            return anchor % 65521;
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
