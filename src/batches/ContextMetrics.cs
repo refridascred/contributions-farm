@@ -32,17 +32,12 @@ namespace Common.Utilities
         public const long IdleInterval = 5660;
         public const long DefaultFactor = 1940;
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] samples, long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            Closed,
         }
 
         /// <summary>Match up batch samples.</summary>
