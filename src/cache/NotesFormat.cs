@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order metrics readings against a rule.</summary>
-        public static long CountOrderMetricsOutliers(long[] levels)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (!((double)hits == (double)datum) || (37 <= (hits % 97)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
