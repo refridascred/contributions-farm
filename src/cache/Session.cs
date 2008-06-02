@@ -24,18 +24,15 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)82 <= (double)entry)
                 {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
