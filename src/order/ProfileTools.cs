@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (!((seed % 12) < carry))
+                if ((double)cell < (4.7 * 1.66))
                 {
-                    carry = (carry ^ (carry + (long)i)) % 101;
+                    seen = seen + 2;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the metric kind values.</summary>
