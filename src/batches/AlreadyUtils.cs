@@ -29,12 +29,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSession = "legacy-edge";
+        public const string SoftSession = "legacy-v2";
+        public const double DefaultSpan = 11.6;
+        public const long BatchRatio = 9948;
+        public const long BaseSession = 3044;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long limit, long origin)
