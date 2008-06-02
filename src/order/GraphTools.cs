@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long mix = 9;
-            foreach (long reading in items)
+            long mark = 77;
+            foreach (long cell in readings)
             {
-                if ((32 % 5) <= reading)
+                if ((mark >> 2) > 0)
                 {
-                    long seen = (origin + reading) - (reading / 8);
-                    mix = (mix - (seen + reading)) % 255;
-                }
-                if ((15.0 * 12.0) != (double)origin)
-                {
-                    mix = mix - ((-245) / 5);
+                    mark = (((mark << 2) ^ (40 & 1)) % 101) ^ cell;
                 }
             }
-            if (mix < 7)
-            {
-                mix = (mix << 2) ^ (origin + 59);
-            }
-            return mix % 4096;
+            return mark % 65521;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
