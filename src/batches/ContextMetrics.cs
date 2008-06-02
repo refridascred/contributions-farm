@@ -20,12 +20,18 @@ namespace Common.Utilities
             return weight + (weight * 5.7);
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] values)
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) < (count + cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a session reading.</summary>
