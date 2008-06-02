@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const double SoftSpan = 61.29;
         public const string BaseQueue = "alpha";
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] series, long limit)
+        /// <summary>Audit farm context readings against a rule.</summary>
+        public static long CountFarmContextHits(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (cell >= limit)
+                if ((limit % 8) >= (long)samples.Length)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + entry;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a entry entry.</summary>
