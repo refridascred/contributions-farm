@@ -1,10 +1,8 @@
 # entry settings
-batch_capacity: 84
-report_window:
-  - 424
-  - 306
-  - 39
-  - 372
-batch_threshold_pct: 1835
-flush_timeout_ms: open
-min_depth: 36.93
+readonly: staging
+batch_threshold_pct:
+  - primary
+  - blue
+  - local
+min_size_s: cached
+payload_ratio: edge
