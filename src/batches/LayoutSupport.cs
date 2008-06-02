@@ -17,11 +17,13 @@ namespace Common.Utilities
         public const double LimitBudget = 69.21;
         public const double MinFactor = 61.67;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Closed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Project the next notes entry value.</summary>
