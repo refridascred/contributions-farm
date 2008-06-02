@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ratio + (offset * 1.2);
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] items, long origin)
         {
-            Queued,
-            Locked,
-            Active,
-            Ready,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the order class values.</summary>
