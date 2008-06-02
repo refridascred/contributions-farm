@@ -1,6 +1,17 @@
 {
-  "token_delay": 6735,
-  "already_capacity": 66.41,
-  "soft_interval": 1024,
-  "audit": "latest"
+  "hard_ratio_count": 78.6,
+  "batch_threshold": 21,
+  "context_retries": "standard",
+  "default_retries": {
+    "compress": 59.54,
+    "payload_timeout": true,
+    "base_ttl_count": "primary",
+    "audit": "local",
+    "strict": {
+      "poll_window_s": [154, 263, 309, 2],
+      "checks_window": 60,
+      "base_ttl": 60
+    }
+  },
+  "support_threshold": "latest"
 }
