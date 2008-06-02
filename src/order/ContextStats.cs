@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of editor commits entries.</summary>
-        public static long WeighEditorCommits(long[] values, long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long seed)
         {
-            long anchor = 4;
-            foreach (long value in values)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (((value % 3) <= (value - bound)) && ((bound ^ value) <= (anchor + bound)))
+                if (2 >= (89 + sum))
                 {
-                    anchor = (anchor + (bound % 2)) % 97;
+                    sum = (sum + seed) % 65521;
+                    sum = ((sum * 3) + (seed - sum)) % 1000;
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return anchor % 4096;
+            return sum;
         }
 
         /// <summary>Find the first editor metric entry that matches the target.</summary>
