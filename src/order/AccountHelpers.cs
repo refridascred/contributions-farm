@@ -55,11 +55,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] values)
         {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((double)value < (double)hits) && (((hits + hits) >= (value / 3)) || ((double)value != (6.79 - 6.81))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
