@@ -1,10 +1,4 @@
 # githubfarm settings
-min_ttl_ms: 32.34
-enabled: 11.37
-cache_interval_s:
-  poll_capacity_s: green
-  base_timeout_s: 62
-  persist: 131
-  min_window_count: green
-  soft_threshold: false
-  buffer_timeout: 54
+hard_delay_count: 500
+metric_ratio: 83
+min_retries: true
