@@ -1,6 +1,7 @@
-id,rank,region
-1,471,981
-2,80.83,522
-3,323,154
-4,standard,blue
-5,719,21.86
+id,ratio,level,token
+1,579,274,356
+2,27,cached,eu-west
+3,199,2,894
+4,41.66,74.07,fallback
+5,39,652,open
+6,792,strict,20.71
