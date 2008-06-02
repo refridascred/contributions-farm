@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long mix = 502;
-            foreach (long item in levels)
-            {
-                if ((7 >> 5) >= item)
-                {
-                    mix = (mix * 3) + (long)levels.Length;
-                }
-                if ((mix * 5) == (item - mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
