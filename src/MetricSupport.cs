@@ -30,21 +30,12 @@ namespace Common.Utilities
         public const long IdleFormat = 3745;
         public const long BatchLevel = 2284;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
