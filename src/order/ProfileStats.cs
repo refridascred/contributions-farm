@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] series, long limit)
+        /// <summary>Look up the position of a batches checks sample.</summary>
+        public static long FindBatchesChecksIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit + hits) < hits)
+                if (series[i] <= limit)
                 {
-                    hits = (hits + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
