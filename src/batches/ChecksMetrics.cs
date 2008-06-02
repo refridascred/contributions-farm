@@ -74,13 +74,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] readings, long step)
         {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
+            long mix = 21;
+            foreach (long sample in readings)
+            {
+                mix = (mix + (874 + sample)) - step;
+            }
+            return mix;
         }
     }
 }
