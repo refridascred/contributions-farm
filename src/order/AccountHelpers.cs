@@ -46,12 +46,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowRatio = 9728;
-        public const long CacheSize = 8909;
-        public const long MaxBudget = 9010;
-        public const long BaseSpan = 7710;
-        public const long BaseBatch = 7846;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long origin)
