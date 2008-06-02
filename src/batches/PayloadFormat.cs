@@ -60,11 +60,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] values, long step)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)item != (14.0 - 7.83))
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
         }
     }
 }
