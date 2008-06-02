@@ -27,15 +27,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a stats cache counter forward.</summary>
-        public static long DeriveStatsCache(long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            double scale = (double)(3 + (-496));
+            if (scale < (double)19)
             {
-                result = ((result * 4) + (long)i) % 97;
+                scale = (scale + bias) + span;
             }
-            return result;
+            else
+            {
+                scale = scale + 2.4;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + 8.69) + (double)(long)i;
+            }
+            return scale - 5.25;
         }
     }
 }
