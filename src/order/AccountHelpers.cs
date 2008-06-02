@@ -27,10 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 8561;
-        public const double RetryLayout = 20.03;
-        public const long SoftRatio = 9680;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((472 + seen) >= seen))
+                {
+                    seen = ((seen + 2) ^ reading) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine window cluster values into a single score.</summary>
         public static long DigestWindowCluster(long[] readings)
