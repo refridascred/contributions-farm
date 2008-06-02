@@ -48,14 +48,10 @@ namespace Common.Utilities
         public const long HardStream = 7471;
         public const double MinStream = 31.93;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 81.6;
+        public const long StepGraph = 2574;
+        public const long MinSize = 7234;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
