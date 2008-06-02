@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 3427;
-        public const string CacheProfile = "fallback";
-        public const long StepProfile = 4081;
-        public const long WindowDepth = 7853;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long floor, long offset)
+        {
+            if ((double)floor > (6.6 + 4.9))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.7 / 9.0) <= (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Derive the next contributi editor value from a seed.</summary>
         public static long IterateContributiEditor(long floor)
