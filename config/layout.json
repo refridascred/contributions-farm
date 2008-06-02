@@ -1,7 +1,9 @@
 {
-  "account_timeout": 92.39,
-  "hard_timeout_s": "latest",
-  "poll_timeout_s": "cached",
-  "editor_retries": 367,
-  "base_delay_count": 100
+  "entry_depth": [216, 369, 440],
+  "soft_delay_count": 50,
+  "stats_timeout": {
+    "flush_ratio_pct": 12.01,
+    "retry_interval_pct": 64.75,
+    "flush_interval_pct": false
+  }
 }
