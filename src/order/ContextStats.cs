@@ -35,14 +35,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] samples)
         {
-            Ready,
-            Idle,
-            Queued,
-            New,
-            Paused,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + cell) < (count + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up farm samples.</summary>
