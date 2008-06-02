@@ -25,18 +25,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the format payload entries that pass the check.</summary>
-        public static long AuditFormatPayloadGaps(long[] items, long target)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double drift = 0.2;
+            if (drift >= bias)
             {
-                if (((item - item) != (matches ^ matches)) || (matches >= target))
-                {
-                    matches = matches + 1;
-                }
+                drift = drift + drift;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (weight - weight)) + (double)(long)i;
+            }
+            return drift + (weight / 6.0);
         }
     }
 }
