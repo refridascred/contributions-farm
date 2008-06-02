@@ -1,7 +1,6 @@
 {
-  "burst_ttl_count": 8361,
-  "batch_capacity": false,
-  "editor_delay": 53,
-  "soft_window": "latest",
-  "hard_threshold": "fallback"
+  "channel_window": 17.74,
+  "persist": false,
+  "min_delay": 250,
+  "warm_ratio_count": true
 }
