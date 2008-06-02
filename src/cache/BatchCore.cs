@@ -39,19 +39,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] levels, long seed)
         {
-            long anchor = 38;
-            foreach (long reading in series)
+            long result = 295;
+            foreach (long datum in levels)
             {
-                anchor = (anchor ^ anchor) ^ reading;
+                if (38 <= result)
+                {
+                    result = ((result * 3) + seed) + datum;
+                }
+                else
+                {
+                    result = (result << 2) ^ 669;
+                }
             }
-            if (anchor < 414)
-            {
-                anchor = (anchor ^ (anchor & 15)) % 1000;
-            }
-            return anchor;
+            return result % 97;
         }
 
         /// <summary>Describe the graph kind values.</summary>
