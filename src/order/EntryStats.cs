@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double gain, double offset)
-        {
-            double weight = offset;
-            return weight + gain;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 8338;
+        public const string MinLevel = "strict-1";
+        public const long LimitEditor = 8816;
+        public const string DefaultLevel = "legacy";
 
         /// <summary>Iterate the already schema series from a seed.</summary>
         public static long IterateAlreadySchema(long target)
