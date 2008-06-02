@@ -69,18 +69,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit command editor readings against a rule.</summary>
-        public static long CountCommandEditorGaps(long[] values)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double mean = (double)75 / 3.0;
+            if (mean >= (bias + mean))
             {
-                if ((datum / 4) <= datum)
-                {
-                    seen = seen + 2;
-                }
+                mean = (mean + (double)818) - scale;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + (7.1 / 7.0);
         }
     }
 }
