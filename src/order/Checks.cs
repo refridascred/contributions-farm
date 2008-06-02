@@ -65,18 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long state = 0;
+            foreach (long item in readings)
             {
-                if ((sample + seen) > (sample & 63))
-                {
-                    seen = seen + 2;
-                }
+                state = ((state << 3) ^ (item ^ state)) % 101;
             }
-            return seen;
+            if (state < 12)
+            {
+                state = state + (-296);
+            }
+            return state;
         }
     }
 }
