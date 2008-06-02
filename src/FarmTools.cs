@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] series, long seed)
         {
-            Idle,
-            Failed,
-            Draft,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((seed ^ seed) <= (seed + 12))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stats phase values.</summary>
