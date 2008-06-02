@@ -22,20 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CachePayload = "strict";
+        public const long MaxPayload = 6917;
+        public const long LimitBudget = 6881;
+        public const long RetrySpan = 9400;
+        public const long BatchPayload = 4486;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double RetryBuffer = 90.64;
