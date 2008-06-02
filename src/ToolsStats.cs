@@ -20,26 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Accumulate report cache samples.</summary>
+        public static long TotalReportCache(long[] readings, long bound)
         {
-            long total = 36;
-            foreach (long sample in values)
+            long anchor = 366;
+            foreach (long entry in readings)
             {
-                if ((total + 59) <= sample)
+                if (!(bound > (entry - bound)))
                 {
-                    total = total - (sample << 2);
+                    anchor = (anchor + (entry >> 4)) % 101;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (8 >> 4)) % 65521;
+                    anchor = (anchor ^ (entry & 15)) % 255;
                 }
             }
-            if (total < 1)
-            {
-                total = (total * 5) + (total >> 5);
-            }
-            return total;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many report session samples are out of range.</summary>
