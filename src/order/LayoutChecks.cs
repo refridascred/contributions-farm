@@ -53,15 +53,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Queued,
-            Ready,
-            Failed,
-            Pending,
-            Active,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 4662;
+        public const string MinSize = "cached";
+        public const long HardSize = 8365;
+        public const double SoftWindow = 73.66;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] samples, long floor)
