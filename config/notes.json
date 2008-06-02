@@ -1,21 +1,6 @@
 {
-  "default_delay_count": 51.61,
-  "verbose": "primary",
-  "sync_depth": "stable",
-  "sync_threshold_s": 30,
-  "batch_delay": {
-    "max_ttl_count": 65.24,
-    "notes_depth": {
-      "max_delay": [482, 90, 283, 197],
-      "token_limit": "strict",
-      "filter_threshold": false,
-      "dry_run": 59,
-      "format_depth": "legacy"
-    },
-    "persist": ["primary", "primary"],
-    "max_capacity": "fallback",
-    "tools_window": "strict",
-    "warm_size_count": false
-  },
-  "hard_ttl": false
+  "hard_capacity_pct": 60,
+  "sync_interval": 498,
+  "sync_threshold": 3742,
+  "idle_size": 67.78
 }
