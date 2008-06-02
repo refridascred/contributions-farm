@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepWidth = 90.03;
-        public const double RetryDepth = 75.85;
-        public const string StepScore = "stable-edge";
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long origin, long target)
