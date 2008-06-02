@@ -1,20 +1,6 @@
 # support settings
-min_size: stable
-retry_depth: 48
-persist:
-  min_retries_s:
-    - fallback
-    - edge
-  batch_interval_pct: true
-  support_delay:
-    - eu-west
-    - strict
-    - fallback
-  retry_retries: 5345
-  base_capacity:
-    cache_interval_count: 6510
-    metric_ratio: open
-    batch_delay: 5634
-    persist: 7254
-    min_depth_s: 8810
-  hard_interval_pct: open
+payload_ttl: 62
+retry_threshold_s: true
+stream_depth: 28
+hard_delay: legacy
+counter_ttl: standard
