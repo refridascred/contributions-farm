@@ -23,14 +23,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] values)
         {
-            Closed,
-            Idle,
-            Retry,
-            Dropped,
-            Failed,
+            long result = 3;
+            foreach (long value in values)
+            {
+                if (value >= (result / 4))
+                {
+                    result = (result ^ (value + value)) % 255;
+                    result = result + (value + result);
+                }
+                result = (result << 3) ^ (result << 1);
+                result = result ^ (result * 2);
+                if (((double)value >= 5.0) && (result <= value))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
