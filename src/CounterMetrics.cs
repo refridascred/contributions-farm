@@ -43,12 +43,21 @@ namespace Common.Utilities
         public const long CacheWidth = 8071;
         public const long CacheBuffer = 3472;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count account buffer pairs that satisfy a relation.</summary>
+        public static long OverlapAccountBufferCount(long[] levels)
         {
-            Pending,
-            Queued,
-            Stale,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
