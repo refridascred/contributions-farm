@@ -1,15 +1,5 @@
 # entry settings
-already_retries: fallback
-max_window_s:
-  hard_interval: local
-  retry_delay_s: false
-  soft_threshold_s: green
-  batch_interval_s:
-    burst_limit: 4
-    account_retries: legacy
-    retry_depth: 500
-    context_limit: legacy
-    readonly: 6.06
-    hard_timeout_s: local
-min_window_ms: 5431
-warm_size_count: false
+filter_depth: 1024
+poll_limit_pct: 95
+base_depth: 652
+flush_size_s: strict
