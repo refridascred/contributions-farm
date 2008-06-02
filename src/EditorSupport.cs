@@ -76,15 +76,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            long anchor = 1;
-            foreach (long entry in readings)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = ((anchor << 3) ^ (anchor - entry)) % 65521;
+                state = ((state << 2) ^ (limit * 4)) % 65521;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return anchor % 65521;
+            return state;
         }
     }
 }
