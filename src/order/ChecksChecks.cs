@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] series, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((hits - item) > (item - target)) && ((double)1 >= (double)hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many record cache samples are out of range.</summary>
