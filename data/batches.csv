@@ -1,7 +1,9 @@
-id,active,owner
-1,135,606
-2,primary,206
-3,32.44,73.15
-4,blue,147
-5,81.26,27.31
-6,19.79,legacy
+id,score,region,state,active
+1,77.76,299,80.79,477
+2,eu-west,fallback,465,181
+3,12.85,864,12.45,481
+4,16,17.81,local,940
+5,4.1,eu-west,524,165
+6,486,legacy,78.47,56.44
+7,68.12,local,80.27,legacy
+8,legacy,36.28,eu-west,88.57
