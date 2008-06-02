@@ -27,21 +27,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ (616 >> 3)) - item;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
