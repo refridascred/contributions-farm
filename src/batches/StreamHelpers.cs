@@ -51,12 +51,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultTimeout = 5754;
-        public const long DefaultCount = 1622;
-        public const long BaseMetrics = 5581;
-        public const long BatchSpan = 7927;
-        public const long WindowMetrics = 9209;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Paused,
+            Draft,
+            Pending,
+            Active,
+        }
 
         /// <summary>Validate command window readings against a bound.</summary>
         public static bool GuardCommandWindowLimits(long[] samples, long origin)
