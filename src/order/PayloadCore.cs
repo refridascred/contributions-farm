@@ -47,32 +47,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long step, long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long lane = step - bound;
-            if (!((bound ^ lane) >= step))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((step / 6) != (10 + step)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((lane + step) == (step << 3))
+                    if ((samples[i] - samples[j]) == 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
