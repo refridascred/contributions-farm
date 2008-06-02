@@ -37,22 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] items)
+        /// <summary>Accumulate queue metrics samples.</summary>
+        public static long ScoreQueueMetrics(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long score = 61;
+            foreach (long entry in levels)
             {
-                if ((datum + hits) < (datum / 3))
+                if ((entry - entry) == (entry ^ 63))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (score + (entry % 60)) % 97;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
