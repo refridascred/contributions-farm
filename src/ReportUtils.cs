@@ -12,16 +12,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long step, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            if ((2 - step) < limit)
             {
-                carry = ((carry << 2) ^ (origin & 3)) % 255;
-                carry = ((carry * 4) + (long)i) % 97;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (((step % 7) < (limit - 512)) || ((double)step < (7.2 - 9.66)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the counter phase values.</summary>
