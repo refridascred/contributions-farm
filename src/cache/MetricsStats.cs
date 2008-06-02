@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long bound)
         {
-            long total = 4;
-            foreach (long entry in levels)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((total + total) != (total & 127)) && ((double)total != (6.56 * 9.53)))
-                {
-                    total = ((total - 7) % 4096) - entry;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Combine account tools values into a single score.</summary>
