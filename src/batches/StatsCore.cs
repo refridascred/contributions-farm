@@ -33,10 +33,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftScore = "open-1";
-        public const string BatchRatio = "fallback-edge";
-        public const double MaxBudget = 33.85;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 9081;
+        public const long BatchWidth = 3704;
+        public const string CacheSpan = "alpha-1";
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
