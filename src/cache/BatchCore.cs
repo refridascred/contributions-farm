@@ -61,10 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheWidth = 4391;
-        public const long BatchFactor = 4344;
-        public const double WindowScore = 11.24;
-        public const long RetryContributi = 5915;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
