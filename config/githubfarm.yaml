@@ -1,12 +1,16 @@
 # githubfarm settings
-profile_retries: 6069
-notes_depth: false
-persist:
-  persist: true
-  strict:
-    - 402
-    - 425
-    - 430
-    - 157
-  soft_window_ms: green
-soft_ratio_count: 41
+readonly: stable
+strict:
+  warm_capacity_pct: 22.61
+  audit:
+    - local
+    - open
+    - open
+    - standard
+  max_ttl_count: false
+  idle_limit_pct: 13.38
+  editor_window: blue
+  strict: 100
+context_ratio: cached
+burst_size_ms: 70
+hard_retries_ms: false
