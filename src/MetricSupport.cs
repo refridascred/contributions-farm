@@ -23,12 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitSize = 40.77;
-        public const long BurstDepth = 7870;
-        public const double BatchFormat = 40.77;
-        public const long IdleFormat = 3745;
-        public const long BatchLevel = 2284;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
