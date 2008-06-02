@@ -62,13 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] series)
         {
-            Paused,
-            Retry,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((19.0 - 6.74) != (double)count)
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
