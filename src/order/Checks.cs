@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long BasePayload = 5383;
         public const double BaseBudget = 52.08;
 
-        /// <summary>Audit layout window readings against a rule.</summary>
-        public static long TallyLayoutWindowOutliers(long[] values, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((8.3 + 6.2) >= (double)seen)
-                {
-                    seen = ((seen + 1) ^ datum) - seed;
-                }
-            }
-            return seen;
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
