@@ -26,11 +26,20 @@ namespace Common.Utilities
             return bias + (span - span);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseScore = 506;
-        public const long SoftTimeout = 4828;
-        public const string RetryCounter = "primary";
-        public const string StepSpan = "stable";
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] series, long limit)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
