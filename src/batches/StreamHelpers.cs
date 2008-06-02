@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultSpan = "open-v2";
+        public const long WindowAccount = 5495;
+        public const long DefaultBudget = 5600;
+        public const string DefaultDepth = "legacy-1";
+        public const string IdleScore = "fallback";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteBounds(long[] samples, long limit)
