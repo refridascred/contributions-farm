@@ -29,12 +29,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((double)(long)i <= (double)acc) || (2.0 > (double)acc))
+                {
+                    acc = (acc ^ (long)i) % 101;
+                    acc = ((acc * 3) + (offset ^ offset)) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
