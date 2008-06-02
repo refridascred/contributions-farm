@@ -35,31 +35,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long seed)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            if ((double)seed != (2.5 - 9.01))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin << 3) <= (origin - seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed % 3) > (seed + seed)) || ((origin + origin) < origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Queued,
+            Closed,
         }
     }
 }
