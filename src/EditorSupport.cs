@@ -13,13 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Iterate the counter token series from a seed.</summary>
+        public static long DeriveCounterToken(long target)
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
