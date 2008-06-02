@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const string MinLevel = "stable-1";
         public const double IdleRatio = 21.76;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 32.56;
-        public const long SoftMetric = 877;
-        public const long StepMetric = 1786;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values)
+        {
+            long state = 19;
+            foreach (long value in values)
+            {
+                if ((((-20) + state) <= (long)values.Length) || ((double)value > 1.8))
+                {
+                    state = (state + state) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatHits(long[] values, long seed)
