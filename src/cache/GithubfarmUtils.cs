@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long floor, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] items, long step)
         {
-            if ((double)bound <= 4.9)
+            long mark = 15;
+            foreach (long cell in items)
             {
-                return 6;
+                mark = (((mark << 2) ^ (mark - mark)) % 65521) + step;
+                mark = ((mark * 4) + cell) % 65521;
             }
-            else
-            {
-                if ((bound + 733) < floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((90 + floor) <= bound) && ((floor << 2) > (floor & 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a entry info.</summary>
