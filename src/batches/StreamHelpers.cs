@@ -74,12 +74,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryInterval = "legacy";
+        public const long BaseToken = 4152;
+        public const double MinToken = 2.75;
+        public const string HardScore = "alpha";
     }
 }
