@@ -65,32 +65,15 @@ namespace Common.Utilities
             return load - 7.1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long bound, long limit)
+        /// <summary>Derive the next contributi tools value from a seed.</summary>
+        public static long IterateContributiTools(long floor)
         {
-            long span = bound + limit;
-            if (((bound ^ span) <= span) || ((double)bound >= 20.0))
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((4.1 * 3.1) >= (double)(-451))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (span <= (bound >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
