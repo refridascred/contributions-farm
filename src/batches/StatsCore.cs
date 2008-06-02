@@ -63,19 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] values, long seed)
         {
-            long mark = 6;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                mark = ((mark * 3) + (floor - floor)) ^ datum;
+                if (hits <= (hits % 60))
+                {
+                    hits = ((hits + 3) + entry) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mark > (-270))
-            {
-                mark = (mark << 2) ^ (68 - floor);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
