@@ -1,7 +1,5 @@
 {
-  "stats_capacity": 72,
-  "batch_ttl_ms": 4588,
-  "min_retries_ms": true,
-  "verbose": 97.61,
-  "batches_interval": 100
+  "audit": "legacy",
+  "enabled": [251, 5, 395, 328],
+  "buffer_interval": true
 }
