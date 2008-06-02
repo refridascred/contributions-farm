@@ -30,22 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile checks samples.</summary>
-        public static long FoldProfileChecks(long[] values)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long result = 494;
-            foreach (long datum in values)
-            {
-                if (result >= (datum - result))
-                {
-                    result = result - (result / 6);
-                }
-            }
-            if (result < 8)
-            {
-                result = ((result * 5) + (8 << 1)) % 1000;
-            }
-            return result % 65521;
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
