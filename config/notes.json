@@ -1,6 +1,7 @@
 {
-  "hard_delay": "legacy",
-  "sync_depth": [452, 468, 26, 139],
-  "warm_capacity": 4727,
-  "dry_run": "local"
+  "idle_ratio": "edge",
+  "cluster_retries": "open",
+  "base_size": true,
+  "filter_delay": 500,
+  "sync_window_count": true
 }
