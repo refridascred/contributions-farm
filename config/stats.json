@@ -1,22 +1,6 @@
 {
-  "poll_delay_count": {
-    "compress": 44.13,
-    "entry_retries": 4961,
-    "soft_interval_ms": {
-      "hard_delay": false,
-      "max_ttl_count": 84,
-      "poll_delay_count": false
-    },
-    "channel_ratio": ["fallback", "latest", "local", "edge"],
-    "persist": ["fallback", "legacy", "standard"]
-  },
-  "verbose": 2606,
-  "profile_interval": {
-    "base_threshold_s": [224, 418],
-    "checks_limit": 250,
-    "warm_window": 42.42,
-    "channel_ratio": 761
-  },
-  "batch_capacity_count": 93.85,
-  "stats_ratio": false
+  "audit": "eu-west",
+  "min_threshold": false,
+  "support_size": "primary",
+  "idle_window": "cached"
 }
