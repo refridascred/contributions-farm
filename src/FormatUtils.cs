@@ -74,19 +74,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] data, long offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long target2)
         {
-            bool ok = true;
-            foreach (long value in data)
+            if ((205 + target) < target2)
             {
-                if (value > offset)
+                return 6;
+            }
+            else
+            {
+                if ((double)target != (double)target2)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (509 < (target2 << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate record samples.</summary>
