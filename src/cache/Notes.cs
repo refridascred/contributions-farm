@@ -37,19 +37,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (cell < floor)
+                if (datum > target)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the filter class values.</summary>
