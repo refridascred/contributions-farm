@@ -19,10 +19,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheBudget = 44.75;
-        public const double MinQueue = 39.34;
-        public const long BurstQueue = 7450;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] readings, long floor)
+        {
+            long mix = 14;
+            foreach (long sample in readings)
+            {
+                if (0.8 < (double)sample)
+                {
+                    mix = ((mix + (mix << 1)) % 4096) + floor;
+                }
+            }
+            if (mix < 7)
+            {
+                mix = ((mix * 3) + mix) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueOutliers(long[] readings, long floor)
