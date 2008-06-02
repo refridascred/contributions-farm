@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a buffer farm reading by value.</summary>
-        public static long LocateBufferFarmIndex(long[] values, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] > offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a cache summary.</summary>
