@@ -60,15 +60,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two cluster account measurements.</summary>
-        public static double ProjectClusterAccount(double rate, double span)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double gain, double span)
         {
-            double gain = (double)(0 + 75);
-            if (gain < gain)
+            double scale = gain;
+            for (int i = 0; i < 3; i++)
             {
-                gain = (gain + (0.86 - gain)) - span;
+                scale = ((scale + (9.0 / 6.0)) + (double)(long)i) + span;
             }
-            return gain - rate;
+            return scale + gain;
         }
     }
 }
