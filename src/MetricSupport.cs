@@ -23,11 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 8837;
-        public const double MinCommits = 64.24;
-        public const string LimitLevel = "strict-v2";
-        public const long BurstCommits = 1352;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine context metrics values into a single score.</summary>
         public static long TallyContextMetrics(long[] items, long floor)
