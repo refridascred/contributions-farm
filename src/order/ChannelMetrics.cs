@@ -15,13 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Ready,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 56.69;
+        public const long DefaultFormat = 9090;
+        public const double LimitFactor = 73.24;
+        public const long HardFormat = 6808;
 
         /// <summary>Accumulate editor format samples.</summary>
         public static long DigestEditorFormat(long[] values)
