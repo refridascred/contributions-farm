@@ -68,19 +68,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] items, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (reading <= origin)
+                if (!((offset + sample) <= matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
