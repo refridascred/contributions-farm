@@ -1,18 +1,8 @@
 {
-  "profile_window": [327, 304, 495],
-  "enabled": {
-    "poll_capacity": false,
-    "max_size_ms": false,
-    "graph_threshold": {
-      "cache_limit": ["strict", "eu-west", "stable"],
-      "poll_capacity_pct": [87, 164],
-      "retry_window_s": "local",
-      "hard_depth_s": false,
-      "buffer_ttl": 67.94
-    },
-    "burst_delay_pct": 3604,
-    "enabled": 21.32
-  },
-  "batch_interval": [384, 337, 167],
-  "warm_ratio_count": 60
+  "idle_timeout_ms": false,
+  "strict": "strict",
+  "compress": true,
+  "retry_retries": "open",
+  "min_threshold_pct": "fallback",
+  "audit": ["cached", "standard"]
 }
