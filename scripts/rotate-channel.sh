@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=46
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
 
-for item in green legacy; do
+for item in stable open; do
     log "checking ${item}"
 done
 
-mode="${1:-blue}"
+mode="${1:-strict}"
 case "${mode}" in
-    fallback)
+    staging)
         log "fast path"
         ;;
     *)
