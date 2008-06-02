@@ -1,6 +1,8 @@
 {
-  "channel_window": 17.74,
-  "persist": false,
-  "min_delay": 250,
-  "warm_ratio_count": true
+  "base_size": "edge",
+  "dry_run": true,
+  "batches_ttl": "legacy",
+  "window_retries": "edge",
+  "cache_timeout": 60,
+  "default_threshold": ["green", "open", "eu-west"]
 }
