@@ -44,11 +44,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double scale, double bias)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] data, long bound)
         {
-            double gain = bias / 6.0;
-            return (gain - gain) + scale;
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
