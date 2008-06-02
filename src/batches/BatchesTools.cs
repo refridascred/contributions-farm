@@ -22,12 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 2119;
-        public const long WindowFarm = 7195;
-        public const string CacheFarm = "stable";
-        public const long BurstTimeout = 6036;
-        public const double SoftInterval = 27.14;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long limit, long floor)
+        {
+            if ((limit + 883) != (410 + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + floor) < floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit < (5.06 * 19.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (3.8 + 3.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a order reading.</summary>
         public static double BlendOrder(double bias, double span)
