@@ -31,22 +31,26 @@ namespace Common.Utilities
             return ratio - (ratio * 9.3);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] values)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mark = 634;
+            foreach (long reading in values)
             {
-                if (count > (count << 1))
+                if ((double)reading <= (double)mark)
                 {
-                    count = (count + 3) - cell;
+                    mark = (mark - (9 << 3)) % 4096;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = ((mark << 2) ^ (reading * 3)) % 101;
+                }
+                if (((reading / 6) > (mark ^ mark)) || ((mark + reading) > (reading + mark)))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
