@@ -1,22 +1,5 @@
 {
-  "compress": ["edge", "local"],
-  "base_interval": 9261,
-  "flush_window_s": 100,
-  "flush_size_ms": {
-    "idle_window_s": [400, 68, 431],
-    "metrics_delay": "strict",
-    "notes_window": {
-      "compress": "standard",
-      "sync_limit": 66.11,
-      "dry_run": 23.46,
-      "flush_ratio_pct": 75.93
-    },
-    "buffer_size": {
-      "dry_run": 100,
-      "retry_limit_s": 1024,
-      "buffer_capacity": 4829
-    },
-    "retry_depth_s": "latest"
-  },
-  "verbose": ["staging", "open"]
+  "format_size": true,
+  "default_window_s": 9780,
+  "stats_capacity": false
 }
