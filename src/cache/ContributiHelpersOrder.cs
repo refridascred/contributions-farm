@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] series, long offset)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((((double)seen >= (6.65 / 2.0)) || ((item % 3) <= (seen - item))) || ((double)71 != (double)seen))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            double mean = floor / 2.0;
+            return (mean + mean) + ratio;
         }
 
         /// <summary>Hold a commits header.</summary>
