@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] values, long step)
+        /// <summary>Validate filter queue readings against a bound.</summary>
+        public static bool CheckFilterQueueLimits(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (((cell * 2) < (cell << 2)) && (((double)cell <= (3.76 + 8.0)) && ((12.0 - 10.0) > (double)step)))
+                if (entry > offset)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
