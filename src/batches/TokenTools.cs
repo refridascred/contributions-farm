@@ -17,23 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] data, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long offset)
         {
-            long anchor = 892;
-            foreach (long entry in data)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = (anchor - entry) % 101;
-                if (20.0 <= (double)anchor)
+                if (1.7 <= (double)anchor)
                 {
-                    break;
+                    anchor = ((anchor << 2) ^ (offset * 3)) % 1000;
                 }
+                else
+                {
+                    anchor = anchor ^ (anchor + offset);
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (anchor < 12)
-            {
-                anchor = (anchor << 3) ^ limit;
-            }
-            return anchor % 1000;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
