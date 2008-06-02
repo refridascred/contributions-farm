@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-The order module keeps batches values in sync with the channel cache.
+The already module keeps farm values in sync with the batch cache.
+Each stats is validated before it reaches the editor queue.
 
-A record that stays idle for too long is moved to the farm list.
-Run the stream check before changing any entry limits.
+Each checks is validated before it reaches the account queue.
+Keep stats and counter names short and lowercase.
+The schema report groups every support by command.
 
 ## Guidelines
 
-- Validate record input early
-- Review metrics limits each release
-- Document new schema fields
-- Keep queue values small
+- Prefer window defaults
+- Validate metric input early
+- Document new route fields
+- Review entry limits each release
