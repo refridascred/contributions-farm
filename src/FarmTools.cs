@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] levels, long offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] items, long limit)
         {
-            long mix = 5;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 3) ^ (item - offset)) % 101;
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 6)
-            {
-                mix = ((mix * 3) + (mix - mix)) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Scale a batches schema figure with a bias.</summary>
