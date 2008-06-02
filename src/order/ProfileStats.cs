@@ -23,12 +23,31 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long origin, long target)
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
+            if (target < (291 - target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target * 4) >= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin < (3.03 / 3.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
