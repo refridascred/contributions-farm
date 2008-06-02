@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long origin)
         {
-            Stale,
-            Dropped,
-            Idle,
+            if ((origin / 5) < (8 + 0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((origin << 3) == (7 / 8)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a stream header.</summary>
