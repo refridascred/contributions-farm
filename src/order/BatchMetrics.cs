@@ -74,10 +74,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 2315;
-        public const long HardStream = 8578;
-        public const double SoftDepth = 69.83;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Draft,
+            Stale,
+            Retry,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Audit command editor readings against a rule.</summary>
         public static long CountCommandEditorGaps(long[] values)
