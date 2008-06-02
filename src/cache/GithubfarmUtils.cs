@@ -29,19 +29,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] values, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long anchor = 9;
-            foreach (long cell in values)
-            {
-                anchor = (anchor << 3) ^ cell;
-            }
-            if (anchor < 4)
-            {
-                anchor = (anchor - (limit & 7)) % 4096;
-            }
-            return anchor;
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
