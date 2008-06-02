@@ -47,19 +47,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many farm order samples are out of range.</summary>
-        public static long AuditFarmOrderHits(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading % 97) <= reading)
-                {
-                    seen = (seen + 3) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftWidth = 39.04;
+        public const double CacheTimeout = 14.83;
+        public const double RetryWidth = 15.72;
+        public const string BatchInterval = "legacy";
+        public const string LimitSession = "primary-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double SoftScore = 11.7;
