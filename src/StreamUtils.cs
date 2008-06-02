@@ -68,9 +68,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheCount = 2023;
-        public const long HardFilter = 9627;
-        public const double CacheScore = 76.82;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
