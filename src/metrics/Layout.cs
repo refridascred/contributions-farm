@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Derive the next metrics filter value from a seed.</summary>
+        public static long IterateMetricsFilter(long seed)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum << 3) ^ sum;
+                sum = sum ^ ((long)i ^ seed);
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a editor tools pair into a bucket.</summary>
