@@ -44,15 +44,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCount = 3265;
+        public const double BaseCluster = 24.67;
+        public const long SoftDepth = 8723;
+        public const double MinWidth = 48.82;
     }
 }
