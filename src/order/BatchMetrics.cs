@@ -42,30 +42,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] readings)
+        /// <summary>Count format session pairs that satisfy a relation.</summary>
+        public static long MatchFormatSessionCount(long[] values)
         {
-            long acc = 3;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((22 * 2) >= (acc + 6)) && (376 < (cell - cell)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc << 3) ^ (47 ^ 35);
-                }
-                if (((double)acc == (2.23 - 14.0)) || ((cell & 127) <= acc))
-                {
-                    acc = (acc ^ cell) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ (acc << 1)) % 65521;
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < (-4))
-            {
-                acc = acc + (acc - acc);
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
