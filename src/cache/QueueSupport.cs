@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Look up the position of a graph session sample.</summary>
+        public static long FindGraphSessionIndex(long[] series, long limit)
         {
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
