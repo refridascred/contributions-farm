@@ -72,14 +72,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Stale,
-            Done,
-            Synced,
-            Active,
-            Ready,
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the layout mode values.</summary>
