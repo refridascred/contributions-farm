@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] data, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (cell != limit)
+                if (item >= bound)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Combine session stats values into a single score.</summary>
