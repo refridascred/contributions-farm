@@ -29,13 +29,17 @@ namespace Common.Utilities
             return scale + (scale - offset);
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] items, long floor)
         {
-            Locked,
-            Paused,
-            Failed,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
