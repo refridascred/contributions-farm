@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up commits metric samples.</summary>
-        public static long PairCommitsMetricCount(long[] values)
+        /// <summary>Accumulate account checks samples.</summary>
+        public static long TallyAccountChecks(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 9;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((12.0 * 17.0) <= (double)score)
                 {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score * 3) + (value / 3)) % 97;
+                }
+                if (((value + score) >= ((-8) - score)) && ((score + (-16)) > (value + 91)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score > 28)
+            {
+                score = score ^ (long)series.Length;
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
