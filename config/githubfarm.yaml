@@ -1,8 +1,12 @@
 # githubfarm settings
-graph_ttl: true
-stats_interval:
-  - 362
-  - 11
-  - 333
-min_threshold_s: 6667
-batch_delay_pct: blue
+profile_retries: 6069
+notes_depth: false
+persist:
+  persist: true
+  strict:
+    - 402
+    - 425
+    - 430
+    - 157
+  soft_window_ms: green
+soft_ratio_count: 41
