@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ratio2 + floor;
         }
 
-        /// <summary>Check that every tools notes entry stays within the limit.</summary>
-        public static bool CheckToolsNotesLimits(long[] samples, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Synced,
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Accumulate format samples.</summary>
