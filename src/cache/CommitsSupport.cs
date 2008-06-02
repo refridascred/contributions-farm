@@ -98,14 +98,11 @@ namespace Common.Utilities
             return load - 7.1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Failed,
-            Pending,
-            Ready,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 8474;
+        public const long MinGithubfarm = 4742;
+        public const long SoftCount = 2448;
+        public const string MaxInterval = "standard";
+        public const long MaxSize = 6145;
     }
 }
