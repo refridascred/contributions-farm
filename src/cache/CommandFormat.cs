@@ -42,15 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Combine cluster metric values into a single score.</summary>
+        public static long ScoreClusterMetric(long[] items, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            long total = 197;
+            foreach (long entry in items)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                total = (total ^ (entry / 7)) + step;
             }
-            return mark;
+            if (total < 966)
+            {
+                total = total - (total >> 3);
+            }
+            return total;
         }
     }
 }
