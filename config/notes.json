@@ -1,13 +1,10 @@
 {
-  "compress": 49,
-  "commits_depth": false,
-  "poll_ttl": {
-    "persist": "eu-west",
-    "min_size_count": "edge",
-    "already_interval": ["primary", "staging", "green"],
-    "token_delay": 16.97,
-    "idle_size": true,
-    "default_interval_count": 250
+  "report_depth": "strict",
+  "idle_threshold_s": {
+    "audit": [124, 342, 107, 52],
+    "max_ttl": 579,
+    "soft_threshold": "green",
+    "cache_interval_s": 1271
   },
-  "warm_depth_ms": 33.78
+  "base_size": "staging"
 }
