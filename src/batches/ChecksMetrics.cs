@@ -29,13 +29,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] levels, long offset)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
