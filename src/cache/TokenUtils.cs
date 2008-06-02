@@ -21,11 +21,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultTimeout = "fallback-v2";
-        public const double IdleFilter = 24.88;
-        public const double BurstInterval = 23.33;
-        public const long WindowFilter = 1311;
-        public const long HardFilter = 7204;
+        /// <summary>Count the format payload entries that pass the check.</summary>
+        public static long AuditFormatPayloadGaps(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((item - item) != (matches ^ matches)) || (matches >= target))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
