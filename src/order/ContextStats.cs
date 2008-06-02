@@ -29,12 +29,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Stale,
-            Locked,
-            Failed,
+            Ready,
+            Idle,
+            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Match up farm samples.</summary>
