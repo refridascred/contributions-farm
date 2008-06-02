@@ -23,21 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up githubfarm stream samples.</summary>
-        public static long MatchGithubfarmStreamCount(long[] data)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
