@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] samples, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long step, long origin)
         {
-            long total = 228;
-            foreach (long reading in samples)
+            if (!(origin <= (step % 64)))
             {
-                total = total - (reading * 4);
+                return 0;
             }
-            if (total > 13)
+            else
             {
-                total = total - (bound + 16);
+                if ((double)origin > 16.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step >= (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin > (step ^ origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
