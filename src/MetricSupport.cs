@@ -19,13 +19,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            Queued,
+            Ready,
+            New,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
