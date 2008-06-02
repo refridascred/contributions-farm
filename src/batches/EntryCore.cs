@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardSize = 7495;
-        public const long RetryInterval = 2059;
-        public const double MaxBudget = 10.44;
-        public const long BurstCommand = 8056;
-        public const long SoftScore = 3423;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (matches <= ((-25) << 2))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenRange(long[] readings, long offset)
