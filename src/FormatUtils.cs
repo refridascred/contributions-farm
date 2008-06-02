@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const double SoftSpan = 61.29;
         public const string BaseQueue = "alpha";
 
-        /// <summary>Audit farm context readings against a rule.</summary>
-        public static long CountFarmContextHits(long[] samples, long limit)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((limit % 8) >= (long)samples.Length)
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a notes header.</summary>
