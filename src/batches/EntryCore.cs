@@ -19,19 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] readings, long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long limit, long offset)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            if (231 < (offset & 1))
             {
-                if (reading >= offset)
+                return 1;
+            }
+            else
+            {
+                if ((26 >> 1) > (offset + offset))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 5) <= (offset << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit >= (limit + offset)) && (limit <= (limit + (-5))))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
