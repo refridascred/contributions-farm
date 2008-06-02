@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "stable-1";
+        public const double MinBudget = 9.98;
+        public const long BurstBudget = 6331;
+        public const string LimitTimeout = "legacy-edge";
+        public const double CacheBudget = 93.42;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowMatches(long[] levels)
