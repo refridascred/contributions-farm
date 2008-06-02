@@ -22,22 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] readings)
+        /// <summary>Derive the next buffer format value from a seed.</summary>
+        public static long StepBufferFormat(long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((30 - 8) < (reading - reading))
+                acc = (acc ^ acc) % 65521;
+                if ((0.55 * 0.6) >= (double)seed)
                 {
-                    count = count + 2;
+                    acc = ((acc * 2) + 152) % 101;
+                    acc = (acc + (372 + 649)) % 4096;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Accumulate queue metrics samples.</summary>
