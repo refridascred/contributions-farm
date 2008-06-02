@@ -14,18 +14,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit checks editor readings against a rule.</summary>
-        public static long TallyChecksEditorOutliers(long[] values)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3 ^ entry) != (tally / 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
