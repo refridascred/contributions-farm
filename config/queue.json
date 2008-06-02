@@ -1,6 +1,11 @@
 {
-  "strict": "cached",
-  "flush_limit_s": "strict",
-  "notes_ratio": false,
-  "persist": ["edge", "green"]
+  "batch_capacity": [275, 330, 248, 344],
+  "farm_capacity": 61.08,
+  "tools_ttl": false,
+  "warm_threshold": {
+    "strict": "cached",
+    "filter_ttl": "local",
+    "persist": "eu-west",
+    "base_threshold_pct": 5094
+  }
 }
