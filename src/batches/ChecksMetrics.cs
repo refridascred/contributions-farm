@@ -14,17 +14,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first githubfarm entry entry that matches the target.</summary>
-        public static long SeekGithubfarmEntryIndex(long[] items, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)target <= (double)8)
             {
-                if ((items[i] == bound) && ((items[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if (624 > (target + 1))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
