@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Retry,
-            Synced,
-            Locked,
+            Queued,
+            Done,
+            Active,
+            Closed,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
