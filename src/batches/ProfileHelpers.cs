@@ -63,24 +63,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Project the next editor format value.</summary>
+        public static double BlendEditorFormat(double weight, double span)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)(long)i < (2.0 / 2.0))
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                    break;
-                }
-                if (!(34 < (step - step)))
-                {
-                    anchor = ((anchor * 2) + anchor) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            double drift = (double)(15 >> 5);
+            return ((drift - (double)(-3)) + weight) + span;
         }
     }
 }
