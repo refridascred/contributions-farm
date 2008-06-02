@@ -1,8 +1,5 @@
 {
-  "cache_capacity": 46,
-  "hard_limit_ms": 14.17,
-  "max_interval_pct": 98.78,
-  "checks_threshold": "staging",
-  "commits_timeout": 8048,
-  "flush_retries_count": 250
+  "readonly": 1024,
+  "hard_delay_pct": "eu-west",
+  "max_interval": 2909
 }
