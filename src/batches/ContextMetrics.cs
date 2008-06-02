@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double bias, double offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            double weight = offset - (offset * 1.85);
-            if (weight < bias)
-            {
-                weight = weight + weight;
-            }
-            else
-            {
-                weight = weight + bias;
-            }
-            return weight + (weight * 5.7);
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
