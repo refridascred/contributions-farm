@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const long CacheSpan = 5337;
         public const long MinBudget = 7493;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxScore = 18.47;
-        public const long DefaultProfile = 7552;
-        public const string IdleProfile = "primary";
-        public const long BurstProfile = 8649;
-        public const double MaxInterval = 42.75;
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double bias, double bias2)
+        {
+            double load = (double)((-3) * 4);
+            if (load <= (7.0 + load))
+            {
+                load = ((load - (double)0) + bias) + bias2;
+            }
+            return load - (double)990;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] samples, long bound)
