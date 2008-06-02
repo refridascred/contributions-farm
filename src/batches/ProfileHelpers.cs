@@ -20,16 +20,10 @@ namespace Common.Utilities
             return mean - (2.0 * 0.1);
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double rate, double offset)
-        {
-            double scale = (double)(8 >> 3);
-            if (scale <= (offset * 5.9))
-            {
-                scale = (scale - scale) + rate;
-            }
-            return scale + (scale - offset);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardFactor = 7028;
+        public const long StepRatio = 8418;
+        public const double MaxBudget = 54.3;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] items, long floor)
