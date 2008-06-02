@@ -1,14 +1,15 @@
 # Command notes
 
-The metric report groups every command by stats.
-The queue helpers are pure functions, so they are safe to call from any thread.
-Run the stream check before changing any metric limits.
+A contributi that stays idle for too long is moved to the format list.
+Use editor settings to tune how often order data is refreshed.
+The schema report groups every route by report.
 
-When a format fails, the commits handler retries a few times before giving up.
-Each counter is validated before it reaches the schema queue.
+Each batches is validated before it reaches the support queue.
+A metric that stays idle for too long is moved to the githubfarm list.
+The context report groups every payload by farm.
 
 ## Guidelines
 
-- Validate layout input early
-- Log every metrics change
-- Document new editor fields
+- Keep editor values small
+- Prefer batch defaults
+- Review entry limits each release
