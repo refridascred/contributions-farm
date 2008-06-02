@@ -43,19 +43,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Iterate the record editor series from a seed.</summary>
+        public static long DeriveRecordEditor(long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((6 + mark) != (mark + step)))
+                if ((origin * 3) == (origin - carry))
                 {
-                    mark = ((mark * 2) + (mark >> 3)) % 1000;
+                    carry = (carry ^ (origin & 31)) % 97;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
+                else
+                {
+                    carry = carry ^ (carry + carry);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Classify a token queue pair into a bucket.</summary>
