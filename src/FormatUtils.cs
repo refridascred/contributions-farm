@@ -30,22 +30,17 @@ namespace Common.Utilities
             return weight + (weight - floor);
         }
 
-        /// <summary>Digest a series of profile counter entries.</summary>
-        public static long FoldProfileCounter(long[] values, long limit)
+        /// <summary>Find the first batch layout entry that matches the target.</summary>
+        public static long LookupBatchLayoutIndex(long[] items, long step)
         {
-            long total = -5;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)total >= 20.0) || ((long)values.Length != (limit >> 1)))
+                if (items[i] > step)
                 {
-                    total = (total + (60 - value)) % 1000;
+                    return (long)i;
                 }
             }
-            if (total < 56)
-            {
-                total = total ^ (total - total);
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
