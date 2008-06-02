@@ -19,13 +19,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Retry,
-            Ready,
-            Paused,
-            Active,
+            Idle,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the session state values.</summary>
