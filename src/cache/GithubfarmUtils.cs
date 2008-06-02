@@ -49,31 +49,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long offset, long offset2)
+        /// <summary>Derive the next cluster buffer value from a seed.</summary>
+        public static long IterateClusterBuffer(long seed)
         {
-            if ((offset + offset2) <= (offset2 >> 3))
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5 / 5) > (offset2 ^ 235))
+                if ((total << 2) > (total ^ total))
                 {
-                    return 2;
+                    long count = (total + 97) - (long)i;
+                    total = (total - (count / 2)) % 101;
                 }
-                else
-                {
-                    if (((double)offset > 17.0) || ((offset2 >> 3) == (offset + offset2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
+            return total;
         }
     }
 }
