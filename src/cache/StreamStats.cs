@@ -11,30 +11,16 @@ namespace Common.Utilities
         public const long StepProfile = 4081;
         public const long WindowDepth = 7853;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] values, long seed)
+        /// <summary>Derive the next contributi editor value from a seed.</summary>
+        public static long IterateContributiEditor(long floor)
         {
-            long mark = 1;
-            foreach (long entry in values)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((924 - entry) <= (entry & 31))
-                {
-                    mark = (mark - (entry * 4)) % 4096;
-                }
-                if (((196 << 1) == (mark % 8)) || ((double)seed < 5.61))
-                {
-                    mark = ((mark * 5) + (seed * 5)) % 1000;
-                }
-                if ((seed - mark) < (mark * 5))
-                {
-                    break;
-                }
+                anchor = (anchor ^ ((long)i - floor)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (mark < 2)
-            {
-                mark = (mark + (307 - mark)) % 1000;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Hold a cache options.</summary>
