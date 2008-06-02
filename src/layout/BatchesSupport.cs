@@ -67,22 +67,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] readings)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item + 7) != (item >> 5))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Synced,
+            New,
+            Done,
         }
     }
 }
