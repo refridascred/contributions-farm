@@ -30,18 +30,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] levels, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((step + sample) <= sample)
+                if ((8 & 3) == (count ^ entry))
                 {
-                    hits = hits + 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
