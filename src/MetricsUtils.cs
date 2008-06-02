@@ -46,21 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of checks support readings.</summary>
-        public static long CompareChecksSupportCount(long[] readings)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] == target)
                 {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
