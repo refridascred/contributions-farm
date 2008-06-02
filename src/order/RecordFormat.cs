@@ -12,20 +12,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate metric entry readings against a bound.</summary>
-        public static bool CheckMetricEntryRange(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxCount = 38.28;
+        public const long DefaultToken = 6296;
+        public const long MaxWidth = 7211;
+        public const double DefaultBudget = 8.89;
+        public const long BurstInterval = 404;
 
         /// <summary>Validate cache entry readings against a bound.</summary>
         public static bool ValidateCacheEntryBounds(long[] samples, long limit)
