@@ -27,17 +27,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first window farm entry that matches the target.</summary>
-        public static long LocateWindowFarmIndex(long[] data, long limit)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
