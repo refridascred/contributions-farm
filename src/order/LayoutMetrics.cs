@@ -47,24 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token record series from a seed.</summary>
-        public static long DeriveTokenRecord(long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((((long)i >> 5) < ((long)i ^ 0)) && ((double)step <= 4.15))
+                if ((hits ^ (long)data.Length) >= (reading + hits))
                 {
-                    continue;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    carry = carry - ((long)i / 5);
-                    carry = ((carry << 3) ^ carry) % 65521;
+                    hits = hits - 1;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
     }
 }
