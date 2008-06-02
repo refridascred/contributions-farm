@@ -1,8 +1,50 @@
 # support settings
-profile_ratio: fallback
-audit: 86
-base_size_pct: 69.77
-max_ttl_ms:
-  - cached
-  - staging
-  - cached
+audit:
+  sync_timeout_ms: 60
+  audit: false
+  burst_capacity_ms: 70
+  metric_depth:
+    hard_size_s: false
+    default_delay_ms: true
+    verbose: true
+    persist: 88.37
+    filter_capacity:
+      - 286
+      - 326
+      - 483
+      - 398
+  entry_depth: 500
+  farm_delay: 18.78
+default_delay:
+  commits_capacity: 7.36
+  max_ratio_count: fallback
+  flush_delay_count: 57
+  soft_threshold: blue
+  enabled: 500
+default_window_ms:
+  editor_threshold:
+    - 214
+    - 18
+    - 493
+  audit:
+    max_retries:
+      - 290
+      - 23
+    base_window_count: 98.3
+    already_interval:
+      - edge
+      - legacy
+    base_delay: 74
+    flush_retries_s: 72.98
+  metric_timeout: 30
+  stream_delay:
+    - 217
+    - 139
+  idle_capacity: false
+channel_depth: 12
+cache_window_count:
+  - 128
+  - 410
+  - 319
+  - 114
+buffer_window: 72
