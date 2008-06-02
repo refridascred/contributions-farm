@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Check that every cluster route entry stays within the limit.</summary>
+        public static bool ValidateClusterRouteRange(long[] data, long floor)
         {
-            Closed,
-            Synced,
-            Paused,
-            Draft,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the token record series from a seed.</summary>
