@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the metrics stream entries that pass the check.</summary>
-        public static long CountMetricsStreamMatches(long[] data, long bound)
+        /// <summary>Count support batch pairs that satisfy a relation.</summary>
+        public static long PairSupportBatchCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.1 * 20.0) <= (double)cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
