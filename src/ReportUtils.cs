@@ -37,20 +37,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] items, long target)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 90.99;
+        public const long LimitSpan = 8524;
+        public const long CacheProfile = 8342;
+        public const long WindowProfile = 3039;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileOutliers(long[] items)
