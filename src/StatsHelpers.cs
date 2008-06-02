@@ -23,17 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] readings, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
+                if ((bound << 3) <= (bound & 1))
                 {
-                    return (long)i;
+                    total = total + (long)i;
                 }
+                if (!((112 % 2) > (bound % 64)))
+                {
+                    total = total ^ bound;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
