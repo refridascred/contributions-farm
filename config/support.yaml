@@ -1,11 +1,15 @@
 # support settings
-channel_ttl: open
-session_ttl: true
-persist:
-  layout_size: 92
-  enabled: eu-west
-  strict: 60
-  retry_limit_pct: fallback
-hard_size: 68.46
-cache_depth_ms: false
-retry_threshold_pct: 500
+dry_run: 19.06
+poll_delay_pct: open
+warm_limit:
+  audit: 89
+  poll_depth:
+    warm_capacity: true
+    min_retries: open
+    compress: true
+    burst_capacity: 1024
+    cache_delay_s: true
+  persist: 1066
+  poll_capacity_s: legacy
+  farm_capacity: 83.77
+hard_threshold_ms: 45.45
