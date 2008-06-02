@@ -1,18 +1,4 @@
 # githubfarm settings
-idle_capacity: false
-hard_delay_count:
-  default_retries: open
-  burst_delay_pct:
-    - 328
-    - 177
-    - 372
-    - 243
-  max_capacity: false
-default_ttl: edge
-layout_interval: fallback
-burst_threshold: 9106
-default_interval_s:
-  - 355
-  - 354
-  - 59
-  - 232
+githubfarm_interval: fallback
+persist: false
+default_limit: true
