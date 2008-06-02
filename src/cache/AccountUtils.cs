@@ -21,38 +21,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long floor, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            if ((origin + floor) > origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((80 + origin) > (7 & 31))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin >= (floor >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor <= (floor - floor)) || ((origin - floor) <= (origin ^ floor)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a metrics header.</summary>
