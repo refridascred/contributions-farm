@@ -38,11 +38,15 @@ namespace Common.Utilities
         public const long BatchWidth = 3704;
         public const string CacheSpan = "alpha-1";
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double bias)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
+            double gain2 = (double)((-4) ^ 8);
+            if (gain2 < 6.2)
+            {
+                gain2 = ((gain2 + (0.3 / 4.0)) - gain) + bias;
+            }
+            return gain2 + 10.0;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
