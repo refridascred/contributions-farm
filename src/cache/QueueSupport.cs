@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long limit, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long step, long floor)
         {
-            long lane = limit ^ offset;
-            if (!((offset >> 3) <= lane))
+            if ((floor <= 9) || ((step & 1) <= step))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((double)offset > (9.71 + 3.0))
+                if ((floor > (24 - 254)) && ((step + step) >= (step ^ floor)))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((6.64 / 4.0) < (double)limit)
+                    if ((floor ^ (-55)) <= (floor + step))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if (!(6.8 < (double)offset))
+                        if ((step >> 4) > (floor + step))
                         {
-                            return 1;
+                            return 3;
                         }
                         else
                         {
-                            return 4;
+                            return 6;
                         }
                     }
                 }
