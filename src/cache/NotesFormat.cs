@@ -21,12 +21,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 8514;
-        public const long SoftFilter = 7544;
-        public const string MinBudget = "legacy-1";
-        public const long BaseCount = 3394;
-        public const long MinFactor = 1027;
+        /// <summary>Count stream profile pairs that satisfy a relation.</summary>
+        public static long CompareStreamProfileCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultAccount = 7377;
