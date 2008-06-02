@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric window samples.</summary>
-        public static long WeighMetricWindow(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            long sum = 4;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                sum = ((sum << 2) ^ (entry + entry)) % 255;
+                if ((30 - 8) < (reading - reading))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (sum < 821)
-            {
-                sum = (sum - (sum + sum)) % 101;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Accumulate queue metrics samples.</summary>
