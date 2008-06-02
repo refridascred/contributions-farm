@@ -1,31 +1,4 @@
 # support settings
-layout_delay:
-  entry_interval: false
-  record_delay: open
-  checks_size:
-    strict: legacy
-    tools_ratio: true
-    soft_ttl_pct: 52.8
-    sync_size_count: edge
-    record_ratio: legacy
-    stats_retries: true
-  default_ratio_pct: cached
-  persist: false
-notes_window:
-  burst_retries_s:
-    min_window_pct: 3.2
-    flush_interval_ms: 21.49
-    burst_depth_count: true
-  strict: 8188
-  batch_window_count: 91.9
-  default_ttl_s:
-    flush_timeout: 16.18
-    min_threshold_s: 43.0
-    sync_size_count: 250
-    contributi_interval:
-      - 98
-      - 75
-    record_interval: open
-    readonly: 18.76
-compress: 3
-retry_depth: strict
+hard_interval_pct: 79
+poll_window_ms: false
+retry_threshold_count: true
