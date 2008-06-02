@@ -70,12 +70,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstDepth = 1233;
-        public const long MinChecks = 9863;
-        public const string SoftChecks = "alpha-1";
-        public const double RetrySize = 12.54;
-        public const long BaseChecks = 2400;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (!((5.0 - 12.0) >= (double)matches))
+                {
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long DigestBatch(long[] levels, long origin)
