@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxLevel = 1482;
-        public const double MinContributi = 33.82;
-        public const double SoftContributi = 41.62;
-        public const long BurstContributi = 7130;
-        public const double DefaultTimeout = 21.57;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((seed + count) < seed)
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 6569;
