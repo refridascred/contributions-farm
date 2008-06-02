@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Queued,
-            Stale,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 4328;
+        public const double HardBatches = 25.94;
+        public const long MaxScore = 8829;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardFactor = 7028;
