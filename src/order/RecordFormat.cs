@@ -19,20 +19,10 @@ namespace Common.Utilities
         public const double DefaultBudget = 8.89;
         public const long BurstInterval = 404;
 
-        /// <summary>Validate cache entry readings against a bound.</summary>
-        public static bool ValidateCacheEntryBounds(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftWidth = 3.51;
+        public const long MaxSize = 5461;
+        public const long DefaultWidth = 251;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
