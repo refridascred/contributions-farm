@@ -1,16 +1,12 @@
 # Command notes
 
-The stats module keeps account values in sync with the editor cache.
-Defaults for report live in the config folder and can be overridden per environment.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-
-The profile module keeps checks values in sync with the profile cache.
-Each already is validated before it reaches the queue queue.
-Each order is validated before it reaches the route queue.
+Use notes settings to tune how often format data is refreshed.
+The account helpers are pure functions, so they are safe to call from any thread.
+Run the order check before changing any token limits.
 
 ## Guidelines
 
-- Validate commits input early
-- Log every metrics change
-- Prefer metrics defaults
-- Keep record values small
+- Validate session input early
+- Log every queue change
+- Prefer notes defaults
+- Keep stats values small
