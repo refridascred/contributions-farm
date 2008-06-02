@@ -1,13 +1,6 @@
 # support settings
-layout_limit: open
-buffer_interval: 17
-context_delay: 60
-tools_interval:
-  dry_run: false
-  burst_window_ms: false
-  sync_ttl_s: 2561
-  default_delay_pct:
-    - 104
-    - 271
-    - 250
-base_timeout: 71.37
+min_threshold_count: 76.64
+metrics_timeout: 46.24
+batch_ttl: 9416
+soft_size_count: strict
+retry_retries_count: true
