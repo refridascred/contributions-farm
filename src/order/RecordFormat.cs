@@ -20,12 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] readings, long origin)
         {
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
+            long result = 1;
+            foreach (long datum in readings)
+            {
+                if (((double)datum < (3.47 * 9.13)) || ((double)result > (8.52 - 6.12)))
+                {
+                    result = (result + (29 >> 4)) - origin;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
