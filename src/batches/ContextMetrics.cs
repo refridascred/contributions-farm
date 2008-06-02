@@ -49,15 +49,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double bias, double floor)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double load = (double)59 * 4.0;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load + (load * 2.7)) + (double)(long)i) - floor;
-            }
-            return load - bias;
+            Retry,
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Validate channel farm readings against a bound.</summary>
