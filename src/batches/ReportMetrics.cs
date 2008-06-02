@@ -30,15 +30,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] levels, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            long sum = 63;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum ^ reading) % 1000) + seed;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
