@@ -24,18 +24,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] data)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((double)datum == (7.49 / 2.0))
+                if (sample > bound)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
