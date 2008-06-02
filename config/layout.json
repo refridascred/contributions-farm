@@ -1,13 +1,5 @@
 {
-  "batch_size": "open",
-  "enabled": ["cached", "local"],
-  "verbose": true,
-  "audit": {
-    "account_ratio": "legacy",
-    "enabled": 50.12,
-    "dry_run": 3582,
-    "idle_retries_ms": "staging",
-    "burst_ttl_pct": "stable",
-    "burst_limit_s": "strict"
-  }
+  "warm_depth": 42,
+  "readonly": 61.24,
+  "sync_delay_s": false
 }
