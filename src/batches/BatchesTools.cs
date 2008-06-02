@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardTimeout = 810;
-        public const string BaseContext = "fallback-v2";
-        public const double SoftScore = 82.68;
-        public const long MaxRatio = 4178;
-        public const long MinDepth = 3242;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstInterval = 3214;
+        public const long DefaultInterval = 4966;
+        public const double SoftWidth = 4.94;
+        public const long DefaultSession = 1185;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseFarm = 2119;
