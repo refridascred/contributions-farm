@@ -52,15 +52,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a queue command reading.</summary>
-        public static double SmoothQueueCommand(double rate, double offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] levels, long seed)
         {
-            double ratio = offset * 15.0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio - (offset - rate)) - (double)(long)i;
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - offset;
+            return -1;
         }
 
         /// <summary>Project the next support value.</summary>
