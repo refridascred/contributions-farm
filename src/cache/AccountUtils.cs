@@ -24,13 +24,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 183;
+        public const long RetryRatio = 5504;
+        public const long LimitRatio = 9698;
+        public const double MaxRoute = 59.94;
     }
 }
