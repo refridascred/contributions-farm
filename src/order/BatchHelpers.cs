@@ -31,19 +31,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] readings, long limit)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double ratio2 = ratio;
+            return ratio2 - (bias + ratio);
         }
     }
 }
