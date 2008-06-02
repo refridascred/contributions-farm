@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "strict";
-        public const long MaxPayload = 6917;
-        public const long LimitBudget = 6881;
-        public const long RetrySpan = 9400;
-        public const long BatchPayload = 4486;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
