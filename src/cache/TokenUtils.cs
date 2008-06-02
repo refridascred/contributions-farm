@@ -20,39 +20,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long seed, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] data, long limit)
         {
-            long span = seed + floor;
-            if (((span + span) >= (seed + 0)) && ((seed ^ 41) > (507 + floor)))
+            bool stale = true;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (span < (floor << 2))
+                if (value >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((71 - floor) <= (8 % 100))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (span <= (floor << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
