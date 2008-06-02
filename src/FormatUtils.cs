@@ -51,31 +51,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long target2)
+        /// <summary>Digest a series of entry cluster entries.</summary>
+        public static long TotalEntryCluster(long[] levels, long floor)
         {
-            if ((205 + target) < target2)
+            long state = 9;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target != (double)target2)
+                if ((double)state == (6.91 / 7.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (509 < (target2 << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = ((state ^ (floor - 5)) % 4096) - value;
                 }
             }
+            return state;
         }
 
         /// <summary>Accumulate record samples.</summary>
