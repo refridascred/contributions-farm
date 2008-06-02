@@ -17,12 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Match up graph batch samples.</summary>
+        public static long PairGraphBatchCount(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up commits samples.</summary>
