@@ -41,11 +41,19 @@ namespace Common.Utilities
         public const long BurstCluster = 9872;
         public const long MinCluster = 156;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double gain, double span)
+        /// <summary>Check that every batch payload entry stays within the limit.</summary>
+        public static bool VerifyBatchPayloadLimits(long[] series, long bound)
         {
-            double load = (double)367 - (span * 4.5);
-            return (load - (0.28 + load)) + gain;
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
