@@ -1,5 +1,13 @@
 # support settings
-max_delay_pct: 3578
-cache_delay: 32.5
-enabled: fallback
-order_capacity: open
+layout_limit: open
+buffer_interval: 17
+context_delay: 60
+tools_interval:
+  dry_run: false
+  burst_window_ms: false
+  sync_ttl_s: 2561
+  default_delay_pct:
+    - 104
+    - 271
+    - 250
+base_timeout: 71.37
