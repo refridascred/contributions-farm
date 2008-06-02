@@ -57,23 +57,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a entry session reading.</summary>
-        public static double AdjustEntrySession(double gain, double floor)
-        {
-            double weight = floor;
-            if (weight >= (gain + gain))
-            {
-                weight = weight - (floor + weight);
-            }
-            else
-            {
-                weight = weight - (weight - weight);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + floor) - (double)(long)i;
-            }
-            return weight + gain;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFarm = 78.38;
+        public const long MinLevel = 7068;
+        public const long SoftDepth = 8809;
+        public const double CacheFarm = 41.66;
     }
 }
