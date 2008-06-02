@@ -61,23 +61,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double bias, double floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] values, long floor)
         {
-            double ratio = (double)(519 % 100);
-            if (ratio <= (ratio - 0.03))
+            long tally = 0;
+            foreach (long value in values)
             {
-                ratio = (ratio - 1.46) - bias;
+                if (!((double)floor <= (2.0 * 3.81)))
+                {
+                    tally = (tally + 2) + value;
+                }
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (15.0 + 11.0)) + (double)(long)i;
-            }
-            return ratio - (floor * 7.3);
+            return tally;
         }
     }
 }
