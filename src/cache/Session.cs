@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of buffer cache readings.</summary>
-        public static long MatchBufferCacheCount(long[] levels)
+        /// <summary>Grade a stream queue value against two limits.</summary>
+        public static long RankStreamQueue(long floor, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((limit & 7) < (limit + limit)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((6 % 10) > floor)
                 {
-                    if ((levels[i] ^ levels[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of profile cache readings.</summary>
