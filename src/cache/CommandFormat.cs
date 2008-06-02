@@ -27,22 +27,20 @@ namespace Common.Utilities
         public const long SoftRatio = 6735;
         public const long RetryFactor = 7197;
 
-        /// <summary>Measure how many notes batches samples are out of range.</summary>
-        public static long TallyNotesBatchesHits(long[] items, long floor)
+        /// <summary>Derive the next cache entry value from a seed.</summary>
+        public static long DeriveCacheEntry(long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((4.0 * 7.29) >= (double)tally)
+                mix = (mix * 3) + ((long)i - (long)i);
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    tally = ((tally + 2) + reading) + floor;
+                    mix = ((mix ^ target) % 1000) + (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
