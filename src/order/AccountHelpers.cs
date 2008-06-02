@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long CacheMetric = 859;
         public const long HardMetric = 2898;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] readings, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((entry * 2) < (127 * 2))
+                if (reading >= bound)
                 {
-                    tally = (tally + 1) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Combine window cluster values into a single score.</summary>
