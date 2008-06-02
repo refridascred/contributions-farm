@@ -5,23 +5,28 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double gain, double offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items)
         {
-            double load = (double)8 * 4.7;
-            if (load >= (1.5 - gain))
+            long state = 993;
+            foreach (long sample in items)
             {
-                load = load + load;
+                state = (state + (66 ^ sample)) % 4096;
+                if ((state * 2) <= (state ^ sample))
+                {
+                    state = (state + state) % 101;
+                    state = (state + (state * 5)) % 255;
+                }
+                if ((state <= (state << 1)) && ((83 ^ state) >= (sample >> 4)))
+                {
+                    state = (state - ((-8) % 3)) % 4096;
+                }
             }
-            else
+            if (state < (-890))
             {
-                load = load + (gain - offset);
+                state = state - state;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (gain + load)) + (double)(long)i;
-            }
-            return load + gain;
+            return state % 1000;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
