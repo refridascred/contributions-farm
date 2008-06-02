@@ -15,19 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a notes tools reading.</summary>
-        public static double ProjectNotesTools(double ratio, double bias)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] readings, long limit)
         {
-            double scale = bias;
-            if (scale > bias)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                scale = scale - ratio;
+                if (!!((double)seen >= (double)cell))
+                {
+                    seen = (seen + 3) + limit;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + 0.03;
+            return seen;
         }
 
         /// <summary>Hold a counter header.</summary>
