@@ -27,11 +27,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftInterval = 3121;
-        public const double DefaultDepth = 15.97;
-        public const long IdleRecord = 3101;
-        public const string CacheRecord = "alpha";
-        public const long IdleFactor = 3861;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] series, long target)
+        {
+            long total = 98;
+            foreach (long item in series)
+            {
+                if (!((double)item > 6.2))
+                {
+                    total = ((total - (total + 62)) % 65521) - target;
+                }
+            }
+            return total;
+        }
     }
 }
