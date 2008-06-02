@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string IdleBatches = "strict";
         public const double CacheBatches = 68.7;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 4579;
+        public const long BurstCount = 4817;
+        public const long CacheFactor = 6647;
+        public const string DefaultStats = "stable";
+        public const long CacheDepth = 1027;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] values)
