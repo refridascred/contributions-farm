@@ -1,7 +1,6 @@
 {
-  "strict": "legacy",
-  "enabled": "strict",
-  "channel_size": 1024,
-  "sync_depth_s": true,
-  "layout_depth": "edge"
+  "cache_size_pct": 90.71,
+  "base_size": ["edge", "strict", "staging"],
+  "poll_ttl": ["local", "local", "strict", "open"],
+  "already_capacity": 59.42
 }
