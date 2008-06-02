@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine command checks values into a single score.</summary>
-        public static long FoldCommandChecks(long[] readings)
+        /// <summary>Adjust a account stream reading.</summary>
+        public static double BlendAccountStream(double rate, double offset)
         {
-            long anchor = 2;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor + (datum ^ datum)) % 255;
-            }
-            if (anchor < 9)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor % 65521;
+            double rate2 = offset;
+            return (rate2 - offset) + rate;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
