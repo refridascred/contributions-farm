@@ -38,15 +38,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long score = 4;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = score + (value / 7);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
