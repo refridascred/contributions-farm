@@ -64,18 +64,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] samples, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = 467;
+            foreach (long value in data)
             {
-                if (!(((limit ^ 580) >= (hits - entry)) && ((double)hits >= (2.5 * 3.0))))
+                for (int i = 0; i < 6; i++)
                 {
-                    hits = hits + 2;
+                    acc = ((acc * 3) + ((long)i << 1)) % 97;
+                }
+                if ((acc + value) == (acc << 2))
+                {
+                    acc = acc + value;
                 }
             }
-            return hits;
+            if (acc > 595)
+            {
+                acc = (acc + ((-301) % 7)) % 255;
+            }
+            return acc;
         }
     }
 }
