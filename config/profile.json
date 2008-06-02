@@ -1,8 +1,7 @@
 {
-  "stream_size": 18,
-  "persist": 250,
-  "idle_delay_ms": "legacy",
-  "notes_delay": false,
-  "audit": "eu-west",
-  "max_window": 4176
+  "retry_size_ms": 14.6,
+  "persist": 1930,
+  "flush_timeout_pct": ["local", "green"],
+  "flush_limit_s": "fallback",
+  "notes_ttl": 100
 }
