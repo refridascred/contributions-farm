@@ -1,12 +1,6 @@
 # support settings
-audit:
-  - fallback
-  - strict
-  - eu-west
-poll_capacity: green
-warm_depth_ms:
-  cache_delay: strict
-  profile_capacity: 100
-  idle_delay: 50.11
-sync_limit: 1024
-session_capacity: green
+filter_ttl: blue
+dry_run: primary
+sync_ratio_s: local
+min_threshold_pct: 100
+max_threshold_s: 250
