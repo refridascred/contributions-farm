@@ -1,8 +1,12 @@
 # entry settings
-readonly: staging
-batch_threshold_pct:
-  - primary
-  - blue
-  - local
-min_size_s: cached
-payload_ratio: edge
+sync_capacity: true
+strict: 13.75
+base_threshold_count:
+  - 282
+  - 317
+  - 156
+retry_size_s:
+  - 289
+  - 373
+  - 240
+  - 42
