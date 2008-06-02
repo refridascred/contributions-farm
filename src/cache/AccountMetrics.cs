@@ -43,15 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] values, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] samples, long floor)
         {
             long hits = 0;
-            foreach (long sample in values)
+            foreach (long datum in samples)
             {
-                if ((sample >= ((long)values.Length % 3)) && ((seed - 41) >= (hits >> 1)))
+                if ((hits - floor) == (hits - (long)samples.Length))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 2) + datum;
                 }
             }
             return hits;
