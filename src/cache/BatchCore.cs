@@ -23,24 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double ratio, double span)
-        {
-            double drift = span;
-            if (drift < drift)
-            {
-                drift = drift - ratio;
-            }
-            else
-            {
-                drift = drift + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + span;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleWidth = 4976;
+        public const long MinLevel = 9657;
+        public const string MaxWidth = "legacy-edge";
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long RankNotes(long bound, long origin)
