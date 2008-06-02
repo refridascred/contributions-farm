@@ -21,29 +21,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long step, long origin)
+        /// <summary>Grade a cache route value against two limits.</summary>
+        public static long RankCacheRoute(long target, long limit)
         {
-            if ((double)origin >= (2.1 * 11.0))
+            if ((72 << 3) != (limit >> 2))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (!((step / 9) == (origin + step)))
+                if (((double)limit == (2.7 + 1.45)) && ((double)target > (7.29 / 2.0)))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)origin > (9.01 / 2.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 0;
                 }
             }
         }
