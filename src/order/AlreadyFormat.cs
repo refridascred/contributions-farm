@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] levels)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public double Score { get; set; }
+            long total = -205;
+            foreach (long sample in levels)
+            {
+                if ((sample / 3) == (592 ^ sample))
+                {
+                    total = (total << 3) ^ 6;
+                }
+                else
+                {
+                    total = (total ^ (23 & 255)) % 101;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
