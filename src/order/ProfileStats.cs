@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a batches checks sample.</summary>
-        public static long FindBatchesChecksIndex(long[] series, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -377;
+            foreach (long cell in values)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 3) ^ (carry + step)) - cell;
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
