@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long step, long step2)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long delta = step - step2;
+            if (!((step2 * 2) < (delta + step2)))
             {
-                if ((tally - reading) <= origin)
+                return 8;
+            }
+            else
+            {
+                if ((90 + step2) < delta)
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (step2 >= (delta + delta))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step2 >= (delta + 8)) || ((step + step) > ((-2) % 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a cluster record.</summary>
