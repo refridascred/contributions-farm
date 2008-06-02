@@ -29,15 +29,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long target, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            if ((double)step == (double)7)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((3.76 + 8.3) > (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
