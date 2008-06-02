@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
             public double Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
