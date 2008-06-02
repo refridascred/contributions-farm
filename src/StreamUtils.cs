@@ -83,16 +83,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long floor)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark << 3) ^ (floor % 97)) % 1000;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public double Size { get; set; }
         }
     }
 }
