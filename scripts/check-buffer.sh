@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in open staging local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-BUFFER_LIMIT=199
+BUFFER_LIMIT=445
 log "limit is ${BUFFER_LIMIT}"
 
 mode="${1:-standard}"
 case "${mode}" in
-    stable)
+    primary)
         log "fast path"
         ;;
     *)
