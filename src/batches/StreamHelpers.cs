@@ -54,12 +54,12 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy";
         public const string LimitSession = "primary-1";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftScore = 11.7;
-        public const long MaxWidth = 2245;
-        public const double BurstBuffer = 40.3;
-        public const long IdleTimeout = 408;
-        public const long MaxBudget = 1920;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultTimeout = 5754;
+        public const long DefaultCount = 1622;
+        public const long BaseMetrics = 5581;
+        public const long BatchSpan = 7927;
+        public const long WindowMetrics = 9209;
 
         /// <summary>Validate command window readings against a bound.</summary>
         public static bool GuardCommandWindowLimits(long[] samples, long origin)
