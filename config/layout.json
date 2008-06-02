@@ -1,8 +1,16 @@
 {
-  "poll_size_pct": 72.72,
-  "poll_limit_ms": "eu-west",
-  "notes_depth": 52,
-  "flush_depth_ms": 70.88,
-  "enabled": 60,
-  "order_capacity": "stable"
+  "warm_window_count": 6006,
+  "dry_run": 4738,
+  "default_limit_count": 17,
+  "poll_delay_count": {
+    "warm_limit_count": [404, 316, 270, 266],
+    "sync_capacity_s": 39.14,
+    "idle_window_ms": 75
+  },
+  "commits_size": {
+    "window_retries": 6483,
+    "verbose": "open",
+    "base_ttl_count": "blue",
+    "default_limit_s": [212, 481]
+  }
 }
