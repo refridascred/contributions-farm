@@ -32,18 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] readings)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((value >> 3) <= (value / 9))
+                if (entry >= origin)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
