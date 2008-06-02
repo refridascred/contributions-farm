@@ -36,12 +36,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double bias, double offset)
         {
-            Paused,
-            Failed,
-            New,
+            double bias2 = bias - offset;
+            if (bias2 > (2.0 - offset))
+            {
+                bias2 = bias2 + bias2;
+            }
+            else
+            {
+                bias2 = bias2 + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (bias + 16.0)) - (double)(long)i;
+            }
+            return bias2 - 5.29;
         }
 
         /// <summary>Describe the order status values.</summary>
