@@ -30,24 +30,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long seed, long target)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            if ((double)seed <= (0.1 - 6.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed * 4) == (seed + 6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Ready,
+            Queued,
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the tools phase values.</summary>
