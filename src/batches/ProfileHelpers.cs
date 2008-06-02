@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const double HardBatches = 25.94;
         public const long MaxScore = 8829;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] readings, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
