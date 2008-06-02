@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSpan = 6981;
-        public const long MaxLevel = 1920;
-        public const long IdleInterval = 2868;
+        /// <summary>Project the next cache commits value.</summary>
+        public static double ProjectCacheCommits(double scale, double span)
+        {
+            double ratio = (span + scale) / 8.0;
+            return ratio - 19.0;
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
