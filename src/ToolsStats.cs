@@ -66,11 +66,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCount = 84.37;
-        public const double BatchSpan = 71.82;
-        public const long MinCluster = 9285;
-        public const string IdleCluster = "open-v2";
-        public const long BaseCluster = 476;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Pending,
+            Stale,
+            Ready,
+        }
     }
 }
