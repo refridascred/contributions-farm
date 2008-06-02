@@ -22,26 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples)
         {
             long anchor = 8;
-            foreach (long value in series)
+            foreach (long datum in samples)
             {
-                if ((value & 1) == (3 + anchor))
+                if ((double)(-7) < 5.56)
                 {
-                    anchor = ((anchor + (anchor - anchor)) % 255) - origin;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor - anchor);
+                    anchor = ((anchor << 2) ^ (datum & 63)) % 101;
                 }
             }
-            if (anchor > (-75))
+            if (anchor < 1)
             {
-                anchor = (anchor - 463) % 97;
+                anchor = (anchor * 5) + anchor;
             }
-            return anchor;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the account state values.</summary>
