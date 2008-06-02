@@ -1,8 +1,12 @@
 {
-  "idle_timeout_ms": false,
-  "strict": "strict",
-  "compress": true,
-  "retry_retries": "open",
-  "min_threshold_pct": "fallback",
-  "audit": ["cached", "standard"]
+  "batch_ttl_pct": 4259,
+  "metric_limit": "standard",
+  "batch_capacity": {
+    "sync_delay": 96.89,
+    "soft_size": true,
+    "readonly": true,
+    "queue_timeout": "staging"
+  },
+  "readonly": "open",
+  "verbose": false
 }
