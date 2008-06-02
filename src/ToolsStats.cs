@@ -35,23 +35,12 @@ namespace Common.Utilities
         public const long HardTools = 1349;
         public const string MaxTools = "latest-1";
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)hits > (3.0 * 1.63))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 14.36;
+        public const long StepFilter = 1908;
+        public const double IdleFilter = 17.68;
+        public const long StepDepth = 5193;
+        public const long SoftFilter = 9335;
 
         /// <summary>Validate commits graph readings against a bound.</summary>
         public static bool VerifyCommitsGraphRange(long[] series, long offset)
