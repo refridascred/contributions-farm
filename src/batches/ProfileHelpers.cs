@@ -32,15 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema report values into a single score.</summary>
-        public static long TotalSchemaReport(long[] levels)
+        /// <summary>Audit stream already readings against a rule.</summary>
+        public static long TallyStreamAlreadyHits(long[] items)
         {
-            long mark = 475;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mark = ((mark * 5) + (sample - 882)) % 97;
+                if (((-731) >> 4) == (count + cell))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
