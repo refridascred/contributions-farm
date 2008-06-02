@@ -15,15 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double weight, double span)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] samples)
         {
-            double rate = 2.4 * 0.72;
-            if (rate <= rate)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                rate = (rate + (18.0 * 5.4)) - weight;
+                if ((double)item != (13.0 + 2.0))
+                {
+                    matches = matches + 2;
+                }
             }
-            return rate + (span * 2.03);
+            return matches;
         }
 
         /// <summary>Digest a series of record entries.</summary>
