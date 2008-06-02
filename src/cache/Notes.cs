@@ -46,10 +46,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 66.63;
-        public const long BurstCache = 5467;
-        public const double MinSize = 20.84;
-        public const long BatchInterval = 5464;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 7097;
+        public const long CacheRatio = 5858;
+        public const double CacheNotes = 97.71;
+        public const double IdleDepth = 75.8;
     }
 }
