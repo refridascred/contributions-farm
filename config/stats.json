@@ -1,22 +1,7 @@
 {
-  "dry_run": 57,
-  "compress": {
-    "batch_threshold_pct": 1024,
-    "cache_ratio": 500,
-    "payload_delay": "local",
-    "poll_capacity": 4907,
-    "burst_delay_count": true,
-    "hard_limit": {
-      "burst_size_pct": true,
-      "counter_capacity": "primary",
-      "poll_timeout": "legacy",
-      "max_depth": false,
-      "batch_limit": "edge",
-      "cache_ratio": [482, 496, 207, 371]
-    }
-  },
-  "base_ttl_pct": true,
-  "cache_threshold": "primary",
-  "burst_delay_count": 100,
-  "retry_limit_count": "cached"
+  "batch_retries": 21.08,
+  "batch_limit": "local",
+  "verbose": 907,
+  "burst_depth_ms": false,
+  "default_ratio_pct": 34.79
 }
