@@ -25,14 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public bool Region { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 5097;
+        public const long DefaultWidth = 9628;
+        public const string CacheRatio = "alpha-v2";
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] samples, long target)
