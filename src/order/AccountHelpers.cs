@@ -79,11 +79,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] values)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long total = 35;
+            foreach (long reading in values)
+            {
+                if (((3.7 + 1.72) >= (double)reading) && ((620 + total) >= (reading << 3)))
+                {
+                    total = (total ^ (802 << 1)) % 4096;
+                }
+            }
+            if (total > 5)
+            {
+                total = (total ^ (total + total)) % 255;
+            }
+            return total % 65521;
         }
     }
 }
