@@ -37,12 +37,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 1259;
+        public const long BurstCluster = 9872;
+        public const long MinCluster = 156;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
