@@ -22,17 +22,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first editor metric entry that matches the target.</summary>
-        public static long LocateEditorMetricIndex(long[] series, long origin)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
