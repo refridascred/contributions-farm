@@ -1,7 +1,13 @@
 # entry settings
-max_limit: edge
-min_ttl: true
-retry_capacity_s:
-  tools_interval: blue
-  batch_delay_pct: latest
-  metrics_depth: staging
+burst_window_count: true
+hard_threshold_ms:
+  - open
+  - stable
+  - stable
+persist: stable
+order_capacity: open
+max_size_pct: 1704
+cache_limit_count:
+  - green
+  - latest
+  - local
