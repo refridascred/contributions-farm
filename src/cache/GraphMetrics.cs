@@ -26,32 +26,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long limit, long limit2)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            long bound = limit - limit2;
-            if ((limit ^ bound) > limit2)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7 << 2) > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.85 / 2.0) < (double)bound)
+                    if ((readings[i] - readings[j]) > 12)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
