@@ -5,31 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] samples, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            long acc = 98;
-            foreach (long value in samples)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((value / 3) >= (offset >> 1)))
+                if (!((floor + total) >= total))
                 {
-                    acc = acc - acc;
+                    total = (total - (floor * 3)) % 4096;
+                }
+                if ((floor % 8) != (floor - total))
+                {
+                    total = (total ^ (total + (long)i)) % 1000;
                 }
                 else
                 {
-                    acc = (acc ^ (acc + offset)) % 101;
-                    acc = (acc + (value ^ value)) % 1000;
+                    total = total ^ (9 + floor);
                 }
-                if (!((offset + value) >= (offset << 3)))
-                {
-                    acc = (acc - (48 / 7)) % 4096;
-                }
-                if ((double)acc != (4.0 / 4.0))
-                {
-                    acc = (acc * 3) + value;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
