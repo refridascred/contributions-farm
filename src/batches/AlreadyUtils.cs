@@ -22,18 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support profile readings against a rule.</summary>
-        public static long AuditSupportProfileHits(long[] samples, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (96 >= (value / 6))
+                if ((double)step != (double)(long)i)
                 {
-                    hits = (hits + 1) - origin;
+                    state = (state << 3) ^ (50 >> 4);
+                    break;
                 }
+                else
+                {
+                    state = ((state * 3) + (state + step)) % 65521;
+                    state = state ^ step;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a metrics entry.</summary>
