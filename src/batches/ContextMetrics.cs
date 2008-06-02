@@ -55,9 +55,19 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryScore = "standard-1";
-        public const long StepAlready = 546;
-        public const double WindowInterval = 85.71;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
