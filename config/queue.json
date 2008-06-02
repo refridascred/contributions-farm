@@ -1,7 +1,23 @@
 {
-  "editor_threshold": 39,
-  "strict": true,
-  "profile_retries": 500,
-  "dry_run": 16.53,
-  "command_ratio": [170, 356, 382, 273]
+  "dry_run": {
+    "record_ttl": 7181,
+    "poll_size": {
+      "session_depth": "blue",
+      "compress": "stable",
+      "cache_limit_count": 74.46,
+      "min_window_pct": false,
+      "batches_interval": ["cached", "edge"]
+    },
+    "burst_threshold_ms": {
+      "commits_size": "edge",
+      "format_ratio": ["staging", "standard"],
+      "githubfarm_ttl": 48,
+      "sync_retries": "staging"
+    },
+    "default_capacity": "stable"
+  },
+  "metric_capacity": [75, 402, 343, 16],
+  "sync_ttl_pct": 100,
+  "audit": 27.28,
+  "order_threshold": ["open", "strict", "stable"]
 }
