@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            long mix = -27;
-            foreach (long item in items)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                mix = (mix + mix) ^ item;
+                long matches = (target >> 3) - (long)i;
+                if (((long)i - (long)i) <= matches)
+                {
+                    sum = ((sum << 3) ^ ((long)i + sum)) % 97;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return mix % 97;
+            return sum;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
