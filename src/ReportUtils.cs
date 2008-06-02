@@ -54,18 +54,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] data, long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum << 3) < datum)
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
