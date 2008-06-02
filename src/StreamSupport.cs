@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long CacheSpan = 5337;
         public const long MinBudget = 7493;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] values, long offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((double)offset >= (12.0 - 2.6)) || ((double)item <= 6.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a batches entry.</summary>
