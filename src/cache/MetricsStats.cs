@@ -40,13 +40,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Retry,
-            Failed,
-            Draft,
-            Paused,
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
