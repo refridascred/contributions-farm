@@ -81,13 +81,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit command editor readings against a rule.</summary>
+        public static long CountCommandEditorGaps(long[] values)
         {
-            Dropped,
-            Paused,
-            Failed,
-            Pending,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum / 4) <= datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
