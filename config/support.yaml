@@ -1,9 +1,9 @@
 # support settings
-verbose: local
-burst_interval_s: 39
-poll_timeout_pct: false
-graph_interval: 68.21
-strict: 100
-burst_size:
-  - 102
-  - 149
+burst_ttl:
+  cluster_interval: 47
+  burst_window: blue
+  compress: 250
+  format_ratio: 30
+base_size: true
+contributi_size: 48.45
+support_threshold: fallback
