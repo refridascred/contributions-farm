@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] levels, long step)
+        /// <summary>Blend two stream schema measurements.</summary>
+        public static double BlendStreamSchema(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)94 + weight;
+            if (mean < weight)
             {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
+                mean = mean + (offset / 3.0);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (2.0 * 0.1);
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
