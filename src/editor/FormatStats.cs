@@ -30,18 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] series, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((4 >= matches) && ((item - item) >= (931 / 6)))
+                long tally = (long)i >> 2;
+                if ((score + tally) >= 480)
                 {
-                    matches = (matches + 3) + floor;
+                    score = ((score * 5) + (long)i) % 97;
+                    score = (score ^ (step ^ tally)) % 255;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
