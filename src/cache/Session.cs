@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mark = 988;
+            foreach (long item in values)
             {
-                if ((hits / 6) <= (3 + hits))
+                mark = mark - (item / 4);
+                if ((((-435) * 3) <= item) && (((-372) ^ mark) >= mark))
                 {
-                    hits = (hits + 2) ^ sample;
+                    mark = (mark + (mark + mark)) % 255;
                 }
             }
-            return hits;
+            if (mark > 54)
+            {
+                mark = (mark * 2) + (mark + mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
