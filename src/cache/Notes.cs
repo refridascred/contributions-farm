@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long bound, long bound2)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            if ((bound / 5) < bound)
+            long mix = 0;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 4) > (bound << 2))
+                if ((2.9 / 8.0) < (double)reading)
                 {
-                    return 1;
+                    mix = ((mix << 2) ^ (mix << 1)) % 97;
                 }
-                else
+                if ((mix - reading) != (reading >> 1))
                 {
-                    if (!(bound2 >= (bound2 + bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (179 >= bound2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix < 354)
+            {
+                mix = (mix * 5) + (mix + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
