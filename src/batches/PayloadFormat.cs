@@ -22,23 +22,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of notes filter entries.</summary>
-        public static long TallyNotesFilter(long[] samples, long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long origin)
         {
-            long sum = 67;
-            foreach (long datum in samples)
+            if (((floor & 31) >= origin) || (floor >= (floor / 2)))
             {
-                if (datum >= (datum + datum))
+                return 0;
+            }
+            else
+            {
+                if ((16.0 / 4.0) != (double)origin)
                 {
-                    sum = (sum + (datum / 9)) % 65521;
+                    return 4;
                 }
-                sum = sum + (datum ^ floor);
+                else
+                {
+                    if (!((2.65 - 1.1) > (double)origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor + origin) != (floor + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            if (sum < (-71))
-            {
-                sum = sum + (floor << 1);
-            }
-            return sum % 4096;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
