@@ -42,11 +42,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            Dropped,
+            Draft,
+            Queued,
+            Ready,
         }
     }
 }
