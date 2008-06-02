@@ -13,21 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell < offset)
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
