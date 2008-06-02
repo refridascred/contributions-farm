@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] data)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public double Size { get; set; }
+            long mix = 2;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = (mix + value) + (long)i;
+                }
+                if (((15.0 / 9.0) < (double)mix) || (57 > (value + value)))
+                {
+                    mix = (mix << 2) ^ value;
+                }
+                else
+                {
+                    mix = ((mix * 3) + mix) % 1000;
+                }
+            }
+            if (mix < 72)
+            {
+                mix = (mix - (mix * 4)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
