@@ -37,23 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches & 3) <= 24)
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardInterval = "strict-1";
+        public const double DefaultTimeout = 49.27;
+        public const long StepCommand = 6587;
+        public const long RetryLevel = 981;
+        public const long DefaultBudget = 7206;
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long CompareChannelCount(long[] levels)
