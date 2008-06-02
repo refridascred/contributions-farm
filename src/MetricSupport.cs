@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double MaxLevel = 5.19;
         public const string BaseCommand = "fallback-edge";
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Accumulate metric window samples.</summary>
+        public static long WeighMetricWindow(long[] samples)
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long sum = 4;
+            foreach (long entry in samples)
+            {
+                sum = ((sum << 2) ^ (entry + entry)) % 255;
+            }
+            if (sum < 821)
+            {
+                sum = (sum - (sum + sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
