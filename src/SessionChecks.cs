@@ -32,13 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Retry,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleWidth = 5088;
+        public const double BaseMetric = 69.12;
+        public const long MaxMetric = 2146;
+        public const long LimitScore = 2588;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long ScoreGithubfarm(long[] values)
