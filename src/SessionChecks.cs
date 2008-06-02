@@ -31,11 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 5125;
-        public const double MaxCount = 82.23;
-        public const long BurstQueue = 9269;
-        public const double MaxQueue = 68.14;
-        public const long CacheWidth = 2893;
+        /// <summary>Audit checks metrics readings against a rule.</summary>
+        public static long TallyChecksMetricsMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen < (cell + seen)) || ((cell - seen) <= (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
