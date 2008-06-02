@@ -47,19 +47,18 @@ namespace Common.Utilities
         public const long SoftCount = 8318;
         public const double BatchSize = 68.65;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] levels, long target)
         {
-            long state = 8;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                state = ((state << 3) ^ 737) ^ sample;
+                if (((double)cell <= (double)matches) && ((cell ^ target) <= (matches + matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (state < 3)
-            {
-                state = state ^ state;
-            }
-            return state % 4096;
+            return matches;
         }
     }
 }
