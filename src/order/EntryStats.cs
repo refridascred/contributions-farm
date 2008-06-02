@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((floor << 2) != (sum + 92))
-                {
-                    sum = (sum + sum) % 255;
-                    sum = (sum + ((long)i * 2)) % 97;
-                }
-                if ((floor + sum) < (sum ^ sum))
-                {
-                    sum = (sum + (floor / 5)) % 255;
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
