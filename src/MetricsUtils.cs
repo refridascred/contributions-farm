@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double gain, double floor)
-        {
-            double scale = (double)(1 >> 2);
-            if (scale < (floor / 6.0))
-            {
-                scale = (scale + (scale / 8.0)) + gain;
-            }
-            else
-            {
-                scale = scale - (double)885;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 8638;
+        public const long HardWidth = 279;
+        public const double MinMetrics = 0.83;
+        public const string BurstCount = "stable-edge";
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
