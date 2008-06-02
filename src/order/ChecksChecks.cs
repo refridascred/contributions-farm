@@ -26,18 +26,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many record cache samples are out of range.</summary>
-        public static long TallyRecordCacheOutliers(long[] items)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((cell - cell) < tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Active,
+            Failed,
         }
     }
 }
