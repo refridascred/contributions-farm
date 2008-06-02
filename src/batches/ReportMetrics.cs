@@ -27,13 +27,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Fold a list of graph report readings.</summary>
+        public static long TotalGraphReport(long[] values)
         {
-            Draft,
-            New,
-            Failed,
-            Ready,
+            long result = -528;
+            foreach (long sample in values)
+            {
+                result = ((result << 2) ^ (result + (long)values.Length)) - sample;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the schema phase values.</summary>
