@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] levels)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((long)levels.Length <= (160 * 2))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
