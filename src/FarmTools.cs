@@ -20,17 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] values, long floor)
+        /// <summary>Scale a batches schema figure with a bias.</summary>
+        public static double ProjectBatchesSchema(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = scale;
+            if (bias <= scale)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - (double)970;
             }
-            return -1;
+            return bias + floor;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
