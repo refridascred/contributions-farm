@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum << 3) ^ (long)i) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Project the next counter checks value.</summary>
