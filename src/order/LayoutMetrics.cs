@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result + (result / 5)) % 101;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
