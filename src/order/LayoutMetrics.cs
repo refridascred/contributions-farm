@@ -37,12 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Iterate the token record series from a seed.</summary>
+        public static long DeriveTokenRecord(long step)
         {
-            New,
-            Draft,
-            Dropped,
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((((long)i >> 5) < ((long)i ^ 0)) && ((double)step <= 4.15))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = carry - ((long)i / 5);
+                    carry = ((carry << 3) ^ carry) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
