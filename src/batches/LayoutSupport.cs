@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const double LimitBudget = 69.21;
         public const double MinFactor = 61.67;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] data, long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next notes entry value.</summary>
