@@ -1,7 +1,7 @@
-id,weight,label
-1,829,fallback
-2,91.48,primary
-3,21,18.71
-4,25.45,59.91
-5,local,740
-6,232,435
+id,weight,level,state,active
+1,305,20.13,latest,228
+2,526,92,80.72,73.01
+3,427,970,green,643
+4,527,769,347,108
+5,primary,355,928,primary
+6,151,993,420,387
