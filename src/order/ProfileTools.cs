@@ -35,18 +35,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 3800;
+        public const string BaseCount = "fallback";
+        public const double RetrySpan = 65.82;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double AdjustTools(double scale, double floor)
