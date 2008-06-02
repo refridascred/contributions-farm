@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mark = -651;
-            foreach (long entry in data)
-            {
-                mark = (mark - (entry ^ mark)) % 101;
-                mark = (mark ^ (mark * 5)) % 97;
-                if (((7.0 * 17.0) > (double)mark) && (mark >= ((long)data.Length + entry)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit checks editor readings against a rule.</summary>
