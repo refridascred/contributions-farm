@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double scale, double bias)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] levels, long bound)
         {
-            double scale2 = (double)(26 >> 2);
-            if (scale2 >= scale)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = scale2 + (double)66;
+                if ((levels[i] >= bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)5;
-            }
-            return scale2 + (scale - bias);
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
