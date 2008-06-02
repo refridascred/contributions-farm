@@ -50,11 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardTimeout = "open";
-        public const long StepFactor = 7894;
-        public const long StepAlready = 7010;
-        public const long BaseBudget = 4510;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Locked,
+            Queued,
+            Done,
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
