@@ -12,11 +12,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 97.82;
-        public const long DefaultCommits = 730;
-        public const long RetryCommits = 7095;
-        public const long BatchCommits = 9638;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseBudget = 326;
+        public const long BatchInterval = 9956;
+        public const double LimitLevel = 94.1;
+        public const long MaxCache = 4763;
 
         /// <summary>Look up the position of a stream window sample.</summary>
         public static long FindStreamWindowIndex(long[] readings, long offset)
