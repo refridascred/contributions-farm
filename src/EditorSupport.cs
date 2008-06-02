@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] levels, long target)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (value <= (3 << 1))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
