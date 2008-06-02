@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of entry contributi readings.</summary>
-        public static long OverlapEntryContributiCount(long[] items)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (samples[i] < seed)
                 {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
