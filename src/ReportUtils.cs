@@ -64,17 +64,20 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long bound)
+        /// <summary>Iterate the graph batch series from a seed.</summary>
+        public static long DeriveGraphBatch(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] <= bound)
+                state = state + state;
+                if (!(((228 + state) > 6) || ((origin + origin) >= (state + (long)i))))
                 {
-                    return (long)i;
+                    state = (state + ((long)i << 1)) % 65521;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
