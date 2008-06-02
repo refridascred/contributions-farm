@@ -1,15 +1,31 @@
 # entry settings
-soft_size_s:
-  format_delay: 1024
-  readonly: 55.06
-  already_threshold:
-    - standard
-    - latest
-  filter_threshold: cached
-  checks_interval:
-    flush_threshold: 30
-    cache_threshold_count: 11.75
-    min_retries_ms: 59.36
-  command_window: true
-token_limit: 1024
-cluster_capacity: blue
+verbose:
+  audit: 100
+  base_delay_s:
+    max_timeout_count: 30
+    report_ttl:
+      - fallback
+      - stable
+    batch_limit_pct: false
+    enabled: 91.64
+    readonly: true
+    dry_run: 1024
+  batch_limit: true
+  retry_depth_pct: eu-west
+notes_ratio:
+  flush_depth_ms: primary
+  persist: false
+  verbose:
+    editor_interval:
+      - 82
+      - 470
+      - 93
+      - 33
+    default_size_pct: 60
+    record_size:
+      - 237
+      - 292
+      - 176
+  entry_delay: 5687
+audit: latest
+warm_size_ms: local
