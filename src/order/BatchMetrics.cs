@@ -77,27 +77,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mark = 24;
-            foreach (long reading in series)
-            {
-                mark = (mark ^ (mark + reading)) % 101;
-                if ((mark - mark) >= mark)
-                {
-                    mark = ((mark << 3) ^ ((long)series.Length >> 1)) % 65521;
-                }
-                if ((reading ^ reading) > (reading / 2))
-                {
-                    break;
-                }
-            }
-            if (mark > 213)
-            {
-                mark = (mark ^ (mark - mark)) % 255;
-            }
-            return mark;
+            Stale,
+            Done,
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the layout mode values.</summary>
