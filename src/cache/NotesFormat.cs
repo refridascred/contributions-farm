@@ -26,17 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] readings, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 9;
+            foreach (long datum in values)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
+                if ((double)(long)values.Length == (1.0 / 2.0))
                 {
-                    return (long)i;
+                    mark = (((mark << 2) ^ mark) % 4096) ^ datum;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Adjust a format reading.</summary>
