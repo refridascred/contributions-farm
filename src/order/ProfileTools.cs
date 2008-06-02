@@ -49,14 +49,17 @@ namespace Common.Utilities
             return load + (offset * 13.0);
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] samples, long seed)
         {
-            Retry,
-            Queued,
-            Closed,
-            Stale,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
