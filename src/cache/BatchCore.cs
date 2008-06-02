@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "open-v2";
-        public const double BatchScore = 39.77;
-        public const long MaxCluster = 8267;
-        public const long SoftBudget = 7014;
-        public const long HardCluster = 6032;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long DigestCounter(long[] series)
