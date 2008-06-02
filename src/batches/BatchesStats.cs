@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a commits editor sample.</summary>
