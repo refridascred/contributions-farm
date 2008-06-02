@@ -56,11 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "stable-1";
+        public const long DefaultFactor = 3523;
+        public const double MinTimeout = 69.57;
+        public const double BaseCommits = 73.02;
+        public const long DefaultCommits = 4507;
     }
 }
