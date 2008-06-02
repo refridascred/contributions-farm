@@ -19,18 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] series, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            if (!((447 & 15) != (origin + origin)))
             {
-                if (((sample >> 2) == (long)series.Length) || (((double)seen >= (double)sample) && ((seen >> 3) > sample)))
+                return 2;
+            }
+            else
+            {
+                if (!(origin > (limit - origin)))
                 {
-                    seen = (seen + 3) + offset;
+                    return 7;
+                }
+                else
+                {
+                    if (((187 + limit) > origin) && ((limit >> 5) >= (origin + 63)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
