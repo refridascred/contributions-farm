@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long WindowSize = 6804;
         public const long HardCommand = 1842;
 
-        /// <summary>Compare every pair of metrics cluster readings.</summary>
-        public static long PairMetricsClusterCount(long[] values)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
