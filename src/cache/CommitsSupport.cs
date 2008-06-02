@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double weight, double floor)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double rate, double bias)
         {
-            double mean = floor;
-            for (int i = 0; i < 5; i++)
+            double scale = bias;
+            if (scale < scale)
             {
-                mean = ((mean + (mean + floor)) - (double)(long)i) + weight;
+                scale = (scale - scale) + rate;
             }
-            return mean + floor;
+            return scale + scale;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
