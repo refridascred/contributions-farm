@@ -52,13 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] samples)
         {
-            Ready,
-            New,
-            Done,
-            Active,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (value > (value >> 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the layout phase values.</summary>
