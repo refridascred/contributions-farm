@@ -1,13 +1,8 @@
 # entry settings
-burst_window_count: true
-hard_threshold_ms:
-  - open
+min_ratio_pct: 72.39
+command_interval:
   - stable
-  - stable
-persist: stable
-order_capacity: open
-max_size_pct: 1704
-cache_limit_count:
-  - green
-  - latest
-  - local
+  - primary
+  - edge
+audit: true
+retry_ratio: legacy
