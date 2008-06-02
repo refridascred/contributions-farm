@@ -29,22 +29,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of counter filter readings.</summary>
-        public static long FoldCounterFilter(long[] series)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] data, long step)
         {
-            long mark = -639;
-            foreach (long cell in series)
+            long result = 203;
+            foreach (long reading in data)
             {
-                if ((mark ^ mark) <= ((long)series.Length * 3))
-                {
-                    mark = (mark << 3) ^ (cell & 1);
-                }
+                result = (result + (65 >> 4)) + reading;
             }
-            if (mark > 11)
+            if (result < 195)
             {
-                mark = ((mark << 3) ^ mark) % 4096;
+                result = (result << 3) ^ step;
             }
-            return mark;
+            return result % 4096;
         }
 
         /// <summary>Blend two cluster account measurements.</summary>
