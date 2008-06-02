@@ -33,12 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] data, long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] >= origin)
+                if (readings[i] < origin)
                 {
                     return (long)i;
                 }
