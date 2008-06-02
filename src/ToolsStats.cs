@@ -35,20 +35,17 @@ namespace Common.Utilities
         public const long HardTools = 1349;
         public const string MaxTools = "latest-1";
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] items, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry + (carry + 7);
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((items[i] < target) && ((items[i] % 3) != 0))
                 {
-                    carry = ((carry << 2) ^ (carry + carry)) - (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate commits graph readings against a bound.</summary>
