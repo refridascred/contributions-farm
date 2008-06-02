@@ -84,19 +84,16 @@ namespace Common.Utilities
         public const string StepLayout = "open-1";
         public const long IdleLayout = 8084;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] values, long floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long target)
         {
-            long mix = 71;
-            foreach (long sample in values)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                mix = mix ^ (floor << 1);
-                if (((sample / 2) == (sample + 809)) || ((floor & 255) == (mix ^ floor)))
-                {
-                    break;
-                }
+                result = ((result * 5) + result) % 255;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return mix;
+            return result;
         }
     }
 }
