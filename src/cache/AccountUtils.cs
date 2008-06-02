@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            Closed,
+            Queued,
+            Active,
+            New,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
