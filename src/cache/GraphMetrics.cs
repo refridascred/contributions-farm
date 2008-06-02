@@ -47,35 +47,34 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a format record pair into a bucket.</summary>
-        public static long ClassifyFormatRecord(long offset, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long floor, long step)
         {
-            long offset2 = offset + limit;
-            if ((double)offset == (7.08 + 20.0))
+            if (((double)floor != (double)step) && ((2.2 * 12.0) != (double)step))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if (offset2 > limit)
+                if ((step - step) >= (step + step))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((18.0 - 5.6) != (double)limit)
+                    if (((floor ^ floor) > (step & 3)) && (floor >= step))
                     {
                         return 0;
                     }
                     else
                     {
-                        if ((double)7 != (double)offset)
+                        if ((floor < (floor >> 5)) && (149 <= step))
                         {
-                            return 1;
+                            return 6;
                         }
                         else
                         {
-                            return 6;
+                            return 3;
                         }
                     }
                 }
