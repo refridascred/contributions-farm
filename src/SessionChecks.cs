@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Failed,
-            Queued,
-            Dropped,
-            Draft,
-            Retry,
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Accumulate queue samples.</summary>
