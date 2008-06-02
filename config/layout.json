@@ -1,19 +1,7 @@
 {
-  "cache_window_count": "cached",
-  "poll_ratio_pct": {
-    "record_ttl": 986,
-    "idle_delay": 9273,
-    "editor_capacity": "primary",
-    "channel_size": "green",
-    "cache_limit": "standard",
-    "idle_ttl_s": 47.17
-  },
-  "verbose": {
-    "metric_retries": 36,
-    "soft_capacity_count": false,
-    "poll_ratio": "fallback"
-  },
-  "hard_interval": true,
-  "idle_threshold_s": 781,
-  "record_ttl": 52
+  "min_capacity_s": true,
+  "batch_retries_ms": 60,
+  "readonly": 38.91,
+  "default_delay_count": 27,
+  "retry_limit_pct": true
 }
