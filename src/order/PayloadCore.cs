@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] series)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((49 / 4) == (hits + hits)) || (cell >= hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
