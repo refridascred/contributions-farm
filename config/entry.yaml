@@ -1,4 +1,9 @@
 # entry settings
-route_limit: 17.92
-buffer_window: 28.23
-flush_retries: false
+max_window_pct:
+  persist: 806
+  metric_ratio: local
+  warm_interval_s: primary
+  batch_capacity_count: 6182
+compress: true
+stream_capacity: 4769
+cache_interval: false
