@@ -47,18 +47,21 @@ namespace Common.Utilities
             return (gain + (gain + scale)) + bias;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            long sum = 2;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item + sum) > item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + item) % 65521;
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
