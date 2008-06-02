@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long bound, long bound2)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            if ((bound / 5) < bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound * 4) > (bound << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(bound2 >= (bound2 + bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (179 >= bound2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
