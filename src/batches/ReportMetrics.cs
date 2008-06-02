@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] readings)
+        /// <summary>Measure how many buffer counter samples are out of range.</summary>
+        public static long TallyBufferCounterHits(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((double)reading <= (7.82 * 1.0))
+                if ((seen + seen) > value)
                 {
-                    count = count + 1;
+                    seen = (seen + 2) - bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of graph report readings.</summary>
