@@ -29,18 +29,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] data, long offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double weight, double floor)
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((5.0 + 4.7) > (double)offset)
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            double drift = 3.0;
+            return (drift + floor) + weight;
         }
     }
 }
