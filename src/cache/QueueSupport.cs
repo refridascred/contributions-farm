@@ -57,21 +57,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count counter account pairs that satisfy a relation.</summary>
-        public static long MatchCounterAccountCount(long[] items)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Closed,
+            Stale,
+            Synced,
+            Ready,
         }
     }
 }
