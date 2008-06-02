@@ -1,6 +1,4 @@
 # support settings
-payload_ttl: 62
-retry_threshold_s: true
-stream_depth: 28
-hard_delay: legacy
-counter_ttl: standard
+warm_ratio_ms: 16
+farm_interval: 73
+enabled: 27.06
