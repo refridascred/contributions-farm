@@ -29,12 +29,13 @@ namespace Common.Utilities
             return scale + (scale - offset);
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            Locked,
+            Paused,
+            Failed,
+            Ready,
         }
 
         /// <summary>Match up command samples.</summary>
