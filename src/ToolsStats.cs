@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] items, long limit)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < limit)
+                if (items[i] >= offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Accumulate report cache samples.</summary>
