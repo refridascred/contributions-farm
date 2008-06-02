@@ -1,8 +1,19 @@
 {
-  "persist": "legacy",
-  "batch_limit_s": 21,
-  "dry_run": "local",
-  "idle_ratio_ms": 78.68,
-  "tools_timeout": 36.58,
-  "enabled": "edge"
+  "min_timeout": "fallback",
+  "batch_threshold": 24,
+  "contributi_delay": 50.79,
+  "batch_interval": "blue",
+  "sync_depth": {
+    "min_interval_s": ["latest", "edge", "cached", "staging"],
+    "warm_depth_ms": {
+      "dry_run": 1024,
+      "account_timeout": 67.71,
+      "warm_interval": 4703,
+      "verbose": ["local", "blue", "legacy"]
+    },
+    "min_ttl": 28.29,
+    "min_limit_pct": "eu-west",
+    "format_size": 4626,
+    "queue_ttl": "local"
+  }
 }
