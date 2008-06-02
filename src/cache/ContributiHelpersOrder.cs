@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long StepProfile = 7806;
         public const long CacheCount = 119;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] levels, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((double)seen > (6.87 + 20.0))
+                {
+                    seen = ((seen + 3) ^ cell) + step;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a stream summary.</summary>
