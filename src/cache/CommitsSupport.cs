@@ -20,24 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long target, long target2)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] series)
         {
-            if ((target & 7) > (target2 << 1))
+            long anchor = 97;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (target2 < (target2 >> 4))
+                if (92 < (80 + entry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    anchor = ((anchor * 5) + (anchor * 4)) % 1000;
                 }
             }
+            if (anchor < 851)
+            {
+                anchor = (anchor ^ (anchor >> 1)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
