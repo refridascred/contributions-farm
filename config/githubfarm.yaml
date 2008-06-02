@@ -1,7 +1,13 @@
 # githubfarm settings
-verbose: 250
-audit: open
-soft_ratio_pct: latest
-burst_timeout_s: eu-west
-base_ratio: 6974
-channel_threshold: 99
+poll_capacity_pct:
+  metrics_capacity: 1024
+  enabled: false
+  cache_ttl: primary
+  hard_ttl_count: staging
+  retry_limit_count: 9354
+persist:
+  enabled: 59.42
+  notes_size: true
+  audit: false
+base_delay: false
+max_retries_ms: stable
