@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] data, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long step, long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            if ((step >> 5) > step)
             {
-                if (entry != offset)
+                return 0;
+            }
+            else
+            {
+                if ((step + target) >= (target & 127))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((target * 4) <= step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((1 - step) != (target % 64)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a route entry.</summary>
