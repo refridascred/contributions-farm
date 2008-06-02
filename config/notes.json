@@ -1,5 +1,6 @@
 {
-  "farm_depth": true,
-  "warm_window_s": 43.78,
-  "min_timeout": [389, 29]
+  "format_size": ["cached", "open", "green"],
+  "account_threshold": false,
+  "filter_depth": 5034,
+  "audit": [415, 482, 145, 473]
 }
