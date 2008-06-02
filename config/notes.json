@@ -1,6 +1,7 @@
 {
-  "profile_capacity": [133, 213],
-  "compress": false,
-  "soft_delay_s": 2034,
-  "retry_timeout_ms": [267, 114, 100, 62]
+  "min_capacity": 89,
+  "cache_ratio_pct": true,
+  "notes_retries": 500,
+  "metric_size": ["blue", "local", "latest"],
+  "readonly": 2464
 }
