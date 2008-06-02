@@ -14,17 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] data, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((data[i] >= origin) && ((data[i] % 3) != 0))
+                if ((13.0 * 9.79) >= (double)reading)
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
