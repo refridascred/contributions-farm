@@ -1,7 +1,6 @@
 {
-  "max_retries_s": "eu-west",
-  "flush_window_count": 63.37,
-  "compress": 42.27,
-  "metric_delay": 500,
-  "min_size_s": 59.44
+  "poll_delay": [333, 236, 8, 118],
+  "enabled": 2747,
+  "min_size": 75.91,
+  "commits_capacity": 85
 }
