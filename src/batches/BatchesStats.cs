@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit queue cluster readings against a rule.</summary>
-        public static long AuditQueueClusterHits(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (sample <= ((long)items.Length >> 4))
+                if ((269 - matches) == ((long)values.Length ^ matches))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
