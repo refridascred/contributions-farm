@@ -1,12 +1,5 @@
 {
-  "cache_depth": false,
-  "burst_retries_count": true,
-  "retry_threshold_count": {
-    "soft_limit_s": 44,
-    "profile_ratio": true,
-    "burst_depth_s": 8.6
-  },
-  "sync_ttl_count": "green",
-  "soft_size": 77,
-  "strict": ["cached", "staging", "eu-west"]
+  "hard_window": "green",
+  "soft_window_s": 5.56,
+  "batch_ttl_count": 500
 }
