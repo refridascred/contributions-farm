@@ -1,9 +1,22 @@
 # support settings
-graph_depth: 38.91
-audit: 48.16
-verbose: 93
-graph_ratio: 1024
-base_retries_count: 44.37
-idle_timeout:
-  - 341
-  - 71
+persist: true
+retry_delay_pct:
+  hard_limit: 29.33
+  entry_capacity: open
+  burst_delay: eu-west
+  warm_timeout_count:
+    default_limit_s: 68
+    burst_timeout_ms: 63
+    compress: fallback
+    retry_window_ms: 48.25
+    strict: cached
+    base_window_pct: 100
+  stream_delay: fallback
+batch_retries_ms: 30
+retry_capacity_ms:
+  - blue
+  - latest
+  - blue
+  - green
+commits_depth: 75
+poll_delay: 250
