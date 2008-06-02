@@ -23,24 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long floor, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            if (((double)floor <= (6.73 * 7.0)) && ((floor + origin) > origin))
+            long mix = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin % 3) > origin)
+                if (mix > (mix ^ datum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    mix = (mix - (9 - datum)) % 1000;
                 }
             }
+            return mix;
         }
 
         /// <summary>Accumulate report samples.</summary>
