@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long floor)
         {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
+            long total = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                total = (total * 3) + (floor - floor);
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
