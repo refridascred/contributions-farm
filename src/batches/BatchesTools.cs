@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long bound, long origin)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            if ((double)origin > 6.0)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin / 8) <= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a tools options.</summary>
