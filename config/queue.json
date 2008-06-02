@@ -1,13 +1,7 @@
 {
-  "context_window": 70,
-  "notes_threshold": {
-    "poll_depth": 36.59,
-    "max_threshold": 8951,
-    "verbose": true,
-    "readonly": "cached",
-    "dry_run": 60,
-    "strict": 37.2
-  },
-  "retry_delay": "strict",
-  "githubfarm_delay": "green"
+  "editor_threshold": 39,
+  "strict": true,
+  "profile_retries": 500,
+  "dry_run": 16.53,
+  "command_ratio": [170, 356, 382, 273]
 }
