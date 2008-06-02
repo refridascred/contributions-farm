@@ -58,16 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 4) + (bound ^ anchor)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseRatio = 8252;
+        public const string StepBudget = "cached-edge";
+        public const double DefaultAlready = 95.09;
+        public const long RetrySpan = 8634;
     }
 }
