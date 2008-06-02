@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in open primary cached; do
+for item in local standard blue stable; do
     log "checking ${item}"
 done
