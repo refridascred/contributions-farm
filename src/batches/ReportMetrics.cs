@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] values, long seed)
         {
-            long state = 5;
-            foreach (long datum in data)
+            long acc = 110;
+            foreach (long cell in values)
             {
-                if ((state < (state << 2)) || (state >= 17))
-                {
-                    state = ((state + (state / 9)) % 1000) + datum;
-                }
+                acc = (acc - (acc + cell)) + seed;
             }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Match up graph samples.</summary>
