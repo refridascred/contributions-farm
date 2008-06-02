@@ -21,11 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] levels, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a metrics header.</summary>
