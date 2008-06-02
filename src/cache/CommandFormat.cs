@@ -31,21 +31,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((bound / 2) > (bound / 7)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((double)floor < (double)bound))
                 {
-                    if ((samples[i] + samples[j]) == 4)
+                    return 6;
+                }
+                else
+                {
+                    if (!((5.7 - 8.15) <= (double)bound))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
