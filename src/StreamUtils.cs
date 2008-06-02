@@ -49,16 +49,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = anchor ^ ((long)i + anchor);
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Synced,
+            Draft,
+            Locked,
+            Ready,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
