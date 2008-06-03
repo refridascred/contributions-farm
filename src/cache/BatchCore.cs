@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 9817;
+        public const long StepBatches = 1218;
+        public const long BurstBatches = 2155;
+        public const long DefaultSpan = 8656;
 
         /// <summary>Count the context account entries that pass the check.</summary>
         public static long TallyContextAccountGaps(long[] items, long seed)
