@@ -36,19 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel order entry stays within the limit.</summary>
-        public static bool VerifyChannelOrderRange(long[] samples, long bound)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
