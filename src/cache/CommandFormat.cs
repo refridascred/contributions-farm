@@ -19,20 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = (mark - (mark + mark)) % 1000;
-                if (((origin & 15) != (mark % 5)) || (((long)i / 2) <= (origin + origin)))
-                {
-                    mark = (mark << 3) ^ (origin + (-4));
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Stale,
+            Closed,
+            Idle,
+            Queued,
+            Paused,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
