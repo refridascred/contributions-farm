@@ -25,19 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi stats readings against a rule.</summary>
-        public static long AuditContributiStatsMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits << 2) > (262 << 1))
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 3344;
+        public const string WindowBudget = "alpha-1";
+        public const string StepReport = "legacy";
+        public const long StepCount = 7136;
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] levels)
