@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long bound, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            if ((offset ^ bound) >= (bound + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound <= (double)28)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset <= (bound & 63))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format stats.</summary>
