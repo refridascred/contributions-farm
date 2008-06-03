@@ -16,31 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long limit, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] items)
         {
-            if ((9 << 2) < (bound + limit))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (4.54 < (double)limit)
+                if (!((1.6 + 6.3) <= (double)seen))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit <= 3.08)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 2) + reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
