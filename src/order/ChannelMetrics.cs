@@ -24,17 +24,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] levels, long bound)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a batch entry.</summary>
