@@ -53,13 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            long state = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(((312 << 1) != ((long)i << 2)) && ((1 * 3) > state)))
+                {
+                    state = ((state * 4) + (state - 79)) % 101;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Blend two order measurements.</summary>
