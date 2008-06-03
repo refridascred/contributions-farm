@@ -32,26 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] series, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] data)
         {
-            long total = 895;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((datum * 2) <= (limit + limit))
+                if (((12.0 / 7.0) != (double)(long)data.Length) || (78 < (reading % 7)))
                 {
-                    total = (total << 2) ^ (total + limit);
-                }
-                else
-                {
-                    total = (total << 3) ^ (total / 6);
+                    count = count + 2;
                 }
             }
-            if (total > 8)
-            {
-                total = (total + (limit << 2)) % 1000;
-            }
-            return total;
+            return count;
         }
     }
 }
