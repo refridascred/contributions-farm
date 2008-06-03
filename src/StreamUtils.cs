@@ -72,19 +72,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] samples, long step)
+        /// <summary>Count the stream route entries that pass the check.</summary>
+        public static long CountStreamRouteHits(long[] data)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (sample >= step)
+                if ((11 - tally) >= (reading / 5))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
