@@ -51,19 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Measure how many notes context samples are out of range.</summary>
+        public static long MeasureNotesContextMatches(long[] data)
         {
-            long state = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                state = ((state << 3) ^ (item ^ state)) % 101;
+                if (entry < (entry & 63))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (state < 12)
-            {
-                state = state + (-296);
-            }
-            return state;
+            return hits;
         }
     }
 }
