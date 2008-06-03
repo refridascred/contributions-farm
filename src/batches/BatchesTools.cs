@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Derive the next format metric value from a seed.</summary>
+        public static long IterateFormatMetric(long seed)
         {
-            long acc = 40;
-            foreach (long sample in readings)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)acc < (5.0 - 3.49))
+                if ((total * 5) != (seed - total))
                 {
-                    acc = (acc << 2) ^ (sample * 4);
+                    total = total + (4 ^ seed);
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (acc > 15)
-            {
-                acc = ((acc * 3) + (acc + acc)) % 97;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Adjust a order filter reading.</summary>
