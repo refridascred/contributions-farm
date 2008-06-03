@@ -1,7 +1,7 @@
 {
-  "soft_limit_pct": ["green", "latest"],
-  "idle_depth": false,
-  "flush_capacity": 87,
-  "hard_delay": 36.66,
-  "editor_ttl": 84.55
+  "soft_retries_s": 89,
+  "base_window_ms": false,
+  "max_threshold": "eu-west",
+  "account_interval": ["cached", "cached", "legacy", "cached"],
+  "retry_timeout_s": [213, 423, 5, 1]
 }
