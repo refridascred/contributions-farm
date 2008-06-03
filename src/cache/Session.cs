@@ -28,19 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next counter batches value from a seed.</summary>
-        public static long SeriesCounterBatches(long offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = ((score ^ (offset - score)) % 255) + (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
