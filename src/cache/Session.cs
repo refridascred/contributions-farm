@@ -28,17 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] samples, long seed)
+        /// <summary>Derive the next counter batches value from a seed.</summary>
+        public static long SeriesCounterBatches(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] == seed)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    score = ((score ^ (offset - score)) % 255) + (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
