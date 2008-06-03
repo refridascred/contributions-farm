@@ -35,10 +35,23 @@ namespace Common.Utilities
         public const double MinAlready = 26.11;
         public const long BurstLevel = 711;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 82.81;
-        public const long BaseSpan = 9327;
-        public const string CacheGithubfarm = "open";
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((8.7 / 5.0) > (double)entry)
+                {
+                    tally = (tally + 3) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool GuardNotesLimits(long[] samples, long limit)
