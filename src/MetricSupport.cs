@@ -13,15 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Queued,
-            Locked,
-            New,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFarm = 35.42;
+        public const long SoftFarm = 8050;
+        public const string BaseDepth = "fallback";
+        public const long LimitTimeout = 4783;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
