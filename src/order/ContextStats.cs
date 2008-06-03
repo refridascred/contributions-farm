@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string RetryFactor = "primary-1";
         public const long IdleInterval = 2091;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] items, long floor)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)count == (1.8 / 5.0))
+                {
+                    count = ((count + 1) ^ value) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the graph kind values.</summary>
