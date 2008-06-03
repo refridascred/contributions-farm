@@ -14,18 +14,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter notes samples are out of range.</summary>
-        public static long CountCounterNotesGaps(long[] series, long offset)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (value <= (matches % 16))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
