@@ -20,26 +20,19 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Validate entry session readings against a bound.</summary>
+        public static bool ValidateEntrySessionLimits(long[] levels, long floor)
         {
-            long total = 6;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((153 + 0) > (total << 1))
+                if (reading > floor)
                 {
-                    total = (total + (entry << 2)) % 65521;
-                }
-                else
-                {
-                    total = total + (8 >> 1);
+                    stale = false;
+                    break;
                 }
             }
-            if (total > 557)
-            {
-                total = (total * 4) + ((long)values.Length % 97);
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a batch entry.</summary>
