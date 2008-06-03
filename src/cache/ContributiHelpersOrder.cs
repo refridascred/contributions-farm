@@ -36,14 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long origin)
         {
-            Synced,
-            Pending,
-            New,
-            Retry,
-            Queued,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
