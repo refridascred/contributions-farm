@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] readings, long seed)
         {
-            long carry = 58;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry - (carry * 5)) % 255) ^ value;
+                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
