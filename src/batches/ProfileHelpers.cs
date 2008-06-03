@@ -90,11 +90,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long seed, long step)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            if (!(611 < (step + seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step % 8) != (step & 255)) && ((seed % 2) > (step & 255)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step >= 4.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((141 + 64) == (step + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
