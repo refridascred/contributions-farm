@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryDepth = 8531;
+        public const string LimitBudget = "strict-edge";
+        public const long LimitChannel = 933;
 
         /// <summary>Combine buffer githubfarm values into a single score.</summary>
         public static long TallyBufferGithubfarm(long[] readings)
