@@ -24,12 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "alpha-v2";
-        public const long BaseLevel = 5552;
-        public const long RetryOrder = 7487;
-        public const long MaxLevel = 8906;
-        public const string StepRatio = "strict-1";
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            New,
+            Idle,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long DeriveBuffer(long bound)
