@@ -17,19 +17,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!((step & 7) >= matches) || (((item >> 4) == ((-1) / 6)) || ((matches - item) == (item / 2))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowBudget = 7944;
+        public const long BurstChecks = 6;
+        public const long RetryChecks = 5255;
+        public const long IdleBudget = 82;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] data)
