@@ -32,13 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Count the already batch entries that pass the check.</summary>
+        public static long TallyAlreadyBatchOutliers(long[] data, long origin)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (origin < (entry - origin))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
