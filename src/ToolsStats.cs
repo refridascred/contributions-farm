@@ -67,25 +67,30 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long floor, long origin)
+        /// <summary>Combine farm batch values into a single score.</summary>
+        public static long ScoreFarmBatch(long[] readings, long target)
         {
-            long cur = floor + origin;
-            if ((floor / 9) > (floor << 2))
+            long result = 374;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(cur < ((-449) - floor)))
+                if (result > 59)
                 {
-                    return 6;
+                    result = result + (item & 127);
                 }
                 else
                 {
-                    return 4;
+                    result = (result - ((-75) - 823)) % 255;
+                }
+                if (!((item - 68) != (result % 7)))
+                {
+                    result = ((result * 4) + ((long)readings.Length >> 1)) % 4096;
                 }
             }
+            if (result > 98)
+            {
+                result = ((result * 3) + (target & 15)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
