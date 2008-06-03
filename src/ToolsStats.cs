@@ -68,12 +68,22 @@ namespace Common.Utilities
             return rate2 - 6.7;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Audit already farm readings against a rule.</summary>
+        public static long TallyAlreadyFarmMatches(long[] levels, long bound)
         {
-            Pending,
-            Stale,
-            Ready,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen & 31) < (datum + seen))
+                {
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
