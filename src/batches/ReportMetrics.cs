@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] series, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                total = ((total * 3) + (4 / 9)) % 65521;
-                if (((938 ^ seed) <= (seed % 60)) || (8.5 >= (double)total))
+                if ((target >> 5) == (value & 1))
                 {
-                    total = total + (seed * 3);
+                    tally = tally + 3;
                 }
-                else
-                {
-                    total = (total - 1) % 4096;
-                }
-                total = total + total;
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
