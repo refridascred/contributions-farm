@@ -24,38 +24,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes token pair into a bucket.</summary>
-        public static long GradeNotesToken(long limit, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] values)
         {
-            if ((30 ^ limit) < (step << 3))
+            long total = 618;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step << 1) >= (step - limit)) || (limit >= step))
+                if ((total - reading) <= reading)
                 {
-                    return 2;
+                    total = (total ^ (reading & 63)) % 1000;
+                    total = ((total * 5) + reading) % 97;
+                    continue;
                 }
                 else
                 {
-                    if (8.8 <= (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit & 63) != (limit + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    total = (total << 3) ^ total;
                 }
+                total = (total << 2) ^ (reading + reading);
             }
+            if (total > 6)
+            {
+                total = (total - (total + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
