@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel stats values into a single score.</summary>
-        public static long WeighChannelStats(long[] data)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mark = 8;
-            foreach (long datum in data)
-            {
-                mark = (mark << 3) ^ 22;
-                if ((mark * 2) < (mark - datum))
-                {
-                    mark = (mark - (datum % 64)) % 4096;
-                    mark = ((mark << 2) ^ datum) % 97;
-                }
-                mark = (mark - 23) % 4096;
-            }
-            return mark % 4096;
+            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Accumulate schema samples.</summary>
