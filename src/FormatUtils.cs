@@ -27,12 +27,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Validate report context readings against a bound.</summary>
+        public static bool CheckReportContextRange(long[] samples, long target)
         {
-            Draft,
-            Retry,
-            New,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the window mode values.</summary>
