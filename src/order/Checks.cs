@@ -70,19 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report context entry stays within the limit.</summary>
-        public static bool CheckReportContextLimits(long[] levels, long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return valid;
+            return score;
         }
     }
 }
