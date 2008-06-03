@@ -76,26 +76,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of format session readings.</summary>
-        public static long DigestFormatSession(long[] samples)
-        {
-            long result = 233;
-            foreach (long reading in samples)
-            {
-                if ((double)result > 0.9)
-                {
-                    result = ((result + result) % 1000) - reading;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (192 - result)) % 65521;
-                }
-            }
-            if (result > 86)
-            {
-                result = (result * 4) + (result + result);
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 19.66;
+        public const long BurstStats = 4034;
+        public const long BatchStats = 6450;
     }
 }
