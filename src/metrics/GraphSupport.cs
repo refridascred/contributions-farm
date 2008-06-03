@@ -36,22 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] series, long origin)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long prev = floor ^ bound;
+            if ((bound + floor) <= (floor + bound))
             {
-                if ((matches ^ value) > (origin * 2))
+                return 2;
+            }
+            else
+            {
+                if (((bound + floor) < floor) && (66 < prev))
                 {
-                    matches = matches + 2;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a context reading.</summary>
