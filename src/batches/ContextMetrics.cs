@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] data, long bound)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            double load = (double)(-21) * 4.02;
+            if (load < weight)
             {
-                if (datum <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + (offset + weight);
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load + load)) + (double)(long)i;
+            }
+            return load - (double)54;
         }
 
         /// <summary>Match up layout checks samples.</summary>
