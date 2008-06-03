@@ -80,18 +80,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record contributi samples are out of range.</summary>
-        public static long MeasureRecordContributiGaps(long[] values)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (item <= (item & 31))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double weight = 0.4 * 3.0;
+            return ((weight + (double)0) + scale) + floor;
         }
 
         /// <summary>Measure how many metrics channel samples are out of range.</summary>
