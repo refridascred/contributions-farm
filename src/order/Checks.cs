@@ -35,31 +35,21 @@ namespace Common.Utilities
         public const long StepBudget = 1576;
         public const long StepGraph = 3656;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long bound, long offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            if ((bound % 8) != (offset + offset))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound > 6.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + bound) < (bound + bound))
+                    if ((series[i] - series[j]) > 8)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a already summary.</summary>
