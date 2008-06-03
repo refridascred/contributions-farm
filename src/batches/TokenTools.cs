@@ -20,19 +20,25 @@ namespace Common.Utilities
             return mean - (mean + 0.92);
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] items, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long target, long step)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long cur = target + step;
+            if ((target * 2) > (step + 233))
             {
-                if (datum != bound)
+                return 2;
+            }
+            else
+            {
+                if ((step ^ target) <= (target ^ cur))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a counter stats.</summary>
