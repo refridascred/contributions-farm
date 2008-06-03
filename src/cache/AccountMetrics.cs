@@ -75,18 +75,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] data, long origin)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long bound)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry + 6) != (tally ^ entry))
+                if ((bound + (long)i) > (3 - bound))
                 {
-                    tally = (tally + 3) - origin;
+                    total = total - ((long)i / 9);
                 }
+                else
+                {
+                    total = total ^ (611 << 1);
+                    total = total + bound;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
