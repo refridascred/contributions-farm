@@ -36,22 +36,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count format session pairs that satisfy a relation.</summary>
-        public static long MatchFormatSessionCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 4364;
+        public const long StepWidth = 6366;
+        public const double WindowLevel = 4.78;
 
         /// <summary>Check that every filter record entry stays within the limit.</summary>
         public static bool CheckFilterRecordRange(long[] levels, long seed)
