@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Adjust a support contributi reading.</summary>
+        public static double BlendSupportContributi(double scale, double bias)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            double mean = (double)(86 / 3);
+            if (mean >= mean)
+            {
+                mean = ((mean + 15.0) - scale) + bias;
+            }
+            return mean - (mean * 3.83);
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
