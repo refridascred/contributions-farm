@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Digest a series of farm checks entries.</summary>
+        public static long ScoreFarmChecks(long[] levels)
         {
-            Active,
-            Synced,
-            Queued,
-            Draft,
+            long mix = 7;
+            foreach (long cell in levels)
+            {
+                mix = ((mix * 2) + (cell & 15)) % 65521;
+                mix = (mix << 2) ^ (cell - mix);
+            }
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
