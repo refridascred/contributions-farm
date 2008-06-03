@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
+            New,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Match up support samples.</summary>
