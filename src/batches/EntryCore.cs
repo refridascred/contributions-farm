@@ -44,13 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Label { get; set; }
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
