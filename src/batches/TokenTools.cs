@@ -41,24 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long origin, long bound)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            if ((origin + 40) >= (bound & 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(bound > (bound << 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Synced,
+            Draft,
+            Pending,
+            New,
         }
     }
 }
