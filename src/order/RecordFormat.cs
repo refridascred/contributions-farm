@@ -50,11 +50,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            Retry,
+            Draft,
+            Ready,
+            Synced,
         }
 
         /// <summary>Digest a series of window entries.</summary>
