@@ -36,21 +36,11 @@ namespace Common.Utilities
         public const double MinAlready = 26.11;
         public const long BurstLevel = 711;
 
-        /// <summary>Match up counter profile samples.</summary>
-        public static long MatchCounterProfileCount(long[] data)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
