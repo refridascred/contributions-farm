@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] levels, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (reading < floor)
+                if ((bound >= (sample + sample)) && (sample > seen))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
