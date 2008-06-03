@@ -42,10 +42,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 78.38;
-        public const long MinLevel = 7068;
-        public const long SoftDepth = 8809;
-        public const double CacheFarm = 41.66;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double rate, double offset)
+        {
+            double load = (rate + offset) + (rate * 13.0);
+            if (load < rate)
+            {
+                load = load - 4.2;
+            }
+            return load + offset;
+        }
     }
 }
