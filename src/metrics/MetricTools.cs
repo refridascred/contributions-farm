@@ -68,21 +68,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up token order samples.</summary>
-        public static long MatchTokenOrderCount(long[] data)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] data, long step)
         {
-            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] > step) && ((data[i] % 3) == 0))
                 {
-                    if ((data[i] - data[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the contributi channel entries that pass the check.</summary>
