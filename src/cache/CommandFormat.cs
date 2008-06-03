@@ -52,26 +52,12 @@ namespace Common.Utilities
             return ratio + (double)69;
         }
 
-        /// <summary>Combine channel tools values into a single score.</summary>
-        public static long FoldChannelTools(long[] levels, long target)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long result = 73;
-            foreach (long sample in levels)
-            {
-                if ((sample % 100) != (target + sample))
-                {
-                    result = (result - (sample << 2)) % 101;
-                }
-                if (sample > target)
-                {
-                    break;
-                }
-            }
-            if (result > 212)
-            {
-                result = result ^ target;
-            }
-            return result % 97;
+            Paused,
+            Failed,
+            Closed,
         }
     }
 }
