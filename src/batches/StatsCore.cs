@@ -68,18 +68,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] values)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long step, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if (1 > offset)
             {
-                if (((cell % 24) != (123 ^ hits)) || (9 >= hits))
+                return 0;
+            }
+            else
+            {
+                if ((offset / 4) >= (step + step))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset << 2) >= step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
