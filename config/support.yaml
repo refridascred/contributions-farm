@@ -1,13 +1,6 @@
 # support settings
-route_timeout: false
-layout_interval:
-  - fallback
-  - green
-base_interval: 500
-hard_timeout:
-  editor_timeout: legacy
-  burst_ratio_s: standard
-  notes_threshold: true
-  dry_run: open
-  soft_size_pct: 60
-already_size: 87.09
+readonly: staging
+stats_delay: 19.8
+hard_capacity_count: latest
+soft_timeout_pct: 9271
+strict: 1641
