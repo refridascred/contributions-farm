@@ -43,12 +43,18 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Audit format stream readings against a rule.</summary>
+        public static long MeasureFormatStreamGaps(long[] items)
         {
-            New,
-            Stale,
-            Paused,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((tally ^ cell) <= (tally ^ tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
