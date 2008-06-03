@@ -1,39 +1,6 @@
 # support settings
-commits_timeout:
-  notes_size:
-    audit: 5979
-    command_retries:
-      - 31
-      - 153
-      - 245
-      - 370
-    burst_window_count:
-      - legacy
-      - staging
-      - strict
-      - latest
-    retry_threshold_ms: latest
-    cache_depth_ms:
-      - open
-      - open
-      - open
-  soft_interval_count: true
-  poll_depth_s: 11
-  compress:
-    batches_interval: open
-    max_threshold: 22
-    strict: 34.73
-  notes_ttl:
-    burst_timeout_pct:
-      - 214
-      - 85
-      - 361
-    stream_ratio: eu-west
-    warm_ratio: 43
-    persist: true
-    flush_ratio: 1024
-  flush_limit:
-    - stable
-    - standard
-filter_interval: 250
-enabled: 100
+poll_interval_pct: 60
+base_depth_s: 60
+soft_window_pct: 100
+min_size_count: 3137
+compress: 250
