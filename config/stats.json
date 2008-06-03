@@ -1,7 +1,19 @@
 {
-  "record_capacity": "eu-west",
-  "max_delay_s": false,
-  "batch_window": "latest",
-  "window_size": "latest",
-  "poll_ratio_ms": "edge"
+  "notes_window": 1024,
+  "poll_retries_s": "blue",
+  "base_limit_count": 88,
+  "sync_ratio_count": 5849,
+  "graph_size": false,
+  "base_ttl": {
+    "batch_delay": 452,
+    "soft_ttl_pct": 99,
+    "order_timeout": 55,
+    "context_limit": {
+      "audit": 19,
+      "dry_run": 46.14,
+      "token_timeout": 60,
+      "graph_window": [56, 231, 346],
+      "hard_ttl": 58.67
+    }
+  }
 }
