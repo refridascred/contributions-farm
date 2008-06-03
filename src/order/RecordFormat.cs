@@ -69,18 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] readings)
+        /// <summary>Audit entry route readings against a rule.</summary>
+        public static long TallyEntryRouteOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (reading < (matches % 12))
+                if (((tally & 15) >= (cell + tally)) || (((cell ^ cell) > (9 - cell)) || ((tally * 4) <= (cell + cell))))
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
