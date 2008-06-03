@@ -20,13 +20,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] data)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = 893;
+            foreach (long item in data)
+            {
+                mark = (mark + (item % 12)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the counter mode values.</summary>
