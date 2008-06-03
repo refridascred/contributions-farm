@@ -55,20 +55,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((((long)i - offset) < (offset << 2)) && (anchor < (offset ^ anchor))))
-                {
-                    anchor = ((anchor * 2) + ((long)i ^ 390)) % 4096;
-                    anchor = (anchor << 3) ^ (anchor >> 3);
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Done,
+            Pending,
+            Ready,
+            Paused,
+            Retry,
         }
     }
 }
