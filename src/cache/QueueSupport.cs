@@ -25,22 +25,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] series, long seed)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long limit)
         {
-            long mix = 370;
-            foreach (long value in series)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (value >= (value + value))
-                {
-                    mix = mix ^ (mix + value);
-                }
-                else
-                {
-                    mix = mix - (value ^ seed);
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Project the next entry value.</summary>
