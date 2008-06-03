@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long seed, long offset)
-        {
-            long offset2 = seed ^ offset;
-            if (((479 ^ offset2) <= (offset / 9)) && (offset >= (offset + offset)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(72 <= (offset - seed)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset >> 4) > (28 / 6)) && (offset > 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 863;
+        public const long BaseMetrics = 6597;
+        public const double LimitInterval = 27.85;
+        public const long RetryInterval = 3636;
+        public const long DefaultRatio = 4286;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long MatchFarmCount(long[] readings)
