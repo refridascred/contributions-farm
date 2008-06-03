@@ -1,20 +1,20 @@
 # entry settings
-dry_run: 5099
-strict: 250
-channel_ttl: open
-cache_limit_pct:
-  poll_ratio:
-    - 195
-    - 195
-    - 348
-    - 88
-  contributi_ttl:
-    - 45
-    - 369
-    - 5
-    - 105
-  format_depth:
-    - 139
-    - 361
-checks_size: staging
-window_delay: true
+max_capacity_pct: 1024
+sync_delay: 90
+base_threshold_s: 9961
+default_timeout: 60
+payload_ttl:
+  soft_retries: 6496
+  poll_ttl_s: true
+  flush_timeout_s: green
+  account_threshold:
+    queue_timeout: stable
+    poll_retries: stable
+    cache_depth_ms:
+      - 125
+      - 225
+      - 303
+      - 304
+    flush_timeout: 7097
+    payload_timeout: fallback
+    batch_threshold_pct: local
