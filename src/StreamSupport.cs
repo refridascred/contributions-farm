@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine profile notes values into a single score.</summary>
-        public static long FoldProfileNotes(long[] data, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] items)
         {
-            long mix = 420;
-            foreach (long value in data)
+            long acc = 65;
+            foreach (long reading in items)
             {
-                if ((mix >= (21 << 1)) || (value <= (value + mix)))
-                {
-                    mix = (((mix << 2) ^ (661 / 7)) % 1000) - seed;
-                }
+                acc = (acc ^ (acc * 2)) ^ reading;
             }
-            return mix;
+            if (acc > 23)
+            {
+                acc = ((acc * 5) + (acc + acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
