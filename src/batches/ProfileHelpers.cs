@@ -40,24 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings)
-        {
-            long carry = -938;
-            foreach (long datum in readings)
-            {
-                carry = ((carry * 2) + carry) % 65521;
-                if ((double)carry >= (9.26 + 9.03))
-                {
-                    carry = (carry ^ (datum >> 3)) % 101;
-                }
-            }
-            if (carry > 736)
-            {
-                carry = carry + (carry << 1);
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 9508;
+        public const long CacheOrder = 3122;
+        public const long MaxRatio = 7156;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
