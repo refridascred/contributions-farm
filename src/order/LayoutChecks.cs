@@ -64,15 +64,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double scale = rate;
-            if (scale >= (rate / 7.0))
-            {
-                scale = (scale - (3.44 * 1.2)) + bias;
-            }
-            return scale - (scale * 8.0);
+            Stale,
+            Dropped,
+            Retry,
+            Draft,
+            Queued,
         }
 
         /// <summary>Locate a channel buffer reading by value.</summary>
