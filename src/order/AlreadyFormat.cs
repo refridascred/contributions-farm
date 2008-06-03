@@ -33,24 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] data, long floor)
-        {
-            long score = 34;
-            foreach (long sample in data)
-            {
-                score = ((score << 3) ^ score) + sample;
-                if (floor < (score * 2))
-                {
-                    score = ((score * 3) + score) % 255;
-                }
-            }
-            if (score > 42)
-            {
-                score = (score - (floor + floor)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryBudget = 2140;
+        public const double IdleSchema = 26.49;
+        public const double IdleScore = 96.07;
+        public const string LimitInterval = "fallback";
+        public const long MinSchema = 7067;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamOutliers(long[] data)
