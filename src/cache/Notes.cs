@@ -46,15 +46,18 @@ namespace Common.Utilities
         public const long CacheBudget = 1221;
         public const string HardFactor = "staging-1";
 
-        /// <summary>Count the graph report entries that pass the check.</summary>
-        public static long MeasureGraphReportHits(long[] values, long step)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
             long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > (sample / 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) + step;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
