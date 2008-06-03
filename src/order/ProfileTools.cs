@@ -59,14 +59,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Digest a series of graph schema entries.</summary>
+        public static long TallyGraphSchema(long[] series, long seed)
         {
-            Pending,
-            Stale,
-            Active,
-            Paused,
-            Ready,
+            long carry = 3;
+            foreach (long entry in series)
+            {
+                if ((carry % 8) > carry)
+                {
+                    carry = (carry ^ entry) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (entry * 5)) % 101;
+                }
+            }
+            if (carry > 6)
+            {
+                carry = carry - seed;
+            }
+            return carry;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
