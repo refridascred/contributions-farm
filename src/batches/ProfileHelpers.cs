@@ -79,15 +79,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the commits tools series from a seed.</summary>
-        public static long StepCommitsTools(long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            long score = 7;
+            foreach (long datum in series)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                score = ((score * 3) + (score + score)) + datum;
             }
-            return sum;
+            return score;
         }
     }
 }
