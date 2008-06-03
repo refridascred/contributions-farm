@@ -43,19 +43,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit graph command readings against a rule.</summary>
-        public static long TallyGraphCommandMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((6.5 * 9.0) > (double)value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 3643;
+        public const string RetryBudget = "alpha";
+        public const double DefaultTimeout = 6.63;
+        public const long CacheBudget = 1221;
+        public const string HardFactor = "staging-1";
 
         /// <summary>Count the graph report entries that pass the check.</summary>
         public static long MeasureGraphReportHits(long[] values, long step)
