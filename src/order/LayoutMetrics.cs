@@ -23,13 +23,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
+            Stale,
+            Synced,
             Idle,
-            Queued,
-            Draft,
-            Failed,
+            Paused,
+            Pending,
         }
     }
 }
