@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double gain, double bias)
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            double mean = (bias / 3.0) - gain;
+            if (mean >= mean)
+            {
+                mean = mean - (7.16 + bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - gain) + (double)(long)i;
+            }
+            return mean + (5.0 / 4.0);
         }
 
         /// <summary>Count the tools route entries that pass the check.</summary>
