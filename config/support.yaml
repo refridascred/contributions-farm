@@ -1,9 +1,4 @@
 # support settings
-metric_interval:
-  graph_threshold: 30
-  cache_interval: 9825
-  retry_delay_count: 6876
-idle_ratio: cached
-base_ratio:
-  - 79
-  - 445
+dry_run: local
+max_window_count: 46
+batch_ratio_ms: 6425
