@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] values, long target)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long score = 7;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((target + 244) > reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score * 3) + (score + reading);
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score < 2)
-            {
-                score = (score + score) % 255;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
