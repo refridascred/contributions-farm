@@ -59,21 +59,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 9;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = (((score << 3) ^ (535 - score)) % 1000) ^ cell;
+                if ((score & 15) <= score)
                 {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Fold a list of format session readings.</summary>
