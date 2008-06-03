@@ -1,9 +1,7 @@
-id,state,active
-1,245,891
-2,28,713
-3,14.14,52.79
-4,stable,12.17
-5,cached,staging
-6,legacy,1.89
-7,371,26.45
-8,382,125
+id,ratio,level,rank,owner
+1,411,23,90.87,strict
+2,33.03,231,570,87.14
+3,15.37,standard,standard,53.18
+4,370,613,eu-west,legacy
+5,67.63,93.81,cached,903
+6,latest,primary,47.82,53.23
