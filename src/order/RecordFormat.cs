@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double gain, double floor)
-        {
-            double gain2 = floor / 9.0;
-            if (gain2 >= gain2)
-            {
-                gain2 = gain2 - (floor / 5.0);
-            }
-            else
-            {
-                gain2 = gain2 + floor;
-            }
-            return gain2 + (gain * 3.06);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 3372;
+        public const long IdleBudget = 3124;
+        public const long StepSize = 2777;
+        public const long StepFactor = 9537;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TallyPayload(long[] samples, long limit)
