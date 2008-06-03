@@ -48,13 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count the graph report entries that pass the check.</summary>
+        public static long MeasureGraphReportHits(long[] values, long step)
         {
-            Synced,
-            New,
-            Queued,
-            Stale,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (sample > (sample / 4))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
     }
 }
