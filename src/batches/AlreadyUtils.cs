@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) != (hits - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftWidth = 7054;
+        public const double HardCache = 74.66;
+        public const double BatchFactor = 22.46;
+        public const long BaseCache = 6100;
+        public const string StepLevel = "standard-edge";
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheGaps(long[] values)
