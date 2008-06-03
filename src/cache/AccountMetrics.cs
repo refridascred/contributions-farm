@@ -79,19 +79,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] levels, long limit)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > limit)
+                if (data[i] < limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
