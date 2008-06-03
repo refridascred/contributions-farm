@@ -47,11 +47,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Validate context window readings against a bound.</summary>
+        public static bool VerifyContextWindowRange(long[] values, long origin)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
