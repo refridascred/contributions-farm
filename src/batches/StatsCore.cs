@@ -29,12 +29,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxCount = 1570;
-        public const string RetryTimeout = "open-v2";
-        public const long SoftQueue = 9516;
-        public const long MinQueue = 2042;
-        public const long StepScore = 1188;
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
