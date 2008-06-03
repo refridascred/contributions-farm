@@ -64,11 +64,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double rate, double span)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] levels, long origin)
         {
-            double rate2 = (double)(-6) / 8.0;
-            return ((rate2 + 4.59) + rate) + span;
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!(((reading >> 2) != (origin * 4)) && ((count >> 4) >= (count + count))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a channel buffer reading by value.</summary>
