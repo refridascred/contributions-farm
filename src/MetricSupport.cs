@@ -21,21 +21,31 @@ namespace Common.Utilities
         public const string BaseDepth = "fallback";
         public const long LimitTimeout = 4783;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Classify a stats notes pair into a bucket.</summary>
+        public static long RankStatsNotes(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((origin % 64) >= (origin2 << 3)) || ((origin2 + origin2) > (origin2 - origin)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)origin == (2.72 / 7.0)) && ((origin2 - origin2) <= (origin2 + 2)))
                 {
-                    if ((data[i] + data[j]) > 5)
+                    return 5;
+                }
+                else
+                {
+                    if (6 > (origin2 / 2))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
     }
 }
