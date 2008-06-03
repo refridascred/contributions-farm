@@ -34,9 +34,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleTimeout = 8265;
-        public const string RetryFactor = "open-1";
-        public const long BatchScore = 5319;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 28.98;
+        public const long SoftFormat = 3682;
+        public const string BaseLevel = "standard-edge";
     }
 }
