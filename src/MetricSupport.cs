@@ -13,12 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseFactor = "strict-v2";
-        public const long MinCluster = 5474;
-        public const long LimitCluster = 2133;
-        public const long BaseScore = 6539;
-        public const long LimitDepth = 214;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Queued,
+            Stale,
+            Ready,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] items)
