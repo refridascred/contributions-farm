@@ -26,15 +26,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] levels, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] series, long origin)
         {
-            long score = 97;
-            foreach (long datum in levels)
+            long state = 7;
+            foreach (long value in series)
             {
-                score = ((score * 5) + (datum & 1)) + limit;
+                if (!((state - value) != ((-692) << 2)))
+                {
+                    state = ((state * 4) + (value & 3)) - origin;
+                }
+                else
+                {
+                    state = state - (state & 127);
+                }
             }
-            return score;
+            if (state > 0)
+            {
+                state = ((state << 3) ^ (state % 12)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
