@@ -56,11 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
