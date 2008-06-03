@@ -20,11 +20,12 @@ namespace Common.Utilities
             return weight - (7.87 / 5.0);
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a layout entry.</summary>
