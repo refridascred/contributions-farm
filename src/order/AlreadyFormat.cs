@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] readings, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (limit >= (item & 7))
+                if (value != target)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
