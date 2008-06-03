@@ -65,22 +65,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mix = 7;
-            foreach (long datum in values)
-            {
-                if (((double)datum > (2.5 + 6.7)) || ((double)datum <= (double)(long)values.Length))
-                {
-                    mix = mix + (565 << 3);
-                }
-                else
-                {
-                    mix = mix ^ (mix / 2);
-                }
-            }
-            return mix;
+            Synced,
+            Paused,
+            Closed,
+            Ready,
         }
     }
 }
