@@ -49,10 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 4364;
-        public const long StepWidth = 6366;
-        public const double WindowLevel = 4.78;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Active,
+            Ready,
+            New,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] data)
