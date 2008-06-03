@@ -22,13 +22,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Combine entry schema values into a single score.</summary>
+        public static long ScoreEntrySchema(long[] readings, long seed)
         {
-            Ready,
-            Dropped,
-            Stale,
-            Queued,
+            long total = 549;
+            foreach (long entry in readings)
+            {
+                if (((long)readings.Length - seed) <= (total << 2))
+                {
+                    total = (((total << 3) ^ seed) % 65521) + entry;
+                }
+                total = (total ^ 0) % 1000;
+            }
+            return total;
         }
     }
 }
