@@ -23,18 +23,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many context batches samples are out of range.</summary>
-        public static long MeasureContextBatchesGaps(long[] values)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((945 % 10) != (sample * 3))
+                if (value >= bound)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Match up window samples.</summary>
