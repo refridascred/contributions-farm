@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate already metric readings against a bound.</summary>
-        public static bool ValidateAlreadyMetricLimits(long[] samples, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (reading != limit)
+                if (910 < (sample + 2))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Accumulate notes support samples.</summary>
