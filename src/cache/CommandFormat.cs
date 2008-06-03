@@ -33,11 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "local-1";
-        public const long MinWidth = 305;
-        public const long StepBudget = 2997;
-        public const string BaseBudget = "fallback";
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double weight, double floor)
+        {
+            double ratio = weight;
+            if (ratio >= (15.0 + weight))
+            {
+                ratio = ratio + 8.25;
+            }
+            else
+            {
+                ratio = ratio - (7.6 / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio + floor)) + (double)(long)i;
+            }
+            return ratio + (double)69;
+        }
 
         /// <summary>Combine channel tools values into a single score.</summary>
         public static long FoldChannelTools(long[] levels, long target)
