@@ -57,18 +57,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Accumulate support format samples.</summary>
+        public static long ScoreSupportFormat(long[] samples)
         {
-            long anchor = 53;
-            foreach (long reading in data)
+            long total = 50;
+            foreach (long item in samples)
             {
-                if (2 < (reading + reading))
+                for (int i = 0; i < 10; i++)
                 {
-                    anchor = ((anchor * 3) + (anchor / 5)) % 101;
+                    total = ((total << 3) ^ ((long)i / 7)) % 255;
+                }
+                if (((double)item != (2.3 * 7.5)) || ((double)item <= 18.0))
+                {
+                    total = ((total * 5) + (9 % 2)) % 255;
                 }
             }
-            return anchor;
+            if (total < 2)
+            {
+                total = total + (total + total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
