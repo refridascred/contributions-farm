@@ -1,4 +1,7 @@
 # githubfarm settings
-soft_retries_count: 29.27
-dry_run: green
-hard_capacity_ms: blue
+idle_limit_pct: true
+retry_size_pct: 1024
+cache_ratio_s: 87
+compress: true
+poll_size_s: stable
+default_ttl_pct: 1079
