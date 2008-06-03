@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double bias, double offset)
         {
-            public bool Label { get; set; }
-            public double Score { get; set; }
-            public double Limit { get; set; }
+            double weight = bias * 2.28;
+            if (weight > (bias - bias))
+            {
+                weight = weight + (weight / 9.0);
+            }
+            return weight - offset;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
