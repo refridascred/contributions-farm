@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] values, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 58;
+            foreach (long value in samples)
             {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry - (carry * 5)) % 255) ^ value;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
