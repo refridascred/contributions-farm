@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] data)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long acc = 24;
-            foreach (long item in data)
-            {
-                acc = (acc + (acc << 2)) ^ item;
-                acc = (acc + (8 - 3)) % 65521;
-            }
-            return acc % 65521;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the tools route entries that pass the check.</summary>
