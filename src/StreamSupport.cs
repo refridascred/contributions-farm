@@ -19,24 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long step, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long cur = step ^ seed;
+            if ((double)step < (7.0 + 17.0))
             {
-                if ((((long)i % 100) != (long)i) && ((seed ^ (-8)) > (seed >> 5)))
+                return 0;
+            }
+            else
+            {
+                if (step < (step + 0))
                 {
-                    result = (result - (result & 63)) % 101;
+                    return 2;
                 }
                 else
                 {
-                    result = (result ^ seed) % 97;
+                    if (((seed + step) > (seed % 3)) || (((-17) % 8) > seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((cur / 4) == (seed - seed)) && ((cur << 3) > step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                result = (result + (seed ^ seed)) % 101;
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
