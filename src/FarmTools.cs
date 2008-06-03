@@ -35,10 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 2811;
-        public const long WindowNotes = 356;
-        public const long MinInterval = 3049;
-        public const long StepRatio = 3495;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Ready,
+            Active,
+            Done,
+        }
     }
 }
