@@ -41,22 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] values, long origin)
         {
-            long carry = 1;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((reading + carry) <= (carry + 13))
+                if (datum >= origin)
                 {
-                    carry = ((carry * 5) + (reading - (-20))) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry > 733)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry % 4096;
+            return ready;
         }
 
         /// <summary>Describe the report kind values.</summary>
