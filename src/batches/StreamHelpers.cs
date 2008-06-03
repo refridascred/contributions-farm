@@ -44,25 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window notes pair into a bucket.</summary>
-        public static long BucketWindowNotes(long seed, long limit)
-        {
-            if (((double)limit != (double)seed) && ((seed << 1) <= (seed % 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed > (0.49 / 7.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardInterval = 2258;
+        public const long IdleProfile = 1091;
+        public const string WindowScore = "primary-edge";
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
