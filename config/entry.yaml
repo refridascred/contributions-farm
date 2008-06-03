@@ -1,12 +1,6 @@
 # entry settings
-cache_depth_ms: stable
-max_delay_pct: 94.05
-idle_delay: 92.23
-warm_threshold_s:
-  - 14
-  - 405
-  - 265
-hard_ttl_pct:
-  - 216
-  - 147
-  - 231
+hard_ratio_pct: true
+soft_retries_count: primary
+flush_ratio: latest
+batch_limit_s: 82
+soft_depth: 52.94
