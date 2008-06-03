@@ -33,19 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] data, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a cluster window sample.</summary>
