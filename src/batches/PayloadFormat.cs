@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string MinLevel = "stable-1";
         public const double IdleRatio = 21.76;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double ratio, double bias)
         {
-            long state = 19;
-            foreach (long value in values)
+            double weight = ratio + ratio;
+            if (weight >= (18.0 + weight))
             {
-                if ((((-20) + state) <= (long)values.Length) || ((double)value > 1.8))
-                {
-                    state = (state + state) % 65521;
-                }
+                weight = weight + (bias * 9.1);
             }
-            return state;
+            else
+            {
+                weight = weight + (weight + bias);
+            }
+            return weight + bias;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
