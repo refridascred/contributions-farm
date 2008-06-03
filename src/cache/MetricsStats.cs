@@ -43,19 +43,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] samples, long limit)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
