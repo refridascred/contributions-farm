@@ -20,24 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long seed, long floor)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            if ((872 >> 5) > seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((14.0 / 3.0) > (double)floor) && (floor < (seed % 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
