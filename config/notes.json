@@ -1,10 +1,15 @@
 {
-  "flush_ratio_ms": 85,
-  "audit": 30,
-  "strict": {
-    "min_retries_count": 83.28,
-    "batch_threshold_pct": 5004,
-    "default_ratio_count": "strict"
+  "payload_size": ["fallback", "green", "strict", "stable"],
+  "batch_ratio_pct": {
+    "warm_capacity_count": "stable",
+    "report_interval": ["eu-west", "stable", "staging"],
+    "contributi_limit": 1024,
+    "schema_capacity": [260, 460, 448],
+    "enabled": {
+      "burst_interval": 29.33,
+      "poll_threshold": 1415,
+      "report_interval": "local"
+    }
   },
-  "cache_retries_ms": 5022
+  "enabled": "local"
 }
