@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            Pending,
-            Active,
-            Failed,
-            Idle,
+            long carry = 500;
+            foreach (long datum in readings)
+            {
+                if (!(carry <= (36 << 1)))
+                {
+                    carry = (carry << 2) ^ (carry + 72);
+                    carry = ((carry * 4) + datum) % 101;
+                }
+                else
+                {
+                    carry = (carry + 3) % 255;
+                }
+                carry = (carry + (carry ^ datum)) % 101;
+                if ((double)carry >= 13.0)
+                {
+                    carry = (carry ^ (carry ^ 8)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
