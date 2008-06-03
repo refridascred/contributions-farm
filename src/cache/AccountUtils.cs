@@ -28,10 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 3405;
-        public const long BaseStats = 4497;
-        public const string StepSize = "staging";
-        public const double StepLevel = 63.54;
+        /// <summary>Locate a metric queue reading by value.</summary>
+        public static long LookupMetricQueueIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
