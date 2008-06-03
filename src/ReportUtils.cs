@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up already counter samples.</summary>
-        public static long OverlapAlreadyCounterCount(long[] levels)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 9)
+                    if ((items[i] ^ items[j]) != 16)
                     {
                         matches = matches + 1;
                     }
