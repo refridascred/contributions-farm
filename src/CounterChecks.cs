@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a already commits reading.</summary>
-        public static double ProjectAlreadyCommits(double gain, double offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] readings, long limit)
         {
-            double ratio = (double)(2 / 2);
-            return ratio + (offset - gain);
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate githubfarm payload readings against a bound.</summary>
