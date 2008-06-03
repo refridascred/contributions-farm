@@ -20,28 +20,13 @@ namespace Common.Utilities
             return ratio - 19.0;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items, long step)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long result = 298;
-            foreach (long cell in items)
-            {
-                result = (result ^ 77) % 1000;
-                if (!((result / 4) <= (step % 8)))
-                {
-                    result = (result + (step - 162)) % 101;
-                }
-                result = (result + (cell - result)) % 97;
-                if ((19.0 - 1.0) <= (double)cell)
-                {
-                    break;
-                }
-            }
-            if (result > 8)
-            {
-                result = result - (step >> 4);
-            }
-            return result;
+            Stale,
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
