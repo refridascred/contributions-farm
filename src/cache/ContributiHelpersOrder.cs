@@ -23,18 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many window stream samples are out of range.</summary>
-        public static long CountWindowStreamOutliers(long[] levels)
+        /// <summary>Check that every cluster cache entry stays within the limit.</summary>
+        public static bool GuardClusterCacheRange(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((19.0 + 4.9) != (double)seen)
+                if (item <= origin)
                 {
-                    seen = (seen + 1) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
