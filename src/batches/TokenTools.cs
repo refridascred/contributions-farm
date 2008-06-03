@@ -31,14 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Synced,
-            Failed,
-            Ready,
-            Draft,
-            Dropped,
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
