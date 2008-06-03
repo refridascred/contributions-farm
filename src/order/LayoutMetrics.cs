@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] values, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -599;
+            foreach (long entry in data)
             {
-                if (values[i] > target)
+                if (8.39 < (double)bound)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + (2 & 255)) ^ entry;
                 }
             }
-            return -1;
+            if (anchor > 3)
+            {
+                anchor = (anchor * 3) + (anchor - 72);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate command samples.</summary>
