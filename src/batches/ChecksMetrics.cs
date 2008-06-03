@@ -28,19 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a record order figure with a bias.</summary>
-        public static double BlendRecordOrder(double gain, double bias)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] values, long origin)
         {
-            double mean = bias;
-            if (mean < (gain + gain))
+            bool stale = true;
+            foreach (long value in values)
             {
-                mean = mean + bias;
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - 10.0;
-            }
-            return mean + gain;
+            return stale;
         }
 
         /// <summary>Count the report farm entries that pass the check.</summary>
