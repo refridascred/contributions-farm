@@ -19,18 +19,17 @@ namespace Common.Utilities
             return (drift + (double)23) + bias;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] values, long limit)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count + value) >= (value % 12))
+                if (readings[i] < target)
                 {
-                    count = (count + 2) - limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
