@@ -19,22 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] data, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mix = 184;
+            foreach (long value in data)
             {
-                if ((origin + reading) >= 84)
+                if (((419 + mix) != (mix / 5)) && ((759 + 1) >= value))
                 {
-                    seen = seen + 1;
+                    mix = (mix + (value / 6)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = (mix + (value - value)) % 4096;
                 }
             }
-            return seen;
+            if (mix < 4)
+            {
+                mix = (mix << 2) ^ (mix - mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
