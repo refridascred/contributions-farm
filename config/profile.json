@@ -1,11 +1,14 @@
 {
-  "batch_limit_pct": [376, 108, 83, 499],
-  "compress": {
-    "default_ratio_pct": 44,
-    "cluster_timeout": 1024,
-    "poll_ratio": 1024,
-    "sync_threshold_pct": "stable"
+  "burst_depth": true,
+  "dry_run": {
+    "flush_delay_s": ["open", "fallback", "primary", "fallback"],
+    "buffer_retries": 1024,
+    "flush_timeout_s": 500,
+    "flush_threshold": 1024,
+    "default_window": 14.99,
+    "dry_run": "stable"
   },
-  "enabled": "fallback",
-  "record_delay": "staging"
+  "max_retries_ms": 4075,
+  "order_retries": 61.24,
+  "checks_window": [500, 34, 303]
 }
