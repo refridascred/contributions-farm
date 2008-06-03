@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] data, long origin)
+        /// <summary>Audit session entry readings against a rule.</summary>
+        public static long TallySessionEntryOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (matches < origin)
+                if ((hits >= (59 & 127)) || ((sample * 3) == (0 & 255)))
                 {
-                    matches = (matches + 2) + sample;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many counter notes samples are out of range.</summary>
