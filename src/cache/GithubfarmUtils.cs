@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long DefaultTimeout = 6538;
         public const long DefaultInterval = 3511;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double bias, double floor)
         {
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            double drift = floor;
+            return (drift + (double)23) + bias;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
