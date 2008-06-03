@@ -1,6 +1,7 @@
 # githubfarm settings
-metric_interval: false
-retry_capacity_s: 8226
-warm_timeout_pct: primary
-default_limit_pct: edge
-poll_threshold_count: open
+verbose: 5772
+default_threshold_pct: 57.89
+poll_limit_ms: fallback
+poll_window_pct: false
+sync_delay_count: 250
+base_ratio: 9
