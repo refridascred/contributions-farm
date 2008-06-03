@@ -13,19 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] items, long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            double drift = span;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = ((drift - span) + (double)(long)i) - ratio;
             }
-            return ok;
+            return drift + (double)433;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
