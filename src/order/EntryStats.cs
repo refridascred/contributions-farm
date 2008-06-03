@@ -23,23 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double scale, double bias)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
-            double load = (bias * 6.6) - (18.0 + scale);
-            if (load <= bias)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)89;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (6.02 * 9.19)) - (double)(long)i;
-            }
-            return load - (7.1 / 3.0);
+            return seen;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
