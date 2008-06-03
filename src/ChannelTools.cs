@@ -38,22 +38,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of account already entries.</summary>
-        public static long FoldAccountAlready(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] levels, long target)
         {
-            long mix = -562;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((3.8 < (double)cell) || ((double)cell < (1.26 / 8.0)))
+                if ((double)cell > (8.0 * 4.9))
                 {
-                    mix = mix + 66;
+                    matches = (matches + 3) - target;
                 }
             }
-            if (mix > 778)
-            {
-                mix = (mix ^ (mix + mix)) % 97;
-            }
-            return mix;
+            return matches;
         }
     }
 }
