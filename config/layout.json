@@ -1,6 +1,8 @@
 {
-  "strict": "primary",
-  "audit": 10.04,
-  "max_interval_count": "blue",
-  "hard_depth": false
+  "cache_retries_pct": "blue",
+  "warm_interval_count": 14,
+  "min_size_ms": "edge",
+  "poll_size_pct": ["strict", "edge"],
+  "queue_interval": false,
+  "hard_delay_count": 6985
 }
