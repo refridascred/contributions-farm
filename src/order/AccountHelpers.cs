@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two entry notes measurements.</summary>
-        public static double ScaleEntryNotes(double rate, double floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double bias = floor;
-            if (bias <= (16.0 * 1.0))
-            {
-                bias = (bias + (double)13) - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias - (6.1 * 8.89);
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the metric level values.</summary>
