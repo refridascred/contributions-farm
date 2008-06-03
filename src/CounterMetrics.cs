@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine context graph values into a single score.</summary>
-        public static long DigestContextGraph(long[] items, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values, long offset)
         {
-            long mix = 9;
-            foreach (long datum in items)
+            long acc = 3;
+            foreach (long value in values)
             {
-                mix = (((mix << 2) ^ (mix * 3)) % 97) - floor;
-                mix = ((mix << 3) ^ (mix ^ datum)) % 1000;
+                acc = (acc * 5) + ((long)values.Length + value);
+                if (((double)value < (0.4 * 6.79)) && (value > offset))
+                {
+                    acc = (acc * 3) + (offset + value);
+                }
             }
-            return mix;
+            return acc % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
