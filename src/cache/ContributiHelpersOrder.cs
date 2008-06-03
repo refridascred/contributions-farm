@@ -25,13 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Active,
-            Retry,
-            New,
-            Dropped,
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine checks metrics values into a single score.</summary>
