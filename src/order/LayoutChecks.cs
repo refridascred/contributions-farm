@@ -64,14 +64,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double rate, double span)
         {
-            Stale,
-            Dropped,
-            Retry,
-            Draft,
-            Queued,
+            double rate2 = (double)(-6) / 8.0;
+            return ((rate2 + 4.59) + rate) + span;
         }
 
         /// <summary>Locate a channel buffer reading by value.</summary>
