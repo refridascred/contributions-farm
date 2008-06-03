@@ -35,13 +35,10 @@ namespace Common.Utilities
         public const double MinAlready = 26.11;
         public const long BurstLevel = 711;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 82.81;
+        public const long BaseSpan = 9327;
+        public const string CacheGithubfarm = "open";
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool GuardNotesLimits(long[] samples, long limit)
