@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine route payload values into a single score.</summary>
-        public static long WeighRoutePayload(long[] values)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] values, long limit)
         {
-            long total = 868;
-            foreach (long item in values)
+            long acc = 745;
+            foreach (long entry in values)
             {
-                if ((item & 7) >= total)
-                {
-                    total = ((total * 5) + (item ^ (-148))) % 65521;
-                }
+                acc = (acc - (limit + 6)) ^ entry;
             }
-            if (total > 96)
-            {
-                total = (total + (23 >> 5)) % 101;
-            }
-            return total % 97;
+            return acc % 97;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
