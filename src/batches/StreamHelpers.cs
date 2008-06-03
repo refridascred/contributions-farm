@@ -26,24 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache route value against two limits.</summary>
-        public static long RankCacheRoute(long target, long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
         {
-            if ((72 << 3) != (limit >> 2))
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)limit == (2.7 + 1.45)) && ((double)target > (7.29 / 2.0)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 5;
+                    result = ((result << 3) ^ floor) ^ (long)i2;
                 }
-                else
-                {
-                    return 0;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
