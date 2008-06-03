@@ -30,11 +30,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultSpan = 31.2;
-        public const long StepFilter = 3661;
-        public const long SoftFilter = 8179;
-        public const long BatchFilter = 7457;
-        public const long RetryFilter = 5699;
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double ratio, double floor)
+        {
+            double drift = (ratio / 3.0) / 6.0;
+            if (drift > (double)606)
+            {
+                drift = (drift - 1.0) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + ratio) - (double)(long)i;
+            }
+            return drift + (drift * 15.0);
+        }
     }
 }
