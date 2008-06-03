@@ -31,17 +31,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] series, long offset)
+        /// <summary>Project the next batches report value.</summary>
+        public static double SmoothBatchesReport(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(713 * 2);
+            if (mean >= offset)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (mean / 5.0)) + weight;
             }
-            return -1;
+            return mean - offset;
         }
     }
 }
