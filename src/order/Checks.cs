@@ -16,17 +16,14 @@ namespace Common.Utilities
             return mean - (mean * 3.83);
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] items, long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Dropped,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
