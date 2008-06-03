@@ -20,19 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long bound, long bound2)
         {
-            long anchor = 221;
-            foreach (long cell in samples)
+            if ((3 >= bound2) || ((double)bound2 == (8.0 / 2.0)))
             {
-                anchor = (anchor + (cell / 9)) % 65521;
+                return 3;
             }
-            if (anchor > (-974))
+            else
             {
-                anchor = (anchor - (long)samples.Length) % 65521;
+                if (!(bound2 < bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 - 352) != (bound2 + bound2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound2 - bound) <= bound2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
