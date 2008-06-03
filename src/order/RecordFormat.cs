@@ -66,9 +66,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define already limits and defaults.</summary>
-        public const double WindowTimeout = 95.14;
-        public const long CacheFactor = 850;
-        public const double BurstWidth = 92.4;
-        public const long IdleAlready = 8832;
+        public const string IdleAlready = "alpha";
+        public const long WindowAlready = 8851;
+        public const long MaxAlready = 2827;
+        public const long LimitFactor = 4258;
+        public const long IdleSize = 9133;
     }
 }
