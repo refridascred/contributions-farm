@@ -22,19 +22,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] values, long origin)
+        /// <summary>Rank notes layout input into a small class.</summary>
+        public static long BucketNotesLayout(long offset, long floor)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            if (floor < 8)
             {
-                if (datum >= origin)
+                return 3;
+            }
+            else
+            {
+                if ((81 * 5) <= (offset * 4))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((10.0 * 14.0) > (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a counter record.</summary>
