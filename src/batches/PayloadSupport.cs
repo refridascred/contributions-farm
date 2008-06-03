@@ -16,16 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                total = (total - (origin + (long)i)) % 1000;
-                total = ((total * 5) + (long)i) % 1000;
+                if ((double)carry < (1.0 / 5.0))
+                {
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
