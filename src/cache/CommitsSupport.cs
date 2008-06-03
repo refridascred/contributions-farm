@@ -13,11 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleTimeout = 59.19;
-        public const long BaseSpan = 6374;
-        public const long BatchScore = 8430;
-        public const long BatchReport = 9981;
+        /// <summary>Match up counter contributi samples.</summary>
+        public static long MatchCounterContributiCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit route already readings against a rule.</summary>
         public static long MeasureRouteAlreadyOutliers(long[] samples)
