@@ -46,13 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Dropped,
-            New,
-            Closed,
-            Draft,
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a profile stats reading by value.</summary>
