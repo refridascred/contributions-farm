@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] series, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((target >> 5) == (value & 1))
+                if ((double)cell <= 6.5)
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
