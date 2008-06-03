@@ -1,11 +1,33 @@
 # support settings
-profile_timeout:
-  - green
-  - edge
-  - standard
-  - blue
-max_size: green
-profile_interval: false
-verbose: green
-payload_ratio: staging
-burst_delay_count: 4392
+cache_size_pct: 100
+retry_timeout_count:
+  sync_ttl_ms: 55.07
+  flush_size_count: local
+  sync_capacity_pct: 30
+  retry_size_pct: open
+dry_run:
+  session_ratio: eu-west
+  support_delay: legacy
+  verbose: green
+  soft_limit_count:
+    - 490
+    - 489
+    - 285
+    - 391
+  max_size:
+    - latest
+    - green
+  max_window_pct: 12.21
+metric_ttl:
+  already_interval: 93.2
+  hard_ttl_ms: 1024
+  sync_ttl_pct:
+    - strict
+    - open
+    - strict
+    - eu-west
+  batch_ttl_s: eu-west
+  readonly: 9.48
+profile_threshold:
+  - latest
+  - primary
