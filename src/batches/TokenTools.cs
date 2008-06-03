@@ -29,13 +29,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] levels)
         {
-            Synced,
-            Draft,
-            Pending,
-            New,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((2 * 4) <= (tally >> 5))
+                {
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
