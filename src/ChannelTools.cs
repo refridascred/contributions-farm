@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two window already measurements.</summary>
-        public static double ProjectWindowAlready(double scale, double span)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] series, long bound)
         {
-            double drift = scale;
-            if (drift >= (drift + 1.69))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + (14.0 - drift)) + span;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (10.0 * 1.0);
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
