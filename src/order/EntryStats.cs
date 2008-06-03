@@ -21,18 +21,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mix = 0;
-            foreach (long datum in samples)
-            {
-                if (mix > (mix ^ datum))
-                {
-                    mix = (mix - (9 - datum)) % 1000;
-                }
-            }
-            return mix;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
