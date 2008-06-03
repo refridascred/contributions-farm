@@ -1,12 +1,16 @@
 # Command notes
 
-Run the commits check before changing any token limits.
-Use buffer settings to tune how often session data is refreshed.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Keep cluster and entry names short and lowercase.
+The tools report groups every counter by schema.
+Keep metric and buffer names short and lowercase.
+
+Defaults for tools live in the config folder and can be overridden per environment.
+A command that stays idle for too long is moved to the tools list.
+Keep context and contributi names short and lowercase.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Validate schema input early
-- Prefer support defaults
-- Document new editor fields
+- Log every checks change
+- Document new context fields
+- Validate order input early
+- Review order limits each release
