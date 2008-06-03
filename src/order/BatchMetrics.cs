@@ -25,19 +25,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] readings, long bound)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count format session pairs that satisfy a relation.</summary>
