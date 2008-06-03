@@ -55,13 +55,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Active,
-            Done,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitDepth = 5069;
+        public const long SoftOrder = 1691;
+        public const long MinOrder = 9206;
+        public const long LimitOrder = 8966;
+        public const long IdleOrder = 4976;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepCount = 1068;
