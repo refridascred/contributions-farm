@@ -23,18 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] samples, long target)
         {
-            long score = 974;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((score & 15) == (score + 1))
+                if ((entry - target) < (entry - matches))
                 {
-                    score = ((score << 3) ^ origin) + value;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
