@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long origin, long limit)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            if ((double)limit >= (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit << 1) > (origin * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (4.32 < (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit > (limit << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate githubfarm payload readings against a bound.</summary>
