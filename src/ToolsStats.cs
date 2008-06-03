@@ -35,15 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit checks record readings against a rule.</summary>
-        public static long CountChecksRecordGaps(long[] data, long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
             long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (origin >= count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) ^ cell;
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
