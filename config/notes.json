@@ -1,21 +1,5 @@
 {
-  "warm_window_count": ["fallback", "legacy"],
-  "retry_timeout_pct": false,
-  "retry_limit_ms": ["stable", "cached", "edge", "open"],
-  "poll_ratio_s": {
-    "poll_timeout": {
-      "flush_size_count": "standard",
-      "hard_delay_pct": [317, 368, 47, 205],
-      "cache_threshold_count": 4820
-    },
-    "hard_limit": {
-      "default_depth": 55.78,
-      "persist": 2732,
-      "flush_threshold_pct": 66.68
-    },
-    "default_timeout_ms": "blue",
-    "min_delay": "cached",
-    "base_capacity_pct": "cached",
-    "counter_ttl": 17.03
-  }
+  "enabled": 74.91,
+  "dry_run": 81.71,
+  "sync_delay": 84
 }
