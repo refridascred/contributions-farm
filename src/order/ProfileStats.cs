@@ -54,11 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public double Total { get; set; }
-            public bool Weight { get; set; }
+            Stale,
+            Locked,
+            Dropped,
+            Draft,
         }
     }
 }
