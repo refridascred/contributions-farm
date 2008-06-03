@@ -54,13 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Closed,
-            Ready,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxFormat = "local";
+        public const double BaseFormat = 71.96;
+        public const double MaxWidth = 20.41;
+        public const double IdleFormat = 27.41;
     }
 }
