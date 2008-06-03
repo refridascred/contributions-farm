@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank commits token input into a small class.</summary>
-        public static long RankCommitsToken(long step, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] items, long offset)
         {
-            if ((limit & 3) >= (limit * 5))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit >= (step / 9))
+                if (items[i] == offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (step <= (step + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
