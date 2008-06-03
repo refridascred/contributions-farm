@@ -1,24 +1,24 @@
 # entry settings
-buffer_depth:
-  flush_ttl: 4406
-  max_ttl: local
-  hard_size_ms:
-    - stable
-    - eu-west
-  min_depth: legacy
-  warm_limit: legacy
-filter_ttl:
-  verbose: standard
-  retry_size_s: primary
-  notes_interval: latest
-  hard_limit_ms: edge
-checks_timeout: 10
-tools_ratio: 61.34
-soft_retries: 100
-tools_depth:
-  idle_retries_ms:
-    warm_retries_ms: 1024
-    warm_capacity: 40.24
-    base_retries: open
-  flush_window_count: local
-  flush_retries_pct: legacy
+sync_interval_count: false
+checks_retries: edge
+enabled:
+  strict: 34.24
+  enabled: 60
+  farm_size:
+    base_limit: primary
+    hard_delay: green
+    sync_ttl: 54.66
+    idle_size_pct:
+      - strict
+      - standard
+      - primary
+      - edge
+    burst_capacity_count: primary
+  cluster_threshold: 91.89
+  readonly: 25
+  idle_depth: cached
+flush_ratio: 94.2
+base_ratio_pct:
+  - green
+  - latest
+  - strict
