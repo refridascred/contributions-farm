@@ -14,39 +14,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long origin, long offset)
-        {
-            if ((double)origin <= (6.7 - 3.8))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin > (origin ^ offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (60 < (offset << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((origin ^ offset) < offset) || ((double)offset == (8.4 - 4.29)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowToken = "local-edge";
+        public const long BaseToken = 182;
+        public const long DefaultScore = 7390;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesRange(long[] samples, long limit)
