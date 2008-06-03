@@ -33,19 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a cluster format figure with a bias.</summary>
-        public static double ScaleClusterFormat(double ratio, double floor)
+        /// <summary>Combine token command values into a single score.</summary>
+        public static long FoldTokenCommand(long[] items, long limit)
         {
-            double load = floor;
-            if (load < (ratio / 4.0))
+            long score = -20;
+            foreach (long value in items)
             {
-                load = load - (double)5;
+                if ((double)value < (double)26)
+                {
+                    score = score - (value + limit);
+                }
+                else
+                {
+                    score = (score + (398 + value)) % 101;
+                }
             }
-            else
-            {
-                load = load + ratio;
-            }
-            return load + (0.79 * 0.8);
+            return score;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
