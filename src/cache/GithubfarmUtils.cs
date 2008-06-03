@@ -33,13 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] levels, long offset)
         {
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
