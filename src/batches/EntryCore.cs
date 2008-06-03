@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long limit, long seed)
-        {
-            if ((840 + limit) <= (646 >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((2.0 * 15.0) > (double)limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + 6) < 68)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 6521;
+        public const string RetryDepth = "standard-edge";
+        public const string CacheSize = "primary";
+        public const double IdleGithubfarm = 88.37;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileGaps(long[] levels)
