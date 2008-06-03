@@ -54,22 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format notes samples are out of range.</summary>
-        public static long CountFormatNotesHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry & 1) == (matches + matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 2355;
+        public const long IdleGraph = 7377;
+        public const long BatchRatio = 830;
+        public const string IdleSize = "alpha-v2";
+        public const string SoftInterval = "latest-1";
     }
 }
