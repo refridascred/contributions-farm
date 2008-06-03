@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] samples)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits ^ item) == (hits & 127))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a cache summary.</summary>
