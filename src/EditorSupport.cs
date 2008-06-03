@@ -78,11 +78,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardBudget = 4371;
-        public const long MaxSession = 6789;
-        public const double StepSize = 3.75;
-        public const double BatchBudget = 37.65;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Failed,
+            Stale,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
