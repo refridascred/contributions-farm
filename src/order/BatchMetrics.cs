@@ -35,18 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer metrics entries that pass the check.</summary>
-        public static long TallyBufferMetricsHits(long[] levels, long target)
+        /// <summary>Digest a series of record notes entries.</summary>
+        public static long ScoreRecordNotes(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long carry = 252;
+            foreach (long value in values)
             {
-                if (((6.9 - 3.2) < (double)cell) && ((matches + matches) > (target / 6)))
+                if (((value - origin) < (value & 15)) || ((value ^ value) < (long)values.Length))
                 {
-                    matches = matches + 1;
+                    carry = (carry - (carry / 8)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (value ^ (long)values.Length)) % 1000;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the payload level values.</summary>
