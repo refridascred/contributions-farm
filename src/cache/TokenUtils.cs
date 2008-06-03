@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long MinSize = 1179;
         public const double StepTimeout = 62.06;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "open-1";
-        public const long MaxSize = 8531;
-        public const string WindowBuffer = "stable-edge";
-        public const double BurstBuffer = 57.07;
-        public const long HardScore = 149;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double ratio, double offset)
+        {
+            double ratio2 = (double)(-6) * 1.62;
+            if (ratio2 < offset)
+            {
+                ratio2 = ratio2 + (ratio - 1.96);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + 15.0) - (double)(long)i;
+            }
+            return ratio2 - (double)(-135);
+        }
     }
 }
