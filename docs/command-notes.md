@@ -1,10 +1,11 @@
 # Command notes
 
-Each report is validated before it reaches the window queue.
-Use buffer settings to tune how often support data is refreshed.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The batch module keeps editor values in sync with the channel cache.
 
 ## Guidelines
 
-- Review farm limits each release
-- Validate entry input early
-- Document new metric fields
+- Review context limits each release
+- Prefer profile defaults
+- Document new report fields
+- Log every layout change
