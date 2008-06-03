@@ -47,19 +47,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] items, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long floor, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            if ((floor > (origin + floor)) || ((origin + origin) < origin))
             {
-                if (value <= bound)
+                return 2;
+            }
+            else
+            {
+                if (origin > floor)
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (!((floor * 5) <= floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Project the next session value.</summary>
