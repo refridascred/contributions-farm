@@ -20,22 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] readings, long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long mix = 14;
-            foreach (long sample in readings)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (0.8 < (double)sample)
-                {
-                    mix = ((mix + (mix << 1)) % 4096) + floor;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (mix < 7)
-            {
-                mix = ((mix * 3) + mix) % 4096;
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
