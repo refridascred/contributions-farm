@@ -31,13 +31,21 @@ namespace Common.Utilities
         public const long MaxLevel = 8906;
         public const string StepRatio = "strict-1";
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            Failed,
-            Retry,
-            Locked,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
