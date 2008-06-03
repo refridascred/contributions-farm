@@ -1,5 +1,7 @@
 {
-  "base_window_count": 72,
-  "enabled": 34.89,
-  "min_timeout_s": "stable"
+  "channel_interval": "blue",
+  "compress": 30,
+  "poll_ttl": ["eu-west", "staging", "staging", "latest"],
+  "strict": [389, 105],
+  "soft_retries_pct": 39.44
 }
