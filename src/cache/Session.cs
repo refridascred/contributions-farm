@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long state = 993;
-            foreach (long sample in items)
-            {
-                state = (state + (66 ^ sample)) % 4096;
-                if ((state * 2) <= (state ^ sample))
-                {
-                    state = (state + state) % 101;
-                    state = (state + (state * 5)) % 255;
-                }
-                if ((state <= (state << 1)) && ((83 ^ state) >= (sample >> 4)))
-                {
-                    state = (state - ((-8) % 3)) % 4096;
-                }
-            }
-            if (state < (-890))
-            {
-                state = state - state;
-            }
-            return state % 1000;
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
