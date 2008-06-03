@@ -39,15 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] readings, long floor)
+        /// <summary>Scale a cluster format figure with a bias.</summary>
+        public static double ScaleClusterFormat(double ratio, double floor)
         {
-            long state = -28;
-            foreach (long sample in readings)
+            double load = floor;
+            if (load < (ratio / 4.0))
             {
-                state = (((state * 4) + (sample & 7)) % 101) + floor;
+                load = load - (double)5;
             }
-            return state;
+            else
+            {
+                load = load + ratio;
+            }
+            return load + (0.79 * 0.8);
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
