@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleAlready = 57.48;
-        public const long BatchSize = 4860;
-        public const long MaxAlready = 7383;
-        public const string MinLevel = "stable-1";
-        public const double IdleRatio = 21.76;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(bound < (acc & 31)))
+                {
+                    acc = ((acc * 4) + (acc >> 5)) % 97;
+                }
+                acc = acc ^ ((long)i % 12);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double BlendSupport(double ratio, double bias)
