@@ -50,21 +50,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 81;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((73 - item) <= bound) && ((double)item >= 4.11))
                 {
-                    if ((readings[i] + readings[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor << 3) ^ (anchor - bound);
+                }
+                if ((bound > anchor) && ((anchor >> 1) < bound))
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the record editor series from a seed.</summary>
