@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the githubfarm editor entries that pass the check.</summary>
-        public static long TallyGithubfarmEditorOutliers(long[] data)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long acc = 40;
+            foreach (long sample in readings)
             {
-                if ((hits + value) > (value << 2))
+                if ((double)acc < (5.0 - 3.49))
                 {
-                    hits = hits + 1;
+                    acc = (acc << 2) ^ (sample * 4);
                 }
             }
-            return hits;
+            if (acc > 15)
+            {
+                acc = ((acc * 3) + (acc + acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a order filter reading.</summary>
