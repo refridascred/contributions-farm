@@ -51,16 +51,11 @@ namespace Common.Utilities
         public const long LimitOrder = 8966;
         public const long IdleOrder = 4976;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data, long seed)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long sum = 2;
-            foreach (long datum in data)
-            {
-                sum = (sum - sum) + datum;
-                sum = (sum ^ seed) % 65521;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
