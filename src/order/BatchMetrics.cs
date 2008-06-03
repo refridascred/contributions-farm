@@ -76,9 +76,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 19.66;
-        public const long BurstStats = 4034;
-        public const long BatchStats = 6450;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!((0.17 + 0.12) >= (double)cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
