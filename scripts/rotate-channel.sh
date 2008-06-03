@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=143
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in legacy stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
+mode="${1:-stable}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in standard edge local; do
+    log "checking ${item}"
+done
