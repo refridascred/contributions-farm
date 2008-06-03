@@ -1,4 +1,11 @@
 # githubfarm settings
-farm_delay: legacy
-enabled: 9
-strict: 40
+sync_delay_count: blue
+readonly: true
+retry_capacity: 100
+enabled: 250
+base_timeout_ms: 16
+hard_window:
+  - 50
+  - 144
+  - 223
+  - 56
