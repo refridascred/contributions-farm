@@ -40,19 +40,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((7.89 * 9.8) >= (3.86 - 8.7))
-                {
-                    hits = ((hits + 2) - entry) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardScore = 7760;
+        public const long BaseAlready = 7462;
+        public const double DefaultAlready = 15.53;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
