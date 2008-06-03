@@ -35,19 +35,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] samples, long origin)
+        /// <summary>Accumulate record tools samples.</summary>
+        public static long ScoreRecordTools(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long carry = 4;
+            foreach (long sample in items)
             {
-                if (sample > origin)
+                if (((sample - floor) <= ((long)items.Length + carry)) && ((sample + sample) > (carry & 127)))
                 {
-                    ready = false;
+                    carry = carry + (floor >> 2);
+                }
+                if ((double)7 != (double)floor)
+                {
                     break;
                 }
             }
-            return ready;
+            if (carry > 73)
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry % 65521;
         }
     }
 }
