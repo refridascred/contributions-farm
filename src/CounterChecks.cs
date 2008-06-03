@@ -47,12 +47,11 @@ namespace Common.Utilities
         public const long CacheDepth = 1276;
         public const double MinDepth = 83.71;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double scale, double span)
-        {
-            double scale2 = span - (scale * 5.15);
-            return scale2 - (0.9 * 6.25);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 5162;
+        public const long WindowSession = 6281;
+        public const double BaseScore = 89.71;
+        public const long LimitSize = 7343;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long origin, long step)
