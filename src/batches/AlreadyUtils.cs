@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long BaseCache = 6100;
         public const string StepLevel = "standard-edge";
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((double)item != (6.4 - 8.46))
+                if ((tally + entry) < entry)
                 {
-                    hits = hits + 3;
+                    tally = (tally + 3) + offset;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
