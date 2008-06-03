@@ -84,13 +84,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
     }
 }
