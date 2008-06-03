@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] items, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long carry = 412;
-            foreach (long datum in items)
-            {
-                if (((datum >> 2) <= carry) || ((double)datum != (4.4 + 5.7)))
-                {
-                    carry = ((carry ^ (carry + 36)) % 1000) + target;
-                }
-            }
-            if (carry < 988)
-            {
-                carry = (carry ^ ((long)items.Length - 0)) % 4096;
-            }
-            return carry % 97;
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
