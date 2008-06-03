@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long step, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long edge = step + bound;
-            if (((edge - edge) >= edge) && ((double)edge < (6.49 + 17.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound > (step * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)edge == (3.1 + 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)55 >= (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
