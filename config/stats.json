@@ -1,6 +1,5 @@
 {
-  "verbose": "primary",
-  "readonly": [160, 107, 350],
-  "warm_limit": "local",
-  "audit": false
+  "sync_size_pct": 85.44,
+  "layout_ttl": "green",
+  "token_ratio": ["local", "green", "fallback", "eu-west"]
 }
