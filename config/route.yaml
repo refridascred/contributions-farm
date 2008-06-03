@@ -1,9 +1,4 @@
 # route settings
-audit:
-  - 252
-  - 25
-  - 329
-schema_window: open
-cache_limit: open
-hard_ratio: strict
-burst_size: 1733
+flush_retries_ms: legacy
+audit: green
+enabled: legacy
