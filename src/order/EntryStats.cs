@@ -26,13 +26,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Compare every pair of route token readings.</summary>
+        public static long OverlapRouteTokenCount(long[] readings)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
