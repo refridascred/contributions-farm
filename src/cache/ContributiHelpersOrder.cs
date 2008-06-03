@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] items)
         {
-            long acc = 994;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((double)limit < (2.79 * 7.7))
+                if ((datum - datum) <= seen)
                 {
-                    acc = ((acc * 4) + (acc + (-919))) % 97;
-                }
-                else
-                {
-                    acc = acc ^ (limit ^ sample);
+                    seen = seen + 3;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Match up commits samples.</summary>
