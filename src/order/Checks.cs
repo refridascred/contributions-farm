@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] items, long floor)
         {
-            Closed,
-            Dropped,
-            Locked,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
