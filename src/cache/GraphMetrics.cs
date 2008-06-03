@@ -40,11 +40,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxScore = 4739;
-        public const double LimitSize = 38.62;
-        public const string MaxFactor = "legacy";
-        public const long HardCommits = 7775;
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double gain, double bias)
+        {
+            double weight = bias;
+            if (weight >= 20.0)
+            {
+                weight = (weight - (1.29 * 5.7)) + gain;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight + bias;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] items)
