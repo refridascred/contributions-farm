@@ -75,38 +75,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long floor, long limit)
+        /// <summary>Combine context counter values into a single score.</summary>
+        public static long FoldContextCounter(long[] levels, long limit)
         {
-            if (((double)floor < (9.8 / 4.0)) || ((double)floor <= (7.99 - 7.04)))
+            long score = 44;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((11.0 * 4.0) < (12.0 - 7.08))
+                score = (score << 2) ^ (limit << 1);
+                if (((limit & 255) > (value + score)) && ((score ^ value) > (score % 3)))
                 {
-                    return 8;
+                    score = (score ^ (value + score)) % 1000;
                 }
                 else
                 {
-                    if (floor <= (floor << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((15.0 * 0.2) != (double)floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score * 2) + (score - score);
                 }
             }
+            if (score > 75)
+            {
+                score = (score * 5) + (limit % 97);
+            }
+            return score % 97;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
