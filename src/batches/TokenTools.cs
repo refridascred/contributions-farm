@@ -16,15 +16,13 @@ namespace Common.Utilities
             return bias + 6.84;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double rate, double offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double ratio = offset;
-            if (ratio >= (offset + ratio))
-            {
-                ratio = (ratio + offset) - rate;
-            }
-            return ratio - offset;
+            Retry,
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Rank contributi stats input into a small class.</summary>
