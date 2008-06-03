@@ -35,22 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] series, long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((423 - 65) == (origin >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
