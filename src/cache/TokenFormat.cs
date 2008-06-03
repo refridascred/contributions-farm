@@ -16,18 +16,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] levels)
+        /// <summary>Locate a counter metric reading by value.</summary>
+        public static long FindCounterMetricIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((datum + tally) > (tally + datum)) && ((tally & 127) <= tally))
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
