@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "staging-v2";
-        public const long CacheGithubfarm = 8737;
-        public const string BaseGithubfarm = "legacy";
-        public const long DefaultGithubfarm = 7669;
-        public const long StepLevel = 7948;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] series)
+        {
+            long acc = 96;
+            foreach (long sample in series)
+            {
+                acc = acc ^ sample;
+                acc = acc + (acc - acc);
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsHits(long[] values, long step)
