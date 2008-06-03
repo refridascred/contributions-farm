@@ -77,19 +77,24 @@ namespace Common.Utilities
             return scale2 - (0.9 * 6.25);
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] items, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long origin, long step)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            if ((step + origin) <= (step - 72))
             {
-                if (entry <= bound)
+                return 0;
+            }
+            else
+            {
+                if ((origin << 2) > origin)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
     }
 }
