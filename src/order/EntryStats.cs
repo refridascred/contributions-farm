@@ -83,21 +83,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 7;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (((mark - mark) % 65521) ^ sample) - limit;
+                mark = ((mark * 5) + mark) % 97;
             }
-            return matches;
+            if (mark > 63)
+            {
+                mark = (mark << 2) ^ (935 + mark);
+            }
+            return mark % 1000;
         }
     }
 }
