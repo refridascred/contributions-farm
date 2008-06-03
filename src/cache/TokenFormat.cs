@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Locked,
-            Failed,
-            Retry,
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
