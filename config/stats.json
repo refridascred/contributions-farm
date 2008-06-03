@@ -1,19 +1,16 @@
 {
-  "notes_window": 1024,
-  "poll_retries_s": "blue",
-  "base_limit_count": 88,
-  "sync_ratio_count": 5849,
-  "graph_size": false,
-  "base_ttl": {
-    "batch_delay": 452,
-    "soft_ttl_pct": 99,
-    "order_timeout": 55,
-    "context_limit": {
-      "audit": 19,
-      "dry_run": 46.14,
-      "token_timeout": 60,
-      "graph_window": [56, 231, 346],
-      "hard_ttl": 58.67
-    }
+  "route_depth": false,
+  "route_retries": 79,
+  "retry_window_ms": "green",
+  "min_retries": {
+    "idle_timeout_ms": 85.2,
+    "flush_delay_count": true,
+    "min_retries_ms": [274, 10, 100, 268],
+    "batch_window": "cached"
+  },
+  "default_timeout_pct": {
+    "max_interval_ms": 68,
+    "warm_threshold_pct": 15.59,
+    "audit": 12
   }
 }
