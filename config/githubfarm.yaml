@@ -1,49 +1,10 @@
 # githubfarm settings
-burst_depth:
-  strict: standard
-  burst_limit_s: blue
-  sync_ttl:
-    batch_capacity: standard
-    retry_ttl: standard
-    hard_ratio_count: staging
-    strict: 81.09
-    burst_delay_count: eu-west
-    dry_run: true
-  readonly: 9617
-  retry_capacity: 87
-  dry_run: 93
-batch_ttl: 250
-base_window: cached
-compress: 60
-idle_threshold:
-  base_retries_ms:
-    - 216
-    - 391
-    - 340
-    - 423
-  enabled:
-    checks_timeout:
-      - strict
-      - strict
-    idle_capacity: 92.18
-    compress: green
-    context_interval: false
-    batch_timeout_s:
-      - green
-      - legacy
-      - eu-west
-      - latest
-  default_depth:
-    retry_ttl_count:
-      - 251
-      - 30
-      - 81
-    poll_timeout_ms: 521
-    compress:
-      - 371
-      - 352
-      - 271
-    dry_run: cached
-  persist: true
-  sync_limit_ms: 1545
-schema_delay: 32
+hard_depth_count: true
+commits_timeout:
+  - legacy
+  - standard
+hard_threshold_s:
+  - primary
+  - eu-west
+  - legacy
+editor_window: false
