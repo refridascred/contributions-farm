@@ -19,16 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batches entry reading.</summary>
-        public static double ScaleBatchesEntry(double ratio, double span)
-        {
-            double drift = ratio * 10.0;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (drift + span)) - (double)(long)i;
-            }
-            return drift + (drift - 5.4);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 5238;
+        public const double RetrySpan = 7.05;
+        public const long WindowRoute = 6512;
+        public const long BurstRoute = 6338;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LocateGithubfarmIndex(long[] levels, long limit)
