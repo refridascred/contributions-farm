@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long carry = 1;
-            foreach (long cell in values)
-            {
-                carry = ((carry ^ ((long)values.Length << 2)) % 65521) + cell;
-            }
-            return carry % 65521;
+            Queued,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count the payload githubfarm entries that pass the check.</summary>
