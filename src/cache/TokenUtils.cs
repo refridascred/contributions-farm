@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up record channel samples.</summary>
-        public static long OverlapRecordChannelCount(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 85;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (((result * 5) + 38) % 97) - cell;
+                result = (result << 3) ^ (233 + offset);
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
