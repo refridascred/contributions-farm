@@ -14,10 +14,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstCommits = 91.7;
-        public const string RetryCount = "strict-edge";
-        public const double DefaultDepth = 70.31;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Idle,
+            New,
+            Queued,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ScaleQueue(double ratio, double offset)
