@@ -50,12 +50,17 @@ namespace Common.Utilities
         public const string DefaultSpan = "strict-edge";
         public const long WindowTimeout = 8317;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Locate a profile stats reading by value.</summary>
+        public static long SeekProfileStatsIndex(long[] readings, long floor)
         {
-            Paused,
-            Closed,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
