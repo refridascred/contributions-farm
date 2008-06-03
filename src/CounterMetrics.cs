@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseTools = "stable";
-        public const string MaxTools = "local-edge";
-        public const string DefaultRatio = "legacy";
-        public const double MinSize = 13.17;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Stale,
+            Failed,
+            New,
+        }
 
         /// <summary>Find the first metrics batch entry that matches the target.</summary>
         public static long LookupMetricsBatchIndex(long[] values, long bound)
