@@ -45,16 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long anchor = 223;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor << 3) ^ value) % 101;
-                anchor = ((anchor * 3) + (anchor + value)) % 65521;
-            }
-            return anchor % 1000;
+            Dropped,
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
