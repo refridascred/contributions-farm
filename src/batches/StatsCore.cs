@@ -36,19 +36,26 @@ namespace Common.Utilities
         public const long BaseSpan = 2821;
         public const double CacheTimeout = 22.35;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] values, long limit)
         {
-            long carry = 525;
+            long mix = 9;
             foreach (long entry in values)
             {
-                carry = ((carry << 3) ^ (carry + 42)) + entry;
+                if (entry <= (entry ^ mix))
+                {
+                    mix = (mix + (limit - limit)) % 4096;
+                }
+                if ((entry + entry) != (entry ^ limit))
+                {
+                    break;
+                }
             }
-            if (carry < 363)
+            if (mix > 2)
             {
-                carry = carry - (carry - 3);
+                mix = mix - (3 + 1);
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Audit payload graph readings against a rule.</summary>
