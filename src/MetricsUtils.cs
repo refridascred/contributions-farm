@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count notes schema pairs that satisfy a relation.</summary>
-        public static long PairNotesSchemaCount(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((offset * 5) > value)
                 {
-                    if ((data[i] - data[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a already options.</summary>
