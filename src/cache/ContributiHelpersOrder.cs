@@ -23,23 +23,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next stats checks value.</summary>
-        public static double SmoothStatsChecks(double scale, double offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] items, long seed)
         {
-            double rate = scale;
-            if (rate >= scale)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - (double)8) - offset;
+                if ((items[i] >= seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + 1.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - scale;
+            return -1;
         }
 
         /// <summary>Describe the report mode values.</summary>
