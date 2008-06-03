@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the entry stream entries that pass the check.</summary>
-        public static long CountEntryStreamHits(long[] values)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long next = floor + bound;
+            if ((double)floor <= 4.39)
             {
-                if ((datum > (hits % 64)) && ((double)datum < (double)5))
+                return 1;
+            }
+            else
+            {
+                if (!((next + bound) < (6 + bound)))
                 {
-                    hits = hits + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
