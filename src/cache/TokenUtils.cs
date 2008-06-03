@@ -38,18 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Count the commits editor entries that pass the check.</summary>
+        public static long AuditCommitsEditorMatches(long[] data, long floor)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((long)data.Length >= (floor >> 3))
                 {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) - cell;
                 }
             }
             return tally;
