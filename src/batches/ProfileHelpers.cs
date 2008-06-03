@@ -59,11 +59,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 5102;
-        public const long MaxRecord = 6683;
-        public const long SoftRecord = 6369;
-        public const double MinInterval = 40.33;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public bool Owner { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] data, long limit)
