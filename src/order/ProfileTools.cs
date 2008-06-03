@@ -44,14 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long offset)
         {
-            Locked,
-            Failed,
-            Pending,
-            Closed,
-            Draft,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the metric level values.</summary>
