@@ -56,21 +56,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 22;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix ^ (datum + mix)) - origin;
             }
-            return matches;
+            return mix;
         }
     }
 }
