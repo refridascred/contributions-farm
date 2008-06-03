@@ -41,38 +41,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long seed, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] samples)
         {
-            if ((seed * 5) >= (bound * 3))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound >= (seed + bound))
+                if (((value / 8) < (4 % 3)) || ((5.2 / 6.0) > (double)hits))
                 {
-                    return 7;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((bound >> 4) < bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed <= (seed + bound)) && ((bound + 599) > bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
