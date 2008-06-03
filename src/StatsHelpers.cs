@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double rate, double floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] samples, long seed)
         {
-            double gain = floor;
-            if (gain < gain)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                gain = (gain + (floor - gain)) - rate;
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (gain / 2.0);
-            }
-            return gain + (gain - 1.5);
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
