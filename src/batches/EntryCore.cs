@@ -37,12 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Active,
-            Paused,
-            Synced,
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
