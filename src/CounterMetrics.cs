@@ -17,18 +17,11 @@ namespace Common.Utilities
         public const string BatchRoute = "local-edge";
         public const long SoftRoute = 7360;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] levels)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen * 2) < sample)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a cache entry.</summary>
