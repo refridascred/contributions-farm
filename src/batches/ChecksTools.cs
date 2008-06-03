@@ -41,21 +41,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] levels)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long offset = floor ^ bound;
+            if ((double)floor <= (10.0 + 3.5))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (floor <= (offset % 16))
                 {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of stream metric entries.</summary>
