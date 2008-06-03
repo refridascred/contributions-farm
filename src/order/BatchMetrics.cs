@@ -35,15 +35,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] levels, long bound)
+        /// <summary>Match up metric already samples.</summary>
+        public static long CompareMetricAlreadyCount(long[] values)
         {
-            long result = 960;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result - item) - bound;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
