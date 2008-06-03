@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Locked,
-            Synced,
-            Queued,
-            Retry,
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
