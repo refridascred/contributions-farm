@@ -27,21 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of route token readings.</summary>
-        public static long OverlapRouteTokenCount(long[] readings)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
