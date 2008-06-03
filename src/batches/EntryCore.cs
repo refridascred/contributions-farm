@@ -48,12 +48,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long seed)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
