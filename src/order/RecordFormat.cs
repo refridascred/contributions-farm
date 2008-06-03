@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
