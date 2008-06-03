@@ -30,12 +30,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryRatio = "alpha-v2";
-        public const long IdleRatio = 9285;
-        public const long MinReport = 5787;
-        public const string BaseCount = "latest-v2";
-        public const long MaxReport = 3199;
+        /// <summary>Digest a series of format token entries.</summary>
+        public static long TallyFormatToken(long[] samples, long offset)
+        {
+            long acc = 4;
+            foreach (long datum in samples)
+            {
+                acc = ((acc - (datum % 2)) % 4096) + offset;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteBounds(long[] data, long step)
