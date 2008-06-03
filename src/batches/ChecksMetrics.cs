@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double rate, double bias)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] values, long origin)
         {
-            double weight = rate;
-            if (weight > (weight + weight))
+            bool flag = true;
+            foreach (long value in values)
             {
-                weight = (weight + 12.0) - bias;
+                if (value != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (double)872) + (double)(long)i;
-            }
-            return weight - (7.87 / 5.0);
+            return flag;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
