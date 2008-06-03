@@ -90,12 +90,14 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Failed,
-            Pending,
+            Retry,
+            Closed,
+            Stale,
             Active,
+            Dropped,
         }
     }
 }
