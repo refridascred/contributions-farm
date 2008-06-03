@@ -42,19 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every window command entry stays within the limit.</summary>
-        public static bool VerifyWindowCommandRange(long[] data, long step)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a format snapshot.</summary>
