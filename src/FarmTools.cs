@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long anchor = 733;
+            foreach (long datum in series)
             {
-                if ((item / 7) != (58 & 1))
+                if ((datum * 4) < (anchor % 5))
                 {
-                    tally = tally + 2;
+                    anchor = ((anchor - 6) % 1000) + limit;
+                }
+                else
+                {
+                    anchor = anchor - anchor;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
