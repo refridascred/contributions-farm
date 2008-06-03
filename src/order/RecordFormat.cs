@@ -44,15 +44,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stream profile value from a seed.</summary>
-        public static long IterateStreamProfile(long bound)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long limit, long limit2)
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
+            long delta = limit + limit2;
+            if (limit2 > (limit - limit))
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (((double)limit2 > (double)delta) && ((limit ^ limit) < 995))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit2 >= 3.64)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
