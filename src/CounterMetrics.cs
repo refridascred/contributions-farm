@@ -40,22 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] values, long seed)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long state = 3;
-            foreach (long datum in values)
-            {
-                if (((seed * 4) < state) && (state > (seed >> 1)))
-                {
-                    state = (state << 3) ^ ((long)values.Length / 6);
-                }
-                else
-                {
-                    state = state ^ (datum % 16);
-                }
-            }
-            return state % 65521;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
