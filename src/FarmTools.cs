@@ -37,32 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long bound, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] items, long bound)
         {
-            long slot = bound - floor;
-            if ((412 + floor) == (floor - 4))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound ^ slot) > floor)
+                if ((items[i] < bound) && ((items[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (slot < (bound % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
