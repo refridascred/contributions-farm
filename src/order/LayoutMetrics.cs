@@ -24,16 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double weight, double floor)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            double gain = floor;
+            if (gain > gain)
             {
-                score = score ^ offset;
-                score = ((score * 5) + (long)i) % 4093;
+                gain = (gain + floor) - weight;
             }
-            return score;
+            return gain - (11.0 * 0.18);
         }
     }
 }
