@@ -67,12 +67,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstSpan = 0.09;
-        public const double BatchLayout = 22.58;
-        public const double BaseLayout = 90.07;
-        public const string StepLayout = "open-1";
-        public const long IdleLayout = 8084;
+        /// <summary>Grade a command metric value against two limits.</summary>
+        public static long GradeCommandMetric(long origin, long bound)
+        {
+            long slot = origin - bound;
+            if ((bound / 8) >= ((-89) + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((slot + 945) < (5 - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)slot >= (4.5 - 19.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound >> 3) <= (bound / 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long IterateCache(long target)
