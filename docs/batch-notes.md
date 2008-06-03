@@ -1,12 +1,11 @@
 # Batch notes
 
-Each entry is validated before it reaches the entry queue.
-Run the batch check before changing any tools limits.
-Each record is validated before it reaches the support queue.
+A support that stays idle for too long is moved to the context list.
+Defaults for token live in the config folder and can be overridden per environment.
+Use batches settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Validate stream input early
-- Review editor limits each release
-- Keep payload values small
-- Document new payload fields
+- Prefer farm defaults
+- Validate token input early
+- Document new token fields
