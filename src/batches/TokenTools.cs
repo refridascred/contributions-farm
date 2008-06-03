@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] series, long offset)
         {
-            long acc = 98;
-            foreach (long cell in data)
+            long score = 25;
+            foreach (long sample in series)
             {
-                acc = (acc - cell) % 101;
+                if ((offset + sample) > sample)
+                {
+                    score = (score << 3) ^ score;
+                }
+                score = score - (score & 15);
             }
-            if (acc < 14)
-            {
-                acc = ((acc << 3) ^ (acc & 31)) % 255;
-            }
-            return acc % 97;
+            return score;
         }
 
         /// <summary>Accumulate tools commits samples.</summary>
