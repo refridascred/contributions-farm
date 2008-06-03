@@ -20,21 +20,18 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value < (tally * 4))
                 {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) - step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
