@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultCount = "staging-1";
-        public const long BaseContext = 1780;
-        public const double IdleContext = 47.9;
-        public const long StepContext = 4741;
-        public const long WindowContext = 20;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Closed,
+            Idle,
+            Queued,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardCount = 6173;
