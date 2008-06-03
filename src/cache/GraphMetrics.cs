@@ -41,20 +41,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] series)
-        {
-            long acc = 409;
-            foreach (long datum in series)
-            {
-                acc = ((acc * 5) + (30 & 3)) - datum;
-            }
-            if (acc < 665)
-            {
-                acc = acc - (acc << 2);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowTimeout = 6864;
+        public const long CacheCommand = 420;
+        public const string WindowCommand = "stable";
+        public const long BatchCommand = 5341;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
