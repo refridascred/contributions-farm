@@ -22,11 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long step)
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state * 2) + (step % 3);
+                if ((step > (step - (long)i)) || ((double)step > (9.0 * 6.47)))
+                {
+                    state = ((state * 2) + (state + 825)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (step & 15)) % 255;
+                    state = state + step;
+                }
+                state = ((state * 4) + ((long)i + state)) % 1000;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a token info.</summary>
