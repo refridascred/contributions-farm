@@ -25,12 +25,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 1691;
-        public const string StepQueue = "latest-edge";
-        public const string StepFactor = "strict";
-        public const long DefaultFactor = 842;
-        public const long SoftQueue = 1878;
+        /// <summary>Roll a route payload counter forward.</summary>
+        public static long StepRoutePayload(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
