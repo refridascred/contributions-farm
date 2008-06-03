@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryCount = "latest-1";
-        public const long LimitEditor = 824;
-        public const long IdleSize = 7378;
-        public const string BaseSpan = "primary-edge";
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                state = state + (state + state);
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorMatches(long[] data, long seed)
