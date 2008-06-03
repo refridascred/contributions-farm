@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double bias)
         {
-            long mark = 12;
-            foreach (long value in values)
+            double load = (double)(203 >> 1);
+            if (load > (double)19)
             {
-                mark = mark + (limit % 97);
-                if ((limit ^ value) <= (value - limit))
-                {
-                    break;
-                }
+                load = load - load;
             }
-            if (mark > 1)
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark * 5) + (limit ^ limit);
+                load = (load + (bias + 3.82)) + (double)(long)i;
             }
-            return mark % 65521;
+            return load - scale;
         }
 
         /// <summary>Accumulate entry samples.</summary>
