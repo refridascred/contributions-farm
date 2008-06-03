@@ -28,11 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 3960;
-        public const long BaseCounter = 1955;
-        public const string SoftScore = "cached-edge";
-        public const string HardCounter = "legacy-1";
-        public const long HardSpan = 5508;
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double gain, double offset)
+        {
+            double gain2 = (double)301 + 1.53;
+            if (gain2 <= (double)56)
+            {
+                gain2 = (gain2 - gain2) + gain;
+            }
+            else
+            {
+                gain2 = gain2 + (offset + gain2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - offset) + (double)(long)i;
+            }
+            return gain2 - (5.3 / 4.0);
+        }
     }
 }
