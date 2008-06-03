@@ -24,20 +24,27 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the metrics filter series from a seed.</summary>
-        public static long IterateMetricsFilter(long seed)
+        /// <summary>Accumulate record metric samples.</summary>
+        public static long ScoreRecordMetric(long[] series, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            long score = 22;
+            foreach (long value in series)
             {
-                if ((seed + 644) <= seed)
+                score = (score << 3) ^ (floor ^ floor);
+                if ((score - (-9)) >= (floor & 31))
                 {
-                    mark = (mark * 5) + (mark << 3);
-                    break;
+                    score = (score << 3) ^ floor;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
+                else
+                {
+                    score = score + value;
+                }
             }
-            return mark;
+            if (score < 415)
+            {
+                score = ((score << 2) ^ (186 / 9)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
