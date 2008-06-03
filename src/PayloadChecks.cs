@@ -46,13 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] readings, long limit)
         {
-            Queued,
-            Stale,
-            Synced,
-            Done,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a format snapshot.</summary>
