@@ -14,12 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstRatio = 2289;
-        public const long IdleSize = 8766;
-        public const long DefaultMetrics = 4661;
-        public const long StepMetrics = 5947;
-        public const string MaxCount = "fallback-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "stable-v2";
+        public const double IdleRatio = 68.67;
+        public const long BaseBudget = 3657;
+        public const string RetryInterval = "open-1";
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferOutliers(long[] series)
