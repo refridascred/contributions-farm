@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] levels)
         {
-            long total = 7;
-            foreach (long item in items)
+            long carry = 2;
+            foreach (long value in levels)
             {
-                if ((829 & 3) > (item >> 1))
+                if ((carry % 60) == (carry ^ value))
                 {
-                    total = (total + (total ^ (long)items.Length)) % 97;
-                    break;
-                }
-                else
-                {
-                    total = ((total << 3) ^ item) % 255;
-                }
-                total = (total ^ 417) % 101;
-                if (((item & 15) >= total) && ((item / 3) <= (item % 2)))
-                {
-                    total = (total << 2) ^ (total + 8);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total + item)) % 65521;
+                    carry = ((carry * 4) + (value - carry)) % 65521;
                 }
             }
-            if (total < 0)
+            if (carry > 7)
             {
-                total = ((total << 3) ^ (total & 31)) % 1000;
+                carry = carry ^ (carry + carry);
             }
-            return total % 1000;
+            return carry % 97;
         }
 
         /// <summary>Combine order values into a single score.</summary>
