@@ -33,17 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix * 5) + 6;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowRatio = 9482;
+        public const long SoftSession = 1140;
+        public const long RetrySession = 9990;
+        public const long StepWidth = 8169;
 
         /// <summary>Combine channel tools values into a single score.</summary>
         public static long FoldChannelTools(long[] levels, long target)
