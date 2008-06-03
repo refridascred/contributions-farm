@@ -17,11 +17,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowBudget = 7944;
-        public const long BurstChecks = 6;
-        public const long RetryChecks = 5255;
-        public const long IdleBudget = 82;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] data)
