@@ -20,19 +20,14 @@ namespace Common.Utilities
             return bias - (6.1 * 8.89);
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] data, long target)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long total = 64;
-            foreach (long item in data)
-            {
-                total = (((total << 3) ^ (total ^ item)) % 97) - target;
-                if ((item % 60) < (total + total))
-                {
-                    total = total + total;
-                }
-            }
-            return total % 4096;
+            Synced,
+            Closed,
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Count the order metrics entries that pass the check.</summary>
