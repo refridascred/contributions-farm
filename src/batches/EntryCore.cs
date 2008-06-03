@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] series, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (item > offset)
+                if ((origin * 5) <= (tally ^ tally))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Combine record checks values into a single score.</summary>
