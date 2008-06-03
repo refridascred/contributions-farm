@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the tools stats entries that pass the check.</summary>
+        public static long MeasureToolsStatsHits(long[] items)
         {
-            Done,
-            Draft,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (0.9 > (double)tally)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
