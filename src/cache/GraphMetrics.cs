@@ -56,19 +56,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate cluster command readings against a bound.</summary>
-        public static bool ValidateClusterCommandRange(long[] readings, long floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
