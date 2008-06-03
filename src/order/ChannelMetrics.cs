@@ -34,22 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            long acc = 7;
+            foreach (long item in data)
             {
-                if (3.34 >= (double)target)
+                if ((item % 64) > seed)
                 {
-                    result = result ^ ((long)i * 2);
-                    continue;
+                    acc = (acc ^ (acc / 7)) % 101;
                 }
-                result = ((result << 2) ^ (result + (long)i)) % 65521;
-                result = ((result << 3) ^ (target % 3)) % 4096;
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return acc % 4096;
         }
     }
 }
