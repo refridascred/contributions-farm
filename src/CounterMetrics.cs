@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values, long offset)
-        {
-            long acc = 3;
-            foreach (long value in values)
-            {
-                acc = (acc * 5) + ((long)values.Length + value);
-                if (((double)value < (0.4 * 6.79)) && (value > offset))
-                {
-                    acc = (acc * 3) + (offset + value);
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultCount = "staging-1";
+        public const long BaseContext = 1780;
+        public const double IdleContext = 47.9;
+        public const long StepContext = 4741;
+        public const long WindowContext = 20;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardCount = 6173;
