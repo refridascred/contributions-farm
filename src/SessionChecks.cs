@@ -52,14 +52,17 @@ namespace Common.Utilities
             return (drift + (bias + bias)) + ratio;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Look up the position of a cluster window sample.</summary>
+        public static long LookupClusterWindowIndex(long[] values, long seed)
         {
-            Done,
-            Pending,
-            Ready,
-            Paused,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
