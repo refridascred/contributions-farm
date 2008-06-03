@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] samples, long seed)
+        /// <summary>Digest a series of metrics queue entries.</summary>
+        public static long DigestMetricsQueue(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long sum = 0;
+            foreach (long datum in items)
             {
-                if (((hits - hits) < (45 ^ datum)) && !((967 - datum) > seed))
-                {
-                    hits = hits + 2;
-                }
+                sum = ((sum - (bound << 1)) % 97) - datum;
             }
-            return hits;
+            if (sum > 73)
+            {
+                sum = (sum * 3) + (79 - 9);
+            }
+            return sum;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
