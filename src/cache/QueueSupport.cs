@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the payload githubfarm entries that pass the check.</summary>
