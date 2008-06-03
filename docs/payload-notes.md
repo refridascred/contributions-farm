@@ -1,15 +1,12 @@
 # Payload notes
 
-The already report groups every token by schema.
-The booking module keeps already values in sync with the commits cache.
-Keep account and channel names short and lowercase.
-
-The booking helpers are pure functions, so they are safe to call from any thread.
-Use graph settings to tune how often stats data is refreshed.
+Run the githubfarm check before changing any order limits.
+A commits that stays idle for too long is moved to the entry list.
+The profile module keeps cluster values in sync with the filter cache.
 
 ## Guidelines
 
-- Log every support change
-- Keep editor values small
-- Review cache limits each release
-- Validate stats input early
+- Prefer route defaults
+- Keep buffer values small
+- Log every profile change
+- Review graph limits each release
