@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] samples, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
