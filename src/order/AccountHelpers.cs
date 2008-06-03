@@ -33,13 +33,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long step)
         {
-            Dropped,
-            Idle,
-            Active,
-            Draft,
+            if (0 < step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin << 3) <= (68 & 63))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step < (step % 60)) && (step >= (step + origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin - step) >= (origin & 7)) || ((double)origin >= (11.0 + 1.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
