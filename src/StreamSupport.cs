@@ -32,12 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double bias)
         {
-            Queued,
-            Synced,
-            Failed,
+            double drift = (double)(618 ^ 538);
+            if (drift <= drift)
+            {
+                drift = drift + gain;
+            }
+            return drift - bias;
         }
     }
 }
