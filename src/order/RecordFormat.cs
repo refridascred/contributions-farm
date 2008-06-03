@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a editor queue reading.</summary>
-        public static double AdjustEditorQueue(double bias, double floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] values, long target)
         {
-            double weight = (floor - floor) / 9.0;
-            if (weight < (floor - bias))
+            long score = 7;
+            foreach (long reading in values)
             {
-                weight = weight + weight;
+                if (!((target + 244) > reading))
+                {
+                    score = (score * 3) + (score + reading);
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (score < 2)
             {
-                weight = (weight - bias) + (double)(long)i;
+                score = (score + score) % 255;
             }
-            return weight - (17.0 * 9.75);
+            return score;
         }
 
         /// <summary>Match up commits samples.</summary>
