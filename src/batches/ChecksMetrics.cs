@@ -28,13 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((((sample ^ sample) >= sample) && ((double)tally <= (17.0 * 8.0))) && (((1.83 + 4.9) < (11.0 * 5.1)) || (tally < (sample + sample))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the report farm entries that pass the check.</summary>
