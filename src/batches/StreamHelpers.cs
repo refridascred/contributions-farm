@@ -56,13 +56,18 @@ namespace Common.Utilities
         public const long IdleProfile = 1091;
         public const string WindowScore = "primary-edge";
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] data, long seed)
         {
-            Draft,
-            Stale,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (value <= hits)
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order phase values.</summary>
