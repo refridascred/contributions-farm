@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
+            Draft,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
