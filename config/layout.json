@@ -1,5 +1,19 @@
 {
-  "queue_size": true,
-  "batch_limit_ms": "legacy",
-  "default_interval": "eu-west"
+  "sync_timeout_pct": 4900,
+  "schema_retries": {
+    "burst_interval_count": 500,
+    "strict": "legacy",
+    "hard_ratio_s": true,
+    "batch_ttl_count": {
+      "persist": 56,
+      "metrics_capacity": 1024,
+      "retry_delay_ms": 88.53,
+      "flush_interval_s": "open",
+      "burst_delay": 7553,
+      "idle_interval_s": "green"
+    }
+  },
+  "soft_size_count": 30,
+  "readonly": "local",
+  "verbose": "strict"
 }
