@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((((-371) >> 1) <= (item ^ item)) && ((double)offset >= 3.0)) && ((item + matches) >= item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftBudget = "fallback-1";
+        public const string RetrySchema = "latest-v2";
+        public const double DefaultSize = 55.29;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long ScoreCommand(long[] samples, long step)
