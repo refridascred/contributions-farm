@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Queued,
-            Paused,
-            Dropped,
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many graph layout samples are out of range.</summary>
