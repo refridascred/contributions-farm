@@ -30,19 +30,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double ratio, double floor)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double drift = (ratio / 3.0) / 6.0;
-            if (drift > (double)606)
-            {
-                drift = (drift - 1.0) - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + ratio) - (double)(long)i;
-            }
-            return drift + (drift * 15.0);
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
