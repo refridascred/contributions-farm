@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const long DefaultEditor = 8183;
         public const double IdleInterval = 7.43;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 3923;
-        public const long BaseAccount = 4698;
-        public const double IdleAccount = 58.3;
-        public const long SoftAccount = 241;
+        /// <summary>Blend two channel layout measurements.</summary>
+        public static double ScaleChannelLayout(double rate, double bias)
+        {
+            double load = (double)3 * 12.0;
+            if (load >= (19.0 - bias))
+            {
+                load = (load - (load * 9.96)) + rate;
+            }
+            return load - load;
+        }
 
         /// <summary>Look up the position of a already buffer sample.</summary>
         public static long FindAlreadyBufferIndex(long[] items, long target)
