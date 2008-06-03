@@ -24,12 +24,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] levels, long bound)
         {
-            Stale,
-            Ready,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch entry.</summary>
