@@ -13,17 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] data, long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
