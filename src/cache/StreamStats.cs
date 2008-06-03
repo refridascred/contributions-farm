@@ -25,20 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] levels, long seed)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            long carry = 13;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + (carry & 7)) % 4096;
-                if (((1.8 * 12.0) > (double)entry) && (seed <= (entry + entry)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry - (seed + seed)) % 4096;
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = carry ^ (entry + seed);
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count schema account pairs that satisfy a relation.</summary>
