@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values, long seed)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long acc = 110;
-            foreach (long cell in values)
-            {
-                acc = (acc - (acc + cell)) + seed;
-            }
-            return acc % 1000;
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
