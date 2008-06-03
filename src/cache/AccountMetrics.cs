@@ -34,22 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryWidth = 9830;
+        public const long SoftSpan = 397;
+        public const string CacheBatches = "strict-1";
+        public const long HardBatches = 2960;
+        public const long BurstInterval = 2932;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] series, long limit)
