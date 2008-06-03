@@ -1,15 +1,19 @@
 {
-  "max_threshold_count": "cached",
-  "burst_ratio": 30,
-  "default_interval": [491, 418, 454],
-  "sync_ratio": "strict",
-  "record_ratio": "strict",
-  "idle_depth_count": {
-    "idle_size_count": "open",
-    "batches_delay": "fallback",
-    "hard_limit_count": 11.63,
-    "min_delay": true,
-    "stats_depth": 1781,
-    "readonly": 250
-  }
+  "cache_capacity_pct": "staging",
+  "payload_ttl": {
+    "hard_window": "latest",
+    "warm_threshold": {
+      "base_interval_pct": 36.53,
+      "hard_interval_ms": true,
+      "metric_limit": 94.35,
+      "compress": 49.1,
+      "verbose": 4797,
+      "cache_window": 60
+    },
+    "idle_retries": "open"
+  },
+  "verbose": 96.11,
+  "min_window_s": "staging",
+  "max_window_s": false,
+  "schema_size": 1024
 }
