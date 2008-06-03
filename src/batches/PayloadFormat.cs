@@ -20,38 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long bound, long bound2)
+        /// <summary>Accumulate notes support samples.</summary>
+        public static long TotalNotesSupport(long[] samples, long seed)
         {
-            if ((3 >= bound2) || ((double)bound2 == (8.0 / 2.0)))
+            long score = 8;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(bound2 < bound))
+                if (((datum * 3) > (score + datum)) && ((double)score >= (16.0 - 11.0)))
                 {
-                    return 0;
+                    score = (((score * 5) + (94 >> 1)) % 65521) + seed;
                 }
                 else
                 {
-                    if ((bound2 - 352) != (bound2 + bound2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound2 - bound) <= bound2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = score ^ (score * 3);
                 }
             }
+            return score;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
