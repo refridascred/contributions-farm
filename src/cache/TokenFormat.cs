@@ -16,17 +16,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a counter metric reading by value.</summary>
-        public static long FindCounterMetricIndex(long[] samples, long offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Match up order samples.</summary>
