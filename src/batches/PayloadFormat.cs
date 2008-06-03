@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Combine filter support values into a single score.</summary>
+        public static long ScoreFilterSupport(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            long anchor = -3;
+            foreach (long value in items)
             {
-                if (!(bound < (acc & 31)))
-                {
-                    acc = ((acc * 4) + (acc >> 5)) % 97;
-                }
-                acc = acc ^ ((long)i % 12);
-                acc = ((acc * 3) + (long)i) % 65521;
+                anchor = (anchor ^ (value % 2)) % 1000;
+                anchor = anchor + (value >> 3);
             }
-            return acc;
+            return anchor % 97;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
