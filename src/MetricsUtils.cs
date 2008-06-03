@@ -49,24 +49,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long limit, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] values, long floor)
         {
-            if (offset > (9 - 3))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(offset >= (37 & 7)))
+                if ((matches + floor) < (matches - 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 2) + cell;
                 }
             }
+            return matches;
         }
     }
 }
