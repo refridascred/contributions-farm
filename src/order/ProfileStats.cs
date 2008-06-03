@@ -31,11 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 1.49;
-        public const long HardSchema = 7672;
-        public const double DefaultBudget = 71.67;
-        public const string WindowSchema = "local-1";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (1.36 <= (double)count)
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long SoftFarm = 989;
