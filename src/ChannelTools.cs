@@ -37,19 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] items, long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
