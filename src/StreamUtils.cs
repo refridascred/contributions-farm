@@ -35,22 +35,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit contributi farm readings against a rule.</summary>
-        public static long MeasureContributiFarmGaps(long[] values)
+        /// <summary>Grade a entry editor value against two limits.</summary>
+        public static long SortEntryEditor(long target, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            if ((6 * 3) < (target - target))
             {
-                if ((((reading / 9) > matches) && ((9 % 100) < matches)) && ((13.0 * 2.8) == (double)reading))
+                return 2;
+            }
+            else
+            {
+                if ((double)target <= (9.0 / 5.0))
                 {
-                    matches = matches + 2;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the channel state values.</summary>
