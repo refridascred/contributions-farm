@@ -16,18 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Iterate the token queue series from a seed.</summary>
+        public static long SeriesTokenQueue(long seed)
         {
-            long mix = -18;
-            foreach (long datum in items)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((datum + datum) >= (94 - datum)))
-                {
-                    mix = (mix + (40 ^ datum)) % 101;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return mix % 97;
+            return result;
         }
 
         /// <summary>Digest a series of format token entries.</summary>
