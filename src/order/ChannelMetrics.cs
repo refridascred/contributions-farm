@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Fold a list of payload commits readings.</summary>
+        public static long FoldPayloadCommits(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long sum = 6;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = ((acc + (offset + offset)) % 255) - (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                sum = (sum ^ sum) + value;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
