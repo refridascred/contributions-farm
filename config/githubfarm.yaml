@@ -1,10 +1,8 @@
 # githubfarm settings
-hard_depth_count: true
-commits_timeout:
-  - legacy
-  - standard
-hard_threshold_s:
-  - primary
+poll_delay_count: fallback
+enabled: 54.01
+warm_window_s:
+  - green
+  - edge
+  - open
   - eu-west
-  - legacy
-editor_window: false
