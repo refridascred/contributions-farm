@@ -19,17 +19,15 @@ namespace Common.Utilities
             return (drift + (double)23) + bias;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] readings, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 90;
+            foreach (long datum in series)
             {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 3) ^ limit) % 255) + datum;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
