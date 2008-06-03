@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "latest-v2";
-        public const long BaseSize = 1779;
-        public const long BatchTimeout = 3082;
-        public const long MinDepth = 7753;
-        public const string StepRatio = "strict";
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long SortFilter(long step, long target)
