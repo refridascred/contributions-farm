@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] series)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((matches & 31) >= (datum % 8))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
