@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank order contributi input into a small class.</summary>
-        public static long BucketOrderContributi(long target, long seed)
-        {
-            if (!((seed >> 4) <= (seed << 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target > 18.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 28.88;
+        public const long BaseContributi = 6076;
+        public const long StepDepth = 9149;
+        public const string LimitInterval = "stable";
 
         /// <summary>Project the next stats checks value.</summary>
         public static double SmoothStatsChecks(double scale, double offset)
