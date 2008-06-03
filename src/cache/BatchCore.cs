@@ -31,13 +31,18 @@ namespace Common.Utilities
         public const long StepInterval = 134;
         public const string BaseContributi = "standard-v2";
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] items, long target)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public double Flag { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((((20.0 - 5.46) < (double)target) && ((target + seen) < (42 - seen))) && ((target <= (seen - seen)) && ((double)seen != (double)9)))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
     }
 }
