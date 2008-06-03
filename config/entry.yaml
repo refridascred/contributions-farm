@@ -1,17 +1,6 @@
 # entry settings
-cache_ratio_ms: 7050
-max_limit_ms: local
-layout_delay:
-  - 366
-  - 414
-  - 310
-cache_timeout_count:
-  counter_timeout: cached
-  audit: blue
-  min_window_ms: true
-  soft_timeout_ms:
-    - fallback
-    - staging
-    - blue
-  context_limit: 3706
-  hard_delay: 6572
+stream_interval: edge
+dry_run: 5979
+hard_threshold_s: 100
+min_window: 35.18
+payload_ttl: false
