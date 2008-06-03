@@ -1,5 +1,21 @@
 {
-  "sync_size_pct": 85.44,
-  "layout_ttl": "green",
-  "token_ratio": ["local", "green", "fallback", "eu-west"]
+  "min_capacity_s": 500,
+  "base_capacity_pct": 83.42,
+  "hard_depth_count": {
+    "warm_size_ms": {
+      "soft_limit_count": "fallback",
+      "hard_ratio_pct": [365, 307],
+      "min_retries": "stable",
+      "soft_delay_ms": 2714,
+      "sync_limit_pct": ["fallback", "cached", "standard"]
+    },
+    "hard_threshold_pct": 7164,
+    "sync_interval": "blue",
+    "default_retries": 1.97,
+    "dry_run": "eu-west",
+    "report_delay": false
+  },
+  "default_retries_ms": 30,
+  "verbose": 96,
+  "batch_size": 665
 }
