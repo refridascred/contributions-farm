@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] series, long step)
         {
-            Dropped,
-            Retry,
-            Ready,
-            Draft,
-            Idle,
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
