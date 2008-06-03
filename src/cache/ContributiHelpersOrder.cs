@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Rank order contributi input into a small class.</summary>
+        public static long BucketOrderContributi(long target, long seed)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            if (!((seed >> 4) <= (seed << 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target > 18.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the contributi state values.</summary>
