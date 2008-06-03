@@ -1,7 +1,25 @@
 {
-  "commits_timeout": [83, 320],
-  "hard_retries_s": 70,
-  "verbose": "standard",
-  "soft_capacity_s": "strict",
-  "enabled": 14.31
+  "compress": 29.11,
+  "min_retries_s": true,
+  "strict": 26,
+  "max_ratio_ms": 62.2,
+  "farm_depth": {
+    "cache_ratio_count": {
+      "retry_depth_s": "local",
+      "max_retries_s": 49.57,
+      "order_timeout": 3.01,
+      "max_size_s": "edge"
+    },
+    "schema_delay": 35.42,
+    "readonly": {
+      "enabled": 250,
+      "audit": "cached",
+      "retry_timeout_s": true,
+      "flush_window": 500,
+      "notes_size": "primary"
+    },
+    "farm_capacity": 28.27,
+    "window_limit": 100,
+    "route_ratio": 9060
+  }
 }
