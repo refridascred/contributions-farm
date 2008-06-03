@@ -1,16 +1,4 @@
 # entry settings
-soft_window_s: strict
-audit:
-  strict: 95.04
-  warm_ttl_pct:
-    min_ttl: 1024
-    cache_delay: 93
-    min_window_pct:
-      - stable
-      - strict
-      - green
-      - strict
-  payload_ratio: 60
-  batch_threshold_ms: 69
-poll_threshold: false
-burst_retries_ms: primary
+strict: 77.46
+poll_size: open
+burst_size_count: 82.87
