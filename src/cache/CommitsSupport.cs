@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate report command readings against a bound.</summary>
-        public static bool VerifyReportCommandRange(long[] levels, long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the account level values.</summary>
