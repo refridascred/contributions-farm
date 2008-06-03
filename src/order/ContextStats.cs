@@ -32,14 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Queued,
-            Idle,
-            Paused,
-            Stale,
-            New,
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
