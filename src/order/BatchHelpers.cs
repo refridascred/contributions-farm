@@ -45,17 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] samples, long bound)
+        /// <summary>Blend two token support measurements.</summary>
+        public static double AdjustTokenSupport(double scale, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)856 + (scale + floor);
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                mean = (mean - mean) - (double)(long)i;
             }
-            return -1;
+            return mean - scale;
         }
     }
 }
