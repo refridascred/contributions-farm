@@ -44,20 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 1292;
+        public const long BaseDepth = 6699;
+        public const long DefaultFilter = 5423;
+        public const long WindowLevel = 403;
 
         /// <summary>Digest a series of graph schema entries.</summary>
         public static long TallyGraphSchema(long[] series, long seed)
