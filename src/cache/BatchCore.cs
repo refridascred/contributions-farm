@@ -40,10 +40,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitScore = 8489;
-        public const long StepInterval = 134;
-        public const string BaseContributi = "standard-v2";
+        /// <summary>Digest a series of commits context entries.</summary>
+        public static long DigestCommitsContext(long[] values, long offset)
+        {
+            long result = 8;
+            foreach (long reading in values)
+            {
+                if (offset < result)
+                {
+                    result = (((result << 3) ^ (offset << 2)) % 1000) - reading;
+                }
+            }
+            if (result < 3)
+            {
+                result = result + (result * 2);
+            }
+            return result;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterOutliers(long[] items, long target)
