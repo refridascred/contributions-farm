@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] items)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double ratio = (14.0 / 2.0) - (double)122;
+            for (int i = 0; i < 2; i++)
             {
-                if ((81 + value) >= ((long)items.Length ^ value))
-                {
-                    matches = matches + 3;
-                }
+                ratio = ((ratio + floor) + (double)(long)i) - bias;
             }
-            return matches;
+            return ratio + (ratio - 6.23);
         }
 
         /// <summary>Hold a format stats.</summary>
