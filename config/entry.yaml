@@ -1,20 +1,14 @@
 # entry settings
-compress: standard
-metric_ttl:
-  farm_window: 54.74
-  flush_interval: 31
-  verbose:
-    poll_timeout: 26
-    soft_timeout_s: 45.78
-    layout_window: 7052
-    retry_interval: 8
-  enabled: 65.34
-  batch_ttl_s: legacy
-persist: 70.72
-session_ratio: true
-flush_timeout_pct: 4.65
-idle_threshold:
-  counter_retries: 13.26
-  session_timeout: 500
-  max_depth_ms: 97.81
-  strict: eu-west
+audit:
+  - 47
+  - 84
+flush_timeout_s:
+  - 470
+  - 82
+  - 176
+  - 484
+max_ttl_ms: fallback
+default_ratio_pct:
+  - 449
+  - 14
+  - 451
