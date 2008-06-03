@@ -33,15 +33,22 @@ namespace Common.Utilities
             return weight2 + (1.0 - 6.6);
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double ratio, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] samples)
         {
-            double weight = (double)(29 & 63);
-            if (weight <= offset)
+            long anchor = 198;
+            foreach (long datum in samples)
             {
-                weight = (weight - (2.3 * 9.8)) - ratio;
+                if (((double)anchor < (2.0 - 7.78)) && ((443 * 4) < (datum & 1)))
+                {
+                    anchor = anchor ^ 8;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
             }
-            return weight - (weight * 19.0);
+            return anchor;
         }
 
         /// <summary>Hold a buffer header.</summary>
