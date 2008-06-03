@@ -1,17 +1,14 @@
 {
-  "dry_run": ["latest", "cached"],
-  "support_interval": {
-    "compress": "eu-west",
-    "warm_retries": ["staging", "eu-west", "strict"],
-    "cache_threshold": "standard",
-    "metric_size": {
-      "poll_capacity_pct": true,
-      "payload_retries": ["open", "green", "latest", "legacy"],
-      "idle_capacity_pct": true
-    },
-    "retry_capacity_s": [182, 356, 281, 89],
-    "retry_threshold": 60
+  "default_depth_s": "cached",
+  "default_depth_pct": 4584,
+  "session_limit": {
+    "soft_delay_count": false,
+    "compress": true,
+    "record_window": "staging",
+    "sync_limit": 61.29,
+    "verbose": "eu-west"
   },
-  "cache_window_ms": 100,
-  "batch_size_pct": "legacy"
+  "min_delay_count": 15.1,
+  "cache_ttl_count": 5.7,
+  "poll_window_count": 250
 }
