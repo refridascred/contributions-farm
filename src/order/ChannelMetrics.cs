@@ -20,12 +20,22 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftLevel = 2286;
-        public const double DefaultMetric = 65.28;
-        public const long MaxBudget = 851;
-        public const long SoftMetric = 9590;
-        public const long MaxScore = 8803;
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
