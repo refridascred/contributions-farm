@@ -21,12 +21,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] samples, long step)
         {
-            Idle,
-            Failed,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
