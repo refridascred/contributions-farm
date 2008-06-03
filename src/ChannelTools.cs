@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long state = 83;
+            foreach (long item in readings)
             {
-                if ((result % 7) < bound)
-                {
-                    result = (result - (result / 3)) % 4096;
-                }
-                result = (result << 2) ^ (long)i;
-                result = ((result * 5) + (long)i) % 97;
+                state = ((state * 2) + 378) - item;
             }
-            return result;
+            if (state > 1)
+            {
+                state = ((state * 4) + (state ^ state)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Match up contributi batch samples.</summary>
