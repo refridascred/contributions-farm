@@ -20,13 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Locked,
-            Done,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheSpan = 8665;
+        public const long SoftTimeout = 3113;
+        public const long WindowTimeout = 3239;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long StepQueue(long step)
