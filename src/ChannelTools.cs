@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] items, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long seed, long offset)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long offset2 = seed ^ offset;
+            if (((479 ^ offset2) <= (offset / 9)) && (offset >= (offset + offset)))
             {
-                if (reading >= bound)
+                return 7;
+            }
+            else
+            {
+                if (!(72 <= (offset - seed)))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset >> 4) > (28 / 6)) && (offset > 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
