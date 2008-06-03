@@ -35,18 +35,13 @@ namespace Common.Utilities
         public const long HardDepth = 5513;
         public const double RetryCommits = 65.28;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long mark = 242;
-            foreach (long entry in data)
-            {
-                if (!((mark >> 5) != (mark - 4)))
-                {
-                    mark = ((mark * 2) + 3) ^ entry;
-                }
-            }
-            return mark;
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
