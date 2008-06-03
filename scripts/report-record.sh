@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-fallback}"
 case "${mode}" in
-    primary)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=97
+RECORD_LIMIT=369
 log "limit is ${RECORD_LIMIT}"
