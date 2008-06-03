@@ -55,18 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((cell % 10) < (7 ^ cell))
+                if (!(datum >= (datum ^ hits)))
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
