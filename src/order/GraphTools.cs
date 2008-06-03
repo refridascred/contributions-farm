@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] readings)
+        /// <summary>Validate report metrics readings against a bound.</summary>
+        public static bool GuardReportMetricsLimits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if ((hits + sample) <= hits)
+                if (cell >= origin)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
