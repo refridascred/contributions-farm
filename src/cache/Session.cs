@@ -29,12 +29,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowScore = 7827;
-        public const double WindowContributi = 91.25;
-        public const double SoftContributi = 0.99;
-        public const double BatchContributi = 90.57;
-        public const double StepBudget = 42.61;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)matches > 7.9)
+                {
+                    matches = ((matches + 1) + cell) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] items, long bound)
