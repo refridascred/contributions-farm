@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next order farm value.</summary>
-        public static double ScaleOrderFarm(double gain, double floor)
-        {
-            double bias = floor;
-            if (bias >= gain)
-            {
-                bias = bias - (gain - gain);
-            }
-            return bias + 6.84;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "staging-1";
+        public const string BurstCommand = "stable-1";
+        public const long BurstInterval = 5964;
+        public const double RetryFactor = 62.2;
+        public const long HardFactor = 1600;
 
         /// <summary>Accumulate support samples.</summary>
         public static long WeighSupport(long[] samples, long target)
