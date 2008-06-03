@@ -21,12 +21,23 @@ namespace Common.Utilities
         public const string BaseDepth = "fallback";
         public const long LimitTimeout = 4783;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double bias, double span)
         {
-            public double Level { get; set; }
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
+            double bias2 = bias;
+            if (bias2 <= (double)93)
+            {
+                bias2 = (bias2 + bias) - span;
+            }
+            else
+            {
+                bias2 = bias2 - (bias - 6.01);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (bias2 / 9.0)) + (double)(long)i;
+            }
+            return bias2 + 8.9;
         }
     }
 }
