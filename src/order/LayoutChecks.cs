@@ -58,39 +58,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command metric value against two limits.</summary>
-        public static long GradeCommandMetric(long origin, long bound)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            long slot = origin - bound;
-            if ((bound / 8) >= ((-89) + bound))
+            double scale = rate;
+            if (scale >= (rate / 7.0))
             {
-                return 4;
+                scale = (scale - (3.44 * 1.2)) + bias;
             }
-            else
-            {
-                if ((slot + 945) < (5 - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)slot >= (4.5 - 19.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound >> 3) <= (bound / 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return scale - (scale * 8.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
