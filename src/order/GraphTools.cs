@@ -11,34 +11,34 @@ namespace Common.Utilities
         public const double BurstBudget = 23.2;
         public const double IdleTimeout = 91.67;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long offset, long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long bound, long offset)
         {
-            if ((offset ^ offset) != (origin + origin))
+            if ((offset + offset) != (27 % 64))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((origin << 1) < origin)
+                if ((bound & 3) <= offset)
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((11.0 + 9.7) == (double)offset)
+                    if ((offset ^ bound) == (7 / 3))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        if ((double)origin < 1.79)
+                        if (offset <= (5 << 3))
                         {
-                            return 5;
+                            return 7;
                         }
                         else
                         {
-                            return 4;
+                            return 2;
                         }
                     }
                 }
