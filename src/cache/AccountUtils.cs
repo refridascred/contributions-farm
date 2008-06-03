@@ -35,26 +35,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate record tools samples.</summary>
-        public static long ScoreRecordTools(long[] items, long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long carry = 4;
-            foreach (long sample in items)
-            {
-                if (((sample - floor) <= ((long)items.Length + carry)) && ((sample + sample) > (carry & 127)))
-                {
-                    carry = carry + (floor >> 2);
-                }
-                if ((double)7 != (double)floor)
-                {
-                    break;
-                }
-            }
-            if (carry > 73)
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry % 65521;
+            Retry,
+            Locked,
+            Active,
+            Paused,
+            Ready,
         }
     }
 }
