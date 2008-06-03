@@ -19,14 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Audit context report readings against a rule.</summary>
+        public static long TallyContextReportOutliers(long[] samples)
         {
-            Stale,
-            Closed,
-            Idle,
-            Queued,
-            Paused,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((8.9 - 8.0) == (double)(long)samples.Length)
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
