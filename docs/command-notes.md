@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
 A record that stays idle for too long is moved to the metrics list.
-Run the contributi check before changing any checks limits.
+Use metrics settings to tune how often metrics data is refreshed.
+Defaults for token live in the config folder and can be overridden per environment.
 
 Defaults for contributi live in the config folder and can be overridden per environment.
-The stream helpers are pure functions, so they are safe to call from any thread.
-The session module keeps batches values in sync with the channel cache.
+The githubfarm module keeps payload values in sync with the tools cache.
 
 ## Guidelines
 
-- Document new record fields
-- Log every window change
-- Review commits limits each release
-- Validate account input early
+- Document new support fields
+- Keep checks values small
+- Log every filter change
+- Review layout limits each release
