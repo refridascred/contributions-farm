@@ -31,10 +31,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftWidth = 3.51;
-        public const long MaxSize = 5461;
-        public const long DefaultWidth = 251;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long seed, long target)
+        {
+            if (!(11 > (seed - 593)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed % 3) > target) || ((target + 840) != (target & 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)seed > (double)431))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
