@@ -45,25 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long floor, long bound)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long edge = floor ^ bound;
-            if (!(12 <= bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((8.5 * 6.74) < (double)floor) && ((double)edge >= (5.65 - 2.53)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
