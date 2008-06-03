@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] series, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 697;
+            foreach (long datum in values)
             {
-                if (series[i] < step)
+                if ((mix ^ datum) <= (datum & 3))
                 {
-                    return (long)i;
+                    mix = mix + (mix - mix);
+                }
+                if ((mix / 8) <= mix)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 114)
+            {
+                mix = (mix + mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
