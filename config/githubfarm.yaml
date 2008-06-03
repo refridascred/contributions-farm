@@ -1,6 +1,21 @@
 # githubfarm settings
-base_depth_pct: 60
-flush_timeout:
-  - stable
+dry_run: 45
+max_ttl: fallback
+channel_threshold:
+  - blue
   - open
-compress: 9
+  - green
+min_ttl_s:
+  default_size_pct:
+    warm_delay: staging
+    payload_depth: false
+    profile_depth: local
+    warm_window_pct: true
+  compress:
+    - local
+    - primary
+  githubfarm_threshold: blue
+audit:
+  - standard
+  - green
+burst_delay_s: blue
