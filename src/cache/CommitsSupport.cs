@@ -13,21 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count layout account pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutAccountCount(long[] items)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 95;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = state ^ entry;
+                state = state ^ (state >> 3);
             }
-            return seen;
+            if (state < 8)
+            {
+                state = ((state * 2) + (bound * 2)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
