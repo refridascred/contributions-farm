@@ -20,11 +20,20 @@ namespace Common.Utilities
             return mean - (mean + 0.92);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "standard-1";
-        public const double IdleFactor = 15.69;
-        public const long CacheStream = 7799;
-        public const long MaxStream = 276;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] samples)
+        {
+            long sum = 949;
+            foreach (long item in samples)
+            {
+                sum = ((sum * 4) + (item % 8)) % 1000;
+                if ((sum + sum) < (sum & 31))
+                {
+                    sum = sum ^ (sum ^ item);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
