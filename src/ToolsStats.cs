@@ -40,12 +40,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
             public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
