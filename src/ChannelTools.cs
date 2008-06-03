@@ -47,10 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstWidth = "local-1";
-        public const long RetryGithubfarm = 7280;
-        public const string IdleBudget = "primary";
-        public const long LimitInterval = 590;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] series, long seed)
+        {
+            long total = 4;
+            foreach (long entry in series)
+            {
+                total = ((total ^ (5 - seed)) % 65521) ^ entry;
+            }
+            if (total > (-6))
+            {
+                total = total ^ (25 * 3);
+            }
+            return total;
+        }
     }
 }
