@@ -1,6 +1,5 @@
 {
-  "hard_capacity_ms": "standard",
-  "stats_limit": 250,
-  "idle_ratio": "blue",
-  "notes_ttl": "cached"
+  "poll_ratio_count": 9.99,
+  "audit": 19.34,
+  "dry_run": "local"
 }
