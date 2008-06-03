@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 5571;
-        public const long IdleGithubfarm = 1167;
-        public const string DefaultLevel = "strict";
-        public const string BaseCount = "latest";
-        public const long SoftTimeout = 8077;
+        /// <summary>Rank record profile input into a small class.</summary>
+        public static long BucketRecordProfile(long offset, long target)
+        {
+            long slot = offset ^ target;
+            if ((target < (slot + slot)) || (slot <= (slot & 15)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (14 >= (slot - (-30)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target << 3) == (offset * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset + slot) != (slot << 2)) || ((target / 9) < target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] readings, long offset)
