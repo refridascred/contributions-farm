@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowSpan = 1912;
+        public const long BaseCache = 6283;
+        public const long BurstLevel = 9111;
+        public const long StepCache = 4633;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long ScoreCounter(long[] data)
