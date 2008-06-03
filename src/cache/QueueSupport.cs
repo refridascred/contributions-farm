@@ -26,19 +26,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Grade a githubfarm layout value against two limits.</summary>
+        public static long BucketGithubfarmLayout(long target, long limit)
         {
-            long score = 6;
-            foreach (long item in values)
+            if (!((target & 15) < limit))
             {
-                score = score - (score + score);
-                if ((item ^ score) < item)
+                return 4;
+            }
+            else
+            {
+                if (limit > (target + limit))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (target >= (limit + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return score;
         }
     }
 }
