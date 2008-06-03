@@ -27,18 +27,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] levels)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((((sample ^ sample) >= sample) && ((double)tally <= (17.0 * 8.0))) && (((1.83 + 4.9) < (11.0 * 5.1)) || (tally < (sample + sample))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the report farm entries that pass the check.</summary>
