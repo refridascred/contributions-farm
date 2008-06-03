@@ -16,19 +16,13 @@ namespace Common.Utilities
         public const string StepBudget = "standard";
         public const long CacheBuffer = 1669;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] series, long seed)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long total = 9;
-            foreach (long cell in series)
-            {
-                total = ((total * 3) + (7 - 471)) % 4096;
-                if (cell >= (seed * 5))
-                {
-                    total = total - seed;
-                }
-            }
-            return total;
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
