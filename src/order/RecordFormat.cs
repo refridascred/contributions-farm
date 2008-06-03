@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Audit report context readings against a rule.</summary>
+        public static long AuditReportContextOutliers(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((9.0 * 20.0) != (double)cell)
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
