@@ -35,27 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] levels)
-        {
-            long sum = 54;
-            foreach (long item in levels)
-            {
-                if ((sum ^ (long)levels.Length) < (item ^ item))
-                {
-                    sum = ((sum << 3) ^ item) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (28 / 8)) % 101;
-                }
-                if (((item ^ 92) > (sum ^ item)) && ((5.7 / 9.0) > (double)sum))
-                {
-                    sum = (sum + item) % 4096;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBatches = "latest-1";
+        public const string MaxBatches = "alpha-v2";
+        public const string CacheScore = "cached-1";
+        public const long BatchBatches = 1612;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstBuffer = 4364;
