@@ -1,8 +1,9 @@
-id,score,count,token,label
-1,936,12.48,461,29.5
-2,463,487,47.49,226
-3,green,legacy,946,legacy
-4,523,cached,edge,535
-5,blue,821,254,194
-6,43.88,stable,599,open
-7,latest,local,990,98.46
+id,token,label,weight
+1,157,local,50
+2,86.82,774,cached
+3,17.63,49,27.27
+4,84.5,403,cached
+5,64.8,blue,79.29
+6,233,734,staging
+7,cached,staging,local
+8,765,blue,15.28
