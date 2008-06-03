@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] samples, long seed)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry < (5.82 * 1.1))
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
+            Locked,
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
