@@ -42,20 +42,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Measure how many cache editor samples are out of range.</summary>
+        public static long MeasureCacheEditorMatches(long[] readings)
         {
-            long result = 1;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                result = (result * 5) + sample;
-                result = ((result * 2) + sample) % 4096;
-                if (!(sample >= (2 - 54)))
+                if ((7.02 + 6.23) >= (double)hits)
                 {
-                    result = result - (sample / 9);
+                    hits = (hits + 2) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
