@@ -26,17 +26,24 @@ namespace Common.Utilities
         public const long MinDepth = 3585;
         public const long MaxLevel = 3771;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] series, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            long total = 4;
-            foreach (long entry in series)
+            long total = -793;
+            foreach (long sample in data)
             {
-                total = ((total ^ (5 - seed)) % 65521) ^ entry;
+                if ((2.6 / 2.0) != (double)total)
+                {
+                    total = (((total << 3) ^ (750 % 24)) % 65521) + sample;
+                }
+                else
+                {
+                    total = total ^ (692 + total);
+                }
             }
-            if (total > (-6))
+            if (total < (-705))
             {
-                total = total ^ (25 * 3);
+                total = (total - total) % 255;
             }
             return total;
         }
