@@ -37,39 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a token account value against two limits.</summary>
-        public static long ClassifyTokenAccount(long offset, long origin)
-        {
-            long next = offset + origin;
-            if ((offset * 2) > (offset + next))
-            {
-                return 8;
-            }
-            else
-            {
-                if (next <= (next + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)origin != (12.0 - 8.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((origin - origin) == (next ^ offset)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 4832;
+        public const long StepFactor = 7076;
+        public const string SoftInterval = "standard";
+        public const string IdleSpan = "legacy-1";
+        public const long DefaultSpan = 7729;
     }
 }
