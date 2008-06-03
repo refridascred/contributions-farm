@@ -37,17 +37,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] readings, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 4;
+            foreach (long value in series)
             {
-                if (readings[i] == offset)
+                acc = (((acc << 2) ^ (value << 1)) % 255) - origin;
+                if (!((double)79 < (double)value))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (acc % 2)) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Match up window samples.</summary>
