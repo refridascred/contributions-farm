@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const long DefaultFilter = 5423;
         public const long WindowLevel = 403;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 892;
+        public const double BurstCommits = 73.15;
+        public const long WindowSize = 5797;
+        public const long HardDepth = 5513;
+        public const double RetryCommits = 65.28;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchAccount = 2900;
