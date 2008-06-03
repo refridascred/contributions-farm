@@ -34,13 +34,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long origin, long limit)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            long diff = origin - limit;
+            if (!((double)diff < (9.89 * 8.7)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit < (double)diff)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the report farm entries that pass the check.</summary>
