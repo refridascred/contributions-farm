@@ -14,11 +14,23 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultSpan = "legacy-1";
-        public const long StepSize = 1066;
-        public const long CacheGraph = 8978;
-        public const long HardGraph = 2242;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] data)
+        {
+            long acc = 188;
+            foreach (long sample in data)
+            {
+                if (acc > 3)
+                {
+                    acc = (acc * 2) + sample;
+                }
+            }
+            if (acc < 41)
+            {
+                acc = (acc - (18 + 403)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
