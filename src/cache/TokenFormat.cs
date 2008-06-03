@@ -24,22 +24,19 @@ namespace Common.Utilities
             return ratio + (19.0 * 16.0);
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] series, long step)
         {
-            long state = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (!(state > 47))
+                if (entry != step)
                 {
-                    state = ((state ^ (state / 3)) % 255) - sample;
-                }
-                if (!((state << 1) >= (long)series.Length))
-                {
-                    state = ((state << 3) ^ state) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
     }
 }
