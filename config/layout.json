@@ -1,5 +1,19 @@
 {
-  "sync_limit_count": "cached",
-  "audit": "open",
-  "min_size": 29.33
+  "soft_window_ms": 100,
+  "flush_size_count": 500,
+  "command_window": "fallback",
+  "payload_delay": {
+    "soft_window_pct": false,
+    "flush_depth_pct": ["stable", "latest"],
+    "min_size": {
+      "flush_window": [492, 338, 151],
+      "audit": 9.74,
+      "max_threshold": "edge",
+      "queue_retries": ["fallback", "primary"],
+      "base_capacity_s": ["stable", "edge", "open", "cached"],
+      "queue_capacity": "strict"
+    },
+    "cache_capacity_s": 58,
+    "batch_window_pct": "stable"
+  }
 }
