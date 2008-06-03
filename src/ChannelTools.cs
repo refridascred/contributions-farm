@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 863;
-        public const long BaseMetrics = 6597;
-        public const double LimitInterval = 27.85;
-        public const long RetryInterval = 3636;
-        public const long DefaultRatio = 4286;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftLevel = 7194;
+        public const long SoftSupport = 1090;
+        public const long WindowBudget = 1827;
+        public const string BatchSize = "fallback-edge";
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long MatchFarmCount(long[] readings)
