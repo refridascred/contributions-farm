@@ -46,13 +46,24 @@ namespace Common.Utilities
             return gain2 + (double)7;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long bound, long target)
         {
-            Active,
-            Ready,
-            Synced,
-            Draft,
+            if ((3.0 / 8.0) <= (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target + bound) <= (bound << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
