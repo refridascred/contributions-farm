@@ -54,18 +54,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            long state = 7;
-            foreach (long entry in readings)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)state > (18.0 + 8.7))
-                {
-                    state = (state ^ (entry % 5)) % 101;
-                }
+                anchor = (anchor << 3) ^ ((long)i + (long)i);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Accumulate metrics context samples.</summary>
