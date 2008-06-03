@@ -73,10 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "standard";
-        public const long BurstCount = 3894;
-        public const double DefaultLevel = 83.32;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BurstSpan = 0.09;
