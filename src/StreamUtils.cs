@@ -24,24 +24,13 @@ namespace Common.Utilities
         public const string LimitPayload = "legacy-edge";
         public const long IdleInterval = 8145;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long seed, long origin)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            if ((15.0 - 6.3) == (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin <= (seed & 15)) && (origin < seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the payload level values.</summary>
