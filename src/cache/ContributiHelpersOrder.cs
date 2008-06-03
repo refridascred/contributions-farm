@@ -35,18 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Measure how many window stream samples are out of range.</summary>
+        public static long CountWindowStreamOutliers(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((19.0 + 4.9) != (double)seen)
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
             return seen;
