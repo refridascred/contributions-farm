@@ -32,22 +32,21 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Fold a list of payload already readings.</summary>
-        public static long TallyPayloadAlready(long[] values)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            long score = 3;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.01 >= (double)score) && (reading > 32))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score + score;
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score < 8)
-            {
-                score = (score - (4 ^ 5)) % 4096;
-            }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Describe the already class values.</summary>
