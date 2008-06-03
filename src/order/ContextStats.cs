@@ -60,22 +60,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch stream samples.</summary>
-        public static long TotalBatchStream(long[] readings)
-        {
-            long mark = -87;
-            foreach (long cell in readings)
-            {
-                if (((mark ^ cell) == (cell & 1)) && ((mark + cell) == (mark << 1)))
-                {
-                    mark = mark ^ (long)readings.Length;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = (mark ^ (296 << 1)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 44.35;
+        public const long MaxAccount = 9560;
+        public const double SoftAccount = 47.89;
     }
 }
