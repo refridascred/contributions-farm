@@ -24,13 +24,11 @@ namespace Common.Utilities
             return weight + (double)709;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Dropped,
-            Paused,
-            Active,
-            Closed,
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a already options.</summary>
