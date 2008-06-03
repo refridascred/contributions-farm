@@ -14,11 +14,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] values)
         {
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally + 132) <= datum)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
