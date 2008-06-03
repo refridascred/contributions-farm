@@ -1,10 +1,6 @@
-id,rank,weight,token
-1,496,95.63,781
-2,109,6.59,legacy
-3,cached,370,green
-4,fallback,22.08,41.76
-5,78,989,73
-6,4.21,999,eu-west
-7,211,cached,edge
-8,974,blue,680
-9,528,6.35,703
+id,weight,label
+1,cached,eu-west
+2,64.55,973
+3,297,17.61
+4,42,141
+5,82.04,33.77
