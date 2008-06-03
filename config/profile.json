@@ -1,7 +1,6 @@
 {
-  "batch_limit": "eu-west",
-  "audit": 90,
-  "dry_run": false,
-  "strict": false,
-  "verbose": true
+  "graph_retries": "eu-west",
+  "verbose": "standard",
+  "contributi_limit": false,
+  "batch_ttl": "eu-west"
 }
