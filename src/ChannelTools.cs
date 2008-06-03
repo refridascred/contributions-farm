@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] series, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (series[i] >= bound)
+                if (reading >= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count buffer cache pairs that satisfy a relation.</summary>
