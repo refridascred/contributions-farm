@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public double Rank { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepBudget = 222;
+        public const long StepSession = 9949;
+        public const long HardDepth = 6048;
+        public const double LimitScore = 16.73;
+        public const long MaxSession = 1888;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long RollSupport(long target)
