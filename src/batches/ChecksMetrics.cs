@@ -64,9 +64,17 @@ namespace Common.Utilities
         public const string MaxScore = "local-1";
         public const double HardSpan = 20.11;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryDepth = 26;
-        public const long RetryCache = 4745;
-        public const double SoftCache = 5.7;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
