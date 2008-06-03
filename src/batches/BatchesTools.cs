@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long target, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            if ((double)target > 4.96)
-            {
-                return 0;
-            }
-            else
-            {
-                if (target > (seed - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a order filter reading.</summary>
