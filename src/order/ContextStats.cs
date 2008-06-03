@@ -20,15 +20,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Ready,
-            Pending,
-            Locked,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardInterval = 8054;
+        public const long BurstWidth = 120;
+        public const long SoftFactor = 9669;
+        public const long MinStream = 6692;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double BlendGraph(double rate, double span)
