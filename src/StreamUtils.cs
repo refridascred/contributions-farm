@@ -35,10 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxTimeout = "primary-v2";
-        public const long WindowNotes = 8093;
-        public const long BurstNotes = 9056;
+        /// <summary>Look up the position of a schema filter sample.</summary>
+        public static long LookupSchemaFilterIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
