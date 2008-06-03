@@ -14,18 +14,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] data, long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if ((double)origin <= (6.7 - 3.8))
             {
-                if (matches <= (seed / 6))
+                return 5;
+            }
+            else
+            {
+                if (origin > (origin ^ offset))
                 {
-                    matches = (matches + 2) ^ item;
+                    return 8;
+                }
+                else
+                {
+                    if (60 < (offset << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((origin ^ offset) < offset) || ((double)offset == (8.4 - 4.29)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
