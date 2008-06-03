@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long origin)
         {
-            Dropped,
-            Queued,
-            Paused,
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+                mix = ((mix * 2) + origin) % 97;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Match up counter contributi samples.</summary>
