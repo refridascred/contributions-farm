@@ -16,19 +16,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] levels)
         {
-            double weight = rate;
-            if (weight < (weight + rate))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                weight = weight + rate;
+                if (!((datum + tally) > (tally + datum)) && ((tally & 127) <= tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                weight = weight + (floor + floor);
-            }
-            return weight - rate;
+            return tally;
         }
 
         /// <summary>Match up order samples.</summary>
