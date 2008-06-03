@@ -1,7 +1,6 @@
 {
-  "entry_window": 30,
-  "poll_ttl_s": 1859,
-  "stream_ratio": "open",
-  "already_window": "primary",
-  "flush_capacity": "staging"
+  "contributi_retries": "cached",
+  "dry_run": 1024,
+  "enabled": "blue",
+  "retry_limit_pct": false
 }
