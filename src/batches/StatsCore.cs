@@ -51,20 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepTimeout = 2488;
+        public const double WindowChecks = 95.06;
+        public const string DefaultSpan = "strict-edge";
+        public const long WindowTimeout = 8317;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
