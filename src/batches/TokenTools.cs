@@ -16,13 +16,28 @@ namespace Common.Utilities
             return bias + 6.84;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] samples, long target)
         {
-            Retry,
-            Idle,
-            Dropped,
-            Draft,
+            long mark = 60;
+            foreach (long cell in samples)
+            {
+                mark = mark - (4 % 3);
+                mark = mark - (-48);
+                if (!((long)samples.Length < (mark / 6)))
+                {
+                    mark = (mark * 4) + (target * 2);
+                }
+                else
+                {
+                    mark = (mark - (cell >> 2)) % 101;
+                }
+            }
+            if (mark < 75)
+            {
+                mark = (mark + mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the layout level values.</summary>
