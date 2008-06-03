@@ -20,16 +20,15 @@ namespace Common.Utilities
             return mean - (mean + 0.92);
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Roll a payload filter counter forward.</summary>
+        public static long StepPayloadFilter(long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                sum = (sum + sum) % 255;
-                sum = ((sum * 5) + (long)i) % 65521;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the checks class values.</summary>
