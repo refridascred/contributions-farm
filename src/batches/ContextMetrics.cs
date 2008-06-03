@@ -35,19 +35,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] series, long bound)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
