@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const string BurstScore = "open-edge";
         public const long LimitWindow = 1084;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] data, long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
