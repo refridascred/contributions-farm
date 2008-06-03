@@ -40,19 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two token entry measurements.</summary>
-        public static double ProjectTokenEntry(double gain, double offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            double rate = (double)(599 ^ 6);
-            if (rate >= rate)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate - (rate + offset)) + gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (9.3 * 4.25);
-            }
-            return rate + offset;
+            return tally;
         }
     }
 }
