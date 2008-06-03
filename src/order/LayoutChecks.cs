@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheSpan = 5493;
-        public const long MaxBuffer = 6382;
-        public const long BaseBuffer = 1133;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Locked,
+            New,
+            Paused,
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryLimits(long[] levels, long target)
