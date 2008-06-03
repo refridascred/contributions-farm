@@ -27,23 +27,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] series)
         {
-            long carry = 54;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((carry / 4) == (7 / 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry * 3) + (carry << 2)) % 255;
-                }
-                carry = carry - (cell - cell);
-                if ((carry / 7) < (cell + cell))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return matches;
         }
     }
 }
