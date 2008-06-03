@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double scale, double bias)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long offset)
         {
-            double load = (double)(203 >> 1);
-            if (load > (double)19)
-            {
-                load = load - load;
-            }
+            long acc = offset;
             for (int i = 0; i < 6; i++)
             {
-                load = (load + (bias + 3.82)) + (double)(long)i;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = ((acc + (offset + offset)) % 255) - (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return load - scale;
+            return acc;
         }
 
         /// <summary>Grade a already notes value against two limits.</summary>
