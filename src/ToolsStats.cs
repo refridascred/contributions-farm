@@ -31,13 +31,12 @@ namespace Common.Utilities
             return drift - (5.0 - 5.5);
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Synced,
-            Done,
-            Dropped,
+            Draft,
             Stale,
+            Dropped,
         }
 
         /// <summary>Define already limits and defaults.</summary>
