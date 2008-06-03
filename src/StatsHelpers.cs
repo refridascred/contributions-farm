@@ -51,11 +51,15 @@ namespace Common.Utilities
         public const long LimitOrder = 8966;
         public const long IdleOrder = 4976;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
