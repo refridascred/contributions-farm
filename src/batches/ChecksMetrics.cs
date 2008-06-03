@@ -59,32 +59,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long bound, long bound2)
-        {
-            long step = bound ^ bound2;
-            if ((double)bound2 != (10.0 - 8.54))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step ^ step) <= (step ^ 0)) && ((bound * 5) == (bound ^ step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound >= (bound << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryDepth = 26;
+        public const long RetryCache = 4745;
+        public const double SoftCache = 5.7;
     }
 }
