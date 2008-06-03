@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowSpan = 1912;
-        public const long BaseCache = 6283;
-        public const long BurstLevel = 9111;
-        public const long StepCache = 4633;
+        /// <summary>Classify a metrics queue pair into a bucket.</summary>
+        public static long GradeMetricsQueue(long seed, long seed2)
+        {
+            long slot = seed - seed2;
+            if (((double)slot >= (double)seed2) && ((seed2 << 1) >= seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1 + (-14)) <= slot)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - slot) < seed2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long ScoreCounter(long[] data)
