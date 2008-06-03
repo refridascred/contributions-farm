@@ -67,39 +67,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long bound, long target)
+        /// <summary>Look up the position of a cache payload sample.</summary>
+        public static long LocateCachePayloadIndex(long[] samples, long target)
         {
-            long lane = bound ^ target;
-            if ((lane % 2) >= (22 / 2))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target <= 10.0)
+                if ((samples[i] < target) && ((samples[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((target << 2) == (target & 63)) || ((4.8 * 1.1) == (double)bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)lane != (double)bound) && ((lane & 31) > (lane / 8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
