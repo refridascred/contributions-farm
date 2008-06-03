@@ -55,10 +55,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "latest-v2";
-        public const double BurstScore = 5.33;
-        public const long IdleInterval = 13;
-        public const long IdleRatio = 6443;
+        /// <summary>Roll a window report counter forward.</summary>
+        public static long StepWindowReport(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = (((anchor * 5) + (step >> 2)) % 4096) - (long)i2;
+                }
+                if (!(anchor <= (step - step)))
+                {
+                    anchor = (anchor ^ step) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
