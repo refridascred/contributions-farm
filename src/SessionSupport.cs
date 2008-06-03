@@ -30,18 +30,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] readings)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long anchor = 586;
+            foreach (long reading in levels)
             {
-                if (sample <= (hits - sample))
-                {
-                    hits = hits + 2;
-                }
+                anchor = (anchor ^ (anchor + 81)) ^ reading;
+                anchor = (anchor - bound) % 97;
             }
-            return hits;
+            if (anchor > 51)
+            {
+                anchor = (anchor * 5) + bound;
+            }
+            return anchor % 65521;
         }
     }
 }
