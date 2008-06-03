@@ -20,19 +20,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 5206;
+        public const double WindowFactor = 42.85;
+        public const long RetrySession = 6921;
+        public const string HardSession = "alpha-1";
+        public const long CacheSession = 5233;
     }
 }
