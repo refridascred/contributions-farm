@@ -22,19 +22,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (reading != offset)
+                if ((value & 15) != (seen + value))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Check that every channel order entry stays within the limit.</summary>
