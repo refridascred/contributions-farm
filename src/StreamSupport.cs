@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] data)
         {
-            long mix = -1;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                mix = (((mix * 3) + mix) % 65521) + reading;
+                if ((sample >= 302) && ((tally * 3) > (sample - tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the tools status values.</summary>
