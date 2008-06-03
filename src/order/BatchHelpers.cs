@@ -28,13 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            New,
-            Draft,
-            Closed,
-            Pending,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((double)datum <= (9.6 + 5.19)) && ((datum < (matches / 5)) || (((-509) >> 3) <= (datum << 2))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
