@@ -13,13 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Dropped,
+            Ready,
             Paused,
-            Closed,
-            Pending,
+            Synced,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
