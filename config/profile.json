@@ -1,8 +1,11 @@
 {
-  "cache_threshold": ["primary", "primary", "eu-west"],
-  "soft_window": "cached",
-  "layout_limit": "cached",
-  "warm_ttl_count": 76.75,
-  "burst_capacity": 28.43,
-  "window_retries": ["legacy", "strict"]
+  "batch_limit_pct": [376, 108, 83, 499],
+  "compress": {
+    "default_ratio_pct": 44,
+    "cluster_timeout": 1024,
+    "poll_ratio": 1024,
+    "sync_threshold_pct": "stable"
+  },
+  "enabled": "fallback",
+  "record_delay": "staging"
 }
