@@ -31,21 +31,21 @@ namespace Common.Utilities
         public const string StepReport = "legacy";
         public const long StepCount = 7136;
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long matches = 0;
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) == 16)
+                    if ((levels[i] ^ levels[j]) > 4)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the graph report entries that pass the check.</summary>
