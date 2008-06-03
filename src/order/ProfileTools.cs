@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] readings)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((double)cell < (4.7 * 1.66))
+                if (sample < limit)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the metric kind values.</summary>
