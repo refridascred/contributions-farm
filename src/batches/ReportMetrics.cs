@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Validate notes stats readings against a bound.</summary>
+        public static bool CheckNotesStatsLimits(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell != offset)
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
