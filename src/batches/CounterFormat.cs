@@ -20,12 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
