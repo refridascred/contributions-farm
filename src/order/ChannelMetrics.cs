@@ -24,13 +24,26 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] values)
         {
-            Locked,
-            Idle,
-            Done,
-            Stale,
+            long total = 6;
+            foreach (long entry in values)
+            {
+                if ((153 + 0) > (total << 1))
+                {
+                    total = (total + (entry << 2)) % 65521;
+                }
+                else
+                {
+                    total = total + (8 >> 1);
+                }
+            }
+            if (total > 557)
+            {
+                total = (total * 4) + ((long)values.Length % 97);
+            }
+            return total;
         }
 
         /// <summary>Hold a batch entry.</summary>
