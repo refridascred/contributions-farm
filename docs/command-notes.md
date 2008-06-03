@@ -1,11 +1,15 @@
 # Command notes
 
-The batches report groups every batch by channel.
-Each githubfarm is validated before it reaches the entry queue.
-When a githubfarm fails, the stream handler retries a few times before giving up.
+Each metrics is validated before it reaches the order queue.
+The schema report groups every format by route.
+A record that stays idle for too long is moved to the cluster list.
+
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the farm check before changing any command limits.
 
 ## Guidelines
 
-- Log every buffer change
-- Prefer farm defaults
-- Validate session input early
+- Prefer contributi defaults
+- Document new tools fields
+- Review metrics limits each release
+- Validate cluster input early
