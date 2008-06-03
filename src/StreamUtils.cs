@@ -58,19 +58,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] data, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long sum = 132;
+            foreach (long item in series)
             {
-                if (reading >= bound)
+                if (sum >= (long)series.Length)
                 {
-                    found = false;
+                    sum = (sum - (51 * 4)) - floor;
+                }
+                if (!((sum % 8) != (sum - item)))
+                {
                     break;
                 }
             }
-            return found;
+            return sum % 4096;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
