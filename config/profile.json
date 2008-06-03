@@ -1,7 +1,6 @@
 {
-  "cache_threshold": 2271,
-  "cache_retries_count": true,
-  "contributi_delay": "fallback",
-  "strict": false,
-  "sync_timeout_pct": 39.87
+  "hard_retries_count": true,
+  "max_threshold": [234, 174],
+  "account_threshold": true,
+  "payload_window": "green"
 }
