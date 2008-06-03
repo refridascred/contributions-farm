@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate report metrics readings against a bound.</summary>
-        public static bool GuardReportMetricsLimits(long[] items, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] items, long target)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long score = 58;
+            foreach (long reading in items)
             {
-                if (cell >= origin)
+                if ((double)(long)items.Length < 2.73)
                 {
-                    found = false;
-                    break;
+                    score = (score + (target - target)) + reading;
+                }
+                else
+                {
+                    score = score + (score % 16);
                 }
             }
-            return found;
+            return score % 97;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
