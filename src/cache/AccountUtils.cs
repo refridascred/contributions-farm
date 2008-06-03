@@ -21,19 +21,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] samples, long limit)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Failed,
+            Dropped,
         }
     }
 }
