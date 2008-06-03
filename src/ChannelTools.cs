@@ -21,10 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheBatches = "cached-edge";
-        public const long MinDepth = 3585;
-        public const long MaxLevel = 3771;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long ScoreBatches(long[] data)
