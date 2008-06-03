@@ -37,38 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a commits stream value against two limits.</summary>
-        public static long RankCommitsStream(long offset, long origin)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            if (!(offset <= (78 * 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin >> 5) <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin << 3) > (origin ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin <= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
