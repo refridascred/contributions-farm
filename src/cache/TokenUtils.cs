@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of metrics command entries.</summary>
-        public static long TallyMetricsCommand(long[] levels, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] values, long offset)
         {
-            long acc = 6;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 4; i++)
+                if ((double)sample >= (double)999)
                 {
-                    acc = (((acc << 2) ^ (item >> 5)) % 4096) - (long)i;
-                }
-                if (!((3.17 * 0.8) > (double)acc))
-                {
-                    acc = (acc << 2) ^ seed;
-                }
-                if ((1.81 / 3.0) >= (double)acc)
-                {
-                    acc = ((acc << 3) ^ 7) % 101;
+                    matches = (matches + 1) - offset;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
