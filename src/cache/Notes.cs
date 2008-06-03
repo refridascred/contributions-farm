@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 8337;
+        public const double BatchGraph = 85.85;
+        public const long BurstGraph = 9851;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileLimits(long[] items, long origin)
