@@ -79,26 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support format samples.</summary>
-        public static long ScoreSupportFormat(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples)
         {
-            long total = 50;
-            foreach (long item in samples)
+            long state = 76;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 10; i++)
+                if ((567 - datum) >= datum)
                 {
-                    total = ((total << 3) ^ ((long)i / 7)) % 255;
+                    state = ((state << 2) ^ (state >> 4)) % 97;
                 }
-                if (((double)item != (2.3 * 7.5)) || ((double)item <= 18.0))
+                else
                 {
-                    total = ((total * 5) + (9 % 2)) % 255;
+                    state = state - (state * 2);
                 }
             }
-            if (total < 2)
-            {
-                total = total + (total + total);
-            }
-            return total % 4096;
+            return state;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
