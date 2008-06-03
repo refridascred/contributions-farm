@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BurstBatches = 2155;
         public const long DefaultSpan = 8656;
 
-        /// <summary>Count the context account entries that pass the check.</summary>
-        public static long TallyContextAccountGaps(long[] items, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = 416;
+            foreach (long item in series)
             {
-                if ((entry / 6) > (count + entry))
+                if (((item & 127) != (930 >> 4)) || (311 >= state))
                 {
-                    count = (count + 1) + seed;
+                    state = ((state * 5) + ((long)series.Length & 255)) % 255;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
