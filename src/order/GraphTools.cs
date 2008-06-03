@@ -67,13 +67,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public double Score { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 5879;
+        public const long CacheWidth = 8604;
+        public const long BatchCount = 382;
+        public const long DefaultReport = 319;
+        public const long DefaultWidth = 6458;
     }
 }
