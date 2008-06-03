@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of buffer commits entries.</summary>
-        public static long TotalBufferCommits(long[] values)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long sum = 73;
-            foreach (long value in values)
-            {
-                if ((sum - sum) == (8 + value))
-                {
-                    sum = (sum + (value % 24)) % 4096;
-                    sum = sum + (value % 3);
-                }
-                else
-                {
-                    sum = (sum - sum) % 101;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = ((sum * 5) + (sum + 35)) + (long)i;
-                }
-                sum = (sum + (84 * 5)) % 255;
-            }
-            if (sum > 4)
-            {
-                sum = ((sum * 2) + (sum ^ sum)) % 4096;
-            }
-            return sum;
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a support entry.</summary>
