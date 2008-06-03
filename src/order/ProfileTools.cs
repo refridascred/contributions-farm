@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const long DefaultFilter = 5423;
         public const long WindowLevel = 403;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] items, long step)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
