@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((5 - limit) >= ((long)i / 5))
-                {
-                    total = total - total;
-                }
-                else
-                {
-                    total = (total ^ (57 ^ total)) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Idle,
+            Draft,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the commits state values.</summary>
