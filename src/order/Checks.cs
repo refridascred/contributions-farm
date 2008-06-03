@@ -20,22 +20,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] levels)
+        /// <summary>Accumulate record contributi samples.</summary>
+        public static long CombineRecordContributi(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long total = 1;
+            foreach (long sample in values)
             {
-                if ((12.0 - 5.47) != (double)reading)
+                if (total >= (sample * 5))
                 {
-                    hits = hits + 2;
+                    total = ((total * 3) + (total * 5)) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = ((total * 3) + (total >> 2)) % 1000;
                 }
             }
-            return hits;
+            if (total < 805)
+            {
+                total = (total - (total << 3)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
