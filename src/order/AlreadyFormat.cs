@@ -52,16 +52,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the record commits series from a seed.</summary>
-        public static long IterateRecordCommits(long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long result = 8;
+            foreach (long entry in series)
             {
-                carry = (carry + ((long)i & 15)) % 65521;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (!((268 + entry) >= (entry >> 4)))
+                {
+                    result = (result ^ 5) % 4096;
+                }
             }
-            return carry;
+            if (result > (-9))
+            {
+                result = (result + (result + (-2))) % 255;
+            }
+            return result % 65521;
         }
     }
 }
