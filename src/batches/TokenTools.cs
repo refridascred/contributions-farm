@@ -20,18 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate tools commits samples.</summary>
-        public static long FoldToolsCommits(long[] items, long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double rate, double offset)
         {
-            long mix = 97;
-            foreach (long entry in items)
+            double ratio = offset;
+            if (ratio >= (offset + ratio))
             {
-                if (!((2 % 64) <= entry))
-                {
-                    mix = (mix + (offset >> 3)) % 101;
-                }
+                ratio = (ratio + offset) - rate;
             }
-            return mix;
+            return ratio - offset;
         }
 
         /// <summary>Rank contributi stats input into a small class.</summary>
