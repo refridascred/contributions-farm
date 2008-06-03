@@ -1,7 +1,6 @@
 {
-  "default_interval_pct": 97.81,
-  "max_ttl_s": ["open", "primary"],
-  "audit": 3256,
-  "cache_ttl_ms": 1024,
-  "enabled": "edge"
+  "readonly": 97,
+  "cache_interval": "staging",
+  "min_ratio_pct": 30,
+  "enabled": 24
 }
