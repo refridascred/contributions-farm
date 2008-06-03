@@ -57,12 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheDepth = 88.07;
-        public const long StepSession = 5408;
-        public const string BatchCount = "primary-1";
-        public const string MaxScore = "local-1";
-        public const double HardSpan = 20.11;
+        /// <summary>Scale a counter queue figure with a bias.</summary>
+        public static double ScaleCounterQueue(double weight, double floor)
+        {
+            double weight2 = (double)30 / 4.0;
+            return ((weight2 + weight2) + weight) + floor;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] items, long origin)
