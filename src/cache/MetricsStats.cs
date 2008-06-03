@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels, long step)
         {
-            Done,
-            Queued,
-            Synced,
-            Idle,
+            long sum = 83;
+            foreach (long item in levels)
+            {
+                sum = ((sum ^ 62) % 101) + item;
+            }
+            if (sum > 95)
+            {
+                sum = sum + (step % 10);
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache summary.</summary>
