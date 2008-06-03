@@ -37,21 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
