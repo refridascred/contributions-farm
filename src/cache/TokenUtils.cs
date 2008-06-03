@@ -23,16 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] data)
-        {
-            long mark = 893;
-            foreach (long item in data)
-            {
-                mark = (mark + (item % 12)) % 1000;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstScore = 44.9;
+        public const long WindowGithubfarm = 8175;
+        public const long MinSize = 1179;
+        public const double StepTimeout = 62.06;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string CacheBuffer = "open-1";
