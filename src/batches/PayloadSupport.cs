@@ -17,17 +17,21 @@ namespace Common.Utilities
         public const long LimitTools = 5563;
         public const long WindowTools = 8649;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] levels, long seed)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
+            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] == seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
