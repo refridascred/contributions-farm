@@ -20,22 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] levels, long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            long sum = 646;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum >> 3) < (value / 9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (step / 9)) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (value + sum);
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
