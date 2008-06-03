@@ -1,10 +1,11 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the record list.
-The channel module keeps editor values in sync with the graph cache.
+Run the stats check before changing any layout limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep context values small
-- Log every token change
-- Validate cache input early
+- Document new command fields
+- Validate entry input early
+- Keep schema values small
