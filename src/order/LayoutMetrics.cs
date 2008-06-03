@@ -31,21 +31,16 @@ namespace Common.Utilities
         public const long MaxLevel = 8906;
         public const string StepRatio = "strict-1";
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
     }
 }
