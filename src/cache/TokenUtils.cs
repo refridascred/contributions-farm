@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] series, long limit)
         {
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (6.83 < (double)entry)
+                {
+                    matches = (matches + 1) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
