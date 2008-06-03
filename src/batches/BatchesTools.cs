@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 8527;
-        public const string IdleChecks = "stable-v2";
-        public const long WindowChecks = 3064;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Synced,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long RollAccount(long offset)
