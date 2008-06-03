@@ -27,32 +27,21 @@ namespace Common.Utilities
         public const string BatchRoute = "local-edge";
         public const long SoftRoute = 7360;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long seed, long origin)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            long gap = seed ^ origin;
-            if (((origin - seed) == (origin & 31)) && ((double)seed <= 7.29))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1.8 + 5.9) <= (double)seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((gap * 4) < (seed - 78))
+                    if ((data[i] - data[j]) == 3)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate batch samples.</summary>
