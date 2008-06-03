@@ -1,9 +1,13 @@
 {
-  "max_ttl_ms": 2326,
-  "command_capacity": "fallback",
-  "verbose": {
-    "strict": true,
-    "hard_window_s": false,
-    "route_interval": 41.2
-  }
+  "cache_size_count": {
+    "compress": 4448,
+    "tools_limit": "legacy",
+    "retry_capacity_ms": "staging",
+    "verbose": 4.62
+  },
+  "account_threshold": "green",
+  "order_depth": 2942,
+  "poll_ttl_ms": "eu-west",
+  "sync_retries_ms": 95.86,
+  "retry_capacity_ms": false
 }
