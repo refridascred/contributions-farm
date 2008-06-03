@@ -22,18 +22,14 @@ namespace Common.Utilities
         public const long BaseBudget = 3657;
         public const string RetryInterval = "open-1";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] series)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((6.01 * 4.0) <= (double)tally)
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Queued,
+            Dropped,
+            Done,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
