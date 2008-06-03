@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Count the batch channel entries that pass the check.</summary>
+        public static long CountBatchChannelOutliers(long[] series)
         {
-            long anchor = 615;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                anchor = ((anchor * 5) + (value + value)) % 101;
-                if (((value << 3) <= (value << 1)) || ((anchor % 60) >= value))
+                if ((count + entry) < (3 >> 4))
                 {
-                    anchor = ((anchor << 3) ^ value) % 4096;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Blend two context measurements.</summary>
