@@ -1,5 +1,7 @@
 {
-  "commits_depth": false,
-  "batch_timeout_count": true,
-  "batch_capacity_ms": 9534
+  "commits_timeout": [83, 320],
+  "hard_retries_s": 70,
+  "verbose": "standard",
+  "soft_capacity_s": "strict",
+  "enabled": 14.31
 }
