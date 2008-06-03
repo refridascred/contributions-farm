@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstScore = 8421;
-        public const string LimitSize = "legacy-1";
-        public const long BaseCommand = 5129;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Retry,
+            New,
+            Paused,
+            Active,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftBuffer = 2981;
