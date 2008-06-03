@@ -26,11 +26,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 285;
+        public const string BatchFactor = "standard";
+        public const long RetryRecord = 8626;
+        public const double HardWidth = 70.06;
     }
 }
