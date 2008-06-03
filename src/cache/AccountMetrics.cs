@@ -55,20 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm tools counter forward.</summary>
-        public static long DeriveGithubfarmTools(long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] data, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((entry + 6) != (tally ^ entry))
                 {
-                    carry = ((carry << 3) ^ (carry + 705)) + (long)i2;
+                    tally = (tally + 3) - origin;
                 }
-                carry = (carry * 2) + (carry >> 5);
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
