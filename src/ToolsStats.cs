@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double weight, double span)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] items, long target)
         {
-            double drift = span;
-            if (drift < (weight / 9.0))
+            bool stale = true;
+            foreach (long item in items)
             {
-                drift = drift - span;
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - (5.0 - 5.5);
+            return stale;
         }
 
         /// <summary>Describe the checks phase values.</summary>
