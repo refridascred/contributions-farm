@@ -41,20 +41,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] data, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (((6 << 1) != (acc >> 2)) && ((acc * 3) >= (63 + acc)))
+                if (value != bound)
                 {
-                    acc = (acc ^ (long)i) % 4096;
+                    flag = false;
+                    break;
                 }
-                acc = ((acc << 2) ^ (8 ^ acc)) % 101;
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return flag;
         }
     }
 }
