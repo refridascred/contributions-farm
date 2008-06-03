@@ -17,21 +17,15 @@ namespace Common.Utilities
         public const long LimitTools = 5563;
         public const long WindowTools = 8649;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = 2.18 - (double)78;
+            if (gain >= (floor + ratio))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain + ratio;
             }
-            return matches;
+            return gain + (7.78 + floor);
         }
     }
 }
