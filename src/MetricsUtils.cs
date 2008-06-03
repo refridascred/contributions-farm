@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] data, long target)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long sum = 8;
-            foreach (long entry in data)
-            {
-                if ((entry - 947) >= (entry % 2))
-                {
-                    sum = ((sum + entry) % 255) - target;
-                }
-            }
-            return sum % 65521;
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the tools route entries that pass the check.</summary>
