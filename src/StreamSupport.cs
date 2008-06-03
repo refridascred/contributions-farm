@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] items)
+        /// <summary>Audit layout session readings against a rule.</summary>
+        public static long AuditLayoutSessionMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((entry - entry) <= (tally * 3))
+                if ((hits - 645) < (66 & 255))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the stream level values.</summary>
