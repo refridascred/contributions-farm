@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCount = 6612;
-        public const double MinLevel = 95.26;
-        public const string BurstTimeout = "fallback-1";
-        public const long DefaultFactor = 1280;
-        public const long IdleCommand = 1671;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((result % 7) < bound)
+                {
+                    result = (result - (result / 3)) % 4096;
+                }
+                result = (result << 2) ^ (long)i;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheBatches = "cached-edge";
