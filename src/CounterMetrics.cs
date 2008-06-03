@@ -27,20 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstFactor = 6.69;
+        public const long DefaultBatches = 8590;
+        public const long BaseDepth = 1440;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string MaxFormat = "local";
