@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] readings, long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long acc = 25;
-            foreach (long entry in readings)
-            {
-                if ((double)entry < 7.0)
-                {
-                    acc = (acc + (limit ^ acc)) % 255;
-                }
-            }
-            return acc;
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
