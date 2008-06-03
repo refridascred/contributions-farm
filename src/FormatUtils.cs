@@ -20,14 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 97.63;
+        public const long WindowStats = 4469;
+        public const long DefaultStats = 6005;
+        public const long CacheStats = 4430;
 
         /// <summary>Validate report context readings against a bound.</summary>
         public static bool CheckReportContextRange(long[] samples, long target)
