@@ -1,12 +1,6 @@
 {
-  "strict": true,
-  "base_capacity": "fallback",
-  "window_size": {
-    "sync_interval_s": true,
-    "dry_run": 6.08,
-    "persist": 59.48,
-    "context_delay": 250,
-    "default_retries_s": true,
-    "batches_delay": "cached"
-  }
+  "flush_limit": "blue",
+  "dry_run": 98.84,
+  "default_delay_s": 30,
+  "enabled": true
 }
