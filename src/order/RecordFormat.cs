@@ -32,12 +32,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 5014;
-        public const string SoftSupport = "stable";
-        public const double HardInterval = 81.66;
-        public const double StepTimeout = 95.01;
-        public const long CacheSupport = 9814;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((item >> 1) > (floor ^ 5))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] samples, long target)
