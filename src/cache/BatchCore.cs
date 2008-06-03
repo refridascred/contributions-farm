@@ -25,23 +25,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] series)
-        {
-            long mix = 725;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) >= (datum * 3))
-                {
-                    mix = (mix ^ (mix + datum)) % 101;
-                }
-                if ((mix < (71 - datum)) && ((datum >> 3) == (datum + datum)))
-                {
-                    mix = (mix - (287 ^ mix)) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitScore = 8489;
+        public const long StepInterval = 134;
+        public const string BaseContributi = "standard-v2";
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferMatches(long[] series, long limit)
