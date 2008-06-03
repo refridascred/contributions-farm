@@ -56,14 +56,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Stale,
-            Queued,
-            Retry,
-            Pending,
-            Closed,
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
