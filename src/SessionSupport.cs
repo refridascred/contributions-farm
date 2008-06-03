@@ -32,13 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Audit editor window readings against a rule.</summary>
+        public static long MeasureEditorWindowMatches(long[] items, long origin)
         {
-            Synced,
-            Dropped,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)count == (13.0 / 7.0))
+                {
+                    count = ((count + 2) ^ entry) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
