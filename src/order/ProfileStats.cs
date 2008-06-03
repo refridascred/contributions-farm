@@ -12,22 +12,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many graph layout samples are out of range.</summary>
-        public static long AuditGraphLayoutHits(long[] items, long target)
+        /// <summary>Iterate the layout report series from a seed.</summary>
+        public static long IterateLayoutReport(long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((seen + target) != (target - 82)))
-                {
-                    seen = (seen + 1) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry * 4) + target;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
