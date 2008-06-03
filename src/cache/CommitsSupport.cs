@@ -36,12 +36,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Closed,
-            Ready,
-            Dropped,
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine channel values into a single score.</summary>
