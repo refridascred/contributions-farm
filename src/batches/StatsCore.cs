@@ -67,17 +67,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a profile stats reading by value.</summary>
-        public static long SeekProfileStatsIndex(long[] readings, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
+                if ((count << 2) >= count)
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
