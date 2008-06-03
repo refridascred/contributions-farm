@@ -1,6 +1,7 @@
 {
-  "poll_delay_ms": 558,
-  "idle_delay": 30,
-  "persist": "latest",
-  "enabled": "legacy"
+  "batch_window": 1024,
+  "cache_interval": 9444,
+  "checks_ratio": [372, 309, 144],
+  "persist": 93.98,
+  "flush_size_s": [91, 358, 251]
 }
