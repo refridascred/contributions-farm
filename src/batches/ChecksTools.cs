@@ -44,15 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double bias, double offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] data, long seed)
         {
-            double drift = 0.7;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                drift = ((drift + drift) + (double)(long)i) - bias;
+                if (datum >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - (offset * 4.8);
+            return stale;
         }
     }
 }
