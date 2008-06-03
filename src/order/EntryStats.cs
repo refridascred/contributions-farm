@@ -58,15 +58,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double rate, double offset)
-        {
-            double load = (rate + offset) + (rate * 13.0);
-            if (load < rate)
-            {
-                load = load - 4.2;
-            }
-            return load + offset;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 8278;
+        public const long RetryContext = 1332;
+        public const long MaxLevel = 2644;
     }
 }
