@@ -33,22 +33,14 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] samples)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long anchor = 198;
-            foreach (long datum in samples)
-            {
-                if (((double)anchor < (2.0 - 7.78)) && ((443 * 4) < (datum & 1)))
-                {
-                    anchor = anchor ^ 8;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 4096;
-                }
-            }
-            return anchor;
+            Failed,
+            Locked,
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a buffer header.</summary>
