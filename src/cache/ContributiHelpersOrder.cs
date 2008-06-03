@@ -30,38 +30,12 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long target, long step)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if ((target + step) >= (8 - 42))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target << 2) >= (step >> 1)) && (((-540) - target) <= (16 - 407)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((3 % 3) >= (step - step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target + target) == (996 >> 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            New,
+            Stale,
+            Paused,
         }
     }
 }
