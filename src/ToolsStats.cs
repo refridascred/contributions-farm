@@ -29,13 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Check that every entry graph entry stays within the limit.</summary>
+        public static bool ValidateEntryGraphLimits(long[] levels, long target)
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
