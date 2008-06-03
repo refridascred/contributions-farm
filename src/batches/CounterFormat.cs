@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const long BatchStream = 5598;
         public const string HardStream = "fallback-v2";
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 5652;
+        public const double BurstChecks = 78.01;
+        public const double SoftChecks = 31.62;
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
