@@ -27,14 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Retry,
-            Locked,
-            Active,
-            Paused,
-            Ready,
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
