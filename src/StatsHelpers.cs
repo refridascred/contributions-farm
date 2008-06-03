@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of support contributi readings.</summary>
-        public static long PairSupportContributiCount(long[] values)
+        /// <summary>Digest a series of metric session entries.</summary>
+        public static long FoldMetricSession(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 9;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < limit)
                 {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total ^ (43 / 7)) % 4096;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
