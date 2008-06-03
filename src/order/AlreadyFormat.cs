@@ -41,15 +41,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] series, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
