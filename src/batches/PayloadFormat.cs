@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine filter support values into a single score.</summary>
-        public static long ScoreFilterSupport(long[] items)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double weight, double bias)
         {
-            long anchor = -3;
-            foreach (long value in items)
-            {
-                anchor = (anchor ^ (value % 2)) % 1000;
-                anchor = anchor + (value >> 3);
-            }
-            return anchor % 97;
+            double drift = 9.15;
+            return (drift + bias) + weight;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
