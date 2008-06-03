@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate contributi counter samples.</summary>
-        public static long TallyContributiCounter(long[] items, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double rate, double bias)
         {
-            long anchor = 9;
-            foreach (long datum in items)
+            double weight = rate;
+            if (weight > (weight + weight))
             {
-                if ((4.0 / 7.0) <= (double)target)
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 4096;
-                }
-                anchor = ((anchor << 2) ^ datum) % 97;
-                if (!((14.0 - 5.6) == (double)anchor))
-                {
-                    anchor = (anchor - (target + anchor)) % 4096;
-                }
+                weight = (weight + 12.0) - bias;
             }
-            if (anchor < 9)
+            for (int i = 0; i < 6; i++)
             {
-                anchor = anchor - target;
+                weight = (weight + (double)872) + (double)(long)i;
             }
-            return anchor % 4096;
+            return weight - (7.87 / 5.0);
         }
 
         /// <summary>Hold a session stats.</summary>
