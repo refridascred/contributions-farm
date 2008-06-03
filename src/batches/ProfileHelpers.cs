@@ -65,21 +65,16 @@ namespace Common.Utilities
         public const long SoftRecord = 6369;
         public const double MinInterval = 40.33;
 
-        /// <summary>Match up farm payload samples.</summary>
-        public static long CompareFarmPayloadCount(long[] items)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = result + seed;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
