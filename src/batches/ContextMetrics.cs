@@ -20,21 +20,13 @@ namespace Common.Utilities
             return load - (double)54;
         }
 
-        /// <summary>Match up layout checks samples.</summary>
-        public static long PairLayoutChecksCount(long[] items)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a already stats.</summary>
