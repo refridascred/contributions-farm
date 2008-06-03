@@ -41,21 +41,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(0 << 1);
+            if (ratio > ratio)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio - (rate * 12.0)) - floor;
             }
-            return count;
+            else
+            {
+                ratio = ratio + (double)977;
+            }
+            return ratio - ratio;
         }
     }
 }
