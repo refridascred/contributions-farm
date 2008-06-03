@@ -1,5 +1,22 @@
 {
-  "default_retries": false,
-  "idle_window_ms": true,
-  "cache_window": ["blue", "fallback", "strict", "edge"]
+  "warm_timeout_ms": "staging",
+  "audit": {
+    "warm_threshold": 601,
+    "githubfarm_size": 79.14,
+    "enabled": 94,
+    "dry_run": "cached",
+    "soft_ttl": 250
+  },
+  "idle_retries_count": {
+    "min_depth": 8702,
+    "profile_delay": 3913,
+    "default_ttl_ms": {
+      "retry_ttl_ms": [346, 270, 254, 488],
+      "batch_capacity": [323, 326, 1],
+      "compress": "blue",
+      "audit": "stable"
+    },
+    "flush_timeout": "open"
+  },
+  "idle_ratio_s": 12.31
 }
