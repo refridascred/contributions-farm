@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (double)(7 / 5);
+            if (bias2 <= (double)458)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = (bias2 + (bias2 + bias)) - scale;
             }
-            return count;
+            return bias2 - bias;
         }
 
         /// <summary>Adjust a commits route reading.</summary>
