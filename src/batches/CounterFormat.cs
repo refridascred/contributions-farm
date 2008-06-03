@@ -27,22 +27,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] samples)
+        /// <summary>Count the tools contributi entries that pass the check.</summary>
+        public static long AuditToolsContributiGaps(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!((9 + hits) >= hits) && (((entry - entry) > (hits >> 4)) && ((hits % 16) > (hits ^ 58))))
+                if ((cell + target) < matches)
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
