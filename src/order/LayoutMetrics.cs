@@ -38,19 +38,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] data, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < origin)
+                if (data[i] == bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
