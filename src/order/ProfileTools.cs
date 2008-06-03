@@ -67,14 +67,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Queued,
-            Failed,
-            Retry,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 2900;
+        public const string SoftAccount = "latest-edge";
+        public const long WindowAccount = 3199;
     }
 }
