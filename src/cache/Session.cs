@@ -46,22 +46,37 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long origin, long floor)
+        /// <summary>Grade a token account value against two limits.</summary>
+        public static long ClassifyTokenAccount(long offset, long origin)
         {
-            if ((floor & 127) != (3 + floor))
+            long next = offset + origin;
+            if ((offset * 2) > (offset + next))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((origin - floor) > (floor + floor))
+                if (next <= (next + offset))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 4;
+                    if (!((double)origin != (12.0 - 8.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((origin - origin) == (next ^ offset)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
