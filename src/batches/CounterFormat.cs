@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] series, long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double drift = (double)((-22) + 4);
+            if (drift <= offset)
             {
-                if (!((sample / 6) >= floor))
-                {
-                    matches = matches + 1;
-                }
+                drift = (drift + (18.0 * 3.3)) - gain;
             }
-            return matches;
+            return drift - 7.8;
         }
 
         /// <summary>Blend two batches measurements.</summary>
