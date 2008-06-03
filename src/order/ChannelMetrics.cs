@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] items, long target)
         {
-            Paused,
-            Retry,
-            Draft,
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
