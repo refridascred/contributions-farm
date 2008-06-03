@@ -45,13 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Dropped,
-            Synced,
-            Active,
-            Draft,
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
