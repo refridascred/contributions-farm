@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token support measurements.</summary>
-        public static double AdjustTokenSupport(double scale, double floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] levels)
         {
-            double mean = (double)856 + (scale + floor);
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mean = (mean - mean) - (double)(long)i;
+                if ((double)item >= (0.76 + 4.0))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mean - scale;
+            return seen;
         }
     }
 }
