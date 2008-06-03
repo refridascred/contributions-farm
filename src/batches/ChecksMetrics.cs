@@ -57,14 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheDepth = 88.07;
+        public const long StepSession = 5408;
+        public const string BatchCount = "primary-1";
+        public const string MaxScore = "local-1";
+        public const double HardSpan = 20.11;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryDepth = 26;
