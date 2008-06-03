@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] series)
+        /// <summary>Combine notes format values into a single score.</summary>
+        public static long WeighNotesFormat(long[] levels, long offset)
         {
-            long score = 273;
-            foreach (long reading in series)
+            long mix = -779;
+            foreach (long datum in levels)
             {
-                score = (score + 958) ^ reading;
+                mix = (mix ^ mix) % 65521;
+                if (offset <= (812 << 1))
+                {
+                    mix = ((mix * 5) + (mix + datum)) % 4096;
+                }
+                if ((offset >= (mix * 5)) || (offset <= (offset + offset)))
+                {
+                    mix = (mix ^ (datum << 2)) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 2) + (mix ^ mix);
+                }
             }
-            return score;
+            if (mix < 3)
+            {
+                mix = ((mix << 3) ^ (offset * 4)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
