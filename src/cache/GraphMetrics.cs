@@ -57,15 +57,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] series, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] levels)
         {
-            long mix = 22;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                mix = (mix ^ (datum + mix)) - origin;
+                if ((((double)tally == (8.7 * 13.0)) || (tally < (sample & 1))) || ((double)sample < (2.6 * 8.18)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
