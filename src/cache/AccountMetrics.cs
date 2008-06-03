@@ -28,12 +28,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryWidth = 9830;
-        public const long SoftSpan = 397;
-        public const string CacheBatches = "strict-1";
-        public const long HardBatches = 2960;
-        public const long BurstInterval = 2932;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long offset, long step)
+        {
+            if ((4.16 + 5.8) > (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)8 <= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - step) > (step / 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset < ((-78) % 64))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] series, long limit)
