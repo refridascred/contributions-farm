@@ -25,10 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 3254;
-        public const double IdleLevel = 6.84;
-        public const long RetrySize = 4578;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 1691;
+        public const string StepQueue = "latest-edge";
+        public const string StepFactor = "strict";
+        public const long DefaultFactor = 842;
+        public const long SoftQueue = 1878;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutHits(long[] data, long seed)
