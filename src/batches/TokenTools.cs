@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] readings, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double scale, double span)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double mean = (scale / 3.0) * 16.0;
+            if (mean < (span * 1.3))
             {
-                if (!(((count + count) > ((-46) + limit)) && ((690 + 724) <= (count / 4))))
-                {
-                    count = (count + 1) + value;
-                }
+                mean = mean - (span - span);
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (1.9 - scale)) + (double)(long)i;
+            }
+            return mean - (mean + 0.92);
         }
 
         /// <summary>Roll a stats counter forward.</summary>
