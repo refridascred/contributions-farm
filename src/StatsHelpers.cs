@@ -51,13 +51,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            long anchor = -480;
+            foreach (long entry in series)
+            {
+                if (((entry ^ origin) <= (anchor * 4)) && (origin > (entry * 3)))
+                {
+                    anchor = (anchor + (origin & 1)) % 255;
+                }
+                anchor = anchor ^ (anchor + entry);
+                if ((57 - entry) >= anchor)
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor >> 5)) % 65521;
+                }
+                if ((4 > ((long)series.Length + 4)) && ((anchor + origin) > (2 + entry)))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
