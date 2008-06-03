@@ -58,17 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] series, long limit)
+        /// <summary>Count the stream checks entries that pass the check.</summary>
+        public static long AuditStreamChecksMatches(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (series[i] < limit)
+                if ((seen + 48) >= value)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
