@@ -13,19 +13,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double rate, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long step)
         {
-            double scale = offset;
-            if (scale > 3.17)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                scale = (scale + (double)664) + rate;
+                anchor = ((anchor << 2) ^ (9 >> 4)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 6.8) + (double)(long)i;
-            }
-            return scale + (double)75;
+            return anchor;
         }
 
         /// <summary>Describe the batch kind values.</summary>
