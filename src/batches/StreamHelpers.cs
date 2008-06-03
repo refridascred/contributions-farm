@@ -89,19 +89,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] values, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long mark = 499;
+            foreach (long datum in levels)
             {
-                if (item <= bound)
+                if ((mark >> 2) > (3 >> 1))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark + datum) + floor;
                 }
+                mark = (mark - (mark ^ 7)) % 1000;
             }
-            return valid;
+            return mark;
         }
     }
 }
