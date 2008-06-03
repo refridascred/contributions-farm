@@ -1,6 +1,10 @@
-id,weight,owner,count
-1,84.81,784,183
-2,green,7.6,275
-3,fallback,50.81,cached
-4,5.98,181,145
-5,1.81,56.84,47.55
+id,count,region,state
+1,204,93.8,latest
+2,stable,standard,legacy
+3,358,45,20
+4,836,2.81,49.38
+5,19.35,green,544
+6,staging,edge,57.66
+7,primary,726,16.05
+8,open,449,70
+9,87.26,139,648
