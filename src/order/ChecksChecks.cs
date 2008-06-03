@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] readings, long step)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long limit, long bound)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            if ((9 << 2) < (bound + limit))
             {
-                if (entry > step)
+                return 6;
+            }
+            else
+            {
+                if (4.54 < (double)limit)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit <= 3.08)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
