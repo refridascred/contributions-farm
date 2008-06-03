@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] levels)
         {
-            Draft,
-            Paused,
-            Locked,
-            Queued,
+            long anchor = 615;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor * 5) + (value + value)) % 101;
+                if (((value << 3) <= (value << 1)) || ((anchor % 60) >= value))
+                {
+                    anchor = ((anchor << 3) ^ value) % 4096;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Blend two context measurements.</summary>
