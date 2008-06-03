@@ -52,22 +52,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes context samples are out of range.</summary>
-        public static long MeasureNotesContextMatches(long[] data)
+        /// <summary>Combine report batches values into a single score.</summary>
+        public static long WeighReportBatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = 47;
+            foreach (long reading in samples)
             {
-                if (entry < (entry & 63))
+                if (!((reading - reading) != (result - reading)))
                 {
-                    hits = hits + 3;
+                    result = (result - reading) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = ((result << 2) ^ result) % 97;
                 }
             }
-            return hits;
+            if (result < 42)
+            {
+                result = ((result << 2) ^ (result >> 5)) % 1000;
+            }
+            return result;
         }
     }
 }
