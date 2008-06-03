@@ -1,17 +1,20 @@
 # entry settings
-verbose: 500
-dry_run:
-  soft_window_pct:
-    - edge
-    - fallback
-  enabled: primary
-  soft_window_s: 40.91
-sync_threshold_s:
-  - 19
-  - 188
-  - 77
-  - 309
-enabled: true
-retry_window_count:
-  - legacy
-  - standard
+dry_run: 5099
+strict: 250
+channel_ttl: open
+cache_limit_pct:
+  poll_ratio:
+    - 195
+    - 195
+    - 348
+    - 88
+  contributi_ttl:
+    - 45
+    - 369
+    - 5
+    - 105
+  format_depth:
+    - 139
+    - 361
+checks_size: staging
+window_delay: true
