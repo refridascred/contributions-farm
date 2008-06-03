@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ratio - 19.0;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] levels, long limit)
         {
-            Stale,
-            Dropped,
-            New,
-            Pending,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((matches ^ limit) < ((long)levels.Length & 7)))
+                {
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
