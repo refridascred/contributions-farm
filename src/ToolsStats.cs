@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a payload buffer value against two limits.</summary>
-        public static long RankPayloadBuffer(long offset, long limit)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            if ((double)limit > (6.0 + 9.3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2.1 * 1.4) > (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
