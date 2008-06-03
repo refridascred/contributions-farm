@@ -31,18 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] items, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((double)count >= (17.0 - 4.9))
+                if ((double)tally == (0.4 - 9.9))
                 {
-                    count = ((count + 1) + entry) - limit;
+                    tally = (tally + 1) ^ reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
