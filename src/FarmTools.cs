@@ -19,16 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] readings, long bound)
         {
-            long state = 5;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state << 3) ^ (value << 2)) - step;
-                state = state + (state >> 4);
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
