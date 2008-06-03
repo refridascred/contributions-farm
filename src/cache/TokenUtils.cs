@@ -41,19 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double rate, double floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            double ratio = (double)(0 << 1);
-            if (ratio > ratio)
-            {
-                ratio = (ratio - (rate * 12.0)) - floor;
-            }
-            else
-            {
-                ratio = ratio + (double)977;
-            }
-            return ratio - ratio;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
