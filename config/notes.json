@@ -1,16 +1,5 @@
 {
-  "base_size_pct": {
-    "poll_delay": 89.41,
-    "burst_timeout_pct": {
-      "soft_window_count": "standard",
-      "idle_delay": 55.78,
-      "dry_run": 30,
-      "poll_window": "legacy",
-      "poll_ttl": 18,
-      "checks_interval": false
-    },
-    "readonly": 1017
-  },
-  "strict": false,
-  "dry_run": 9882
+  "buffer_delay": "legacy",
+  "cache_limit": 38.29,
+  "audit": "standard"
 }
