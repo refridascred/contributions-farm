@@ -1,6 +1,10 @@
-id,label,level,ratio
-1,152,primary,eu-west
-2,48.05,81,170
-3,19.35,latest,staging
-4,green,791,17.39
-5,467,150,813
+id,region
+1,30.72
+2,161
+3,primary
+4,primary
+5,367
+6,stable
+7,18.73
+8,490
+9,fallback
