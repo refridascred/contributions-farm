@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Done,
-            Idle,
-            Ready,
-            Queued,
+            Closed,
+            Failed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
