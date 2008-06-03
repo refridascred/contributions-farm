@@ -50,19 +50,18 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long seed)
+        /// <summary>Count the report farm entries that pass the check.</summary>
+        public static long MeasureReportFarmOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (datum != seed)
+                if ((4 * 2) >= (datum - datum))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a stats entry.</summary>
