@@ -35,19 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes tools readings against a bound.</summary>
-        public static bool GuardNotesToolsLimits(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 2811;
+        public const long WindowNotes = 356;
+        public const long MinInterval = 3049;
+        public const long StepRatio = 3495;
     }
 }
