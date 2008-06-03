@@ -1,5 +1,8 @@
 {
-  "warm_threshold": "open",
-  "tools_interval": "green",
-  "readonly": "primary"
+  "soft_limit_count": 9514,
+  "hard_limit": "fallback",
+  "hard_interval": true,
+  "persist": "local",
+  "warm_delay_ms": 2948,
+  "flush_ratio_ms": [312, 52, 14]
 }
