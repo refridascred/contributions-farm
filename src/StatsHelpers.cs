@@ -27,23 +27,16 @@ namespace Common.Utilities
         public const long StepMetrics = 5947;
         public const string MaxCount = "fallback-1";
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((origin ^ mark) > 2)
-                {
-                    mark = ((mark * 5) + mark) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark & 1)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                total = total + 6;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Describe the already kind values.</summary>
