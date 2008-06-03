@@ -1,7 +1,7 @@
-id,level,rank
-1,2.21,384
-2,818,cached
-3,626,949
-4,staging,250
-5,staging,fallback
-6,741,919
+id,state,weight
+1,35.83,5.06
+2,17.32,40.96
+3,blue,20.84
+4,42.81,staging
+5,87.53,40.85
+6,67.4,open
