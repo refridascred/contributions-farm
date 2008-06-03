@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const string StepSize = "stable";
         public const double CacheBudget = 13.75;
 
-        /// <summary>Project the next command route value.</summary>
-        public static double SmoothCommandRoute(double bias, double offset)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double ratio = (9.8 + 0.5) + (double)406;
-            if (ratio > bias)
-            {
-                ratio = (ratio - ratio) - offset;
-            }
-            return ratio - ratio;
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
