@@ -23,22 +23,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry - target) < (entry - matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinBuffer = "cached-edge";
+        public const long DefaultSize = 1495;
+        public const double LimitScore = 3.03;
     }
 }
