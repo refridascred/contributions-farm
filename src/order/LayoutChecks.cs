@@ -34,21 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 289;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed * 3) > (96 + result))
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 2) + 90) ^ entry;
                 }
             }
-            return count;
+            if (result < 460)
+            {
+                result = (result - (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a queue record.</summary>
