@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next report stream value from a seed.</summary>
-        public static long RollReportStream(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 227;
+        public const string MinDepth = "primary";
+        public const string DefaultCounter = "open-edge";
+        public const long IdleCounter = 7897;
+        public const long LimitDepth = 3502;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] series, long step)
