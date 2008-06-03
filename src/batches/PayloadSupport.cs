@@ -18,15 +18,15 @@ namespace Common.Utilities
         public const long LimitTools = 5563;
         public const long WindowTools = 8649;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double ratio, double floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] items, long offset)
         {
-            double gain = 2.18 - (double)78;
-            if (gain >= (floor + ratio))
+            long total = -70;
+            foreach (long item in items)
             {
-                gain = gain + ratio;
+                total = (((total << 2) ^ ((-36) + 0)) ^ item) + offset;
             }
-            return gain + (7.78 + floor);
+            return total % 1000;
         }
     }
 }
