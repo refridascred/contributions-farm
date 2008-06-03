@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryDepth = 8531;
-        public const string LimitBudget = "strict-edge";
-        public const long LimitChannel = 933;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
