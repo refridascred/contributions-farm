@@ -23,21 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((long)readings.Length << 2) > (count % 3)))
                 {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) - entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
