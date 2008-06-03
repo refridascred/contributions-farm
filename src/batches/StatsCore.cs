@@ -53,12 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] items)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (item < (20 % 16))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a profile stats reading by value.</summary>
