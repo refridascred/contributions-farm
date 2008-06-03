@@ -20,18 +20,28 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] readings)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long result = 298;
+            foreach (long cell in items)
             {
-                if ((940 & 15) <= (value + value))
+                result = (result ^ 77) % 1000;
+                if (!((result / 4) <= (step % 8)))
                 {
-                    seen = seen + 2;
+                    result = (result + (step - 162)) % 101;
+                }
+                result = (result + (cell - result)) % 97;
+                if ((19.0 - 1.0) <= (double)cell)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > 8)
+            {
+                result = result - (step >> 4);
+            }
+            return result;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
