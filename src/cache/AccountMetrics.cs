@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 4313;
-        public const string IdleSession = "stable";
-        public const double MinSession = 62.02;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long IterateBuffer(long bound)
