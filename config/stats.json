@@ -1,10 +1,5 @@
 {
-  "entry_interval": 56.11,
-  "retry_timeout_s": {
-    "strict": "cached",
-    "record_delay": 500,
-    "base_delay_count": [341, 314, 27]
-  },
-  "route_delay": 9782,
-  "base_window": true
+  "audit": "eu-west",
+  "base_depth_ms": "blue",
+  "soft_size": [194, 408, 478]
 }
