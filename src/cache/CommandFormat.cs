@@ -28,23 +28,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double weight, double floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double ratio = weight;
-            if (ratio >= (15.0 + weight))
-            {
-                ratio = ratio + 8.25;
-            }
-            else
-            {
-                ratio = ratio - (7.6 / 5.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio + floor)) + (double)(long)i;
-            }
-            return ratio + (double)69;
+            Ready,
+            Closed,
+            Queued,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the stats level values.</summary>
