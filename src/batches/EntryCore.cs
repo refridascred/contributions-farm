@@ -47,19 +47,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate context window readings against a bound.</summary>
-        public static bool VerifyContextWindowRange(long[] values, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (item > origin)
+                if ((hits <= reading) || ((hits <= (seed % 16)) && ((7.0 + 9.0) <= (double)reading)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
