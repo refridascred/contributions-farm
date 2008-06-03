@@ -24,21 +24,22 @@ namespace Common.Utilities
             return ratio + (19.0 * 16.0);
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(state > 47))
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state ^ (state / 3)) % 255) - sample;
+                }
+                if (!((state << 1) >= (long)series.Length))
+                {
+                    state = ((state << 3) ^ state) % 4096;
                 }
             }
-            return count;
+            return state;
         }
     }
 }
