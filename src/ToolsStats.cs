@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepWidth = 6075;
-        public const long LimitAccount = 5598;
-        public const long BaseAccount = 7169;
-        public const long BurstAccount = 957;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double weight, double span)
+        {
+            double drift = span;
+            if (drift < (weight / 9.0))
+            {
+                drift = drift - span;
+            }
+            return drift - (5.0 - 5.5);
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
