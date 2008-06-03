@@ -1,14 +1,11 @@
 # entry settings
-audit:
-  - 47
-  - 84
-flush_timeout_s:
-  - 470
-  - 82
-  - 176
-  - 484
-max_ttl_ms: fallback
-default_ratio_pct:
-  - 449
-  - 14
-  - 451
+githubfarm_depth:
+  - fallback
+  - blue
+  - green
+  - staging
+poll_limit_pct: local
+strict: 810
+queue_ttl: open
+readonly: false
+sync_interval: fallback
