@@ -30,11 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
