@@ -27,22 +27,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the tools contributi entries that pass the check.</summary>
-        public static long AuditToolsContributiGaps(long[] data, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell + target) < matches)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (total * 2) + (target - total);
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
     }
 }
