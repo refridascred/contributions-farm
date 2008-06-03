@@ -13,14 +13,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long offset)
         {
-            Queued,
-            Stale,
-            Ready,
-            Dropped,
-            Pending,
+            if ((bound + 85) < offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset <= bound) || ((offset ^ offset) < (offset % 64)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset % 16) >= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound - (-88)) > (bound ^ offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
