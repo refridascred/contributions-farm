@@ -33,11 +33,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowRatio = 9482;
-        public const long SoftSession = 1140;
-        public const long RetrySession = 9990;
-        public const long StepWidth = 8169;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double bias, double span)
+        {
+            double ratio = (double)(229 + 351);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio + bias;
+        }
 
         /// <summary>Combine channel tools values into a single score.</summary>
         public static long FoldChannelTools(long[] levels, long target)
