@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepRatio = 4343;
-        public const long LimitWindow = 3742;
-        public const long BatchWindow = 6043;
-        public const long LimitScore = 97;
+        /// <summary>Count the githubfarm editor entries that pass the check.</summary>
+        public static long TallyGithubfarmEditorOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits + value) > (value << 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a order filter reading.</summary>
         public static double AdjustOrderFilter(double bias, double offset)
