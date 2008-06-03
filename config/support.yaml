@@ -1,10 +1,9 @@
 # support settings
-cache_threshold_pct: false
-idle_timeout_s: 36
-verbose: 89.75
-compress: edge
-batch_capacity_s:
-  - local
-  - stable
-  - primary
-  - cached
+audit: 6352
+flush_interval:
+  buffer_capacity: 4078
+  default_delay_s: cached
+  cache_delay: 46.71
+  default_window_ms: false
+  account_depth: 86.52
+stream_threshold: true
