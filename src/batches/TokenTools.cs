@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "staging-1";
-        public const string BurstCommand = "stable-1";
-        public const long BurstInterval = 5964;
-        public const double RetryFactor = 62.2;
-        public const long HardFactor = 1600;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] data)
+        {
+            long score = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading >= 4) || ((reading + reading) < (score + score))))
+                {
+                    long tally = 42;
+                    score = ((score * 3) + tally) % 101;
+                }
+                if ((reading & 255) <= ((long)data.Length + reading))
+                {
+                    score = (score ^ (0 << 2)) % 97;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long WeighSupport(long[] samples, long target)
