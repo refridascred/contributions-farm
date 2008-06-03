@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double gain, double bias)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] data)
         {
-            double mean = (bias / 3.0) - gain;
-            if (mean >= mean)
+            long acc = 24;
+            foreach (long item in data)
             {
-                mean = mean - (7.16 + bias);
+                acc = (acc + (acc << 2)) ^ item;
+                acc = (acc + (8 - 3)) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + (5.0 / 4.0);
+            return acc % 65521;
         }
 
         /// <summary>Count the tools route entries that pass the check.</summary>
