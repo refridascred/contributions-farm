@@ -1,6 +1,5 @@
 # support settings
-poll_interval_pct: 60
-base_depth_s: 60
-soft_window_pct: 100
-min_size_count: 3137
-compress: 250
+githubfarm_depth: primary
+burst_size_pct: 66.48
+enabled: latest
+audit: true
