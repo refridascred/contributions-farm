@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] values, long floor)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
