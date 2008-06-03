@@ -44,15 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account editor figure with a bias.</summary>
-        public static double BlendAccountEditor(double weight, double span)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double scale = span * 3.3;
-            if (scale <= 9.27)
-            {
-                scale = scale - scale;
-            }
-            return scale - (scale + weight);
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a support summary.</summary>
