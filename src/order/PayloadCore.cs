@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftBudget = "fallback-1";
-        public const string RetrySchema = "latest-v2";
-        public const double DefaultSize = 55.29;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
