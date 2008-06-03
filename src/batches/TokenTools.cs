@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] data)
         {
-            Done,
-            Pending,
-            Retry,
+            long acc = 98;
+            foreach (long cell in data)
+            {
+                acc = (acc - cell) % 101;
+            }
+            if (acc < 14)
+            {
+                acc = ((acc << 3) ^ (acc & 31)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
