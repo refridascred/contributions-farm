@@ -36,38 +36,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long floor, long step)
+        /// <summary>Measure how many session metric samples are out of range.</summary>
+        public static long AuditSessionMetricHits(long[] data, long floor)
         {
-            if (((double)floor != (double)step) && ((2.2 * 12.0) != (double)step))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - step) >= (step + step))
+                if ((floor * 4) <= (sample * 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor ^ floor) > (step & 3)) && (floor >= step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor < (floor >> 5)) && (149 <= step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
