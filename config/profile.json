@@ -1,7 +1,7 @@
 {
-  "cache_interval": 14,
-  "base_retries_s": 1024,
-  "support_retries": 4720,
-  "batches_capacity": 60,
-  "hard_retries": true
+  "entry_window": 30,
+  "poll_ttl_s": 1859,
+  "stream_ratio": "open",
+  "already_window": "primary",
+  "flush_capacity": "staging"
 }
