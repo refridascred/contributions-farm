@@ -32,12 +32,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long step, long floor)
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            if ((step % 100) > (step / 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step / 9) <= (step - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step <= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
