@@ -89,12 +89,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Measure how many stats stream samples are out of range.</summary>
+        public static long CountStatsStreamOutliers(long[] data)
         {
-            Queued,
-            Paused,
-            Locked,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((8 & 255) >= tally)
+                {
+                    tally = (tally + 1) - reading;
+                }
+            }
+            return tally;
         }
     }
 }
