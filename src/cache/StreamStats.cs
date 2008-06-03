@@ -33,12 +33,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] values, long floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] > floor)
+                if (levels[i] >= limit)
                 {
                     return (long)i;
                 }
