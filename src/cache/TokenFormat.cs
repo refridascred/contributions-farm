@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Adjust a entry reading.</summary>
