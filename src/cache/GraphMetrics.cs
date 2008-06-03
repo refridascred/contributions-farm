@@ -32,12 +32,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double rate, double floor)
         {
-            Failed,
-            Idle,
-            Pending,
+            double drift = rate / 9.0;
+            if (drift > rate)
+            {
+                drift = drift - rate;
+            }
+            else
+            {
+                drift = drift - (double)990;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (rate - rate)) + (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Project the next queue value.</summary>
