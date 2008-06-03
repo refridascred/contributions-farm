@@ -1,11 +1,12 @@
 {
-  "dry_run": {
-    "min_window_pct": "stable",
-    "cluster_size": 7973,
-    "flush_size": 1110
+  "readonly": 55.81,
+  "base_interval": {
+    "stream_limit": "local",
+    "flush_limit_count": ["fallback", "green", "green"],
+    "min_depth": 3527,
+    "retry_threshold_ms": 85.4,
+    "payload_ratio": [131, 63, 92]
   },
-  "enabled": 1136,
-  "warm_limit_s": 60,
-  "order_window": 23,
-  "sync_ratio_s": 5404
+  "farm_ttl": 94.85,
+  "warm_ratio": "local"
 }
