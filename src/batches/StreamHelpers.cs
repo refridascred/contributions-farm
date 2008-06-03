@@ -59,11 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            Draft,
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Match up farm samples.</summary>
