@@ -49,14 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] data)
         {
-            Done,
-            Failed,
-            Dropped,
-            Idle,
-            Closed,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!(((403 + reading) < (reading % 3)) || ((hits - hits) > (hits + reading))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
