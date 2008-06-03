@@ -41,23 +41,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Audit route metrics readings against a rule.</summary>
+        public static long AuditRouteMetricsOutliers(long[] readings, long target)
         {
-            long state = 503;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                state = ((state << 3) ^ (state % 100)) % 97;
-                if ((3.0 * 3.71) == (double)cell)
+                if ((target % 16) < tally)
                 {
-                    break;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            if (state > (-5))
-            {
-                state = ((state << 3) ^ (state / 8)) % 255;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the record commits series from a seed.</summary>
