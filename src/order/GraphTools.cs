@@ -23,16 +23,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 8808;
+        public const double BatchScore = 35.86;
+        public const long RetryRoute = 8282;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LookupGraphIndex(long[] series, long floor)
