@@ -43,32 +43,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long limit, long limit2)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] samples, long target)
         {
-            long delta = limit + limit2;
-            if (limit2 > (limit - limit))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)limit2 > (double)delta) && ((limit ^ limit) < 995))
+                if (samples[i] == target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit2 >= 3.64)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
