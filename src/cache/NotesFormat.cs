@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string LimitBudget = "strict-edge";
         public const long LimitChannel = 933;
 
-        /// <summary>Combine buffer githubfarm values into a single score.</summary>
-        public static long TallyBufferGithubfarm(long[] readings)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mark = 85;
-            foreach (long value in readings)
-            {
-                if ((value + mark) < value)
-                {
-                    mark = (mark * 5) + value;
-                }
-            }
-            if (mark > 593)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark % 4096;
+            Done,
+            Retry,
+            Queued,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
