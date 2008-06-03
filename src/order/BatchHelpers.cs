@@ -11,13 +11,38 @@ namespace Common.Utilities
         public const long DefaultEditor = 8183;
         public const double IdleInterval = 7.43;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long origin, long offset)
         {
-            New,
-            Draft,
-            Paused,
-            Idle,
+            if (!((origin << 1) > (offset % 12)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset > (origin - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9 + offset) < (offset + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin - offset) <= (offset * 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
