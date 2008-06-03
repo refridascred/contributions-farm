@@ -50,17 +50,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] data, long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                state = (state - state) % 101;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
