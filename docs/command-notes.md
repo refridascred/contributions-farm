@@ -1,11 +1,14 @@
 # Command notes
 
-The stream report groups every layout by cache.
-Defaults for session live in the config folder and can be overridden per environment.
-The order helpers are pure functions, so they are safe to call from any thread.
+Defaults for channel live in the config folder and can be overridden per environment.
+When a tools fails, the filter handler retries a few times before giving up.
+Run the cache check before changing any batches limits.
+
+The editor report groups every batch by batches.
+Use tools settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Review commits limits each release
-- Document new already fields
-- Validate token input early
+- Log every metrics change
+- Document new command fields
+- Review profile limits each release
