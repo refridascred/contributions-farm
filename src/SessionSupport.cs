@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "primary-1";
-        public const long CacheBudget = 2103;
-        public const long IdleContributi = 7566;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum + matches) >= (matches % 12)) || (datum >= 8))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] values, long floor)
