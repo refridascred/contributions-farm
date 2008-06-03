@@ -44,15 +44,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] readings)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((double)(long)readings.Length > (double)38)
+                {
+                    hits = (hits + 1) + sample;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Validate channel farm readings against a bound.</summary>
