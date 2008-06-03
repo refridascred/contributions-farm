@@ -1,5 +1,6 @@
 {
-  "persist": 1024,
-  "min_threshold_s": 3044,
-  "poll_interval_ms": "blue"
+  "base_interval_pct": "primary",
+  "audit": [410, 446, 333],
+  "poll_size_s": true,
+  "schema_ttl": 81.94
 }
