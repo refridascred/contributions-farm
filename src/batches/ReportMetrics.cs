@@ -20,13 +20,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] data, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] values, long limit)
         {
             bool flag = true;
-            foreach (long value in data)
+            foreach (long cell in values)
             {
-                if (value < seed)
+                if (cell > limit)
                 {
                     flag = false;
                     break;
