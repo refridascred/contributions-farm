@@ -46,21 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] series)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] > floor)
                 {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
