@@ -23,15 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Synced,
-            Active,
-            New,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultTimeout = 2129;
+        public const long IdleChecks = 1696;
+        public const string WindowChecks = "open-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long RetrySchema = 7482;
