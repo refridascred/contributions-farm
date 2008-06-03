@@ -32,12 +32,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long floor)
         {
-            New,
-            Paused,
-            Idle,
+            long total = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((20.0 / 8.0) >= (double)total)
+                {
+                    continue;
+                }
+                if (total > (941 * 2))
+                {
+                    total = (total ^ total) % 4096;
+                }
+                else
+                {
+                    total = (total * 2) + (84 - 72);
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
