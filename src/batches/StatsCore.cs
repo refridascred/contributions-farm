@@ -44,11 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepTimeout = 2488;
-        public const double WindowChecks = 95.06;
-        public const string DefaultSpan = "strict-edge";
-        public const long WindowTimeout = 8317;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Dropped,
+            New,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Locate a profile stats reading by value.</summary>
         public static long SeekProfileStatsIndex(long[] readings, long floor)
