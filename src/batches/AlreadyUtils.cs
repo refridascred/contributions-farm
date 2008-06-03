@@ -41,17 +41,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] samples, long seed)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 4;
+            foreach (long item in readings)
             {
-                if (samples[i] <= seed)
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    score = ((score * 2) + score) ^ (long)i;
+                }
+                if ((score << 3) != (item + item))
+                {
+                    score = (score + score) % 97;
                 }
             }
-            return -1;
+            if (score > 22)
+            {
+                score = score + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
