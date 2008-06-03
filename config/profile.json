@@ -1,5 +1,5 @@
 {
-  "dry_run": "stable",
-  "min_threshold_s": 500,
-  "idle_limit_ms": "legacy"
+  "warm_threshold": "open",
+  "tools_interval": "green",
+  "readonly": "primary"
 }
