@@ -97,10 +97,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowSpan = 776;
-        public const long MinStream = 9205;
-        public const long LimitStream = 9298;
-        public const string RetryRatio = "standard-1";
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long bound, long bound2)
+        {
+            long step = bound ^ bound2;
+            if ((double)bound2 != (10.0 - 8.54))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step ^ step) <= (step ^ 0)) && ((bound * 5) == (bound ^ step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound >= (bound << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
