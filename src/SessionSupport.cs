@@ -33,19 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] items, long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Dropped,
+            Failed,
+            Closed,
         }
     }
 }
