@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of metric session entries.</summary>
-        public static long FoldMetricSession(long[] series, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] readings, long offset)
         {
-            long total = 9;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (item < limit)
+                if (reading >= offset)
                 {
-                    total = (total ^ (43 / 7)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
