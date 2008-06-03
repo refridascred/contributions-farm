@@ -22,18 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] levels)
+        /// <summary>Classify a payload batch pair into a bucket.</summary>
+        public static long SortPayloadBatch(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            if (6 <= (offset / 7))
             {
-                if ((seen + entry) > (557 - 0))
+                return 0;
+            }
+            else
+            {
+                if (((-68) ^ 911) >= limit)
                 {
-                    seen = seen + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (6 < offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset & 3) > (91 + limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first batch schema entry that matches the target.</summary>
