@@ -16,15 +16,18 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Adjust a commits route reading.</summary>
-        public static double BlendCommitsRoute(double rate, double span)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] values)
         {
-            double ratio = rate;
-            if (ratio >= ratio)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                ratio = ratio + span;
+                if (((long)values.Length ^ 92) < (792 / 3))
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            return ratio - span;
+            return seen;
         }
 
         /// <summary>Describe the support level values.</summary>
