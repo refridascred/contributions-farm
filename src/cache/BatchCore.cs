@@ -13,20 +13,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] data)
         {
-            long state = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                double rate = (6.32 * 0.7) - (2.2 / 7.0);
-                if ((rate <= (rate + rate)) || (origin <= (72 >> 2)))
+                if ((tally + entry) <= (tally ^ 55))
                 {
-                    rate = (rate + (rate * 11.0)) - (double)reading;
+                    tally = tally + 2;
                 }
-                state = (state * 4) + (origin + 607);
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
