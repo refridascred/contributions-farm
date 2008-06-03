@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first account metric entry that matches the target.</summary>
-        public static long LookupAccountMetricIndex(long[] levels, long step)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the account phase values.</summary>
