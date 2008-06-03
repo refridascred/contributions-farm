@@ -35,13 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double bias)
         {
-            Paused,
-            Active,
-            Done,
-            Failed,
+            double weight = (double)((-479) + 851);
+            if (weight > weight)
+            {
+                weight = weight + (weight - weight);
+            }
+            else
+            {
+                weight = weight - (weight - scale);
+            }
+            return weight - (scale + bias);
         }
     }
 }
