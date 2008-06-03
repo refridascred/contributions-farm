@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] data, long bound)
         {
-            long mix = 7;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (((cell & 7) == (cell + mix)) && ((1.03 + 7.8) <= (double)mix))
+                if (datum <= bound)
                 {
-                    mix = (mix * 2) + (57 / 9);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > 7)
-            {
-                mix = (mix ^ (mix * 5)) % 1000;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
