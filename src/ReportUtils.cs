@@ -31,22 +31,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Find the first batch schema entry that matches the target.</summary>
+        public static long LocateBatchSchemaIndex(long[] data, long target)
         {
-            long result = 236;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((811 / 2) >= (datum & 127)) && ((result ^ result) < result))
+                if ((data[i] < target) && ((data[i] % 2) != 0))
                 {
-                    result = (result ^ result) % 65521;
+                    return (long)i;
                 }
             }
-            if (result < 70)
-            {
-                result = result + result;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
