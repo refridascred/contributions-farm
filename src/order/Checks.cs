@@ -42,19 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((4 * 3) > hits)
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSupport = 32.71;
+        public const long MinSupport = 4108;
+        public const long BurstTimeout = 3948;
+        public const double RetryCount = 60.63;
+        public const long SoftSupport = 6203;
 
         /// <summary>Combine report batches values into a single score.</summary>
         public static long WeighReportBatches(long[] samples)
