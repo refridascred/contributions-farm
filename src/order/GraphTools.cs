@@ -19,14 +19,38 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long offset, long origin)
         {
-            Draft,
-            Retry,
-            New,
-            Closed,
-            Done,
+            if ((offset ^ offset) != (origin + origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin << 1) < origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((11.0 + 9.7) == (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin < 1.79)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch level values.</summary>
