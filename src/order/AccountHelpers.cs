@@ -47,13 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] items, long bound)
         {
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next session value.</summary>
