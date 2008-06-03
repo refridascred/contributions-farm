@@ -20,24 +20,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Grade a farm cache value against two limits.</summary>
-        public static long ClassifyFarmCache(long offset, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] data, long offset)
         {
-            if (((double)step > (double)offset) || ((step >> 3) >= (offset >> 5)))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(step < (offset + step)))
+                if ((seen / 4) <= ((long)data.Length >> 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    seen = ((seen + 2) - datum) - offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the counter mode values.</summary>
