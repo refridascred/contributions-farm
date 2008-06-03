@@ -13,16 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next checks support value from a seed.</summary>
-        public static long SeriesChecksSupport(long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] series, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                mix = ((mix * 2) + (mix & 7)) % 65521;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((8 * 3) <= value)
+                {
+                    tally = (tally + 3) - limit;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
