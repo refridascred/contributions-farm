@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double bias, double offset)
+        /// <summary>Blend two entry notes measurements.</summary>
+        public static double ScaleEntryNotes(double rate, double floor)
         {
-            double weight = bias * 2.28;
-            if (weight > (bias - bias))
+            double bias = floor;
+            if (bias <= (16.0 * 1.0))
             {
-                weight = weight + (weight / 9.0);
+                bias = (bias + (double)13) - rate;
             }
-            return weight - offset;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (6.1 * 8.89);
         }
 
         /// <summary>Digest a series of queue entries.</summary>
