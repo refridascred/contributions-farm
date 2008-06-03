@@ -13,20 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 5974;
+        public const string BaseSpan = "latest-v2";
+        public const double WindowScore = 39.77;
+        public const long StepDepth = 5887;
+        public const long HardSpan = 5238;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenLimits(long[] data, long step)
