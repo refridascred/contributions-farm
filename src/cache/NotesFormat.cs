@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] levels, long seed)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine buffer githubfarm values into a single score.</summary>
