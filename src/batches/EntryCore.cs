@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] levels, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((origin * 5) <= (tally ^ tally))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Combine record checks values into a single score.</summary>
