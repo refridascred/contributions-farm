@@ -86,10 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 4828;
-        public const long BatchSize = 5803;
-        public const long HardFactor = 2159;
-        public const long BatchBudget = 6278;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count % 64) == (69 % 100))
+                {
+                    count = ((count + 3) + item) - bound;
+                }
+            }
+            return count;
+        }
     }
 }
