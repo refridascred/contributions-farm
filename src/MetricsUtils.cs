@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const double MinMetrics = 0.83;
         public const string BurstCount = "stable-edge";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] levels)
+        /// <summary>Count the tools route entries that pass the check.</summary>
+        public static long TallyToolsRouteHits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((sample + hits) <= 1)
+                if ((seen & 255) > (seen % 3))
                 {
-                    hits = hits + 3;
+                    seen = ((seen + 3) ^ sample) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
