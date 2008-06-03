@@ -14,19 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate channel support samples.</summary>
-        public static long FoldChannelSupport(long[] levels, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] series, long target)
         {
-            long result = 571;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                result = ((result << 3) ^ (result * 4)) % 101;
-                if (!((2.5 * 17.0) <= (double)reading))
+                if (sample > target)
                 {
-                    result = ((result * 3) + (bound + reading)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a format snapshot.</summary>
