@@ -77,15 +77,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double gain, double offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            double drift = (double)(911 ^ 6);
-            if (drift < (double)566)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + (double)45) + gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + (drift + offset);
+            return seen;
         }
 
         /// <summary>Hold a profile options.</summary>
