@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            Synced,
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the farm status values.</summary>
