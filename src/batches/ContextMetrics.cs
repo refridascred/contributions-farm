@@ -92,18 +92,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (((count % 97) <= reading) || ((reading % 97) <= (limit - limit)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSpan = 52.13;
+        public const long BatchFactor = 5272;
+        public const string BatchSchema = "standard";
+        public const long CacheSize = 7305;
+        public const long BurstCount = 9493;
     }
 }
