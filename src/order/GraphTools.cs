@@ -54,12 +54,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
