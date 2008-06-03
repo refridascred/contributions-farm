@@ -1,11 +1,4 @@
 # entry settings
-githubfarm_depth:
-  - fallback
-  - blue
-  - green
-  - staging
-poll_limit_pct: local
-strict: 810
-queue_ttl: open
-readonly: false
-sync_interval: fallback
+warm_limit_ms: 100
+payload_size: primary
+audit: fallback
