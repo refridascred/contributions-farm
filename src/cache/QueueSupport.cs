@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values)
         {
-            Done,
-            Dropped,
-            Draft,
+            long carry = 1;
+            foreach (long cell in values)
+            {
+                carry = ((carry ^ ((long)values.Length << 2)) % 65521) + cell;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count the payload githubfarm entries that pass the check.</summary>
