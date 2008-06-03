@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] samples, long bound)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == seed)
+                if (samples[i] == bound)
                 {
                     return (long)i;
                 }
