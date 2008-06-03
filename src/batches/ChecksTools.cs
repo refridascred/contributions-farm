@@ -23,32 +23,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long limit, long limit2)
+        /// <summary>Blend two already counter measurements.</summary>
+        public static double ProjectAlreadyCounter(double bias, double span)
         {
-            long edge = limit ^ limit2;
-            if (edge <= (176 & 127))
+            double bias2 = (double)4 * 17.0;
+            if (bias2 >= (double)25)
             {
-                return 3;
+                bias2 = (bias2 - (3.7 * 3.5)) - span;
             }
             else
             {
-                if ((edge < (limit2 ^ 0)) && (limit < 280))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)edge != (12.0 * 0.4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                bias2 = bias2 - bias;
             }
+            return bias2 + bias;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
