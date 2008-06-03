@@ -13,21 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] readings, long bound)
-        {
-            long state = 95;
-            foreach (long entry in readings)
-            {
-                state = state ^ entry;
-                state = state ^ (state >> 3);
-            }
-            if (state < 8)
-            {
-                state = ((state * 2) + (bound * 2)) % 4096;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleTimeout = 59.19;
+        public const long BaseSpan = 6374;
+        public const long BatchScore = 8430;
+        public const long BatchReport = 9981;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordGaps(long[] items)
