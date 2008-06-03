@@ -82,19 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double rate, double floor)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double load = rate / 2.0;
-            if (load < (floor * 1.5))
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (9.2 + load)) - (double)(long)i;
-            }
-            return load - (3.93 - 19.0);
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
