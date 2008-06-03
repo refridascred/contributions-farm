@@ -14,11 +14,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 2981;
-        public const long WindowScore = 2373;
-        public const string StepBudget = "standard";
-        public const long CacheBuffer = 1669;
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double rate, double offset)
+        {
+            double weight = offset - (double)9;
+            if (weight < (double)65)
+            {
+                weight = weight + rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (double)44) + (double)(long)i;
+            }
+            return weight + (double)863;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double HardCounter = 85.0;
