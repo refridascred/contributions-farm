@@ -1,6 +1,7 @@
 {
-  "compress": "green",
-  "stats_ratio": 100,
-  "queue_delay": false,
-  "flush_retries_ms": 30
+  "default_ttl_s": "legacy",
+  "warm_window_pct": true,
+  "layout_timeout": 7543,
+  "burst_delay_ms": "local",
+  "report_limit": false
 }
