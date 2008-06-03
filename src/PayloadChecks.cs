@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFactor = 9.65;
-        public const string CacheLevel = "cached-edge";
-        public const long CacheFormat = 8549;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Active,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
