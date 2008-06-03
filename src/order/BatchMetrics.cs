@@ -21,18 +21,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] series, long limit)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen - seen) >= limit)
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of record notes entries.</summary>
