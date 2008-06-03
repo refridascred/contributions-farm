@@ -1,6 +1,5 @@
 {
-  "default_ttl_count": "standard",
-  "poll_retries": ["green", "blue", "staging", "legacy"],
-  "poll_window_count": "strict",
-  "warm_limit": 31.12
+  "min_capacity_pct": 64,
+  "cache_ratio": 6576,
+  "burst_depth_ms": 84.56
 }
