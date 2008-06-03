@@ -20,16 +20,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next format profile value from a seed.</summary>
-        public static long DeriveFormatProfile(long seed)
+        /// <summary>Combine record checks values into a single score.</summary>
+        public static long FoldRecordChecks(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            long mix = 166;
+            foreach (long entry in samples)
             {
-                mark = mark + (seed * 4);
-                mark = ((mark * 4) + (long)i) % 4093;
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = (((mix << 3) ^ ((long)i & 15)) % 101) ^ entry;
+                    mix = ((mix * 4) + ((long)i - mix)) % 4096;
+                }
+                mix = ((mix << 2) ^ (mix / 4)) % 255;
+                if (402 >= (mix - (-99)))
+                {
+                    mix = ((mix * 5) + (mix % 8)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (mix % 97)) % 65521;
+                }
             }
-            return mark;
+            return mix % 65521;
         }
 
         /// <summary>Hold a batch info.</summary>
