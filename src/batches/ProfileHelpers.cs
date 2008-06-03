@@ -43,22 +43,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] items)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell % 12) >= 28)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Draft,
+            Idle,
+            Queued,
+            New,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
