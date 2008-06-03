@@ -92,19 +92,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel farm readings against a bound.</summary>
-        public static bool ValidateChannelFarmLimits(long[] series, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (item != bound)
+                if (((count % 97) <= reading) || ((reading % 97) <= (limit - limit)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
