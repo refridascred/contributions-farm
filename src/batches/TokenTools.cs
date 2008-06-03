@@ -33,11 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstWidth = 7861;
-        public const string CacheCount = "strict-v2";
-        public const long WindowLevel = 3285;
-        public const long BaseCache = 8186;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
