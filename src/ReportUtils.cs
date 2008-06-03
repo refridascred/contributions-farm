@@ -14,22 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long mark = 7;
-            foreach (long value in levels)
-            {
-                if (((2.03 - 9.58) >= (double)value) || ((mark & 7) >= (value - value)))
-                {
-                    mark = ((mark * 5) + value) % 97;
-                }
-            }
-            if (mark < 646)
-            {
-                mark = (mark ^ (mark / 6)) % 101;
-            }
-            return mark;
+            Done,
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a already header.</summary>
