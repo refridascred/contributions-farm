@@ -58,9 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 44.35;
-        public const long MaxAccount = 9560;
-        public const double SoftAccount = 47.89;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Idle,
+            Stale,
+            Closed,
+            Active,
+        }
     }
 }
