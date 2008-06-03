@@ -34,16 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] items)
         {
-            long mix = -8;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                mix = ((mix << 3) ^ (315 + mix)) % 1000;
-                mix = (mix - (entry + entry)) % 1000;
+                if ((double)seen <= (4.42 + 0.3))
+                {
+                    seen = (seen + 1) + cell;
+                }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Match up session samples.</summary>
