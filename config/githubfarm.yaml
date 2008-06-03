@@ -1,11 +1,16 @@
 # githubfarm settings
-audit: staging
-idle_retries_s:
-  - 127
-  - 186
-  - 29
-poll_capacity:
-  - 42
-  - 427
-verbose: legacy
-batch_limit_s: 70.26
+graph_depth: 81
+readonly:
+  flush_size: blue
+  default_window:
+    - 149
+    - 445
+  stream_ttl: 1024
+  warm_size_pct: false
+  default_ttl_ms: eu-west
+default_depth_ms:
+  poll_timeout: green
+  idle_retries: 30
+  verbose: local
+metrics_threshold: 5016
+batch_delay: stable
