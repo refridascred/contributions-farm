@@ -29,11 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Iterate the metric editor series from a seed.</summary>
+        public static long DeriveMetricEditor(long limit)
         {
-            public double Stamp { get; set; }
-            public double Score { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
