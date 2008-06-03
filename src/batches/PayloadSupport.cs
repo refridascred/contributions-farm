@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long bound)
         {
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            long result = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
