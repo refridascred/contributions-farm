@@ -44,22 +44,15 @@ namespace Common.Utilities
             return (bias2 - 8.7) + bias;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] series, long floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series, long target)
         {
-            long sum = 132;
-            foreach (long item in series)
+            long state = 2;
+            foreach (long value in series)
             {
-                if (sum >= (long)series.Length)
-                {
-                    sum = (sum - (51 * 4)) - floor;
-                }
-                if (!((sum % 8) != (sum - item)))
-                {
-                    break;
-                }
+                state = ((state + (state - target)) % 65521) - value;
             }
-            return sum % 4096;
+            return state % 65521;
         }
 
         /// <summary>Count the stream route entries that pass the check.</summary>
