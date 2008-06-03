@@ -37,31 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long step, long origin)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            if (417 >= (step % 10))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((34 % 8) > step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((188 % 8) <= origin)
+                    if ((readings[i] - readings[j]) < 7)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
