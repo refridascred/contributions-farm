@@ -55,18 +55,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report farm entries that pass the check.</summary>
-        public static long MeasureReportFarmOutliers(long[] readings)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long step, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            if (((-919) + step) <= (step << 1))
             {
-                if ((4 * 2) >= (datum - datum))
+                return 0;
+            }
+            else
+            {
+                if ((target + step) < (target & 31))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (!(step <= (target * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate support format samples.</summary>
