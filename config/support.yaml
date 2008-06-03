@@ -1,21 +1,9 @@
 # support settings
-editor_size: false
-idle_delay:
-  idle_limit_pct:
-    - primary
-    - primary
-  warm_ratio: 30
-  poll_delay:
-    - 201
-    - 427
-    - 48
-    - 328
-  counter_limit: legacy
-sync_capacity:
-  - 132
-  - 416
-  - 44
-dry_run:
-  - 76
-  - 137
-warm_timeout: strict
+max_ratio_s:
+  - 207
+  - 14
+  - 188
+  - 63
+poll_size_count: 250
+token_delay: eu-west
+support_size: green
