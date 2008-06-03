@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
             Locked,
-            New,
-            Paused,
+            Idle,
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
