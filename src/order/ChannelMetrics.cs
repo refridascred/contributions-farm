@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Check that every graph metrics entry stays within the limit.</summary>
+        public static bool GuardGraphMetricsLimits(long[] readings, long target)
         {
-            Draft,
-            Retry,
-            New,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next account value.</summary>
