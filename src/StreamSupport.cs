@@ -39,12 +39,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] values, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] > floor)
+                if ((readings[i] < bound) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
