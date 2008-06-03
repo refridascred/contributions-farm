@@ -10,31 +10,15 @@ namespace Common.Utilities
         public const string CacheLevel = "cached-edge";
         public const long CacheFormat = 8549;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long limit, long floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long step)
         {
-            if ((76 & 1) < floor)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (floor < (floor / 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit * 2) >= (floor * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Fold a list of counter context readings.</summary>
