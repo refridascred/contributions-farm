@@ -38,17 +38,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long bound)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                score = score ^ offset;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
