@@ -1,5 +1,7 @@
 {
-  "graph_ttl": 100,
-  "hard_interval_ms": "latest",
-  "base_interval_count": "staging"
+  "burst_window": [244, 239, 36, 151],
+  "batch_delay_count": ["staging", "cached", "strict", "open"],
+  "poll_ttl_s": 8924,
+  "enabled": "green",
+  "burst_limit": "stable"
 }
