@@ -41,18 +41,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit route metrics readings against a rule.</summary>
-        public static long AuditRouteMetricsOutliers(long[] readings, long target)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((target % 16) < tally)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Iterate the record commits series from a seed.</summary>
