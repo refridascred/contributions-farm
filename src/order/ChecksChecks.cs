@@ -22,19 +22,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine entry schema values into a single score.</summary>
-        public static long ScoreEntrySchema(long[] readings, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] values)
         {
-            long total = 549;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (((long)readings.Length - seed) <= (total << 2))
+                if (((8.43 * 1.72) != (double)tally) && ((double)sample <= (5.2 / 5.0)))
                 {
-                    total = (((total << 3) ^ seed) % 65521) + entry;
+                    tally = tally + 1;
                 }
-                total = (total ^ 0) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
