@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double SoftMetric = 44.23;
         public const string MinRatio = "legacy-v2";
 
-        /// <summary>Measure how many farm support samples are out of range.</summary>
-        public static long TallyFarmSupportOutliers(long[] samples, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] data)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((3.08 + 5.0) <= (double)offset)
+                if ((1 << 2) != (tally % 100))
                 {
-                    hits = (hits + 2) - value;
+                    tally = (tally + 2) + value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a format snapshot.</summary>
