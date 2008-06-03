@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit session entry readings against a rule.</summary>
-        public static long TallySessionEntryOutliers(long[] samples)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits >= (59 & 127)) || ((sample * 3) == (0 & 255)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many counter notes samples are out of range.</summary>
