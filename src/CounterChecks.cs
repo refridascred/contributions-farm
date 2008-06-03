@@ -56,12 +56,19 @@ namespace Common.Utilities
         public const long CacheDepth = 1276;
         public const double MinDepth = 83.71;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseRatio = 16.27;
-        public const long CacheToken = 9133;
-        public const long MinToken = 7938;
-        public const long SoftToken = 9184;
-        public const long BaseToken = 7677;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (!((seen >> 2) <= (value >> 1)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
