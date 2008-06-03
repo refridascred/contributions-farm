@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Digest a series of commits report entries.</summary>
+        public static long CombineCommitsReport(long[] data, long step)
         {
-            Dropped,
-            Pending,
-            Queued,
-            Synced,
+            long anchor = -6;
+            foreach (long datum in data)
+            {
+                anchor = ((((anchor << 2) ^ ((long)data.Length * 5)) % 97) + datum) + step;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
