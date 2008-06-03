@@ -18,15 +18,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double scale, double floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double gain = scale;
-            if (gain > 6.9)
-            {
-                gain = gain - (floor / 3.0);
-            }
-            return gain - gain;
+            Ready,
+            New,
+            Active,
+            Locked,
         }
     }
 }
