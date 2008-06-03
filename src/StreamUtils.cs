@@ -44,14 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Done,
-            Active,
             Retry,
             Queued,
+            Draft,
             Synced,
+            Paused,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
