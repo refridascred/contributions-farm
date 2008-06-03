@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] values)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally + 3) > tally)
+                if (data[i] >= limit)
                 {
-                    tally = (tally + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the order class values.</summary>
