@@ -62,17 +62,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] samples, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -942;
+            foreach (long reading in items)
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                if (((result / 5) >= (reading % 2)) || (0 <= result))
                 {
-                    return (long)i;
+                    result = (result - reading) % 101;
                 }
             }
-            return -1;
+            if (result < 62)
+            {
+                result = ((result * 2) + (limit - limit)) % 101;
+            }
+            return result;
         }
     }
 }
