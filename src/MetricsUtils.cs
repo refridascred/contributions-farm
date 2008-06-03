@@ -37,26 +37,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm editor samples.</summary>
-        public static long FoldGithubfarmEditor(long[] samples, long origin)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long state = -1;
-            foreach (long cell in samples)
-            {
-                if (cell < (origin & 63))
-                {
-                    state = (state + state) % 101;
-                }
-                else
-                {
-                    state = state + (origin >> 5);
-                }
-            }
-            if (state > 318)
-            {
-                state = (state * 3) + ((long)samples.Length * 2);
-            }
-            return state;
+            public double Size { get; set; }
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of order entries.</summary>
