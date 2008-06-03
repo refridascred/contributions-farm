@@ -34,19 +34,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every cluster cache entry stays within the limit.</summary>
-        public static bool GuardClusterCacheRange(long[] items, long origin)
+        /// <summary>Combine checks metrics values into a single score.</summary>
+        public static long CombineChecksMetrics(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long carry = 2;
+            foreach (long entry in levels)
             {
-                if (item <= origin)
+                if (((1.73 - 4.8) > (double)(long)levels.Length) && ((double)entry < (1.56 + 0.83)))
                 {
-                    flag = false;
-                    break;
+                    carry = (carry - (step - step)) % 97;
                 }
+                carry = (carry - carry) % 4096;
             }
-            return flag;
+            return carry;
         }
     }
 }
