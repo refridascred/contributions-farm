@@ -36,12 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Paused,
-            Closed,
-            Ready,
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count farm editor pairs that satisfy a relation.</summary>
