@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            Draft,
+            Synced,
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Check that every graph metrics entry stays within the limit.</summary>
