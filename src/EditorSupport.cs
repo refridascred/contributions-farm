@@ -27,31 +27,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank notes layout input into a small class.</summary>
-        public static long BucketNotesLayout(long offset, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            if (floor < 8)
+            long mark = 92;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((81 * 5) <= (offset * 4))
+                if (mark < (1 - mark))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((10.0 * 14.0) > (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = (mark * 2) + (item + item);
                 }
             }
+            if (mark < 82)
+            {
+                mark = (mark - (7 + mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
