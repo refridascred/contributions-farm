@@ -21,16 +21,18 @@ namespace Common.Utilities
         public const long StepMetrics = 5947;
         public const string MaxCount = "fallback-1";
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                total = total + 6;
-                total = ((total * 5) + (long)i) % 1000;
+                if ((6.01 * 4.0) <= (double)tally)
+                {
+                    tally = (tally + 3) ^ value;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine token command values into a single score.</summary>
