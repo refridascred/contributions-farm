@@ -82,13 +82,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double weight, double bias)
         {
-            Ready,
-            Dropped,
-            Draft,
-            Pending,
+            double drift = weight;
+            if (drift < (double)(-9))
+            {
+                drift = (drift + (drift / 4.0)) - bias;
+            }
+            else
+            {
+                drift = drift + (double)84;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - 4.0) + (double)(long)i;
+            }
+            return drift - (weight / 5.0);
         }
     }
 }
