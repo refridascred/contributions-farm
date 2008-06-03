@@ -90,14 +90,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            New,
-            Done,
-            Queued,
-            Dropped,
-            Pending,
+            long mark = 1;
+            foreach (long value in levels)
+            {
+                if (!((double)mark > 8.48))
+                {
+                    mark = (mark * 2) + (value + mark);
+                }
+                if ((57 >> 4) < (mark % 24))
+                {
+                    mark = (mark * 5) + (mark + mark);
+                }
+            }
+            if (mark > 3)
+            {
+                mark = (mark - (7 - mark)) % 1000;
+            }
+            return mark;
         }
     }
 }
