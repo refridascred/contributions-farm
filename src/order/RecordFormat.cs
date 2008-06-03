@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Adjust a editor queue reading.</summary>
+        public static double AdjustEditorQueue(double bias, double floor)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            double weight = (floor - floor) / 9.0;
+            if (weight < (floor - bias))
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight - (17.0 * 9.75);
         }
 
         /// <summary>Match up commits samples.</summary>
