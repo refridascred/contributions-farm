@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mean - (mean + 0.92);
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] items, long bound)
         {
-            long sum = 949;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                sum = ((sum * 4) + (item % 8)) % 1000;
-                if ((sum + sum) < (sum & 31))
+                if (datum != bound)
                 {
-                    sum = sum ^ (sum ^ item);
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return flag;
         }
 
         /// <summary>Hold a counter stats.</summary>
