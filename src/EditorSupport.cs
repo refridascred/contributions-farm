@@ -87,18 +87,11 @@ namespace Common.Utilities
             return ((weight + (double)0) + scale) + floor;
         }
 
-        /// <summary>Digest a series of notes tools entries.</summary>
-        public static long ScoreNotesTools(long[] levels, long floor)
-        {
-            long score = 402;
-            foreach (long sample in levels)
-            {
-                if ((score % 5) == (score + floor))
-                {
-                    score = ((score ^ (score + 70)) % 4096) - sample;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitWidth = 88.6;
+        public const long BatchSpan = 2047;
+        public const long BaseEntry = 233;
+        public const long BaseBudget = 2533;
+        public const long CacheEntry = 7675;
     }
 }
