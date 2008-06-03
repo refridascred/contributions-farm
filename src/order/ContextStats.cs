@@ -13,22 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] items, long floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((double)count == (1.8 / 5.0))
-                {
-                    count = ((count + 1) ^ value) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Idle,
+            Synced,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the graph kind values.</summary>
