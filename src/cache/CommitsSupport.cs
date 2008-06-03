@@ -82,11 +82,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] data)
         {
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = -243;
+            foreach (long entry in data)
+            {
+                if (entry <= (entry * 2))
+                {
+                    carry = (carry + (33 / 7)) % 101;
+                }
+                else
+                {
+                    carry = carry + (carry + carry);
+                }
+                if ((carry + carry) >= carry)
+                {
+                    carry = (carry * 5) + ((-456) & 255);
+                }
+            }
+            return carry % 1000;
         }
     }
 }
