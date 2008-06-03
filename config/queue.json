@@ -1,8 +1,15 @@
 {
-  "report_threshold": ["standard", "cached", "edge", "cached"],
-  "strict": false,
-  "idle_size_ms": false,
-  "idle_capacity": 44,
-  "retry_capacity_s": 67.68,
-  "cache_size": "staging"
+  "max_threshold_count": "cached",
+  "burst_ratio": 30,
+  "default_interval": [491, 418, 454],
+  "sync_ratio": "strict",
+  "record_ratio": "strict",
+  "idle_depth_count": {
+    "idle_size_count": "open",
+    "batches_delay": "fallback",
+    "hard_limit_count": 11.63,
+    "min_delay": true,
+    "stats_depth": 1781,
+    "readonly": 250
+  }
 }
