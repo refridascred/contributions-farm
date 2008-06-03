@@ -66,18 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] values, long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (((item << 1) <= (step % 16)) && ((step - matches) <= (matches - item)))
-                {
-                    matches = matches + 1;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
