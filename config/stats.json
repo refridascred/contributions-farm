@@ -1,5 +1,10 @@
 {
-  "max_interval_ms": 92.95,
-  "burst_capacity": "standard",
-  "base_ratio": "staging"
+  "support_timeout": false,
+  "strict": [456, 407, 487, 446],
+  "burst_interval_pct": {
+    "flush_interval_count": "latest",
+    "flush_depth_count": ["standard", "green", "green"],
+    "sync_retries_ms": 38
+  },
+  "base_retries_s": [171, 114, 438, 57]
 }
