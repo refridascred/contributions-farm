@@ -28,15 +28,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Stale,
-            Queued,
-            Draft,
-            Done,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "legacy";
+        public const double SoftDepth = 64.89;
+        public const long CacheRatio = 2989;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LocateQueueIndex(long[] levels, long offset)
