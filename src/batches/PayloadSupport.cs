@@ -32,18 +32,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] values, long limit)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((757 * 4) >= cell)
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
                 {
-                    seen = (seen + 2) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
