@@ -45,11 +45,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = 223;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor << 3) ^ value) % 101;
+                anchor = ((anchor * 3) + (anchor + value)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
