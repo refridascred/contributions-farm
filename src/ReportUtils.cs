@@ -14,13 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double scale, double offset)
         {
-            Done,
-            Locked,
-            Queued,
-            Synced,
+            double rate = offset;
+            return (rate - (rate + offset)) + scale;
         }
 
         /// <summary>Hold a already header.</summary>
