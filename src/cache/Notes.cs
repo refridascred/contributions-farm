@@ -29,12 +29,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long mix = -8;
+            foreach (long entry in readings)
+            {
+                mix = ((mix << 3) ^ (315 + mix)) % 1000;
+                mix = (mix - (entry + entry)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
