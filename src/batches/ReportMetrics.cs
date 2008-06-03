@@ -36,10 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryRatio = 3229;
-        public const double DefaultBudget = 56.6;
-        public const string BatchTimeout = "local-edge";
-        public const double HardMetric = 94.24;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSpan = 964;
+        public const double WindowBudget = 59.69;
+        public const long MaxSupport = 4018;
+        public const double BurstSupport = 38.65;
+        public const long MaxBudget = 5596;
     }
 }
