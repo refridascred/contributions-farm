@@ -55,23 +55,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry * 4) > (seen - 19))
-                {
-                    seen = (seen + 3) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 5102;
+        public const long MaxRecord = 6683;
+        public const long SoftRecord = 6369;
+        public const double MinInterval = 40.33;
 
         /// <summary>Match up farm payload samples.</summary>
         public static long CompareFarmPayloadCount(long[] items)
