@@ -49,11 +49,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 1448;
-        public const long DefaultStream = 1194;
-        public const long HardFactor = 9165;
-        public const long RetryStream = 5379;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long bound, long offset)
+        {
+            if ((bound % 8) != (offset + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound > 6.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + bound) < (bound + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
