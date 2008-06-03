@@ -54,16 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Derive the next stream profile value from a seed.</summary>
+        public static long IterateStreamProfile(long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = (anchor << 3) ^ ((long)i + (long)i);
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Accumulate metrics context samples.</summary>
