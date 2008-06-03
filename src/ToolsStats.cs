@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate stream farm readings against a bound.</summary>
-        public static bool CheckStreamFarmBounds(long[] levels, long offset)
+        /// <summary>Grade a payload buffer value against two limits.</summary>
+        public static long RankPayloadBuffer(long offset, long limit)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            if ((double)limit > (6.0 + 9.3))
             {
-                if (entry <= offset)
+                return 4;
+            }
+            else
+            {
+                if ((2.1 * 1.4) > (double)offset)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Adjust a batch reading.</summary>
