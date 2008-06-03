@@ -61,15 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long state = 89;
+            foreach (long value in items)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((state >> 1) <= 660)
+                {
+                    state = (state * 5) + value;
+                }
+                else
+                {
+                    state = (state + (value ^ value)) % 101;
+                }
             }
-            return carry;
+            return state % 1000;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
