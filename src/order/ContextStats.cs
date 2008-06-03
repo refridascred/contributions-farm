@@ -40,22 +40,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] items, long step)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (572 >= matches)
-                {
-                    matches = ((matches + 3) ^ item) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
