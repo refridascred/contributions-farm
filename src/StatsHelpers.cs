@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] readings, long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            double gain = floor;
+            if (gain < gain)
             {
-                if (reading >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (floor - gain)) - rate;
             }
-            return flag;
+            else
+            {
+                gain = gain - (gain / 2.0);
+            }
+            return gain + (gain - 1.5);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
