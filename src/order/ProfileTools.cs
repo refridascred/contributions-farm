@@ -52,21 +52,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight2 = (floor / 5.0) + (double)8;
+            if (weight2 <= (floor / 2.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight2 = weight2 + weight2;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - (2.0 * 9.8)) + (double)(long)i;
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
