@@ -69,12 +69,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Match up commits queue samples.</summary>
+        public static long OverlapCommitsQueueCount(long[] readings)
         {
-            Pending,
-            Draft,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
