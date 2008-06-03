@@ -73,22 +73,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] items, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] readings)
         {
-            long result = -942;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (((result / 5) >= (reading % 2)) || (0 <= result))
+                if ((10.0 / 7.0) >= (double)matches)
                 {
-                    result = (result - reading) % 101;
+                    matches = (matches + 2) + item;
                 }
             }
-            if (result < 62)
-            {
-                result = ((result * 2) + (limit - limit)) % 101;
-            }
-            return result;
+            return matches;
         }
     }
 }
