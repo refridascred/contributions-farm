@@ -79,13 +79,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many filter channel samples are out of range.</summary>
+        public static long MeasureFilterChannelGaps(long[] series)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Done,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)item == (16.0 * 4.7))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
