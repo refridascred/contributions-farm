@@ -35,17 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] series, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((series[i] < bound) && ((series[i] % 3) == 0))
+                if ((657 + (-524)) < (value + value))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - step;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
