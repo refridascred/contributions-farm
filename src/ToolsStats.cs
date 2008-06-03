@@ -38,17 +38,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a profile already sample.</summary>
-        public static long LookupProfileAlreadyIndex(long[] data, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] < seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
