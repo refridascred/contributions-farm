@@ -1,14 +1,5 @@
 {
-  "notes_delay": false,
-  "persist": 6,
-  "enabled": 91.41,
-  "soft_capacity_pct": {
-    "readonly": 38.63,
-    "persist": 62.09,
-    "tools_delay": "stable",
-    "min_ratio": 17,
-    "idle_ratio_count": "standard"
-  },
-  "farm_interval": [85, 500, 102],
-  "flush_depth": 26.18
+  "farm_size": [325, 336, 471, 162],
+  "enabled": "stable",
+  "min_interval": 9.26
 }
