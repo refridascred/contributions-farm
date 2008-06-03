@@ -53,22 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context editor readings.</summary>
-        public static long DigestContextEditor(long[] series)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double gain, double bias)
         {
-            long mark = 8;
-            foreach (long sample in series)
+            double scale = gain;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample - mark) >= sample)
-                {
-                    mark = (mark ^ (mark - mark)) % 65521;
-                }
+                scale = ((scale - (double)89) - (double)(long)i) - bias;
             }
-            if (mark < 129)
-            {
-                mark = ((mark * 5) + mark) % 65521;
-            }
-            return mark;
+            return scale - (scale / 2.0);
         }
     }
 }
