@@ -56,11 +56,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 5162;
-        public const long WindowSession = 6281;
-        public const double BaseScore = 89.71;
-        public const long LimitSize = 7343;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Retry,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long origin, long step)
