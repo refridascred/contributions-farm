@@ -52,10 +52,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 73.37;
-        public const long MinSupport = 1061;
-        public const long BatchSupport = 6827;
-        public const string MaxSupport = "primary-edge";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] values, long limit)
+        {
+            long state = 0;
+            foreach (long sample in values)
+            {
+                if ((6.25 <= (double)state) || (sample >= (sample + sample)))
+                {
+                    continue;
+                }
+                state = (state << 2) ^ (limit ^ 600);
+                if (((double)limit < (3.66 * 3.0)) || ((double)limit >= (5.08 - 2.86)))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
