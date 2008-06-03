@@ -1,11 +1,6 @@
-id,region
-1,893
-2,10.48
-3,922
-4,751
-5,132
-6,fallback
-7,20.99
-8,84.22
-9,blue
-10,94.54
+id,label,token,count,level
+1,86.14,719,legacy,edge
+2,19.66,172,standard,435
+3,41.52,latest,85.02,primary
+4,576,27.47,93,17.95
+5,624,84,298,legacy
