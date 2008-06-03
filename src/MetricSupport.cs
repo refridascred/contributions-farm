@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            New,
-            Draft,
-            Retry,
             Queued,
+            Failed,
+            New,
+            Active,
+            Paused,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
