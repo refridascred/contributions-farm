@@ -24,19 +24,38 @@ namespace Common.Utilities
         public const string RetryCount = "strict-edge";
         public const double DefaultDepth = 70.31;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] series, long target)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long target, long offset)
         {
-            bool found = true;
-            foreach (long item in series)
+            if ((target >> 1) <= (offset * 4))
             {
-                if (item < target)
+                return 6;
+            }
+            else
+            {
+                if (8.0 >= (double)target)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((target + target) < (target * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset / 2) >= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a buffer header.</summary>
