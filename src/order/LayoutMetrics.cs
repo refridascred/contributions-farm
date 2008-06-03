@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] data, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            long anchor = -599;
-            foreach (long entry in data)
+            long total = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (8.39 < (double)bound)
+                if ((5 - limit) >= ((long)i / 5))
                 {
-                    anchor = ((anchor * 4) + (2 & 255)) ^ entry;
+                    total = total - total;
                 }
+                else
+                {
+                    total = (total ^ (57 ^ total)) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            if (anchor > 3)
-            {
-                anchor = (anchor * 3) + (anchor - 72);
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
