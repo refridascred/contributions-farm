@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Retry,
-            New,
-            Paused,
-            Active,
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next queue value.</summary>
