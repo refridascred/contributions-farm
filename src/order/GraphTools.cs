@@ -34,22 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] series, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 5) + (step + step)) % 97;
-                if (((79 + step) > result) && ((double)result != (8.7 - 6.0)))
+                if (series[i] <= floor)
                 {
-                    result = (result - 26) % 4096;
-                    result = (result ^ (step << 3)) % 1000;
+                    return (long)i;
                 }
-                result = (result * 3) + result;
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Roll a order graph counter forward.</summary>
