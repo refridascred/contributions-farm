@@ -11,35 +11,29 @@ namespace Common.Utilities
         public const long DefaultEditor = 8183;
         public const double IdleInterval = 7.43;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long origin, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long limit, long seed)
         {
-            if (!((origin << 1) > (offset % 12)))
+            long offset = limit + seed;
+            if ((limit + offset) >= 27)
             {
                 return 5;
             }
             else
             {
-                if (offset > (origin - offset))
+                if ((offset % 12) >= 1)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((9 + offset) < (offset + origin))
+                    if ((seed + seed) != (limit % 60))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        if ((origin - offset) <= (offset * 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 0;
                     }
                 }
             }
