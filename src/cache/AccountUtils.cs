@@ -30,17 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] samples, long step)
+        /// <summary>Count the schema batches entries that pass the check.</summary>
+        public static long TallySchemaBatchesGaps(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (samples[i] > step)
+                if ((double)datum > 8.81)
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
