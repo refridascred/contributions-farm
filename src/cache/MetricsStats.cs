@@ -45,13 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
