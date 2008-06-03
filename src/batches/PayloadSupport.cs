@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples, long limit)
         {
-            Draft,
-            Locked,
-            Stale,
+            long carry = 987;
+            foreach (long item in samples)
+            {
+                carry = ((((carry << 2) ^ (carry / 6)) % 101) ^ item) + limit;
+            }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
