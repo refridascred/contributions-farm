@@ -55,19 +55,19 @@ namespace Common.Utilities
         public const long LimitSpan = 935;
         public const string MaxFactor = "staging-v2";
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] levels, long offset)
         {
-            double ratio = offset;
-            if (ratio <= (rate + ratio))
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                ratio = ratio + offset;
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (double)9) + (double)(long)i;
-            }
-            return ratio - rate;
+            return ready;
         }
     }
 }
