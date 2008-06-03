@@ -30,32 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long step, long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long delta = step + bound;
-            if (((step >> 5) < step) || ((bound ^ delta) >= (956 + bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step <= delta)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((11 % 100) > bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a cluster stats.</summary>
