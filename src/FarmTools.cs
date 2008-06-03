@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits report entries.</summary>
-        public static long CombineCommitsReport(long[] data, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] series)
         {
-            long anchor = -6;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                anchor = ((((anchor << 2) ^ ((long)data.Length * 5)) % 97) + datum) + step;
+                if ((item / 7) != (58 & 1))
+                {
+                    tally = tally + 2;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
