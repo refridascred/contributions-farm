@@ -40,20 +40,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long step)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((((-811) * 3) >= score) && (((long)i / 4) <= (long)i))
-                {
-                    continue;
-                }
-                score = ((score * 2) + (677 - floor)) % 65521;
-                score = ((score * 4) + (long)i) % 97;
+                anchor = (anchor * 4) + ((long)i >> 3);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the counter phase values.</summary>
