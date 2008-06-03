@@ -24,18 +24,17 @@ namespace Common.Utilities
             return weight + (double)709;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] levels, long offset)
+        /// <summary>Locate a commits account reading by value.</summary>
+        public static long FindCommitsAccountIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset * 5) > value)
+                if (items[i] > floor)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a already options.</summary>
