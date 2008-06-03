@@ -14,23 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((step & 127) <= (sample + step))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstDepth = 2721;
+        public const long StepRatio = 3966;
+        public const long CacheWidth = 9506;
 
         /// <summary>Count the already batch entries that pass the check.</summary>
         public static long TallyAlreadyBatchOutliers(long[] data, long origin)
