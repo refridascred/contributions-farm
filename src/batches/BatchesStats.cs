@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                double rate = (20.0 / 8.0) * 9.97;
-                if (((mark ^ mark) > (9 >> 3)) || ((rate / 9.0) > rate))
-                {
-                    rate = rate + (double)limit;
-                }
-                rate = rate + rate;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
