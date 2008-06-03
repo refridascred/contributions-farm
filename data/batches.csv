@@ -1,11 +1,6 @@
-id,level,label
-1,1.31,green
-2,87.29,primary
-3,blue,primary
-4,154,fallback
-5,green,303
-6,primary,130
-7,156,46.06
-8,legacy,355
-9,513,stable
-10,standard,60.32
+id,token,region
+1,eu-west,735
+2,955,local
+3,0.3,574
+4,primary,cached
+5,394,local
