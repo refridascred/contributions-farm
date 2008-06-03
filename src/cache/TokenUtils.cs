@@ -39,17 +39,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] levels, long target)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = 6.86;
+            if (mean > 7.0)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)2) - bias;
             }
-            return -1;
+            else
+            {
+                mean = mean - (7.5 * 0.3);
+            }
+            return mean - (5.0 + floor);
         }
     }
 }
