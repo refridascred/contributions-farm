@@ -21,11 +21,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Match up contributi batch samples.</summary>
+        public static long MatchContributiBatchCount(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of notes account readings.</summary>
