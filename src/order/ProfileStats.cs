@@ -13,12 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 94.39;
-        public const double BurstLevel = 95.6;
-        public const long WindowEntry = 9379;
-        public const string BaseRatio = "staging-v2";
-        public const long LimitDepth = 9907;
+        /// <summary>Measure how many graph layout samples are out of range.</summary>
+        public static long AuditGraphLayoutHits(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!((seen + target) != (target - 82)))
+                {
+                    seen = (seen + 1) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double RetrySchema = 1.49;
