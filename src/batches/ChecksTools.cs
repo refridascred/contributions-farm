@@ -34,10 +34,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitCount = "standard-1";
-        public const string WindowDepth = "latest-v2";
-        public const long MinDepth = 2397;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((423 - 65) == (origin >> 2))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] items)
