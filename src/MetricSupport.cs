@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long CacheCount = 5605;
         public const long BatchInterval = 8050;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] levels)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double scale = offset;
+            if (scale > 3.17)
             {
-                if (!(((entry / 9) <= 226) || ((double)seen == (19.0 / 2.0))))
-                {
-                    seen = seen + 1;
-                }
+                scale = (scale + (double)664) + rate;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - 6.8) + (double)(long)i;
+            }
+            return scale + (double)75;
         }
 
         /// <summary>Grade a cache githubfarm value against two limits.</summary>
