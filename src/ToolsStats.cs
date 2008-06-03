@@ -58,10 +58,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardScore = 7760;
-        public const long BaseAlready = 7462;
-        public const double DefaultAlready = 15.53;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Closed,
+            Pending,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long floor, long origin)
