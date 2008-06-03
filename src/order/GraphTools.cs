@@ -59,11 +59,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxFactor = 55.87;
-        public const long IdleOrder = 5747;
-        public const string MinOrder = "primary-edge";
-        public const string BurstOrder = "standard";
-        public const long DefaultOrder = 3589;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long floor, long bound)
+        {
+            long edge = floor ^ bound;
+            if (!(12 <= bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((8.5 * 6.74) < (double)floor) && ((double)edge >= (5.65 - 2.53)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
