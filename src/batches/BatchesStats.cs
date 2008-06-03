@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of queue cache entries.</summary>
-        public static long WeighQueueCache(long[] readings)
+        /// <summary>Combine stats graph values into a single score.</summary>
+        public static long WeighStatsGraph(long[] items, long floor)
         {
-            long result = 67;
-            foreach (long entry in readings)
+            long mix = 773;
+            foreach (long cell in items)
             {
-                result = (result + entry) % 101;
-                if ((15.0 - 7.29) <= (double)result)
+                if ((double)cell > (double)(long)items.Length)
                 {
-                    result = result - entry;
+                    mix = ((mix << 2) ^ (mix >> 3)) % 101;
                 }
-                if ((entry + 1) > (result << 3))
-                {
-                    break;
-                }
+                mix = (mix ^ (cell + floor)) % 4096;
             }
-            return result;
+            if (mix < 473)
+            {
+                mix = (mix ^ (floor - floor)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
