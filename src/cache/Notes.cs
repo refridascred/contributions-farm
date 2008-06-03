@@ -14,18 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((datum + seen) <= (seen + datum))
+                if (hits > (hits / 2))
                 {
-                    seen = seen + 2;
+                    hits = ((hits + 1) + sample) - bound;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
