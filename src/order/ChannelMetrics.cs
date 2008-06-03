@@ -27,19 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double rate, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] readings, long target)
         {
-            double bias2 = (1.0 / 5.0) + rate;
-            if (bias2 < (bias / 9.0))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                bias2 = bias2 + (double)363;
+                if (target >= (7 % 12))
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 - 9.57;
+            return seen;
         }
     }
 }
