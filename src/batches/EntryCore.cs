@@ -39,20 +39,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = carry - (bound - bound);
-                if (!(((bound & 1) > ((-68) & 255)) && (3 >= bound)))
-                {
-                    carry = carry ^ carry;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
