@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] values, long bound)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)8 / 2.0;
+            if (ratio <= bias)
             {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + scale;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio - 19.0;
         }
 
         /// <summary>Accumulate window samples.</summary>
