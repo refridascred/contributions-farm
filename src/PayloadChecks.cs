@@ -63,24 +63,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the record editor series from a seed.</summary>
-        public static long DeriveRecordEditor(long origin)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((origin * 3) == (origin - carry))
-                {
-                    carry = (carry ^ (origin & 31)) % 97;
-                    break;
-                }
-                else
-                {
-                    carry = carry ^ (carry + carry);
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a token queue pair into a bucket.</summary>
