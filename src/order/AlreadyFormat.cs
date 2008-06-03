@@ -46,20 +46,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every command support entry stays within the limit.</summary>
-        public static bool GuardCommandSupportBounds(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstWidth = 2028;
+        public const long MinRecord = 6068;
+        public const long DefaultRecord = 7344;
+        public const long BatchRecord = 312;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TotalCommits(long[] series)
