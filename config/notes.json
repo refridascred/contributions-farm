@@ -1,18 +1,24 @@
 {
-  "flush_capacity_ms": "standard",
-  "batch_ttl": {
-    "strict": {
-      "readonly": 77.02,
-      "burst_timeout_pct": "cached",
-      "verbose": [257, 92]
+  "batches_threshold": 91,
+  "max_limit_pct": false,
+  "entry_retries": 44.03,
+  "soft_limit": "edge",
+  "layout_ratio": {
+    "sync_limit": {
+      "batch_timeout": false,
+      "audit": 9994,
+      "max_retries_ms": 60,
+      "cache_capacity_s": "open"
     },
-    "batch_window_s": 99,
-    "context_limit": "local",
-    "default_timeout_s": "cached",
-    "verbose": 89.31
+    "commits_ratio": false,
+    "soft_limit": [339, 154, 394],
+    "cache_threshold_count": {
+      "stream_interval": 60,
+      "warm_timeout_ms": false,
+      "route_delay": 30,
+      "audit": "primary",
+      "readonly": 59.55
+    }
   },
-  "batch_timeout": 1024,
-  "stream_limit": 44.36,
-  "warm_timeout_pct": true,
-  "max_threshold": 37.58
+  "flush_window_count": 64.6
 }
