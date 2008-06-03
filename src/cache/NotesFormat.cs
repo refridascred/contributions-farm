@@ -30,19 +30,22 @@ namespace Common.Utilities
         public const long StepDepth = 5887;
         public const long HardSpan = 5238;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] data, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long mark = 516;
+            foreach (long item in values)
             {
-                if (cell < step)
+                if ((item - mark) > (mark / 5))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark * 4) + (mark * 3);
+                }
+                else
+                {
+                    mark = mark - item;
                 }
             }
-            return ready;
+            return mark;
         }
     }
 }
