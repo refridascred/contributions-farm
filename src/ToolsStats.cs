@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] values, long offset)
         {
-            long carry = 500;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (!(carry <= (36 << 1)))
+                if (value < offset)
                 {
-                    carry = (carry << 2) ^ (carry + 72);
-                    carry = ((carry * 4) + datum) % 101;
-                }
-                else
-                {
-                    carry = (carry + 3) % 255;
-                }
-                carry = (carry + (carry ^ datum)) % 101;
-                if ((double)carry >= 13.0)
-                {
-                    carry = (carry ^ (carry ^ 8)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
