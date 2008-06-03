@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] series)
         {
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long anchor = 0;
+            foreach (long entry in series)
+            {
+                anchor = (anchor - (entry + entry)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
