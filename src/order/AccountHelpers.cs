@@ -50,21 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = rate;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio - floor) + (double)(long)i;
             }
-            return seen;
+            return ratio + (double)86;
         }
 
         /// <summary>Hold a profile options.</summary>
