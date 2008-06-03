@@ -18,23 +18,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double ratio, double bias)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            double scale = (double)94 / 6.0;
-            if (scale < (double)1)
-            {
-                scale = (scale + ratio) - bias;
-            }
-            else
-            {
-                scale = scale - 2.28;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (3.15 * 2.1)) + (double)(long)i;
-            }
-            return scale - ratio;
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
