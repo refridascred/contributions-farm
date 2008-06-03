@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count stats stream pairs that satisfy a relation.</summary>
-        public static long MatchStatsStreamCount(long[] data)
+        /// <summary>Combine context graph values into a single score.</summary>
+        public static long DigestContextGraph(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 9;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (((mix << 2) ^ (mix * 3)) % 97) - floor;
+                mix = ((mix << 3) ^ (mix ^ datum)) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
