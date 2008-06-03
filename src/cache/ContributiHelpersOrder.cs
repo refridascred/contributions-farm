@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two notes already measurements.</summary>
-        public static double ScaleNotesAlready(double rate, double bias)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels, long limit)
         {
-            double mean = bias - rate;
-            if (mean > 15.0)
+            long acc = 994;
+            foreach (long sample in levels)
             {
-                mean = mean - (13.0 - bias);
+                if ((double)limit < (2.79 * 7.7))
+                {
+                    acc = ((acc * 4) + (acc + (-919))) % 97;
+                }
+                else
+                {
+                    acc = acc ^ (limit ^ sample);
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean - mean)) - (double)(long)i;
-            }
-            return mean + 5.4;
+            return acc;
         }
 
         /// <summary>Project the next stats checks value.</summary>
