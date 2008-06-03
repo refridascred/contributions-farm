@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const long StepBudget = 1576;
         public const long StepGraph = 3656;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Measure how many order context samples are out of range.</summary>
+        public static long CountOrderContextOutliers(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)(long)values.Length > (6.7 * 6.26))
                 {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
