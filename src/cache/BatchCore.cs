@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] data)
+        /// <summary>Count the context account entries that pass the check.</summary>
+        public static long TallyContextAccountGaps(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((tally + entry) <= (tally ^ 55))
+                if ((entry / 6) > (count + entry))
                 {
-                    tally = tally + 2;
+                    count = (count + 1) + seed;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
