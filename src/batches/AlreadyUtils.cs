@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] readings)
         {
-            long mark = 58;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 2) + cell) % 255;
+                if ((datum - datum) != (hits - hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (mark > 3)
-            {
-                mark = mark - (53 / 5);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
