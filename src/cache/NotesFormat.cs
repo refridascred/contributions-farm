@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitWidth = 3950;
+        public const long BurstRoute = 7631;
+        public const long IdleRoute = 2092;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
