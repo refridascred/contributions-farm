@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            Done,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
