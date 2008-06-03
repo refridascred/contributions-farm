@@ -42,15 +42,31 @@ namespace Common.Utilities
             return load - (7.1 / 3.0);
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long bound, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            if (33 >= (target + target))
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (55 <= (target ^ 69))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8.3 * 17.0) < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
