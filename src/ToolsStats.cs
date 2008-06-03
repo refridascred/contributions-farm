@@ -40,12 +40,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Draft,
-            Stale,
-            Dropped,
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
