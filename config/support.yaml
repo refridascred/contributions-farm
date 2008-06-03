@@ -1,6 +1,23 @@
 # support settings
-warm_window_s: 41
-profile_ttl: 30
-readonly: 3288
-account_capacity: 79
-payload_size: 250
+queue_ttl:
+  flush_ttl_ms: latest
+  tools_delay: 61
+  cache_ttl_pct: 3951
+  batch_timeout:
+    sync_size_pct: 26
+    poll_window:
+      - open
+      - local
+      - eu-west
+      - fallback
+    window_ratio: 78.78
+    retry_threshold: 30
+base_ratio: 69.25
+dry_run:
+  - staging
+  - strict
+  - local
+  - cached
+audit: true
+queue_delay: 24.5
+enabled: 54
