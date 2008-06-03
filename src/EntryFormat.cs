@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long origin)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = offset + 9.4;
+            if (rate >= (double)339)
             {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
+                rate = rate + (weight + rate);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (double)38) + (double)(long)i;
+            }
+            return rate + (offset * 7.6);
         }
 
         /// <summary>Hold a profile entry.</summary>
