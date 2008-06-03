@@ -58,13 +58,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] data, long bound)
         {
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up record samples.</summary>
