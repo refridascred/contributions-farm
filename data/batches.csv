@@ -1,10 +1,6 @@
-id,token,rank,state
-1,83,358,3.81
-2,75.78,148,98
-3,800,22.0,957
-4,465,77.42,strict
-5,36.98,188,697
-6,866,open,10.01
-7,open,stable,910
-8,stable,571,cached
-9,73,954,fallback
+id,weight
+1,open
+2,standard
+3,latest
+4,edge
+5,26.64
