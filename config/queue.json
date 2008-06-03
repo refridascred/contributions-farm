@@ -1,6 +1,7 @@
 {
-  "persist": "local",
-  "batch_interval_count": ["fallback", "primary"],
-  "compress": "strict",
-  "verbose": "standard"
+  "hard_ttl_count": "green",
+  "burst_timeout_ms": 100,
+  "audit": [456, 146, 291],
+  "session_threshold": [72, 436, 173],
+  "commits_depth": "eu-west"
 }
