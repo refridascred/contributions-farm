@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double DefaultCache = 46.88;
         public const string WindowCache = "cached";
 
-        /// <summary>Digest a series of metrics queue entries.</summary>
-        public static long DigestMetricsQueue(long[] items, long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] values, long offset)
         {
-            long sum = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                sum = ((sum - (bound << 1)) % 97) - datum;
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (sum > 73)
-            {
-                sum = (sum * 3) + (79 - 9);
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
