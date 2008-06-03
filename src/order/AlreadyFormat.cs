@@ -14,11 +14,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
