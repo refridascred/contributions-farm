@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of payload commits readings.</summary>
-        public static long FoldPayloadCommits(long[] readings)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long sum = 6;
-            foreach (long value in readings)
-            {
-                sum = (sum ^ sum) + value;
-            }
-            return sum;
+            public long Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
