@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count contributi batch pairs that satisfy a relation.</summary>
-        public static long MatchContributiBatchCount(long[] data)
+        /// <summary>Combine profile notes values into a single score.</summary>
+        public static long FoldProfileNotes(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 420;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mix >= (21 << 1)) || (value <= (value + mix)))
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (((mix << 2) ^ (661 / 7)) % 1000) - seed;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
