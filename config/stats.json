@@ -1,16 +1,7 @@
 {
-  "strict": 31.1,
-  "metrics_capacity": {
-    "verbose": true,
-    "default_retries_pct": 250,
-    "default_limit": {
-      "compress": "blue",
-      "githubfarm_delay": "local",
-      "soft_ttl_s": 5628,
-      "enabled": "primary",
-      "warm_timeout": 100,
-      "persist": 9084
-    }
-  },
-  "retry_retries": "blue"
+  "record_capacity": "eu-west",
+  "max_delay_s": false,
+  "batch_window": "latest",
+  "window_size": "latest",
+  "poll_ratio_ms": "edge"
 }
