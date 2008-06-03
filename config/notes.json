@@ -1,6 +1,17 @@
 {
-  "hard_ttl_pct": 49.21,
-  "hard_window_ms": "local",
-  "max_capacity": "eu-west",
-  "strict": ["edge", "stable"]
+  "min_timeout_ms": "primary",
+  "strict": 30,
+  "flush_delay_pct": {
+    "account_depth": true,
+    "burst_ttl_pct": 73.6,
+    "support_retries": 84,
+    "sync_capacity_ms": {
+      "base_threshold_count": 46.53,
+      "default_limit": 56.05,
+      "schema_interval": true
+    }
+  },
+  "persist": ["staging", "green", "eu-west", "primary"],
+  "stream_depth": [469, 489, 114, 386],
+  "soft_timeout": false
 }
