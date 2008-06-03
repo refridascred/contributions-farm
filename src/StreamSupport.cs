@@ -54,9 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchCount = "strict-1";
-        public const long HardContributi = 9923;
-        public const string BatchContributi = "open-v2";
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
