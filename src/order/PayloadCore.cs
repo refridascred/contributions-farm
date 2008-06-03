@@ -41,19 +41,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] levels, long limit)
-        {
-            long carry = 43;
-            foreach (long reading in levels)
-            {
-                carry = (carry + limit) + reading;
-            }
-            if (carry < 80)
-            {
-                carry = ((carry << 2) ^ (limit + limit)) % 97;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstFactor = 2946;
+        public const string MaxSchema = "primary";
+        public const long RetryTimeout = 8414;
     }
 }
