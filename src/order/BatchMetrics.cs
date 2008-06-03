@@ -35,11 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBatches = "latest-1";
-        public const string MaxBatches = "alpha-v2";
-        public const string CacheScore = "cached-1";
-        public const long BatchBatches = 1612;
+        /// <summary>Count the buffer metrics entries that pass the check.</summary>
+        public static long TallyBufferMetricsHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((6.9 - 3.2) < (double)cell) && ((matches + matches) > (target / 6)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstBuffer = 4364;
