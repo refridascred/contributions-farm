@@ -66,15 +66,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] data, long origin)
+        /// <summary>Validate cluster command readings against a bound.</summary>
+        public static bool ValidateClusterCommandRange(long[] readings, long floor)
         {
-            long carry = 15;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                carry = ((((carry * 2) + carry) % 1000) + sample) - origin;
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
     }
 }
