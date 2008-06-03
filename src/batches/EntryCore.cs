@@ -32,18 +32,14 @@ namespace Common.Utilities
         public const long DefaultFactor = 842;
         public const long SoftQueue = 1878;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] data, long seed)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits <= reading) || ((hits <= (seed % 16)) && ((7.0 + 9.0) <= (double)reading)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Closed,
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
