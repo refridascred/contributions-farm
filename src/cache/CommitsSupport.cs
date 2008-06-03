@@ -36,18 +36,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] levels, long origin)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (datum > 0)
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
