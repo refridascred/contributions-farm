@@ -1,12 +1,6 @@
 {
-  "cache_capacity": ["eu-west", "cached", "blue"],
-  "counter_interval": "blue",
-  "soft_threshold": true,
-  "cache_size": "legacy",
-  "payload_depth": false,
-  "readonly": {
-    "buffer_capacity": 6338,
-    "idle_interval": "open",
-    "batch_threshold_count": 500
-  }
+  "verbose": false,
+  "soft_window_pct": "latest",
+  "counter_timeout": "staging",
+  "hard_ttl": "strict"
 }
