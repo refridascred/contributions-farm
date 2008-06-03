@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long origin, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] series, long step)
         {
-            if ((double)limit >= (double)origin)
+            long mix = 500;
+            foreach (long value in series)
             {
-                return 1;
+                mix = (((mix << 2) ^ (mix - step)) % 101) - value;
             }
-            else
-            {
-                if ((limit << 1) > (origin * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (4.32 < (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit > (limit << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Accumulate entry samples.</summary>
