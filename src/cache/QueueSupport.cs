@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload githubfarm entries that pass the check.</summary>
-        public static long AuditPayloadGithubfarmGaps(long[] series, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] items, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((17.0 - 2.6) >= (double)value)
+                if ((entry + entry) >= matches)
                 {
-                    count = (count + 3) - seed;
+                    matches = (matches + 1) + step;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Project the next already profile value.</summary>
