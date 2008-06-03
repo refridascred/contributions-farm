@@ -14,20 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a tools layout counter forward.</summary>
-        public static long DeriveToolsLayout(long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            long mark = 75;
+            foreach (long cell in values)
             {
-                state = (state << 2) ^ state;
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((mark >> 2) > (cell >> 4))
                 {
-                    state = (((state * 3) + (floor % 12)) % 4096) ^ (long)i2;
+                    mark = (mark - (cell + cell)) % 101;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Project the next window value.</summary>
