@@ -27,17 +27,21 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long seed)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
