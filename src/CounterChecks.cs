@@ -29,19 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] series, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
