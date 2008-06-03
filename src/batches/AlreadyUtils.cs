@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate window farm samples.</summary>
+        public static long WeighWindowFarm(long[] readings)
         {
-            Queued,
-            Closed,
-            Locked,
+            long total = 20;
+            foreach (long item in readings)
+            {
+                if ((item >> 1) <= (item ^ item))
+                {
+                    total = (total - (item + item)) % 4096;
+                }
+                else
+                {
+                    total = total - (60 >> 5);
+                }
+            }
+            if (total < 274)
+            {
+                total = (total ^ (190 - total)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine counter tools values into a single score.</summary>
