@@ -41,19 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] items)
         {
-            long mark = -38;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                mark = ((mark << 3) ^ 32) + datum;
+                if ((sample & 15) == (sample & 63))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mark < 5)
-            {
-                mark = ((mark * 4) + (mark << 1)) % 1000;
-            }
-            return mark % 65521;
+            return matches;
         }
     }
 }
