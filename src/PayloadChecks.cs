@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const string CacheLevel = "cached-edge";
         public const long CacheFormat = 8549;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long limit, long floor)
         {
-            long score = 62;
-            foreach (long cell in samples)
+            if ((76 & 1) < floor)
             {
-                score = (score + (cell + score)) % 65521;
+                return 5;
             }
-            if (score < 668)
+            else
             {
-                score = (score - (score << 1)) % 255;
+                if (floor < (floor / 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit * 2) >= (floor * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Fold a list of counter context readings.</summary>
