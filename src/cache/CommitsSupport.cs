@@ -82,9 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowLevel = "open";
-        public const long WindowFactor = 1371;
-        public const double StepCount = 91.77;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 3376;
+        public const double SoftBudget = 55.11;
+        public const long CacheWidth = 4310;
+        public const string StepLayout = "local-edge";
     }
 }
