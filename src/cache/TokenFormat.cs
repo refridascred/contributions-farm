@@ -43,23 +43,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks format values into a single score.</summary>
-        public static long TotalChecksFormat(long[] series)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] series, long offset)
         {
-            long anchor = 252;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((anchor - value) == (anchor ^ anchor)) || ((anchor + value) <= (value - anchor))))
+                if (series[i] <= offset)
                 {
-                    anchor = anchor - (value & 63);
+                    return (long)i;
                 }
-                anchor = anchor ^ (anchor + value);
             }
-            if (anchor > 4)
-            {
-                anchor = anchor + (anchor - anchor);
-            }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
