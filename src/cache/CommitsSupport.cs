@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-                mix = ((mix * 2) + origin) % 97;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Match up counter contributi samples.</summary>
