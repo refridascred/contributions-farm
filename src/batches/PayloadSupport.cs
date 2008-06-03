@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheFactor = 59.21;
-        public const long DefaultScore = 5079;
-        public const long WindowNotes = 4815;
-        public const long SoftNotes = 4368;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Closed,
+            Active,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleTools = 268;
