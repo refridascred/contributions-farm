@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long BatchStream = 5598;
         public const string HardStream = "fallback-v2";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 5652;
-        public const double BurstChecks = 78.01;
-        public const double SoftChecks = 31.62;
+        /// <summary>Measure how many farm support samples are out of range.</summary>
+        public static long TallyFarmSupportOutliers(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((3.08 + 5.0) <= (double)offset)
+                {
+                    hits = (hits + 2) - value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
