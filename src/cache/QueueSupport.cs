@@ -32,31 +32,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long origin, long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] readings, long bound)
         {
-            if (step <= origin)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step - step) == (8 + origin))
+                if (readings[i] > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((74 + step) < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
