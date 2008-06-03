@@ -25,24 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long target)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if ((93 - step) > (target / 9))
-            {
-                return 2;
-            }
-            else
-            {
-                if (141 >= (target - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
