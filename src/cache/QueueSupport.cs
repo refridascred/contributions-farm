@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double rate, double bias)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] samples, long step)
         {
-            double weight = rate;
-            for (int i = 0; i < 2; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                weight = ((weight + (rate + rate)) + (double)(long)i) + bias;
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight - (double)311;
+            return flag;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
