@@ -52,19 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] items, long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long bound)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Validate channel farm readings against a bound.</summary>
