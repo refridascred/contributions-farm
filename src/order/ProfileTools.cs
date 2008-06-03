@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] values)
-        {
-            long mix = 697;
-            foreach (long datum in values)
-            {
-                if ((mix ^ datum) <= (datum & 3))
-                {
-                    mix = mix + (mix - mix);
-                }
-                if ((mix / 8) <= mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 114)
-            {
-                mix = (mix + mix) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepRatio = 3914;
+        public const long SoftCommand = 5860;
+        public const string BatchDepth = "open-1";
+        public const long IdleCommand = 47;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
