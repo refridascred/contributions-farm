@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm payload readings against a bound.</summary>
-        public static bool CheckGithubfarmPayloadBounds(long[] items, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long mix = -18;
+            foreach (long datum in items)
             {
-                if (cell > origin)
+                if (!((datum + datum) >= (94 - datum)))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix + (40 ^ datum)) % 101;
                 }
             }
-            return stale;
+            return mix % 97;
         }
 
         /// <summary>Iterate the metric editor series from a seed.</summary>
