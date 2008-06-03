@@ -1,11 +1,14 @@
 # Command notes
 
-A session that stays idle for too long is moved to the metric list.
-Use session settings to tune how often payload data is refreshed.
-The metric helpers are pure functions, so they are safe to call from any thread.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The farm helpers are pure functions, so they are safe to call from any thread.
+
+The schema helpers are pure functions, so they are safe to call from any thread.
+Use cluster settings to tune how often editor data is refreshed.
+Use entry settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Review already limits each release
-- Document new cluster fields
-- Keep buffer values small
+- Prefer cache defaults
+- Log every record change
+- Review metric limits each release
