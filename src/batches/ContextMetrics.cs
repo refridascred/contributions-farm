@@ -31,23 +31,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of entry cluster entries.</summary>
-        public static long ScoreEntryCluster(long[] data)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double gain, double bias)
         {
-            long sum = 103;
-            foreach (long value in data)
+            double gain2 = (double)32 * 4.18;
+            if (gain2 <= (gain2 - gain))
             {
-                sum = (sum - ((long)data.Length * 2)) - value;
-                if (491 >= (sum * 4))
-                {
-                    sum = (sum * 2) + (sum + sum);
-                }
+                gain2 = gain2 + gain;
             }
-            if (sum > (-546))
+            for (int i = 0; i < 9; i++)
             {
-                sum = (sum * 4) + (sum & 1);
+                gain2 = (gain2 - bias) + (double)(long)i;
             }
-            return sum;
+            return gain2 + (double)7;
         }
 
         /// <summary>Describe the command phase values.</summary>
