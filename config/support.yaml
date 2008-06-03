@@ -1,4 +1,13 @@
 # support settings
-dry_run: local
-max_window_count: 46
-batch_ratio_ms: 6425
+route_timeout: false
+layout_interval:
+  - fallback
+  - green
+base_interval: 500
+hard_timeout:
+  editor_timeout: legacy
+  burst_ratio_s: standard
+  notes_threshold: true
+  dry_run: open
+  soft_size_pct: 60
+already_size: 87.09
