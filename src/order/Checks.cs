@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftPayload = "staging-1";
-        public const long RetryPayload = 1886;
-        public const long BasePayload = 5383;
-        public const double BaseBudget = 52.08;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double bias2)
+        {
+            double drift = bias;
+            return (drift + (12.0 + drift)) + bias2;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
