@@ -1,8 +1,20 @@
 # githubfarm settings
-min_ttl_count: 87
-flush_size: 30.32
-persist:
-  warm_capacity_pct: 2
-  retry_ratio_pct: false
-  idle_threshold_pct: local
-dry_run: false
+compress: true
+batch_window: 268
+cache_window:
+  retry_limit: 22.91
+  persist: 54
+  retry_delay_s: 34.7
+  burst_threshold_pct: true
+  default_capacity:
+    max_interval_ms: true
+    base_ratio_ms: 92.48
+    idle_ratio_count: green
+  githubfarm_timeout:
+    entry_window: 2744
+    report_window: blue
+    retry_size_count: blue
+    base_ttl_count: 3661
+cache_size: edge
+soft_timeout: cached
+burst_window_pct: true
