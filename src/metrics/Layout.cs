@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((22 >= count) && ((entry * 4) >= (count & 255)))
+                if (((long)data.Length + seed) >= matches)
                 {
-                    count = count + 2;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate githubfarm schema readings against a bound.</summary>
