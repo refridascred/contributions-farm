@@ -32,11 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] values, long origin)
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
+            long sum = 3;
+            foreach (long datum in values)
+            {
+                sum = ((sum + origin) % 1000) - datum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the route phase values.</summary>
