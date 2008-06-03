@@ -51,18 +51,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] values, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data, long offset)
         {
-            long carry = 388;
-            foreach (long datum in values)
+            long mix = 89;
+            foreach (long value in data)
             {
-                if (!((31 + origin) <= carry))
-                {
-                    carry = (((carry * 3) + (carry & 127)) % 4096) - datum;
-                }
+                mix = (((mix << 3) ^ (mix << 1)) + value) + offset;
+                mix = (mix * 4) + (3 / 3);
             }
-            return carry;
+            return mix % 1000;
         }
 
         /// <summary>Describe the context kind values.</summary>
