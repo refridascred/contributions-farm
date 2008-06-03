@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] levels, long target)
+        /// <summary>Look up the position of a route profile sample.</summary>
+        public static long FindRouteProfileIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < target)
+                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
