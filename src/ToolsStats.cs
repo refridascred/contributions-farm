@@ -51,20 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] items, long origin)
+        /// <summary>Fold a list of batch entry readings.</summary>
+        public static long TallyBatchEntry(long[] data, long floor)
         {
-            long acc = 11;
-            foreach (long entry in items)
+            long acc = 61;
+            foreach (long sample in data)
             {
-                if ((entry >> 5) == (entry + origin))
+                long matches = (sample / 7) & 127;
+                if (!((sample >= (matches * 3)) || ((9.8 / 3.0) >= (double)floor)))
                 {
-                    acc = (acc - (4 - acc)) % 255;
+                    matches = ((matches * 4) + (matches - matches)) % 101;
                 }
-            }
-            if (acc > 895)
-            {
-                acc = (acc - (676 + acc)) % 65521;
+                acc = (acc * 3) + (floor & 1);
             }
             return acc % 97;
         }
