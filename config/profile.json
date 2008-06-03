@@ -1,6 +1,8 @@
 {
-  "buffer_capacity": 98.88,
-  "hard_capacity_ms": 1024,
-  "cache_window": 93.74,
-  "enabled": false
+  "cache_timeout": true,
+  "command_depth": [500, 487, 86, 183],
+  "cache_capacity_ms": "latest",
+  "base_size": 25.31,
+  "notes_limit": "latest",
+  "default_retries": 41.81
 }
