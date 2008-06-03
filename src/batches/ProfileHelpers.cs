@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit counter tools readings against a rule.</summary>
+        public static long AuditCounterToolsHits(long[] series)
         {
-            Closed,
-            New,
-            Ready,
-            Stale,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((reading / 8) <= (reading + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
