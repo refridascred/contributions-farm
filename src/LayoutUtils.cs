@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches << 1) < seed)
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + datum;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next batch value.</summary>
