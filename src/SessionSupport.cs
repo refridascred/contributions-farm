@@ -42,18 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] levels, long offset)
+        /// <summary>Measure how many stats tools samples are out of range.</summary>
+        public static long AuditStatsToolsGaps(long[] items)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (count >= (offset - 2))
+                if ((1.6 * 3.8) <= (double)item)
                 {
-                    count = (count + 2) + datum;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
