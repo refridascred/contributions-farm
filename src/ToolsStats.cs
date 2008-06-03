@@ -38,19 +38,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] values, long origin)
+        /// <summary>Look up the position of a profile already sample.</summary>
+        public static long LookupProfileAlreadyIndex(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > origin)
+                if ((data[i] < seed) && ((data[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
