@@ -1,9 +1,6 @@
-id,state,active,owner,score
-1,335,green,996,786
-2,open,978,698,latest
-3,916,legacy,primary,20.35
-4,641,62.0,911,stable
-5,strict,905,75.93,blue
-6,592,38.43,937,staging
-7,16.96,789,377,70.86
-8,871,fallback,17.78,288
+id,state,score,label
+1,blue,2.56,latest
+2,eu-west,160,87
+3,590,690,697
+4,cached,882,26.71
+5,local,675,32.04
