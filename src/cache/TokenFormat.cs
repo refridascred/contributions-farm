@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long floor, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            long next = floor + bound;
-            if ((double)floor <= 4.39)
+            long sum = 333;
+            foreach (long item in readings)
             {
-                return 1;
+                sum = (sum << 3) ^ (item << 2);
             }
-            else
-            {
-                if (!((next + bound) < (6 + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
