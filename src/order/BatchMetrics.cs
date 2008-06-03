@@ -21,13 +21,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate route checks readings against a bound.</summary>
+        public static bool CheckRouteChecksRange(long[] samples, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of record notes entries.</summary>
