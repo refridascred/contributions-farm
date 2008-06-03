@@ -41,26 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] samples, long step)
         {
-            long score = 4;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if (((8.7 - 6.9) >= (double)seen) || ((6.5 / 3.0) <= (double)datum))
                 {
-                    score = ((score * 2) + score) ^ (long)i;
-                }
-                if ((score << 3) != (item + item))
-                {
-                    score = (score + score) % 97;
+                    seen = (seen + 1) + step;
                 }
             }
-            if (score > 22)
-            {
-                score = score + (score + score);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
