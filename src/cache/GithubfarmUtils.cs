@@ -45,13 +45,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] values)
         {
-            Ready,
-            Synced,
-            Done,
-            Retry,
+            long acc = 203;
+            foreach (long item in values)
+            {
+                acc = ((acc * 5) + (item % 100)) % 255;
+            }
+            if (acc > 853)
+            {
+                acc = (acc * 5) + (acc * 2);
+            }
+            return acc;
         }
     }
 }
