@@ -1,5 +1,16 @@
 {
-  "batch_ratio_s": "open",
-  "notes_limit": "stable",
-  "support_interval": true
+  "profile_retries": 100,
+  "base_delay_pct": {
+    "cache_timeout": ["legacy", "strict", "green"],
+    "warm_capacity_s": false,
+    "dry_run": "local"
+  },
+  "flush_timeout": "latest",
+  "min_interval_ms": {
+    "verbose": "local",
+    "sync_timeout_s": "primary",
+    "max_delay": 100
+  },
+  "verbose": 8.04,
+  "persist": 77
 }
