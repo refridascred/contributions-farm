@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long bound, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] series)
         {
-            if ((bound >> 1) <= (limit - bound))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound > limit)
+                if ((double)reading >= (double)hits)
                 {
-                    return 0;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 5;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of metrics queue entries.</summary>
