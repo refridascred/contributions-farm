@@ -13,38 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long bound, long offset)
+        /// <summary>Match up commits support samples.</summary>
+        public static long OverlapCommitsSupportCount(long[] levels)
         {
-            if ((bound + 85) < offset)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset <= bound) || ((offset ^ offset) < (offset % 64)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset % 16) >= offset)
+                    if ((levels[i] - levels[j]) == 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound - (-88)) > (bound ^ offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
