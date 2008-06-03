@@ -37,18 +37,15 @@ namespace Common.Utilities
             return gain2 + (gain * 3.06);
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Measure how many schema notes samples are out of range.</summary>
+        public static long CountSchemaNotesMatches(long[] items, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed * 3) <= (5 + seed))
                 {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) - sample;
                 }
             }
             return tally;
