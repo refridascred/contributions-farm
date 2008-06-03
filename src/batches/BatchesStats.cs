@@ -12,13 +12,31 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long seed, long step)
         {
-            Done,
-            New,
-            Closed,
-            Queued,
+            if ((857 + step) > (step + seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step <= (step % 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed < step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
