@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Derive the next report stream value from a seed.</summary>
+        public static long RollReportStream(long seed)
         {
-            Pending,
-            Dropped,
-            Ready,
-            Active,
+            long score = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
