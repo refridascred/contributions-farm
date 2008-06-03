@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleRatio = 3639;
-        public const long MinBatches = 3747;
-        public const long LimitBatches = 9887;
-        public const long MaxSpan = 4420;
-        public const string DefaultBudget = "fallback-v2";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine buffer githubfarm values into a single score.</summary>
         public static long TallyBufferGithubfarm(long[] readings)
