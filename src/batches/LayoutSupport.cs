@@ -22,18 +22,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit already record readings against a rule.</summary>
-        public static long TallyAlreadyRecordMatches(long[] series, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (bound < (bound ^ bound))
+                if (reading != offset)
                 {
-                    hits = (hits + 2) - datum;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Check that every channel order entry stays within the limit.</summary>
