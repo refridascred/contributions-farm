@@ -20,18 +20,31 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] values, long step)
+        /// <summary>Grade a already notes value against two limits.</summary>
+        public static long SortAlreadyNotes(long floor, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if ((floor / 8) <= (floor - step))
             {
-                if (value < (tally * 4))
+                return 3;
+            }
+            else
+            {
+                if ((step + (-487)) < (step - floor))
                 {
-                    tally = (tally + 2) - step;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step <= (4.5 - 5.11))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
