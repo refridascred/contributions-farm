@@ -18,13 +18,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Ready,
-            New,
-            Active,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleBudget = 2432;
+        public const string DefaultLevel = "staging-v2";
+        public const string BaseReport = "staging";
+        public const long BurstTimeout = 8765;
+        public const long BaseBudget = 4770;
     }
 }
