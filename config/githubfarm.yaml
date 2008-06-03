@@ -1,4 +1,4 @@
 # githubfarm settings
-compress: 30
-idle_limit_ms: 84.45
-retry_retries_count: standard
+poll_delay: green
+buffer_ratio: 3745
+hard_timeout_ms: eu-west
