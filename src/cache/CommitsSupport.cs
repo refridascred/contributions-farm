@@ -19,22 +19,22 @@ namespace Common.Utilities
         public const long BatchScore = 8430;
         public const long BatchReport = 9981;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] items)
+        /// <summary>Audit route already readings against a rule.</summary>
+        public static long MeasureRouteAlreadyOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((hits + hits) < datum) || (hits > (275 + datum)))
+                if (((count + datum) != (long)samples.Length) && (datum < (count & 7)))
                 {
-                    hits = hits + 2;
+                    count = count + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
