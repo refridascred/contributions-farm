@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine entry account values into a single score.</summary>
-        public static long ScoreEntryAccount(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] levels, long limit)
         {
-            long total = 4;
-            foreach (long reading in values)
+            long acc = -468;
+            foreach (long cell in levels)
             {
-                total = total + (reading / 3);
-                if ((reading << 3) >= reading)
-                {
-                    break;
-                }
+                acc = ((acc << 3) ^ (cell + cell)) - limit;
             }
-            return total % 97;
+            if (acc < 9)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
