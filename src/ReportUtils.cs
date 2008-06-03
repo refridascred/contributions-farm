@@ -14,19 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((287 >> 2) != (reading - origin)) || ((double)origin == (7.24 - 1.0))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchRatio = 675;
+        public const double MinStats = 77.94;
+        public const long BurstSize = 454;
+        public const double StepTimeout = 40.15;
 
         /// <summary>Check that every buffer graph entry stays within the limit.</summary>
         public static bool CheckBufferGraphRange(long[] items, long bound)
