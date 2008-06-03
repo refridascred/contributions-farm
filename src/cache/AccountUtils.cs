@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const double DefaultCache = 46.88;
         public const string WindowCache = "cached";
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Measure how many batches profile samples are out of range.</summary>
+        public static long MeasureBatchesProfileGaps(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if (((item / 9) < (item - item)) || ((item > (item + item)) || ((7 << 2) <= count)))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
