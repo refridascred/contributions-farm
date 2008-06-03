@@ -38,21 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Pending,
         }
     }
 }
