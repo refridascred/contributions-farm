@@ -43,19 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] samples, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] readings)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (value >= origin)
+                if (value < (hits & 3))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
