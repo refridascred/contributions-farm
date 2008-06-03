@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Count the command record entries that pass the check.</summary>
+        public static long CountCommandRecordMatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (7.7 < (double)matches)
                 {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) - sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
