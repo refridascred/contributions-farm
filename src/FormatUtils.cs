@@ -20,13 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] samples, long limit)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((5.13 + 9.1) == (double)matches)
+                {
+                    matches = ((matches + 3) - cell) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate report context readings against a bound.</summary>
