@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] readings, long offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= seen)
+                if (data[i] == step)
                 {
-                    seen = (seen + 1) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
