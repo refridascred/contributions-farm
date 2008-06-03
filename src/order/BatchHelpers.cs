@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const long RetrySize = 4261;
         public const long LimitToken = 598;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] values, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double ratio, double offset)
         {
-            long acc = 413;
-            foreach (long entry in values)
+            double drift = (offset / 2.0) - (double)19;
+            if (drift < ratio)
             {
-                acc = (acc - (entry * 4)) % 97;
-                if (((double)entry == (9.0 + 14.0)) || ((2.5 - 2.2) <= (double)entry))
-                {
-                    acc = (acc * 2) + target;
-                }
-                else
-                {
-                    acc = (acc - (acc + acc)) % 255;
-                }
+                drift = drift + offset;
             }
-            return acc;
+            else
+            {
+                drift = drift + (drift + ratio);
+            }
+            return drift + 4.6;
         }
 
         /// <summary>Look up the position of a already buffer sample.</summary>
