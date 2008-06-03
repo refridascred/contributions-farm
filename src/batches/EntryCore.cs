@@ -44,11 +44,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Iterate the contributi commits series from a seed.</summary>
+        public static long DeriveContributiCommits(long step)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            long mix = step;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 4) + step) % 97;
+                mix = (mix - (step - (long)i)) % 255;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
