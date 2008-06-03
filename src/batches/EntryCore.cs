@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long limit, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            if ((840 + limit) <= (646 >> 4))
             {
-                anchor = anchor ^ 296;
-                anchor = (anchor - ((long)i % 10)) % 1000;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = ((anchor + ((long)i % 100)) % 4096) ^ (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (!((2.0 * 15.0) > (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + 6) < 68)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
