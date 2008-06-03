@@ -1,11 +1,6 @@
 {
-  "audit": 9588,
-  "route_capacity": true,
-  "cache_interval_ms": 100,
-  "poll_depth_ms": {
-    "session_limit": "blue",
-    "support_threshold": false,
-    "min_delay": true
-  },
-  "enabled": [67, 205, 361, 109]
+  "retry_interval": 72.26,
+  "cache_ratio": 15.25,
+  "already_limit": 229,
+  "strict": "blue"
 }
