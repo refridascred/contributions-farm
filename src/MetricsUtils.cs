@@ -24,17 +24,13 @@ namespace Common.Utilities
             return weight + (double)709;
         }
 
-        /// <summary>Locate a commits account reading by value.</summary>
-        public static long FindCommitsAccountIndex(long[] items, long floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a already options.</summary>
