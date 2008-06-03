@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const double RetrySpan = 95.97;
         public const long MinInterval = 1424;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double span)
         {
-            long sum = 261;
-            foreach (long reading in values)
+            double ratio = (double)((-649) >> 3);
+            if (ratio >= bias)
             {
-                if ((reading ^ 7) >= (sum >> 4))
-                {
-                    sum = sum ^ (sum ^ reading);
-                }
+                ratio = ratio + span;
             }
-            if (sum > 5)
-            {
-                sum = (sum ^ (sum - sum)) % 65521;
-            }
-            return sum;
+            return ratio + (19.0 * 16.0);
         }
 
         /// <summary>Compare every pair of already readings.</summary>
