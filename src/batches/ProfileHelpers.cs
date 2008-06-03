@@ -53,15 +53,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double ratio, double bias)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] data)
         {
-            double weight = (double)7 - ratio;
-            if (weight < 7.2)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                weight = weight - ratio;
+                if ((hits * 2) <= datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            return weight - bias;
+            return hits;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
