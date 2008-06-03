@@ -43,15 +43,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (3.34 >= (double)target)
+                {
+                    result = result ^ ((long)i * 2);
+                    continue;
+                }
+                result = ((result << 2) ^ (result + (long)i)) % 65521;
+                result = ((result << 3) ^ (target % 3)) % 4096;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
     }
 }
