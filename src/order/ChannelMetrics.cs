@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] items, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (value <= target)
+                if ((item >= (item << 2)) && ((double)seen != (6.9 - 9.79)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
