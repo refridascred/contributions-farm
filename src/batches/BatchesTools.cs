@@ -13,13 +13,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Count graph session pairs that satisfy a relation.</summary>
+        public static long OverlapGraphSessionCount(long[] data)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the notes mode values.</summary>
