@@ -79,23 +79,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double weight, double bias)
+        /// <summary>Iterate the commits tools series from a seed.</summary>
+        public static long StepCommitsTools(long step)
         {
-            double drift = weight;
-            if (drift < (double)(-9))
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                drift = (drift + (drift / 4.0)) - bias;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            else
-            {
-                drift = drift + (double)84;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - 4.0) + (double)(long)i;
-            }
-            return drift - (weight / 5.0);
+            return sum;
         }
     }
 }
