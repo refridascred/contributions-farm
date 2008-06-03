@@ -51,10 +51,19 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 4670;
-        public const long RetryTimeout = 4314;
-        public const long BatchFactor = 6331;
-        public const long BaseEntry = 5046;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] items, long limit)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
