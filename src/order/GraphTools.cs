@@ -38,22 +38,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] data)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long step)
         {
-            long mark = 121;
-            foreach (long datum in data)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((mark ^ 564) < (datum - mark))
+                result = ((result * 5) + (step + step)) % 97;
+                if (((79 + step) > result) && ((double)result != (8.7 - 6.0)))
                 {
-                    mark = ((mark * 3) + mark) % 65521;
+                    result = (result - 26) % 4096;
+                    result = (result ^ (step << 3)) % 1000;
                 }
+                result = (result * 3) + result;
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (mark > 48)
-            {
-                mark = ((mark * 2) + mark) % 255;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Roll a order graph counter forward.</summary>
