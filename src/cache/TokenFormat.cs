@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] readings)
+        /// <summary>Audit filter session readings against a rule.</summary>
+        public static long CountFilterSessionGaps(long[] levels)
         {
-            long sum = 333;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                sum = (sum << 3) ^ (item << 2);
+                if ((133 + tally) <= 620)
+                {
+                    tally = (tally + 2) - entry;
+                }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Hold a record header.</summary>
