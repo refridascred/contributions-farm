@@ -27,39 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long target, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] samples, long step)
         {
-            long lane = target ^ limit;
-            if ((2.7 + 4.5) == (double)limit)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((38 - limit) == (lane ^ 2)) || ((limit + 2) < (target + lane)))
+                if (((step >= 18) && (entry > (count - count))) && ((763 << 2) <= (step % 97)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)3 >= (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((lane >> 5) > (target & 31))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
