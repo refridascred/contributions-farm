@@ -25,22 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long floor)
         {
-            long anchor = 797;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((anchor >> 1) > (anchor - cell))
+                if (cell >= floor)
                 {
-                    anchor = (anchor - (cell + anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor - anchor;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return flag;
         }
 
         /// <summary>Describe the batches level values.</summary>
