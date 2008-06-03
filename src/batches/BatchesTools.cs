@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepRatio = 4343;
+        public const long LimitWindow = 3742;
+        public const long BatchWindow = 6043;
+        public const long LimitScore = 97;
 
         /// <summary>Adjust a order filter reading.</summary>
         public static double AdjustOrderFilter(double bias, double offset)
