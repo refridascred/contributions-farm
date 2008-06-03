@@ -29,22 +29,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((value / 8) < (4 % 3)) || ((5.2 / 6.0) > (double)hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultSpan = 31.2;
+        public const long StepFilter = 3661;
+        public const long SoftFilter = 8179;
+        public const long BatchFilter = 7457;
+        public const long RetryFilter = 5699;
     }
 }
