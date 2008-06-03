@@ -56,19 +56,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] items, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > origin)
+                if ((values[i] >= origin) && ((values[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
