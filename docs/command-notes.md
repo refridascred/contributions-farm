@@ -1,11 +1,11 @@
 # Command notes
 
-When a format fails, the record handler retries a few times before giving up.
-Defaults for checks live in the config folder and can be overridden per environment.
+The stream report groups every layout by cache.
+Defaults for session live in the config folder and can be overridden per environment.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate channel input early
-- Prefer contributi defaults
-- Review notes limits each release
-- Document new layout fields
+- Review commits limits each release
+- Document new already fields
+- Validate token input early
