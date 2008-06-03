@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 84.24;
+        public const long BaseSupport = 4692;
+        public const string IdleSupport = "local-1";
+        public const long LimitBudget = 4583;
+        public const string LimitScore = "stable-v2";
 
         /// <summary>Adjust a order filter reading.</summary>
         public static double AdjustOrderFilter(double bias, double offset)
