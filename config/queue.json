@@ -1,7 +1,8 @@
 {
-  "batch_window": 1024,
-  "cache_interval": 9444,
-  "checks_ratio": [372, 309, 144],
-  "persist": 93.98,
-  "flush_size_s": [91, 358, 251]
+  "report_threshold": ["standard", "cached", "edge", "cached"],
+  "strict": false,
+  "idle_size_ms": false,
+  "idle_capacity": 44,
+  "retry_capacity_s": 67.68,
+  "cache_size": "staging"
 }
