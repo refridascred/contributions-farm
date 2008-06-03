@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Count notes schema pairs that satisfy a relation.</summary>
+        public static long PairNotesSchemaCount(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry + floor) <= (floor & 15))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] - data[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a already options.</summary>
