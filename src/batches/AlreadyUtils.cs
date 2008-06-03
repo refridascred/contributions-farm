@@ -44,17 +44,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((values[i] >= origin) && ((values[i] % 5) == 0))
+                if (entry <= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
