@@ -53,18 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] items)
+        /// <summary>Audit payload graph readings against a rule.</summary>
+        public static long CountPayloadGraphHits(long[] samples)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (item < (20 % 16))
+                if ((372 - matches) <= 78)
                 {
-                    count = count + 2;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
