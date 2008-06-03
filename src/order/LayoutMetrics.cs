@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            long carry = 2;
-            foreach (long entry in data)
+            long result = 71;
+            foreach (long datum in levels)
             {
-                carry = ((carry - (entry ^ carry)) % 4096) + origin;
+                if (result < datum)
+                {
+                    result = (result - (result ^ 668)) % 97;
+                }
             }
-            if (carry < (-406))
-            {
-                carry = (carry ^ (carry * 5)) % 65521;
-            }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
