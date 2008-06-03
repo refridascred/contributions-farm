@@ -1,7 +1,7 @@
 {
-  "sync_retries_pct": true,
-  "hard_timeout": [433, 490, 346],
-  "flush_threshold_count": ["latest", "local"],
-  "farm_depth": 30,
-  "booking_ttl": 3.61
+  "window_timeout": true,
+  "idle_delay_pct": ["green", "fallback", "latest"],
+  "order_ttl": "staging",
+  "flush_interval_count": ["eu-west", "primary"],
+  "cache_ttl_count": 40
 }
