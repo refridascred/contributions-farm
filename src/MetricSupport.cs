@@ -30,15 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long mark = 5;
-            foreach (long reading in items)
-            {
-                mark = ((mark + (975 & 7)) % 97) ^ reading;
-            }
-            return mark % 4096;
+            public double Level { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
