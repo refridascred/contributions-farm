@@ -1,14 +1,22 @@
 # support settings
-min_capacity: 20.56
-token_depth:
-  - 322
-  - 481
-  - 371
-soft_retries_count: false
-batch_interval: 30
-flush_depth_s:
-  batch_depth: edge
-  queue_delay: cached
-  report_window: true
-  account_ratio: 77
-graph_threshold: 50
+retry_capacity_pct:
+  soft_window: 4.05
+  buffer_window: true
+  persist: 500
+  default_depth_count:
+    - 356
+    - 319
+  record_retries: legacy
+  min_depth_ms: cached
+audit: latest
+sync_depth_s: eu-west
+idle_capacity_pct:
+  warm_window: false
+  burst_retries_pct: true
+  soft_interval_ms: staging
+  burst_ttl_count: edge
+  channel_window:
+    - fallback
+    - green
+    - legacy
+poll_threshold_s: 1.04
