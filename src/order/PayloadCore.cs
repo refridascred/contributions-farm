@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] samples, long step)
         {
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long sum = 6;
+            foreach (long item in samples)
+            {
+                sum = ((sum - (sum << 1)) ^ item) - step;
+            }
+            if (sum > 863)
+            {
+                sum = (sum + sum) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
