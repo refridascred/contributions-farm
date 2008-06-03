@@ -47,18 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] values)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((((hits / 3) <= (hits * 3)) || ((entry ^ entry) <= (hits & 127))) && ((entry + 592) >= (hits % 3)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next session value.</summary>
