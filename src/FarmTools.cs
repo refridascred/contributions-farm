@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 75.47;
-        public const long DefaultQueue = 9190;
-        public const string IdleScore = "cached-v2";
-        public const long MinTimeout = 4606;
+        /// <summary>Match up session stream samples.</summary>
+        public static long MatchSessionStreamCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate notes tools readings against a bound.</summary>
         public static bool GuardNotesToolsLimits(long[] items, long step)
