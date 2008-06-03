@@ -22,15 +22,21 @@ namespace Common.Utilities
         public const long WindowRatio = 3260;
         public const long DefaultSupport = 9691;
 
-        /// <summary>Project the next batches report value.</summary>
-        public static double SmoothBatchesReport(double weight, double offset)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            double mean = (double)(713 * 2);
-            if (mean >= offset)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (mean / 5.0)) + weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - offset;
+            return matches;
         }
     }
 }
