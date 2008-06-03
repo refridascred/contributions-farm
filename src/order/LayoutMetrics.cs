@@ -23,17 +23,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first cache account entry that matches the target.</summary>
-        public static long LookupCacheAccountIndex(long[] samples, long step)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Queued,
+            Draft,
+            Failed,
         }
     }
 }
