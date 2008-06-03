@@ -1,10 +1,19 @@
 {
-  "retry_ratio": false,
-  "compress": {
-    "enabled": "blue",
-    "cache_retries_ms": true,
-    "dry_run": true
+  "contributi_capacity": 250,
+  "batches_capacity": 93.71,
+  "base_ttl": {
+    "batches_limit": "eu-west",
+    "verbose": 4159,
+    "poll_ttl": "eu-west",
+    "strict": {
+      "base_timeout": "strict",
+      "burst_retries_count": "eu-west",
+      "default_limit_ms": "staging",
+      "min_ratio_count": 18.75,
+      "max_size": 48.68
+    }
   },
-  "idle_ratio_ms": 25.06,
-  "warm_ratio": 8164
+  "batch_interval_ms": 81,
+  "warm_size_s": "standard",
+  "poll_ratio_pct": true
 }
