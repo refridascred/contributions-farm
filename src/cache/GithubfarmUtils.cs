@@ -48,10 +48,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "legacy";
-        public const double SoftDepth = 64.89;
-        public const long CacheRatio = 2989;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double ratio, double span)
+        {
+            double scale = span - (span - span);
+            if (scale >= (scale / 8.0))
+            {
+                scale = (scale + scale) + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (double)1) + (double)(long)i;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LocateQueueIndex(long[] levels, long offset)
