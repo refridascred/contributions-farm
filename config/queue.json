@@ -1,6 +1,5 @@
 {
-  "soft_delay_s": 70.64,
-  "soft_interval": ["open", "open"],
-  "readonly": true,
-  "hard_limit_ms": "staging"
+  "base_threshold_ms": 30.18,
+  "batch_size_pct": true,
+  "warm_capacity_ms": "blue"
 }
