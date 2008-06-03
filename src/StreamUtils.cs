@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            Active,
-            Failed,
-            New,
+            long anchor = 379;
+            foreach (long entry in readings)
+            {
+                anchor = anchor + 6;
+                anchor = (anchor * 3) + (anchor + anchor);
+                if (!((anchor + entry) > (anchor / 7)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 86)
+            {
+                anchor = (anchor * 3) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a format stats.</summary>
