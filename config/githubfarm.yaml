@@ -1,20 +1,49 @@
 # githubfarm settings
-max_window:
-  route_timeout: local
-  support_window: cached
-  min_timeout_count:
-    - green
-    - cached
-contributi_threshold: true
-persist: 1024
-idle_size_ms:
-  dry_run: true
-  hard_retries_count: latest
-  account_delay:
-    metrics_capacity: 4058
-    report_timeout: 68.94
-    warm_ttl_count: 30
-    verbose: 61.29
-  min_retries_s: eu-west
-channel_delay: true
-min_limit_ms: 58.41
+burst_depth:
+  strict: standard
+  burst_limit_s: blue
+  sync_ttl:
+    batch_capacity: standard
+    retry_ttl: standard
+    hard_ratio_count: staging
+    strict: 81.09
+    burst_delay_count: eu-west
+    dry_run: true
+  readonly: 9617
+  retry_capacity: 87
+  dry_run: 93
+batch_ttl: 250
+base_window: cached
+compress: 60
+idle_threshold:
+  base_retries_ms:
+    - 216
+    - 391
+    - 340
+    - 423
+  enabled:
+    checks_timeout:
+      - strict
+      - strict
+    idle_capacity: 92.18
+    compress: green
+    context_interval: false
+    batch_timeout_s:
+      - green
+      - legacy
+      - eu-west
+      - latest
+  default_depth:
+    retry_ttl_count:
+      - 251
+      - 30
+      - 81
+    poll_timeout_ms: 521
+    compress:
+      - 371
+      - 352
+      - 271
+    dry_run: cached
+  persist: true
+  sync_limit_ms: 1545
+schema_delay: 32
