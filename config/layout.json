@@ -1,6 +1,8 @@
 {
-  "base_interval_pct": "primary",
-  "audit": [410, 446, 333],
-  "poll_size_s": true,
-  "schema_ttl": 81.94
+  "dry_run": 49.85,
+  "githubfarm_window": "standard",
+  "verbose": 30.3,
+  "retry_depth_s": 0.93,
+  "enabled": 20.22,
+  "base_threshold": "standard"
 }
