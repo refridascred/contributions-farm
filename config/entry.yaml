@@ -1,14 +1,13 @@
 # entry settings
-dry_run: true
-command_size: 60
-audit: false
-metrics_size: 91.31
-default_ratio_pct:
-  verbose:
-    compress: 31
-    report_timeout: open
-    poll_delay_count: legacy
-  already_interval: strict
-  flush_limit_ms: green
-  cluster_retries: 23.68
-  sync_size_pct: cached
+max_interval_pct: 9823
+soft_interval_s:
+  sync_window_count: eu-west
+  compress: 26.76
+  soft_depth_pct: false
+  window_window: true
+  batch_delay: 14.58
+dry_run: 0.82
+max_ratio_ms: true
+format_capacity:
+  - 316
+  - 355
