@@ -1,6 +1,4 @@
 # entry settings
-stream_interval: edge
-dry_run: 5979
-hard_threshold_s: 100
-min_window: 35.18
-payload_ttl: false
+burst_limit_pct: staging
+max_depth_ms: 250
+poll_ratio_count: fallback
