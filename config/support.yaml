@@ -1,5 +1,19 @@
 # support settings
-hard_depth: 37
-max_capacity: 60
-poll_ttl_ms: stable
-min_timeout: 500
+report_ratio:
+  - 88
+  - 356
+  - 495
+  - 487
+burst_interval:
+  command_delay: 12
+  burst_limit_count: 90.74
+  stream_window: green
+idle_ttl_s:
+  - 37
+  - 83
+  - 128
+  - 428
+editor_ratio:
+  - 217
+  - 39
+  - 163
