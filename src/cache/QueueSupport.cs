@@ -16,19 +16,22 @@ namespace Common.Utilities
             return weight - (double)311;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] series, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (datum >= seed)
+                if ((origin + reading) >= 84)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
