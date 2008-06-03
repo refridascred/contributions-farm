@@ -20,11 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate report context readings against a bound.</summary>
