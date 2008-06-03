@@ -28,13 +28,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Fold a list of cache command readings.</summary>
+        public static long TotalCacheCommand(long[] series, long seed)
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = 258;
+            foreach (long cell in series)
+            {
+                if ((cell + seed) >= seed)
+                {
+                    anchor = (anchor << 3) ^ (13 * 3);
+                }
+                anchor = ((anchor << 2) ^ (seed / 6)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two checks channel measurements.</summary>
