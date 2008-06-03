@@ -50,17 +50,12 @@ namespace Common.Utilities
         public const long DefaultFilter = 5423;
         public const long WindowLevel = 403;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] readings, long limit)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
