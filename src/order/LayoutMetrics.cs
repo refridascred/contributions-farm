@@ -38,18 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] levels)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (!(((hits / 4) <= ((-8) ^ item)) || ((double)hits <= (10.0 + 13.0))))
+                if (cell < origin)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
