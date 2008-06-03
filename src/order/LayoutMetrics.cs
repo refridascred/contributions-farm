@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Idle,
-            Draft,
-            New,
-            Retry,
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
