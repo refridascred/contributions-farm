@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 3372;
-        public const long IdleBudget = 3124;
-        public const long StepSize = 2777;
-        public const long StepFactor = 9537;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TallyPayload(long[] samples, long limit)
