@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the command record entries that pass the check.</summary>
-        public static long CountCommandRecordMatches(long[] readings)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (7.7 < (double)matches)
+                if (items[i] >= target)
                 {
-                    matches = (matches + 3) - sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the window status values.</summary>
