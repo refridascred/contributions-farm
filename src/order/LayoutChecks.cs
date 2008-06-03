@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] values, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long acc = 745;
-            foreach (long entry in values)
-            {
-                acc = (acc - (limit + 6)) ^ entry;
-            }
-            return acc % 97;
+            Draft,
+            New,
+            Done,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
