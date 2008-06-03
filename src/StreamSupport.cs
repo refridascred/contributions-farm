@@ -32,15 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double gain, double bias)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] values, long floor)
         {
-            double drift = (double)(618 ^ 538);
-            if (drift <= drift)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + gain;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift - bias;
+            return -1;
         }
     }
 }
