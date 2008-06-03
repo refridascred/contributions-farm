@@ -37,15 +37,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            double load = (7.0 / 4.0) * 0.49;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = ((load + (load * 8.83)) + (double)(long)i) + gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + (offset * 13.0);
+            return matches;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
