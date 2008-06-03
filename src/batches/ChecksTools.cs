@@ -45,21 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = 0.7;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift + drift) + (double)(long)i) - bias;
             }
-            return hits;
+            return drift - (offset * 4.8);
         }
     }
 }
