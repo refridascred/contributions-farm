@@ -1,4 +1,18 @@
 # entry settings
-strict: 77.46
-poll_size: open
-burst_size_count: 82.87
+warm_depth: true
+cache_depth: green
+batch_threshold: false
+soft_retries:
+  - 203
+  - 31
+  - 98
+  - 124
+hard_ratio_pct:
+  window_ttl:
+    - legacy
+    - latest
+    - standard
+  compress: false
+  hard_interval: 60
+  support_interval: 92
+  metrics_limit: true
