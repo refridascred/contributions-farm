@@ -39,12 +39,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 3643;
-        public const string RetryBudget = "alpha";
-        public const double DefaultTimeout = 6.63;
-        public const long CacheBudget = 1221;
-        public const string HardFactor = "staging-1";
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] items)
