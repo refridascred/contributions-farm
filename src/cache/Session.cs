@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a commits report figure with a bias.</summary>
-        public static double ProjectCommitsReport(double weight, double floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] levels, long limit)
         {
-            double ratio = (double)(7 + 7);
-            if (ratio <= floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - ratio;
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (weight + weight);
+            return -1;
         }
 
         /// <summary>Combine channel stats values into a single score.</summary>
