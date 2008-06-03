@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema queue sample.</summary>
-        public static long SeekSchemaQueueIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] > floor)
+                if ((data[i] <= limit) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
