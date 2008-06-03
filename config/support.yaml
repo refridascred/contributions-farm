@@ -1,15 +1,9 @@
 # support settings
-batch_delay_ms: 1669
-max_delay_pct:
-  tools_window:
-    - blue
-    - open
-    - staging
-  cache_ttl_s: true
-  persist: 2405
-  idle_retries: 500
-  route_timeout: 9793
-hard_delay_pct: true
-readonly:
-  - strict
-  - eu-west
+cache_threshold:
+  - local
+  - stable
+account_timeout: true
+batch_size: 7715
+base_delay:
+  - standard
+  - blue
