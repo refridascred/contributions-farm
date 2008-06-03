@@ -1,5 +1,8 @@
 {
-  "metrics_delay": "local",
-  "base_threshold": "primary",
-  "buffer_ratio": "primary"
+  "dry_run": 79.81,
+  "flush_size_pct": 3750,
+  "cache_depth_ms": "open",
+  "batch_capacity_ms": "stable",
+  "session_interval": [83, 22, 288],
+  "min_capacity": "staging"
 }
