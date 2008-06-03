@@ -43,31 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long step, long floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            if ((step % 100) > (step / 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step / 9) <= (step - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step <= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Failed,
+            New,
         }
     }
 }
