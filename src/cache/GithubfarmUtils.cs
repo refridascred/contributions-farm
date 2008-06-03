@@ -15,19 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((((double)matches >= (9.49 * 3.0)) || ((matches << 3) == (reading * 2))) || ((1.59 + 9.0) > (double)reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 8776;
+        public const long StepSchema = 8816;
+        public const long WindowScore = 4717;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
