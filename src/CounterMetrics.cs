@@ -27,32 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long limit, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] samples, long offset)
         {
-            long span = limit ^ target;
-            if (9.3 <= (double)target)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit << 2) <= limit)
+                if (reading > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target ^ span) != (span * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
