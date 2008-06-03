@@ -62,19 +62,21 @@ namespace Common.Utilities
         public const long StepWidth = 6366;
         public const double WindowLevel = 4.78;
 
-        /// <summary>Check that every filter record entry stays within the limit.</summary>
-        public static bool CheckFilterRecordRange(long[] levels, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Fold a list of format session readings.</summary>
