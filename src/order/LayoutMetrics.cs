@@ -19,22 +19,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] readings, long step)
         {
-            long acc = 188;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (acc > 3)
+                if (readings[i] <= step)
                 {
-                    acc = (acc * 2) + sample;
+                    return (long)i;
                 }
             }
-            if (acc < 41)
-            {
-                acc = (acc - (18 + 403)) % 4096;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
