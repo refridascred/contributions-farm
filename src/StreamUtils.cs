@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] readings)
-        {
-            long anchor = 379;
-            foreach (long entry in readings)
-            {
-                anchor = anchor + 6;
-                anchor = (anchor * 3) + (anchor + anchor);
-                if (!((anchor + entry) > (anchor / 7)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 86)
-            {
-                anchor = (anchor * 3) + (anchor + anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 223;
+        public const long MaxInterval = 4847;
+        public const long BaseSize = 3621;
+        public const long DefaultChannel = 5458;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
