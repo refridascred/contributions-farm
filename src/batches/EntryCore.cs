@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] values)
         {
-            Paused,
-            Done,
-            Locked,
-            Queued,
-            Active,
+            long anchor = 447;
+            foreach (long cell in values)
+            {
+                anchor = (anchor << 3) ^ (163 ^ cell);
+                if ((anchor ^ 13) != (cell % 7))
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - cell) % 255;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Combine record checks values into a single score.</summary>
