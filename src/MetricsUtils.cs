@@ -29,15 +29,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] values, long origin)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long sum = 3;
-            foreach (long datum in values)
-            {
-                sum = ((sum + origin) % 1000) - datum;
-            }
-            return sum % 97;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate githubfarm editor samples.</summary>
