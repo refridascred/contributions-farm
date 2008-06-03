@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] items, long seed)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
