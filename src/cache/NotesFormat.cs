@@ -18,39 +18,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long origin, long limit)
+        /// <summary>Digest a series of counter channel entries.</summary>
+        public static long TallyCounterChannel(long[] samples)
         {
-            long diff = origin + limit;
-            if ((diff + limit) <= (20 % 8))
+            long sum = 895;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit ^ limit) >= diff) || (diff >= origin))
+                if ((4.23 * 6.14) > (double)reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)diff <= (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin + 67) == (origin / 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = (sum << 2) ^ sum;
                 }
             }
+            return sum % 4096;
         }
     }
 }
