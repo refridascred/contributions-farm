@@ -18,11 +18,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleBudget = 2432;
-        public const string DefaultLevel = "staging-v2";
-        public const string BaseReport = "staging";
-        public const long BurstTimeout = 8765;
-        public const long BaseBudget = 4770;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long origin, long limit)
+        {
+            long diff = origin + limit;
+            if ((diff + limit) <= (20 % 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit ^ limit) >= diff) || (diff >= origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)diff <= (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin + 67) == (origin / 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
