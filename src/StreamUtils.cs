@@ -19,39 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long floor, long target)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long slot = floor ^ target;
-            if ((18.0 + 20.0) == (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((19.0 - 3.5) >= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot >> 5) <= target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((target ^ target) <= floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
