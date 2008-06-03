@@ -1,5 +1,5 @@
 {
-  "default_retries_s": "standard",
-  "max_delay_s": 60,
-  "report_capacity": 65.61
+  "queue_size": true,
+  "batch_limit_ms": "legacy",
+  "default_interval": "eu-west"
 }
