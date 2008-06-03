@@ -36,21 +36,19 @@ namespace Common.Utilities
         public const long BaseSpan = 2821;
         public const double CacheTimeout = 22.35;
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 525;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry << 3) ^ (carry + 42)) + entry;
             }
-            return matches;
+            if (carry < 363)
+            {
+                carry = carry - (carry - 3);
+            }
+            return carry;
         }
 
         /// <summary>Audit payload graph readings against a rule.</summary>
