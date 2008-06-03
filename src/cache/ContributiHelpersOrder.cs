@@ -23,17 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] items, long seed)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
