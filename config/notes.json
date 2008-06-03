@@ -1,5 +1,6 @@
 {
-  "farm_size": [325, 336, 471, 162],
-  "enabled": "stable",
-  "min_interval": 9.26
+  "session_retries": 56.3,
+  "poll_ratio": 100,
+  "verbose": 43.94,
+  "warm_threshold_s": 100
 }
