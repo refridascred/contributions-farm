@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 4984;
+        public const long MaxSize = 5688;
+        public const double HardScore = 7.37;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordHits(long[] values)
