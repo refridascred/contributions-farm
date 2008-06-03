@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Fold a list of stats session readings.</summary>
+        public static long FoldStatsSession(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            long carry = 89;
+            foreach (long entry in samples)
             {
-                mark = (mark - (1 % 3)) % 255;
-                mark = mark - (mark * 4);
-                mark = ((mark * 4) + (long)i) % 4093;
+                carry = (carry ^ ((long)samples.Length / 3)) + entry;
             }
-            return mark;
+            if (carry > 0)
+            {
+                carry = carry + (19 ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a format record.</summary>
