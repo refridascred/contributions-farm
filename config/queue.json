@@ -1,14 +1,11 @@
 {
-  "default_depth_s": "cached",
-  "default_depth_pct": 4584,
-  "session_limit": {
-    "soft_delay_count": false,
-    "compress": true,
-    "record_window": "staging",
-    "sync_limit": 61.29,
-    "verbose": "eu-west"
+  "dry_run": {
+    "min_window_pct": "stable",
+    "cluster_size": 7973,
+    "flush_size": 1110
   },
-  "min_delay_count": 15.1,
-  "cache_ttl_count": 5.7,
-  "poll_window_count": 250
+  "enabled": 1136,
+  "warm_limit_s": 60,
+  "order_window": 23,
+  "sync_ratio_s": 5404
 }
