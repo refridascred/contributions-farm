@@ -26,10 +26,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 285;
-        public const string BatchFactor = "standard";
-        public const long RetryRecord = 8626;
-        public const double HardWidth = 70.06;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!((9 + hits) >= hits) && (((entry - entry) > (hits >> 4)) && ((hits % 16) > (hits ^ 58))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
