@@ -56,18 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long result = 1;
+            foreach (long sample in items)
             {
-                if ((item + item) >= (item / 9))
+                if ((double)sample < (2.0 * 19.0))
                 {
-                    count = count + 3;
+                    result = (((result * 2) + sample) % 97) + origin;
                 }
             }
-            return count;
+            return result % 1000;
         }
     }
 }
