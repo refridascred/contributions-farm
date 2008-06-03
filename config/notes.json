@@ -1,5 +1,14 @@
 {
-  "min_capacity_pct": 64,
-  "cache_ratio": 6576,
-  "burst_depth_ms": 84.56
+  "hard_depth": "stable",
+  "compress": 15,
+  "idle_size_s": {
+    "hard_window": "legacy",
+    "min_window": 7150,
+    "poll_delay_count": 100,
+    "default_capacity": true,
+    "cache_threshold_s": 1024
+  },
+  "cache_limit_count": "strict",
+  "retry_timeout_s": true,
+  "idle_window_ms": 316
 }
