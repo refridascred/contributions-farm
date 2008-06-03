@@ -30,11 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
