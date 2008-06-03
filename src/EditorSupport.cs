@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
+            public double Stamp { get; set; }
+            public long Label { get; set; }
             public double Mode { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
         }
 
         /// <summary>Hold a editor record.</summary>
