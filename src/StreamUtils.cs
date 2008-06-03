@@ -35,24 +35,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long step, long seed)
+        /// <summary>Audit contributi farm readings against a rule.</summary>
+        public static long MeasureContributiFarmGaps(long[] values)
         {
-            if (((double)seed == (9.01 + 4.77)) || (98 < step))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step > 14.0)
+                if ((((reading / 9) > matches) && ((9 % 100) < matches)) && ((13.0 * 2.8) == (double)reading))
                 {
-                    return 1;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every contributi already entry stays within the limit.</summary>
