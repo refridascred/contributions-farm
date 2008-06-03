@@ -20,25 +20,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long target, long step)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            long cur = target + step;
-            if ((target * 2) > (step + 233))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step ^ target) <= (target ^ cur))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] + values[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the payload kind values.</summary>
