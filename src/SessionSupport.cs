@@ -29,10 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 25.39;
-        public const long BaseBudget = 4561;
-        public const string WindowFormat = "standard";
-        public const string MaxTimeout = "standard-edge";
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings, long origin)
+        {
+            long score = 974;
+            foreach (long value in readings)
+            {
+                if ((score & 15) == (score + 1))
+                {
+                    score = ((score << 3) ^ origin) + value;
+                }
+            }
+            return score;
+        }
     }
 }
