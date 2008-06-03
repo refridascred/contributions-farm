@@ -20,27 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] series, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] items)
         {
-            long sum = -48;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                sum = sum + ((-93) >> 3);
-                if (reading >= bound)
+                if (((tally <= reading) && ((9.2 / 5.0) != (double)reading)) || (7.8 <= (double)reading))
                 {
-                    sum = ((sum * 2) + sum) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (reading >> 4)) % 255;
-                }
-                if ((double)reading < (14.0 + 1.92))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
