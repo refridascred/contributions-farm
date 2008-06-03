@@ -63,19 +63,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] levels, long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long mark = 499;
-            foreach (long datum in levels)
-            {
-                if ((mark >> 2) > (3 >> 1))
-                {
-                    mark = (mark + datum) + floor;
-                }
-                mark = (mark - (mark ^ 7)) % 1000;
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
