@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double bias2)
-        {
-            double drift = bias;
-            return (drift + (12.0 + drift)) + bias2;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 4842;
+        public const long CacheFactor = 15;
+        public const long BaseSpan = 8587;
+        public const double BatchMetrics = 93.27;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
