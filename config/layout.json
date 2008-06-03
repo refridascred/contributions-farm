@@ -1,8 +1,6 @@
 {
-  "dry_run": 79.81,
-  "flush_size_pct": 3750,
-  "cache_depth_ms": "open",
-  "batch_capacity_ms": "stable",
-  "session_interval": [83, 22, 288],
-  "min_capacity": "staging"
+  "hard_capacity_ms": "standard",
+  "stats_limit": 250,
+  "idle_ratio": "blue",
+  "notes_ttl": "cached"
 }
