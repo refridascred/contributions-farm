@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Accumulate support context samples.</summary>
+        public static long TotalSupportContext(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 369;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value - sum) <= (value ^ (long)data.Length))
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum ^ ((-192) + sum)) + floor;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Describe the session class values.</summary>
