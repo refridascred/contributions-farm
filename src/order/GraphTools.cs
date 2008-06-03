@@ -67,11 +67,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 5879;
-        public const long CacheWidth = 8604;
-        public const long BatchCount = 382;
-        public const long DefaultReport = 319;
-        public const long DefaultWidth = 6458;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Queued,
+            Paused,
+            Locked,
+        }
     }
 }
