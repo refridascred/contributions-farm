@@ -19,16 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                result = result + (origin & 127);
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Paused,
+            Draft,
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate channel checks samples.</summary>
