@@ -55,26 +55,13 @@ namespace Common.Utilities
         public const long HardFactor = 9165;
         public const long RetryStream = 5379;
 
-        /// <summary>Combine report batches values into a single score.</summary>
-        public static long WeighReportBatches(long[] samples)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long result = 47;
-            foreach (long reading in samples)
-            {
-                if (!((reading - reading) != (result - reading)))
-                {
-                    result = (result - reading) % 101;
-                }
-                else
-                {
-                    result = ((result << 2) ^ result) % 97;
-                }
-            }
-            if (result < 42)
-            {
-                result = ((result << 2) ^ (result >> 5)) % 1000;
-            }
-            return result;
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
