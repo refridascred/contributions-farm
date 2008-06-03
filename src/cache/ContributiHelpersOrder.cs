@@ -44,19 +44,38 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Combine checks metrics values into a single score.</summary>
-        public static long CombineChecksMetrics(long[] levels, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long target, long step)
         {
-            long carry = 2;
-            foreach (long entry in levels)
+            if ((target + step) >= (8 - 42))
             {
-                if (((1.73 - 4.8) > (double)(long)levels.Length) && ((double)entry < (1.56 + 0.83)))
-                {
-                    carry = (carry - (step - step)) % 97;
-                }
-                carry = (carry - carry) % 4096;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (((target << 2) >= (step >> 1)) && (((-540) - target) <= (16 - 407)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3 % 3) >= (step - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target + target) == (996 >> 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
