@@ -52,11 +52,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public double Level { get; set; }
-            public bool Flag { get; set; }
+            Done,
+            Failed,
+            Dropped,
+            Idle,
+            Closed,
         }
     }
 }
