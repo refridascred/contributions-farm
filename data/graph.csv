@@ -1,7 +1,9 @@
-id,state,weight
-1,35.83,5.06
-2,17.32,40.96
-3,blue,20.84
-4,42.81,staging
-5,87.53,40.85
-6,67.4,open
+id,state,count,ratio,level
+1,491,882,764,cached
+2,85.58,671,63.8,primary
+3,latest,217,cached,open
+4,standard,53.14,67.87,955
+5,20.71,22,168,6.1
+6,403,224,287,371
+7,749,53.18,7.56,strict
+8,primary,779,53.02,green
