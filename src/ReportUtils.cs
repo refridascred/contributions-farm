@@ -32,18 +32,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a channel filter sample.</summary>
-        public static long FindChannelFilterIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "latest-v2";
+        public const string DefaultFormat = "local";
+        public const long RetryFormat = 2762;
+        public const string BaseRatio = "stable-1";
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
