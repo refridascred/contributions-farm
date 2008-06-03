@@ -1,8 +1,5 @@
 {
-  "poll_limit": "latest",
-  "session_ratio": "edge",
-  "flush_window_count": [211, 138, 347],
-  "warm_timeout_pct": 7,
-  "enabled": true,
-  "githubfarm_size": ["fallback", "open", "legacy", "fallback"]
+  "default_retries_s": "standard",
+  "max_delay_s": 60,
+  "report_capacity": 65.61
 }
