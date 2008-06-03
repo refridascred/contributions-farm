@@ -38,13 +38,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] samples)
         {
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((416 % 5) <= (count * 4)) || ((846 & 127) >= entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cluster stats.</summary>
