@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "latest-v2";
-        public const long BatchMetric = 9579;
-        public const string MaxMetric = "open";
-        public const long BaseMetric = 4699;
+        /// <summary>Validate already metric readings against a bound.</summary>
+        public static bool ValidateAlreadyMetricLimits(long[] samples, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] samples)
