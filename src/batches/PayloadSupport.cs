@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count commits token pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsTokenCount(long[] values)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
