@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long LimitTools = 5563;
         public const long WindowTools = 8649;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] readings, long limit)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((4.72 * 4.0) == (double)matches)
-                {
-                    matches = ((matches + 2) ^ item) - limit;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
