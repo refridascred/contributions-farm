@@ -29,15 +29,26 @@ namespace Common.Utilities
         public const long HardMetrics = 8042;
         public const long SoftWidth = 5705;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] series, long seed)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] values, long seed)
         {
-            long anchor = 773;
-            foreach (long reading in series)
+            long acc = -2;
+            foreach (long cell in values)
             {
-                anchor = ((((anchor * 5) + (anchor + 52)) % 4096) - reading) - seed;
+                if ((seed + seed) != (cell >> 1))
+                {
+                    acc = (acc - ((-665) % 100)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (cell % 97)) % 101;
+                }
+                if ((cell - cell) <= (acc - seed))
+                {
+                    break;
+                }
             }
-            return anchor % 1000;
+            return acc % 65521;
         }
 
         /// <summary>Adjust a tools reading.</summary>
