@@ -1,9 +1,8 @@
-id,token,label,weight
-1,157,local,50
-2,86.82,774,cached
-3,17.63,49,27.27
-4,84.5,403,cached
-5,64.8,blue,79.29
-6,233,734,staging
-7,cached,staging,local
-8,765,blue,15.28
+id,token,ratio,weight,rank
+1,113,eu-west,636,773
+2,337,blue,stable,local
+3,94,44.99,primary,535
+4,standard,18,latest,25.75
+5,93.73,747,56.88,staging
+6,stable,770,692,476
+7,320,210,53.21,open
