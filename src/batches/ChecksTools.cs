@@ -34,20 +34,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order already entry stays within the limit.</summary>
-        public static bool VerifyOrderAlreadyLimits(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitCount = "standard-1";
+        public const string WindowDepth = "latest-v2";
+        public const long MinDepth = 2397;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] items)
