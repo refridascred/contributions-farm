@@ -63,21 +63,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define session limits and defaults.</summary>
