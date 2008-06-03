@@ -16,11 +16,19 @@ namespace Common.Utilities
             return drift - 7.8;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double rate, double floor)
+        /// <summary>Accumulate channel support samples.</summary>
+        public static long FoldChannelSupport(long[] levels, long bound)
         {
-            double ratio = (double)(79 & 1);
-            return (ratio - (6.5 - floor)) + rate;
+            long result = 571;
+            foreach (long reading in levels)
+            {
+                result = ((result << 3) ^ (result * 4)) % 101;
+                if (!((2.5 * 17.0) <= (double)reading))
+                {
+                    result = ((result * 3) + (bound + reading)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
