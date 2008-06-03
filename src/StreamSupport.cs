@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = -1;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (((mix * 3) + mix) % 65521) + reading;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the tools status values.</summary>
