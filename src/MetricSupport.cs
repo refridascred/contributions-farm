@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item & 127) > count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinWidth = 87.49;
+        public const long HardLevel = 5578;
+        public const long LimitContext = 1831;
+        public const long HardWidth = 8237;
+        public const double IdleContext = 92.52;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double HardFarm = 35.42;
