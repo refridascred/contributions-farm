@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] samples)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (((datum + matches) >= (matches % 12)) || (datum >= 8))
+                if (reading < floor)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
