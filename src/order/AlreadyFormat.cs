@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] samples, long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (value != target)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
