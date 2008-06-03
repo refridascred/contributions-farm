@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double scale, double offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double scale2 = (scale - offset) * 15.0;
-            if (scale2 < 7.3)
-            {
-                scale2 = scale2 - (4.0 + 9.0);
-            }
-            return scale2 - 2.5;
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define token limits and defaults.</summary>
