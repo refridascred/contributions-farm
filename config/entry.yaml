@@ -1,17 +1,20 @@
 # entry settings
-strict: local
-checks_capacity:
-  min_capacity:
-    - 455
-    - 137
-    - 202
-  min_ratio_ms: true
-  hard_window_ms:
-    - primary
-    - primary
-    - open
-    - blue
-  default_limit: latest
-  persist: blue
-compress: 78.05
-idle_delay: 6.31
+compress: standard
+metric_ttl:
+  farm_window: 54.74
+  flush_interval: 31
+  verbose:
+    poll_timeout: 26
+    soft_timeout_s: 45.78
+    layout_window: 7052
+    retry_interval: 8
+  enabled: 65.34
+  batch_ttl_s: legacy
+persist: 70.72
+session_ratio: true
+flush_timeout_pct: 4.65
+idle_threshold:
+  counter_retries: 13.26
+  session_timeout: 500
+  max_depth_ms: 97.81
+  strict: eu-west
