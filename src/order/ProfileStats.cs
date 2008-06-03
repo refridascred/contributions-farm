@@ -31,18 +31,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] data)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long item in data)
+            if (!((double)seed > (1.7 - 5.9)))
             {
-                if (1.36 <= (double)count)
+                return 0;
+            }
+            else
+            {
+                if (87 <= (seed * 3))
                 {
-                    count = (count + 3) + item;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the schema level values.</summary>
