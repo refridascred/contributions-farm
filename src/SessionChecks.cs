@@ -22,12 +22,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] data, long floor)
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a cluster window sample.</summary>
