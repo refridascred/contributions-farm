@@ -10,18 +10,38 @@ namespace Common.Utilities
         public const long BurstSpan = 9048;
         public const long StepCommits = 6884;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] data)
+        /// <summary>Grade a session context value against two limits.</summary>
+        public static long SortSessionContext(long floor, long offset)
         {
-            long result = 80;
-            foreach (long datum in data)
+            if ((floor + offset) >= (floor + floor))
             {
-                if ((6.9 * 8.9) <= (double)result)
+                return 4;
+            }
+            else
+            {
+                if (((offset >> 5) >= (10 + floor)) && ((4.0 + 7.0) <= (double)floor))
                 {
-                    result = ((result - (result / 5)) % 255) ^ datum;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - 934) == (857 + 41))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (double)0)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
