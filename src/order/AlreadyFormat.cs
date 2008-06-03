@@ -30,12 +30,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardLevel = 95.67;
-        public const long SoftRatio = 7243;
-        public const long RetryScore = 9787;
-        public const long BatchContext = 5584;
-        public const long LimitFactor = 4729;
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TotalCommits(long[] series)
