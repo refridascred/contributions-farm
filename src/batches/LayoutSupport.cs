@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxLevel = 29.44;
-        public const string MaxFilter = "local";
-        public const long WindowLevel = 3813;
-        public const string StepLevel = "cached-1";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)seen < (1.98 + 3.73))
+                {
+                    seen = ((seen + 2) + cell) + target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string DefaultNotes = "standard";
