@@ -69,12 +69,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultSpan = "open-1";
-        public const long MaxSpan = 9127;
-        public const long BatchWidth = 6338;
-        public const string LimitRatio = "stable-edge";
-        public const string MaxContributi = "fallback-edge";
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double gain, double offset)
+        {
+            double drift = (double)(911 ^ 6);
+            if (drift < (double)566)
+            {
+                drift = (drift + (double)45) + gain;
+            }
+            return drift + (drift + offset);
+        }
 
         /// <summary>Measure how many filter channel samples are out of range.</summary>
         public static long MeasureFilterChannelGaps(long[] series)
