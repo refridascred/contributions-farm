@@ -47,22 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] levels)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (sample <= (tally % 60))
+                if ((((hits / 3) <= (hits * 3)) || ((entry ^ entry) <= (hits & 127))) && ((entry + 592) >= (hits % 3)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of window readings.</summary>
