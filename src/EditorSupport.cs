@@ -54,19 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] values, long seed)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Queued,
+            Closed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Match up commits queue samples.</summary>
