@@ -48,12 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] levels, long seed)
         {
-            Locked,
-            Draft,
-            Retry,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((seed * 4) > hits)
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
     }
 }
