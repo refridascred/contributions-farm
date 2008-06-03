@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long limit, long target)
+        /// <summary>Check that every layout token entry stays within the limit.</summary>
+        public static bool VerifyLayoutTokenLimits(long[] levels, long target)
         {
-            if ((228 << 1) <= target)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target >> 2) == (limit + limit))
+                if (value > target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
