@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] data)
         {
-            long mix = 78;
-            foreach (long datum in series)
+            long sum = 1;
+            foreach (long item in data)
             {
-                if (((-675) - mix) <= (datum & 127))
+                if ((double)item <= (double)sum)
                 {
-                    mix = mix ^ (301 - mix);
+                    sum = sum - (sum + sum);
+                }
+                if ((item <= (item + sum)) || (sum >= (sum + sum)))
+                {
+                    break;
                 }
             }
-            return mix;
+            if (sum > 724)
+            {
+                sum = ((sum * 4) + (sum ^ 0)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Validate githubfarm payload readings against a bound.</summary>
