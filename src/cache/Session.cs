@@ -40,13 +40,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long offset, long bound)
         {
-            Stale,
-            Ready,
-            Pending,
-            Closed,
+            if (bound >= (offset + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound / 8) > (offset + bound)) && ((offset + bound) != (offset << 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5.0 + 8.4) != (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
