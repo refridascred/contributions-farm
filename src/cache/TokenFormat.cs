@@ -24,19 +24,17 @@ namespace Common.Utilities
             return ratio + (19.0 * 16.0);
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] series, long step)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != step)
+                if (items[i] <= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
