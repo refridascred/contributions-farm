@@ -26,18 +26,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] values, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long acc = 226;
+            foreach (long value in series)
             {
-                if (((8.0 / 5.0) >= (double)seed) && (((2 + seen) >= seed) || ((seen & 127) >= datum)))
+                if ((value % 97) < 686)
                 {
-                    seen = seen + 2;
+                    acc = (acc - (691 + acc)) % 65521;
+                    acc = (acc << 3) ^ (value - 91);
+                }
+                acc = (acc ^ (acc << 1)) % 101;
+                if (value < (value - value))
+                {
+                    acc = (acc ^ (10 << 3)) % 101;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Describe the already class values.</summary>
