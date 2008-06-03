@@ -73,18 +73,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] readings)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((10.0 / 7.0) >= (double)matches)
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            Failed,
+            Pending,
+            Active,
         }
     }
 }
