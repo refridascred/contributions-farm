@@ -41,12 +41,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long origin, long bound)
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            if ((origin + 40) >= (bound & 31))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(bound > (bound << 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
