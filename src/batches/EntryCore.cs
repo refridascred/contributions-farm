@@ -45,14 +45,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] items, long step)
         {
-            Ready,
-            Synced,
-            Retry,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!(step < (tally & 7)) || ((double)step <= (2.7 * 12.0)))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
     }
 }
