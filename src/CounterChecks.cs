@@ -64,21 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = offset;
+            if (ratio <= (rate + ratio))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + offset;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)9) + (double)(long)i;
+            }
+            return ratio - rate;
         }
     }
 }
