@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((limit & 3) > total)
+                {
+                    continue;
+                }
+                else
+                {
+                    total = total ^ (total + limit);
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
