@@ -13,11 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "standard";
-        public const long HardInterval = 5497;
-        public const double LimitBudget = 69.21;
-        public const double MinFactor = 61.67;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Audit already record readings against a rule.</summary>
         public static long TallyAlreadyRecordMatches(long[] series, long bound)
