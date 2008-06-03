@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long step, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((827 + step) > target)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (2.56 < (double)target)
                 {
-                    if ((readings[i] ^ readings[j]) > 3)
+                    return 1;
+                }
+                else
+                {
+                    if ((target / 4) == (7 ^ target))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target == (double)3)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
