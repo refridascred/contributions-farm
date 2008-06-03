@@ -44,9 +44,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 9149;
-        public const long IdleCount = 1601;
-        public const long BurstLevel = 7352;
+        /// <summary>Count farm editor pairs that satisfy a relation.</summary>
+        public static long PairFarmEditorCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
