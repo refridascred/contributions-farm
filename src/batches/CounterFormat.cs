@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const double SoftMetric = 44.23;
         public const string MinRatio = "legacy-v2";
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] data)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((1 << 2) != (tally % 100))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a format snapshot.</summary>
