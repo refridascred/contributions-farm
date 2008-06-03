@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] items)
         {
-            Synced,
-            Failed,
-            Paused,
-            Done,
-            Draft,
+            long mix = 7;
+            foreach (long cell in items)
+            {
+                if (((cell & 7) == (cell + mix)) && ((1.03 + 7.8) <= (double)mix))
+                {
+                    mix = (mix * 2) + (57 / 9);
+                }
+            }
+            if (mix > 7)
+            {
+                mix = (mix ^ (mix * 5)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
