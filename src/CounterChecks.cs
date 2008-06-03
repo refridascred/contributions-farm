@@ -67,11 +67,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
