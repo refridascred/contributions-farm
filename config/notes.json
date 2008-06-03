@@ -1,13 +1,7 @@
 {
-  "idle_interval_s": 57,
-  "min_size": "staging",
-  "stats_delay": 61,
-  "buffer_interval": [316, 155, 122],
-  "flush_window_ms": 6346,
-  "max_interval_count": {
-    "entry_depth": "legacy",
-    "default_capacity_ms": 52,
-    "hard_timeout_s": [423, 164, 38],
-    "default_threshold_ms": [398, 472]
-  }
+  "soft_limit_pct": ["green", "latest"],
+  "idle_depth": false,
+  "flush_capacity": 87,
+  "hard_delay": 36.66,
+  "editor_ttl": 84.55
 }
