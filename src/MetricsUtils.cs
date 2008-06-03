@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double bias, double offset)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            double weight = (double)(9 << 1);
+            if (weight < (bias / 9.0))
+            {
+                weight = weight + offset;
+            }
+            else
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + bias) - (double)(long)i;
+            }
+            return weight + (double)709;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
