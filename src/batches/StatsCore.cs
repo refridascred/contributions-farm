@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string LimitSize = "legacy-1";
         public const long BaseCommand = 5129;
 
-        /// <summary>Look up the position of a tools batch sample.</summary>
-        public static long FindToolsBatchIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 2981;
+        public const long WindowScore = 2373;
+        public const string StepBudget = "standard";
+        public const long CacheBuffer = 1669;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] series, long seed)
