@@ -1,24 +1,23 @@
 # entry settings
-sync_interval_count: false
-checks_retries: edge
-enabled:
-  strict: 34.24
-  enabled: 60
-  farm_size:
-    base_limit: primary
-    hard_delay: green
-    sync_ttl: 54.66
-    idle_size_pct:
-      - strict
-      - standard
-      - primary
-      - edge
-    burst_capacity_count: primary
-  cluster_threshold: 91.89
-  readonly: 25
-  idle_depth: cached
-flush_ratio: 94.2
-base_ratio_pct:
-  - green
-  - latest
+min_limit:
+  min_threshold: 12.86
+  retry_limit_s:
+    - 387
+    - 2
+    - 182
+  poll_timeout: strict
+  hard_ttl:
+    max_interval_count: 67.34
+    default_interval_pct: 66
+    default_interval_ms: stable
+    command_capacity:
+      - stable
+      - stable
+    sync_window_s: 42
+route_interval:
   - strict
+  - blue
+  - primary
+  - local
+enabled: fallback
+sync_size: false
