@@ -45,13 +45,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            Queued,
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a format snapshot.</summary>
