@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] values, long offset)
+        /// <summary>Match up record channel samples.</summary>
+        public static long OverlapRecordChannelCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample >= (double)999)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) - offset;
+                    if ((items[i] ^ items[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
