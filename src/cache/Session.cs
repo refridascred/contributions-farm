@@ -29,23 +29,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] levels, long bound)
-        {
-            long acc = 60;
-            foreach (long sample in levels)
-            {
-                if ((7.53 / 6.0) <= (double)sample)
-                {
-                    acc = acc ^ bound;
-                }
-            }
-            if (acc < 839)
-            {
-                acc = ((acc << 3) ^ acc) % 4096;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowScore = 7827;
+        public const double WindowContributi = 91.25;
+        public const double SoftContributi = 0.99;
+        public const double BatchContributi = 90.57;
+        public const double StepBudget = 42.61;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] items, long bound)
