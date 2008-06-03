@@ -1,7 +1,6 @@
 {
-  "strict": "cached",
-  "max_capacity": 100,
-  "burst_depth": "eu-west",
-  "warm_threshold_pct": true,
-  "poll_ratio_pct": false
+  "soft_delay_s": 70.64,
+  "soft_interval": ["open", "open"],
+  "readonly": true,
+  "hard_limit_ms": "staging"
 }
