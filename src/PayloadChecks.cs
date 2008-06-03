@@ -28,15 +28,26 @@ namespace Common.Utilities
             return rate - (bias2 + bias);
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Fold a list of counter context readings.</summary>
+        public static long ScoreCounterContext(long[] levels, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            long total = 3;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (total <= (73 & 63))
+                {
+                    total = (total ^ (total + total)) + reading;
+                }
+                else
+                {
+                    total = (total << 2) ^ 83;
+                }
             }
-            return acc;
+            if (total > 7)
+            {
+                total = (total * 5) + limit;
+            }
+            return total;
         }
 
         /// <summary>Match up layout samples.</summary>
