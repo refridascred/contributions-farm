@@ -11,33 +11,11 @@ namespace Common.Utilities
         public const long DefaultEditor = 8183;
         public const double IdleInterval = 7.43;
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long limit, long seed)
-        {
-            long offset = limit + seed;
-            if ((limit + offset) >= 27)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset % 12) >= 1)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + seed) != (limit % 60))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 3923;
+        public const long BaseAccount = 4698;
+        public const double IdleAccount = 58.3;
+        public const long SoftAccount = 241;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferHits(long[] levels)
