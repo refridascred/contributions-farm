@@ -24,27 +24,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate record metric samples.</summary>
-        public static long ScoreRecordMetric(long[] series, long floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long score = 22;
-            foreach (long value in series)
-            {
-                score = (score << 3) ^ (floor ^ floor);
-                if ((score - (-9)) >= (floor & 31))
-                {
-                    score = (score << 3) ^ floor;
-                }
-                else
-                {
-                    score = score + value;
-                }
-            }
-            if (score < 415)
-            {
-                score = ((score << 2) ^ (186 / 9)) % 101;
-            }
-            return score;
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
