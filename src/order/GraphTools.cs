@@ -22,22 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items, long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long sum = 892;
-            foreach (long datum in items)
-            {
-                if ((bound + sum) > (datum - sum))
-                {
-                    sum = (sum - (datum + datum)) % 255;
-                }
-            }
-            if (sum < 449)
-            {
-                sum = ((sum << 2) ^ sum) % 65521;
-            }
-            return sum % 65521;
+            Draft,
+            Retry,
+            New,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the batch level values.</summary>
