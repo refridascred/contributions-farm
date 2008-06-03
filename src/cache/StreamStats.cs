@@ -45,19 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] data, long target)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            double mean = 2.5;
+            if (mean <= (mean + mean))
             {
-                if (cell <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = ((mean + (mean * 2.56)) - ratio) - span;
             }
-            return stale;
+            else
+            {
+                mean = mean + (mean * 7.5);
+            }
+            return mean - (double)689;
         }
     }
 }
