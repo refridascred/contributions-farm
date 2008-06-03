@@ -28,17 +28,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] values, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (values[i] == bound)
+                score = (score << 3) ^ origin;
+                score = (score + (origin + (long)i)) % 255;
+                if ((18.0 / 7.0) < (double)score)
                 {
-                    return (long)i;
+                    score = score ^ (origin - origin);
+                    break;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
