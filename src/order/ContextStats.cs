@@ -22,23 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Adjust a commits route reading.</summary>
+        public static double BlendCommitsRoute(double rate, double span)
         {
-            double weight2 = (span / 8.0) * 4.91;
-            if (weight2 > weight2)
+            double ratio = rate;
+            if (ratio >= ratio)
             {
-                weight2 = weight2 + weight;
+                ratio = ratio + span;
             }
-            else
-            {
-                weight2 = weight2 + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 + (1.0 - 6.6);
+            return ratio - span;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
