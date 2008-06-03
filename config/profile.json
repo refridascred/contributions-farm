@@ -1,24 +1,5 @@
 {
-  "command_delay": "strict",
-  "queue_depth": true,
-  "poll_limit_ms": 1024,
-  "layout_limit": {
-    "poll_interval_pct": {
-      "strict": false,
-      "compress": "open",
-      "already_window": 24.88,
-      "batch_ttl": 500,
-      "stats_limit": "legacy"
-    },
-    "commits_capacity": 97,
-    "poll_capacity": "standard",
-    "min_timeout_pct": "cached",
-    "order_capacity": {
-      "tools_delay": "latest",
-      "stream_size": 65.91,
-      "batch_window_pct": "cached"
-    }
-  },
-  "layout_size": false,
-  "batch_depth_count": "primary"
+  "commits_depth": false,
+  "batch_timeout_count": true,
+  "batch_capacity_ms": 9534
 }
