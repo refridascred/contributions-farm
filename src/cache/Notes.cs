@@ -28,19 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] samples, long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Fold a list of route batches readings.</summary>
