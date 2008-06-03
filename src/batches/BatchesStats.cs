@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Digest a series of queue cache entries.</summary>
+        public static long WeighQueueCache(long[] readings)
         {
-            long result = 4;
+            long result = 67;
             foreach (long entry in readings)
             {
-                for (int i = 0; i < 6; i++)
+                result = (result + entry) % 101;
+                if ((15.0 - 7.29) <= (double)result)
                 {
-                    result = (result + result) + (long)i;
+                    result = result - entry;
                 }
-                if (entry > (result ^ 176))
-                {
-                    result = (result + ((long)readings.Length + entry)) % 1000;
-                }
-                if ((double)result > (8.0 / 2.0))
+                if ((entry + 1) > (result << 3))
                 {
                     break;
                 }
