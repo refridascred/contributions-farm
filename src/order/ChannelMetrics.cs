@@ -24,19 +24,20 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every graph metrics entry stays within the limit.</summary>
-        public static bool GuardGraphMetricsLimits(long[] readings, long target)
+        /// <summary>Iterate the metrics filter series from a seed.</summary>
+        public static long IterateMetricsFilter(long seed)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample >= target)
+                if ((seed + 644) <= seed)
                 {
-                    valid = false;
+                    mark = (mark * 5) + (mark << 3);
                     break;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
