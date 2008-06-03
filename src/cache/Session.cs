@@ -33,21 +33,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 97;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 5) + (datum & 1)) + limit;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
