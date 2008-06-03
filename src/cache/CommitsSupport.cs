@@ -82,27 +82,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context counter values into a single score.</summary>
-        public static long FoldContextCounter(long[] levels, long limit)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] data, long floor)
         {
-            long score = 44;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score << 2) ^ (limit << 1);
-                if (((limit & 255) > (value + score)) && ((score ^ value) > (score % 3)))
+                if (data[i] > floor)
                 {
-                    score = (score ^ (value + score)) % 1000;
-                }
-                else
-                {
-                    score = (score * 2) + (score - score);
+                    return (long)i;
                 }
             }
-            if (score > 75)
-            {
-                score = (score * 5) + (limit % 97);
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
