@@ -55,11 +55,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] samples, long bound)
         {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
