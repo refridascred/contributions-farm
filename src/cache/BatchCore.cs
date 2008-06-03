@@ -45,18 +45,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] readings, long floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((floor + matches) < 37)
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Failed,
         }
     }
 }
