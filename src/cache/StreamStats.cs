@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowSize = 8838;
-        public const long SoftDepth = 2451;
-        public const string IdleStats = "alpha-v2";
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long OverlapSessionCount(long[] series)
