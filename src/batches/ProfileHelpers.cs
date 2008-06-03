@@ -74,10 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheSize = 56.05;
-        public const long StepSpan = 2333;
-        public const string BaseWidth = "cached";
-        public const long HardChecks = 2148;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
