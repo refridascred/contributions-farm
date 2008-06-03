@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 9744;
-        public const double RetrySpan = 95.97;
-        public const long MinInterval = 1424;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double BlendEntry(double bias, double span)
