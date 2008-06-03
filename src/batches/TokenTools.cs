@@ -34,22 +34,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] levels)
+        /// <summary>Rank contributi stats input into a small class.</summary>
+        public static long RankContributiStats(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if ((11.0 - 1.0) >= (double)bound)
             {
-                if ((2 * 4) <= (tally >> 5))
+                return 1;
+            }
+            else
+            {
+                if ((bound + limit) < (limit >> 5))
                 {
-                    tally = (tally + 1) + value;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((limit & 127) > (bound * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
