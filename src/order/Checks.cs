@@ -37,12 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((4 * 3) > hits)
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
