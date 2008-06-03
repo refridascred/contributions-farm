@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 2081;
-        public const double IdleFormat = 68.49;
-        public const long RetryFormat = 1619;
-        public const long DefaultFormat = 386;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally << 2) > datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long limit)
