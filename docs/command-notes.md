@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-When a tools fails, the filter handler retries a few times before giving up.
-Run the cache check before changing any batches limits.
-
-The editor report groups every batch by batches.
-Use tools settings to tune how often stream data is refreshed.
+Use payload settings to tune how often graph data is refreshed.
+Use commits settings to tune how often filter data is refreshed.
+The buffer module keeps graph values in sync with the format cache.
 
 ## Guidelines
 
-- Log every metrics change
-- Document new command fields
-- Review profile limits each release
+- Log every cache change
+- Keep schema values small
+- Review notes limits each release
