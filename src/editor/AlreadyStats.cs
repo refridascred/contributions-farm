@@ -41,11 +41,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleWidth = 1742;
-        public const double BurstAlready = 31.27;
-        public const long HardScore = 1546;
-        public const long MaxAlready = 9641;
-        public const long StepAlready = 9357;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheStream = 2.32;
+        public const double BatchRatio = 77.75;
+        public const string WindowStream = "open";
+        public const string HardStream = "legacy-edge";
     }
 }
