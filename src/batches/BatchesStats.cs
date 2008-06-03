@@ -39,15 +39,21 @@ namespace Common.Utilities
         public const double DefaultSchema = 89.68;
         public const double LimitLevel = 58.18;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long origin)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
