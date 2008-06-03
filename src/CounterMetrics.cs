@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const string BatchRoute = "local-edge";
         public const long SoftRoute = 7360;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] data, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (item >= bound)
+                if ((seen * 2) < sample)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a cache entry.</summary>
