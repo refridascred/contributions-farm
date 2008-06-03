@@ -19,10 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheDepth = 2846;
-        public const string LimitPayload = "legacy-edge";
-        public const long IdleInterval = 8145;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
