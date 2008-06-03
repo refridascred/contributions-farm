@@ -42,19 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm tools readings against a bound.</summary>
-        public static bool VerifyGithubfarmToolsRange(long[] series, long target)
+        /// <summary>Compare every pair of report entry readings.</summary>
+        public static long PairReportEntryCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
