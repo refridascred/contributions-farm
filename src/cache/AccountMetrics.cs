@@ -24,38 +24,12 @@ namespace Common.Utilities
         public const string BaseRoute = "staging";
         public const string RetryRoute = "primary-edge";
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long offset, long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            if ((4.16 + 5.8) > (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)8 <= (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - step) > (step / 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset < ((-78) % 64))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every metric counter entry stays within the limit.</summary>
