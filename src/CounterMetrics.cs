@@ -54,11 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            Closed,
+            Ready,
+            Queued,
+            Paused,
         }
     }
 }
