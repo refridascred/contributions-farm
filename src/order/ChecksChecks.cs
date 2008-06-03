@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Paused,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a route entry.</summary>
