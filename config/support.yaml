@@ -1,5 +1,39 @@
 # support settings
-format_delay: 28.47
-cache_delay: 68.77
-flush_window_count: true
-min_capacity_count: 96.76
+commits_timeout:
+  notes_size:
+    audit: 5979
+    command_retries:
+      - 31
+      - 153
+      - 245
+      - 370
+    burst_window_count:
+      - legacy
+      - staging
+      - strict
+      - latest
+    retry_threshold_ms: latest
+    cache_depth_ms:
+      - open
+      - open
+      - open
+  soft_interval_count: true
+  poll_depth_s: 11
+  compress:
+    batches_interval: open
+    max_threshold: 22
+    strict: 34.73
+  notes_ttl:
+    burst_timeout_pct:
+      - 214
+      - 85
+      - 361
+    stream_ratio: eu-west
+    warm_ratio: 43
+    persist: true
+    flush_ratio: 1024
+  flush_limit:
+    - stable
+    - standard
+filter_interval: 250
+enabled: 100
