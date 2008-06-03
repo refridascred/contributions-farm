@@ -60,19 +60,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double bias)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            double weight = scale / 5.0;
-            if (weight > weight)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight + (weight / 5.0);
+                if (!((4.1 / 6.0) > (double)(long)i))
+                {
+                    continue;
+                }
+                anchor = anchor ^ (anchor << 2);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (9.8 + weight)) + (double)(long)i;
-            }
-            return weight - (bias - weight);
+            return anchor;
         }
     }
 }
