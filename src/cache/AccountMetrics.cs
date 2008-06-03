@@ -58,18 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream checks entries that pass the check.</summary>
-        public static long AuditStreamChecksMatches(long[] values)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((seen + 48) >= value)
-                {
-                    seen = seen + 3;
-                }
+                total = ((total * 4) + (total * 4)) % 101;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
