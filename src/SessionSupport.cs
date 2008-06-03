@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "latest-v2";
+        public const long BaseSize = 1779;
+        public const long BatchTimeout = 3082;
+        public const long MinDepth = 7753;
+        public const string StepRatio = "strict";
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long SortFilter(long step, long target)
