@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] series, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((limit & 3) > total)
+                if ((((entry + tally) <= (50 << 2)) || ((tally << 3) == (long)series.Length)) || ((entry >> 2) > (entry - 7)))
                 {
-                    continue;
+                    tally = (tally + 3) + limit;
                 }
-                else
-                {
-                    total = total ^ (total + limit);
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
