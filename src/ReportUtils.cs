@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public double Score { get; set; }
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit filter token readings against a rule.</summary>
