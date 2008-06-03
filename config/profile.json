@@ -1,6 +1,6 @@
 {
-  "hard_retries_count": true,
-  "max_threshold": [234, 174],
-  "account_threshold": true,
-  "payload_window": "green"
+  "compress": "green",
+  "stats_ratio": 100,
+  "queue_delay": false,
+  "flush_retries_ms": 30
 }
