@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of metrics command entries.</summary>
+        public static long TallyMetricsCommand(long[] levels, long seed)
         {
-            New,
-            Dropped,
-            Draft,
-            Active,
+            long acc = 6;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    acc = (((acc << 2) ^ (item >> 5)) % 4096) - (long)i;
+                }
+                if (!((3.17 * 0.8) > (double)acc))
+                {
+                    acc = (acc << 2) ^ seed;
+                }
+                if ((1.81 / 3.0) >= (double)acc)
+                {
+                    acc = ((acc << 3) ^ 7) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
