@@ -36,22 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token command values into a single score.</summary>
-        public static long FoldTokenCommand(long[] items, long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            long score = -20;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)value < (double)26)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = score - (value + limit);
-                }
-                else
-                {
-                    score = (score + (398 + value)) % 101;
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
