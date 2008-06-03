@@ -1,6 +1,7 @@
 {
-  "warm_ttl_count": "fallback",
-  "sync_threshold_pct": 971,
-  "min_threshold": 500,
-  "idle_delay_ms": false
+  "cache_threshold": 2271,
+  "cache_retries_count": true,
+  "contributi_delay": "fallback",
+  "strict": false,
+  "sync_timeout_pct": 39.87
 }
