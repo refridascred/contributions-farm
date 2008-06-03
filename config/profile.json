@@ -1,6 +1,10 @@
 {
-  "contributi_retries": "cached",
-  "dry_run": 1024,
-  "enabled": "blue",
-  "retry_limit_pct": false
+  "cluster_ttl": 41.08,
+  "sync_timeout": {
+    "account_delay": "open",
+    "persist": ["strict", "cached"],
+    "default_timeout_ms": 70
+  },
+  "contributi_delay": "green",
+  "burst_interval_pct": false
 }
