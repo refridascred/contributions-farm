@@ -34,12 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] samples, long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] > bound)
+                if (items[i] > step)
                 {
                     return (long)i;
                 }
