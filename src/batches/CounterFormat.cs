@@ -29,10 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultSize = 113;
-        public const double LimitBudget = 43.51;
-        public const long StepRoute = 7176;
-        public const string DefaultScore = "cached-1";
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
