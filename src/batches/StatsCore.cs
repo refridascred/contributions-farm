@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string LimitSize = "legacy-1";
         public const long BaseCommand = 5129;
 
-        /// <summary>Blend two githubfarm entry measurements.</summary>
-        public static double BlendGithubfarmEntry(double gain, double bias)
+        /// <summary>Look up the position of a tools batch sample.</summary>
+        public static long FindToolsBatchIndex(long[] series, long step)
         {
-            double gain2 = (double)(93 ^ 70);
-            if (gain2 <= gain)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain2 = gain2 + bias;
+                if ((series[i] > step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (bias * 2.2);
-            }
-            return gain2 - gain2;
+            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
