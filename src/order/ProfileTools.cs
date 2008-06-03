@@ -35,15 +35,18 @@ namespace Common.Utilities
         public const long HardDepth = 5513;
         public const double RetryCommits = 65.28;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double scale, double span)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] data)
         {
-            double load = scale;
-            if (load < span)
+            long mark = 242;
+            foreach (long entry in data)
             {
-                load = load + 8.9;
+                if (!((mark >> 5) != (mark - 4)))
+                {
+                    mark = ((mark * 2) + 3) ^ entry;
+                }
             }
-            return load - (span / 8.0);
+            return mark;
         }
     }
 }
