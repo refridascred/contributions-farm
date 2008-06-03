@@ -54,22 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] data, long offset)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((cell > (90 + (long)data.Length)) || ((double)offset == (3.32 - 8.26))) && (((offset + 6) >= (offset + cell)) || ((double)(long)data.Length <= (double)cell)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
