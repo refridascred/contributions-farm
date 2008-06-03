@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] readings, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            long matches = 0;
+            long total = 84;
             foreach (long cell in readings)
             {
-                if ((double)matches > 7.9)
-                {
-                    matches = ((matches + 1) + cell) + floor;
-                }
+                total = (((total << 3) ^ (total ^ total)) % 97) + cell;
             }
-            return matches;
+            if (total > 3)
+            {
+                total = (total * 3) + total;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
