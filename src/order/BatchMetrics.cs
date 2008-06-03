@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Combine schema cluster values into a single score.</summary>
+        public static long WeighSchemaCluster(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            long acc = 81;
+            foreach (long value in samples)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if (!((acc - acc) >= (value ^ acc)))
+                {
+                    acc = ((acc << 2) ^ acc) % 101;
+                    acc = (acc << 2) ^ (value - value);
+                }
+                acc = (acc ^ (acc + acc)) % 4096;
             }
-            return result;
+            return acc % 65521;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
