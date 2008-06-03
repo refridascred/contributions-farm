@@ -25,25 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account cluster value against two limits.</summary>
-        public static long BucketAccountCluster(long floor, long floor2)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long prev = floor - floor2;
-            if ((double)floor2 < (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor - prev) != (floor2 ^ floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
