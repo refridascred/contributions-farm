@@ -27,13 +27,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public double Score { get; set; }
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the report farm entries that pass the check.</summary>
