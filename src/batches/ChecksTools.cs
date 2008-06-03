@@ -54,19 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] data, long seed)
+        /// <summary>Digest a series of stream metric entries.</summary>
+        public static long FoldStreamMetric(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long result = 64;
+            foreach (long item in series)
             {
-                if (datum >= seed)
+                if (!((double)item <= (19.0 - 6.8)))
                 {
-                    stale = false;
-                    break;
+                    result = (result - (375 & 63)) - floor;
                 }
             }
-            return stale;
+            return result;
         }
     }
 }
