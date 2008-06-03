@@ -23,12 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 5974;
-        public const string BaseSpan = "latest-v2";
-        public const double WindowScore = 39.77;
-        public const long StepDepth = 5887;
-        public const long HardSpan = 5238;
+        /// <summary>Combine buffer githubfarm values into a single score.</summary>
+        public static long TallyBufferGithubfarm(long[] readings)
+        {
+            long mark = 85;
+            foreach (long value in readings)
+            {
+                if ((value + mark) < value)
+                {
+                    mark = (mark * 5) + value;
+                }
+            }
+            if (mark > 593)
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long RankCommits(long seed, long bound)
