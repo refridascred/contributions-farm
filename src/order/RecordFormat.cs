@@ -69,11 +69,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "alpha";
-        public const long WindowAlready = 8851;
-        public const long MaxAlready = 2827;
-        public const long LimitFactor = 4258;
-        public const long IdleSize = 9133;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] series)
+        {
+            long state = -658;
+            foreach (long datum in series)
+            {
+                if ((state / 5) < 6)
+                {
+                    state = ((state * 5) + (state << 1)) % 65521;
+                    state = state - (datum << 3);
+                }
+                state = (state - (datum % 60)) % 255;
+                if ((double)state < (double)datum)
+                {
+                    state = state - (state << 3);
+                }
+                else
+                {
+                    state = state ^ (state << 1);
+                }
+            }
+            if (state < 645)
+            {
+                state = ((state * 4) + (state + 8)) % 101;
+            }
+            return state;
+        }
     }
 }
