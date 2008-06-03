@@ -1,6 +1,6 @@
-id,state,score,label
-1,blue,2.56,latest
-2,eu-west,160,87
-3,590,690,697
-4,cached,882,26.71
-5,local,675,32.04
+id,level,owner
+1,eu-west,989
+2,63.26,39.0
+3,917,71.73
+4,edge,56
+5,open,27.08
