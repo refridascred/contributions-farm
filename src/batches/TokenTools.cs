@@ -46,16 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Adjust a format checks reading.</summary>
+        public static double ScaleFormatChecks(double rate, double span)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            double load = rate;
+            if (load >= rate)
             {
-                anchor = ((anchor << 3) ^ target) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                load = load + load;
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (load / 3.0)) - (double)(long)i;
+            }
+            return load + span;
         }
     }
 }
