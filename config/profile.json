@@ -1,6 +1,7 @@
 {
-  "retry_interval": 72.26,
-  "cache_ratio": 15.25,
-  "already_limit": 229,
-  "strict": "blue"
+  "max_retries": false,
+  "readonly": "eu-west",
+  "burst_size_s": 46.88,
+  "burst_interval": [233, 354, 38, 339],
+  "flush_limit": 31.07
 }
