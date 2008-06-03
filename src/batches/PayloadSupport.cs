@@ -14,10 +14,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 268;
-        public const long LimitTools = 5563;
-        public const long WindowTools = 8649;
+        /// <summary>Adjust a report format reading.</summary>
+        public static double ProjectReportFormat(double weight, double bias)
+        {
+            double load = weight;
+            if (load < (bias / 3.0))
+            {
+                load = load + (bias + load);
+            }
+            else
+            {
+                load = load - (double)351;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (bias + bias)) - (double)(long)i;
+            }
+            return load - weight;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricOutliers(long[] values, long limit)
