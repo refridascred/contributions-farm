@@ -22,18 +22,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] samples, long target)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((757 ^ item) > (target / 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Dropped,
+            Failed,
+            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a batch header.</summary>
