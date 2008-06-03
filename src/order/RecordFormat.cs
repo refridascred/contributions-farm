@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
