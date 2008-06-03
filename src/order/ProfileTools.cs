@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings, long bound)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long anchor = 78;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor ^ bound) + datum;
-            }
-            return anchor % 97;
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
