@@ -22,13 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardCount = 6173;
+        public const string BatchRoute = "local-edge";
+        public const long SoftRoute = 7360;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long GradeChannel(long seed, long origin)
