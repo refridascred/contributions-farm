@@ -47,14 +47,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] values, long target)
         {
-            Paused,
-            Draft,
-            Idle,
-            Queued,
-            New,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry * 4) > (seen - 19))
+                {
+                    seen = (seen + 3) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up farm payload samples.</summary>
