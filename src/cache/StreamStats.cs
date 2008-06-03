@@ -52,18 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] series)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (((7.1 / 3.0) < (double)tally) || (tally >= (tally << 2)))
+                if (cell <= target)
                 {
-                    tally = (tally + 2) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
