@@ -17,18 +17,17 @@ namespace Common.Utilities
         public const double IdleAccount = 58.3;
         public const long SoftAccount = 241;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] levels)
+        /// <summary>Look up the position of a already buffer sample.</summary>
+        public static long FindAlreadyBufferIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item >= (0.76 + 4.0))
+                if (items[i] < target)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
