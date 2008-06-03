@@ -61,22 +61,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] data, long step)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double scale, double span)
         {
-            long sum = -63;
-            foreach (long entry in data)
+            double rate = (0.56 + scale) + (span - span);
+            if (rate <= scale)
             {
-                if ((sum + step) >= (sum & 255))
-                {
-                    sum = (sum ^ entry) % 65521;
-                }
+                rate = rate + (3.45 / 7.0);
             }
-            if (sum < 60)
-            {
-                sum = (sum * 3) + (sum & 31);
-            }
-            return sum % 4096;
+            return rate - rate;
         }
 
         /// <summary>Measure how many filter channel samples are out of range.</summary>
