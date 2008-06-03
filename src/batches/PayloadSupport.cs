@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
