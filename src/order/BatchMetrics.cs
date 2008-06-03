@@ -47,14 +47,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long offset, long target)
         {
-            Active,
-            Ready,
-            New,
-            Synced,
-            Paused,
+            long bound = offset + target;
+            if ((offset + 321) < ((-716) - 46))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(bound < (4 - 93)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound * 4) < (target & 31)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up farm samples.</summary>
