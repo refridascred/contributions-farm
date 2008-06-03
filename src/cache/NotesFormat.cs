@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 6985;
-        public const string MinTimeout = "standard-1";
-        public const long IdleCount = 1608;
-        public const long WindowSpan = 473;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleRatio = 3639;
+        public const long MinBatches = 3747;
+        public const long LimitBatches = 9887;
+        public const long MaxSpan = 4420;
+        public const string DefaultBudget = "fallback-v2";
 
         /// <summary>Combine buffer githubfarm values into a single score.</summary>
         public static long TallyBufferGithubfarm(long[] readings)
