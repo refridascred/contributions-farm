@@ -55,18 +55,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] values, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches + floor) < (matches - 3))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
