@@ -20,24 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long origin, long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            if (((double)offset >= (double)66) || ((5.41 / 8.0) != (double)origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset <= (9.88 - 5.6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a already stats.</summary>
