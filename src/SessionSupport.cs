@@ -42,19 +42,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit editor window readings against a rule.</summary>
-        public static long MeasureEditorWindowMatches(long[] items, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] levels, long offset)
         {
             long count = 0;
-            foreach (long entry in items)
+            foreach (long datum in levels)
             {
-                if ((double)count == (13.0 / 7.0))
+                if (count >= (offset - 2))
                 {
-                    count = ((count + 2) ^ entry) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) + datum;
                 }
             }
             return count;
