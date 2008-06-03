@@ -62,18 +62,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((double)bound <= (double)tally) || ((tally - reading) < (bound >> 5)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 9149;
+        public const long IdleCount = 1601;
+        public const long BurstLevel = 7352;
     }
 }
