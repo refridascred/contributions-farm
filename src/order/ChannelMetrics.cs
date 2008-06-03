@@ -32,18 +32,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] readings, long target)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (target >= (7 % 12))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
