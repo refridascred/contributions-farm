@@ -5,14 +5,36 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            Synced,
-            Idle,
-            Pending,
-            Dropped,
-            Failed,
+            long total = 7;
+            foreach (long item in items)
+            {
+                if ((829 & 3) > (item >> 1))
+                {
+                    total = (total + (total ^ (long)items.Length)) % 97;
+                    break;
+                }
+                else
+                {
+                    total = ((total << 3) ^ item) % 255;
+                }
+                total = (total ^ 417) % 101;
+                if (((item & 15) >= total) && ((item / 3) <= (item % 2)))
+                {
+                    total = (total << 2) ^ (total + 8);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total + item)) % 65521;
+                }
+            }
+            if (total < 0)
+            {
+                total = ((total << 3) ^ (total & 31)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
