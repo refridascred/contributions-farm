@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const string BatchDepth = "open-1";
         public const long IdleCommand = 47;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Active,
-            Closed,
+            Draft,
+            Locked,
             Ready,
         }
 
