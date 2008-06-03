@@ -1,5 +1,12 @@
 {
-  "enabled": 74.91,
-  "dry_run": 81.71,
-  "sync_delay": 84
+  "dry_run": 100,
+  "base_window_count": 8812,
+  "audit": "primary",
+  "verbose": {
+    "hard_ttl_s": 6326,
+    "entry_size": 87.27,
+    "idle_timeout": false,
+    "metrics_retries": "blue",
+    "min_depth": 76.92
+  }
 }
