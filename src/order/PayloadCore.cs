@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] samples, long target)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long mix = 0;
-            foreach (long cell in samples)
-            {
-                if ((target ^ cell) != (7 - 41))
-                {
-                    mix = mix - (mix ^ target);
-                }
-                else
-                {
-                    mix = (mix - (0 + target)) % 101;
-                }
-            }
-            return mix;
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many metrics schema samples are out of range.</summary>
