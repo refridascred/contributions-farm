@@ -68,32 +68,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long limit, long floor)
-        {
-            long offset = limit - floor;
-            if ((limit & 3) != (offset ^ 511))
-            {
-                return 3;
-            }
-            else
-            {
-                if (6 <= (offset % 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit <= 1.5)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxFactor = 55.87;
+        public const long IdleOrder = 5747;
+        public const string MinOrder = "primary-edge";
+        public const string BurstOrder = "standard";
+        public const long DefaultOrder = 3589;
     }
 }
