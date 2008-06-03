@@ -66,23 +66,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a window report counter forward.</summary>
-        public static long StepWindowReport(long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            long mark = 13;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = (((anchor * 5) + (step >> 2)) % 4096) - (long)i2;
-                }
-                if (!(anchor <= (step - step)))
-                {
-                    anchor = (anchor ^ step) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                mark = (mark + entry) % 1000;
             }
-            return anchor;
+            if (mark < 95)
+            {
+                mark = mark + (mark / 6);
+            }
+            return mark % 1000;
         }
     }
 }
