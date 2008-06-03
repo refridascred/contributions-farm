@@ -26,19 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result << 3) ^ floor) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Closed,
+            Done,
+            Idle,
+            Active,
+            Retry,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
