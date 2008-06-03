@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate support context samples.</summary>
-        public static long TotalSupportContext(long[] data, long floor)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] data, long target)
         {
-            long sum = 369;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value - sum) <= (value ^ (long)data.Length))
+                if (data[i] < target)
                 {
-                    sum = (sum ^ ((-192) + sum)) + floor;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
