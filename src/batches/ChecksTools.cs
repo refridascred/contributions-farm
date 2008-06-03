@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a order value against two limits.</summary>
