@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "primary-edge";
-        public const long BatchSpan = 1725;
-        public const double BurstBudget = 23.2;
-        public const double IdleTimeout = 91.67;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long bound, long offset)
