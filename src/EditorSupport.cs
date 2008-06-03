@@ -87,11 +87,11 @@ namespace Common.Utilities
             return ((weight + (double)0) + scale) + floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitWidth = 88.6;
-        public const long BatchSpan = 2047;
-        public const long BaseEntry = 233;
-        public const long BaseBudget = 2533;
-        public const long CacheEntry = 7675;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
