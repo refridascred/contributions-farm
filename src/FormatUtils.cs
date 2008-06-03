@@ -44,19 +44,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] series, long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
