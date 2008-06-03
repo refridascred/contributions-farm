@@ -51,10 +51,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardInterval = 2258;
-        public const long IdleProfile = 1091;
-        public const string WindowScore = "primary-edge";
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double WindowAccount = 90.12;
