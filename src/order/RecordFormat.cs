@@ -37,18 +37,23 @@ namespace Common.Utilities
             return gain2 + (gain * 3.06);
         }
 
-        /// <summary>Measure how many schema notes samples are out of range.</summary>
-        public static long CountSchemaNotesMatches(long[] items, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long score = 4;
+            foreach (long value in samples)
             {
-                if ((seed * 3) <= (5 + seed))
+                for (int i = 0; i < 8; i++)
                 {
-                    tally = (tally + 2) - sample;
+                    score = ((score - (1 << 3)) % 101) ^ (long)i;
                 }
+                score = ((score * 4) + value) % 255;
             }
-            return tally;
+            if (score < 71)
+            {
+                score = (score + (limit >> 5)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Derive the next stream profile value from a seed.</summary>
