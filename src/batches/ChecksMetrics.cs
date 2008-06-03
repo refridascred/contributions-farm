@@ -97,19 +97,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] values)
         {
-            long sum = 975;
-            foreach (long datum in levels)
+            long sum = 3;
+            foreach (long cell in values)
             {
-                sum = ((sum + sum) % 255) ^ datum;
+                sum = (sum + (sum - cell)) % 101;
+                if ((cell <= (sum + sum)) && ((double)cell > (2.0 + 6.7)))
+                {
+                    sum = (sum - (199 + sum)) % 97;
+                }
             }
-            if (sum > 7)
-            {
-                sum = (sum ^ (669 / 8)) % 1000;
-            }
-            return sum;
+            return sum % 4096;
         }
     }
 }
