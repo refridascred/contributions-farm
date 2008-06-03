@@ -1,7 +1,4 @@
 # githubfarm settings
-base_window_count: 3235
-max_interval_pct: 73.73
-session_delay:
-  - edge
-  - local
-  - blue
+soft_retries_count: 29.27
+dry_run: green
+hard_capacity_ms: blue
