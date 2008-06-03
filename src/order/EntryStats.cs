@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "local";
-        public const long MaxStream = 1168;
-        public const long HardScore = 962;
-        public const long HardStream = 2552;
-        public const long BatchStream = 5793;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (tally > (tally ^ entry))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandRange(long[] values, long offset)
