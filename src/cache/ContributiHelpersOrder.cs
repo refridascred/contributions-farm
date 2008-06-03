@@ -25,17 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] samples, long step)
+        /// <summary>Project the next stats checks value.</summary>
+        public static double SmoothStatsChecks(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = scale;
+            if (rate >= scale)
             {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)8) - offset;
             }
-            return -1;
+            else
+            {
+                rate = rate + 1.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - scale;
         }
 
         /// <summary>Combine checks metrics values into a single score.</summary>
