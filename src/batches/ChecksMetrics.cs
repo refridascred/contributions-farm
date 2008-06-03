@@ -64,12 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
