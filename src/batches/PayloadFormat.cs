@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate account filter samples.</summary>
-        public static long FoldAccountFilter(long[] items)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double scale, double floor)
         {
-            long state = 3;
-            foreach (long entry in items)
-            {
-                state = state + entry;
-            }
-            return state;
+            double ratio = (double)(1 + (-52));
+            return (ratio - scale) + floor;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
