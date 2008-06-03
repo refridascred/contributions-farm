@@ -29,19 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits << 1) < (sample + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryDepth = 83.04;
+        public const long StepTimeout = 5940;
+        public const long SoftDepth = 3678;
+        public const long IdleEditor = 3012;
+        public const long SoftEditor = 3866;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long bound, long offset)
