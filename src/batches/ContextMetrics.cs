@@ -20,13 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Match up layout checks samples.</summary>
+        public static long PairLayoutChecksCount(long[] items)
         {
-            Locked,
-            Synced,
-            Draft,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a already stats.</summary>
