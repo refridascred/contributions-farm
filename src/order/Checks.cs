@@ -76,13 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Check that every report context entry stays within the limit.</summary>
+        public static bool CheckReportContextLimits(long[] levels, long seed)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
