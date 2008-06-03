@@ -1,8 +1,7 @@
-id,count,region
-1,96.2,94.66
-2,85.08,552
-3,blue,stable
-4,366,74.36
-5,44,15.73
-6,61.55,916
-7,local,9.49
+id,level,rank
+1,2.21,384
+2,818,cached
+3,626,949
+4,staging,250
+5,staging,fallback
+6,741,919
