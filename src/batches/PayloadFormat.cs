@@ -32,15 +32,15 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 7)
+                    if ((items[i] + items[j]) < 9)
                     {
                         count = count + 1;
                     }
