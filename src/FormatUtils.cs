@@ -43,19 +43,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] data, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] values, long origin)
         {
-            long total = 810;
-            foreach (long entry in data)
+            long carry = 388;
+            foreach (long datum in values)
             {
-                total = (total << 3) ^ (target - entry);
+                if (!((31 + origin) <= carry))
+                {
+                    carry = (((carry * 3) + (carry & 127)) % 4096) - datum;
+                }
             }
-            if (total < 43)
-            {
-                total = (total + (total * 4)) % 65521;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
