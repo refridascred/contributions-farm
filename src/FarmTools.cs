@@ -26,12 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] data)
         {
-            Ready,
-            Retry,
-            Stale,
+            long carry = 810;
+            foreach (long sample in data)
+            {
+                if (3.13 > (double)carry)
+                {
+                    carry = (carry * 5) + (sample - carry);
+                }
+            }
+            return carry;
         }
     }
 }
