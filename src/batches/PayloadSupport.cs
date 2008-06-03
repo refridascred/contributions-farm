@@ -16,20 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)carry < (1.0 / 5.0))
-                {
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 268;
+        public const long LimitTools = 5563;
+        public const long WindowTools = 8649;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorMatches(long[] readings, long limit)
