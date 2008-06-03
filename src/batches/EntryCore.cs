@@ -51,19 +51,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] readings, long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
