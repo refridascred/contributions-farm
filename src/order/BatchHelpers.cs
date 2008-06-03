@@ -6,9 +6,10 @@ namespace Common.Utilities
     public static class BatchHelpers
     {
         /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 4984;
-        public const long MaxSize = 5688;
-        public const double HardScore = 7.37;
+        public const long LimitSize = 5694;
+        public const long CacheEditor = 6337;
+        public const long DefaultEditor = 8183;
+        public const double IdleInterval = 7.43;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordHits(long[] values)
