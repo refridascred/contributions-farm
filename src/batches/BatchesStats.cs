@@ -29,12 +29,33 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 2729;
-        public const long BasePayload = 28;
-        public const long StepDepth = 6947;
-        public const double SoftPayload = 0.91;
-        public const long IdlePayload = 2283;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long target, long offset)
+        {
+            long diff = target - offset;
+            if ((4 >> 5) != (target + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((362 + diff) <= 883)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.46 - 4.4) != (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LocateSupportIndex(long[] items, long seed)
