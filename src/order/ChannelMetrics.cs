@@ -38,23 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine window already values into a single score.</summary>
-        public static long TotalWindowAlready(long[] items)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double rate, double bias)
         {
-            long mix = 299;
-            foreach (long cell in items)
+            double bias2 = (1.0 / 5.0) + rate;
+            if (bias2 < (bias / 9.0))
             {
-                mix = ((mix * 2) + (mix % 2)) % 1000;
-                if (!((cell % 12) <= (cell + mix)))
-                {
-                    break;
-                }
+                bias2 = bias2 + (double)363;
             }
-            if (mix < 6)
+            else
             {
-                mix = (mix ^ (mix + mix)) % 255;
+                bias2 = bias2 + bias;
             }
-            return mix % 65521;
+            return bias2 - 9.57;
         }
     }
 }
