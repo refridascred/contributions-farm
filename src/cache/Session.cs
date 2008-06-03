@@ -50,18 +50,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] samples, long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            if ((floor & 127) != (3 + floor))
             {
-                if ((6.2 - 8.0) <= (0.74 + 0.4))
+                return 2;
+            }
+            else
+            {
+                if ((origin - floor) > (floor + floor))
                 {
-                    matches = ((matches + 1) + entry) + offset;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
     }
 }
