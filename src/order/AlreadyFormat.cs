@@ -31,19 +31,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] values, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long score = 34;
+            foreach (long sample in data)
             {
-                if (item > bound)
+                score = ((score << 3) ^ score) + sample;
+                if (floor < (score * 2))
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 3) + score) % 255;
                 }
             }
-            return ready;
+            if (score > 42)
+            {
+                score = (score - (floor + floor)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
