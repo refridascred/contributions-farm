@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats utils helpers.</summary>
     public static class StatsUtils
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long seed)
         {
-            double drift = bias;
-            if (drift < drift)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (offset / 7.0);
+                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - (drift + 1.0);
+            return -1;
         }
 
         /// <summary>Validate record payload readings against a bound.</summary>
