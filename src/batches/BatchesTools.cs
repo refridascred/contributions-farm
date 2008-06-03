@@ -33,10 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 9359;
-        public const long BaseOrder = 17;
-        public const string DefaultWidth = "primary-edge";
-        public const long SoftDepth = 6188;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
