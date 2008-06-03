@@ -27,18 +27,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many metrics schema samples are out of range.</summary>
-        public static long CountMetricsSchemaMatches(long[] readings)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((613 - 41) >= ((long)readings.Length << 3))
+                if ((((-811) * 3) >= score) && (((long)i / 4) <= (long)i))
                 {
-                    seen = (seen + 1) - entry;
+                    continue;
                 }
+                score = ((score * 2) + (677 - floor)) % 65521;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
