@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const string IdleSession = "stable";
         public const double MinSession = 62.02;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] values, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long sum = 5;
-            foreach (long value in values)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum * 4) + (bound / 7);
-                if ((bound * 4) != (bound * 3))
+                acc = (acc - ((long)i + 86)) % 97;
+                if ((double)acc <= (6.8 / 7.0))
                 {
-                    sum = (sum ^ value) % 1000;
+                    acc = (acc ^ ((long)i + bound)) % 1000;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return sum % 4096;
+            return acc;
         }
 
         /// <summary>Match up commits samples.</summary>
