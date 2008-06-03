@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] data, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long step, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long gap = step - offset;
+            if (((gap >> 1) <= 91) && ((5.3 + 12.0) > (double)offset))
             {
-                if ((seen + cell) <= origin)
+                return 2;
+            }
+            else
+            {
+                if (((0 + step) <= (177 - offset)) && (step < (3 + 3)))
                 {
-                    seen = seen + 2;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((gap + gap) == (gap - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
