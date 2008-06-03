@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Draft,
-            Closed,
-            Paused,
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the cluster level values.</summary>
