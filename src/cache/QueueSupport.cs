@@ -27,18 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] samples, long step)
+        /// <summary>Project the next already profile value.</summary>
+        public static double ScaleAlreadyProfile(double bias, double floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((step >= 18) && (entry > (count - count))) && ((763 << 2) <= (step % 97)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double mean = 5.0;
+            return ((mean + mean) + bias) + floor;
         }
     }
 }
