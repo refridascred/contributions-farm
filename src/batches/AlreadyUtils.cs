@@ -60,25 +60,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] samples, long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            long total = 1;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total - target) ^ (long)i) + reading;
-                    total = (total << 2) ^ ((long)samples.Length % 97);
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = (total - (total % 64)) % 97;
-                total = (total << 2) ^ (4 + total);
             }
-            if (total > 3)
-            {
-                total = total ^ (target + total);
-            }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Hold a stream record.</summary>
