@@ -1,13 +1,5 @@
 {
-  "strict": [289, 275, 165],
-  "githubfarm_limit": {
-    "soft_depth_count": 2298,
-    "soft_retries": ["legacy", "standard", "blue"],
-    "warm_delay_s": "standard",
-    "batch_interval_count": ["edge", "edge", "strict"],
-    "support_window": 4
-  },
-  "farm_size": 72,
-  "flush_size_ms": 30,
-  "retry_retries_pct": false
+  "compress": false,
+  "report_ratio": 44,
+  "idle_threshold": 2795
 }
