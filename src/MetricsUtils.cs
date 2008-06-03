@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long floor)
         {
-            Synced,
-            Failed,
-            Queued,
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((carry + floor) <= (floor & 15))
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
