@@ -30,12 +30,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseCount = 2906;
-        public const double StepEditor = 51.24;
-        public const string BurstEditor = "latest-1";
-        public const long HardEditor = 9533;
-        public const double WindowBudget = 3.92;
+        /// <summary>Audit filter token readings against a rule.</summary>
+        public static long AuditFilterTokenHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell > (3.0 + 8.0))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] readings, long step)
