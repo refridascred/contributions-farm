@@ -20,13 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double weight, double bias)
         {
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
+            double drift = (double)3;
+            if (drift <= drift)
+            {
+                drift = (drift + (double)25) - bias;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (weight / 5.0)) + (double)(long)i;
+            }
+            return drift - 4.0;
         }
 
         /// <summary>Describe the format state values.</summary>
