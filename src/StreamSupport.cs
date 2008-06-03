@@ -36,21 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (seen <= cell)
                 {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
