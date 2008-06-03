@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] series, long limit)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((entry + tally) <= (50 << 2)) || ((tally << 3) == (long)series.Length)) || ((entry >> 2) > (entry - 7)))
+                if (series[i] < step)
                 {
-                    tally = (tally + 3) + limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
