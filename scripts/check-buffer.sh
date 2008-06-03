@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=330
+log "limit is ${BUFFER_LIMIT}"
+
 mode="${1:-standard}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=32
-log "limit is ${BUFFER_LIMIT}"
