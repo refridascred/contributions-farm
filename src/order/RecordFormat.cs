@@ -35,31 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long seed, long target)
+        /// <summary>Check that every metric batches entry stays within the limit.</summary>
+        public static bool CheckMetricBatchesRange(long[] data, long origin)
         {
-            if (!(11 > (seed - 593)))
+            bool found = true;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed % 3) > target) || ((target + 840) != (target & 3)))
+                if (sample < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)seed > (double)431))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a graph summary.</summary>
