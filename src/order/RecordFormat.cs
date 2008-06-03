@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxCount = 38.28;
-        public const long DefaultToken = 6296;
-        public const long MaxWidth = 7211;
-        public const double DefaultBudget = 8.89;
-        public const long BurstInterval = 404;
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double SoftWidth = 3.51;
