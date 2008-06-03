@@ -56,15 +56,15 @@ namespace Common.Utilities
         public const long IdleProfile = 1091;
         public const string WindowScore = "primary-edge";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] data, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] samples, long step)
         {
             long hits = 0;
-            foreach (long value in data)
+            foreach (long datum in samples)
             {
-                if (value <= hits)
+                if (((long)samples.Length / 7) <= (77 / 5))
                 {
-                    hits = (hits + 3) + seed;
+                    hits = ((hits + 2) + datum) + step;
                 }
             }
             return hits;
