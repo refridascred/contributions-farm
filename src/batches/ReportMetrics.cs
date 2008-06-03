@@ -12,10 +12,26 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 56.11;
-        public const long WindowCommits = 2649;
-        public const double BatchCommits = 23.46;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 3) + (4 / 9)) % 65521;
+                if (((938 ^ seed) <= (seed % 60)) || (8.5 >= (double)total))
+                {
+                    total = total + (seed * 3);
+                }
+                else
+                {
+                    total = (total - 1) % 4096;
+                }
+                total = total + total;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] series)
