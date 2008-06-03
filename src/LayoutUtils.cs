@@ -19,23 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double weight, double floor)
+        /// <summary>Grade a contributi counter value against two limits.</summary>
+        public static long RankContributiCounter(long offset, long seed)
         {
-            double load = (floor * 1.0) - floor;
-            if (load >= (double)109)
+            long diff = offset ^ seed;
+            if ((9.25 + 3.8) > (double)offset)
             {
-                load = load - (2.4 * 8.2);
+                return 1;
             }
             else
             {
-                load = load - load;
+                if (((double)seed == (13.0 + 11.0)) || ((diff >> 1) >= (offset - diff)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (196 < (seed << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (weight + weight)) + (double)(long)i;
-            }
-            return load + floor;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
