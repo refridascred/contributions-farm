@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mix = 68;
-            foreach (long item in data)
-            {
-                if (item < (item % 64))
-                {
-                    mix = mix - (item - mix);
-                }
-            }
-            return mix;
+            Pending,
+            Failed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Audit context report readings against a rule.</summary>
