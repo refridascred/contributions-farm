@@ -28,12 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] items, long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] > bound)
+                if (samples[i] == seed)
                 {
                     return (long)i;
                 }
