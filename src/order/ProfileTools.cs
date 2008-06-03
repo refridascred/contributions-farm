@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepRatio = 3914;
-        public const long SoftCommand = 5860;
-        public const string BatchDepth = "open-1";
-        public const long IdleCommand = 47;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings, long bound)
+        {
+            long anchor = 78;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor ^ bound) + datum;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
