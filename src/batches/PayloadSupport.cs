@@ -31,19 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] data, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long result = 7;
+            foreach (long reading in levels)
             {
-                if (sample > offset)
+                result = ((result << 2) ^ target) % 97;
+                if ((result - result) <= (result / 2))
                 {
-                    ok = false;
-                    break;
+                    result = result ^ (reading << 3);
                 }
             }
-            return ok;
+            return result;
         }
     }
 }
