@@ -41,22 +41,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] values, long floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)values.Length + hits) < 172)
+                if (samples[i] <= seed)
                 {
-                    hits = ((hits + 2) ^ reading) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
