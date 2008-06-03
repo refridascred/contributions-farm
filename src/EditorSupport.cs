@@ -65,21 +65,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up commits queue samples.</summary>
-        public static long OverlapCommitsQueueCount(long[] readings)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
