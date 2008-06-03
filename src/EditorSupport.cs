@@ -45,15 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] items, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if (value < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Hold a session stats.</summary>
