@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Active,
-            Locked,
-            Paused,
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the farm status values.</summary>
