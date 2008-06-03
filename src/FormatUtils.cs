@@ -20,11 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 97.63;
-        public const long WindowStats = 4469;
-        public const long DefaultStats = 6005;
-        public const long CacheStats = 4430;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((7.28 * 15.0) > (double)hits)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate report context readings against a bound.</summary>
         public static bool CheckReportContextRange(long[] samples, long target)
