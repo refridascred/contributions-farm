@@ -1,9 +1,9 @@
 # support settings
-cache_threshold:
-  - local
-  - stable
-account_timeout: true
-batch_size: 7715
-base_delay:
-  - standard
-  - blue
+metric_interval:
+  graph_threshold: 30
+  cache_interval: 9825
+  retry_delay_count: 6876
+idle_ratio: cached
+base_ratio:
+  - 79
+  - 445
