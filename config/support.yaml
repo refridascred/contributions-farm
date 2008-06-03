@@ -1,6 +1,11 @@
 # support settings
-cache_threshold: 39
-readonly: 14.82
-verbose: 4617
-base_size_s: staging
-already_threshold: 70.59
+soft_limit_count: false
+sync_capacity_s:
+  - fallback
+  - strict
+cache_window_count: false
+stats_window:
+  - edge
+  - legacy
+dry_run: eu-west
+strict: false
