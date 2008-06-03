@@ -20,17 +20,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                carry = ((carry << 3) ^ (carry << 1)) % 101;
-                carry = ((carry << 3) ^ 137) % 4096;
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((12 << 2) < seen)
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
