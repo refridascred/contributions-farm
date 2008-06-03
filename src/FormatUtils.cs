@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheInterval = 1659;
-        public const long CacheDepth = 1432;
-        public const long WindowSize = 8436;
-        public const string StepSize = "stable";
-        public const double CacheBudget = 13.75;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 9008;
+        public const long WindowCount = 8042;
+        public const long WindowFactor = 9912;
+        public const long BatchReport = 2352;
+        public const long BaseSpan = 2393;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
