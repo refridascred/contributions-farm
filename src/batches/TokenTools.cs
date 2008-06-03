@@ -25,11 +25,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 6628;
-        public const double MaxTimeout = 46.7;
-        public const long BurstTools = 7962;
-        public const double LimitTools = 39.2;
-        public const long StepTimeout = 359;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Ready,
+            Failed,
+            Synced,
+            Done,
+        }
     }
 }
