@@ -34,19 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] levels)
         {
-            long total = 409;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((total > sample) || ((sample + total) <= (sample ^ sample)))
+                if (!(((hits / 4) <= ((-8) ^ item)) || ((double)hits <= (10.0 + 13.0))))
                 {
-                    continue;
+                    hits = hits + 1;
                 }
-                total = (total ^ (59 + total)) % 4096;
             }
-            return total;
+            return hits;
         }
     }
 }
