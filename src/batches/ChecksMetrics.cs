@@ -50,12 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a counter queue figure with a bias.</summary>
-        public static double ScaleCounterQueue(double weight, double floor)
-        {
-            double weight2 = (double)30 / 4.0;
-            return ((weight2 + weight2) + weight) + floor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "latest-edge";
+        public const long IdleWindow = 686;
+        public const long BurstRatio = 2016;
+        public const long BaseWindow = 100;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
