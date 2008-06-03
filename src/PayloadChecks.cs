@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] levels, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 62;
+            foreach (long cell in samples)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score + (cell + score)) % 65521;
             }
-            return -1;
+            if (score < 668)
+            {
+                score = (score - (score << 1)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of counter context readings.</summary>
