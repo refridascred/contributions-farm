@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Count buffer cache pairs that satisfy a relation.</summary>
+        public static long CompareBufferCacheCount(long[] values)
         {
-            long acc = 80;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum <= (4 ^ acc)) && ((acc - acc) == (datum + datum)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc * 4) + (acc - datum);
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 254)
-            {
-                acc = (acc + (0 % 8)) % 4096;
-            }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Project the next notes value.</summary>
