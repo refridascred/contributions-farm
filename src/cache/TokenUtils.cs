@@ -34,19 +34,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double floor)
-        {
-            double mean = 6.86;
-            if (mean > 7.0)
-            {
-                mean = (mean + (double)2) - bias;
-            }
-            else
-            {
-                mean = mean - (7.5 * 0.3);
-            }
-            return mean - (5.0 + floor);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "open-1";
+        public const long MaxSize = 8531;
+        public const string WindowBuffer = "stable-edge";
+        public const double BurstBuffer = 57.07;
+        public const long HardScore = 149;
     }
 }
