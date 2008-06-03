@@ -1,14 +1,11 @@
 # Editor notes
 
-Keep farm and graph names short and lowercase.
-The context report groups every layout by checks.
-
-Keep buffer and batch names short and lowercase.
-Each contributi is validated before it reaches the account queue.
-A report that stays idle for too long is moved to the record list.
+Keep graph and token names short and lowercase.
+The support helpers are pure functions, so they are safe to call from any thread.
+Use payload settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Document new booking fields
-- Review report limits each release
-- Validate metrics input early
+- Review schema limits each release
+- Document new session fields
+- Prefer metric defaults
