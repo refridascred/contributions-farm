@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long LimitTools = 5563;
         public const long WindowTools = 8649;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] values, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] values, long limit)
         {
-            bool stale = true;
+            long seen = 0;
             foreach (long cell in values)
             {
-                if (cell >= floor)
+                if ((757 * 4) >= cell)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) - limit;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
