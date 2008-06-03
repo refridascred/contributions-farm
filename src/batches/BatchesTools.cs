@@ -32,19 +32,12 @@ namespace Common.Utilities
             return rate - (double)22;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] series)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long acc = 3;
-            foreach (long entry in series)
-            {
-                acc = (acc * 4) + (entry - entry);
-            }
-            if (acc > 90)
-            {
-                acc = ((acc << 2) ^ 12) % 1000;
-            }
-            return acc;
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
