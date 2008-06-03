@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
