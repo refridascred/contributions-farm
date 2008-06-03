@@ -49,12 +49,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSupport = 32.71;
-        public const long MinSupport = 4108;
-        public const long BurstTimeout = 3948;
-        public const double RetryCount = 60.63;
-        public const long SoftSupport = 6203;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 1448;
+        public const long DefaultStream = 1194;
+        public const long HardFactor = 9165;
+        public const long RetryStream = 5379;
 
         /// <summary>Combine report batches values into a single score.</summary>
         public static long WeighReportBatches(long[] samples)
