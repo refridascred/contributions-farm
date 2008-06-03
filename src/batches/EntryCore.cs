@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 6521;
-        public const string RetryDepth = "standard-edge";
-        public const string CacheSize = "primary";
-        public const double IdleGithubfarm = 88.37;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] values)
+        {
+            long state = 79;
+            foreach (long datum in values)
+            {
+                if ((state - datum) > (datum + datum))
+                {
+                    state = (state << 2) ^ (datum * 2);
+                }
+            }
+            if (state < 39)
+            {
+                state = state ^ state;
+            }
+            return state;
+        }
 
         /// <summary>Blend two tools payload measurements.</summary>
         public static double AdjustToolsPayload(double weight, double offset)
