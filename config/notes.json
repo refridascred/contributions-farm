@@ -1,5 +1,10 @@
 {
-  "base_ratio": "primary",
-  "audit": [430, 449, 467, 254],
-  "soft_ttl_ms": ["staging", "legacy"]
+  "flush_ratio_ms": 85,
+  "audit": 30,
+  "strict": {
+    "min_retries_count": 83.28,
+    "batch_threshold_pct": 5004,
+    "default_ratio_count": "strict"
+  },
+  "cache_retries_ms": 5022
 }
