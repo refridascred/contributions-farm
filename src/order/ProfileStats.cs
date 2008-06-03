@@ -44,13 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!((count % 3) <= 12))
+                {
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
