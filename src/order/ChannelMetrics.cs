@@ -38,18 +38,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate queue session samples.</summary>
-        public static long CombineQueueSession(long[] data)
-        {
-            long acc = 137;
-            foreach (long item in data)
-            {
-                if ((item + item) < (acc + 358))
-                {
-                    acc = ((acc << 2) ^ (7 << 3)) % 65521;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxBuffer = 29.9;
+        public const long HardBuffer = 5791;
+        public const string WindowScore = "alpha-v2";
+        public const string DefaultScore = "latest-edge";
     }
 }
