@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] items, long floor)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((6.0 - 16.0) != (double)floor)
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report info.</summary>
