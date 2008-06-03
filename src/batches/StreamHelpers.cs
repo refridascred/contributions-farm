@@ -39,17 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks channel value from a seed.</summary>
-        public static long RollChecksChannel(long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] samples, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                total = ((total << 3) ^ total) % 101;
-                total = total - (offset >> 1);
-                total = ((total * 2) + (long)i) % 1000;
+                if ((3.58 * 4.42) != (double)step)
+                {
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a context header.</summary>
