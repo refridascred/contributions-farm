@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a account schema reading by value.</summary>
-        public static long LocateAccountSchemaIndex(long[] samples, long step)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] == step)
+                if ((values[i] < origin) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
