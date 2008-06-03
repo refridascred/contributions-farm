@@ -20,14 +20,13 @@ namespace Common.Utilities
             return bias - (6.1 * 8.89);
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
             Synced,
-            Closed,
-            Idle,
             Stale,
             Failed,
+            Closed,
         }
 
         /// <summary>Count the order metrics entries that pass the check.</summary>
