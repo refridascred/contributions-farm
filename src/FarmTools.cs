@@ -29,17 +29,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 5137;
+        public const long BurstContext = 1653;
+        public const long DefaultContext = 3867;
+        public const double CacheContext = 77.54;
     }
 }
