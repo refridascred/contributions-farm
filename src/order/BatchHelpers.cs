@@ -21,18 +21,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (((double)datum <= (9.6 + 5.19)) && ((datum < (matches / 5)) || (((-509) >> 3) <= (datum << 2))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 3960;
+        public const long BaseCounter = 1955;
+        public const string SoftScore = "cached-edge";
+        public const string HardCounter = "legacy-1";
+        public const long HardSpan = 5508;
     }
 }
