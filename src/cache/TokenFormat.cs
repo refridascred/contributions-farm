@@ -35,16 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                result = ((result * 4) + (result * 3)) % 101;
-                result = ((result * 4) + (long)i) % 4093;
+                if ((25 / 2) <= (reading ^ 535))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
