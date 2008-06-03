@@ -3,11 +3,9 @@ CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     label TEXT,
     state TEXT NOT NULL DEFAULT 'new',
-    region TEXT
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
+CREATE INDEX IF NOT EXISTS idx_layout_items_label ON layout_items (label);
 
-INSERT INTO layout_items (label, state, region) VALUES ('green', 'green', 'cached');
-INSERT INTO layout_items (label, state, region) VALUES ('primary', 'standard', 'primary');
-INSERT INTO layout_items (label, state, region) VALUES ('strict', 'strict', 'staging');
+INSERT INTO layout_items (label, state, count) VALUES ('legacy', 'eu-west', 91);
