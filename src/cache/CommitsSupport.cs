@@ -82,10 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 3376;
-        public const double SoftBudget = 55.11;
-        public const long CacheWidth = 4310;
-        public const string StepLayout = "local-edge";
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double rate, double floor)
+        {
+            double load = rate / 2.0;
+            if (load < (floor * 1.5))
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (9.2 + load)) - (double)(long)i;
+            }
+            return load - (3.93 - 19.0);
+        }
     }
 }
