@@ -48,11 +48,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 3344;
-        public const string WindowBudget = "alpha-1";
-        public const string StepReport = "legacy";
-        public const long StepCount = 7136;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit graph command readings against a rule.</summary>
         public static long TallyGraphCommandMatches(long[] data)
