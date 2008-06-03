@@ -22,21 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 5;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state << 3) ^ (value << 2)) - step;
+                state = state + (state >> 4);
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
