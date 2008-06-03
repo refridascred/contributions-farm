@@ -1,14 +1,6 @@
 # githubfarm settings
-sync_window_count:
-  idle_capacity: false
-  githubfarm_retries: 7
-  githubfarm_delay: stable
-  readonly: cached
-  enabled: 6.17
-hard_threshold_count: 4
-batch_capacity_ms: true
-persist: true
-verbose:
-  - 172
-  - 38
-retry_interval: 31.99
+base_depth_pct: 60
+flush_timeout:
+  - stable
+  - open
+compress: 9
