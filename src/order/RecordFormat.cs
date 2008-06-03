@@ -55,13 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            Retry,
-            Draft,
-            Ready,
-            Synced,
+            long state = 7;
+            foreach (long entry in readings)
+            {
+                if ((double)state > (18.0 + 8.7))
+                {
+                    state = (state ^ (entry % 5)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate metrics context samples.</summary>
