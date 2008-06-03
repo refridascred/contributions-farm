@@ -33,12 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBatch = 83.67;
-        public const string IdleTimeout = "latest";
-        public const double BaseScore = 50.75;
-        public const long StepBatch = 2630;
-        public const string BaseFactor = "open-v2";
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Pending,
+            Idle,
+            Draft,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long FoldAccount(long[] data, long target)
