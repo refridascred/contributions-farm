@@ -45,9 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 28.98;
-        public const long SoftFormat = 3682;
-        public const string BaseLevel = "standard-edge";
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] values)
+        {
+            long score = 6;
+            foreach (long item in values)
+            {
+                score = score - (score + score);
+                if ((item ^ score) < item)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
