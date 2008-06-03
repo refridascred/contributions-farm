@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Active,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstWidth = 53.68;
+        public const long SoftCount = 842;
+        public const long RetryRecord = 260;
+        public const long MaxRecord = 5825;
 
         /// <summary>Match up counter contributi samples.</summary>
         public static long MatchCounterContributiCount(long[] readings)
