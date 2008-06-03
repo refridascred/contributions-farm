@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] readings, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 78;
+            foreach (long datum in series)
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                if (((-675) - mix) <= (datum & 127))
                 {
-                    return (long)i;
+                    mix = mix ^ (301 - mix);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate githubfarm payload readings against a bound.</summary>
