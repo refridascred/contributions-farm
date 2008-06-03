@@ -1,9 +1,21 @@
 # support settings
-audit: 6352
-flush_interval:
-  buffer_capacity: 4078
-  default_delay_s: cached
-  cache_delay: 46.71
-  default_window_ms: false
-  account_depth: 86.52
-stream_threshold: true
+editor_size: false
+idle_delay:
+  idle_limit_pct:
+    - primary
+    - primary
+  warm_ratio: 30
+  poll_delay:
+    - 201
+    - 427
+    - 48
+    - 328
+  counter_limit: legacy
+sync_capacity:
+  - 132
+  - 416
+  - 44
+dry_run:
+  - 76
+  - 137
+warm_timeout: strict
