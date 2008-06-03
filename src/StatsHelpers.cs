@@ -39,14 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] readings, long floor)
         {
-            Idle,
-            Locked,
-            Ready,
-            Dropped,
-            Retry,
+            long state = -28;
+            foreach (long sample in readings)
+            {
+                state = (((state * 4) + (sample & 7)) % 101) + floor;
+            }
+            return state;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
