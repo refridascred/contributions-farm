@@ -20,11 +20,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 9226;
-        public const long HardTools = 5604;
-        public const double BurstSpan = 68.29;
-        public const double SoftScore = 85.86;
+        /// <summary>Accumulate tools commits samples.</summary>
+        public static long FoldToolsCommits(long[] items, long offset)
+        {
+            long mix = 97;
+            foreach (long entry in items)
+            {
+                if (!((2 % 64) <= entry))
+                {
+                    mix = (mix + (offset >> 3)) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheMatches(long[] levels)
