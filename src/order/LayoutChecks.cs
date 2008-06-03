@@ -28,32 +28,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long step, long origin)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] samples, long bound)
         {
-            long lane = step + origin;
-            if (!((origin % 7) <= (step / 7)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin <= (1 - lane)) && ((lane & 63) != ((-72) << 2)))
+                if (samples[i] > bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((74 / 4) != (origin + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
