@@ -12,21 +12,39 @@ namespace Common.Utilities
         public const long DefaultFactor = 1280;
         public const long IdleCommand = 1671;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long floor, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = floor + seed;
+            if ((seed << 2) <= (next ^ seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((831 / 5) > (seed + seed))
                 {
-                    if ((data[i] + data[j]) < 16)
+                    return 6;
+                }
+                else
+                {
+                    if (!((next - seed) != (floor ^ floor)))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor ^ next) >= (1 >> 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
