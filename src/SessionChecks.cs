@@ -37,11 +37,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 5720;
+        public const string SoftLayout = "latest";
+        public const long WindowSize = 980;
+        public const long LimitRatio = 2563;
+        public const long StepWidth = 175;
     }
 }
