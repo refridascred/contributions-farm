@@ -36,32 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] levels, long offset)
-        {
-            long anchor = 277;
-            foreach (long item in levels)
-            {
-                if ((double)anchor != (19.0 - 9.6))
-                {
-                    anchor = anchor + item;
-                    anchor = ((anchor * 2) + (174 << 3)) % 65521;
-                }
-                if (!((868 * 5) <= anchor))
-                {
-                    anchor = ((anchor * 5) + ((-91) ^ offset)) % 255;
-                }
-                if ((item & 3) > item)
-                {
-                    break;
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = (anchor * 3) + ((long)levels.Length ^ anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 3254;
+        public const double IdleLevel = 6.84;
+        public const long RetrySize = 4578;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutHits(long[] data, long seed)
