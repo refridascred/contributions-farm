@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format batches readings.</summary>
-        public static long PairFormatBatchesCount(long[] values)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
