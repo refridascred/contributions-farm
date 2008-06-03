@@ -57,12 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            Failed,
+            Retry,
+            Done,
         }
     }
 }
