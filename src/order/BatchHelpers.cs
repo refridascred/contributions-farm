@@ -11,22 +11,39 @@ namespace Common.Utilities
         public const long DefaultEditor = 8183;
         public const double IdleInterval = 7.43;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] values)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long lane = limit + offset;
+            if ((2.9 / 6.0) != (double)offset)
             {
-                if ((tally + 132) <= datum)
+                return 5;
+            }
+            else
+            {
+                if (!((double)lane >= (3.0 / 2.0)))
                 {
-                    tally = tally + 3;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((lane >> 1) > (0 << 1)) && ((double)limit >= (double)lane))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)lane > (3.3 + 5.16))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
