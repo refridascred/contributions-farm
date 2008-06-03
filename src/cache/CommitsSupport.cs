@@ -48,18 +48,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if (((double)floor < (9.8 / 4.0)) || ((double)floor <= (7.99 - 7.04)))
             {
-                if (!(datum >= (datum ^ hits)))
+                return 1;
+            }
+            else
+            {
+                if ((11.0 * 4.0) < (12.0 - 7.08))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (floor <= (floor << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((15.0 * 0.2) != (double)floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
