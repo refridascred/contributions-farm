@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Active,
-            Dropped,
-            Retry,
+            Stale,
+            Failed,
+            Locked,
+            Done,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
