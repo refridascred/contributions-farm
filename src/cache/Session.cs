@@ -41,16 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] samples, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                total = ((total << 2) ^ (seed + 7)) % 101;
-                total = ((total * 4) + (long)i) % 4093;
+                if ((6.2 - 8.0) <= (0.74 + 0.4))
+                {
+                    matches = ((matches + 1) + entry) + offset;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
