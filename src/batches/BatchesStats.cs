@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
+            long result = 4;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result = (result + result) + (long)i;
+                }
+                if (entry > (result ^ 176))
+                {
+                    result = (result + ((long)readings.Length + entry)) % 1000;
+                }
+                if ((double)result > (8.0 / 2.0))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
