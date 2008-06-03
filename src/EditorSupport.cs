@@ -67,11 +67,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryWidth = "staging-edge";
+        public const double DefaultMetric = 98.14;
+        public const long BatchDepth = 1223;
     }
 }
