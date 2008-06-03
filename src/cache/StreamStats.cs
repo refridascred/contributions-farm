@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a context counter pair into a bucket.</summary>
-        public static long RankContextCounter(long step, long seed)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            if ((seed > (51 >> 2)) || ((step / 4) == (41 / 9)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step > (seed / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Done,
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
