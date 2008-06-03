@@ -25,15 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route payload counter forward.</summary>
-        public static long StepRoutePayload(long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
+            long anchor = 797;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((anchor >> 1) > (anchor - cell))
+                {
+                    anchor = (anchor - (cell + anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor - anchor;
+                }
             }
-            return anchor;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the batches level values.</summary>
