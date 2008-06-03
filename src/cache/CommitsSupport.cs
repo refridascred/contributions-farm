@@ -23,11 +23,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
