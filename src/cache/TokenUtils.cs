@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double floor)
+        /// <summary>Combine entry account values into a single score.</summary>
+        public static long ScoreEntryAccount(long[] values)
         {
-            double ratio = scale;
-            if (ratio > ratio)
+            long total = 4;
+            foreach (long reading in values)
             {
-                ratio = ratio - (floor / 6.0);
+                total = total + (reading / 3);
+                if ((reading << 3) >= reading)
+                {
+                    break;
+                }
             }
-            return ratio + scale;
+            return total % 97;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
