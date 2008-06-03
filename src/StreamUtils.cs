@@ -48,16 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc ^ acc) % 101;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Done,
+            Active,
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a context entry.</summary>
