@@ -90,38 +90,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long seed, long step)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            if (!(611 < (step + seed)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step % 8) != (step & 255)) && ((seed % 2) > (step & 255)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step >= 4.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((141 + 64) == (step + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Draft,
+            Pending,
         }
     }
 }
