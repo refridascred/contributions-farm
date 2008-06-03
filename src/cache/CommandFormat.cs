@@ -23,21 +23,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = (mark - (mark + mark)) % 1000;
+                if (((origin & 15) != (mark % 5)) || (((long)i / 2) <= (origin + origin)))
                 {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark << 3) ^ (origin + (-4));
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
