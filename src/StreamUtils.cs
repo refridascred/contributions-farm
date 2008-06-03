@@ -35,17 +35,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a schema filter sample.</summary>
-        public static long LookupSchemaFilterIndex(long[] series, long offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long step, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((double)seed == (9.01 + 4.77)) || (98 < step))
             {
-                if (series[i] < offset)
+                return 8;
+            }
+            else
+            {
+                if ((double)step > 14.0)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every contributi already entry stays within the limit.</summary>
