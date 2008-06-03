@@ -13,15 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Queued,
+            Paused,
+            Stale,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
