@@ -35,15 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double ratio, double bias)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] items, long offset)
         {
-            double ratio2 = (double)(946 - 347);
-            if (ratio2 >= (bias / 8.0))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                ratio2 = ratio2 - ratio;
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio2 - bias;
+            return valid;
         }
     }
 }
