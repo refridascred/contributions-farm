@@ -31,13 +31,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] levels, long target)
         {
-            Closed,
-            Retry,
-            Done,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
