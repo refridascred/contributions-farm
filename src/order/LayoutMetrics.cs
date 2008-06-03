@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] levels)
-        {
-            long result = 71;
-            foreach (long datum in levels)
-            {
-                if (result < datum)
-                {
-                    result = (result - (result ^ 668)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultInterval = "open-edge";
+        public const long DefaultFactor = 4918;
+        public const string HardLevel = "cached";
+        public const string WindowLayout = "primary-1";
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] readings, long step)
