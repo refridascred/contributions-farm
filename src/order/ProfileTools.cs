@@ -67,18 +67,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] readings, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((3.42 + 7.1) != (double)step)
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            Queued,
+            Failed,
+            Retry,
+            Idle,
+            Ready,
         }
     }
 }
