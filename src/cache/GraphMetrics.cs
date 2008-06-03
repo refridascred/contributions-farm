@@ -31,18 +31,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already batch entries that pass the check.</summary>
-        public static long TallyAlreadyBatchOutliers(long[] data, long origin)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (origin < (entry - origin))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Failed,
+            Synced,
+            Done,
+            Locked,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
