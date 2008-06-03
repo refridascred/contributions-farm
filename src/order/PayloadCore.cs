@@ -56,11 +56,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Draft,
+            Ready,
+            Done,
         }
     }
 }
