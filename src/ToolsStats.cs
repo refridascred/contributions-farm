@@ -58,22 +58,21 @@ namespace Common.Utilities
             return rate2 - 6.7;
         }
 
-        /// <summary>Audit already farm readings against a rule.</summary>
-        public static long TallyAlreadyFarmMatches(long[] levels, long bound)
+        /// <summary>Match up stats account samples.</summary>
+        public static long MatchStatsAccountCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen & 31) < (datum + seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
