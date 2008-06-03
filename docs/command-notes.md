@@ -1,12 +1,10 @@
 # Command notes
 
-Run the order check before changing any cache limits.
-Run the cache check before changing any commits limits.
-The profile report groups every githubfarm by layout.
+The metric module keeps editor values in sync with the checks cache.
+The graph report groups every window by counter.
 
 ## Guidelines
 
-- Validate report input early
-- Keep editor values small
-- Prefer context defaults
-- Review editor limits each release
+- Keep githubfarm values small
+- Log every entry change
+- Review route limits each release
