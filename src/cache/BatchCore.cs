@@ -45,21 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of report entry readings.</summary>
-        public static long PairReportEntryCount(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((floor + matches) < 37)
                 {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
