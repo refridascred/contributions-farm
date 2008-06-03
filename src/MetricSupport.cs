@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
