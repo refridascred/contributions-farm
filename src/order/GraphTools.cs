@@ -22,10 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 8808;
-        public const double BatchScore = 35.86;
-        public const long RetryRoute = 8282;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items, long bound)
+        {
+            long sum = 892;
+            foreach (long datum in items)
+            {
+                if ((bound + sum) > (datum - sum))
+                {
+                    sum = (sum - (datum + datum)) % 255;
+                }
+            }
+            if (sum < 449)
+            {
+                sum = ((sum << 2) ^ sum) % 65521;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
