@@ -20,12 +20,19 @@ namespace Common.Utilities
             return weight - (7.87 / 5.0);
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] series, long step)
         {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a record order figure with a bias.</summary>
