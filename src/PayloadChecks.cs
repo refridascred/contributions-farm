@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFactor = 9.65;
+        public const string CacheLevel = "cached-edge";
+        public const long CacheFormat = 8549;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long WeighEditor(long[] samples)
