@@ -1,22 +1,5 @@
 {
-  "buffer_size": {
-    "cache_threshold": 23,
-    "report_size": 42.93,
-    "soft_ratio_pct": 7,
-    "hard_timeout_count": "fallback",
-    "idle_limit_s": false
-  },
-  "poll_limit_pct": "standard",
-  "checks_retries": 2.08,
-  "min_threshold_count": {
-    "commits_ratio": 56,
-    "filter_limit": {
-      "contributi_capacity": 60,
-      "token_capacity": "green",
-      "enabled": "green"
-    },
-    "soft_ttl_pct": 36,
-    "schema_delay": ["legacy", "cached"]
-  },
-  "batch_size_count": false
+  "metrics_delay": "local",
+  "base_threshold": "primary",
+  "buffer_ratio": "primary"
 }
