@@ -19,12 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long seed)
         {
-            Idle,
-            Closed,
-            Synced,
+            long result = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((((long)i % 100) != (long)i) && ((seed ^ (-8)) > (seed >> 5)))
+                {
+                    result = (result - (result & 63)) % 101;
+                }
+                else
+                {
+                    result = (result ^ seed) % 97;
+                }
+                result = (result + (seed ^ seed)) % 101;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
