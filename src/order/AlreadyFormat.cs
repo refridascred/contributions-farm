@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric cluster readings against a bound.</summary>
-        public static bool ValidateMetricClusterLimits(long[] samples, long offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Retry,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
