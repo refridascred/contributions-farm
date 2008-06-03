@@ -22,19 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] items, long bound)
+        /// <summary>Combine channel stats values into a single score.</summary>
+        public static long WeighChannelStats(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long mark = 8;
+            foreach (long datum in data)
             {
-                if (datum != bound)
+                mark = (mark << 3) ^ 22;
+                if ((mark * 2) < (mark - datum))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark - (datum % 64)) % 4096;
+                    mark = ((mark << 2) ^ datum) % 97;
                 }
+                mark = (mark - 23) % 4096;
             }
-            return flag;
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
