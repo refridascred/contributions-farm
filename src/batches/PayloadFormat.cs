@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double weight, double bias)
+        /// <summary>Accumulate account filter samples.</summary>
+        public static long FoldAccountFilter(long[] items)
         {
-            double drift = 9.15;
-            return (drift + bias) + weight;
+            long state = 3;
+            foreach (long entry in items)
+            {
+                state = state + entry;
+            }
+            return state;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
