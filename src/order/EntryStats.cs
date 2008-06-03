@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Dropped,
-            Done,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "local";
+        public const long MaxStream = 1168;
+        public const long HardScore = 962;
+        public const long HardStream = 2552;
+        public const long BatchStream = 5793;
 
         /// <summary>Combine notes already values into a single score.</summary>
         public static long FoldNotesAlready(long[] levels, long limit)
