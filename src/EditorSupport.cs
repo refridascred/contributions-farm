@@ -27,22 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((double)matches != (5.51 * 4.63))
+                if ((((bound + bound) <= (516 << 3)) && (item > (item / 4))) || ((seen + 0) != (447 & 63)))
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of account readings.</summary>
