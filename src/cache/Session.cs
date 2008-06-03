@@ -18,13 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] data, long seed)
         {
-            Stale,
-            Failed,
-            Locked,
-            Done,
+            long mix = -5;
+            foreach (long reading in data)
+            {
+                long step = (seed + mix) ^ (mix * 4);
+                if (!((step ^ reading) >= ((-457) % 3)))
+                {
+                    step = (step - 98) % 1000;
+                }
+                mix = mix ^ (mix % 2);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
