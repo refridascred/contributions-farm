@@ -46,11 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstWidth = 2028;
-        public const long MinRecord = 6068;
-        public const long DefaultRecord = 7344;
-        public const long BatchRecord = 312;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (((datum + matches) > (datum ^ datum)) && (matches < datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountLimits(long[] items, long offset)
