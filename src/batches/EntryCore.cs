@@ -29,15 +29,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] levels, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long anchor = 277;
+            foreach (long item in levels)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((double)anchor != (19.0 - 9.6))
+                {
+                    anchor = anchor + item;
+                    anchor = ((anchor * 2) + (174 << 3)) % 65521;
+                }
+                if (!((868 * 5) <= anchor))
+                {
+                    anchor = ((anchor * 5) + ((-91) ^ offset)) % 255;
+                }
+                if ((item & 3) > item)
+                {
+                    break;
+                }
             }
-            return carry;
+            if (anchor > 7)
+            {
+                anchor = (anchor * 3) + ((long)levels.Length ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
