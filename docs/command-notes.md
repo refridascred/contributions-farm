@@ -1,11 +1,10 @@
 # Command notes
 
-Run the stats check before changing any layout limits.
-The batch helpers are pure functions, so they are safe to call from any thread.
-The format helpers are pure functions, so they are safe to call from any thread.
+Each report is validated before it reaches the window queue.
+Use buffer settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Document new command fields
+- Review farm limits each release
 - Validate entry input early
-- Keep schema values small
+- Document new metric fields
