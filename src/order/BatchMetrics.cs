@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepSpan = 28;
-        public const string LimitNotes = "open";
-        public const long DefaultSpan = 4808;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowLimits(long[] data, long offset)
