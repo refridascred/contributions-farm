@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Audit batches schema readings against a rule.</summary>
+        public static long CountBatchesSchemaHits(long[] values, long step)
         {
-            Queued,
-            Retry,
-            Pending,
-            Locked,
-            Stale,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((1 >> 5) >= step)
+                {
+                    matches = (matches + 1) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two githubfarm entry measurements.</summary>
