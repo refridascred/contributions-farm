@@ -56,13 +56,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Retry,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseFactor = 5714;
+        public const long WindowReport = 732;
+        public const double HardReport = 10.62;
+        public const long BaseRatio = 1304;
+        public const double DefaultCount = 62.88;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long origin, long step)
