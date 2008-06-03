@@ -20,12 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
