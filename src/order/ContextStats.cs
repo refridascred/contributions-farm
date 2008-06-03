@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 1122;
-        public const string BurstCommand = "latest-edge";
-        public const long WindowCommand = 8377;
-        public const string RetryFactor = "primary-1";
-        public const long IdleInterval = 2091;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            New,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutMatches(long[] items, long floor)
