@@ -17,10 +17,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardScore = "latest-v2";
-        public const long BaseLevel = 6632;
-        public const long CacheWidth = 9238;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long step, long origin)
