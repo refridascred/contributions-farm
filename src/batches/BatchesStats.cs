@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the profile notes series from a seed.</summary>
-        public static long IterateProfileNotes(long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] levels, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long mark = 79;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (acc - (limit + (long)i2)) % 255;
-                    acc = (acc + ((long)i % 60)) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                mark = (((mark * 5) + ((-4) / 8)) % 1000) + datum;
             }
-            return acc;
+            if (mark < 399)
+            {
+                mark = (mark ^ (seed & 127)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the buffer state values.</summary>
