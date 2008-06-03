@@ -1,24 +1,7 @@
 {
-  "batches_threshold": 91,
-  "max_limit_pct": false,
-  "entry_retries": 44.03,
-  "soft_limit": "edge",
-  "layout_ratio": {
-    "sync_limit": {
-      "batch_timeout": false,
-      "audit": 9994,
-      "max_retries_ms": 60,
-      "cache_capacity_s": "open"
-    },
-    "commits_ratio": false,
-    "soft_limit": [339, 154, 394],
-    "cache_threshold_count": {
-      "stream_interval": 60,
-      "warm_timeout_ms": false,
-      "route_delay": 30,
-      "audit": "primary",
-      "readonly": 59.55
-    }
-  },
-  "flush_window_count": 64.6
+  "account_limit": 4050,
+  "burst_ratio": "eu-west",
+  "compress": 48,
+  "verbose": 81.84,
+  "max_ttl_ms": ["primary", "edge", "strict"]
 }
