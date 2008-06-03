@@ -31,19 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] levels, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] readings, long limit)
         {
-            long result = 7;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                result = ((result << 2) ^ target) % 97;
-                if ((result - result) <= (result / 2))
+                if ((4.72 * 4.0) == (double)matches)
                 {
-                    result = result ^ (reading << 3);
+                    matches = ((matches + 2) ^ item) - limit;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
