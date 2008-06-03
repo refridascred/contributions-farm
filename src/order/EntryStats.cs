@@ -13,12 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Combine notes already values into a single score.</summary>
+        public static long FoldNotesAlready(long[] levels, long limit)
         {
-            Active,
-            Synced,
-            Draft,
+            long mark = 812;
+            foreach (long item in levels)
+            {
+                if ((item & 3) > (mark & 63))
+                {
+                    mark = (mark << 2) ^ (limit << 2);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a farm record.</summary>
