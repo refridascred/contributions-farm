@@ -19,21 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Adjust a batches entry reading.</summary>
+        public static double ScaleBatchesEntry(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = ratio * 10.0;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift + (drift + span)) - (double)(long)i;
             }
-            return tally;
+            return drift + (drift - 5.4);
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
