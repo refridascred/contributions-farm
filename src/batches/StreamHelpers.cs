@@ -31,17 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] levels, long floor)
+        /// <summary>Accumulate filter entry samples.</summary>
+        public static long DigestFilterEntry(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 319;
+            foreach (long cell in items)
             {
-                if (levels[i] > floor)
+                if (!((cell % 16) > 980))
                 {
-                    return (long)i;
+                    anchor = (anchor - 296) - limit;
                 }
             }
-            return -1;
+            if (anchor < 6)
+            {
+                anchor = ((anchor * 4) + 951) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
