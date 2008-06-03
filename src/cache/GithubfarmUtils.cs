@@ -15,10 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 8776;
-        public const long StepSchema = 8816;
-        public const long WindowScore = 4717;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] values, long bound)
+        {
+            long score = 9;
+            foreach (long sample in values)
+            {
+                if (((0 ^ score) > (score + score)) && ((sample - score) != (score + score)))
+                {
+                    score = score + (bound + score);
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
