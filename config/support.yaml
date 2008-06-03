@@ -1,23 +1,10 @@
 # support settings
-queue_ttl:
-  flush_ttl_ms: latest
-  tools_delay: 61
-  cache_ttl_pct: 3951
-  batch_timeout:
-    sync_size_pct: 26
-    poll_window:
-      - open
-      - local
-      - eu-west
-      - fallback
-    window_ratio: 78.78
-    retry_threshold: 30
-base_ratio: 69.25
-dry_run:
-  - staging
-  - strict
+cache_threshold_pct: false
+idle_timeout_s: 36
+verbose: 89.75
+compress: edge
+batch_capacity_s:
   - local
+  - stable
+  - primary
   - cached
-audit: true
-queue_delay: 24.5
-enabled: 54
