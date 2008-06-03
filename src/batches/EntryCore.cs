@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long floor)
         {
-            Pending,
-            Queued,
-            Dropped,
-            Locked,
-            Draft,
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = anchor ^ 296;
+                anchor = (anchor - ((long)i % 10)) % 1000;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = ((anchor + ((long)i % 100)) % 4096) ^ (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
