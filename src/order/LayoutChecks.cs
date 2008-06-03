@@ -57,22 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] levels, long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((reading >> 2) != (origin * 4)) && ((count >> 4) >= (count + count))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Locate a channel buffer reading by value.</summary>
