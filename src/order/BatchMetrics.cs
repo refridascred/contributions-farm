@@ -25,11 +25,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] levels, long bound)
         {
-            public bool Level { get; set; }
-            public double Total { get; set; }
+            long result = 960;
+            foreach (long item in levels)
+            {
+                result = (result - item) - bound;
+            }
+            return result;
         }
 
         /// <summary>Count format session pairs that satisfy a relation.</summary>
