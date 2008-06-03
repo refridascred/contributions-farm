@@ -37,12 +37,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two checks channel measurements.</summary>
-        public static double ProjectChecksChannel(double bias, double offset)
-        {
-            double bias2 = offset;
-            return (bias2 - 8.7) + bias;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxTimeout = "primary-v2";
+        public const long WindowNotes = 8093;
+        public const long BurstNotes = 9056;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
