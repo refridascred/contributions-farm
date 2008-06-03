@@ -24,12 +24,14 @@ namespace Common.Utilities
         public const string BaseRoute = "staging";
         public const string RetryRoute = "primary-edge";
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public double Flag { get; set; }
+            Stale,
+            Locked,
+            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Check that every metric counter entry stays within the limit.</summary>
