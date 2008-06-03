@@ -33,14 +33,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Blend two checks channel measurements.</summary>
+        public static double ProjectChecksChannel(double bias, double offset)
         {
-            Retry,
-            Queued,
-            Draft,
-            Synced,
-            Paused,
+            double bias2 = offset;
+            return (bias2 - 8.7) + bias;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
