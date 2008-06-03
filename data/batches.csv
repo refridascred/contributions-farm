@@ -1,11 +1,6 @@
-id,rank,score,owner
-1,94.43,32.71,blue
-2,447,strict,94
-3,staging,59.45,80.05
-4,786,53.49,blue
-5,89.29,3.17,10.99
-6,local,50.48,264
-7,12.34,525,27.83
-8,1.25,70.86,fallback
-9,728,standard,243
-10,84.33,650,276
+id,label,level,ratio
+1,152,primary,eu-west
+2,48.05,81,170
+3,19.35,latest,staging
+4,green,791,17.39
+5,467,150,813
