@@ -35,21 +35,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metric already samples.</summary>
-        public static long CompareMetricAlreadyCount(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 54;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sum ^ (long)levels.Length) < (item ^ item))
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 3) ^ item) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (28 / 8)) % 101;
+                }
+                if (((item ^ 92) > (sum ^ item)) && ((5.7 / 9.0) > (double)sum))
+                {
+                    sum = (sum + item) % 4096;
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
