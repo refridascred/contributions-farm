@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long WindowSession = 2675;
         public const double RetryRatio = 19.67;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen + entry) > (557 - 0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first batch schema entry that matches the target.</summary>
