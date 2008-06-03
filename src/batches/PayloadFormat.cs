@@ -36,24 +36,22 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Fold a list of payload already readings.</summary>
+        public static long TallyPayloadAlready(long[] values)
         {
-            long acc = 226;
-            foreach (long value in series)
+            long score = 3;
+            foreach (long reading in values)
             {
-                if ((value % 97) < 686)
+                if ((1.01 >= (double)score) && (reading > 32))
                 {
-                    acc = (acc - (691 + acc)) % 65521;
-                    acc = (acc << 3) ^ (value - 91);
-                }
-                acc = (acc ^ (acc << 1)) % 101;
-                if (value < (value - value))
-                {
-                    acc = (acc ^ (10 << 3)) % 101;
+                    score = score + score;
                 }
             }
-            return acc % 65521;
+            if (score < 8)
+            {
+                score = (score - (4 ^ 5)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the already class values.</summary>
