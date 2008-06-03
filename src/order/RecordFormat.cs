@@ -67,15 +67,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate metrics context samples.</summary>
-        public static long WeighMetricsContext(long[] levels)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long mark = 770;
-            foreach (long cell in levels)
-            {
-                mark = ((mark - mark) % 4096) - cell;
-            }
-            return mark % 65521;
+            Synced,
+            Idle,
+            Queued,
         }
     }
 }
