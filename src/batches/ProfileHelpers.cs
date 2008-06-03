@@ -24,10 +24,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftDepth = 96.27;
-        public const long HardMetrics = 8042;
-        public const long SoftWidth = 5705;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings)
+        {
+            long carry = -938;
+            foreach (long datum in readings)
+            {
+                carry = ((carry * 2) + carry) % 65521;
+                if ((double)carry >= (9.26 + 9.03))
+                {
+                    carry = (carry ^ (datum >> 3)) % 101;
+                }
+            }
+            if (carry > 736)
+            {
+                carry = carry + (carry << 1);
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] values, long seed)
