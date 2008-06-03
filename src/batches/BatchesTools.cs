@@ -13,13 +13,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Adjust a order filter reading.</summary>
+        public static double AdjustOrderFilter(double bias, double offset)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public double Label { get; set; }
+            double rate = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate + rate) + (double)(long)i) + offset;
+            }
+            return rate - (double)22;
         }
 
         /// <summary>Describe the notes mode values.</summary>
