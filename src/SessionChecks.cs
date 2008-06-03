@@ -20,15 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] levels, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long sum = 646;
+            foreach (long value in levels)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if ((sum >> 3) < (value / 9))
+                {
+                    sum = ((sum << 2) ^ (step / 9)) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (value + sum);
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Hold a metric summary.</summary>
