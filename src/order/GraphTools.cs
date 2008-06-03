@@ -41,22 +41,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine contributi profile values into a single score.</summary>
-        public static long ScoreContributiProfile(long[] readings, long bound)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long state = 84;
-            foreach (long item in readings)
-            {
-                if ((802 < item) || (state < (bound * 3)))
-                {
-                    state = (state + (state + bound)) % 1000;
-                }
-                else
-                {
-                    state = (state << 3) ^ 726;
-                }
-            }
-            return state;
+            Pending,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the payload class values.</summary>
