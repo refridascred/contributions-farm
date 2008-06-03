@@ -54,12 +54,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 2884;
-        public const long IdleCount = 1444;
-        public const string BaseRatio = "stable-v2";
-        public const long WindowAccount = 1708;
-        public const string SoftBudget = "standard-v2";
+        /// <summary>Iterate the entry report series from a seed.</summary>
+        public static long SeriesEntryReport(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score + (long)i) % 65521;
+                if ((seed >> 3) == (seed * 3))
+                {
+                    score = (score * 5) + 4;
+                }
+                else
+                {
+                    score = score + (seed + seed);
+                    score = (score + ((long)i + (-4))) % 255;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] series, long offset)
