@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] samples, long limit)
         {
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!(((double)item >= (5.16 + 1.9)) || ((double)item >= 3.2)))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
