@@ -40,25 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm metric pair into a bucket.</summary>
-        public static long GradeGithubfarmMetric(long floor, long bound)
-        {
-            if (floor < bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((94 > bound) && ((floor % 64) != (bound + floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardScore = "latest-v2";
+        public const long BaseLevel = 6632;
+        public const long CacheWidth = 9238;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long step, long origin)
