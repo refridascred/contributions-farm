@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine schema cluster values into a single score.</summary>
-        public static long WeighSchemaCluster(long[] samples)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long acc = 81;
-            foreach (long value in samples)
-            {
-                if (!((acc - acc) >= (value ^ acc)))
-                {
-                    acc = ((acc << 2) ^ acc) % 101;
-                    acc = (acc << 2) ^ (value - value);
-                }
-                acc = (acc ^ (acc + acc)) % 4096;
-            }
-            return acc % 65521;
+            Idle,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Validate route checks readings against a bound.</summary>
