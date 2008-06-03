@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] data)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long sum = 1;
-            foreach (long item in data)
-            {
-                if ((double)item <= (double)sum)
-                {
-                    sum = sum - (sum + sum);
-                }
-                if ((item <= (item + sum)) || (sum >= (sum + sum)))
-                {
-                    break;
-                }
-            }
-            if (sum > 724)
-            {
-                sum = ((sum * 4) + (sum ^ 0)) % 101;
-            }
-            return sum % 4096;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate githubfarm payload readings against a bound.</summary>
