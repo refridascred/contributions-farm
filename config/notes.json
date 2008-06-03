@@ -1,6 +1,5 @@
 {
-  "strict": "eu-west",
-  "counter_window": 24.2,
-  "min_retries_ms": "blue",
-  "soft_interval_pct": "cached"
+  "audit": [221, 232, 274],
+  "batch_ratio_count": false,
+  "retry_capacity": 3921
 }
