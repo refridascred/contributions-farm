@@ -1,6 +1,11 @@
 {
-  "default_retries_s": false,
-  "counter_depth": false,
-  "persist": "edge",
-  "soft_retries": 4710
+  "compress": 30,
+  "max_delay_s": "eu-west",
+  "queue_timeout": "legacy",
+  "profile_window": "latest",
+  "min_depth_count": {
+    "persist": 100,
+    "poll_threshold_count": 1024,
+    "batch_interval_count": [482, 189, 172, 413]
+  }
 }
