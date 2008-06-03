@@ -45,11 +45,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 989;
-        public const long IdleFarm = 6314;
-        public const long DefaultWidth = 951;
-        public const long CacheInterval = 4832;
-        public const string MaxBudget = "staging-1";
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public double Total { get; set; }
+            public bool Weight { get; set; }
+        }
     }
 }
