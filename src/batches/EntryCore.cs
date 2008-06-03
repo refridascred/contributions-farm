@@ -37,14 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Idle,
-            Closed,
-            Locked,
-            Failed,
             Active,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
