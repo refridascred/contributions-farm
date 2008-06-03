@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] samples, long offset)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= offset)
+                if (readings[i] < bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the queue mode values.</summary>
