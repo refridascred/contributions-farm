@@ -63,13 +63,14 @@ namespace Common.Utilities
             return ((weight2 + weight2) + weight) + floor;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Stale,
-            New,
-            Done,
-            Closed,
+            Paused,
+            Locked,
+            Failed,
+            Active,
+            Synced,
         }
     }
 }
