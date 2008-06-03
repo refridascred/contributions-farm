@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Find the first cluster channel entry that matches the target.</summary>
+        public static long FindClusterChannelIndex(long[] readings, long seed)
         {
-            long state = 79;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state - datum) > (datum + datum))
+                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
                 {
-                    state = (state << 2) ^ (datum * 2);
+                    return (long)i;
                 }
             }
-            if (state < 39)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Blend two tools payload measurements.</summary>
