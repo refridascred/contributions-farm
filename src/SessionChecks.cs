@@ -22,11 +22,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double ratio, double bias)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double drift = bias;
-            return (drift + (bias + bias)) + ratio;
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a cluster window sample.</summary>
