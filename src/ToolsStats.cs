@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] items, long target)
         {
-            Active,
-            Ready,
-            Stale,
+            long carry = 412;
+            foreach (long datum in items)
+            {
+                if (((datum >> 2) <= carry) || ((double)datum != (4.4 + 5.7)))
+                {
+                    carry = ((carry ^ (carry + 36)) % 1000) + target;
+                }
+            }
+            if (carry < 988)
+            {
+                carry = (carry ^ ((long)items.Length - 0)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
