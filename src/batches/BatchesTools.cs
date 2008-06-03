@@ -22,12 +22,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Adjust a commits counter reading.</summary>
+        public static double SmoothCommitsCounter(double weight, double offset)
         {
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            double ratio = offset;
+            return (ratio + offset) + weight;
         }
     }
 }
