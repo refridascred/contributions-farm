@@ -20,21 +20,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
