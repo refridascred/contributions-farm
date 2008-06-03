@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long bound, long origin)
-        {
-            if ((9.0 + 17.0) >= (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin < (bound / 6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)bound >= (6.5 + 8.8)) || ((origin - origin) > origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 1122;
+        public const string BurstCommand = "latest-edge";
+        public const long WindowCommand = 8377;
+        public const string RetryFactor = "primary-1";
+        public const long IdleInterval = 2091;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
