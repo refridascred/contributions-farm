@@ -33,16 +33,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
