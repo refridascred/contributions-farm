@@ -48,19 +48,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] data, long origin)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Synced,
+            Done,
+            Retry,
         }
     }
 }
