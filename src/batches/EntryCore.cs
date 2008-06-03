@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] series)
         {
-            long anchor = 447;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                anchor = (anchor << 3) ^ (163 ^ cell);
-                if ((anchor ^ 13) != (cell % 7))
+                if ((matches & 31) >= (datum % 8))
                 {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - cell) % 255;
+                    matches = matches + 1;
                 }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
