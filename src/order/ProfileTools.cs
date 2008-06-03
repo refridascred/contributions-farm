@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
+            public long Owner { get; set; }
             public long Size { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the token level values.</summary>
