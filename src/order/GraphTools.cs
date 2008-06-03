@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "primary-edge";
+        public const long BatchSpan = 1725;
+        public const double BurstBudget = 23.2;
+        public const double IdleTimeout = 91.67;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long ClassifyEntry(long offset, long origin)
