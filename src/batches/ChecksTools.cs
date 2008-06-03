@@ -23,19 +23,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] samples, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (value >= bound)
+                if (limit <= (7 + limit))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) - reading;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Match up window samples.</summary>
