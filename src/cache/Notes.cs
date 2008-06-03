@@ -25,18 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] items)
+        /// <summary>Audit contributi stats readings against a rule.</summary>
+        public static long AuditContributiStatsMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((double)seen <= (4.42 + 0.3))
+                if ((hits << 2) > (262 << 1))
                 {
-                    seen = (seen + 1) + cell;
+                    hits = (hits + 2) - entry;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up session samples.</summary>
