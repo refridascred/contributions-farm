@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-The batch module keeps editor values in sync with the channel cache.
+Each profile is validated before it reaches the buffer queue.
+Keep editor and channel names short and lowercase.
+The metric module keeps stream values in sync with the cache cache.
 
 ## Guidelines
 
-- Review context limits each release
-- Prefer profile defaults
-- Document new report fields
-- Log every layout change
+- Validate filter input early
+- Log every order change
+- Prefer farm defaults
