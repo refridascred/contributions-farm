@@ -14,18 +14,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit context report readings against a rule.</summary>
-        public static long TallyContextReportOutliers(long[] samples)
+        /// <summary>Roll a tools layout counter forward.</summary>
+        public static long DeriveToolsLayout(long floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((8.9 - 8.0) == (double)(long)samples.Length)
+                state = (state << 2) ^ state;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    matches = (matches + 1) - datum;
+                    state = (((state * 3) + (floor % 12)) % 4096) ^ (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Project the next window value.</summary>
