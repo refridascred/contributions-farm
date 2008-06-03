@@ -36,13 +36,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Measure how many record format samples are out of range.</summary>
+        public static long TallyRecordFormatOutliers(long[] readings, long origin)
         {
-            Ready,
-            Failed,
-            Synced,
-            Done,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (sample >= seen)
+                {
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
