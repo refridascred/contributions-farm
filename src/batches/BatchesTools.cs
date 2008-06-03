@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "primary";
-        public const string BurstScore = "open-edge";
-        public const long LimitWindow = 1084;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
