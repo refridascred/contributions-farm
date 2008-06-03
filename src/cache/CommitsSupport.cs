@@ -31,22 +31,38 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] readings, long limit)
+        /// <summary>Grade a commits stream value against two limits.</summary>
+        public static long RankCommitsStream(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if (!(offset <= (78 * 4)))
             {
-                if ((value ^ limit) <= limit)
+                return 6;
+            }
+            else
+            {
+                if ((origin >> 5) <= offset)
                 {
-                    seen = seen + 2;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((origin << 3) > (origin ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin <= offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
