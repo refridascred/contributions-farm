@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
