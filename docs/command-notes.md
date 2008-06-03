@@ -1,11 +1,11 @@
 # Command notes
 
-Each profile is validated before it reaches the buffer queue.
-Keep editor and channel names short and lowercase.
-The metric module keeps stream values in sync with the cache cache.
+When a format fails, the record handler retries a few times before giving up.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate filter input early
-- Log every order change
-- Prefer farm defaults
+- Validate channel input early
+- Prefer contributi defaults
+- Review notes limits each release
+- Document new layout fields
