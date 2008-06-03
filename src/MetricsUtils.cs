@@ -14,22 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the tools route entries that pass the check.</summary>
-        public static long TallyToolsRouteHits(long[] series, long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen & 255) > (seen % 3))
-                {
-                    seen = ((seen + 3) ^ sample) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
