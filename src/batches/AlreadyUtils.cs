@@ -31,18 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double gain, double span)
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)tally == (0.4 - 9.9))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
+            double scale = 5.75;
+            return ((scale + (3.9 - 7.0)) + gain) + span;
         }
 
         /// <summary>Hold a schema record.</summary>
