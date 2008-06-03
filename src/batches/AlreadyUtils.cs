@@ -34,15 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] data, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long result = -7;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (((reading ^ reading) == (step - 42)) && (((long)data.Length % 5) <= step))
+                {
+                    result = result ^ (91 - step);
+                }
+                else
+                {
+                    result = (result ^ (result & 63)) % 97;
+                }
             }
-            return anchor;
+            return result % 65521;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
