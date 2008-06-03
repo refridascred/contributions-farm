@@ -42,14 +42,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] samples)
         {
-            Pending,
-            Idle,
-            Draft,
-            Stale,
-            Synced,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally * 3) >= (tally * 2))
+                {
+                    tally = (tally + 2) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
