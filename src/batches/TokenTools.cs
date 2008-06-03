@@ -42,22 +42,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many record format samples are out of range.</summary>
-        public static long TallyRecordFormatOutliers(long[] readings, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample >= seen)
-                {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor << 3) ^ target) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
     }
 }
