@@ -33,17 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route profile sample.</summary>
-        public static long FindRouteProfileIndex(long[] samples, long offset)
+        /// <summary>Digest a series of account already entries.</summary>
+        public static long FoldAccountAlready(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -562;
+            foreach (long cell in samples)
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
+                if ((3.8 < (double)cell) || ((double)cell < (1.26 / 8.0)))
                 {
-                    return (long)i;
+                    mix = mix + 66;
                 }
             }
-            return -1;
+            if (mix > 778)
+            {
+                mix = (mix ^ (mix + mix)) % 97;
+            }
+            return mix;
         }
     }
 }
