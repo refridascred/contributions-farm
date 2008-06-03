@@ -56,19 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (((acc << 3) ^ (acc * 3)) % 101) - (long)i2;
+                    if ((series[i] + series[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
