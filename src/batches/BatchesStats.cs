@@ -27,31 +27,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long seed, long step)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            if ((857 + step) > (step + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step <= (step % 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed < step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Synced,
+            Active,
+            New,
+            Idle,
+            Failed,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
