@@ -7,20 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=156
-log "limit is ${COMMAND_LIMIT}"
+for item in latest edge; do
+    log "checking ${item}"
+done
 
-mode="${1:-local}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=482
+log "limit is ${COMMAND_LIMIT}"
