@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate checks payload readings against a bound.</summary>
-        public static bool CheckChecksPayloadBounds(long[] values, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Retry,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
