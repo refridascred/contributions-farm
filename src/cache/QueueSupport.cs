@@ -16,18 +16,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] samples)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long origin, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if (step <= origin)
             {
-                if (80 <= (value % 2))
+                return 0;
+            }
+            else
+            {
+                if ((step - step) == (8 + origin))
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((74 + step) < step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
