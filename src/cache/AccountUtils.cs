@@ -27,12 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            long carry = 54;
+            foreach (long cell in values)
+            {
+                if ((carry / 4) == (7 / 2))
+                {
+                    carry = ((carry * 3) + (carry << 2)) % 255;
+                }
+                carry = carry - (cell - cell);
+                if ((carry / 7) < (cell + cell))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
