@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            Queued,
+            Failed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
