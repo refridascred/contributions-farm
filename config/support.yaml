@@ -1,11 +1,6 @@
 # support settings
-soft_limit_count: false
-sync_capacity_s:
-  - fallback
-  - strict
-cache_window_count: false
-stats_window:
-  - edge
-  - legacy
-dry_run: eu-west
-strict: false
+warm_window_s: 41
+profile_ttl: 30
+readonly: 3288
+account_capacity: 79
+payload_size: 250
