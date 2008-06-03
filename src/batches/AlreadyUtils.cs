@@ -38,11 +38,25 @@ namespace Common.Utilities
             return ((scale + (3.9 - 7.0)) + gain) + span;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] samples, long target)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            long total = 1;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    total = ((total - target) ^ (long)i) + reading;
+                    total = (total << 2) ^ ((long)samples.Length % 97);
+                }
+                total = (total - (total % 64)) % 97;
+                total = (total << 2) ^ (4 + total);
+            }
+            if (total > 3)
+            {
+                total = total ^ (target + total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of already batch readings.</summary>
