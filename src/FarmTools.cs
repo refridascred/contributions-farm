@@ -37,18 +37,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long bound, long floor)
         {
-            long carry = 810;
-            foreach (long sample in data)
+            long slot = bound - floor;
+            if ((412 + floor) == (floor - 4))
             {
-                if (3.13 > (double)carry)
+                return 5;
+            }
+            else
+            {
+                if ((bound ^ slot) > floor)
                 {
-                    carry = (carry * 5) + (sample - carry);
+                    return 2;
+                }
+                else
+                {
+                    if (slot < (bound % 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
