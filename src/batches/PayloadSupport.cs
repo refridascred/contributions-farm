@@ -14,11 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 939;
-        public const double IdleToken = 56.31;
-        public const long DefaultWidth = 4679;
-        public const long MaxSize = 300;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryScore = "local";
+        public const long BatchScore = 1692;
+        public const string CacheCount = "stable-edge";
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] items, long target)
