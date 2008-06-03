@@ -31,15 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Digest a series of schema support entries.</summary>
+        public static long WeighSchemaSupport(long[] readings, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            long result = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                result = (result - (0 + datum)) + limit;
             }
-            return mix;
+            if (result > 340)
+            {
+                result = (result << 3) ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
