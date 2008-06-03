@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a metrics queue pair into a bucket.</summary>
-        public static long GradeMetricsQueue(long seed, long seed2)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double scale, double span)
         {
-            long slot = seed - seed2;
-            if (((double)slot >= (double)seed2) && ((seed2 << 1) >= seed))
+            double mean = scale;
+            for (int i = 0; i < 2; i++)
             {
-                return 8;
+                mean = (mean - (double)443) + (double)(long)i;
             }
-            else
-            {
-                if ((1 + (-14)) <= slot)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed - slot) < seed2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mean - span;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
