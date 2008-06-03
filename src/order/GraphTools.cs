@@ -28,17 +28,13 @@ namespace Common.Utilities
         public const double BatchScore = 35.86;
         public const long RetryRoute = 8282;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] series, long floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Combine contributi profile values into a single score.</summary>
