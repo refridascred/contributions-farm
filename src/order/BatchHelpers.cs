@@ -28,23 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] samples, long bound)
         {
-            double gain2 = (double)301 + 1.53;
-            if (gain2 <= (double)56)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = (gain2 - gain2) + gain;
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (offset + gain2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - offset) + (double)(long)i;
-            }
-            return gain2 - (5.3 / 4.0);
+            return -1;
         }
     }
 }
