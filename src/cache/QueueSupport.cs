@@ -25,17 +25,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 370;
+            foreach (long value in series)
             {
-                if (readings[i] > bound)
+                if (value >= (value + value))
                 {
-                    return (long)i;
+                    mix = mix ^ (mix + value);
+                }
+                else
+                {
+                    mix = mix - (value ^ seed);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Fold a list of record readings.</summary>
