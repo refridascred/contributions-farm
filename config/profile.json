@@ -1,12 +1,7 @@
 {
-  "support_window": {
-    "max_capacity_count": "local",
-    "flush_retries": 90.06,
-    "warm_delay_count": "primary",
-    "verbose": 72.53,
-    "githubfarm_interval": 57,
-    "dry_run": 9
-  },
-  "max_depth": "blue",
-  "base_delay": [79, 132, 180, 174]
+  "cache_interval": 14,
+  "base_retries_s": 1024,
+  "support_retries": 4720,
+  "batches_capacity": 60,
+  "hard_retries": true
 }
