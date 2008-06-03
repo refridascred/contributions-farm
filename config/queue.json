@@ -1,5 +1,10 @@
 {
-  "base_threshold_ms": 30.18,
-  "batch_size_pct": true,
-  "warm_capacity_ms": "blue"
+  "warm_limit_pct": [81, 352],
+  "min_timeout_s": 7795,
+  "tools_ratio": {
+    "session_limit": 87.03,
+    "batch_limit": 2605,
+    "batch_ratio_s": 60,
+    "persist": 79
+  }
 }
