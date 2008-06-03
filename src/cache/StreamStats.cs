@@ -25,21 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Grade a account cluster value against two limits.</summary>
+        public static long BucketAccountCluster(long floor, long floor2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = floor - floor2;
+            if ((double)floor2 < (double)floor)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((floor - prev) != (floor2 ^ floor))
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Count schema account pairs that satisfy a relation.</summary>
