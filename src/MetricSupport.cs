@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinWidth = 87.49;
-        public const long HardLevel = 5578;
-        public const long LimitContext = 1831;
-        public const long HardWidth = 8237;
-        public const double IdleContext = 92.52;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            New,
+            Draft,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double HardFarm = 35.42;
