@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long bound, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            if ((9.0 + 17.0) >= (double)bound)
             {
-                if (2 >= (89 + sum))
-                {
-                    sum = (sum + seed) % 65521;
-                    sum = ((sum * 3) + (seed - sum)) % 1000;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (origin < (bound / 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)bound >= (6.5 + 8.8)) || ((origin - origin) > origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support state values.</summary>
