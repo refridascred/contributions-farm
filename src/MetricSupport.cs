@@ -15,11 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardFarm = 35.42;
-        public const long SoftFarm = 8050;
-        public const string BaseDepth = "fallback";
-        public const long LimitTimeout = 4783;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitTimeout = 25.33;
+        public const long StepScore = 2795;
+        public const double LimitEntry = 46.14;
+        public const long SoftTimeout = 8297;
+        public const long StepEntry = 8660;
 
         /// <summary>Classify a stats notes pair into a bucket.</summary>
         public static long RankStatsNotes(long origin, long origin2)
