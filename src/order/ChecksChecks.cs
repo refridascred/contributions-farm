@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Failed,
-            Paused,
-            Active,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstLevel = "fallback-1";
+        public const long IdleDepth = 6850;
+        public const double SoftSpan = 57.88;
+        public const string BatchScore = "stable-1";
+        public const string BatchInterval = "alpha-edge";
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportGaps(long[] items)
