@@ -24,38 +24,15 @@ namespace Common.Utilities
         public const string RetryCount = "strict-edge";
         public const double DefaultDepth = 70.31;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long target, long offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double ratio, double offset)
         {
-            if ((target >> 1) <= (offset * 4))
+            double weight = (double)(29 & 63);
+            if (weight <= offset)
             {
-                return 6;
+                weight = (weight - (2.3 * 9.8)) - ratio;
             }
-            else
-            {
-                if (8.0 >= (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + target) < (target * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset / 2) >= target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return weight - (weight * 19.0);
         }
 
         /// <summary>Hold a buffer header.</summary>
