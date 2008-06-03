@@ -73,11 +73,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 2349;
+        public const string IdleCluster = "fallback-edge";
+        public const double WindowCount = 68.27;
+        public const string SoftDepth = "primary-v2";
     }
 }
