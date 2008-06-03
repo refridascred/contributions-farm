@@ -1,11 +1,15 @@
 # Command notes
 
-Use payload settings to tune how often graph data is refreshed.
-Use commits settings to tune how often filter data is refreshed.
-The buffer module keeps graph values in sync with the format cache.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Each graph is validated before it reaches the metrics queue.
+
+Run the filter check before changing any support limits.
+Keep queue and report names short and lowercase.
+Keep session and stream names short and lowercase.
 
 ## Guidelines
 
-- Log every cache change
-- Keep schema values small
-- Review notes limits each release
+- Keep stream values small
+- Review batches limits each release
+- Document new farm fields
+- Validate tools input early
