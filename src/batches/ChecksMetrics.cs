@@ -77,24 +77,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile farm value against two limits.</summary>
-        public static long BucketProfileFarm(long limit, long seed)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            if ((9.9 + 6.0) < (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit << 2) < (seed - seed)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
