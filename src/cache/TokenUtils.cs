@@ -38,18 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits editor entries that pass the check.</summary>
-        public static long AuditCommitsEditorMatches(long[] data, long floor)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((long)data.Length >= (floor >> 3))
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
+            Closed,
+            Retry,
+            Done,
+            Dropped,
         }
     }
 }
