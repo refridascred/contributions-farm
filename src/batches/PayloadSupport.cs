@@ -14,23 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] items)
-        {
-            long sum = 510;
-            foreach (long value in items)
-            {
-                if ((52 + value) < (value & 1))
-                {
-                    sum = sum + sum;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (value % 60);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 939;
+        public const double IdleToken = 56.31;
+        public const long DefaultWidth = 4679;
+        public const long MaxSize = 300;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] items, long target)
