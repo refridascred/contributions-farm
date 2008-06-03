@@ -44,15 +44,12 @@ namespace Common.Utilities
             return (bias2 - 8.7) + bias;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series, long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long state = 2;
-            foreach (long value in series)
-            {
-                state = ((state + (state - target)) % 65521) - value;
-            }
-            return state % 65521;
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the stream route entries that pass the check.</summary>
