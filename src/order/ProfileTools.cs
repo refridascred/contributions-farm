@@ -27,21 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of window counter readings.</summary>
-        public static long CompareWindowCounterCount(long[] data)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
