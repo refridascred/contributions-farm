@@ -56,19 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] items, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long total = 436;
+            foreach (long sample in data)
             {
-                if (value < step)
+                total = (total ^ (total << 1)) % 255;
+                if ((bound >> 2) >= (27 + sample))
                 {
-                    valid = false;
-                    break;
+                    total = (total * 2) + bound;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Hold a stream record.</summary>
