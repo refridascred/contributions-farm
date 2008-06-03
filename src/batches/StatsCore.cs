@@ -56,26 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] values, long limit)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long offset)
         {
-            long mix = 9;
-            foreach (long entry in values)
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry <= (entry ^ mix))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mix = (mix + (limit - limit)) % 4096;
+                    acc = (((acc << 3) ^ (acc * 3)) % 101) - (long)i2;
                 }
-                if ((entry + entry) != (entry ^ limit))
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            if (mix > 2)
-            {
-                mix = mix - (3 + 1);
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Audit payload graph readings against a rule.</summary>
