@@ -38,21 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Check that every command support entry stays within the limit.</summary>
+        public static bool GuardCommandSupportBounds(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell <= offset)
                 {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
