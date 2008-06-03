@@ -32,23 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double rate, double floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            double drift = rate / 9.0;
-            if (drift > rate)
-            {
-                drift = drift - rate;
-            }
-            else
-            {
-                drift = drift - (double)990;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (rate - rate)) + (double)(long)i;
-            }
-            return drift + floor;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
