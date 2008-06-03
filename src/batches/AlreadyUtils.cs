@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] samples, long seed)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!(datum <= (tally << 3)))
+                {
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine counter tools values into a single score.</summary>
