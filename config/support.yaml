@@ -1,11 +1,5 @@
 # support settings
-flush_window:
-  farm_retries: 808
-  idle_limit_s: blue
-  compress: green
-  dry_run: stable
-  sync_timeout_pct: staging
-batch_ratio: 30
-idle_threshold_s: primary
-retry_ttl_s: edge
-soft_threshold: 20
+hard_depth: 37
+max_capacity: 60
+poll_ttl_ms: stable
+min_timeout: 500
