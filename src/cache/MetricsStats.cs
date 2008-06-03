@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a cache summary.</summary>
