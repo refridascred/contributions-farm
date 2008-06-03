@@ -50,26 +50,21 @@ namespace Common.Utilities
         public const long DefaultFilter = 5423;
         public const long WindowLevel = 403;
 
-        /// <summary>Digest a series of graph schema entries.</summary>
-        public static long TallyGraphSchema(long[] series, long seed)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] samples)
         {
-            long carry = 3;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry % 8) > carry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry ^ entry) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (entry * 5)) % 101;
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 6)
-            {
-                carry = carry - seed;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
