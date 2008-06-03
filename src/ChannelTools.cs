@@ -26,12 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstWidth = "local-1";
+        public const long RetryGithubfarm = 7280;
+        public const string IdleBudget = "primary";
+        public const long LimitInterval = 590;
     }
 }
