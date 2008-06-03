@@ -23,11 +23,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] values, long bound)
         {
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up stats samples.</summary>
