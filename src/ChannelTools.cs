@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long DefaultFactor = 1280;
         public const long IdleCommand = 1671;
 
-        /// <summary>Measure how many schema format samples are out of range.</summary>
-        public static long TallySchemaFormatOutliers(long[] readings)
+        /// <summary>Count channel context pairs that satisfy a relation.</summary>
+        public static long OverlapChannelContextCount(long[] values)
         {
             long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((hits + (long)readings.Length) < (value * 5)) && (((hits ^ hits) <= hits) || ((value << 2) != (value % 3))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] - values[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
