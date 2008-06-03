@@ -55,19 +55,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] items, long offset)
+        /// <summary>Grade a cache notes value against two limits.</summary>
+        public static long ClassifyCacheNotes(long step, long step2)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long bound = step - step2;
+            if ((step2 < (47 + 0)) || (bound > (step % 16)))
             {
-                if (value < offset)
+                return 3;
+            }
+            else
+            {
+                if (((step2 + step) != (bound & 63)) || ((step ^ step2) <= step))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (bound >= (40 * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound - step) < 398)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
