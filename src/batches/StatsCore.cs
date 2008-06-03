@@ -20,15 +20,12 @@ namespace Common.Utilities
         public const string StepBudget = "standard";
         public const long CacheBuffer = 1669;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Done,
-            Idle,
-            Draft,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardCounter = 85.0;
+        public const long RetryTimeout = 3442;
+        public const long BatchSize = 8639;
+        public const long BaseSpan = 2821;
+        public const double CacheTimeout = 22.35;
 
         /// <summary>Match up order samples.</summary>
         public static long CompareOrderCount(long[] series)
