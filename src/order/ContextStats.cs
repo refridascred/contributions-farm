@@ -19,14 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values)
         {
-            Dropped,
-            Idle,
-            Synced,
-            New,
-            Queued,
+            long anchor = -9;
+            foreach (long item in values)
+            {
+                anchor = ((anchor << 2) ^ (item - anchor)) % 97;
+            }
+            if (anchor > 201)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
