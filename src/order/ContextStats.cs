@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            New,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheInterval = "open-v2";
+        public const long RetryCount = 5504;
+        public const long LimitLevel = 6833;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
