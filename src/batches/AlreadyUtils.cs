@@ -31,11 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double gain, double span)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] values, long floor)
         {
-            double scale = 5.75;
-            return ((scale + (3.9 - 7.0)) + gain) + span;
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((long)values.Length + hits) < 172)
+                {
+                    hits = ((hits + 2) ^ reading) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
