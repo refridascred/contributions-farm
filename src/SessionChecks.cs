@@ -28,31 +28,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long step, long offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long offset)
         {
-            if ((415 - offset) != (step % 5))
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (step > offset)
+                if (!((((long)i - offset) < (offset << 2)) && (anchor < (offset ^ anchor))))
                 {
-                    return 1;
+                    anchor = ((anchor * 2) + ((long)i ^ 390)) % 4096;
+                    anchor = (anchor << 3) ^ (anchor >> 3);
                 }
-                else
-                {
-                    if ((-4) <= (offset >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
+            return anchor;
         }
     }
 }
