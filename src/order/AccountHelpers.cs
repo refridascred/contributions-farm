@@ -80,18 +80,21 @@ namespace Common.Utilities
             return drift + (drift + offset);
         }
 
-        /// <summary>Measure how many filter channel samples are out of range.</summary>
-        public static long MeasureFilterChannelGaps(long[] series)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item == (16.0 * 4.7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
