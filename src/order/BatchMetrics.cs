@@ -59,19 +59,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            long score = 9;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (((score << 3) ^ (535 - score)) % 1000) ^ cell;
-                if ((score & 15) <= score)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of format session readings.</summary>
