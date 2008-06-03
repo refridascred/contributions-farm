@@ -16,11 +16,28 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSupport = "local";
-        public const double SoftBudget = 3.5;
-        public const long WindowRatio = 3260;
-        public const long DefaultSupport = 9691;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels, long seed)
+        {
+            long carry = 53;
+            foreach (long item in levels)
+            {
+                carry = ((carry << 3) ^ (seed >> 1)) % 101;
+                if ((seed / 5) >= (carry - carry))
+                {
+                    carry = (carry ^ (item % 100)) % 65521;
+                }
+                if (!((seed - seed) != (carry * 2)))
+                {
+                    carry = (carry * 3) + (item % 8);
+                }
+            }
+            if (carry > 8)
+            {
+                carry = carry ^ seed;
+            }
+            return carry;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] data)
