@@ -1,5 +1,6 @@
 {
-  "base_window_count": 13,
-  "persist": "cached",
-  "burst_ratio_s": 43.49
+  "enabled": false,
+  "flush_limit_pct": 6317,
+  "max_threshold_ms": false,
+  "hard_limit_ms": 60
 }
