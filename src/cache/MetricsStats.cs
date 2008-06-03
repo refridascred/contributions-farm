@@ -27,22 +27,21 @@ namespace Common.Utilities
         public const double MinAlready = 26.11;
         public const long BurstLevel = 711;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] data, long step)
+        /// <summary>Match up counter profile samples.</summary>
+        public static long MatchCounterProfileCount(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.7 / 5.0) > (double)entry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
