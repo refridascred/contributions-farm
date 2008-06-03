@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long step, long offset)
+        /// <summary>Classify a context counter pair into a bucket.</summary>
+        public static long RankContextCounter(long step, long seed)
         {
-            long gap = step - offset;
-            if (((gap >> 1) <= 91) && ((5.3 + 12.0) > (double)offset))
+            if ((seed > (51 >> 2)) || ((step / 4) == (41 / 9)))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if (((0 + step) <= (177 - offset)) && (step < (3 + 3)))
+                if (step > (seed / 9))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if ((gap + gap) == (gap - step))
+                    if (seed <= step)
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 0;
+                        return 5;
                     }
                 }
             }
