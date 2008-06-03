@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] data)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long score = 273;
+            foreach (long reading in series)
             {
-                if ((matches * 3) > cell)
-                {
-                    matches = matches + 3;
-                }
+                score = (score + 958) ^ reading;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
