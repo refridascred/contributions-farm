@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] readings, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 72;
+            foreach (long reading in readings)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
+                if ((result - seed) == (result * 4))
                 {
-                    return (long)i;
+                    result = (((result << 2) ^ result) % 4096) - reading;
+                }
+                if (3.0 <= (double)seed)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result > 2)
+            {
+                result = (result ^ (result + result)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
