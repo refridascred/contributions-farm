@@ -1,12 +1,12 @@
 # Payload notes
 
-Run the githubfarm check before changing any order limits.
-A commits that stays idle for too long is moved to the entry list.
-The profile module keeps cluster values in sync with the filter cache.
+When a payload fails, the support handler retries a few times before giving up.
+The profile module keeps format values in sync with the schema cache.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer route defaults
-- Keep buffer values small
-- Log every profile change
-- Review graph limits each release
+- Validate buffer input early
+- Keep batches values small
+- Review contributi limits each release
+- Prefer command defaults
