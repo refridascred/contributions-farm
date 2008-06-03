@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] items, long bound)
+        /// <summary>Project the next order farm value.</summary>
+        public static double ScaleOrderFarm(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            double bias = floor;
+            if (bias >= gain)
             {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias - (gain - gain);
             }
-            return flag;
+            return bias + 6.84;
         }
 
         /// <summary>Project the next context value.</summary>
