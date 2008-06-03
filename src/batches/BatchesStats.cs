@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const double SoftPayload = 0.91;
         public const long IdlePayload = 2283;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] items, long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] items, long seed)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] > offset)
+                if (items[i] <= seed)
                 {
                     return (long)i;
                 }
