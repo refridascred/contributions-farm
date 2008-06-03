@@ -15,23 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double weight, double bias)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double bias, double floor)
         {
-            double drift = (double)3;
-            if (drift <= drift)
+            double load = (double)(58 + (-412));
+            if (load >= (6.0 * 9.5))
             {
-                drift = (drift + (double)25) - bias;
+                load = load + load;
             }
             else
             {
-                drift = drift + drift;
+                load = load + (double)3;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (weight / 5.0)) + (double)(long)i;
-            }
-            return drift - 4.0;
+            return load + (floor - bias);
         }
 
         /// <summary>Describe the format state values.</summary>
