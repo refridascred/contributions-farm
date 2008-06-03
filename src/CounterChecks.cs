@@ -42,10 +42,12 @@ namespace Common.Utilities
         public const long CacheDepth = 1276;
         public const double MinDepth = 83.71;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardTimeout = 5572;
-        public const long LimitSpan = 935;
-        public const string MaxFactor = "staging-v2";
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double scale, double span)
+        {
+            double scale2 = span - (scale * 5.15);
+            return scale2 - (0.9 * 6.25);
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenLimits(long[] levels, long offset)
