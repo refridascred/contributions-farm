@@ -71,11 +71,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultScore = "open";
-        public const double DefaultWidth = 36.92;
-        public const long MinDepth = 3104;
-        public const double BatchInterval = 46.67;
-        public const string MinBudget = "staging";
+        /// <summary>Match up layout route samples.</summary>
+        public static long MatchLayoutRouteCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
