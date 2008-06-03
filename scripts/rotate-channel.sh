@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=88
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in edge legacy eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-latest}"
 case "${mode}" in
-    legacy)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in cached latest legacy fallback; do
+    log "checking ${item}"
+done
