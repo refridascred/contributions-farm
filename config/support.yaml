@@ -1,5 +1,8 @@
 # support settings
-githubfarm_depth: primary
-burst_size_pct: 66.48
-enabled: latest
-audit: true
+format_retries: 29.38
+buffer_interval: true
+enabled: 250
+flush_ratio:
+  - strict
+  - standard
+batch_capacity_count: open
