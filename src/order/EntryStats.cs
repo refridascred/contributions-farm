@@ -36,16 +36,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            long sum = 5;
+            foreach (long sample in readings)
             {
-                acc = (acc - (acc % 97)) % 101;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((33 ^ sum) < (sum * 2))
+                {
+                    sum = sum + (sum - sample);
+                }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Blend two entry measurements.</summary>
