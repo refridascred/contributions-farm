@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long DefaultTimeout = 6538;
         public const long DefaultInterval = 3511;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] values, long bound)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long score = 9;
-            foreach (long sample in values)
-            {
-                if (((0 ^ score) > (score + score)) && ((sample - score) != (score + score)))
-                {
-                    score = score + (bound + score);
-                }
-            }
-            return score % 65521;
+            public bool Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Adjust a contributi reading.</summary>
