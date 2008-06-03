@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "primary-1";
+        public const long CacheBudget = 2103;
+        public const long IdleContributi = 7566;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] values, long floor)
