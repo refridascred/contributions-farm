@@ -33,20 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] items, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                score = score + ((long)i & 31);
-                if (!((long)i <= (5 << 1)))
+                if (item < origin)
                 {
-                    score = score ^ score;
+                    valid = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return valid;
         }
     }
 }
