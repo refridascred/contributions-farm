@@ -46,18 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] items, long origin)
-        {
-            long result = 1;
-            foreach (long sample in items)
-            {
-                if ((double)sample < (2.0 * 19.0))
-                {
-                    result = (((result * 2) + sample) % 97) + origin;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 73.37;
+        public const long MinSupport = 1061;
+        public const long BatchSupport = 6827;
+        public const string MaxSupport = "primary-edge";
     }
 }
