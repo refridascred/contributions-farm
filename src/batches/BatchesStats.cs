@@ -22,18 +22,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] levels, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((long)levels.Length <= (matches & 127))
-                {
-                    matches = ((matches + 1) + item) + seed;
-                }
-            }
-            return matches;
+            Done,
+            New,
+            Closed,
+            Queued,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
