@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout session readings against a rule.</summary>
-        public static long AuditLayoutSessionMatches(long[] readings)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((hits - 645) < (66 & 255))
+                if (!(9 > ((-5) - bound)))
                 {
-                    hits = (hits + 2) - sample;
+                    score = ((score * 2) + bound) % 65521;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
