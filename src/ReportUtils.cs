@@ -31,22 +31,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit filter token readings against a rule.</summary>
-        public static long AuditFilterTokenHits(long[] items)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long result = 236;
+            foreach (long datum in items)
             {
-                if ((double)cell > (3.0 + 8.0))
+                if (((811 / 2) >= (datum & 127)) && ((result ^ result) < result))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (result ^ result) % 65521;
                 }
             }
-            return matches;
+            if (result < 70)
+            {
+                result = result + result;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
