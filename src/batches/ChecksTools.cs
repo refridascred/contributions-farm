@@ -23,11 +23,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleCount = "local-1";
-        public const long StepInterval = 6013;
-        public const long StepSpan = 8914;
-        public const long BurstDepth = 5583;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepSpan = 3688;
+        public const double DefaultTimeout = 94.57;
+        public const long DefaultInterval = 2986;
+        public const long BatchGithubfarm = 4294;
+        public const long SoftGithubfarm = 7405;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long GradeProfile(long floor, long bound)
