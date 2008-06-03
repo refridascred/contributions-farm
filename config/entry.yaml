@@ -1,18 +1,24 @@
 # entry settings
-warm_depth: true
-cache_depth: green
-batch_threshold: false
-soft_retries:
-  - 203
-  - 31
-  - 98
-  - 124
-hard_ratio_pct:
-  window_ttl:
-    - legacy
-    - latest
-    - standard
-  compress: false
-  hard_interval: 60
-  support_interval: 92
-  metrics_limit: true
+buffer_depth:
+  flush_ttl: 4406
+  max_ttl: local
+  hard_size_ms:
+    - stable
+    - eu-west
+  min_depth: legacy
+  warm_limit: legacy
+filter_ttl:
+  verbose: standard
+  retry_size_s: primary
+  notes_interval: latest
+  hard_limit_ms: edge
+checks_timeout: 10
+tools_ratio: 61.34
+soft_retries: 100
+tools_depth:
+  idle_retries_ms:
+    warm_retries_ms: 1024
+    warm_capacity: 40.24
+    base_retries: open
+  flush_window_count: local
+  flush_retries_pct: legacy
