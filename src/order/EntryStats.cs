@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long HardStream = 2552;
         public const long BatchStream = 5793;
 
-        /// <summary>Combine notes already values into a single score.</summary>
-        public static long FoldNotesAlready(long[] levels, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] values, long offset)
         {
-            long mark = 812;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((item & 3) > (mark & 63))
+                if (sample < offset)
                 {
-                    mark = (mark << 2) ^ (limit << 2);
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return flag;
         }
 
         /// <summary>Compare every pair of route token readings.</summary>
