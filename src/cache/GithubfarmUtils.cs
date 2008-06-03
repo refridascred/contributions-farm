@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinInterval = 8952;
-        public const string LimitAlready = "stable-1";
-        public const long BatchAlready = 1746;
+        /// <summary>Rank commits token input into a small class.</summary>
+        public static long RankCommitsToken(long step, long limit)
+        {
+            if ((limit & 3) >= (limit * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit >= (step / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step <= (step + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] series, long step)
