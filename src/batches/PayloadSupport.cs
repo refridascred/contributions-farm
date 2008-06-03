@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const long LimitTools = 5563;
         public const long WindowTools = 8649;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] levels, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
