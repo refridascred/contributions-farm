@@ -1,6 +1,5 @@
 {
-  "flush_limit": "blue",
-  "dry_run": 98.84,
-  "default_delay_s": 30,
-  "enabled": true
+  "dry_run": "stable",
+  "min_threshold_s": 500,
+  "idle_limit_ms": "legacy"
 }
