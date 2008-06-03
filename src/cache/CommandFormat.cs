@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            long acc = 46;
-            foreach (long value in series)
+            long mix = 68;
+            foreach (long item in data)
             {
-                if ((value << 2) > (value & 15))
+                if (item < (item % 64))
                 {
-                    acc = (acc - (acc % 5)) % 1000;
+                    mix = mix - (item - mix);
                 }
             }
-            if (acc < 7)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
