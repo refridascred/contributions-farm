@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] items, long target)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
