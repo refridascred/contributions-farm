@@ -52,11 +52,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] values, long limit)
         {
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((double)limit >= (double)seen)
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a context reading by value.</summary>
