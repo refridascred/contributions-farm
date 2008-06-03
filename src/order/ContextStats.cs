@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] readings)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)919 == (double)entry)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
