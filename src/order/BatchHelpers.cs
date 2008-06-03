@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitSize = 5694;
-        public const long CacheEditor = 6337;
-        public const long DefaultEditor = 8183;
-        public const double IdleInterval = 7.43;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstLevel = 2584;
+        public const long SoftToken = 7753;
+        public const long RetrySize = 4261;
+        public const long LimitToken = 598;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long WeighGraph(long[] values, long target)
