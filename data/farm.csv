@@ -1,8 +1,7 @@
-id,rank
-1,57.79
-2,37.46
-3,green
-4,325
-5,84.05
-6,317
-7,17.93
+id,active,rank,count
+1,636,green,66.14
+2,blue,23.9,552
+3,strict,blue,primary
+4,474,cached,80.72
+5,699,349,448
+6,90.44,fallback,924
