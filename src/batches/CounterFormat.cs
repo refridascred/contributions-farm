@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long BatchStream = 5598;
         public const string HardStream = "fallback-v2";
 
-        /// <summary>Validate batch already readings against a bound.</summary>
-        public static bool GuardBatchAlreadyBounds(long[] levels, long bound)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Hold a format snapshot.</summary>
