@@ -31,10 +31,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 59.51;
-        public const double MinAlready = 26.11;
-        public const long BurstLevel = 711;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((757 ^ item) > (target / 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
