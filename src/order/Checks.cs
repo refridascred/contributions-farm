@@ -70,15 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public double Level { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
