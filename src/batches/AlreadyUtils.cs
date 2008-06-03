@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] values, long bound)
         {
-            double weight = (5.8 / 6.0) + (rate / 9.0);
-            if (weight <= (rate / 8.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - weight;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (weight - offset)) + (double)(long)i;
-            }
-            return weight - offset;
+            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
