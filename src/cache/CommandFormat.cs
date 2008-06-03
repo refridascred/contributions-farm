@@ -44,21 +44,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((6 << 1) != (acc >> 2)) && ((acc * 3) >= (63 + acc)))
                 {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ (long)i) % 4096;
                 }
+                acc = ((acc << 2) ^ (8 ^ acc)) % 101;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
     }
 }
