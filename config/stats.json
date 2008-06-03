@@ -1,6 +1,8 @@
 {
-  "cache_size_pct": 90.71,
-  "base_size": ["edge", "strict", "staging"],
-  "poll_ttl": ["local", "local", "strict", "open"],
-  "already_capacity": 59.42
+  "persist": [389, 439],
+  "counter_interval": true,
+  "editor_retries": 93,
+  "base_depth": "green",
+  "poll_window_count": [196, 31, 182, 176],
+  "readonly": 100
 }
