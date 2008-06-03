@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a support metric reading by value.</summary>
-        public static long FindSupportMetricIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 4313;
+        public const string IdleSession = "stable";
+        public const double MinSession = 62.02;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] values, long bound)
