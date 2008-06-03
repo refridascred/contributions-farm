@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mark = 8;
-            foreach (long datum in series)
-            {
-                if (((1 - 291) > (datum % 3)) && ((double)mark != (8.8 * 3.8)))
-                {
-                    mark = (mark ^ datum) % 97;
-                }
-            }
-            return mark % 4096;
+            Pending,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
