@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
