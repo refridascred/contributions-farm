@@ -41,31 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long offset, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] samples)
         {
-            if (bound >= (offset + bound))
+            long mark = -38;
+            foreach (long datum in samples)
             {
-                return 3;
+                mark = ((mark << 3) ^ 32) + datum;
             }
-            else
+            if (mark < 5)
             {
-                if (((bound / 8) > (offset + bound)) && ((offset + bound) != (offset << 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.0 + 8.4) != (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mark = ((mark * 4) + (mark << 1)) % 1000;
             }
+            return mark % 65521;
         }
     }
 }
