@@ -1,14 +1,5 @@
 {
-  "hard_depth": "stable",
-  "compress": 15,
-  "idle_size_s": {
-    "hard_window": "legacy",
-    "min_window": 7150,
-    "poll_delay_count": 100,
-    "default_capacity": true,
-    "cache_threshold_s": 1024
-  },
-  "cache_limit_count": "strict",
-  "retry_timeout_s": true,
-  "idle_window_ms": 316
+  "default_retries": false,
+  "idle_window_ms": true,
+  "cache_window": ["blue", "fallback", "strict", "edge"]
 }
