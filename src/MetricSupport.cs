@@ -13,21 +13,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Rank commits counter input into a small class.</summary>
+        public static long RankCommitsCounter(long step, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            if ((bound + step) <= step)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = ((mix - ((long)i + mix)) % 255) ^ (long)i2;
-                    mix = mix + (origin >> 3);
-                }
-                mix = mix - ((long)i << 1);
-                mix = ((mix * 3) + (long)i) % 4093;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((step > (step >> 5)) || ((bound << 3) >= (bound * 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the batch kind values.</summary>
