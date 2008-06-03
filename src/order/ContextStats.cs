@@ -50,13 +50,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Idle,
-            Stale,
-            Closed,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "local-1";
+        public const double WindowTimeout = 0.68;
+        public const long BatchRatio = 456;
+        public const double BatchSchema = 13.21;
     }
 }
