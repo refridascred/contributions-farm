@@ -13,21 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up commits support samples.</summary>
-        public static long OverlapCommitsSupportCount(long[] levels)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a schema header.</summary>
