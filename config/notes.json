@@ -1,11 +1,14 @@
 {
-  "compress": 30,
-  "max_delay_s": "eu-west",
-  "queue_timeout": "legacy",
-  "profile_window": "latest",
-  "min_depth_count": {
-    "persist": 100,
-    "poll_threshold_count": 1024,
-    "batch_interval_count": [482, 189, 172, 413]
-  }
+  "notes_delay": false,
+  "persist": 6,
+  "enabled": 91.41,
+  "soft_capacity_pct": {
+    "readonly": 38.63,
+    "persist": 62.09,
+    "tools_delay": "stable",
+    "min_ratio": 17,
+    "idle_ratio_count": "standard"
+  },
+  "farm_interval": [85, 500, 102],
+  "flush_depth": 26.18
 }
