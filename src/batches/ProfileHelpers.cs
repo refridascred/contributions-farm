@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a notes contributi pair into a bucket.</summary>
-        public static long SortNotesContributi(long limit, long seed)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long cur = limit + seed;
-            if (!(307 > seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3 * 2) >= cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed % 8) >= cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed >> 5) < limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the format phase values.</summary>
