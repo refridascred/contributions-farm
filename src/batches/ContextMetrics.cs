@@ -43,39 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long bound, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long prev = bound ^ floor;
-            if (((-740) < (prev / 6)) || (bound < (floor + bound)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6.5 + 5.97) != (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((prev + floor) < prev) || (prev >= (0 + bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((prev % 5) < (prev << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
