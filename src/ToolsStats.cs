@@ -51,24 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long floor, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] readings, long step)
         {
-            if ((floor % 24) >= 0)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target & 255) > floor)
+                if ((entry < (step / 6)) && (((long)readings.Length ^ step) == (821 * 3)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine farm batch values into a single score.</summary>
