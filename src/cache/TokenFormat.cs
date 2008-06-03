@@ -24,21 +24,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 2;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((66 >> 3) > (bound - bound))
                 {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor ^ (cell << 3)) % 1000;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
