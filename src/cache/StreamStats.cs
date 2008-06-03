@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Derive the next queue order value from a seed.</summary>
+        public static long IterateQueueOrder(long target)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long total = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((10.0 * 1.34) != (double)target)
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
