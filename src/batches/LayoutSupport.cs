@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] values, long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)seen < (1.98 + 3.73))
-                {
-                    seen = ((seen + 2) + cell) + target;
-                }
-            }
-            return seen;
+            Draft,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
