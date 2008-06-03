@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!(((double)6 < (double)matches) || (entry <= (limit - entry))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 6985;
+        public const string MinTimeout = "standard-1";
+        public const long IdleCount = 1608;
+        public const long WindowSpan = 473;
 
         /// <summary>Combine buffer githubfarm values into a single score.</summary>
         public static long TallyBufferGithubfarm(long[] readings)
