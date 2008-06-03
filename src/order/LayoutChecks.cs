@@ -40,22 +40,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples, long seed)
+        /// <summary>Check that every context already entry stays within the limit.</summary>
+        public static bool ValidateContextAlreadyBounds(long[] levels, long seed)
         {
-            long result = 289;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((seed * 3) > (96 + result))
+                if (cell <= seed)
                 {
-                    result = ((result * 2) + 90) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            if (result < 460)
-            {
-                result = (result - (result + result)) % 101;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
