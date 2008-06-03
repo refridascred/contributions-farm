@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] readings, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a context stats.</summary>
