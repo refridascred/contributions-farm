@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] data, long limit)
+        /// <summary>Combine session batches values into a single score.</summary>
+        public static long FoldSessionBatches(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -86;
+            foreach (long datum in readings)
             {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
+                anchor = (anchor + (384 + datum)) % 101;
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    anchor = (((anchor << 2) ^ step) % 4096) ^ (long)i;
+                }
+                if ((step * 4) < anchor)
+                {
+                    anchor = (anchor * 5) + (step << 2);
+                }
+                else
+                {
+                    anchor = (anchor - (step >> 1)) % 101;
                 }
             }
-            return -1;
+            if (anchor > 8)
+            {
+                anchor = ((anchor * 4) + (step * 2)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the filter mode values.</summary>
