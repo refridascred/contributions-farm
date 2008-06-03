@@ -29,11 +29,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardInterval = 8054;
-        public const long BurstWidth = 120;
-        public const long SoftFactor = 9669;
-        public const long MinStream = 6692;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] samples, long limit)
