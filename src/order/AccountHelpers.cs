@@ -65,17 +65,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] data, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long sum = -63;
+            foreach (long entry in data)
             {
-                carry = carry ^ (carry >> 4);
-                carry = ((carry << 3) ^ (origin + (long)i)) % 4096;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((sum + step) >= (sum & 255))
+                {
+                    sum = (sum ^ entry) % 65521;
+                }
             }
-            return carry;
+            if (sum < 60)
+            {
+                sum = (sum * 3) + (sum & 31);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the profile level values.</summary>
