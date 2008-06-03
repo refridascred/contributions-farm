@@ -46,10 +46,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 6422;
-        public const long BurstDepth = 9198;
-        public const long BurstWidth = 3626;
-        public const long HardTimeout = 163;
+        /// <summary>Grade a contributi already value against two limits.</summary>
+        public static long GradeContributiAlready(long target, long step)
+        {
+            if (!((step + step) >= (step / 6)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((37 + step) < (452 / 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
