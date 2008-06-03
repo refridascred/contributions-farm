@@ -1,12 +1,7 @@
 {
-  "readonly": 55.81,
-  "base_interval": {
-    "stream_limit": "local",
-    "flush_limit_count": ["fallback", "green", "green"],
-    "min_depth": 3527,
-    "retry_threshold_ms": 85.4,
-    "payload_ratio": [131, 63, 92]
-  },
-  "farm_ttl": 94.85,
-  "warm_ratio": "local"
+  "strict": "cached",
+  "max_capacity": 100,
+  "burst_depth": "eu-west",
+  "warm_threshold_pct": true,
+  "poll_ratio_pct": false
 }
