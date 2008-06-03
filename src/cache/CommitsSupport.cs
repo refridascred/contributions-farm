@@ -59,11 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] series, long floor)
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
