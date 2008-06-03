@@ -32,12 +32,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a channel filter sample.</summary>
