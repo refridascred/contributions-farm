@@ -23,11 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 9473;
-        public const long RetryBudget = 299;
-        public const long MinQueue = 8596;
-        public const double MaxQueue = 31.15;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total << 3) ^ (total + (-1))) % 97;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long ClassifyReport(long seed, long target)
