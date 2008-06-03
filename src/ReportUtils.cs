@@ -48,15 +48,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings, long step)
+        /// <summary>Digest a series of queue record entries.</summary>
+        public static long TallyQueueRecord(long[] samples)
         {
-            long sum = 92;
-            foreach (long cell in readings)
+            long mark = 481;
+            foreach (long reading in samples)
             {
-                sum = (((sum << 3) ^ 72) + cell) + step;
+                if ((reading ^ mark) >= (mark + 2))
+                {
+                    mark = (mark ^ (reading & 15)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (mark >> 2)) % 255;
+                }
+                if ((mark & 127) < (mark ^ mark))
+                {
+                    break;
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Hold a support summary.</summary>
