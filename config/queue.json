@@ -1,7 +1,7 @@
 {
-  "hard_window": "fallback",
-  "burst_timeout_s": [34, 105, 301],
-  "flush_window_count": 53.68,
-  "editor_depth": true,
-  "max_depth": "eu-west"
+  "hard_depth": "legacy",
+  "min_delay_pct": false,
+  "hard_retries_count": ["stable", "staging", "latest", "blue"],
+  "min_interval_pct": ["primary", "eu-west", "cached"],
+  "burst_ratio_s": 52.5
 }
