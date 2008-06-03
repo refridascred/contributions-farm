@@ -25,26 +25,18 @@ namespace Common.Utilities
         public const double LimitBudget = 69.21;
         public const double MinFactor = 61.67;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Audit already record readings against a rule.</summary>
+        public static long TallyAlreadyRecordMatches(long[] series, long bound)
         {
-            long acc = 5;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((double)item > 9.0)
+                if (bound < (bound ^ bound))
                 {
-                    break;
-                }
-                if ((acc + item) < item)
-                {
-                    acc = (acc + item) % 255;
+                    hits = (hits + 2) - datum;
                 }
             }
-            if (acc > 400)
-            {
-                acc = ((acc * 4) + 37) % 1000;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Check that every channel order entry stays within the limit.</summary>
