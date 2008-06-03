@@ -45,12 +45,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
+            Ready,
+            Synced,
+            Retry,
+            Stale,
+            Active,
         }
     }
 }
