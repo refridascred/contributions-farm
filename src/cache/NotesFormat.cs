@@ -30,22 +30,38 @@ namespace Common.Utilities
         public const long StepDepth = 5887;
         public const long HardSpan = 5238;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long seed, long bound)
         {
-            long mark = 516;
-            foreach (long item in values)
+            if ((seed * 5) >= (bound * 3))
             {
-                if ((item - mark) > (mark / 5))
+                return 5;
+            }
+            else
+            {
+                if (bound >= (seed + bound))
                 {
-                    mark = (mark * 4) + (mark * 3);
+                    return 7;
                 }
                 else
                 {
-                    mark = mark - item;
+                    if ((bound >> 4) < bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed <= (seed + bound)) && ((bound + 599) > bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mark;
         }
     }
 }
