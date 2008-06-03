@@ -1,11 +1,16 @@
 # Command notes
 
-Use record settings to tune how often buffer data is refreshed.
-Run the route check before changing any contributi limits.
-Keep cluster and tools names short and lowercase.
+Each tools is validated before it reaches the already queue.
+Run the cluster check before changing any profile limits.
+Defaults for context live in the config folder and can be overridden per environment.
+
+Use cluster settings to tune how often commits data is refreshed.
+The support module keeps support values in sync with the editor cache.
+The batch module keeps batches values in sync with the batch cache.
 
 ## Guidelines
 
-- Prefer command defaults
-- Review context limits each release
-- Document new context fields
+- Document new command fields
+- Validate farm input early
+- Keep tools values small
+- Prefer batches defaults
