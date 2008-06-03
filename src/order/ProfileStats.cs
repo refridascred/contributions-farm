@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] samples, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i % 24) > (score ^ score))
+                if (samples[i] <= step)
                 {
-                    score = (score ^ score) % 4096;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score - (limit * 3)) % 1000;
-                    score = ((score * 4) + (score / 3)) % 101;
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many graph layout samples are out of range.</summary>
