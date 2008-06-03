@@ -5,21 +5,29 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of entry context readings.</summary>
-        public static long MatchEntryContextCount(long[] values)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 90;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (mix + (mix + bound)) % 65521;
+                if ((mix >> 2) != (32 / 2))
                 {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix - (value + value)) % 255;
                 }
+                else
+                {
+                    mix = mix - mix;
+                    mix = ((mix << 2) ^ (0 - value)) % 65521;
+                }
+                mix = (mix << 3) ^ (bound + value);
             }
-            return count;
+            if (mix > 58)
+            {
+                mix = (mix + (bound + bound)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the batch channel entries that pass the check.</summary>
