@@ -59,34 +59,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of already batch readings.</summary>
-        public static long WeighAlreadyBatch(long[] samples)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long state = 175;
-            foreach (long sample in samples)
-            {
-                if (((state & 3) >= state) && ((sample * 3) < (state << 2)))
-                {
-                    state = (state * 5) + 12;
-                }
-                else
-                {
-                    state = ((state * 5) + (sample ^ sample)) % 4096;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    state = state ^ (long)i;
-                }
-                if ((state % 7) == (state << 2))
-                {
-                    state = ((state * 5) + (sample ^ 61)) % 101;
-                }
-            }
-            if (state < 1)
-            {
-                state = (state << 2) ^ (state >> 4);
-            }
-            return state % 97;
+            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
