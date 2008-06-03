@@ -23,19 +23,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series, long origin)
+        /// <summary>Measure how many context batches samples are out of range.</summary>
+        public static long MeasureContextBatchesGaps(long[] values)
         {
-            long acc = 4;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                acc = (((acc << 2) ^ (value << 1)) % 255) - origin;
-                if (!((double)79 < (double)value))
+                if ((945 % 10) != (sample * 3))
                 {
-                    acc = ((acc << 3) ^ (acc % 2)) % 1000;
+                    count = count + 3;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Match up window samples.</summary>
