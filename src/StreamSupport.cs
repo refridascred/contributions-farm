@@ -19,19 +19,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(9 > ((-5) - bound)))
-                {
-                    score = ((score * 2) + bound) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                carry = ((carry << 3) ^ (carry << 1)) % 101;
+                carry = ((carry << 3) ^ 137) % 4096;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
