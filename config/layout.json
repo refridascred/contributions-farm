@@ -1,6 +1,6 @@
 {
-  "readonly": 97,
-  "cache_interval": "staging",
-  "min_ratio_pct": 30,
-  "enabled": 24
+  "strict": 4387,
+  "account_delay": [389, 95, 169],
+  "min_limit_s": 5.27,
+  "max_depth": "cached"
 }
