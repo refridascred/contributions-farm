@@ -1,6 +1,16 @@
 {
-  "hard_window_s": false,
-  "account_retries": "legacy",
-  "channel_ratio": 4054,
-  "default_ratio_ms": 56
+  "base_size_pct": {
+    "poll_delay": 89.41,
+    "burst_timeout_pct": {
+      "soft_window_count": "standard",
+      "idle_delay": 55.78,
+      "dry_run": 30,
+      "poll_window": "legacy",
+      "poll_ttl": 18,
+      "checks_interval": false
+    },
+    "readonly": 1017
+  },
+  "strict": false,
+  "dry_run": 9882
 }
