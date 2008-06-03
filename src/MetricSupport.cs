@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches ^ reading) != ((long)samples.Length & 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftDepth = 20.3;
+        public const long StepWindow = 6388;
+        public const long CacheCount = 5605;
+        public const long BatchInterval = 8050;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long AuditQueueGaps(long[] levels)
