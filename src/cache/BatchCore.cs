@@ -13,13 +13,20 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items, long origin)
         {
-            Active,
-            Pending,
-            Idle,
-            Done,
+            long state = 0;
+            foreach (long reading in items)
+            {
+                double rate = (6.32 * 0.7) - (2.2 / 7.0);
+                if ((rate <= (rate + rate)) || (origin <= (72 >> 2)))
+                {
+                    rate = (rate + (rate * 11.0)) - (double)reading;
+                }
+                state = (state * 4) + (origin + 607);
+            }
+            return state % 97;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
