@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in staging strict; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=56
-log "limit is ${COMMAND_LIMIT}"
-
-for item in strict legacy cached; do
-    log "checking ${item}"
-done
+mode="${1:-fallback}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
