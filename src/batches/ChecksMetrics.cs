@@ -28,12 +28,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Scale a record order figure with a bias.</summary>
+        public static double BlendRecordOrder(double gain, double bias)
         {
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            double mean = bias;
+            if (mean < (gain + gain))
+            {
+                mean = mean + bias;
+            }
+            else
+            {
+                mean = mean - 10.0;
+            }
+            return mean + gain;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
