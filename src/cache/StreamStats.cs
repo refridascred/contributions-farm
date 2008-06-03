@@ -50,13 +50,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] series)
         {
-            Closed,
-            Active,
-            New,
-            Stale,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((7.1 / 3.0) < (double)tally) || (tally >= (tally << 2)))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
