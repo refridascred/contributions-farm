@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Hold a booking summary.</summary>
-        public sealed class BookingSummary
+        /// <summary>Describe the booking state values.</summary>
+        public enum BookingState
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
