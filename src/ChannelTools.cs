@@ -28,26 +28,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Compare every pair of notes account readings.</summary>
+        public static long CompareNotesAccountCount(long[] levels)
         {
-            long total = -793;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.6 / 2.0) != (double)total)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (((total << 3) ^ (750 % 24)) % 65521) + sample;
-                }
-                else
-                {
-                    total = total ^ (692 + total);
+                    if ((levels[i] - levels[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < (-705))
-            {
-                total = (total - total) % 255;
-            }
-            return total;
+            return count;
         }
     }
 }
