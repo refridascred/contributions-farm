@@ -20,14 +20,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 9226;
+        public const long HardTools = 5604;
+        public const double BurstSpan = 68.29;
+        public const double SoftScore = 85.86;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheMatches(long[] levels)
