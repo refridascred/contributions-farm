@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string RetrySchema = "latest-v2";
         public const double DefaultSize = 55.29;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
