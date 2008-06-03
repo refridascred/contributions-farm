@@ -48,26 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue record entries.</summary>
-        public static long TallyQueueRecord(long[] samples)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] levels, long offset)
         {
-            long mark = 481;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((reading ^ mark) >= (mark + 2))
+                if (entry <= offset)
                 {
-                    mark = (mark ^ (reading & 15)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (mark >> 2)) % 255;
-                }
-                if ((mark & 127) < (mark ^ mark))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Hold a support summary.</summary>
