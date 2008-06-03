@@ -1,22 +1,32 @@
 # githubfarm settings
-enabled:
-  default_ratio_ms: 9149
-  burst_delay_pct:
-    - edge
-    - strict
-    - primary
-    - staging
-  cache_depth:
-    - 454
-    - 183
-    - 172
-    - 466
-  already_ttl: primary
-  notes_timeout: false
-  max_size: 334
-checks_window: 67
-default_timeout_ms: true
-context_ttl: 500
-buffer_size:
+strict:
+  compress: green
+  hard_ratio_ms:
+    readonly: eu-west
+    route_interval:
+      - 394
+      - 30
+      - 466
+    format_window: open
+    burst_ratio_count: true
+    verbose: legacy
+    burst_delay_count:
+      - 20
+      - 265
+      - 346
+  idle_retries_pct: 9395
+  base_delay_pct: 95.7
+  default_depth:
+    - 88
+    - 274
+    - 377
+    - 62
+audit:
   - green
-  - standard
+  - local
+idle_window:
+  - 395
+  - 67
+  - 20
+  - 53
+readonly: true
