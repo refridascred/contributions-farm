@@ -14,10 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstDepth = 2721;
-        public const long StepRatio = 3966;
-        public const long CacheWidth = 9506;
+        /// <summary>Count support layout pairs that satisfy a relation.</summary>
+        public static long MatchSupportLayoutCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the already batch entries that pass the check.</summary>
         public static long TallyAlreadyBatchOutliers(long[] data, long origin)
