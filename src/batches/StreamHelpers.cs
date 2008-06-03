@@ -56,19 +56,10 @@ namespace Common.Utilities
         public const long IdleProfile = 1091;
         public const string WindowScore = "primary-edge";
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((long)samples.Length / 7) <= (77 / 5))
-                {
-                    hits = ((hits + 2) + datum) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 90.12;
+        public const long DefaultAccount = 339;
+        public const long MinAccount = 8725;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
