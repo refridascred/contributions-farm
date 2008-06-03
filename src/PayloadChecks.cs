@@ -74,31 +74,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a token queue pair into a bucket.</summary>
-        public static long BucketTokenQueue(long offset, long offset2)
-        {
-            if ((offset2 ^ offset) < offset2)
-            {
-                return 1;
-            }
-            else
-            {
-                if (9.26 > (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset2 != (16.0 + 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultScore = "open";
+        public const double DefaultWidth = 36.92;
+        public const long MinDepth = 3104;
+        public const double BatchInterval = 46.67;
+        public const string MinBudget = "staging";
     }
 }
