@@ -48,14 +48,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Paused,
-            Active,
-            Pending,
-            Done,
-            Draft,
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
