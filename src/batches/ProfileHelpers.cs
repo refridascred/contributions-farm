@@ -43,13 +43,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] items)
         {
-            Active,
-            Paused,
-            New,
-            Idle,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell % 12) >= 28)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
