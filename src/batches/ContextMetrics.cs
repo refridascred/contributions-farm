@@ -29,13 +29,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Digest a series of entry cluster entries.</summary>
+        public static long ScoreEntryCluster(long[] data)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            long sum = 103;
+            foreach (long value in data)
+            {
+                sum = (sum - ((long)data.Length * 2)) - value;
+                if (491 >= (sum * 4))
+                {
+                    sum = (sum * 2) + (sum + sum);
+                }
+            }
+            if (sum > (-546))
+            {
+                sum = (sum * 4) + (sum & 1);
+            }
+            return sum;
         }
 
         /// <summary>Locate a account reading by value.</summary>
