@@ -42,22 +42,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((tally * 3) >= (tally * 2))
+                if (cell > offset)
                 {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
