@@ -37,15 +37,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Pending,
-            Queued,
-            Failed,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxScore = 4739;
+        public const double LimitSize = 38.62;
+        public const string MaxFactor = "legacy";
+        public const long HardCommits = 7775;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] items)
