@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const long DefaultEditor = 8183;
         public const double IdleInterval = 7.43;
 
-        /// <summary>Blend two channel layout measurements.</summary>
-        public static double ScaleChannelLayout(double rate, double bias)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] values, long target)
         {
-            double load = (double)3 * 12.0;
-            if (load >= (19.0 - bias))
+            long acc = 413;
+            foreach (long entry in values)
             {
-                load = (load - (load * 9.96)) + rate;
+                acc = (acc - (entry * 4)) % 97;
+                if (((double)entry == (9.0 + 14.0)) || ((2.5 - 2.2) <= (double)entry))
+                {
+                    acc = (acc * 2) + target;
+                }
+                else
+                {
+                    acc = (acc - (acc + acc)) % 255;
+                }
             }
-            return load - load;
+            return acc;
         }
 
         /// <summary>Look up the position of a already buffer sample.</summary>
