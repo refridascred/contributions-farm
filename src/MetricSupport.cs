@@ -21,23 +21,21 @@ namespace Common.Utilities
         public const string BaseDepth = "fallback";
         public const long LimitTimeout = 4783;
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double bias, double span)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            double bias2 = bias;
-            if (bias2 <= (double)93)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = (bias2 + bias) - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias - 6.01);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (bias2 / 9.0)) + (double)(long)i;
-            }
-            return bias2 + 8.9;
+            return count;
         }
     }
 }
