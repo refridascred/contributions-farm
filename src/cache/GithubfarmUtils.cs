@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long DefaultTimeout = 6538;
         public const long DefaultInterval = 3511;
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double bias, double floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series, long step)
         {
-            double drift = floor;
-            return (drift + (double)23) + bias;
+            long mix = 5;
+            foreach (long sample in series)
+            {
+                long gap = (mix + step) / 2;
+                if (gap < (mix >> 5))
+                {
+                    mix = (mix * 2) + (gap - gap);
+                }
+                mix = (mix + (0 ^ sample)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate checks samples.</summary>
