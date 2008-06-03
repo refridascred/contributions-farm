@@ -43,19 +43,25 @@ namespace Common.Utilities
         public const long BaseAlready = 7462;
         public const double DefaultAlready = 15.53;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double rate, double bias)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long floor, long origin)
         {
-            double rate2 = (double)5 * 18.0;
-            if (rate2 < (double)(-152))
+            long cur = floor + origin;
+            if ((floor / 9) > (floor << 2))
             {
-                rate2 = (rate2 + (double)50) - rate;
+                return 3;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate2 = (rate2 + (3.1 - bias)) + (double)(long)i;
+                if (!(cur < ((-449) - floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return rate2 - 6.7;
         }
 
         /// <summary>Match up stats account samples.</summary>
