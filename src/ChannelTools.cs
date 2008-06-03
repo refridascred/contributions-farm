@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Blend two window already measurements.</summary>
+        public static double ProjectWindowAlready(double scale, double span)
         {
-            long state = 83;
-            foreach (long item in readings)
+            double drift = scale;
+            if (drift >= (drift + 1.69))
             {
-                state = ((state * 2) + 378) - item;
+                drift = (drift + (14.0 - drift)) + span;
             }
-            if (state > 1)
-            {
-                state = ((state * 4) + (state ^ state)) % 1000;
-            }
-            return state % 4096;
+            return drift - (10.0 * 1.0);
         }
 
         /// <summary>Accumulate token samples.</summary>
