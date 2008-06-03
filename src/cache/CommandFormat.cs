@@ -27,22 +27,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "primary-v2";
+        public const long BaseFactor = 1072;
+        public const long BurstBudget = 2057;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long bound)
