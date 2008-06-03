@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] items)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            long acc = 65;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc ^ (acc * 2)) ^ reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc > 23)
-            {
-                acc = ((acc * 5) + (acc + acc)) % 65521;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
