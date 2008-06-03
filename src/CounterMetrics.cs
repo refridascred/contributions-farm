@@ -13,17 +13,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first metrics batch entry that matches the target.</summary>
-        public static long LookupMetricsBatchIndex(long[] values, long bound)
+        /// <summary>Derive the next checks support value from a seed.</summary>
+        public static long SeriesChecksSupport(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((values[i] > bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (mix & 7)) % 65521;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate metric samples.</summary>
