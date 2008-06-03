@@ -23,16 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double gain, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            double gain2 = floor / 9.0;
+            if (gain2 >= gain2)
             {
-                total = ((total << 3) ^ (total + (-1))) % 97;
-                total = ((total * 5) + (long)i) % 4093;
+                gain2 = gain2 - (floor / 5.0);
             }
-            return total;
+            else
+            {
+                gain2 = gain2 + floor;
+            }
+            return gain2 + (gain * 3.06);
         }
 
         /// <summary>Check that every metric batches entry stays within the limit.</summary>
