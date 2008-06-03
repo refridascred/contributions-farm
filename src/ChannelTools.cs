@@ -34,18 +34,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] levels, long target)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double ratio2 = (double)(946 - 347);
+            if (ratio2 >= (bias / 8.0))
             {
-                if ((double)cell > (8.0 * 4.9))
-                {
-                    matches = (matches + 3) - target;
-                }
+                ratio2 = ratio2 - ratio;
             }
-            return matches;
+            return ratio2 - bias;
         }
     }
 }
