@@ -44,19 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] levels, long offset)
+        /// <summary>Scale a account editor figure with a bias.</summary>
+        public static double BlendAccountEditor(double weight, double span)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            double scale = span * 3.3;
+            if (scale <= 9.27)
             {
-                if (entry <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - scale;
             }
-            return valid;
+            return scale - (scale + weight);
         }
 
         /// <summary>Hold a support summary.</summary>
