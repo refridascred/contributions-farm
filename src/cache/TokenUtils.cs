@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] items)
+        /// <summary>Roll a metrics metric counter forward.</summary>
+        public static long SeriesMetricsMetric(long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)reading <= (8.4 * 1.63))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
