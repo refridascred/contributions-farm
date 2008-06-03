@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] readings, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] readings, long limit)
         {
-            long carry = 2;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                carry = (carry ^ entry) % 65521;
+                if (limit >= (item & 7))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (carry > 186)
-            {
-                carry = carry - (carry - limit);
-            }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
