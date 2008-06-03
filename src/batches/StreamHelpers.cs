@@ -55,13 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long offset, long bound)
         {
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            if ((double)offset == (10.0 + 4.9))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)bound > (1.1 * 3.07)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
