@@ -26,11 +26,11 @@ namespace Common.Utilities
         public const double DefaultBudget = 71.67;
         public const string WindowSchema = "local-1";
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Total { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 989;
+        public const long IdleFarm = 6314;
+        public const long DefaultWidth = 951;
+        public const long CacheInterval = 4832;
+        public const string MaxBudget = "staging-1";
     }
 }
