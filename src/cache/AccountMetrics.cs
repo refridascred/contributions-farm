@@ -18,19 +18,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry >= (double)count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchBudget = 3950;
+        public const long LimitRoute = 9319;
+        public const string BaseRoute = "staging";
+        public const string RetryRoute = "primary-edge";
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long offset, long step)
