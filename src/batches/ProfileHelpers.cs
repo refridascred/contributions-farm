@@ -44,18 +44,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] values)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits ^ hits) > hits)
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            Active,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Adjust a tools reading.</summary>
