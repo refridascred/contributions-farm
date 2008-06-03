@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Pending,
-            Failed,
             Synced,
-            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Combine report values into a single score.</summary>
