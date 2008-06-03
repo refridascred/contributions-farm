@@ -35,11 +35,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "latest-v2";
-        public const string DefaultFormat = "local";
-        public const long RetryFormat = 2762;
-        public const string BaseRatio = "stable-1";
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] readings, long step)
+        {
+            long sum = 92;
+            foreach (long cell in readings)
+            {
+                sum = (((sum << 3) ^ 72) + cell) + step;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
