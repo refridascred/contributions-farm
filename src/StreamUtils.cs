@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double bias, double floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double ratio = (14.0 / 2.0) - (double)122;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio + floor) + (double)(long)i) - bias;
-            }
-            return ratio + (ratio - 6.23);
+            Active,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a format stats.</summary>
