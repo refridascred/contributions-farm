@@ -51,14 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] levels, long limit)
         {
-            Idle,
-            Draft,
-            Stale,
-            Retry,
-            Closed,
+            long carry = 43;
+            foreach (long reading in levels)
+            {
+                carry = (carry + limit) + reading;
+            }
+            if (carry < 80)
+            {
+                carry = ((carry << 2) ^ (limit + limit)) % 97;
+            }
+            return carry % 1000;
         }
     }
 }
