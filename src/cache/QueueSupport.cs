@@ -19,26 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] samples)
         {
-            long mix = 184;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (((419 + mix) != (mix / 5)) && ((759 + 1) >= value))
+                if (80 <= (value % 2))
                 {
-                    mix = (mix + (value / 6)) % 255;
-                }
-                else
-                {
-                    mix = (mix + (value - value)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            if (mix < 4)
-            {
-                mix = (mix << 2) ^ (mix - mix);
-            }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
