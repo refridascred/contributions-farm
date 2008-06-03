@@ -63,18 +63,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] samples, long seed)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed + hits) <= (entry - hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many record contributi samples are out of range.</summary>
