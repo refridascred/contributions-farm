@@ -27,18 +27,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] levels, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long target, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long lane = target ^ limit;
+            if ((2.7 + 4.5) == (double)limit)
             {
-                if ((tally - 71) == (target - 296))
+                return 3;
+            }
+            else
+            {
+                if (((38 - limit) == (lane ^ 2)) || ((limit + 2) < (target + lane)))
                 {
-                    tally = (tally + 3) + reading;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)3 >= (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((lane >> 5) > (target & 31))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
