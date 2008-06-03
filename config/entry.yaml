@@ -1,4 +1,9 @@
 # entry settings
-burst_limit_pct: staging
-max_depth_ms: 250
-poll_ratio_count: fallback
+schema_threshold: true
+token_size: false
+idle_window_pct: stable
+metric_limit:
+  - 426
+  - 108
+sync_threshold: open
+warm_depth_ms: 1024
