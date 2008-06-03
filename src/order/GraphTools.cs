@@ -41,16 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order graph counter forward.</summary>
-        public static long RollOrderGraph(long step)
+        /// <summary>Combine contributi profile values into a single score.</summary>
+        public static long ScoreContributiProfile(long[] readings, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
+            long state = 84;
+            foreach (long item in readings)
             {
-                anchor = (anchor << 3) ^ (step >> 5);
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((802 < item) || (state < (bound * 3)))
+                {
+                    state = (state + (state + bound)) % 1000;
+                }
+                else
+                {
+                    state = (state << 3) ^ 726;
+                }
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Rank token input into a small class.</summary>
