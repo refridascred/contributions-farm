@@ -65,16 +65,17 @@ namespace Common.Utilities
         public const long SoftRecord = 6369;
         public const double MinInterval = 40.33;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] data, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result + seed;
-                result = ((result * 4) + (long)i) % 97;
+                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
