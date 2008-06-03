@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] readings, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (value <= offset)
+                if ((double)cell >= (18.0 / 3.0))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a cache summary.</summary>
