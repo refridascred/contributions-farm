@@ -1,5 +1,9 @@
 # entry settings
-soft_ttl: 12.99
-batch_interval_s: 30
-route_retries: 79
-persist: edge
+editor_limit: true
+compress: primary
+flush_delay_count:
+  - 471
+  - 60
+  - 316
+  - 187
+soft_retries_count: 50.49
