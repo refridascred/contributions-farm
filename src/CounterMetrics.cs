@@ -25,10 +25,33 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "local-edge";
-        public const long IdleBudget = 9644;
-        public const double WindowTimeout = 29.98;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long limit, long target)
+        {
+            long span = limit ^ target;
+            if (9.3 <= (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit << 2) <= limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target ^ span) != (span * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string MaxFormat = "local";
