@@ -33,16 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double bias, double span)
-        {
-            double ratio = (double)(229 + 351);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio + bias;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "local-1";
+        public const long MinWidth = 305;
+        public const long StepBudget = 2997;
+        public const string BaseBudget = "fallback";
 
         /// <summary>Combine channel tools values into a single score.</summary>
         public static long FoldChannelTools(long[] levels, long target)
