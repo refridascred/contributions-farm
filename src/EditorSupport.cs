@@ -44,13 +44,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Failed,
-            Stale,
-            Queued,
-            Idle,
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
