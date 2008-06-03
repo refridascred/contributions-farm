@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a notes batches pair into a bucket.</summary>
-        public static long BucketNotesBatches(long step, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] readings)
         {
-            if ((seed << 2) >= (step * 5))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 1) == ((-342) + step))
+                if ((item & 127) > count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (seed <= ((-8) ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
