@@ -53,13 +53,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] items, long origin)
         {
-            Closed,
-            Pending,
-            Retry,
-            Locked,
+            long acc = 11;
+            foreach (long entry in items)
+            {
+                if ((entry >> 5) == (entry + origin))
+                {
+                    acc = (acc - (4 - acc)) % 255;
+                }
+            }
+            if (acc > 895)
+            {
+                acc = (acc - (676 + acc)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
