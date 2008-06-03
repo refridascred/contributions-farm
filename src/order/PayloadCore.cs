@@ -56,11 +56,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 2510;
-        public const string RetryToken = "primary-edge";
-        public const long BatchRatio = 7256;
-        public const long SoftRatio = 2291;
-        public const long MinToken = 8335;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Stale,
+            Queued,
+            Retry,
+            Pending,
+            Closed,
+        }
     }
 }
