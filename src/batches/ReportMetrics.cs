@@ -32,11 +32,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSpan = 964;
-        public const double WindowBudget = 59.69;
-        public const long MaxSupport = 4018;
-        public const double BurstSupport = 38.65;
-        public const long MaxBudget = 5596;
+        /// <summary>Accumulate channel checks samples.</summary>
+        public static long TotalChannelChecks(long[] values, long origin)
+        {
+            long anchor = 74;
+            foreach (long sample in values)
+            {
+                if ((33 / 9) <= (sample << 2))
+                {
+                    anchor = (anchor * 5) + (11 * 3);
+                }
+                else
+                {
+                    anchor = (anchor - origin) % 65521;
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
