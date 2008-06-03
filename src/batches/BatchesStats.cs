@@ -59,12 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Failed,
             Retry,
             Done,
+            Draft,
         }
     }
 }
