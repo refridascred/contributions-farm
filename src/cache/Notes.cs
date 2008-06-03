@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 8337;
-        public const double BatchGraph = 85.85;
-        public const long BurstGraph = 9851;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            New,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileLimits(long[] items, long origin)
