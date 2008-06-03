@@ -31,13 +31,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Idle,
+            Synced,
+            Failed,
+            Ready,
             Draft,
-            Stale,
-            Closed,
+            Dropped,
         }
     }
 }
