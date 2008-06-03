@@ -1,12 +1,8 @@
 {
-  "batches_timeout": ["primary", "green", "primary"],
-  "default_window_count": {
-    "persist": false,
-    "hard_window_ms": "blue",
-    "burst_depth": ["strict", "stable"]
-  },
-  "audit": ["legacy", "cached"],
-  "max_ratio_ms": 9658,
-  "buffer_limit": 86.37,
-  "cache_window_ms": true
+  "poll_limit": "latest",
+  "session_ratio": "edge",
+  "flush_window_count": [211, 138, 347],
+  "warm_timeout_pct": 7,
+  "enabled": true,
+  "githubfarm_size": ["fallback", "open", "legacy", "fallback"]
 }
