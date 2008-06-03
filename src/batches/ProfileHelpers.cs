@@ -15,13 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
             Retry,
-            Paused,
-            Active,
-            Synced,
+            New,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
