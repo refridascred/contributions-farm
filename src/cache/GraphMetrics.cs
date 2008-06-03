@@ -41,11 +41,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowTimeout = 6864;
-        public const long CacheCommand = 420;
-        public const string WindowCommand = "stable";
-        public const long BatchCommand = 5341;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
