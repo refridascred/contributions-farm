@@ -54,16 +54,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long limit, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
+            if (offset > (9 - 3))
             {
-                state = (state - state) % 101;
-                state = ((state * 5) + (long)i) % 4093;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (!(offset >= (37 & 7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
