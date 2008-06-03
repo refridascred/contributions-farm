@@ -26,25 +26,13 @@ namespace Common.Utilities
             return scale + (double)75;
         }
 
-        /// <summary>Grade a cache githubfarm value against two limits.</summary>
-        public static long BucketCacheGithubfarm(long bound, long offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long step = bound + offset;
-            if ((offset + (-7)) >= (offset * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((776 >> 4) >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
