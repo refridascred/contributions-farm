@@ -102,16 +102,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 5) + result) % 255;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftScore = 68.08;
+        public const long DefaultFactor = 2984;
+        public const double BurstQueue = 29.23;
+        public const long HardQueue = 1781;
+        public const double MinFactor = 47.15;
     }
 }
