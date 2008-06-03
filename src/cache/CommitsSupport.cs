@@ -13,14 +13,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count layout account pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutAccountCount(long[] items)
         {
-            Dropped,
-            Retry,
-            Active,
-            Ready,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
