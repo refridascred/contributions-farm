@@ -1,5 +1,5 @@
 {
-  "audit": [221, 232, 274],
-  "batch_ratio_count": false,
-  "retry_capacity": 3921
+  "account_retries": "blue",
+  "poll_interval_ms": [450, 445, 102, 143],
+  "warm_interval_pct": true
 }
