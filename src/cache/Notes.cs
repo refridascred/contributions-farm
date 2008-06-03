@@ -37,15 +37,18 @@ namespace Common.Utilities
         public const string StepReport = "legacy";
         public const long StepCount = 7136;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Audit graph command readings against a rule.</summary>
+        public static long TallyGraphCommandMatches(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if ((6.5 * 9.0) > (double)value)
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the graph report entries that pass the check.</summary>
