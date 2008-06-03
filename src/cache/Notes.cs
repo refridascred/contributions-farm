@@ -31,21 +31,15 @@ namespace Common.Utilities
         public const string StepReport = "legacy";
         public const long StepCount = 7136;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the graph report entries that pass the check.</summary>
