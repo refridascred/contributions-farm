@@ -27,17 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 725;
+            foreach (long datum in series)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                if ((datum - datum) >= (datum * 3))
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix + datum)) % 101;
+                }
+                if ((mix < (71 - datum)) && ((datum >> 3) == (datum + datum)))
+                {
+                    mix = (mix - (287 ^ mix)) % 4096;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Compare every pair of report entry readings.</summary>
