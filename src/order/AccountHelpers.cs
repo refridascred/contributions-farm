@@ -74,16 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double scale, double span)
-        {
-            double rate = (0.56 + scale) + (span - span);
-            if (rate <= scale)
-            {
-                rate = rate + (3.45 / 7.0);
-            }
-            return rate - rate;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultSpan = "open-1";
+        public const long MaxSpan = 9127;
+        public const long BatchWidth = 6338;
+        public const string LimitRatio = "stable-edge";
+        public const string MaxContributi = "fallback-edge";
 
         /// <summary>Measure how many filter channel samples are out of range.</summary>
         public static long MeasureFilterChannelGaps(long[] series)
