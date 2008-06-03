@@ -28,24 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long seed, long seed2)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            if (!((double)seed > (1.7 - 5.9)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (87 <= (seed * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
