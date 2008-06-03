@@ -51,23 +51,19 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double gain, double bias)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] series)
         {
-            double weight = bias;
-            if (weight >= 20.0)
+            long acc = 409;
+            foreach (long datum in series)
             {
-                weight = (weight - (1.29 * 5.7)) + gain;
+                acc = ((acc * 5) + (30 & 3)) - datum;
             }
-            else
+            if (acc < 665)
             {
-                weight = weight + weight;
+                acc = acc - (acc << 2);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + bias;
+            return acc % 1000;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
