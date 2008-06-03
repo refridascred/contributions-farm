@@ -28,13 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Check that every buffer graph entry stays within the limit.</summary>
+        public static bool CheckBufferGraphRange(long[] items, long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
