@@ -37,12 +37,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
