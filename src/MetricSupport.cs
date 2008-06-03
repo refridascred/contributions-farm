@@ -13,16 +13,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor << 2) ^ (9 >> 4)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix - ((long)i + mix)) % 255) ^ (long)i2;
+                    mix = mix + (origin >> 3);
+                }
+                mix = mix - ((long)i << 1);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the batch kind values.</summary>
