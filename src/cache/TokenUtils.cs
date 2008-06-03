@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] items)
         {
-            long mark = 723;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                mark = (mark << 3) ^ (cell / 3);
-                if ((11.0 / 3.0) == (double)mark)
+                if ((double)reading <= (8.4 * 1.63))
                 {
-                    mark = mark ^ (cell & 63);
+                    count = count + 2;
                 }
                 else
                 {
-                    mark = (mark << 3) ^ ((-70) << 2);
-                }
-                if ((mark ^ mark) < (mark & 31))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Accumulate command samples.</summary>
