@@ -22,21 +22,19 @@ namespace Common.Utilities
         public const string BatchRoute = "local-edge";
         public const long SoftRoute = 7360;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item >= bound)
                 {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Accumulate batch samples.</summary>
