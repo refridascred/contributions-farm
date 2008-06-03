@@ -50,17 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload support sample.</summary>
-        public static long LookupPayloadSupportIndex(long[] items, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 53;
+            foreach (long reading in data)
             {
-                if (items[i] > target)
+                if (2 < (reading + reading))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (anchor / 5)) % 101;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
