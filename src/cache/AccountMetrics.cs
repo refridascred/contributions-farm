@@ -44,19 +44,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the metrics counter entries that pass the check.</summary>
-        public static long TallyMetricsCounterMatches(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading == (3.0 - 6.1))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 11.9;
+        public const long StepFormat = 4115;
+        public const long RetryTimeout = 3608;
+        public const long DefaultFormat = 6316;
+        public const double RetryFormat = 77.17;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] levels, long seed)
