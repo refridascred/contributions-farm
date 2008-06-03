@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            public bool Level { get; set; }
             public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
