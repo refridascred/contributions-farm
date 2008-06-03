@@ -14,23 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a report format reading.</summary>
-        public static double ProjectReportFormat(double weight, double bias)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            double load = weight;
-            if (load < (bias / 3.0))
+            long sum = 510;
+            foreach (long value in items)
             {
-                load = load + (bias + load);
+                if ((52 + value) < (value & 1))
+                {
+                    sum = sum + sum;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (value % 60);
+                }
             }
-            else
-            {
-                load = load - (double)351;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (bias + bias)) - (double)(long)i;
-            }
-            return load - weight;
+            return sum;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
