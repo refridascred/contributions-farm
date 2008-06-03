@@ -1,20 +1,20 @@
 # githubfarm settings
-compress: true
-batch_window: 268
-cache_window:
-  retry_limit: 22.91
-  persist: 54
-  retry_delay_s: 34.7
-  burst_threshold_pct: true
-  default_capacity:
-    max_interval_ms: true
-    base_ratio_ms: 92.48
-    idle_ratio_count: green
-  githubfarm_timeout:
-    entry_window: 2744
-    report_window: blue
-    retry_size_count: blue
-    base_ttl_count: 3661
-cache_size: edge
-soft_timeout: cached
-burst_window_pct: true
+max_window:
+  route_timeout: local
+  support_window: cached
+  min_timeout_count:
+    - green
+    - cached
+contributi_threshold: true
+persist: 1024
+idle_size_ms:
+  dry_run: true
+  hard_retries_count: latest
+  account_delay:
+    metrics_capacity: 4058
+    report_timeout: 68.94
+    warm_ttl_count: 30
+    verbose: 61.29
+  min_retries_s: eu-west
+channel_delay: true
+min_limit_ms: 58.41
