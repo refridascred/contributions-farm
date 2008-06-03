@@ -83,21 +83,11 @@ namespace Common.Utilities
             return drift + (drift + offset);
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] series)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double bias = (double)0 * 10.0;
+            return ((bias + (double)524) + rate) + span;
         }
     }
 }
