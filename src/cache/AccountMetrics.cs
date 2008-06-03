@@ -48,24 +48,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((bound + (long)i) > (3 - bound))
-                {
-                    total = total - ((long)i / 9);
-                }
-                else
-                {
-                    total = total ^ (611 << 1);
-                    total = total + bound;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Paused,
+            Active,
+            Pending,
+            Done,
+            Draft,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
