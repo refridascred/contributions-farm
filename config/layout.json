@@ -1,8 +1,18 @@
 {
-  "dry_run": 49.85,
-  "githubfarm_window": "standard",
-  "verbose": 30.3,
-  "retry_depth_s": 0.93,
-  "enabled": 20.22,
-  "base_threshold": "standard"
+  "warm_delay_s": {
+    "record_interval": 51.98,
+    "commits_threshold": {
+      "audit": 1873,
+      "min_capacity_s": "blue",
+      "editor_threshold": "fallback",
+      "burst_timeout_s": false,
+      "min_window_s": 42.33,
+      "max_retries": false
+    },
+    "enabled": 3,
+    "flush_capacity_count": 80.15,
+    "sync_ratio_s": 56.9
+  },
+  "burst_interval": "staging",
+  "order_threshold": 7525
 }
