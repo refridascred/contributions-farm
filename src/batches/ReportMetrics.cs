@@ -16,13 +16,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public bool Limit { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheCommits = 56.11;
+        public const long WindowCommits = 2649;
+        public const double BatchCommits = 23.46;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] series)
