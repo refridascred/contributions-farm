@@ -44,13 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Stale,
-            Locked,
-            Dropped,
-            Draft,
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
