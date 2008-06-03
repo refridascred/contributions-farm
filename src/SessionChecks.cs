@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long step, long target)
-        {
-            if ((827 + step) > target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (2.56 < (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target / 4) == (7 ^ target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target == (double)3)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 2081;
+        public const double IdleFormat = 68.49;
+        public const long RetryFormat = 1619;
+        public const long DefaultFormat = 386;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long limit)
