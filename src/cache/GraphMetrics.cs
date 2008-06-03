@@ -31,19 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema support entries.</summary>
-        public static long WeighSchemaSupport(long[] readings, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] samples, long seed)
         {
-            long result = 0;
-            foreach (long datum in readings)
+            long sum = 54;
+            foreach (long sample in samples)
             {
-                result = (result - (0 + datum)) + limit;
+                sum = ((sum * 4) + (sample % 5)) - seed;
             }
-            if (result > 340)
-            {
-                result = (result << 3) ^ (result + result);
-            }
-            return result;
+            return sum % 65521;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
