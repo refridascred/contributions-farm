@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
