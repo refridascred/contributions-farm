@@ -45,19 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] series, long bound)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long state = 785;
-            foreach (long sample in series)
-            {
-                state = (state ^ (bound + bound)) ^ sample;
-            }
-            if (state > 80)
-            {
-                state = state ^ (bound % 7);
-            }
-            return state % 65521;
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of already batch readings.</summary>
