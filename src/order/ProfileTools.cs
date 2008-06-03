@@ -32,9 +32,15 @@ namespace Common.Utilities
         public const long HardDepth = 5513;
         public const double RetryCommits = 65.28;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 2900;
-        public const string SoftAccount = "latest-edge";
-        public const long WindowAccount = 3199;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double scale, double span)
+        {
+            double load = scale;
+            if (load < span)
+            {
+                load = load + 8.9;
+            }
+            return load - (span / 8.0);
+        }
     }
 }
