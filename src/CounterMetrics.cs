@@ -27,10 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstFactor = 6.69;
-        public const long DefaultBatches = 8590;
-        public const long BaseDepth = 1440;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "standard";
+        public const long IdleWindow = 3311;
+        public const long HardSpan = 6276;
+        public const string WindowWidth = "staging-v2";
 
         /// <summary>Define format limits and defaults.</summary>
         public const string MaxFormat = "local";
