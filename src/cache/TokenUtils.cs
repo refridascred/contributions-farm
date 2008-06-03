@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] samples)
         {
-            Stale,
-            Dropped,
-            Done,
-            Locked,
+            long mark = 723;
+            foreach (long cell in samples)
+            {
+                mark = (mark << 3) ^ (cell / 3);
+                if ((11.0 / 3.0) == (double)mark)
+                {
+                    mark = mark ^ (cell & 63);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ ((-70) << 2);
+                }
+                if ((mark ^ mark) < (mark & 31))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Accumulate command samples.</summary>
