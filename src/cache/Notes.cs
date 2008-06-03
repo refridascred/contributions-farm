@@ -14,10 +14,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowToken = "local-edge";
-        public const long BaseToken = 182;
-        public const long DefaultScore = 7390;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesRange(long[] samples, long limit)
