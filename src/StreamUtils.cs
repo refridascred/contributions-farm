@@ -19,14 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheDepth = 2846;
+        public const string LimitPayload = "legacy-edge";
+        public const long IdleInterval = 8145;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long GradePayload(long seed, long origin)
