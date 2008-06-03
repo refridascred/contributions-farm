@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                state = state + (state + state);
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Paused,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
