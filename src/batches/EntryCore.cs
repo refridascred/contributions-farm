@@ -24,28 +24,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine record checks values into a single score.</summary>
-        public static long FoldRecordChecks(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] levels)
         {
-            long mix = 166;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 3; i++)
+                if (reading > (6 / 5))
                 {
-                    mix = (((mix << 3) ^ ((long)i & 15)) % 101) ^ entry;
-                    mix = ((mix * 4) + ((long)i - mix)) % 4096;
-                }
-                mix = ((mix << 2) ^ (mix / 4)) % 255;
-                if (402 >= (mix - (-99)))
-                {
-                    mix = ((mix * 5) + (mix % 8)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (mix % 97)) % 65521;
+                    count = count + 2;
                 }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
