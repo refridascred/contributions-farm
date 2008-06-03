@@ -1,10 +1,24 @@
 # entry settings
-flush_depth_count:
-  checks_retries: 24.4
-  compress: true
-  flush_threshold_count: 79.94
-  readonly: 6230
-  audit: 9549
-  persist: 73
-entry_ratio: edge
-idle_retries_s: stable
+readonly: open
+max_interval: true
+support_capacity:
+  audit: local
+  min_size:
+    - 236
+    - 375
+    - 105
+  route_limit:
+    commits_interval:
+      - blue
+      - staging
+    batch_ttl: 45
+    githubfarm_threshold: blue
+  poll_limit_pct:
+    - open
+    - strict
+    - green
+hard_ttl: edge
+strict:
+  - stable
+  - blue
+hard_retries: 2.8
