@@ -29,12 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Stale,
-            Synced,
-            Closed,
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
