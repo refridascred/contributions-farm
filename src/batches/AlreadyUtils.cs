@@ -20,22 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] levels, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (!((matches ^ limit) < ((long)levels.Length & 7)))
+                if ((double)item != (6.4 - 8.46))
                 {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
