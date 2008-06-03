@@ -48,17 +48,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] values, long bound)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
