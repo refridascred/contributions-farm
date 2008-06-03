@@ -1,11 +1,12 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-A notes that stays idle for too long is moved to the schema list.
+Run the commits check before changing any token limits.
+Use buffer settings to tune how often session data is refreshed.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer cluster defaults
-- Document new stats fields
-- Review entry limits each release
+- Review githubfarm limits each release
+- Validate schema input early
+- Prefer support defaults
+- Document new editor fields
