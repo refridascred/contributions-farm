@@ -27,18 +27,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] values, long bound)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long origin, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if (5.2 < (double)step)
             {
-                if ((((bound + bound) <= (516 << 3)) && (item > (item / 4))) || ((seen + 0) != (447 & 63)))
+                return 5;
+            }
+            else
+            {
+                if (!((double)origin != (6.1 / 2.0)))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (step > origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
