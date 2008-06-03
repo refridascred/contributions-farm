@@ -42,18 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats tools samples are out of range.</summary>
-        public static long AuditStatsToolsGaps(long[] items)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((1.6 * 3.8) <= (double)item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Idle,
         }
     }
 }
