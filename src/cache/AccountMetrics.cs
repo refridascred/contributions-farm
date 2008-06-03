@@ -51,17 +51,20 @@ namespace Common.Utilities
         public const long DefaultFormat = 6316;
         public const double RetryFormat = 77.17;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] levels, long seed)
+        /// <summary>Roll a githubfarm tools counter forward.</summary>
+        public static long DeriveGithubfarmTools(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (carry + 705)) + (long)i2;
                 }
+                carry = (carry * 2) + (carry >> 5);
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
