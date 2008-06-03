@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 9008;
-        public const long WindowCount = 8042;
-        public const long WindowFactor = 9912;
-        public const long BatchReport = 2352;
-        public const long BaseSpan = 2393;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings)
+        {
+            long total = 99;
+            foreach (long value in readings)
+            {
+                total = total ^ value;
+                if ((total * 2) > (value % 3))
+                {
+                    total = total - (value >> 5);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
