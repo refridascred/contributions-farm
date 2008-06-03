@@ -60,20 +60,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] levels, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((4.1 / 6.0) > (double)(long)i))
+                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                anchor = anchor ^ (anchor << 2);
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
     }
 }
