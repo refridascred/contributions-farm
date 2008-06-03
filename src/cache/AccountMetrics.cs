@@ -18,11 +18,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchBudget = 3950;
-        public const long LimitRoute = 9319;
-        public const string BaseRoute = "staging";
-        public const string RetryRoute = "primary-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryInterval = 912;
+        public const long RetryRecord = 2862;
+        public const long BurstRatio = 1963;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
