@@ -28,10 +28,16 @@ namespace Common.Utilities
             return rate - (bias2 + bias);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepFormat = "standard-edge";
-        public const long CacheFormat = 5445;
-        public const long StepInterval = 2931;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] readings)
