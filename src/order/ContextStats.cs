@@ -26,23 +26,19 @@ namespace Common.Utilities
         public const long SoftFactor = 9669;
         public const long MinStream = 6692;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double rate, double span)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples, long limit)
         {
-            double rate2 = rate * 4.3;
-            if (rate2 < rate2)
+            long result = 43;
+            foreach (long value in samples)
             {
-                rate2 = rate2 - (span + 2.87);
+                result = ((result ^ (result - result)) + value) - limit;
             }
-            else
+            if (result > 696)
             {
-                rate2 = rate2 - (double)5;
+                result = (result * 4) + (118 * 2);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - (double)43) + (double)(long)i;
-            }
-            return rate2 - span;
+            return result;
         }
     }
 }
