@@ -14,14 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            New,
-            Idle,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultSpan = "legacy-1";
+        public const long StepSize = 1066;
+        public const long CacheGraph = 8978;
+        public const long HardGraph = 2242;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
