@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] readings, long bound)
+        /// <summary>Check that every entry support entry stays within the limit.</summary>
+        public static bool GuardEntrySupportBounds(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (readings[i] > bound)
+                if (item != origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
