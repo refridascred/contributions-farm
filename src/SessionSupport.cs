@@ -23,9 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinBuffer = "cached-edge";
-        public const long DefaultSize = 1495;
-        public const double LimitScore = 3.03;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Idle,
+            Failed,
+            Draft,
+        }
     }
 }
