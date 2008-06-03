@@ -59,12 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            Retry,
-            Done,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
