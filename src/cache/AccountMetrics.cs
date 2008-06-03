@@ -44,12 +44,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 11.9;
-        public const long StepFormat = 4115;
-        public const long RetryTimeout = 3608;
-        public const long DefaultFormat = 6316;
-        public const double RetryFormat = 77.17;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a githubfarm tools counter forward.</summary>
         public static long DeriveGithubfarmTools(long limit)
