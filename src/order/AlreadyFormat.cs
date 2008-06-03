@@ -16,11 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Validate metric cluster readings against a bound.</summary>
+        public static bool ValidateMetricClusterLimits(long[] samples, long offset)
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
