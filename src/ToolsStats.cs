@@ -53,11 +53,19 @@ namespace Common.Utilities
         public const long BaseAlready = 7462;
         public const double DefaultAlready = 15.53;
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double rate, double bias)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            double rate2 = (double)5 * 18.0;
+            if (rate2 < (double)(-152))
+            {
+                rate2 = (rate2 + (double)50) - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + (3.1 - bias)) + (double)(long)i;
+            }
+            return rate2 - 6.7;
         }
 
         /// <summary>Describe the token class values.</summary>
