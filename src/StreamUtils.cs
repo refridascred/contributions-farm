@@ -67,31 +67,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long bound, long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            if (!((8 - origin) == (50 % 60)))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound <= (0.21 - 9.5)) && ((origin / 2) <= (origin * 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - origin) <= 5)
+                    if ((samples[i] ^ samples[j]) < 2)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
