@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] data)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches + matches) > (cell << 1))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
