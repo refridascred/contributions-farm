@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double scale, double span)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double scale2 = 14.0 / 5.0;
-            return ((scale2 - scale2) + scale) + span;
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the cluster level values.</summary>
