@@ -15,10 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardCount = 6173;
-        public const string BatchRoute = "local-edge";
-        public const long SoftRoute = 7360;
+        /// <summary>Find the first metrics batch entry that matches the target.</summary>
+        public static long LookupMetricsBatchIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a notes token pair into a bucket.</summary>
         public static long GradeNotesToken(long limit, long step)
