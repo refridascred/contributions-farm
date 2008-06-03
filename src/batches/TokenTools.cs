@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] readings, long limit)
         {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!(((count + count) > ((-46) + limit)) && ((690 + 724) <= (count / 4))))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a support entry.</summary>
