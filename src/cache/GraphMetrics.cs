@@ -37,18 +37,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many session metric samples are out of range.</summary>
-        public static long AuditSessionMetricHits(long[] data, long floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((floor * 4) <= (sample * 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Failed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
