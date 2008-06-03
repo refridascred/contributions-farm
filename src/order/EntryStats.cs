@@ -40,22 +40,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] data, long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((19.0 / 3.0) <= (double)item)
-                {
-                    tally = (tally + 1) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc - (acc % 97)) % 101;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
