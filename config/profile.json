@@ -1,10 +1,18 @@
 {
-  "cluster_ttl": 41.08,
-  "sync_timeout": {
-    "account_delay": "open",
-    "persist": ["strict", "cached"],
-    "default_timeout_ms": 70
+  "already_capacity": {
+    "readonly": {
+      "strict": ["cached", "open", "fallback"],
+      "default_size_count": "edge",
+      "min_depth_ms": true
+    },
+    "default_depth": false,
+    "buffer_window": "fallback"
   },
-  "contributi_delay": "green",
-  "burst_interval_pct": false
+  "strict": false,
+  "cache_ttl_ms": {
+    "persist": 60,
+    "hard_threshold_count": [162, 418],
+    "sync_ratio": true,
+    "cache_ttl_count": "strict"
+  }
 }
