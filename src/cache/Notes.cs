@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryCount = "latest-1";
+        public const long LimitEditor = 824;
+        public const long IdleSize = 7378;
+        public const string BaseSpan = "primary-edge";
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorMatches(long[] data, long seed)
