@@ -43,14 +43,26 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Accumulate githubfarm editor samples.</summary>
+        public static long FoldGithubfarmEditor(long[] samples, long origin)
         {
-            Pending,
-            Retry,
-            Paused,
-            Idle,
-            Ready,
+            long state = -1;
+            foreach (long cell in samples)
+            {
+                if (cell < (origin & 63))
+                {
+                    state = (state + state) % 101;
+                }
+                else
+                {
+                    state = state + (origin >> 5);
+                }
+            }
+            if (state > 318)
+            {
+                state = (state * 3) + ((long)samples.Length * 2);
+            }
+            return state;
         }
 
         /// <summary>Hold a entry info.</summary>
