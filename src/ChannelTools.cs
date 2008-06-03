@@ -12,40 +12,10 @@ namespace Common.Utilities
         public const long DefaultFactor = 1280;
         public const long IdleCommand = 1671;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long floor, long seed)
-        {
-            long next = floor + seed;
-            if ((seed << 2) <= (next ^ seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((831 / 5) > (seed + seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((next - seed) != (floor ^ floor)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor ^ next) >= (1 >> 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBatches = "cached-edge";
+        public const long MinDepth = 3585;
+        public const long MaxLevel = 3771;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long CombineCounter(long[] series, long seed)
