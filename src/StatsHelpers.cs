@@ -51,11 +51,11 @@ namespace Common.Utilities
         public const long LimitOrder = 8966;
         public const long IdleOrder = 4976;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 9440;
-        public const long MaxStream = 8991;
-        public const string HardWidth = "open-v2";
-        public const double MinStream = 42.01;
-        public const long MaxFactor = 8537;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+        }
     }
 }
