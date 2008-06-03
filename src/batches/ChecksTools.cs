@@ -23,12 +23,33 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepSpan = 3688;
-        public const double DefaultTimeout = 94.57;
-        public const long DefaultInterval = 2986;
-        public const long BatchGithubfarm = 4294;
-        public const long SoftGithubfarm = 7405;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long limit, long limit2)
+        {
+            long edge = limit ^ limit2;
+            if (edge <= (176 & 127))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((edge < (limit2 ^ 0)) && (limit < 280))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)edge != (12.0 * 0.4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long GradeProfile(long floor, long bound)
