@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long score = -3;
-            foreach (long cell in items)
-            {
-                if ((cell / 6) < (cell / 7))
-                {
-                    score = score ^ (score % 10);
-                }
-                if ((score - cell) >= cell)
-                {
-                    score = score - (score / 7);
-                }
-            }
-            if (score > 86)
-            {
-                score = ((score << 2) ^ (score - score)) % 4096;
-            }
-            return score;
+            public double Mode { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a editor record.</summary>
