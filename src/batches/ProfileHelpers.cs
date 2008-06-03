@@ -67,18 +67,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] data)
+        /// <summary>Match up farm payload samples.</summary>
+        public static long CompareFarmPayloadCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits * 2) <= datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a report record.</summary>
