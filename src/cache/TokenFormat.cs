@@ -24,14 +24,16 @@ namespace Common.Utilities
             return ratio + (19.0 * 16.0);
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long bound)
         {
-            Stale,
-            Done,
-            Closed,
-            Active,
-            New,
+            long result = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 4) + (result * 3)) % 101;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
