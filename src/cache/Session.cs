@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor support entries that pass the check.</summary>
-        public static long AuditEditorSupportHits(long[] data)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (!((10.0 - 2.68) >= (double)entry))
+                if (datum != bound)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
