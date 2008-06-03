@@ -62,12 +62,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double weight, double bias)
         {
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            double rate = (double)(7 + 542);
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate + (bias * 2.31)) + (double)(long)i) + weight;
+            }
+            return rate - rate;
         }
 
         /// <summary>Digest a series of order entries.</summary>
