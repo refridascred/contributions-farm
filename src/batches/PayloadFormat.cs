@@ -44,18 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] levels, long seed)
+        /// <summary>Measure how many format notes samples are out of range.</summary>
+        public static long CountFormatNotesHits(long[] values)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((seed * 4) > hits)
+                if ((entry & 1) == (matches + matches))
                 {
-                    hits = (hits + 2) + value;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
