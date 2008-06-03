@@ -1,6 +1,6 @@
 {
-  "session_retries": 56.3,
-  "poll_ratio": 100,
-  "verbose": 43.94,
-  "warm_threshold_s": 100
+  "format_timeout": [342, 260, 18, 128],
+  "hard_retries_ms": "green",
+  "max_interval_ms": "cached",
+  "flush_capacity_pct": "legacy"
 }
