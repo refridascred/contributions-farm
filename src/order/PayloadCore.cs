@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] items)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long mix = 73;
+            foreach (long item in items)
+            {
+                mix = ((mix * 4) + item) % 101;
+            }
+            if (mix > 445)
+            {
+                mix = (mix - (mix >> 1)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Find the first graph batch entry that matches the target.</summary>
