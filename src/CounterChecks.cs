@@ -56,11 +56,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftRatio = 292;
-        public const double BurstContributi = 94.68;
-        public const long StepContributi = 8802;
-        public const string StepWidth = "standard";
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Closed,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long origin, long step)
