@@ -41,11 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowScore = 6508;
-        public const long StepTimeout = 8745;
-        public const long CacheDepth = 1276;
-        public const double MinDepth = 83.71;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 0.69;
+        public const double CacheCount = 4.79;
+        public const string IdleInterval = "strict-edge";
+        public const double CacheSchema = 1.35;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepSession = 5162;
