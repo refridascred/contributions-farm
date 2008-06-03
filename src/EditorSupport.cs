@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long bound)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a editor record.</summary>
