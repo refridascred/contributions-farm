@@ -29,19 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every entry graph entry stays within the limit.</summary>
-        public static bool ValidateEntryGraphLimits(long[] levels, long target)
+        /// <summary>Audit checks record readings against a rule.</summary>
+        public static long CountChecksRecordGaps(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (reading < target)
+                if (origin >= count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
