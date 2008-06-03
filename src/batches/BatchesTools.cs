@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long target, long seed)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            if ((double)target > 4.96)
             {
-                if (reading >= origin)
+                return 0;
+            }
+            else
+            {
+                if (target > (seed - target))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
 
         /// <summary>Adjust a order filter reading.</summary>
