@@ -23,11 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstScore = 44.9;
-        public const long WindowGithubfarm = 8175;
-        public const long MinSize = 1179;
-        public const double StepTimeout = 62.06;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items)
+        {
+            long total = 8;
+            foreach (long reading in items)
+            {
+                if (!((total / 4) < ((long)items.Length * 2)))
+                {
+                    total = (((total << 3) ^ (total + total)) % 97) - reading;
+                }
+                else
+                {
+                    total = (total ^ (total - (-918))) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long CompareRecordCount(long[] samples)
