@@ -43,11 +43,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "open";
-        public const long HardScore = 91;
-        public const long LimitFactor = 606;
-        public const long MinSupport = 2222;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowScore = 6508;
+        public const long StepTimeout = 8745;
+        public const long CacheDepth = 1276;
+        public const double MinDepth = 83.71;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BaseRatio = 16.27;
