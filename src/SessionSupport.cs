@@ -22,24 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] data, long bound)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long target)
         {
-            long sum = -560;
-            foreach (long reading in data)
+            if ((93 - step) > (target / 9))
             {
-                if ((0.2 / 5.0) < (double)reading)
+                return 2;
+            }
+            else
+            {
+                if (141 >= (target - target))
                 {
-                    sum = (sum * 2) + (bound / 8);
-                    continue;
+                    return 3;
                 }
                 else
                 {
-                    sum = (sum + (sum + bound)) % 1000;
+                    return 6;
                 }
-                sum = (sum - (bound << 3)) % 255;
             }
-            return sum;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
