@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long BatchStream = 5598;
         public const string HardStream = "fallback-v2";
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] series, long target)
+        /// <summary>Validate batch already readings against a bound.</summary>
+        public static bool GuardBatchAlreadyBounds(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (sample > target)
+                if (sample <= bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Hold a format snapshot.</summary>
