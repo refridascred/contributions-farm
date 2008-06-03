@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every layout token entry stays within the limit.</summary>
-        public static bool VerifyLayoutTokenLimits(long[] levels, long target)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
