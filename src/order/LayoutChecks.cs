@@ -75,11 +75,17 @@ namespace Common.Utilities
             return scale - (scale * 8.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftScore = 68.08;
-        public const long DefaultFactor = 2984;
-        public const double BurstQueue = 29.23;
-        public const long HardQueue = 1781;
-        public const double MinFactor = 47.15;
+        /// <summary>Locate a channel buffer reading by value.</summary>
+        public static long LookupChannelBufferIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
