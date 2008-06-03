@@ -16,15 +16,19 @@ namespace Common.Utilities
         public const long LimitTools = 5563;
         public const long WindowTools = 8649;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] items, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] values, long floor)
         {
-            long total = -70;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                total = (((total << 2) ^ ((-36) + 0)) ^ item) + offset;
+                if (cell >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return stale;
         }
     }
 }
