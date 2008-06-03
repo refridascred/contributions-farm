@@ -63,31 +63,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] series, long origin)
-        {
-            long anchor = -480;
-            foreach (long entry in series)
-            {
-                if (((entry ^ origin) <= (anchor * 4)) && (origin > (entry * 3)))
-                {
-                    anchor = (anchor + (origin & 1)) % 255;
-                }
-                anchor = anchor ^ (anchor + entry);
-                if ((57 - entry) >= anchor)
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor >> 5)) % 65521;
-                }
-                if ((4 > ((long)series.Length + 4)) && ((anchor + origin) > (2 + entry)))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepCount = 1068;
+        public const long IdleBudget = 1604;
+        public const long HardBatch = 43;
+        public const long BatchFactor = 8821;
+        public const long BaseBatch = 255;
     }
 }
