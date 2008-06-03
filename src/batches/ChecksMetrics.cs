@@ -48,31 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long step, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] samples, long target)
         {
-            if (((-919) + step) <= (step << 1))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + step) < (target & 31))
+                if ((double)target > (4.1 - 9.7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(step <= (target * 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 3) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of route readings.</summary>
