@@ -32,11 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 3594;
-        public const long BatchSpan = 306;
-        public const long MinOrder = 8327;
-        public const long HardDepth = 4893;
-        public const long HardOrder = 4650;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Ready,
+            Retry,
+            Stale,
+        }
     }
 }
