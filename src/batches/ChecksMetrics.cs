@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Synced,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinSize = 5499;
+        public const double CacheEditor = 25.14;
+        public const string SoftEditor = "stable";
+        public const double IdleSpan = 42.26;
+        public const long BatchInterval = 1295;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] series, long step)
