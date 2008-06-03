@@ -28,22 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate channel checks samples.</summary>
-        public static long TotalChannelChecks(long[] values, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long seed)
         {
-            long anchor = 74;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((33 / 9) <= (sample << 2))
+                if (value < seed)
                 {
-                    anchor = (anchor * 5) + (11 * 3);
-                }
-                else
-                {
-                    anchor = (anchor - origin) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return flag;
         }
     }
 }
