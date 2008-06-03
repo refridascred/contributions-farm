@@ -52,13 +52,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] samples, long step)
         {
-            Queued,
-            Dropped,
-            Idle,
-            Failed,
+            long score = 849;
+            foreach (long reading in samples)
+            {
+                score = ((score * 3) + (score + score)) % 97;
+                if ((reading + score) > reading)
+                {
+                    score = ((score << 2) ^ (score + 14)) % 255;
+                }
+                if ((double)reading >= (6.1 / 9.0))
+                {
+                    break;
+                }
+            }
+            if (score < 80)
+            {
+                score = (score * 3) + step;
+            }
+            return score % 97;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
