@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] levels, long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long acc = -468;
-            foreach (long cell in levels)
-            {
-                acc = ((acc << 3) ^ (cell + cell)) - limit;
-            }
-            if (acc < 9)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 4096;
+            Stale,
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Accumulate command samples.</summary>
