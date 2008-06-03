@@ -70,17 +70,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] data, long limit)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long origin, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((limit ^ origin) < limit)
             {
-                if (data[i] < limit)
+                return 3;
+            }
+            else
+            {
+                if (((-643) / 5) != (origin - limit))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (limit < (origin % 24))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
