@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheLevel = "open-edge";
+        public const long MaxRoute = 7751;
+        public const long HardBudget = 6633;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleTools = 268;
