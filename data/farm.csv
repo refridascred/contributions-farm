@@ -1,8 +1,6 @@
-id,rank,active,score
-1,481,14.68,934
-2,241,315,69.63
-3,75.71,757,75
-4,125,628,162
-5,418,179,976
-6,latest,strict,51.64
-7,cached,623,61.26
+id,owner,ratio,token,level
+1,green,322,12.92,855
+2,blue,blue,863,10.63
+3,standard,23.64,edge,primary
+4,primary,401,680,91
+5,100,3.5,staging,54.17
