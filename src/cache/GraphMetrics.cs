@@ -31,14 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Done,
-            Locked,
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
