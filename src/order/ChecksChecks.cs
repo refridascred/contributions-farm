@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] items)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (tally >= (tally - tally))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + sample;
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
