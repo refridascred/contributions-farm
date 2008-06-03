@@ -1,27 +1,16 @@
 # entry settings
-enabled: 66
-retry_timeout_s:
-  poll_timeout_ms: 100
-  payload_limit: eu-west
-  sync_interval_count: cached
-  max_ttl_count: false
-  retry_ttl_s:
-    - 470
-    - 106
-    - 325
-    - 453
-  strict:
-    - fallback
-    - fallback
-    - strict
-    - primary
-stats_retries: 33.83
-hard_ttl_ms:
-  batch_ttl:
-    buffer_capacity: true
-    dry_run: 6036
-    queue_interval: cached
-    batch_threshold_count: 23
-  hard_size_s: 32.33
-  strict: strict
-  already_depth: 5107
+soft_window_s: strict
+audit:
+  strict: 95.04
+  warm_ttl_pct:
+    min_ttl: 1024
+    cache_delay: 93
+    min_window_pct:
+      - stable
+      - strict
+      - green
+      - strict
+  payload_ratio: 60
+  batch_threshold_ms: 69
+poll_threshold: false
+burst_retries_ms: primary
