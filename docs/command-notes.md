@@ -1,16 +1,12 @@
 # Command notes
 
-Keep cluster and entry names short and lowercase.
-The tools report groups every counter by schema.
-Keep metric and buffer names short and lowercase.
-
-Defaults for tools live in the config folder and can be overridden per environment.
-A command that stays idle for too long is moved to the tools list.
-Keep context and contributi names short and lowercase.
+Run the order check before changing any cache limits.
+Run the cache check before changing any commits limits.
+The profile report groups every githubfarm by layout.
 
 ## Guidelines
 
-- Log every checks change
-- Document new context fields
-- Validate order input early
-- Review order limits each release
+- Validate report input early
+- Keep editor values small
+- Prefer context defaults
+- Review editor limits each release
