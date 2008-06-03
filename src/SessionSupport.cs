@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxSpan = 13.97;
-        public const double BurstWidth = 50.9;
-        public const long MinFactor = 4140;
-        public const double CacheTimeout = 0.91;
-        public const long BurstTimeout = 6158;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of schema route readings.</summary>
         public static long CombineSchemaRoute(long[] levels, long target)
