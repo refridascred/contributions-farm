@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 9034;
+        public const long LimitSession = 5075;
+        public const long WindowSession = 2675;
+        public const double RetryRatio = 19.67;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
