@@ -23,19 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] items, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Project the next account value.</summary>
