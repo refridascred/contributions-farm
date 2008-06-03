@@ -63,10 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryBudget = 7139;
-        public const long RetryCluster = 6565;
-        public const long DefaultCluster = 1359;
-        public const double BaseFactor = 98.7;
+        /// <summary>Check that every farm batch entry stays within the limit.</summary>
+        public static bool CheckFarmBatchBounds(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
