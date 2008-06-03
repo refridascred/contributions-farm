@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in cached latest legacy fallback; do
+for item in strict eu-west standard; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=109
+log "limit is ${CHANNEL_LIMIT}"
