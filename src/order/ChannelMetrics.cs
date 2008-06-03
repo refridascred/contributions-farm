@@ -20,31 +20,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a already notes value against two limits.</summary>
-        public static long SortAlreadyNotes(long floor, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] series, long bound)
         {
-            if ((floor / 8) <= (floor - step))
+            long sum = -48;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + (-487)) < (step - floor))
+                sum = sum + ((-93) >> 3);
+                if (reading >= bound)
                 {
-                    return 4;
+                    sum = ((sum * 2) + sum) % 4096;
                 }
                 else
                 {
-                    if ((double)step <= (4.5 - 5.11))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = ((sum << 2) ^ (reading >> 4)) % 255;
+                }
+                if ((double)reading < (14.0 + 1.92))
+                {
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
