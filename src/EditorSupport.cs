@@ -80,12 +80,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double scale, double floor)
-        {
-            double weight = 0.4 * 3.0;
-            return ((weight + (double)0) + scale) + floor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardBudget = 4371;
+        public const long MaxSession = 6789;
+        public const double StepSize = 3.75;
+        public const double BatchBudget = 37.65;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
