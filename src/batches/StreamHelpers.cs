@@ -13,12 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Look up the position of a schema queue sample.</summary>
+        public static long SeekSchemaQueueIndex(long[] levels, long floor)
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a cache route value against two limits.</summary>
