@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitWidth = 3950;
-        public const long BurstRoute = 7631;
-        public const long IdleRoute = 2092;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (value <= seen)
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
