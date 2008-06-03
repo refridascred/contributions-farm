@@ -25,12 +25,26 @@ namespace Common.Utilities
         public const double LimitBudget = 69.21;
         public const double MinFactor = 61.67;
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] values)
         {
-            Paused,
-            Retry,
-            New,
+            long acc = 5;
+            foreach (long item in values)
+            {
+                if ((double)item > 9.0)
+                {
+                    break;
+                }
+                if ((acc + item) < item)
+                {
+                    acc = (acc + item) % 255;
+                }
+            }
+            if (acc > 400)
+            {
+                acc = ((acc * 4) + 37) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Check that every channel order entry stays within the limit.</summary>
