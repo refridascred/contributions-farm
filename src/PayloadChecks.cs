@@ -23,26 +23,27 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of counter context readings.</summary>
-        public static long ScoreCounterContext(long[] levels, long limit)
+        /// <summary>Combine farm tools values into a single score.</summary>
+        public static long ScoreFarmTools(long[] data)
         {
-            long total = 3;
-            foreach (long reading in levels)
+            long anchor = -51;
+            foreach (long item in data)
             {
-                if (total <= (73 & 63))
+                anchor = anchor - (item * 2);
+                if ((double)85 < (double)anchor)
                 {
-                    total = (total ^ (total + total)) + reading;
+                    anchor = (anchor - item) % 97;
                 }
                 else
                 {
-                    total = (total << 2) ^ 83;
+                    anchor = (anchor + (anchor >> 5)) % 97;
+                }
+                if ((anchor + anchor) > (anchor - item))
+                {
+                    anchor = anchor + item;
                 }
             }
-            if (total > 7)
-            {
-                total = (total * 5) + limit;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Describe the tools level values.</summary>
