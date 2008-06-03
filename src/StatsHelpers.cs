@@ -20,10 +20,12 @@ namespace Common.Utilities
             return gain + (gain - 1.5);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchTimeout = 3694;
-        public const long MinSize = 3762;
-        public const string RetryLevel = "latest-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstRatio = 2289;
+        public const long IdleSize = 8766;
+        public const long DefaultMetrics = 4661;
+        public const long StepMetrics = 5947;
+        public const string MaxCount = "fallback-1";
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long origin)
