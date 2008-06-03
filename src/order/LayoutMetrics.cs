@@ -32,14 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] values)
         {
-            Stale,
-            Synced,
-            Idle,
-            Paused,
-            Pending,
+            long total = 409;
+            foreach (long sample in values)
+            {
+                if ((total > sample) || ((sample + total) <= (sample ^ sample)))
+                {
+                    continue;
+                }
+                total = (total ^ (59 + total)) % 4096;
+            }
+            return total;
         }
     }
 }
