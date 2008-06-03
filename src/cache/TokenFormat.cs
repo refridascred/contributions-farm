@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] values, long seed)
+        /// <summary>Count the entry stream entries that pass the check.</summary>
+        public static long CountEntryStreamHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (values[i] >= seed)
+                if ((datum > (hits % 64)) && ((double)datum < (double)5))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
