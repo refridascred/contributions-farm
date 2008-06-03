@@ -13,16 +13,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] readings, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            long result = 0;
+            foreach (long sample in readings)
             {
-                carry = (carry + offset) % 97;
-                carry = ((carry * 5) + (long)i) % 101;
+                long offset2 = sample;
+                if (((offset2 ^ 1) < (sample & 255)) || (((long)readings.Length + result) == (sample >> 2)))
+                {
+                    offset2 = ((offset2 * 2) + (result - 7)) % 1000;
+                }
+                result = ((result << 2) ^ sample) % 65521;
             }
-            return carry;
+            if (result > 5)
+            {
+                result = (result - offset) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
