@@ -41,11 +41,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 0.69;
-        public const double CacheCount = 4.79;
-        public const string IdleInterval = "strict-edge";
-        public const double CacheSchema = 1.35;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepSession = 5162;
