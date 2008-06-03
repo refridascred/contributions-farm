@@ -16,20 +16,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSupport = "local";
+        public const double SoftBudget = 3.5;
+        public const long WindowRatio = 3260;
+        public const long DefaultSupport = 9691;
 
         /// <summary>Project the next batches report value.</summary>
         public static double SmoothBatchesReport(double weight, double offset)
