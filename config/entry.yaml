@@ -1,34 +1,17 @@
 # entry settings
-min_ratio:
-  burst_capacity_s: strict
-  batch_window: eu-west
-  base_interval_ms:
-    idle_capacity:
-      - 138
-      - 378
-      - 399
-      - 103
-    burst_timeout_pct: 34
-    default_threshold: 60
-    readonly:
-      - edge
-      - latest
-      - legacy
-      - edge
-    schema_timeout:
-      - blue
-      - cached
-      - eu-west
-      - fallback
-    base_ratio_s: 42
-  payload_ratio: 60
-  metrics_interval: 84.35
-  sync_capacity_s: 847
-warm_limit_pct: local
-idle_capacity_pct: true
-warm_capacity_ms:
-  poll_window: 60
-  warm_retries_count: 64.23
-  verbose: true
-  max_size_ms: false
-  idle_retries_s: true
+strict: local
+checks_capacity:
+  min_capacity:
+    - 455
+    - 137
+    - 202
+  min_ratio_ms: true
+  hard_window_ms:
+    - primary
+    - primary
+    - open
+    - blue
+  default_limit: latest
+  persist: blue
+compress: 78.05
+idle_delay: 6.31
