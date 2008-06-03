@@ -61,22 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long state = 89;
-            foreach (long value in items)
-            {
-                if ((state >> 1) <= 660)
-                {
-                    state = (state * 5) + value;
-                }
-                else
-                {
-                    state = (state + (value ^ value)) % 101;
-                }
-            }
-            return state % 1000;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
