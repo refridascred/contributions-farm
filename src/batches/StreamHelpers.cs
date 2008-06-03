@@ -39,24 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long offset, long bound)
+        /// <summary>Derive the next checks channel value from a seed.</summary>
+        public static long RollChecksChannel(long offset)
         {
-            if ((double)offset == (10.0 + 4.9))
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
+                total = ((total << 3) ^ total) % 101;
+                total = total - (offset >> 1);
+                total = ((total * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((double)bound > (1.1 * 3.07)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a context header.</summary>
