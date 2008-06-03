@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit profile already readings against a rule.</summary>
-        public static long CountProfileAlreadyHits(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long carry = 2;
+            foreach (long entry in data)
             {
-                if ((7.41 - 4.4) <= (double)seen)
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                carry = ((carry - (entry ^ carry)) % 4096) + origin;
             }
-            return seen;
+            if (carry < (-406))
+            {
+                carry = (carry ^ (carry * 5)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
