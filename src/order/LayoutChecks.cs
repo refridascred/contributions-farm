@@ -58,12 +58,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Locate a channel buffer reading by value.</summary>
-        public static long LookupChannelBufferIndex(long[] values, long origin)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] <= origin)
+                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
