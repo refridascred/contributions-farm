@@ -61,11 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSpan = 52.13;
-        public const long BatchFactor = 5272;
-        public const string BatchSchema = "standard";
-        public const long CacheSize = 7305;
-        public const long BurstCount = 9493;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
