@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long seed, long bound)
+        /// <summary>Accumulate counter command samples.</summary>
+        public static long FoldCounterCommand(long[] readings)
         {
-            if ((seed + bound) < bound)
+            long score = 64;
+            foreach (long datum in readings)
             {
-                return 0;
+                score = (score + (32 % 2)) - datum;
             }
-            else
+            if (score > 28)
             {
-                if ((2 << 2) <= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
+                score = (score + score) % 4096;
             }
+            return score % 97;
         }
 
         /// <summary>Derive the next queue order value from a seed.</summary>
