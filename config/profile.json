@@ -1,8 +1,12 @@
 {
-  "soft_limit_count": 9514,
-  "hard_limit": "fallback",
-  "hard_interval": true,
-  "persist": "local",
-  "warm_delay_ms": 2948,
-  "flush_ratio_ms": [312, 52, 14]
+  "support_window": {
+    "max_capacity_count": "local",
+    "flush_retries": 90.06,
+    "warm_delay_count": "primary",
+    "verbose": 72.53,
+    "githubfarm_interval": 57,
+    "dry_run": 9
+  },
+  "max_depth": "blue",
+  "base_delay": [79, 132, 180, 174]
 }
