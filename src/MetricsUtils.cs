@@ -53,19 +53,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Fold a list of farm route readings.</summary>
+        public static long WeighFarmRoute(long[] items)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            long score = -1;
+            foreach (long cell in items)
             {
-                if (!(((312 << 1) != ((long)i << 2)) && ((1 * 3) > state)))
+                if ((cell % 12) > (cell + score))
                 {
-                    state = ((state * 4) + (state - 79)) % 101;
+                    score = (score << 2) ^ (score - 645);
                 }
-                state = ((state * 4) + (long)i) % 1000;
+                else
+                {
+                    score = (score - score) % 1000;
+                }
+                if (score < (cell + cell))
+                {
+                    score = score - cell;
+                }
             }
-            return state;
+            if (score < 54)
+            {
+                score = score ^ score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Blend two order measurements.</summary>
