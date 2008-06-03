@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            long acc = 96;
-            foreach (long sample in series)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                acc = acc ^ sample;
-                acc = acc + (acc - acc);
+                if (!!(((long)i << 2) >= (total ^ origin)))
+                {
+                    total = (total + (total + total)) % 65521;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return acc % 65521;
+            return total;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
