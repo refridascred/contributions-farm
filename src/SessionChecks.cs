@@ -38,18 +38,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] samples)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long step, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long delta = step + bound;
+            if (((step >> 5) < step) || ((bound ^ delta) >= (956 + bound)))
             {
-                if (((416 % 5) <= (count * 4)) || ((846 & 127) >= entry))
+                return 1;
+            }
+            else
+            {
+                if (step <= delta)
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((11 % 100) > bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a cluster stats.</summary>
