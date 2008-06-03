@@ -58,19 +58,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] data)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            long mark = 13;
-            foreach (long entry in data)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark + entry) % 1000;
+                sum = sum - (sum * 4);
+                if (((bound << 1) > 672) && ((bound - bound) < (bound >> 3)))
+                {
+                    sum = sum - ((-986) >> 1);
+                }
+                else
+                {
+                    sum = (sum - (sum << 1)) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            if (mark < 95)
-            {
-                mark = mark + (mark / 6);
-            }
-            return mark % 1000;
+            return sum;
         }
     }
 }
