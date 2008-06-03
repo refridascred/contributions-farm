@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine stats graph values into a single score.</summary>
-        public static long WeighStatsGraph(long[] items, long floor)
+        /// <summary>Count the already window entries that pass the check.</summary>
+        public static long CountAlreadyWindowGaps(long[] data)
         {
-            long mix = 773;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((double)cell > (double)(long)items.Length)
+                if ((entry / 6) < hits)
                 {
-                    mix = ((mix << 2) ^ (mix >> 3)) % 101;
+                    hits = hits + 2;
                 }
-                mix = (mix ^ (cell + floor)) % 4096;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mix < 473)
-            {
-                mix = (mix ^ (floor - floor)) % 255;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
