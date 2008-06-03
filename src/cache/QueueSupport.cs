@@ -26,31 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm layout value against two limits.</summary>
-        public static long BucketGithubfarmLayout(long target, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            if (!((target & 15) < limit))
+            long mix = 6;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit > (target + limit))
+                if (!((-572) < (sample - sample)))
                 {
-                    return 3;
+                    mix = mix ^ (sample - 58);
+                    break;
                 }
-                else
-                {
-                    if (target >= (limit + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mix = ((mix * 4) + (mix * 2)) % 4096;
             }
+            return mix;
         }
     }
 }
