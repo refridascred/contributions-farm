@@ -44,18 +44,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] series, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry + count) == (count / 5))
-                {
-                    count = (count + 3) + seed;
-                }
-            }
-            return count;
+            Pending,
+            Retry,
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
