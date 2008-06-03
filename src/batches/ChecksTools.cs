@@ -23,23 +23,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings)
-        {
-            long mark = 7;
-            foreach (long sample in readings)
-            {
-                if ((sample % 16) >= (sample + sample))
-                {
-                    mark = ((mark << 2) ^ (mark / 4)) % 101;
-                }
-            }
-            if (mark > 513)
-            {
-                mark = mark - (mark & 15);
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleCount = "local-1";
+        public const long StepInterval = 6013;
+        public const long StepSpan = 8914;
+        public const long BurstDepth = 5583;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long GradeProfile(long floor, long bound)
