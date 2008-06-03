@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] samples)
+        /// <summary>Audit commits checks readings against a rule.</summary>
+        public static long TallyCommitsChecksHits(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (tally > (tally ^ entry))
+                if ((17.0 - 9.0) > (double)datum)
                 {
-                    tally = tally + 3;
+                    seen = (seen + 1) + target;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a order reading.</summary>
