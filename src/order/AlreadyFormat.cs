@@ -66,19 +66,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 6422;
+        public const long BurstDepth = 9198;
+        public const long BurstWidth = 3626;
+        public const long HardTimeout = 163;
     }
 }
