@@ -33,15 +33,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine notes token values into a single score.</summary>
-        public static long DigestNotesToken(long[] items)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            long mark = 658;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark - (mark - 261)) % 255) ^ datum;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
