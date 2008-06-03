@@ -1,10 +1,6 @@
-id,token,ratio,owner
-1,81.03,374,16.85
-2,449,fallback,915
-3,140,edge,289
-4,45.35,580,blue
-5,336,646,primary
-6,67.34,primary,80.97
-7,301,7.48,8.11
-8,437,90.45,primary
-9,local,631,604
+id,ratio,rank,label,state
+1,strict,57.19,52.23,standard
+2,288,open,902,14.61
+3,36.0,196,legacy,52.49
+4,strict,636,8.47,53.36
+5,599,93.58,905,legacy
