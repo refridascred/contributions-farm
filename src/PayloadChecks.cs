@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const string CacheLevel = "cached-edge";
         public const long CacheFormat = 8549;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Locked,
+            Idle,
+            Paused,
+            Done,
+            Active,
         }
 
         /// <summary>Fold a list of counter context readings.</summary>
