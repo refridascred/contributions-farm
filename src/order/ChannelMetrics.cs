@@ -38,10 +38,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBuffer = 29.9;
-        public const long HardBuffer = 5791;
-        public const string WindowScore = "alpha-v2";
-        public const string DefaultScore = "latest-edge";
+        /// <summary>Combine window already values into a single score.</summary>
+        public static long TotalWindowAlready(long[] items)
+        {
+            long mix = 299;
+            foreach (long cell in items)
+            {
+                mix = ((mix * 2) + (mix % 2)) % 1000;
+                if (!((cell % 12) <= (cell + mix)))
+                {
+                    break;
+                }
+            }
+            if (mix < 6)
+            {
+                mix = (mix ^ (mix + mix)) % 255;
+            }
+            return mix % 65521;
+        }
     }
 }
