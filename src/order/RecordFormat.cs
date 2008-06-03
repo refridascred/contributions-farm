@@ -38,19 +38,21 @@ namespace Common.Utilities
             return gain2 + (gain * 3.06);
         }
 
-        /// <summary>Check that every metric batches entry stays within the limit.</summary>
-        public static bool CheckMetricBatchesRange(long[] data, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the contributi status values.</summary>
