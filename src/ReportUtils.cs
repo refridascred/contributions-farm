@@ -30,20 +30,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every buffer graph entry stays within the limit.</summary>
-        public static bool CheckBufferGraphRange(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseCount = 2906;
+        public const double StepEditor = 51.24;
+        public const string BurstEditor = "latest-1";
+        public const long HardEditor = 9533;
+        public const double WindowBudget = 3.92;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long FoldEditor(long[] readings, long step)
