@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels, long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double floor)
         {
-            long result = 85;
-            foreach (long cell in levels)
+            double ratio = scale;
+            if (ratio > ratio)
             {
-                result = (((result * 5) + 38) % 97) - cell;
-                result = (result << 3) ^ (233 + offset);
+                ratio = ratio - (floor / 6.0);
             }
-            return result;
+            return ratio + scale;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
