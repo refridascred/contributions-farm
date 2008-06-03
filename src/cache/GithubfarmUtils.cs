@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 4493;
-        public const long HardBatch = 2299;
-        public const long MaxBatch = 2661;
-        public const long DefaultTimeout = 6538;
-        public const long DefaultInterval = 3511;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinInterval = 8952;
+        public const string LimitAlready = "stable-1";
+        public const long BatchAlready = 1746;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] series, long step)
