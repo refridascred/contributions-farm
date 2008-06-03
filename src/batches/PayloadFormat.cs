@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string MaxMetric = "open";
         public const long BaseMetric = 4699;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double ratio, double bias)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            double weight = ratio + ratio;
-            if (weight >= (18.0 + weight))
+            long anchor = 221;
+            foreach (long cell in samples)
             {
-                weight = weight + (bias * 9.1);
+                anchor = (anchor + (cell / 9)) % 65521;
             }
-            else
+            if (anchor > (-974))
             {
-                weight = weight + (weight + bias);
+                anchor = (anchor - (long)samples.Length) % 65521;
             }
-            return weight + bias;
+            return anchor % 65521;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
