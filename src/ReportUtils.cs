@@ -14,11 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double scale, double offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] samples, long origin)
         {
-            double rate = offset;
-            return (rate - (rate + offset)) + scale;
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (!(((287 >> 2) != (reading - origin)) || ((double)origin == (7.24 - 1.0))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a already header.</summary>
