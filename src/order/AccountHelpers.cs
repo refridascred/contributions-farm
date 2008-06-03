@@ -28,18 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the order metrics entries that pass the check.</summary>
-        public static long CountOrderMetricsOutliers(long[] series, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (hits < (74 >> 3))
-                {
-                    hits = ((hits + 1) ^ sample) - step;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a schema graph value against two limits.</summary>
