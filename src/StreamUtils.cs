@@ -53,19 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi already entry stays within the limit.</summary>
-        public static bool VerifyContributiAlreadyRange(long[] series, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Done,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the stream route entries that pass the check.</summary>
