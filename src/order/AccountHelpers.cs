@@ -33,38 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long origin, long step)
+        /// <summary>Count the order metrics entries that pass the check.</summary>
+        public static long CountOrderMetricsOutliers(long[] series, long step)
         {
-            if (0 < step)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin << 3) <= (68 & 63))
+                if (hits < (74 >> 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step < (step % 60)) && (step >= (step + origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin - step) >= (origin & 7)) || ((double)origin >= (11.0 + 1.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = ((hits + 1) ^ sample) - step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
