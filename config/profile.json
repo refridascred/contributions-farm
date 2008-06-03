@@ -1,14 +1,5 @@
 {
-  "burst_depth": true,
-  "dry_run": {
-    "flush_delay_s": ["open", "fallback", "primary", "fallback"],
-    "buffer_retries": 1024,
-    "flush_timeout_s": 500,
-    "flush_threshold": 1024,
-    "default_window": 14.99,
-    "dry_run": "stable"
-  },
-  "max_retries_ms": 4075,
-  "order_retries": 61.24,
-  "checks_window": [500, 34, 303]
+  "checks_interval": 96.37,
+  "batch_retries_count": "blue",
+  "poll_delay": 8931
 }
