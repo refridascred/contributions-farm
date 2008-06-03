@@ -1,15 +1,11 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Each graph is validated before it reaches the metrics queue.
-
-Run the filter check before changing any support limits.
-Keep queue and report names short and lowercase.
-Keep session and stream names short and lowercase.
+Use record settings to tune how often buffer data is refreshed.
+Run the route check before changing any contributi limits.
+Keep cluster and tools names short and lowercase.
 
 ## Guidelines
 
-- Keep stream values small
-- Review batches limits each release
-- Document new farm fields
-- Validate tools input early
+- Prefer command defaults
+- Review context limits each release
+- Document new context fields
