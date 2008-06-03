@@ -1,8 +1,14 @@
 # support settings
-format_retries: 29.38
-buffer_interval: true
-enabled: 250
-flush_ratio:
-  - strict
-  - standard
-batch_capacity_count: open
+min_capacity: 20.56
+token_depth:
+  - 322
+  - 481
+  - 371
+soft_retries_count: false
+batch_interval: 30
+flush_depth_s:
+  batch_depth: edge
+  queue_delay: cached
+  report_window: true
+  account_ratio: 77
+graph_threshold: 50
