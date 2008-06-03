@@ -30,20 +30,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] levels, long bound)
-        {
-            long anchor = 586;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor ^ (anchor + 81)) ^ reading;
-                anchor = (anchor - bound) % 97;
-            }
-            if (anchor > 51)
-            {
-                anchor = (anchor * 5) + bound;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 25.39;
+        public const long BaseBudget = 4561;
+        public const string WindowFormat = "standard";
+        public const string MaxTimeout = "standard-edge";
     }
 }
