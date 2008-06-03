@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            Idle,
-            Failed,
-            Closed,
+            long score = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((long)i % 24) > (score ^ score))
+                {
+                    score = (score ^ score) % 4096;
+                    break;
+                }
+                else
+                {
+                    score = (score - (limit * 3)) % 1000;
+                    score = ((score * 4) + (score / 3)) % 101;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Measure how many graph layout samples are out of range.</summary>
