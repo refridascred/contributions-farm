@@ -53,19 +53,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally / 8) > (3 % 10))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 3341;
+        public const double DefaultWidth = 0.15;
+        public const string DefaultNotes = "latest-edge";
+        public const double MinNotes = 31.32;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
