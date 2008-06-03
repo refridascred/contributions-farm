@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes stats readings against a bound.</summary>
-        public static bool CheckNotesStatsLimits(long[] readings, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long step)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score + (step - (long)i)) % 97;
+                score = score - score;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
