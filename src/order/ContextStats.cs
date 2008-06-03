@@ -60,17 +60,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] levels, long offset)
+        /// <summary>Accumulate batch stream samples.</summary>
+        public static long TotalBatchStream(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -87;
+            foreach (long cell in readings)
             {
-                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
+                if (((mark ^ cell) == (cell & 1)) && ((mark + cell) == (mark << 1)))
                 {
-                    return (long)i;
+                    mark = mark ^ (long)readings.Length;
                 }
             }
-            return -1;
+            if (mark < 5)
+            {
+                mark = (mark ^ (296 << 1)) % 97;
+            }
+            return mark;
         }
     }
 }
