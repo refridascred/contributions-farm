@@ -12,29 +12,29 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a record already value against two limits.</summary>
-        public static long BucketRecordAlready(long origin, long offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long offset, long bound)
         {
-            long next = origin - offset;
-            if ((next + origin) >= (4 + origin))
+            long delta = offset ^ bound;
+            if ((8.1 + 3.3) < (double)offset)
             {
                 return 7;
             }
             else
             {
-                if (offset >= next)
+                if ((618 ^ 7) >= (offset >> 4))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if (!((5 % 7) > (origin + offset)))
+                    if (((double)delta > (20.0 - 9.7)) && ((delta + bound) <= (bound >> 4)))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        return 2;
+                        return 0;
                     }
                 }
             }
