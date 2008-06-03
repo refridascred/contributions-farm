@@ -14,20 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                acc = (acc - ((long)i + 86)) % 97;
-                if ((double)acc <= (6.8 / 7.0))
+                if ((double)entry >= (double)count)
                 {
-                    acc = (acc ^ ((long)i + bound)) % 1000;
+                    count = count + 3;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
