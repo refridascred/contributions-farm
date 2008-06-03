@@ -58,24 +58,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] data, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                sum = sum - (sum * 4);
-                if (((bound << 1) > 672) && ((bound - bound) < (bound >> 3)))
+                if (((cell > (90 + (long)data.Length)) || ((double)offset == (3.32 - 8.26))) && (((offset + 6) >= (offset + cell)) || ((double)(long)data.Length <= (double)cell)))
                 {
-                    sum = sum - ((-986) >> 1);
+                    tally = tally + 1;
                 }
                 else
                 {
-                    sum = (sum - (sum << 1)) % 1000;
+                    tally = tally - 1;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
     }
 }
