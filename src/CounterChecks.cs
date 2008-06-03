@@ -53,19 +53,11 @@ namespace Common.Utilities
             return scale2 - (0.9 * 6.25);
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 2184;
+        public const double DefaultSpan = 30.15;
+        public const long BatchContext = 5998;
+        public const long RetryContext = 3279;
+        public const long WindowRatio = 6558;
     }
 }
