@@ -61,21 +61,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up layout route samples.</summary>
-        public static long MatchLayoutRouteCount(long[] series)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= target)
                 {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
