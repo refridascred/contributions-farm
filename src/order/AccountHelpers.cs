@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the graph stream entries that pass the check.</summary>
+        public static long TallyGraphStreamMatches(long[] items, long limit)
         {
-            Locked,
-            Synced,
-            Done,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count - value) >= (limit - limit))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metric level values.</summary>
