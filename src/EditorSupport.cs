@@ -54,14 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long seed)
         {
-            Stale,
-            Queued,
-            Closed,
-            Paused,
-            Locked,
+            long state = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Match up commits queue samples.</summary>
