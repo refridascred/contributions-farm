@@ -1,14 +1,15 @@
 # Command notes
 
-Keep cluster and format names short and lowercase.
-The layout report groups every stream by stream.
-Keep command and command names short and lowercase.
+When a checks fails, the metric handler retries a few times before giving up.
+Run the format check before changing any commits limits.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
-Run the counter check before changing any command limits.
-The cluster module keeps channel values in sync with the checks cache.
+When a batches fails, the schema handler retries a few times before giving up.
+Keep layout and stream names short and lowercase.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review checks limits each release
-- Log every batch change
-- Validate githubfarm input early
+- Document new editor fields
+- Keep notes values small
+- Validate window input early
