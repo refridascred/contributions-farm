@@ -23,12 +23,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((hits + hits) < datum) || (hits > (275 + datum)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a commits stream value against two limits.</summary>
