@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 8747;
-        public const long SoftCache = 2817;
-        public const double DefaultCache = 46.88;
-        public const string WindowCache = "cached";
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many batches profile samples are out of range.</summary>
         public static long MeasureBatchesProfileGaps(long[] values)
