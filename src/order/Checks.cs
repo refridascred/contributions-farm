@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 4842;
-        public const long CacheFactor = 15;
-        public const long BaseSpan = 8587;
-        public const double BatchMetrics = 93.27;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] samples, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry < (5.82 * 1.1))
+                {
+                    hits = (hits + 2) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
