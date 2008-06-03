@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 84.24;
-        public const long BaseSupport = 4692;
-        public const string IdleSupport = "local-1";
-        public const long LimitBudget = 4583;
-        public const string LimitScore = "stable-v2";
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Adjust a order filter reading.</summary>
         public static double AdjustOrderFilter(double bias, double offset)
