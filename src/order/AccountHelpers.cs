@@ -42,28 +42,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long floor, long origin)
+        /// <summary>Grade a schema graph value against two limits.</summary>
+        public static long GradeSchemaGraph(long floor, long offset)
         {
-            if ((floor > (origin + floor)) || ((origin + origin) < origin))
+            long prev = floor + offset;
+            if ((79 & 255) == (prev >> 3))
             {
                 return 2;
             }
             else
             {
-                if (origin > floor)
+                if ((double)floor == (1.2 * 1.3))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if (!((floor * 5) <= floor))
+                    if ((offset * 3) < prev)
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 6;
+                        if (!((offset + prev) < offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
