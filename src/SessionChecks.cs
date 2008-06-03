@@ -45,14 +45,11 @@ namespace Common.Utilities
         public const double DefaultSize = 27.38;
         public const long DefaultDepth = 2344;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double ratio, double bias)
         {
-            Draft,
-            Active,
-            Retry,
-            Locked,
-            Queued,
+            double drift = bias;
+            return (drift + (bias + bias)) + ratio;
         }
 
         /// <summary>Describe the counter level values.</summary>
