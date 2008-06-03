@@ -13,21 +13,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count graph session pairs that satisfy a relation.</summary>
-        public static long OverlapGraphSessionCount(long[] data)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
