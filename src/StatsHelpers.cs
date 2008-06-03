@@ -51,11 +51,14 @@ namespace Common.Utilities
         public const long LimitOrder = 8966;
         public const long IdleOrder = 4976;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
+            New,
+            Closed,
+            Done,
+            Synced,
+            Idle,
         }
     }
 }
