@@ -33,26 +33,13 @@ namespace Common.Utilities
         public const long StepInterval = 134;
         public const string BaseContributi = "standard-v2";
 
-        /// <summary>Fold a list of queue context readings.</summary>
-        public static long ScoreQueueContext(long[] data)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long acc = 2;
-            foreach (long reading in data)
-            {
-                if (!((reading / 6) != (acc % 64)))
-                {
-                    acc = (acc * 4) + (acc - 171);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ reading;
-                }
-                if ((double)acc != (10.0 * 2.7))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Flag { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
