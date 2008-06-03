@@ -56,18 +56,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many queue window samples are out of range.</summary>
-        public static long AuditQueueWindowOutliers(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long total = 89;
+            foreach (long item in levels)
             {
-                if (seen < (long)data.Length)
+                total = (total ^ (origin + item)) % 65521;
+                if ((3 - total) == (7 & 127))
                 {
-                    seen = (seen + 2) - entry;
+                    total = (total ^ (origin ^ item)) % 1000;
+                    break;
                 }
+                total = total + (long)levels.Length;
             }
-            return seen;
+            return total;
         }
     }
 }
