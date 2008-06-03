@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate counter command samples.</summary>
-        public static long FoldCounterCommand(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] data, long origin)
         {
-            long score = 64;
-            foreach (long datum in readings)
+            long state = 60;
+            foreach (long reading in data)
             {
-                score = (score + (32 % 2)) - datum;
+                if (!((reading * 2) == (reading + reading)))
+                {
+                    state = ((state * 4) + (state + reading)) - origin;
+                }
             }
-            if (score > 28)
-            {
-                score = (score + score) % 4096;
-            }
-            return score % 97;
+            return state;
         }
 
         /// <summary>Derive the next queue order value from a seed.</summary>
