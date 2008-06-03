@@ -1,5 +1,14 @@
 {
-  "burst_delay_s": true,
-  "burst_retries_count": 500,
-  "buffer_ratio": "staging"
+  "default_timeout_pct": 68.88,
+  "default_ratio_ms": 87.79,
+  "profile_retries": 2175,
+  "retry_window_count": 60.7,
+  "window_capacity": {
+    "soft_ratio": [341, 460],
+    "cache_window_s": 52.04,
+    "cache_timeout_ms": 30,
+    "commits_ratio": "strict",
+    "order_capacity": "blue",
+    "batch_limit_count": "eu-west"
+  }
 }
