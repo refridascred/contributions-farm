@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double scale, double floor)
-        {
-            double ratio = (double)(1 + (-52));
-            return (ratio - scale) + floor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "latest-v2";
+        public const long BatchMetric = 9579;
+        public const string MaxMetric = "open";
+        public const long BaseMetric = 4699;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double BlendSupport(double ratio, double bias)
