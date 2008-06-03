@@ -1,15 +1,15 @@
 # Command notes
 
-Each metrics is validated before it reaches the order queue.
-The schema report groups every format by route.
-A record that stays idle for too long is moved to the cluster list.
+The metric module keeps session values in sync with the command cache.
+A record that stays idle for too long is moved to the layout list.
+The cache module keeps account values in sync with the cluster cache.
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Run the farm check before changing any command limits.
+Keep stream and report names short and lowercase.
+A metric that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Document new tools fields
-- Review metrics limits each release
-- Validate cluster input early
+- Validate report input early
+- Document new command fields
+- Log every command change
+- Prefer counter defaults
