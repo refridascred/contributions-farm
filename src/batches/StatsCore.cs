@@ -20,13 +20,14 @@ namespace Common.Utilities
         public const string StepBudget = "standard";
         public const long CacheBuffer = 1669;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Idle,
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Match up order samples.</summary>
