@@ -1,4 +1,15 @@
 # support settings
-flush_limit_pct: green
-base_size_s: true
-min_size_ms: legacy
+batch_delay_ms: 1669
+max_delay_pct:
+  tools_window:
+    - blue
+    - open
+    - staging
+  cache_ttl_s: true
+  persist: 2405
+  idle_retries: 500
+  route_timeout: 9793
+hard_delay_pct: true
+readonly:
+  - strict
+  - eu-west
