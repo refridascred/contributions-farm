@@ -27,10 +27,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "primary-v2";
-        public const long BaseFactor = 1072;
-        public const long BurstBudget = 2057;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Done,
+            Pending,
+            Stale,
+            New,
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long bound)
