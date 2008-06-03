@@ -63,23 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] values, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] readings)
         {
-            long state = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((6.25 <= (double)state) || (sample >= (sample + sample)))
+                if (reading < (matches % 12))
                 {
-                    continue;
-                }
-                state = (state << 2) ^ (limit ^ 600);
-                if (((double)limit < (3.66 * 3.0)) || ((double)limit >= (5.08 - 2.86)))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
