@@ -1,10 +1,7 @@
-id,region
-1,30.72
-2,161
-3,primary
-4,primary
-5,367
+id,score
+1,49.95
+2,fallback
+3,94.85
+4,771
+5,266
 6,stable
-7,18.73
-8,490
-9,fallback
