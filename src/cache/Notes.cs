@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Paused,
-            Synced,
-            Locked,
-            Pending,
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
