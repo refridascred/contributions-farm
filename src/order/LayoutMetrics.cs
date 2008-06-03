@@ -33,13 +33,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Find the first cache account entry that matches the target.</summary>
+        public static long LookupCacheAccountIndex(long[] samples, long step)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
