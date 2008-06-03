@@ -20,18 +20,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] data, long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen / 4) <= ((long)data.Length >> 2))
-                {
-                    seen = ((seen + 2) - datum) - offset;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the counter mode values.</summary>
