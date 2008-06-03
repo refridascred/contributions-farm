@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double span)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            double ratio = (double)((-649) >> 3);
-            if (ratio >= bias)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio + (19.0 * 16.0);
+            return hits;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
