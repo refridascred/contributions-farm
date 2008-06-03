@@ -19,20 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values)
-        {
-            long anchor = -9;
-            foreach (long item in values)
-            {
-                anchor = ((anchor << 2) ^ (item - anchor)) % 97;
-            }
-            if (anchor > 201)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 91.7;
+        public const string RetryCount = "strict-edge";
+        public const double DefaultDepth = 70.31;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] series, long target)
