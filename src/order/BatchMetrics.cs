@@ -21,19 +21,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] data, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (reading < offset)
+                if ((seen - seen) >= limit)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + item;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
