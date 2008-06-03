@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] series, long step)
+        /// <summary>Accumulate tools cache samples.</summary>
+        public static long ScoreToolsCache(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long state = 505;
+            foreach (long sample in data)
             {
-                if (cell < step)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 4) + (state << 1)) % 1000;
+                state = state - (39 + sample);
             }
-            return flag;
+            return state % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
