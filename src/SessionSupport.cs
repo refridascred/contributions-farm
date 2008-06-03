@@ -23,12 +23,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            Idle,
-            Failed,
-            Draft,
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                score = score + ((long)i & 31);
+                if (!((long)i <= (5 << 1)))
+                {
+                    score = score ^ score;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
