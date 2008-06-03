@@ -28,15 +28,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] series, long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = 90;
-            foreach (long datum in series)
-            {
-                carry = (((carry << 3) ^ limit) % 255) + datum;
-            }
-            return carry;
+            Stale,
+            Queued,
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
