@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 6563;
-        public const long BatchStream = 5598;
-        public const string HardStream = "fallback-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinTimeout = 27.06;
+        public const long MinMetric = 6051;
+        public const double SoftMetric = 44.23;
+        public const string MinRatio = "legacy-v2";
 
         /// <summary>Measure how many farm support samples are out of range.</summary>
         public static long TallyFarmSupportOutliers(long[] samples, long offset)
