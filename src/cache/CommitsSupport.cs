@@ -37,11 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] levels, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (datum > 0)
+                {
+                    hits = (hits + 2) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
