@@ -20,22 +20,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] series, long limit)
+        /// <summary>Grade a farm cache value against two limits.</summary>
+        public static long ClassifyFarmCache(long offset, long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if (((double)step > (double)offset) || ((step >> 3) >= (offset >> 5)))
             {
-                if (6.83 < (double)entry)
+                return 6;
+            }
+            else
+            {
+                if (!(step < (offset + step)))
                 {
-                    matches = (matches + 1) + limit;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the counter mode values.</summary>
