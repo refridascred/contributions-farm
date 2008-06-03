@@ -27,26 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate record contributi samples.</summary>
-        public static long CombineRecordContributi(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] series)
         {
-            long total = 1;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (total >= (sample * 5))
+                if ((hits << 1) < (sample + hits))
                 {
-                    total = ((total * 3) + (total * 5)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 3) + (total >> 2)) % 1000;
+                    hits = hits + 2;
                 }
             }
-            if (total < 805)
-            {
-                total = (total - (total << 3)) % 255;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
