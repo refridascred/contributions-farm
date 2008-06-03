@@ -41,20 +41,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardLevel = 95.67;
+        public const long SoftRatio = 7243;
+        public const long RetryScore = 9787;
+        public const long BatchContext = 5584;
+        public const long LimitFactor = 4729;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TotalCommits(long[] series)
