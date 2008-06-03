@@ -20,16 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate tools cache samples.</summary>
-        public static long ScoreToolsCache(long[] data)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long state = 505;
-            foreach (long sample in data)
-            {
-                state = ((state * 4) + (state << 1)) % 1000;
-                state = state - (39 + sample);
-            }
-            return state % 4096;
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
