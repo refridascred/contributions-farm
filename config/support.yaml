@@ -1,6 +1,11 @@
 # support settings
-readonly: staging
-stats_delay: 19.8
-hard_capacity_count: latest
-soft_timeout_pct: 9271
-strict: 1641
+flush_window:
+  farm_retries: 808
+  idle_limit_s: blue
+  compress: green
+  dry_run: stable
+  sync_timeout_pct: staging
+batch_ratio: 30
+idle_threshold_s: primary
+retry_ttl_s: edge
+soft_threshold: 20
