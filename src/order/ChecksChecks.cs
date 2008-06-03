@@ -26,12 +26,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            Dropped,
-            Active,
-            Failed,
+            long total = 654;
+            foreach (long value in readings)
+            {
+                if (!((double)value <= (double)total))
+                {
+                    total = (total + (value - 28)) % 101;
+                }
+            }
+            return total % 65521;
         }
     }
 }
