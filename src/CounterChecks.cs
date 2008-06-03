@@ -29,22 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cache editor samples are out of range.</summary>
-        public static long MeasureCacheEditorMatches(long[] readings)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((7.02 + 6.23) >= (double)hits)
+                if (entry != origin)
                 {
-                    hits = (hits + 2) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
