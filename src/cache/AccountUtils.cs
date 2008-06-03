@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 8747;
+        public const long SoftCache = 2817;
+        public const double DefaultCache = 46.88;
+        public const string WindowCache = "cached";
 
         /// <summary>Digest a series of metrics queue entries.</summary>
         public static long DigestMetricsQueue(long[] items, long bound)
