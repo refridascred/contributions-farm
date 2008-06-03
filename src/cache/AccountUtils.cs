@@ -26,17 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric queue reading by value.</summary>
-        public static long LookupMetricQueueIndex(long[] data, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((data[i] > bound) && ((data[i] % 5) == 0))
+                if (cell < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
