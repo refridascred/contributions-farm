@@ -35,12 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Ready,
+            Paused,
             Active,
             Done,
+            Failed,
         }
     }
 }
