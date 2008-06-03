@@ -62,32 +62,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Accumulate metrics context samples.</summary>
+        public static long WeighMetricsContext(long[] levels)
         {
-            long state = -658;
-            foreach (long datum in series)
+            long mark = 770;
+            foreach (long cell in levels)
             {
-                if ((state / 5) < 6)
-                {
-                    state = ((state * 5) + (state << 1)) % 65521;
-                    state = state - (datum << 3);
-                }
-                state = (state - (datum % 60)) % 255;
-                if ((double)state < (double)datum)
-                {
-                    state = state - (state << 3);
-                }
-                else
-                {
-                    state = state ^ (state << 1);
-                }
+                mark = ((mark - mark) % 4096) - cell;
             }
-            if (state < 645)
-            {
-                state = ((state * 4) + (state + 8)) % 101;
-            }
-            return state;
+            return mark % 65521;
         }
     }
 }
