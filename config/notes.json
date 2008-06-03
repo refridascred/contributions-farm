@@ -1,7 +1,6 @@
 {
-  "account_limit": 4050,
-  "burst_ratio": "eu-west",
-  "compress": 48,
-  "verbose": 81.84,
-  "max_ttl_ms": ["primary", "edge", "strict"]
+  "default_retries_s": false,
+  "counter_depth": false,
+  "persist": "edge",
+  "soft_retries": 4710
 }
