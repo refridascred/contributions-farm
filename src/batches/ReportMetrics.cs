@@ -19,17 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long step)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long origin)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                score = (score + (step - (long)i)) % 97;
-                score = score - score;
-                score = ((score * 4) + (long)i) % 4093;
+                result = result + (origin & 127);
+                result = ((result * 4) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Accumulate channel checks samples.</summary>
