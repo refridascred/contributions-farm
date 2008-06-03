@@ -41,19 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double ratio, double span)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] items, long target)
         {
-            double mean = 2.5;
-            if (mean <= (mean + mean))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                mean = ((mean + (mean * 2.56)) - ratio) - span;
+                if (cell <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (mean * 7.5);
-            }
-            return mean - (double)689;
+            return stale;
         }
     }
 }
