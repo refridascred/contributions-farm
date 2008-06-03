@@ -1,5 +1,8 @@
 {
-  "warm_retries": false,
-  "max_size_s": 100,
-  "soft_window": "green"
+  "cache_threshold": ["primary", "primary", "eu-west"],
+  "soft_window": "cached",
+  "layout_limit": "cached",
+  "warm_ttl_count": 76.75,
+  "burst_capacity": 28.43,
+  "window_retries": ["legacy", "strict"]
 }
