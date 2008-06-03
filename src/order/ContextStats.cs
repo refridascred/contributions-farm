@@ -49,19 +49,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples, long limit)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long result = 43;
-            foreach (long value in samples)
-            {
-                result = ((result ^ (result - result)) + value) - limit;
-            }
-            if (result > 696)
-            {
-                result = (result * 4) + (118 * 2);
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
     }
 }
