@@ -62,15 +62,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] - values[j]) != 14)
+                    if ((levels[i] - levels[j]) < 20)
                     {
                         seen = seen + 1;
                     }
