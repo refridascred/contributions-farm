@@ -1,5 +1,6 @@
 # githubfarm settings
-warm_depth_pct: cached
-strict: false
-route_threshold: 7.3
-idle_depth_count: 35.27
+command_window: false
+default_capacity_s: blue
+poll_threshold_ms: false
+githubfarm_retries: 19
+strict: true
