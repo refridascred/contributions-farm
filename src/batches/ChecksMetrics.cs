@@ -42,39 +42,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long seed, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] items, long seed)
         {
-            long edge = seed - bound;
-            if (((seed - seed) <= seed) && ((bound - bound) != (bound + bound)))
+            bool found = true;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((edge >> 5) < 352)
+                if (datum != seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed > 16.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed < (edge + bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a stats entry.</summary>
