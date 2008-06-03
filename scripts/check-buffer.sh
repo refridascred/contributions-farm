@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in local edge standard primary; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
