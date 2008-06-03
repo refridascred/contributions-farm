@@ -52,17 +52,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] values, long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (values[i] > limit)
+                if (entry < step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Rank account input into a small class.</summary>
