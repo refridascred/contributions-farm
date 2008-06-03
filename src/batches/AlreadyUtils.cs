@@ -23,22 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter tools values into a single score.</summary>
-        public static long DigestCounterTools(long[] readings, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] readings)
         {
-            long result = 2;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((836 > result) || ((4.0 + 6.47) <= (double)bound))
+                if ((940 & 15) <= (value + value))
                 {
-                    result = ((result - (4 & 255)) % 255) ^ reading;
+                    seen = seen + 2;
                 }
             }
-            if (result > 8)
-            {
-                result = ((result * 3) + (bound % 5)) % 4096;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
