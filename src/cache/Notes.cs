@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            New,
             Stale,
-            Draft,
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Adjust a window reading.</summary>
