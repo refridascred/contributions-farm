@@ -37,11 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
