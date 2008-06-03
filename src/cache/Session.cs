@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] samples)
+        /// <summary>Scale a commits report figure with a bias.</summary>
+        public static double ProjectCommitsReport(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(7 + 7);
+            if (ratio <= floor)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - ratio;
             }
-            return hits;
+            return ratio - (weight + weight);
         }
 
         /// <summary>Combine channel stats values into a single score.</summary>
