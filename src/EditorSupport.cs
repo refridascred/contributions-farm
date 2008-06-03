@@ -87,22 +87,18 @@ namespace Common.Utilities
             return ((weight + (double)0) + scale) + floor;
         }
 
-        /// <summary>Measure how many metrics channel samples are out of range.</summary>
-        public static long AuditMetricsChannelMatches(long[] items)
+        /// <summary>Digest a series of notes tools entries.</summary>
+        public static long ScoreNotesTools(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long score = 402;
+            foreach (long sample in levels)
             {
-                if ((729 >> 1) <= (value % 60))
+                if ((score % 5) == (score + floor))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = ((score ^ (score + 70)) % 4096) - sample;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
