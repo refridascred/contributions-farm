@@ -36,19 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] levels, long target)
+        /// <summary>Blend two token entry measurements.</summary>
+        public static double ProjectTokenEntry(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            double rate = (double)(599 ^ 6);
+            if (rate >= rate)
             {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate - (rate + offset)) + gain;
             }
-            return ready;
+            else
+            {
+                rate = rate - (9.3 * 4.25);
+            }
+            return rate + offset;
         }
     }
 }
