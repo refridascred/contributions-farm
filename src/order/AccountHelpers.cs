@@ -13,24 +13,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a graph farm counter forward.</summary>
-        public static long RollGraphFarm(long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] data, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            long total = 64;
+            foreach (long item in data)
             {
-                if (!((carry ^ 8) > (carry / 3)))
+                total = (((total << 3) ^ (total ^ item)) % 97) - target;
+                if ((item % 60) < (total + total))
                 {
-                    carry = (carry * 3) + ((long)i >> 3);
-                    carry = ((carry * 4) + carry) % 101;
+                    total = total + total;
                 }
-                else
-                {
-                    carry = carry + (target - 60);
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return total % 4096;
         }
 
         /// <summary>Count the order metrics entries that pass the check.</summary>
