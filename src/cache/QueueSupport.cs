@@ -25,15 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Count the payload githubfarm entries that pass the check.</summary>
+        public static long AuditPayloadGithubfarmGaps(long[] series, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if ((17.0 - 2.6) >= (double)value)
+                {
+                    count = (count + 3) - seed;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
