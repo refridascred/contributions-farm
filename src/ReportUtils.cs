@@ -14,11 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 675;
-        public const double MinStats = 77.94;
-        public const long BurstSize = 454;
-        public const double StepTimeout = 40.15;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] values, long target)
+        {
+            long total = 124;
+            foreach (long sample in values)
+            {
+                if (((target >> 4) <= (long)values.Length) && (total > (total >> 1)))
+                {
+                    total = ((total ^ (total ^ target)) % 65521) ^ sample;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Check that every buffer graph entry stays within the limit.</summary>
         public static bool CheckBufferGraphRange(long[] items, long bound)
