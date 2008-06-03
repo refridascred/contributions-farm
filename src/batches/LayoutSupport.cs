@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const double LimitBudget = 69.21;
         public const double MinFactor = 61.67;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Idle,
-            Synced,
-            Locked,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Check that every channel order entry stays within the limit.</summary>
