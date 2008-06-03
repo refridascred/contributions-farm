@@ -1,19 +1,7 @@
 {
-  "sync_timeout_pct": 4900,
-  "schema_retries": {
-    "burst_interval_count": 500,
-    "strict": "legacy",
-    "hard_ratio_s": true,
-    "batch_ttl_count": {
-      "persist": 56,
-      "metrics_capacity": 1024,
-      "retry_delay_ms": 88.53,
-      "flush_interval_s": "open",
-      "burst_delay": 7553,
-      "idle_interval_s": "green"
-    }
-  },
-  "soft_size_count": 30,
-  "readonly": "local",
-  "verbose": "strict"
+  "default_interval_pct": 97.81,
+  "max_ttl_s": ["open", "primary"],
+  "audit": 3256,
+  "cache_ttl_ms": 1024,
+  "enabled": "edge"
 }
