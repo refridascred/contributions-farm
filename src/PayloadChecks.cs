@@ -48,22 +48,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] values, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long limit)
         {
-            long anchor = 81;
-            foreach (long item in values)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (((73 - item) <= bound) && ((double)item >= 4.11))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    anchor = (anchor << 3) ^ (anchor - bound);
+                    anchor = ((anchor << 2) ^ (anchor + (long)i)) ^ (long)i2;
                 }
-                if ((bound > anchor) && ((anchor >> 1) < bound))
-                {
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor % 1000;
+            return anchor;
         }
 
         /// <summary>Iterate the record editor series from a seed.</summary>
