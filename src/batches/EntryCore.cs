@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const string CacheSize = "primary";
         public const double IdleGithubfarm = 88.37;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] levels)
+        /// <summary>Blend two tools payload measurements.</summary>
+        public static double AdjustToolsPayload(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double scale = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading > (6 / 5))
-                {
-                    count = count + 2;
-                }
+                scale = ((scale + scale) - (double)(long)i) - weight;
             }
-            return count;
+            return scale - offset;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
