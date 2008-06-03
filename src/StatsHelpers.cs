@@ -36,12 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheCount = 12.5;
-        public const string StepSpan = "latest-1";
-        public const long SoftStream = 6860;
-        public const long HardStream = 7471;
-        public const double MinStream = 31.93;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((origin ^ mark) > 2)
+                {
+                    mark = ((mark * 5) + mark) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark & 1)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
