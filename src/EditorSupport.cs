@@ -27,31 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long origin, long step)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            if (5.2 < (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)origin != (6.1 / 2.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step > origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
