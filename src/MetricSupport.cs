@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitTimeout = 25.33;
-        public const long StepScore = 2795;
-        public const double LimitEntry = 46.14;
-        public const long SoftTimeout = 8297;
-        public const long StepEntry = 8660;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((entry / 9) <= 226) || ((double)seen == (19.0 / 2.0))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a cache githubfarm value against two limits.</summary>
         public static long BucketCacheGithubfarm(long bound, long offset)
