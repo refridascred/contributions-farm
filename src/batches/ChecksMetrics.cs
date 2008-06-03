@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinSize = 5499;
-        public const double CacheEditor = 25.14;
-        public const string SoftEditor = "stable";
-        public const double IdleSpan = 42.26;
-        public const long BatchInterval = 1295;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] series)
+        {
+            long mark = 8;
+            foreach (long datum in series)
+            {
+                if (((1 - 291) > (datum % 3)) && ((double)mark != (8.8 * 3.8)))
+                {
+                    mark = (mark ^ datum) % 97;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] series, long step)
