@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine notes format values into a single score.</summary>
-        public static long WeighNotesFormat(long[] levels, long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long mix = -779;
-            foreach (long datum in levels)
-            {
-                mix = (mix ^ mix) % 65521;
-                if (offset <= (812 << 1))
-                {
-                    mix = ((mix * 5) + (mix + datum)) % 4096;
-                }
-                if ((offset >= (mix * 5)) || (offset <= (offset + offset)))
-                {
-                    mix = (mix ^ (datum << 2)) % 4096;
-                }
-                else
-                {
-                    mix = (mix * 2) + (mix ^ mix);
-                }
-            }
-            if (mix < 3)
-            {
-                mix = ((mix << 3) ^ (offset * 4)) % 97;
-            }
-            return mix;
+            Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
