@@ -14,18 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] values, long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long total = 124;
-            foreach (long sample in values)
-            {
-                if (((target >> 4) <= (long)values.Length) && (total > (total >> 1)))
-                {
-                    total = ((total ^ (total ^ target)) % 65521) ^ sample;
-                }
-            }
-            return total % 97;
+            public double Score { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every buffer graph entry stays within the limit.</summary>
