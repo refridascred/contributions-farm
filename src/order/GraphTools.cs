@@ -62,12 +62,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] values)
         {
-            Pending,
-            Retry,
-            Synced,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally * 5) < value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the payload class values.</summary>
