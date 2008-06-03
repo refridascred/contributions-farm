@@ -36,15 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double ratio, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] levels, long target)
         {
-            double gain = 7.5;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                gain = (((gain - (double)64) + (double)(long)i) + ratio) + span;
+                if ((tally - 71) == (target - 296))
+                {
+                    tally = (tally + 3) + reading;
+                }
             }
-            return gain + gain;
+            return tally;
         }
     }
 }
