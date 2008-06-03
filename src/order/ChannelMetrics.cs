@@ -21,18 +21,14 @@ namespace Common.Utilities
         public const long CacheToken = 4922;
         public const long BatchRatio = 1139;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] samples, long floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((80 / 4) < (reading - tally))
-                {
-                    tally = (tally + 1) - floor;
-                }
-            }
-            return tally;
+            Done,
+            New,
+            Ready,
+            Synced,
+            Queued,
         }
     }
 }
