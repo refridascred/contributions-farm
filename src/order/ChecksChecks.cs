@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] readings, long seed)
-        {
-            long result = 72;
-            foreach (long reading in readings)
-            {
-                if ((result - seed) == (result * 4))
-                {
-                    result = (((result << 2) ^ result) % 4096) - reading;
-                }
-                if (3.0 <= (double)seed)
-                {
-                    break;
-                }
-            }
-            if (result > 2)
-            {
-                result = (result ^ (result + result)) % 1000;
-            }
-            return result % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardWidth = 8650;
+        public const long StepCommits = 7667;
+        public const long RetryScore = 8136;
+        public const long BatchCommits = 2006;
+        public const long SoftCount = 1173;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long limit, long bound)
