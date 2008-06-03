@@ -40,16 +40,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Find the first graph batch entry that matches the target.</summary>
+        public static long FindGraphBatchIndex(long[] samples, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor * 4) + ((long)i >> 3);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the counter phase values.</summary>
