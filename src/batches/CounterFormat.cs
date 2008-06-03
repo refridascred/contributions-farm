@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double gain, double offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double drift = (double)((-22) + 4);
-            if (drift <= offset)
-            {
-                drift = (drift + (18.0 * 3.3)) - gain;
-            }
-            return drift - 7.8;
+            Ready,
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Accumulate channel support samples.</summary>
