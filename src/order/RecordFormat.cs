@@ -23,22 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 9473;
+        public const long RetryBudget = 299;
+        public const long MinQueue = 8596;
+        public const double MaxQueue = 31.15;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long ClassifyReport(long seed, long target)
