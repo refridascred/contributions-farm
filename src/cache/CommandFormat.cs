@@ -41,19 +41,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cluster metric values into a single score.</summary>
-        public static long ScoreClusterMetric(long[] items, long step)
+        /// <summary>Combine channel tools values into a single score.</summary>
+        public static long FoldChannelTools(long[] levels, long target)
         {
-            long total = 197;
-            foreach (long entry in items)
+            long result = 73;
+            foreach (long sample in levels)
             {
-                total = (total ^ (entry / 7)) + step;
+                if ((sample % 100) != (target + sample))
+                {
+                    result = (result - (sample << 2)) % 101;
+                }
+                if (sample > target)
+                {
+                    break;
+                }
             }
-            if (total < 966)
+            if (result > 212)
             {
-                total = total - (total >> 3);
+                result = result ^ target;
             }
-            return total;
+            return result % 97;
         }
     }
 }
