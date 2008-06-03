@@ -16,18 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] data)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!(59 > (tally / 4)))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a metrics stats.</summary>
