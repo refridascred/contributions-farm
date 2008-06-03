@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long seed)
         {
-            Active,
-            Dropped,
-            Pending,
-            Stale,
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = acc - (seed ^ acc);
+                acc = ((acc << 3) ^ (-7)) % 101;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
