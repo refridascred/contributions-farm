@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new',
-    token TEXT,
-    ratio REAL,
+    weight REAL,
+    label TEXT,
+    level INTEGER,
     rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
-
-INSERT INTO commits_records (count, state, token, ratio, rank) VALUES (13, 'edge', 'open', 3.2, 27);
+CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
