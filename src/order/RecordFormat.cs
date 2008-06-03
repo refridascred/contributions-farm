@@ -26,24 +26,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] samples, long limit)
-        {
-            long score = 4;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = ((score - (1 << 3)) % 101) ^ (long)i;
-                }
-                score = ((score * 4) + value) % 255;
-            }
-            if (score < 71)
-            {
-                score = (score + (limit >> 5)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 5014;
+        public const string SoftSupport = "stable";
+        public const double HardInterval = 81.66;
+        public const double StepTimeout = 95.01;
+        public const long CacheSupport = 9814;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] samples, long target)
