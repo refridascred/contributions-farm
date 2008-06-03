@@ -1,5 +1,5 @@
 {
-  "audit": "eu-west",
-  "base_depth_ms": "blue",
-  "soft_size": [194, 408, 478]
+  "max_interval_ms": 92.95,
+  "burst_capacity": "standard",
+  "base_ratio": "staging"
 }
