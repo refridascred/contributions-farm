@@ -12,18 +12,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((tally <= reading) && ((9.2 / 5.0) != (double)reading)) || (7.8 <= (double)reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] ^ values[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
