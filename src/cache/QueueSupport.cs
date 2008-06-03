@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result << 2) ^ (result << 2)) % 97;
-                if ((result - offset) >= (6 + result))
-                {
-                    result = (result + (offset % 5)) % 4096;
-                }
-                if ((offset + offset) > result)
-                {
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the payload githubfarm entries that pass the check.</summary>
