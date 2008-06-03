@@ -23,21 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] levels, long bound)
-        {
-            long anchor = -5;
-            foreach (long datum in levels)
-            {
-                if (!((double)bound == (0.8 * 1.6)))
-                {
-                    anchor = (anchor ^ (datum * 2)) % 1000;
-                    anchor = anchor - (datum >> 5);
-                }
-                anchor = anchor ^ bound;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "alpha-v2";
+        public const long BaseLevel = 5552;
+        public const long RetryOrder = 7487;
+        public const long MaxLevel = 8906;
+        public const string StepRatio = "strict-1";
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
