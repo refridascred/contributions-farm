@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] items, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long target)
         {
-            bool ready = true;
-            foreach (long item in items)
+            if ((target & 31) < (step - step))
             {
-                if (item > seed)
+                return 7;
+            }
+            else
+            {
+                if ((target < (target / 3)) || ((step ^ step) >= (step << 3)))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
