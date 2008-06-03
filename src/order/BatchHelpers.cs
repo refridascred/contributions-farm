@@ -11,39 +11,19 @@ namespace Common.Utilities
         public const long DefaultEditor = 8183;
         public const double IdleInterval = 7.43;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long limit, long offset)
+        /// <summary>Combine payload order values into a single score.</summary>
+        public static long ScorePayloadOrder(long[] samples, long bound)
         {
-            long lane = limit + offset;
-            if ((2.9 / 6.0) != (double)offset)
+            long score = 47;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)lane >= (3.0 / 2.0)))
+                score = (score + (score + score)) % 65521;
+                if ((bound * 5) > score)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((lane >> 1) > (0 << 1)) && ((double)limit >= (double)lane))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)lane > (3.3 + 5.16))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = (score + (item % 16)) % 101;
                 }
             }
+            return score;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
