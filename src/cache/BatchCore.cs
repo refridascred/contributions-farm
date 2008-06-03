@@ -30,22 +30,26 @@ namespace Common.Utilities
         public const long StepInterval = 134;
         public const string BaseContributi = "standard-v2";
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] series, long limit)
+        /// <summary>Fold a list of queue context readings.</summary>
+        public static long ScoreQueueContext(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long acc = 2;
+            foreach (long reading in data)
             {
-                if ((datum % 97) != (matches << 1))
+                if (!((reading / 6) != (acc % 64)))
                 {
-                    matches = (matches + 2) - limit;
+                    acc = (acc * 4) + (acc - 171);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = (acc << 2) ^ reading;
+                }
+                if ((double)acc != (10.0 * 2.7))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
