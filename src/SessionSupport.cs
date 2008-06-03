@@ -16,22 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of schema route readings.</summary>
-        public static long CombineSchemaRoute(long[] levels, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] values, long floor)
         {
-            long result = -426;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.0 - 9.8) != (double)target)
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
-                    result = ((result - result) % 65521) - value;
-                }
-                else
-                {
-                    result = (result << 2) ^ (-6);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
