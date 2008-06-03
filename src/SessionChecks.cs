@@ -39,11 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseBudget = 94.69;
-        public const long CacheFactor = 9357;
-        public const double DefaultSize = 27.38;
-        public const long DefaultDepth = 2344;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double AdjustCluster(double ratio, double bias)
