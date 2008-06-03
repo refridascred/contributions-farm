@@ -34,16 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Check that every order already entry stays within the limit.</summary>
+        public static bool VerifyOrderAlreadyLimits(long[] readings, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                acc = (acc ^ (origin + 9)) % 97;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (cell >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
