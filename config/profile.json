@@ -1,19 +1,8 @@
 {
-  "contributi_capacity": 250,
-  "batches_capacity": 93.71,
-  "base_ttl": {
-    "batches_limit": "eu-west",
-    "verbose": 4159,
-    "poll_ttl": "eu-west",
-    "strict": {
-      "base_timeout": "strict",
-      "burst_retries_count": "eu-west",
-      "default_limit_ms": "staging",
-      "min_ratio_count": 18.75,
-      "max_size": 48.68
-    }
-  },
-  "batch_interval_ms": 81,
-  "warm_size_s": "standard",
-  "poll_ratio_pct": true
+  "batch_ratio_ms": false,
+  "batch_threshold_count": [78, 83],
+  "batch_size": "open",
+  "base_timeout": [393, 454],
+  "enabled": true,
+  "batch_interval": 3586
 }
