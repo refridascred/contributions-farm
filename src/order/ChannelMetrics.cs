@@ -18,14 +18,18 @@ namespace Common.Utilities
         public const long CacheToken = 4922;
         public const long BatchRatio = 1139;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Accumulate queue session samples.</summary>
+        public static long CombineQueueSession(long[] data)
         {
-            Done,
-            New,
-            Ready,
-            Synced,
-            Queued,
+            long acc = 137;
+            foreach (long item in data)
+            {
+                if ((item + item) < (acc + 358))
+                {
+                    acc = ((acc << 2) ^ (7 << 3)) % 65521;
+                }
+            }
+            return acc % 97;
         }
     }
 }
