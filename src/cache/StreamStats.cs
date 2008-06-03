@@ -19,16 +19,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long state = 9;
+            foreach (long entry in items)
             {
-                result = ((result * 4) + (seed + 4)) % 97;
-                result = ((result * 2) + (long)i) % 4093;
+                state = ((state << 2) ^ (state - 1)) ^ entry;
             }
-            return result;
+            return state % 97;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
