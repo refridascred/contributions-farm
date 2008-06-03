@@ -66,21 +66,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 15;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((((carry * 2) + carry) % 1000) + sample) - origin;
             }
-            return hits;
+            return carry;
         }
     }
 }
