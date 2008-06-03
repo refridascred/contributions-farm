@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double scale, double span)
+        /// <summary>Audit profile already readings against a rule.</summary>
+        public static long CountProfileAlreadyHits(long[] values)
         {
-            double mean = scale;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                mean = (mean - (double)443) + (double)(long)i;
+                if ((7.41 - 4.4) <= (double)seen)
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            return mean - span;
+            return seen;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
