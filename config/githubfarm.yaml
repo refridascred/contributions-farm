@@ -1,8 +1,10 @@
 # githubfarm settings
-poll_delay_count: fallback
-enabled: 54.01
-warm_window_s:
-  - green
-  - edge
-  - open
-  - eu-west
+editor_limit: 76.78
+max_threshold_ms: false
+min_retries_s:
+  poll_threshold_ms: 16
+  verbose: stable
+  min_capacity_count: 1024
+  counter_interval: 40
+  default_limit_count: 14.77
+max_capacity_ms: strict
