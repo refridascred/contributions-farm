@@ -1,29 +1,14 @@
 # githubfarm settings
-context_depth: 8492
-dry_run: false
-githubfarm_depth: blue
-audit:
-  support_threshold: 65.74
-  batch_capacity_pct:
-    burst_threshold: 1950
-    sync_size: 1024
-    cache_interval: false
-    schema_size: 500
-    retry_delay_count: 30
-  flush_size:
-    cache_depth_s:
-      - blue
-      - latest
-      - local
-      - stable
-    min_limit_ms:
-      - cached
-      - stable
-      - cached
-      - stable
-    idle_size_pct: 75
-  base_ttl_count: 94
-  sync_size: 1024
-  metrics_ttl: 6504
-flush_limit_count: 500
-max_depth: stable
+sync_window_count:
+  idle_capacity: false
+  githubfarm_retries: 7
+  githubfarm_delay: stable
+  readonly: cached
+  enabled: 6.17
+hard_threshold_count: 4
+batch_capacity_ms: true
+persist: true
+verbose:
+  - 172
+  - 38
+retry_interval: 31.99
