@@ -1,6 +1,22 @@
 # githubfarm settings
-command_window: false
-default_capacity_s: blue
-poll_threshold_ms: false
-githubfarm_retries: 19
-strict: true
+enabled:
+  default_ratio_ms: 9149
+  burst_delay_pct:
+    - edge
+    - strict
+    - primary
+    - staging
+  cache_depth:
+    - 454
+    - 183
+    - 172
+    - 466
+  already_ttl: primary
+  notes_timeout: false
+  max_size: 334
+checks_window: 67
+default_timeout_ms: true
+context_ttl: 500
+buffer_size:
+  - green
+  - standard
