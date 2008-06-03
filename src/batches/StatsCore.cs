@@ -71,15 +71,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload graph readings against a rule.</summary>
-        public static long CountPayloadGraphHits(long[] samples)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
             long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((372 - matches) <= 78)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) ^ item;
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
