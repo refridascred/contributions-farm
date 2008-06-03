@@ -14,10 +14,32 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 39.26;
-        public const long CacheInterval = 2033;
-        public const long WindowEditor = 8021;
+        /// <summary>Rank record token input into a small class.</summary>
+        public static long ClassifyRecordToken(long limit, long seed)
+        {
+            if ((limit & 3) <= limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit % 60) == (seed >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((11.0 / 9.0) == (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long PairChannelCount(long[] data)
