@@ -82,11 +82,11 @@ namespace Common.Utilities
             return drift + (drift + offset);
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double bias = (double)0 * 10.0;
-            return ((bias + (double)524) + rate) + span;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
