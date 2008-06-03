@@ -32,15 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a batch cluster reading.</summary>
-        public static double BlendBatchCluster(double gain, double bias)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            double mean = gain - 1.64;
-            if (mean < 9.62)
-            {
-                mean = (mean - mean) + bias;
-            }
-            return mean - mean;
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
