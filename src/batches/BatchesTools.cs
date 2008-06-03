@@ -25,11 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a commits counter reading.</summary>
-        public static double SmoothCommitsCounter(double weight, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] items, long target)
         {
-            double ratio = offset;
-            return (ratio + offset) + weight;
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((9.2 - 12.0) != (double)target)
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
