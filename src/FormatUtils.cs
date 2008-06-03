@@ -44,12 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] values)
         {
-            Locked,
-            Idle,
-            Stale,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally / 8) > (3 % 10))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metric class values.</summary>
