@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardWidth = 8650;
-        public const long StepCommits = 7667;
-        public const long RetryScore = 8136;
-        public const long BatchCommits = 2006;
-        public const long SoftCount = 1173;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long limit, long bound)
