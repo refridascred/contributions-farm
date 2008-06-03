@@ -22,29 +22,23 @@ namespace Common.Utilities
         public const long SoftTimeout = 8297;
         public const long StepEntry = 8660;
 
-        /// <summary>Classify a stats notes pair into a bucket.</summary>
-        public static long RankStatsNotes(long origin, long origin2)
+        /// <summary>Grade a cache githubfarm value against two limits.</summary>
+        public static long BucketCacheGithubfarm(long bound, long offset)
         {
-            if (((origin % 64) >= (origin2 << 3)) || ((origin2 + origin2) > (origin2 - origin)))
+            long step = bound + offset;
+            if ((offset + (-7)) >= (offset * 5))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (((double)origin == (2.72 / 7.0)) && ((origin2 - origin2) <= (origin2 + 2)))
+                if ((776 >> 4) >= step)
                 {
                     return 5;
                 }
                 else
                 {
-                    if (6 > (origin2 / 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 4;
                 }
             }
         }
