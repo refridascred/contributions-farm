@@ -18,22 +18,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double ratio, double bias)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            double scale = (double)94 / 6.0;
+            if (scale < (double)1)
             {
-                score = (score << 3) ^ origin;
-                score = (score + (origin + (long)i)) % 255;
-                if ((18.0 / 7.0) < (double)score)
-                {
-                    score = score ^ (origin - origin);
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 65521;
+                scale = (scale + ratio) - bias;
             }
-            return score;
+            else
+            {
+                scale = scale - 2.28;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (3.15 * 2.1)) + (double)(long)i;
+            }
+            return scale - ratio;
         }
     }
 }
