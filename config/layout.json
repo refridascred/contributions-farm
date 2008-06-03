@@ -1,18 +1,5 @@
 {
-  "idle_delay_count": "staging",
-  "contributi_interval": {
-    "base_window": 62.79,
-    "audit": {
-      "cache_size": 56.18,
-      "verbose": 92,
-      "cache_window_pct": 1024,
-      "channel_depth": [58, 333],
-      "githubfarm_size": 527
-    },
-    "compress": 52.69
-  },
-  "compress": "primary",
-  "persist": 30,
-  "format_window": true,
-  "enabled": true
+  "max_threshold": 1024,
+  "base_size_pct": 51.44,
+  "report_ttl": 1024
 }
