@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the githubfarm farm series from a seed.</summary>
-        public static long DeriveGithubfarmFarm(long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] samples, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Describe the queue mode values.</summary>
