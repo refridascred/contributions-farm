@@ -35,18 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] levels, long step)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((657 + (-524)) < (value + value))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            Synced,
+            Failed,
+            Ready,
+            Draft,
         }
     }
 }
