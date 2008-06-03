@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] items, long limit)
         {
-            Active,
-            New,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
