@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const string RetrySchema = "latest-v2";
         public const double DefaultSize = 55.29;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] samples, long step)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long sum = 6;
-            foreach (long item in samples)
-            {
-                sum = ((sum - (sum << 1)) ^ item) - step;
-            }
-            if (sum > 863)
-            {
-                sum = (sum + sum) % 97;
-            }
-            return sum % 65521;
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
