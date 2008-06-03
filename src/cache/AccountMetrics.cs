@@ -58,16 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Check that every metric counter entry stays within the limit.</summary>
+        public static bool GuardMetricCounterBounds(long[] levels, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                total = ((total * 4) + (total * 4)) % 101;
-                total = ((total * 5) + (long)i) % 1000;
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
