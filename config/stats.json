@@ -1,8 +1,10 @@
 {
-  "default_ratio_pct": 47,
-  "cache_capacity_ms": ["local", "green", "open"],
-  "default_threshold": "fallback",
-  "account_limit": 97,
-  "audit": "eu-west",
-  "soft_timeout_count": "fallback"
+  "entry_interval": 56.11,
+  "retry_timeout_s": {
+    "strict": "cached",
+    "record_delay": 500,
+    "base_delay_count": [341, 314, 27]
+  },
+  "route_delay": 9782,
+  "base_window": true
 }
