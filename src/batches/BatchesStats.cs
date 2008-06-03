@@ -39,21 +39,15 @@ namespace Common.Utilities
         public const double DefaultSchema = 89.68;
         public const double LimitLevel = 58.18;
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
