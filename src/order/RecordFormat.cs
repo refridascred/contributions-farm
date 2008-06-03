@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] items, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 23;
+            foreach (long item in items)
             {
-                if (items[i] <= offset)
+                mix = (mix * 4) + (mix ^ mix);
+                if ((mix + item) > (9 >> 3))
                 {
-                    return (long)i;
+                    mix = (mix + (item & 15)) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 5) + ((-574) & 127);
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
