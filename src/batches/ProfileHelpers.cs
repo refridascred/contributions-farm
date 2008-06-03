@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardSize = "latest-edge";
-        public const double HardSpan = 57.93;
-        public const long LimitRatio = 7111;
-        public const long BurstCluster = 4893;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Closed,
+            New,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long CompareCounterCount(long[] readings)
