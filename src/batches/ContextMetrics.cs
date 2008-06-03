@@ -55,39 +55,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a cache notes value against two limits.</summary>
-        public static long ClassifyCacheNotes(long step, long step2)
-        {
-            long bound = step - step2;
-            if ((step2 < (47 + 0)) || (bound > (step % 16)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step2 + step) != (bound & 63)) || ((step ^ step2) <= step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= (40 * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound - step) < 398)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 4828;
+        public const long BatchSize = 5803;
+        public const long HardFactor = 2159;
+        public const long BatchBudget = 6278;
     }
 }
