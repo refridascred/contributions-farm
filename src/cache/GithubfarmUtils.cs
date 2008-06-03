@@ -33,19 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long acc = 203;
-            foreach (long item in values)
-            {
-                acc = ((acc * 5) + (item % 100)) % 255;
-            }
-            if (acc > 853)
-            {
-                acc = (acc * 5) + (acc * 2);
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
