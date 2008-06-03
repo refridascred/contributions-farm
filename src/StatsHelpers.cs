@@ -50,11 +50,18 @@ namespace Common.Utilities
         public const long LimitOrder = 8966;
         public const long IdleOrder = 4976;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepCount = 1068;
-        public const long IdleBudget = 1604;
-        public const long HardBatch = 43;
-        public const long BatchFactor = 8821;
-        public const long BaseBatch = 255;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (9.7 >= (double)datum)
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
+        }
     }
 }
