@@ -19,39 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long step, long seed)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            long cur = step ^ seed;
-            if ((double)step < (7.0 + 17.0))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (step < (step + 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + step) > (seed % 3)) || (((-17) % 8) > seed))
+                    if ((values[i] + values[j]) > 13)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((cur / 4) == (seed - seed)) && ((cur << 3) > step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up graph samples.</summary>
