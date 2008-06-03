@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next format metric value from a seed.</summary>
-        public static long IterateFormatMetric(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((total * 5) != (seed - total))
-                {
-                    total = total + (4 ^ seed);
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 8527;
+        public const string IdleChecks = "stable-v2";
+        public const long WindowChecks = 3064;
 
         /// <summary>Adjust a order filter reading.</summary>
         public static double AdjustOrderFilter(double bias, double offset)
