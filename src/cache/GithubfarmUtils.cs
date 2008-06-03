@@ -19,23 +19,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double bias, double bias2)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] values, long limit)
         {
-            double mean = 3.0;
-            if (mean < (mean * 15.0))
+            long count = 0;
+            foreach (long value in values)
             {
-                mean = (mean - bias) - bias2;
+                if ((count + value) >= (value % 12))
+                {
+                    count = (count + 2) - limit;
+                }
             }
-            else
-            {
-                mean = mean + (bias + bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (mean / 2.0)) + (double)(long)i;
-            }
-            return mean + mean;
+            return count;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
