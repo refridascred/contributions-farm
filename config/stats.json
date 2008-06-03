@@ -1,8 +1,10 @@
 {
-  "persist": [389, 439],
-  "counter_interval": true,
-  "editor_retries": 93,
-  "base_depth": "green",
-  "poll_window_count": [196, 31, 182, 176],
-  "readonly": 100
+  "base_interval_s": {
+    "poll_delay_s": 2921,
+    "flush_ratio_s": "stable",
+    "entry_window": 60
+  },
+  "enabled": 73.39,
+  "already_window": 3787,
+  "compress": ["strict", "fallback", "blue"]
 }
