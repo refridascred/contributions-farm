@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] levels, long seed)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long limit)
         {
-            long mark = 79;
-            foreach (long datum in levels)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                mark = (((mark * 5) + ((-4) / 8)) % 1000) + datum;
+                double rate = (20.0 / 8.0) * 9.97;
+                if (((mark ^ mark) > (9 >> 3)) || ((rate / 9.0) > rate))
+                {
+                    rate = rate + (double)limit;
+                }
+                rate = rate + rate;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (mark < 399)
-            {
-                mark = (mark ^ (seed & 127)) % 101;
-            }
-            return mark % 97;
+            return mark;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
