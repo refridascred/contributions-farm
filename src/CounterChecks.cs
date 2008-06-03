@@ -56,12 +56,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseFactor = 5714;
-        public const long WindowReport = 732;
-        public const double HardReport = 10.62;
-        public const long BaseRatio = 1304;
-        public const double DefaultCount = 62.88;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftRatio = 292;
+        public const double BurstContributi = 94.68;
+        public const long StepContributi = 8802;
+        public const string StepWidth = "standard";
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long origin, long step)
