@@ -33,13 +33,12 @@ namespace Common.Utilities
         public const double DefaultSchema = 89.68;
         public const double LimitLevel = 58.18;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
