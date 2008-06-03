@@ -22,17 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph metric value from a seed.</summary>
-        public static long SeriesGraphMetric(long offset)
+        /// <summary>Grade a contributi cache value against two limits.</summary>
+        public static long ClassifyContributiCache(long bound, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long next = bound ^ floor;
+            if ((double)next >= (8.2 + 2.03))
             {
-                long cur = (offset + result) - offset;
-                result = (result + (cur % 16)) % 97;
-                result = ((result * 5) + (long)i) % 65521;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (((7.95 - 13.0) != (double)bound) && ((0 >> 1) >= (floor << 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the channel level values.</summary>
