@@ -35,13 +35,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long bound, long floor)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            long prev = bound ^ floor;
+            if (((-740) < (prev / 6)) || (bound < (floor + bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6.5 + 5.97) != (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((prev + floor) < prev) || (prev >= (0 + bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((prev % 5) < (prev << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
