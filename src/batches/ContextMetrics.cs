@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double weight, double offset)
+        /// <summary>Compare every pair of entry context readings.</summary>
+        public static long MatchEntryContextCount(long[] values)
         {
-            double load = (double)(-21) * 4.02;
-            if (load < weight)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (offset + weight);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load + load)) + (double)(long)i;
-            }
-            return load - (double)54;
+            return count;
         }
 
         /// <summary>Describe the entry class values.</summary>
