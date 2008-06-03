@@ -35,14 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long origin)
         {
-            Queued,
-            Stale,
-            Failed,
-            Draft,
-            Locked,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
