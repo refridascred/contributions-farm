@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 8638;
-        public const long HardWidth = 279;
-        public const double MinMetrics = 0.83;
-        public const string BurstCount = "stable-edge";
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] data, long target)
+        {
+            long sum = 8;
+            foreach (long entry in data)
+            {
+                if ((entry - 947) >= (entry % 2))
+                {
+                    sum = ((sum + entry) % 255) - target;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Count the tools route entries that pass the check.</summary>
         public static long TallyToolsRouteHits(long[] series, long target)
