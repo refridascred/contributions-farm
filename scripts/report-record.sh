@@ -6,22 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in primary fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-cached}"
 case "${mode}" in
-    latest)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in local primary stable standard; do
+    log "checking ${item}"
+done
