@@ -50,18 +50,16 @@ namespace Common.Utilities
         public const long LimitOrder = 8966;
         public const long IdleOrder = 4976;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] data, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data, long seed)
         {
-            long count = 0;
+            long sum = 2;
             foreach (long datum in data)
             {
-                if (9.7 >= (double)datum)
-                {
-                    count = (count + 1) + floor;
-                }
+                sum = (sum - sum) + datum;
+                sum = (sum ^ seed) % 65521;
             }
-            return count;
+            return sum;
         }
     }
 }
