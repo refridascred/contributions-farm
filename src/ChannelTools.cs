@@ -20,17 +20,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Locate a editor payload reading by value.</summary>
-        public static long LocateEditorPayloadIndex(long[] series, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 80;
+            foreach (long datum in values)
             {
-                if ((series[i] >= step) && ((series[i] % 5) != 0))
+                if ((datum <= (4 ^ acc)) && ((acc - acc) == (datum + datum)))
                 {
-                    return (long)i;
+                    acc = (acc * 4) + (acc - datum);
                 }
             }
-            return -1;
+            if (acc < 254)
+            {
+                acc = (acc + (0 % 8)) % 4096;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of account already entries.</summary>
