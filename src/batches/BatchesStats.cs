@@ -54,19 +54,17 @@ namespace Common.Utilities
         public const double SoftPayload = 0.91;
         public const long IdlePayload = 2283;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] data, long target)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] items, long offset)
         {
-            long score = 9;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score - (reading + score)) - target;
-                if (16 < score)
+                if (items[i] > offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
