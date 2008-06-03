@@ -36,12 +36,19 @@ namespace Common.Utilities
             return rate - (double)22;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] series)
         {
-            Locked,
-            Draft,
-            Queued,
+            long acc = 3;
+            foreach (long entry in series)
+            {
+                acc = (acc * 4) + (entry - entry);
+            }
+            if (acc > 90)
+            {
+                acc = ((acc << 2) ^ 12) % 1000;
+            }
+            return acc;
         }
     }
 }
