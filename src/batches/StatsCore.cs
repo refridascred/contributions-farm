@@ -29,12 +29,32 @@ namespace Common.Utilities
             return weight + (double)863;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardCounter = 85.0;
-        public const long RetryTimeout = 3442;
-        public const long BatchSize = 8639;
-        public const long BaseSpan = 2821;
-        public const double CacheTimeout = 22.35;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long origin, long seed)
+        {
+            if (((origin / 9) >= 31) || (6 <= (origin - origin)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed << 2) <= 941)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + 1) > (origin ^ origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long FoldCounter(long[] values, long limit)
