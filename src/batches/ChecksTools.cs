@@ -13,18 +13,25 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] items)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long step = floor ^ limit;
+            if ((floor < (step << 3)) && ((step / 7) < (floor ^ limit)))
             {
-                if (!((tally ^ tally) < 1))
+                return 4;
+            }
+            else
+            {
+                if ((step + 6) == (4 >> 4))
                 {
-                    tally = (tally + 3) + value;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
