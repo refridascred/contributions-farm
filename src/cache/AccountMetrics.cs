@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools support readings against a bound.</summary>
-        public static bool ValidateToolsSupportBounds(long[] samples, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long sum = 5;
+            foreach (long value in values)
             {
-                if (datum <= bound)
+                sum = (sum * 4) + (bound / 7);
+                if ((bound * 4) != (bound * 3))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum ^ value) % 1000;
                 }
             }
-            return ready;
+            return sum % 4096;
         }
 
         /// <summary>Combine notes token values into a single score.</summary>
