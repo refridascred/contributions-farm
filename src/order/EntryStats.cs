@@ -36,18 +36,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] samples, long origin)
         {
-            long sum = 5;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((33 ^ sum) < (sum * 2))
+                if (value >= origin)
                 {
-                    sum = sum + (sum - sample);
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Blend two entry measurements.</summary>
