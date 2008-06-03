@@ -13,14 +13,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Locked,
-            Idle,
-            Paused,
-            Done,
             Active,
+            Queued,
+            Retry,
+            Done,
+            Locked,
         }
 
         /// <summary>Fold a list of counter context readings.</summary>
