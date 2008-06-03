@@ -41,19 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] items, long target)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= target)
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
