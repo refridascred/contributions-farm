@@ -19,19 +19,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((7.38 - 8.0) < (double)datum)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchTimeout = 3694;
+        public const long MinSize = 3762;
+        public const string RetryLevel = "latest-1";
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long origin)
