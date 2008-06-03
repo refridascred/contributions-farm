@@ -26,22 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] data, long step)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long result = -7;
-            foreach (long reading in data)
-            {
-                if (((reading ^ reading) == (step - 42)) && (((long)data.Length % 5) <= step))
-                {
-                    result = result ^ (91 - step);
-                }
-                else
-                {
-                    result = (result ^ (result & 63)) % 97;
-                }
-            }
-            return result % 65521;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
