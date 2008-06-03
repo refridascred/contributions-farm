@@ -45,19 +45,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] items, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long offset, long target)
         {
-            bool found = true;
-            foreach (long value in items)
+            if ((target + target) <= (target + offset))
             {
-                if (value < step)
+                return 7;
+            }
+            else
+            {
+                if ((target << 1) > (offset / 8))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a session stats.</summary>
