@@ -14,25 +14,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a contributi cache value against two limits.</summary>
-        public static long ClassifyContributiCache(long bound, long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long next = bound ^ floor;
-            if ((double)next >= (8.2 + 2.03))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((7.95 - 13.0) != (double)bound) && ((0 >> 1) >= (floor << 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Retry,
+            New,
+            Dropped,
         }
 
         /// <summary>Measure how many window stream samples are out of range.</summary>
