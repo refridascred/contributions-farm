@@ -1,6 +1,7 @@
 {
-  "enabled": false,
-  "flush_limit_pct": 6317,
-  "max_threshold_ms": false,
-  "hard_limit_ms": 60
+  "hard_window": "fallback",
+  "burst_timeout_s": [34, 105, 301],
+  "flush_window_count": 53.68,
+  "editor_depth": true,
+  "max_depth": "eu-west"
 }
