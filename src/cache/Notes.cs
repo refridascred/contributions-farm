@@ -14,15 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double ratio, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] values)
         {
-            double drift = span;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                drift = ((drift - span) + (double)(long)i) - ratio;
+                if ((datum + seen) <= (seen + datum))
+                {
+                    seen = seen + 2;
+                }
             }
-            return drift + (double)433;
+            return seen;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
