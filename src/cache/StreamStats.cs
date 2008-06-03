@@ -19,19 +19,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next queue order value from a seed.</summary>
-        public static long IterateQueueOrder(long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long seed)
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((10.0 * 1.34) != (double)target)
-                {
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                result = ((result * 4) + (seed + 4)) % 97;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
