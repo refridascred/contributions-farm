@@ -52,22 +52,19 @@ namespace Common.Utilities
         public const long DefaultRecord = 7344;
         public const long BatchRecord = 312;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] items, long offset)
         {
-            long result = 8;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (!((268 + entry) >= (entry >> 4)))
+                if (cell > offset)
                 {
-                    result = (result ^ 5) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (result > (-9))
-            {
-                result = (result + (result + (-2))) % 255;
-            }
-            return result % 65521;
+            return valid;
         }
     }
 }
