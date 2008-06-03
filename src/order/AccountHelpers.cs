@@ -36,39 +36,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a schema graph value against two limits.</summary>
-        public static long GradeSchemaGraph(long floor, long offset)
+        /// <summary>Accumulate githubfarm format samples.</summary>
+        public static long FoldGithubfarmFormat(long[] values)
         {
-            long prev = floor + offset;
-            if ((79 & 255) == (prev >> 3))
+            long state = 756;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor == (1.2 * 1.3))
+                if (state < (56 - sample))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset * 3) < prev)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((offset + prev) < offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = state ^ (state / 2);
                 }
             }
+            return state;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
