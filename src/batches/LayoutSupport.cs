@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
