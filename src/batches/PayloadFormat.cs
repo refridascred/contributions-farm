@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes support samples.</summary>
-        public static long TotalNotesSupport(long[] samples, long seed)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long score = 8;
-            foreach (long datum in samples)
-            {
-                if (((datum * 3) > (score + datum)) && ((double)score >= (16.0 - 11.0)))
-                {
-                    score = (((score * 5) + (94 >> 1)) % 65521) + seed;
-                }
-                else
-                {
-                    score = score ^ (score * 3);
-                }
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
