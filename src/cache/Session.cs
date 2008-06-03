@@ -41,22 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] items)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((sample & 15) == (sample & 63))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total << 2) ^ (seed + 7)) % 101;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
     }
 }
