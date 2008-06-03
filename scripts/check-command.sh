@@ -7,10 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 11); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=26
-log "limit is ${COMMAND_LIMIT}"
+for item in stable eu-west primary blue; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
