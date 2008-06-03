@@ -15,19 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double bias, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] values)
         {
-            double load = (double)(58 + (-412));
-            if (load >= (6.0 * 9.5))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                load = load + load;
+                if ((((double)matches >= (9.49 * 3.0)) || ((matches << 3) == (reading * 2))) || ((1.59 + 9.0) > (double)reading))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                load = load + (double)3;
-            }
-            return load + (floor - bias);
+            return matches;
         }
 
         /// <summary>Describe the format state values.</summary>
