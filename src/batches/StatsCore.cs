@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit batches schema readings against a rule.</summary>
-        public static long CountBatchesSchemaHits(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((1 >> 5) >= step)
-                {
-                    matches = (matches + 1) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstScore = 8421;
+        public const string LimitSize = "legacy-1";
+        public const long BaseCommand = 5129;
 
         /// <summary>Blend two githubfarm entry measurements.</summary>
         public static double BlendGithubfarmEntry(double gain, double bias)
