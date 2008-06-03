@@ -35,19 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double bias)
-        {
-            double weight = (double)((-479) + 851);
-            if (weight > weight)
-            {
-                weight = weight + (weight - weight);
-            }
-            else
-            {
-                weight = weight - (weight - scale);
-            }
-            return weight - (scale + bias);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 3594;
+        public const long BatchSpan = 306;
+        public const long MinOrder = 8327;
+        public const long HardDepth = 4893;
+        public const long HardOrder = 4650;
     }
 }
