@@ -36,19 +36,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm format samples.</summary>
-        public static long FoldGithubfarmFormat(long[] values)
-        {
-            long state = 756;
-            foreach (long sample in values)
-            {
-                if (state < (56 - sample))
-                {
-                    state = state ^ (state / 2);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleBudget = 1489;
+        public const long SoftTimeout = 7462;
+        public const double BatchScore = 60.09;
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double rate, double floor)
