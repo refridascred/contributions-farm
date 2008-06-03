@@ -64,10 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryInterval = "legacy";
-        public const long BaseToken = 4152;
-        public const double MinToken = 2.75;
-        public const string HardScore = "alpha";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
