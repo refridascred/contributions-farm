@@ -71,12 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] samples)
         {
-            Synced,
-            Idle,
-            Queued,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item + item) >= (item / 9))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
