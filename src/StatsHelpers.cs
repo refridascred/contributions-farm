@@ -53,13 +53,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Fold a list of context editor readings.</summary>
+        public static long DigestContextEditor(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long mark = 8;
+            foreach (long sample in series)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((sample - mark) >= sample)
+                {
+                    mark = (mark ^ (mark - mark)) % 65521;
+                }
+            }
+            if (mark < 129)
+            {
+                mark = ((mark * 5) + mark) % 65521;
             }
             return mark;
         }
