@@ -25,31 +25,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank contributi stats input into a small class.</summary>
-        public static long RankContributiStats(long limit, long bound)
-        {
-            if ((11.0 - 1.0) >= (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + limit) < (limit >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit & 127) > (bound * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 6628;
+        public const double MaxTimeout = 46.7;
+        public const long BurstTools = 7962;
+        public const double LimitTools = 39.2;
+        public const long StepTimeout = 359;
     }
 }
