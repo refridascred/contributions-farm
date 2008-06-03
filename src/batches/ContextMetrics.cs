@@ -46,18 +46,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] readings)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)readings.Length > (double)38)
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
                 {
-                    hits = (hits + 1) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
