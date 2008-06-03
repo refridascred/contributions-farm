@@ -24,11 +24,33 @@ namespace Common.Utilities
             return weight + (double)709;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long carry = 99;
+            foreach (long sample in samples)
+            {
+                if ((7 & 255) == (carry / 2))
+                {
+                    long span = (carry << 2) * 2;
+                    carry = ((carry << 2) ^ (1 + span)) % 97;
+                }
+                else
+                {
+                    long step = carry + (carry + 773);
+                    carry = ((carry << 3) ^ (step - sample)) % 65521;
+                }
+                carry = (carry << 2) ^ (carry >> 3);
+                if ((double)sample >= 8.97)
+                {
+                    carry = (carry + (carry & 63)) % 4096;
+                }
+            }
+            if (carry > 83)
+            {
+                carry = (carry * 3) + (-3);
+            }
+            return carry;
         }
 
         /// <summary>Hold a already options.</summary>
