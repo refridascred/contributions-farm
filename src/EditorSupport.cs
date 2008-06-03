@@ -69,13 +69,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Retry,
-            Paused,
-            Dropped,
-            Synced,
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
