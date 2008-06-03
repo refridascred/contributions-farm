@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long MaxBuffer = 6382;
         public const long BaseBuffer = 1133;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] levels, long target)
         {
-            Queued,
-            Paused,
-            Stale,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
