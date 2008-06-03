@@ -68,31 +68,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long step, long offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if (1 > offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset / 4) >= (step + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset << 2) >= step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Dropped,
         }
     }
 }
