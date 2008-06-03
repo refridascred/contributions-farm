@@ -28,15 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] data, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if (sample > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
