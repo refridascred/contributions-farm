@@ -25,18 +25,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((9.2 - 12.0) != (double)target)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 9359;
+        public const long BaseOrder = 17;
+        public const string DefaultWidth = "primary-edge";
+        public const long SoftDepth = 6188;
     }
 }
