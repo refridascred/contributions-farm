@@ -97,15 +97,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] readings, long step)
-        {
-            long mix = 21;
-            foreach (long sample in readings)
-            {
-                mix = (mix + (874 + sample)) - step;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowSpan = 776;
+        public const long MinStream = 9205;
+        public const long LimitStream = 9298;
+        public const string RetryRatio = "standard-1";
     }
 }
