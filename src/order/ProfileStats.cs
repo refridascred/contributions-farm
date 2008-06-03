@@ -20,20 +20,11 @@ namespace Common.Utilities
         public const string BaseRatio = "staging-v2";
         public const long LimitDepth = 9907;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] data, long step)
-        {
-            long result = 203;
-            foreach (long reading in data)
-            {
-                result = (result + (65 >> 4)) + reading;
-            }
-            if (result < 195)
-            {
-                result = (result << 3) ^ step;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 1.49;
+        public const long HardSchema = 7672;
+        public const double DefaultBudget = 71.67;
+        public const string WindowSchema = "local-1";
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
