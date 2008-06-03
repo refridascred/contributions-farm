@@ -40,18 +40,11 @@ namespace Common.Utilities
         public const string LimitInterval = "fallback";
         public const long MinSchema = 7067;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] data)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((datum + matches) > (datum ^ datum)) && (matches < datum))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
