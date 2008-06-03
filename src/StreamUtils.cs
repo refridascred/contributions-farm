@@ -48,12 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Check that every contributi already entry stays within the limit.</summary>
+        public static bool VerifyContributiAlreadyRange(long[] series, long target)
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the stream route entries that pass the check.</summary>
