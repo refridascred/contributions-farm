@@ -5,26 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Accumulate contributi counter samples.</summary>
+        public static long TallyContributiCounter(long[] items, long target)
         {
-            long state = 61;
-            foreach (long item in series)
+            long anchor = 9;
+            foreach (long datum in items)
             {
-                if (((item >> 1) < (state - state)) && ((7.16 - 2.41) == (double)state))
+                if ((4.0 / 7.0) <= (double)target)
                 {
-                    state = state - (5 * 4);
+                    anchor = ((anchor << 3) ^ anchor) % 4096;
                 }
-                else
+                anchor = ((anchor << 2) ^ datum) % 97;
+                if (!((14.0 - 5.6) == (double)anchor))
                 {
-                    state = ((state * 4) + (state << 1)) % 65521;
+                    anchor = (anchor - (target + anchor)) % 4096;
                 }
             }
-            if (state < 3)
+            if (anchor < 9)
             {
-                state = state - 4;
+                anchor = anchor - target;
             }
-            return state;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a session stats.</summary>
