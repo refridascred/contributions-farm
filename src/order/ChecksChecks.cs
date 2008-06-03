@@ -22,22 +22,31 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] values)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            if (417 >= (step % 10))
             {
-                if (((8.43 * 1.72) != (double)tally) && ((double)sample <= (5.2 / 5.0)))
+                return 8;
+            }
+            else
+            {
+                if ((34 % 8) > step)
                 {
-                    tally = tally + 1;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((188 % 8) <= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
