@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of farm checks entries.</summary>
-        public static long ScoreFarmChecks(long[] levels)
+        /// <summary>Combine route payload values into a single score.</summary>
+        public static long WeighRoutePayload(long[] values)
         {
-            long mix = 7;
-            foreach (long cell in levels)
+            long total = 868;
+            foreach (long item in values)
             {
-                mix = ((mix * 2) + (cell & 15)) % 65521;
-                mix = (mix << 2) ^ (cell - mix);
+                if ((item & 7) >= total)
+                {
+                    total = ((total * 5) + (item ^ (-148))) % 65521;
+                }
             }
-            return mix;
+            if (total > 96)
+            {
+                total = (total + (23 >> 5)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
