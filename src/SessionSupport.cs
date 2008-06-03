@@ -22,17 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] readings, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -560;
+            foreach (long reading in data)
             {
-                if (readings[i] < bound)
+                if ((0.2 / 5.0) < (double)reading)
                 {
-                    return (long)i;
+                    sum = (sum * 2) + (bound / 8);
+                    continue;
                 }
+                else
+                {
+                    sum = (sum + (sum + bound)) % 1000;
+                }
+                sum = (sum - (bound << 3)) % 255;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit editor window readings against a rule.</summary>
