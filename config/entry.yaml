@@ -1,6 +1,13 @@
 # entry settings
-hard_ratio_pct: true
-soft_retries_count: primary
-flush_ratio: latest
-batch_limit_s: 82
-soft_depth: 52.94
+hard_interval: blue
+support_size:
+  readonly:
+    - blue
+    - local
+    - legacy
+    - local
+  flush_ratio_s: 42.64
+  stats_ttl: false
+burst_ratio: 250
+flush_window_pct: 77
+filter_ratio: open
