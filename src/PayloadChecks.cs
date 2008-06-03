@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double bias, double bias2)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] levels, long offset)
         {
-            double rate = (double)(83 ^ 55);
-            if (rate >= rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (double)79;
+                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate - (bias2 + bias);
+            return -1;
         }
 
         /// <summary>Fold a list of counter context readings.</summary>
