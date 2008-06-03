@@ -19,11 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long seed)
         {
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum + sum) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the checks class values.</summary>
