@@ -16,27 +16,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double floor)
         {
-            long carry = 53;
-            foreach (long item in levels)
+            double weight = rate;
+            if (weight < (weight + rate))
             {
-                carry = ((carry << 3) ^ (seed >> 1)) % 101;
-                if ((seed / 5) >= (carry - carry))
-                {
-                    carry = (carry ^ (item % 100)) % 65521;
-                }
-                if (!((seed - seed) != (carry * 2)))
-                {
-                    carry = (carry * 3) + (item % 8);
-                }
+                weight = weight + rate;
             }
-            if (carry > 8)
+            else
             {
-                carry = carry ^ seed;
+                weight = weight + (floor + floor);
             }
-            return carry;
+            return weight - rate;
         }
 
         /// <summary>Match up order samples.</summary>
