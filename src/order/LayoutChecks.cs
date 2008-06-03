@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            Draft,
-            New,
-            Done,
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((853 * 5) != (floor / 4))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor << 3)) % 1000;
+                    anchor = anchor + (anchor + 40);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the buffer status values.</summary>
