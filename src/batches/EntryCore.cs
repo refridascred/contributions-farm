@@ -44,17 +44,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the contributi commits series from a seed.</summary>
-        public static long DeriveContributiCommits(long step)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] values, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 4) + step) % 97;
-                mix = (mix - (step - (long)i)) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((values[i] >= bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
