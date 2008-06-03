@@ -26,13 +26,14 @@ namespace Common.Utilities
             return scale + (double)75;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            Closed,
+            Synced,
+            Paused,
+            Active,
+            Idle,
         }
     }
 }
