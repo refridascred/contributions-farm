@@ -23,18 +23,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] items, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mark = 7;
+            foreach (long sample in readings)
             {
-                if (limit <= (7 + limit))
+                if ((sample % 16) >= (sample + sample))
                 {
-                    tally = (tally + 1) - reading;
+                    mark = ((mark << 2) ^ (mark / 4)) % 101;
                 }
             }
-            return tally;
+            if (mark > 513)
+            {
+                mark = mark - (mark & 15);
+            }
+            return mark;
         }
 
         /// <summary>Match up window samples.</summary>
