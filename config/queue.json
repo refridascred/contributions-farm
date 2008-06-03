@@ -1,13 +1,6 @@
 {
-  "enabled": {
-    "sync_depth": 100,
-    "soft_ratio": false,
-    "cluster_size": false,
-    "default_threshold": [240, 35, 6, 484],
-    "channel_window": 49.95,
-    "max_depth_ms": true
-  },
-  "flush_ttl_ms": ["green", "open", "open", "green"],
-  "poll_delay": false,
-  "burst_ttl_pct": 27.82
+  "token_retries": 5446,
+  "cache_ttl_ms": ["strict", "fallback", "primary"],
+  "compress": 215,
+  "metrics_limit": "blue"
 }
