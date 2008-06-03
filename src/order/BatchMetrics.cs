@@ -81,18 +81,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] data)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!((0.17 + 0.12) >= (double)cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Ready,
+            Paused,
+            Synced,
+            Failed,
         }
     }
 }
