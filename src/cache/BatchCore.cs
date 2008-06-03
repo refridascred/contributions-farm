@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long BurstBatches = 2155;
         public const long DefaultSpan = 8656;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Compare every pair of format batches readings.</summary>
+        public static long PairFormatBatchesCount(long[] values)
         {
-            long state = 416;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((item & 127) != (930 >> 4)) || (311 >= state))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state * 5) + ((long)series.Length & 255)) % 255;
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
