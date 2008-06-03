@@ -1,7 +1,12 @@
 # entry settings
-retry_window_s:
-  - 257
-  - 260
-  - 214
-flush_interval_s: 52
-retry_size_count: fallback
+cache_depth_ms: stable
+max_delay_pct: 94.05
+idle_delay: 92.23
+warm_threshold_s:
+  - 14
+  - 405
+  - 265
+hard_ttl_pct:
+  - 216
+  - 147
+  - 231
