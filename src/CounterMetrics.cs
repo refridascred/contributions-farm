@@ -20,11 +20,38 @@ namespace Common.Utilities
         public const string BatchRoute = "local-edge";
         public const long SoftRoute = 7360;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Classify a notes token pair into a bucket.</summary>
+        public static long GradeNotesToken(long limit, long step)
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((30 ^ limit) < (step << 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step << 1) >= (step - limit)) || (limit >= step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (8.8 <= (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit & 63) != (limit + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache entry.</summary>
