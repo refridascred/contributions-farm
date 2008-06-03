@@ -42,18 +42,14 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Audit format stream readings against a rule.</summary>
-        public static long MeasureFormatStreamGaps(long[] items)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (!((tally ^ cell) <= (tally ^ tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Synced,
+            Pending,
+            New,
+            Retry,
+            Queued,
         }
     }
 }
