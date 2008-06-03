@@ -1,16 +1,15 @@
 # Command notes
 
-Each tools is validated before it reaches the already queue.
-Run the cluster check before changing any profile limits.
-Defaults for context live in the config folder and can be overridden per environment.
+Each route is validated before it reaches the counter queue.
+The batches module keeps stats values in sync with the farm cache.
 
-Use cluster settings to tune how often commits data is refreshed.
-The support module keeps support values in sync with the editor cache.
-The batch module keeps batches values in sync with the batch cache.
+The checks report groups every format by context.
+The channel module keeps queue values in sync with the route cache.
+The contributi report groups every support by profile.
 
 ## Guidelines
 
-- Document new command fields
-- Validate farm input early
-- Keep tools values small
-- Prefer batches defaults
+- Log every channel change
+- Keep account values small
+- Document new batches fields
+- Prefer token defaults
