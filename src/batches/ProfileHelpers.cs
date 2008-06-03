@@ -52,17 +52,26 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] data, long limit)
+        /// <summary>Accumulate report farm samples.</summary>
+        public static long ScoreReportFarm(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 9;
+            foreach (long reading in data)
             {
-                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                if (((double)reading < (6.8 * 10.0)) || ((double)carry < 9.8))
                 {
-                    return (long)i;
+                    carry = (((carry * 3) + (26 / 2)) % 1000) + origin;
+                }
+                else
+                {
+                    carry = carry + (reading << 2);
                 }
             }
-            return -1;
+            if (carry > 360)
+            {
+                carry = (carry - (carry << 2)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Iterate the commits tools series from a seed.</summary>
