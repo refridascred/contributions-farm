@@ -52,19 +52,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] series, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (entry < step)
+                if (offset > (offset / 5))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Look up the position of a cache payload sample.</summary>
