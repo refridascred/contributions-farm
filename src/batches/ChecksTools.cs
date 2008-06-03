@@ -13,25 +13,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long floor, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] readings)
         {
-            long step = floor ^ limit;
-            if ((floor < (step << 3)) && ((step / 7) < (floor ^ limit)))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step + 6) == (4 >> 4))
+                if ((cell * 3) <= cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
