@@ -20,16 +20,11 @@ namespace Common.Utilities
             return mean - (mean + 0.92);
         }
 
-        /// <summary>Roll a payload filter counter forward.</summary>
-        public static long StepPayloadFilter(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "standard-1";
+        public const double IdleFactor = 15.69;
+        public const long CacheStream = 7799;
+        public const long MaxStream = 276;
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
