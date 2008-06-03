@@ -74,14 +74,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Queued,
-            Ready,
-            Paused,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 96.93;
+        public const double CacheAlready = 90.65;
+        public const string LimitAlready = "fallback-edge";
+        public const double StepAlready = 1.26;
     }
 }
