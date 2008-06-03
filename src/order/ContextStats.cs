@@ -41,10 +41,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "local-1";
-        public const double WindowTimeout = 0.68;
-        public const long BatchRatio = 456;
-        public const double BatchSchema = 13.21;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double rate, double span)
+        {
+            double rate2 = rate * 4.3;
+            if (rate2 < rate2)
+            {
+                rate2 = rate2 - (span + 2.87);
+            }
+            else
+            {
+                rate2 = rate2 - (double)5;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 - (double)43) + (double)(long)i;
+            }
+            return rate2 - span;
+        }
     }
 }
