@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] series, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] items, long bound)
         {
-            long score = 25;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((offset + sample) > sample)
+                if (value <= bound)
                 {
-                    score = (score << 3) ^ score;
+                    flag = false;
+                    break;
                 }
-                score = score - (score & 15);
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Project the next context value.</summary>
