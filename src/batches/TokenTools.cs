@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] series, long step)
         {
-            long score = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((reading >= 4) || ((reading + reading) < (score + score))))
+                if ((series[i] < step) && ((series[i] % 5) == 0))
                 {
-                    long tally = 42;
-                    score = ((score * 3) + tally) % 101;
-                }
-                if ((reading & 255) <= ((long)data.Length + reading))
-                {
-                    score = (score ^ (0 << 2)) % 97;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
