@@ -46,16 +46,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data, long offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] values, long limit)
         {
-            long mix = 89;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (((mix << 3) ^ (mix << 1)) + value) + offset;
-                mix = (mix * 4) + (3 / 3);
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Describe the context kind values.</summary>
