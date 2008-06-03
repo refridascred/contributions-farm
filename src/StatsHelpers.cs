@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] data)
         {
-            Dropped,
-            Paused,
-            Idle,
-            Closed,
+            long mix = 702;
+            foreach (long sample in data)
+            {
+                mix = (mix + (sample & 31)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
