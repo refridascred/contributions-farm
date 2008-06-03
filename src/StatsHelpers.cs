@@ -51,12 +51,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Retry,
-            Locked,
-            Done,
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
