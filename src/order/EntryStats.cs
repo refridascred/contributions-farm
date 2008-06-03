@@ -23,19 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] values, long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            double load = (bias * 6.6) - (18.0 + scale);
+            if (load <= bias)
             {
-                if (sample < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - bias;
             }
-            return flag;
+            else
+            {
+                load = load + (double)89;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (6.02 * 9.19)) - (double)(long)i;
+            }
+            return load - (7.1 / 3.0);
         }
 
         /// <summary>Roll a token counter forward.</summary>
