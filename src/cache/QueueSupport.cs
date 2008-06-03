@@ -43,20 +43,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double ratio, double span)
         {
-            long mix = 6;
-            foreach (long sample in samples)
+            double gain = 7.5;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((-572) < (sample - sample)))
-                {
-                    mix = mix ^ (sample - 58);
-                    break;
-                }
-                mix = ((mix * 4) + (mix * 2)) % 4096;
+                gain = (((gain - (double)64) + (double)(long)i) + ratio) + span;
             }
-            return mix;
+            return gain + gain;
         }
     }
 }
