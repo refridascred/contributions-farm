@@ -82,19 +82,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] values, long offset)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowLevel = "open";
+        public const long WindowFactor = 1371;
+        public const double StepCount = 91.77;
     }
 }
