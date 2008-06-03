@@ -21,19 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] values, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (cell < limit)
+                if (datum < limit)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
