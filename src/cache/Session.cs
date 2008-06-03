@@ -48,11 +48,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 4832;
-        public const long StepFactor = 7076;
-        public const string SoftInterval = "standard";
-        public const string IdleSpan = "legacy-1";
-        public const long DefaultSpan = 7729;
+        /// <summary>Measure how many queue window samples are out of range.</summary>
+        public static long AuditQueueWindowOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (seen < (long)data.Length)
+                {
+                    seen = (seen + 2) - entry;
+                }
+            }
+            return seen;
+        }
     }
 }
