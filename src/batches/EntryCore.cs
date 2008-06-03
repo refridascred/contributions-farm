@@ -39,12 +39,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long bound)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = carry - (bound - bound);
+                if (!(((bound & 1) > ((-68) & 255)) && (3 >= bound)))
+                {
+                    carry = carry ^ carry;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
