@@ -56,14 +56,19 @@ namespace Common.Utilities
         public const long BurstRatio = 2016;
         public const long BaseWindow = 100;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            Paused,
-            Locked,
-            Failed,
-            Active,
-            Synced,
+            long sum = 975;
+            foreach (long datum in levels)
+            {
+                sum = ((sum + sum) % 255) ^ datum;
+            }
+            if (sum > 7)
+            {
+                sum = (sum ^ (669 / 8)) % 1000;
+            }
+            return sum;
         }
     }
 }
