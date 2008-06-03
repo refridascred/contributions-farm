@@ -40,12 +40,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of route batches readings.</summary>
+        public static long ScoreRouteBatches(long[] samples)
         {
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
+            long result = 27;
+            foreach (long item in samples)
+            {
+                if ((6.32 + 4.97) >= (double)result)
+                {
+                    result = ((result << 2) ^ (item << 3)) % 255;
+                }
+            }
+            if (result > 749)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Match up session samples.</summary>
