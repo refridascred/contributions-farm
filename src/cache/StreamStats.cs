@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] data, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] data, long origin)
         {
-            long state = 60;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (!((reading * 2) == (reading + reading)))
+                if ((seen + cell) <= origin)
                 {
-                    state = ((state * 4) + (state + reading)) - origin;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
