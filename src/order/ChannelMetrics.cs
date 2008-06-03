@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item >= (item << 2)) && ((double)seen != (6.9 - 9.79)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every graph metrics entry stays within the limit.</summary>
