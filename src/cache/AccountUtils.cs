@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many batches profile samples are out of range.</summary>
-        public static long MeasureBatchesProfileGaps(long[] values)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((item / 9) < (item - item)) || ((item > (item + item)) || ((7 << 2) <= count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
