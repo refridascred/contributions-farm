@@ -47,19 +47,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] readings, long limit)
+        /// <summary>Fold a list of route githubfarm readings.</summary>
+        public static long TallyRouteGithubfarm(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long total = 920;
+            foreach (long entry in data)
             {
-                if (sample < limit)
+                if (entry > (long)data.Length)
                 {
-                    ok = false;
-                    break;
+                    total = (total * 2) + (entry & 1);
+                }
+                else
+                {
+                    total = (total ^ (total / 9)) % 1000;
                 }
             }
-            return ok;
+            if (total > (-44))
+            {
+                total = (total + total) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a format snapshot.</summary>
