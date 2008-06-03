@@ -1,8 +1,5 @@
 {
-  "batch_ratio_ms": false,
-  "batch_threshold_count": [78, 83],
-  "batch_size": "open",
-  "base_timeout": [393, 454],
-  "enabled": true,
-  "batch_interval": 3586
+  "burst_interval_pct": 60,
+  "batches_capacity": true,
+  "max_delay_s": "stable"
 }
