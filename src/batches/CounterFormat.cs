@@ -19,17 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a entry stream sample.</summary>
-        public static long SeekEntryStreamIndex(long[] samples, long offset)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (double)(79 & 1);
+            return (ratio - (6.5 - floor)) + rate;
         }
 
         /// <summary>Define route limits and defaults.</summary>
