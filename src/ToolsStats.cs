@@ -51,20 +51,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch entry readings.</summary>
-        public static long TallyBatchEntry(long[] data, long floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long floor, long target)
         {
-            long acc = 61;
-            foreach (long sample in data)
+            if ((floor % 24) >= 0)
             {
-                long matches = (sample / 7) & 127;
-                if (!((sample >= (matches * 3)) || ((9.8 / 3.0) >= (double)floor)))
-                {
-                    matches = ((matches * 4) + (matches - matches)) % 101;
-                }
-                acc = (acc * 3) + (floor & 1);
+                return 1;
             }
-            return acc % 97;
+            else
+            {
+                if ((target & 255) > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Combine farm batch values into a single score.</summary>
