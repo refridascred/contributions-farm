@@ -51,15 +51,11 @@ namespace Common.Utilities
         public const long LimitOrder = 8966;
         public const long IdleOrder = 4976;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 9440;
+        public const long MaxStream = 8991;
+        public const string HardWidth = "open-v2";
+        public const double MinStream = 42.01;
+        public const long MaxFactor = 8537;
     }
 }
