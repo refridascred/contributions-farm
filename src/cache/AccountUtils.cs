@@ -28,21 +28,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 3405;
+        public const long BaseStats = 4497;
+        public const string StepSize = "staging";
+        public const double StepLevel = 63.54;
     }
 }
