@@ -1,7 +1,5 @@
 {
-  "max_retries": false,
-  "readonly": "eu-west",
-  "burst_size_s": 46.88,
-  "burst_interval": [233, 354, 38, 339],
-  "flush_limit": 31.07
+  "warm_retries": false,
+  "max_size_s": 100,
+  "soft_window": "green"
 }
