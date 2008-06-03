@@ -52,18 +52,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] series, long offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (offset > (offset / 5))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
+            Ready,
+            Active,
+            Queued,
         }
 
         /// <summary>Look up the position of a cache payload sample.</summary>
