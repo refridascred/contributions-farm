@@ -30,22 +30,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batch channel entries that pass the check.</summary>
-        public static long CountBatchChannelOutliers(long[] series)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long span = offset + step;
+            if ((step / 9) <= (span >> 3))
             {
-                if ((count + entry) < (3 >> 4))
+                return 7;
+            }
+            else
+            {
+                if (!((double)offset > (double)89))
                 {
-                    count = count + 3;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two context measurements.</summary>
