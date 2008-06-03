@@ -1,22 +1,5 @@
 # entry settings
-retry_ratio: stable
-max_size:
-  cache_timeout: 43.86
-  batch_delay_ms: 9981
-  readonly: 60
-  compress: standard
-  dry_run:
-    queue_capacity: stable
-    hard_delay:
-      - 204
-      - 443
-      - 369
-      - 113
-    warm_window: 1024
-    max_window_ms: 18.82
-    base_threshold: true
-    notes_timeout: stable
-  account_ttl:
-    - blue
-    - eu-west
-batch_ttl: strict
+soft_ttl: 12.99
+batch_interval_s: 30
+route_retries: 79
+persist: edge
