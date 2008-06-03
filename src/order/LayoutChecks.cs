@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((853 * 5) != (floor / 4))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor << 3)) % 1000;
-                    anchor = anchor + (anchor + 40);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheSpan = 5493;
+        public const long MaxBuffer = 6382;
+        public const long BaseBuffer = 1133;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
