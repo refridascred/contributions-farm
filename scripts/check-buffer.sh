@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local edge standard primary; do
+for item in legacy cached strict open; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
+mode="${1:-latest}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
