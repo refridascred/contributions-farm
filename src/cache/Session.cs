@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Count the editor support entries that pass the check.</summary>
+        public static long AuditEditorSupportHits(long[] data)
         {
-            long total = 84;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                total = (((total << 3) ^ (total ^ total)) % 97) + cell;
+                if (!((10.0 - 2.68) >= (double)entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total > 3)
-            {
-                total = (total * 3) + total;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
