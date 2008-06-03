@@ -14,12 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (tally >= (tally - tally))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
