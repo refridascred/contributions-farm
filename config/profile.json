@@ -1,8 +1,10 @@
 {
-  "cache_timeout": true,
-  "command_depth": [500, 487, 86, 183],
-  "cache_capacity_ms": "latest",
-  "base_size": 25.31,
-  "notes_limit": "latest",
-  "default_retries": 41.81
+  "retry_ratio": false,
+  "compress": {
+    "enabled": "blue",
+    "cache_retries_ms": true,
+    "dry_run": true
+  },
+  "idle_ratio_ms": 25.06,
+  "warm_ratio": 8164
 }
