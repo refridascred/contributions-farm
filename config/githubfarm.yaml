@@ -1,9 +1,18 @@
 # githubfarm settings
-verbose: open
+window_threshold:
+  - latest
+  - blue
+  - eu-west
+  - fallback
+dry_run: 30
+base_capacity_pct: local
+persist: 3393
 max_limit:
-  - 25
-  - 152
-  - 399
-  - 394
-already_retries: staging
-default_interval_count: 9.29
+  warm_size_ms:
+    - 163
+    - 69
+    - 63
+    - 68
+  notes_ttl: blue
+  payload_delay: 22
+cache_ratio_ms: 6031
