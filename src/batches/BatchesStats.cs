@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long seed, long seed2)
+        /// <summary>Iterate the profile notes series from a seed.</summary>
+        public static long IterateProfileNotes(long limit)
         {
-            if ((-37) >= seed2)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 + seed) >= seed2)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 2;
+                    acc = (acc - (limit + (long)i2)) % 255;
+                    acc = (acc + ((long)i % 60)) % 255;
                 }
-                else
-                {
-                    if (!((seed + seed) < (81 >> 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((0.75 / 6.0) == (double)seed) || ((seed2 % 7) >= (seed - seed2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Describe the buffer state values.</summary>
