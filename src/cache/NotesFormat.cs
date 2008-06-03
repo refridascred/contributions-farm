@@ -18,13 +18,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double scale, double floor)
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            double gain = scale;
+            if (gain > 6.9)
+            {
+                gain = gain - (floor / 3.0);
+            }
+            return gain - gain;
         }
     }
 }
