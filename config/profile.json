@@ -1,25 +1,7 @@
 {
-  "compress": 29.11,
-  "min_retries_s": true,
-  "strict": 26,
-  "max_ratio_ms": 62.2,
-  "farm_depth": {
-    "cache_ratio_count": {
-      "retry_depth_s": "local",
-      "max_retries_s": 49.57,
-      "order_timeout": 3.01,
-      "max_size_s": "edge"
-    },
-    "schema_delay": 35.42,
-    "readonly": {
-      "enabled": 250,
-      "audit": "cached",
-      "retry_timeout_s": true,
-      "flush_window": 500,
-      "notes_size": "primary"
-    },
-    "farm_capacity": 28.27,
-    "window_limit": 100,
-    "route_ratio": 9060
-  }
+  "batch_limit": "eu-west",
+  "audit": 90,
+  "dry_run": false,
+  "strict": false,
+  "verbose": true
 }
