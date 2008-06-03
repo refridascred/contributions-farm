@@ -29,18 +29,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxCount = 1570;
+        public const string RetryTimeout = "open-v2";
+        public const long SoftQueue = 9516;
+        public const long MinQueue = 2042;
+        public const long StepScore = 1188;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
