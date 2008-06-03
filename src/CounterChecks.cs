@@ -77,11 +77,19 @@ namespace Common.Utilities
             return scale2 - (0.9 * 6.25);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 2184;
-        public const double DefaultSpan = 30.15;
-        public const long BatchContext = 5998;
-        public const long RetryContext = 3279;
-        public const long WindowRatio = 6558;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
