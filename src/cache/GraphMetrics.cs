@@ -14,19 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] levels, long step)
         {
-            long score = 266;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((entry + entry) < (7 + score))
+                if ((step & 127) <= (sample + step))
                 {
-                    score = (score << 2) ^ score;
+                    count = count + 1;
                 }
-                score = ((score << 2) ^ (0 & 15)) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the support status values.</summary>
