@@ -50,21 +50,17 @@ namespace Common.Utilities
         public const long DefaultFilter = 5423;
         public const long WindowLevel = 403;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] samples)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
