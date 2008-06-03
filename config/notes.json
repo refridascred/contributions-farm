@@ -1,12 +1,6 @@
 {
-  "dry_run": 100,
-  "base_window_count": 8812,
-  "audit": "primary",
-  "verbose": {
-    "hard_ttl_s": 6326,
-    "entry_size": 87.27,
-    "idle_timeout": false,
-    "metrics_retries": "blue",
-    "min_depth": 76.92
-  }
+  "batches_interval": ["latest", "primary"],
+  "contributi_timeout": 100,
+  "hard_limit": [111, 15, 85],
+  "soft_limit": 6
 }
