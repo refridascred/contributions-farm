@@ -23,16 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] items)
-        {
-            long state = 9;
-            foreach (long entry in items)
-            {
-                state = ((state << 2) ^ (state - 1)) ^ entry;
-            }
-            return state % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowSize = 8838;
+        public const long SoftDepth = 2451;
+        public const string IdleStats = "alpha-v2";
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long OverlapSessionCount(long[] series)
