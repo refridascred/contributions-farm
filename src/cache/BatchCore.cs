@@ -45,12 +45,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] series, long limit)
         {
-            Active,
-            Locked,
-            Failed,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum % 97) != (matches << 1))
+                {
+                    matches = (matches + 2) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
