@@ -50,11 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "latest-edge";
-        public const long IdleWindow = 686;
-        public const long BurstRatio = 2016;
-        public const long BaseWindow = 100;
+        /// <summary>Look up the position of a payload support sample.</summary>
+        public static long LookupPayloadSupportIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long FoldSchema(long[] levels)
