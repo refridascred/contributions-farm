@@ -39,22 +39,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] samples, long step)
+        /// <summary>Classify a window notes pair into a bucket.</summary>
+        public static long BucketWindowNotes(long seed, long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            if (((double)limit != (double)seed) && ((seed << 1) <= (seed % 3)))
             {
-                if ((3.58 * 4.42) != (double)step)
+                return 2;
+            }
+            else
+            {
+                if ((double)seed > (0.49 / 7.0))
                 {
-                    count = (count + 1) + cell;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a context header.</summary>
