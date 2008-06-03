@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Blend two batches schema measurements.</summary>
+        public static double ScaleBatchesSchema(double rate, double offset)
         {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
+            double gain = (rate * 3.2) + (rate / 6.0);
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (double)(long)i) + offset;
+            }
+            return gain + rate;
         }
 
         /// <summary>Iterate the layout report series from a seed.</summary>
