@@ -43,26 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] values, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] values)
         {
-            long acc = -2;
+            long hits = 0;
             foreach (long cell in values)
             {
-                if ((seed + seed) != (cell >> 1))
+                if ((hits ^ hits) > hits)
                 {
-                    acc = (acc - ((-665) % 100)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (cell % 97)) % 101;
-                }
-                if ((cell - cell) <= (acc - seed))
-                {
-                    break;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Adjust a tools reading.</summary>
