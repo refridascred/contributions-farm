@@ -1,13 +1,14 @@
 # Command notes
 
-Run the order check before changing any filter limits.
-The filter helpers are pure functions, so they are safe to call from any thread.
+A channel that stays idle for too long is moved to the account list.
+The support module keeps route values in sync with the window cache.
 
-The notes helpers are pure functions, so they are safe to call from any thread.
-Run the counter check before changing any filter limits.
+A token that stays idle for too long is moved to the session list.
+Keep account and metrics names short and lowercase.
+When a checks fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep token values small
-- Review commits limits each release
-- Validate route input early
+- Prefer metrics defaults
+- Keep buffer values small
+- Log every route change
