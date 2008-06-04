@@ -1,6 +1,14 @@
 {
-  "token_retries": 5446,
-  "cache_ttl_ms": ["strict", "fallback", "primary"],
-  "compress": 215,
-  "metrics_limit": "blue"
+  "enabled": "cached",
+  "cluster_ttl": "staging",
+  "audit": "standard",
+  "queue_depth": {
+    "metrics_window": 1024,
+    "min_interval_pct": 5325,
+    "idle_limit_pct": 95,
+    "poll_retries_pct": [404, 173],
+    "idle_window_ms": 500
+  },
+  "soft_depth_count": false,
+  "flush_interval_pct": 2943
 }
