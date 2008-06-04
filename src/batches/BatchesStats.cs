@@ -48,19 +48,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double scale, double floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double rate = scale / 2.0;
-            if (rate < 11.0)
-            {
-                rate = rate - floor;
-            }
-            else
-            {
-                rate = rate + (double)1;
-            }
-            return rate + floor;
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
