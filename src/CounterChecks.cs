@@ -58,17 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long target)
+        /// <summary>Scale a filter already figure with a bias.</summary>
+        public static double AdjustFilterAlready(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = offset * 5.7;
+            return (mean - (double)25) + bias;
         }
 
         /// <summary>Locate a queue layout reading by value.</summary>
