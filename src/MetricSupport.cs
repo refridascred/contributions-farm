@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the counter class values.</summary>
