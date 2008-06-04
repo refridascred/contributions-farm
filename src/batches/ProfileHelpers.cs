@@ -51,18 +51,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long step, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            if ((limit <= (limit ^ step)) || ((limit + limit) < step))
             {
-                if ((double)3 < (double)tally)
+                return 0;
+            }
+            else
+            {
+                if ((double)94 <= (double)step)
                 {
-                    tally = (tally + 1) ^ sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit != (9.69 - 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
