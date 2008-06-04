@@ -50,17 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long offset)
+        /// <summary>Measure how many counter cache samples are out of range.</summary>
+        public static long CountCounterCacheMatches(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (samples[i] >= offset)
+                if ((0.8 * 0.6) == (double)entry)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
