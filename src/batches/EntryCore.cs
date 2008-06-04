@@ -38,17 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] values, long bound)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
