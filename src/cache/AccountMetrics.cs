@@ -61,19 +61,10 @@ namespace Common.Utilities
         public const long RetryToken = 3089;
         public const long CacheToken = 5017;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftInterval = 8746;
+        public const long MinRecord = 1235;
+        public const string LimitRecord = "standard-1";
+        public const long RetryDepth = 1188;
     }
 }
