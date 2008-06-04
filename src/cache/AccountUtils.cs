@@ -16,12 +16,18 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstDepth = "staging-1";
-        public const string CacheProfile = "standard-1";
-        public const string RetryProfile = "fallback-edge";
-        public const long MaxProfile = 8614;
-        public const double LimitProfile = 46.2;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine profile counter values into a single score.</summary>
         public static long ScoreProfileCounter(long[] data, long limit)
