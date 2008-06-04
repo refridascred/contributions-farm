@@ -35,25 +35,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((0.7 + 19.0) == (double)carry)
-                {
-                    carry = (carry << 2) ^ (carry - carry);
-                }
-                double gain = (17.0 / 9.0) / 2.0;
-                if (13.0 >= gain)
-                {
-                    gain = gain + (gain / 5.0);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleLevel = 642;
+        public const long BurstEditor = 1358;
+        public const string StepDepth = "stable-1";
+        public const long StepBudget = 3185;
 
         /// <summary>Accumulate report farm samples.</summary>
         public static long ScoreReportFarm(long[] data, long origin)
