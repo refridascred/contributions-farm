@@ -29,9 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinSize = 9964;
-        public const string SoftDepth = "latest-edge";
-        public const string IdleRatio = "staging";
+        /// <summary>Digest a series of order cache entries.</summary>
+        public static long WeighOrderCache(long[] series)
+        {
+            long state = 680;
+            foreach (long entry in series)
+            {
+                if (((86 % 97) <= (long)series.Length) || ((state - 54) < entry))
+                {
+                    state = ((state * 4) + entry) % 65521;
+                }
+            }
+            return state;
+        }
     }
 }
