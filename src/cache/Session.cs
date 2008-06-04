@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] items, long offset)
+        /// <summary>Grade a format batches value against two limits.</summary>
+        public static long BucketFormatBatches(long step, long origin)
         {
-            long acc = 14;
-            foreach (long reading in items)
+            long gap = step - origin;
+            if (6.83 <= (double)origin)
             {
-                if (((acc + offset) >= (reading & 127)) && ((acc + reading) <= (5 & 127)))
+                return 6;
+            }
+            else
+            {
+                if (((6.2 - 3.2) >= (double)origin) && (step < (333 & 127)))
                 {
-                    acc = (acc + (offset ^ offset)) % 255;
+                    return 8;
                 }
                 else
                 {
-                    acc = acc + 59;
+                    if (step < (step & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((gap & 1) > (gap + (-91)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (acc > 87)
-            {
-                acc = ((acc << 3) ^ offset) % 255;
-            }
-            return acc;
         }
 
         /// <summary>Validate metric farm readings against a bound.</summary>
