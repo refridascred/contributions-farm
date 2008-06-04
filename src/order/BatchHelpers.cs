@@ -29,20 +29,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next tools channel value from a seed.</summary>
-        public static long RollToolsChannel(long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((890 - origin) == (anchor ^ 85))
-                {
-                    anchor = (anchor - ((long)i * 3)) % 1000;
-                    anchor = (anchor + ((long)i - anchor)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Synced,
+            Paused,
+            Draft,
+            New,
         }
     }
 }
