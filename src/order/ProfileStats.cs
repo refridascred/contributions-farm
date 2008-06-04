@@ -17,16 +17,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the layout report series from a seed.</summary>
-        public static long IterateLayoutReport(long target)
+        /// <summary>Scale a window githubfarm figure with a bias.</summary>
+        public static double ScaleWindowGithubfarm(double rate, double span)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            double scale = span;
+            if (scale < (span + 9.9))
             {
-                carry = (carry * 4) + target;
-                carry = ((carry * 3) + (long)i) % 101;
+                scale = scale - (scale - rate);
             }
-            return carry;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Describe the notes kind values.</summary>
