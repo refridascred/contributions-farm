@@ -26,14 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Synced,
-            Stale,
-            Closed,
-            Paused,
-            Failed,
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
     }
 }
