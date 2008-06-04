@@ -44,11 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double scale, double offset)
         {
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            double rate = scale + (6.6 / 9.0);
+            return (rate - rate) + offset;
         }
 
         /// <summary>Audit contributi context readings against a rule.</summary>
