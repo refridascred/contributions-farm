@@ -49,11 +49,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 3341;
-        public const double DefaultWidth = 0.15;
-        public const string DefaultNotes = "latest-edge";
-        public const double MinNotes = 31.32;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((7.7 + 1.99) >= (double)seen)
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
