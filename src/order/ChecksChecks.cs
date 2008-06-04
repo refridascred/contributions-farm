@@ -16,11 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "latest-v2";
-        public const long LimitChannel = 863;
-        public const long DefaultChannel = 5549;
-        public const long RetryChannel = 3133;
+        /// <summary>Count the report filter entries that pass the check.</summary>
+        public static long CountReportFilterOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!((matches % 100) < matches))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
