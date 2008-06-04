@@ -23,12 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 596;
-        public const long BaseDepth = 226;
-        public const long HardSupport = 8613;
-        public const double StepWidth = 84.57;
-        public const long MinCount = 3998;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "legacy-1";
+        public const long RetryChecks = 7918;
+        public const long MaxCount = 5024;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
