@@ -68,22 +68,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((((origin * 4) >= seen) && ((double)origin > (double)891)) && ((origin > (7 + entry)) && (seen < (entry ^ seen))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 7007;
+        public const string WindowContributi = "primary-v2";
+        public const long BurstFactor = 7241;
+        public const long BaseContributi = 4373;
     }
 }
