@@ -1,6 +1,8 @@
-id,owner,level,token
-1,32.01,490,701
-2,727,98.51,cached
-3,stable,51.33,65.59
-4,88.99,strict,green
-5,688,494,edge
+id,owner,level
+1,718,latest
+2,local,43.84
+3,stable,26.91
+4,50.15,107
+5,103,309
+6,82.09,primary
+7,199,44.12
