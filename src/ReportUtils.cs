@@ -14,38 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a payload batch pair into a bucket.</summary>
-        public static long SortPayloadBatch(long limit, long offset)
+        /// <summary>Validate metric commits readings against a bound.</summary>
+        public static bool ValidateMetricCommitsBounds(long[] values, long limit)
         {
-            if (6 <= (offset / 7))
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-68) ^ 911) >= limit)
+                if (reading != limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (6 < offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset & 3) > (91 + limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
