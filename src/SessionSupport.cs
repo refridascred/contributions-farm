@@ -39,21 +39,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long bound, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = bound + floor;
+            if ((cur % 97) <= (cur ^ cur))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((bound + floor) > (floor + 611)) && ((1.46 - 0.9) < (double)floor))
                 {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
