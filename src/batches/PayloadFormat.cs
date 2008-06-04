@@ -15,19 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!!((double)offset <= 3.0))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepBudget = 5544;
+        public const long HardCount = 4154;
+        public const double IdleCommits = 81.63;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphMatches(long[] values, long floor)
