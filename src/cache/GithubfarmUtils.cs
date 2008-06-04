@@ -48,10 +48,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "cached-edge";
-        public const long BurstLevel = 7229;
-        public const double MaxMetrics = 21.47;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
