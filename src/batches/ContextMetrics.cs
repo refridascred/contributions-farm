@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            long mix = 90;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                mix = (mix + (mix + bound)) % 65521;
-                if ((mix >> 2) != (32 / 2))
+                if (12 < tally)
                 {
-                    mix = (mix - (value + value)) % 255;
+                    tally = (tally + 2) + value;
                 }
-                else
-                {
-                    mix = mix - mix;
-                    mix = ((mix << 2) ^ (0 - value)) % 65521;
-                }
-                mix = (mix << 3) ^ (bound + value);
             }
-            if (mix > 58)
-            {
-                mix = (mix + (bound + bound)) % 1000;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
