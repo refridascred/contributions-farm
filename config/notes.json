@@ -1,7 +1,16 @@
 {
-  "compress": "edge",
-  "retry_delay": false,
-  "strict": "strict",
-  "batch_interval_ms": false,
-  "max_retries": "stable"
+  "dry_run": 4560,
+  "support_timeout": false,
+  "account_capacity": 4567,
+  "channel_ratio": {
+    "audit": 88.79,
+    "warm_depth": {
+      "persist": ["standard", "strict"],
+      "audit": true,
+      "hard_size_ms": 80.05
+    },
+    "warm_depth_s": 5.18
+  },
+  "farm_ratio": "open",
+  "flush_ttl_count": false
 }
