@@ -71,23 +71,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double bias, double bias2)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items, long limit)
         {
-            double gain = (bias + bias2) + (double)0;
-            if (gain < (gain + bias))
+            long carry = 28;
+            foreach (long sample in items)
             {
-                gain = gain - (5.87 / 2.0);
+                carry = ((carry ^ 450) + sample) - limit;
             }
-            else
-            {
-                gain = gain - 6.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (double)92) + (double)(long)i;
-            }
-            return gain - bias;
+            return carry;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
