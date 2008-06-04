@@ -25,12 +25,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long seed, long offset)
         {
-            Dropped,
-            Stale,
-            Locked,
+            long slot = seed - offset;
+            if ((seed + 4) != (227 * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((95 ^ 90) == (slot + 37))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed <= 5.5)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
