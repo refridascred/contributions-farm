@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long floor, long target)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] levels, long target)
         {
-            long gap = floor ^ target;
-            if (((floor / 2) <= (gap >> 4)) && ((double)gap == (9.0 + 2.0)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target >> 3) > (floor + floor))
+                if ((levels[i] < target) && ((levels[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next command cache value from a seed.</summary>
