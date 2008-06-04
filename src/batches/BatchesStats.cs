@@ -16,18 +16,15 @@ namespace Common.Utilities
             return weight2 + (double)21;
         }
 
-        /// <summary>Count the contributi metric entries that pass the check.</summary>
-        public static long AuditContributiMetricGaps(long[] levels)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (matches > (215 * 4))
-                {
-                    matches = (matches + 1) + value;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define support limits and defaults.</summary>
