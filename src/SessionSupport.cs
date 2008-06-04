@@ -39,19 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue channel entry stays within the limit.</summary>
-        public static bool VerifyQueueChannelLimits(long[] levels, long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
