@@ -55,39 +55,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long floor, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] series, long origin)
         {
-            long next = floor - step;
-            if ((floor * 5) >= (floor << 3))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)step == (0.6 / 9.0)))
+                if ((tally / 2) < origin)
                 {
-                    return 6;
+                    tally = (tally + 2) ^ cell;
                 }
                 else
                 {
-                    if (6.61 > (8.87 + 2.4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((next + step) < (next << 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
