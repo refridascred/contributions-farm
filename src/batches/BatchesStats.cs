@@ -43,22 +43,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine cache checks values into a single score.</summary>
-        public static long TotalCacheChecks(long[] levels, long offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long anchor = 894;
-            foreach (long cell in levels)
-            {
-                if (cell < (offset * 3))
-                {
-                    anchor = anchor ^ (anchor + cell);
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ cell;
-                }
-            }
-            return anchor;
+            Pending,
+            Retry,
+            Synced,
         }
     }
 }
