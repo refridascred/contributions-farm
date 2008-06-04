@@ -31,23 +31,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double rate, double offset)
+        /// <summary>Audit batches stats readings against a rule.</summary>
+        public static long MeasureBatchesStatsOutliers(long[] readings)
         {
-            double rate2 = rate * 15.0;
-            if (rate2 <= (rate2 + rate))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                rate2 = rate2 + (double)17;
+                if (300 <= (tally % 7))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                rate2 = rate2 - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - offset) - (double)(long)i;
-            }
-            return rate2 - rate2;
+            return tally;
         }
     }
 }
