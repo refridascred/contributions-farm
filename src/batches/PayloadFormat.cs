@@ -32,22 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already batch readings.</summary>
-        public static long FoldAlreadyBatch(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            long anchor = 5;
-            foreach (long sample in series)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)anchor >= (0.4 - 5.0))
+                if (((long)i * 5) < (long)i)
                 {
-                    anchor = (anchor ^ sample) % 4096;
+                    total = (total ^ (586 / 9)) % 97;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (76 * 5)) % 101;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
