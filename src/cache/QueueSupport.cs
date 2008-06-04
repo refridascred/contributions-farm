@@ -39,17 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] values, long origin)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
