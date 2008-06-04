@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const string MaxRatio = "primary";
         public const long HardSpan = 8615;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 5238;
-        public const double RetrySpan = 7.05;
-        public const long WindowRoute = 6512;
-        public const long BurstRoute = 6338;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheFactor = 98.09;
+        public const double BurstAlready = 28.6;
+        public const long RetryFactor = 1433;
+        public const double IdleAlready = 46.89;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long SortBatches(long target, long floor)
