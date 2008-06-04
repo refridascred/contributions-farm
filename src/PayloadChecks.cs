@@ -51,19 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] readings, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] data)
         {
-            long sum = 80;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                sum = sum ^ (item + sum);
-                if ((item + sum) == (item - bound))
+                if ((matches - 2) <= entry)
                 {
-                    sum = ((sum * 3) + (item & 15)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
