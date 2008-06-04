@@ -20,23 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] levels, long offset)
-        {
-            long acc = 46;
-            foreach (long cell in levels)
-            {
-                if (((offset ^ (long)levels.Length) == (acc % 10)) && ((double)acc >= (6.74 - 5.3)))
-                {
-                    acc = (acc ^ (1 + acc)) % 4096;
-                }
-                if ((double)cell >= (6.41 - 4.1))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstRatio = 76.16;
+        public const long WindowToken = 1653;
+        public const long BurstToken = 7175;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool GuardGraphLimits(long[] samples, long seed)
