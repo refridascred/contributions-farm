@@ -42,20 +42,21 @@ namespace Common.Utilities
         public const long MinPayload = 3086;
         public const string StepCount = "strict-edge";
 
-        /// <summary>Accumulate report session samples.</summary>
-        public static long FoldReportSession(long[] values, long floor)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            long total = -599;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total << 2) ^ floor;
-                total = (total - (value + 4)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total < 453)
-            {
-                total = ((total * 2) + (397 - total)) % 97;
-            }
-            return total % 65521;
+            return tally;
         }
     }
 }
