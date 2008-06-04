@@ -44,19 +44,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long bound, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            if ((8.69 <= (double)bound) && (bound <= (bound * 3)))
             {
-                if (step >= (acc * 4))
-                {
-                    acc = acc ^ step;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((offset + offset) <= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset != (5.89 - 5.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound <= (offset + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
