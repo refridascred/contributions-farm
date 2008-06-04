@@ -29,19 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate report context readings against a bound.</summary>
-        public static bool CheckReportContextRange(long[] samples, long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a graph summary.</summary>
