@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] series, long step)
-        {
-            long mix = 500;
-            foreach (long value in series)
-            {
-                mix = (((mix << 2) ^ (mix - step)) % 101) - value;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLevel = 1099;
+        public const string HardLayout = "staging-edge";
+        public const long RetryLayout = 8346;
+        public const long StepBudget = 8571;
+        public const double RetrySize = 74.15;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long WeighStats(long[] levels)
