@@ -1,4 +1,27 @@
 # entry settings
-compress: 9.27
-default_retries: latest
-batch_timeout_count: 60
+buffer_ttl: 7598
+batch_ttl_pct: local
+retry_size_pct: edge
+hard_timeout:
+  burst_ttl_pct:
+    hard_window: 54.0
+    idle_limit_pct: 30
+    readonly: 100
+  base_ratio_count: edge
+  soft_size_count: 30
+  compress: true
+  githubfarm_size:
+    - staging
+    - open
+    - eu-west
+  min_size_ms:
+    cache_ttl: false
+    farm_ratio: local
+    cache_depth_s: false
+    enabled:
+      - open
+      - local
+      - standard
+      - cached
+    sync_limit: 80.05
+    account_limit: edge
