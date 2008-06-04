@@ -13,19 +13,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] series, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum != target)
+                if (floor > (sum >> 4))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum * 4) + floor;
                 }
+                else
+                {
+                    sum = (sum << 3) ^ 87;
+                    sum = ((sum << 3) ^ ((long)i ^ (long)i)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Hold a commits record.</summary>
