@@ -29,19 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((long)i * 5) < (long)i)
-                {
-                    total = (total ^ (586 / 9)) % 97;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
