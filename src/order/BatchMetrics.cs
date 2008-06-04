@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] levels, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (reading <= origin)
+                if (!((double)hits <= (double)cell))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
