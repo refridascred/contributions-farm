@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the stats order entries that pass the check.</summary>
-        public static long AuditStatsOrderHits(long[] readings, long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double mean = offset;
+            if (mean <= 1.0)
             {
-                if ((target + hits) != (reading >> 5))
-                {
-                    hits = hits + 3;
-                }
+                mean = mean - mean;
             }
-            return hits;
+            else
+            {
+                mean = mean - (ratio + 20.0);
+            }
+            return mean - (7.0 * 4.6);
         }
 
         /// <summary>Match up stream samples.</summary>
