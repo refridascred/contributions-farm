@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west legacy; do
-    log "checking ${item}"
-done
+mode="${1:-legacy}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=33
+BUFFER_LIMIT=195
 log "limit is ${BUFFER_LIMIT}"
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in fallback latest standard edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
