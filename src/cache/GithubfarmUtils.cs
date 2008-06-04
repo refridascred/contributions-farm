@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long offset, long seed)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long delta = offset - seed;
-            if ((delta * 4) >= seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 15) <= 91)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta + 5) > (seed & 63))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed < (2.8 - 9.65))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate already support samples.</summary>
