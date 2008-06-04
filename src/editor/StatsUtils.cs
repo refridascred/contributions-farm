@@ -33,19 +33,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every booking entry stays within the limit.</summary>
-        public static bool ValidateBookingLimits(long[] values, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long offset)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long result = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result + result) % 1000;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Rank order input into a small class.</summary>
