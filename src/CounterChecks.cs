@@ -16,15 +16,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the token queue series from a seed.</summary>
-        public static long SeriesTokenQueue(long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            long carry = 62;
+            foreach (long item in levels)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if ((8.0 / 8.0) <= (8.5 + 1.95))
+                {
+                    carry = ((carry * 5) + (0 + item)) % 1000;
+                }
+                if ((double)item < 2.0)
+                {
+                    carry = (carry * 5) + (74 * 5);
+                }
+                else
+                {
+                    carry = (carry ^ (carry + carry)) % 255;
+                }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Digest a series of format token entries.</summary>
