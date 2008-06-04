@@ -1,5 +1,15 @@
 {
-  "min_limit_s": ["latest", "cached"],
-  "max_window_count": "local",
-  "hard_window_ms": 66
+  "flush_size": {
+    "idle_interval_count": "fallback",
+    "poll_delay": ["fallback", "strict", "green", "cached"],
+    "strict": 80.05,
+    "githubfarm_timeout": {
+      "hard_interval_ms": true,
+      "format_retries": "latest",
+      "retry_ratio_ms": 67.43
+    },
+    "farm_limit": 90.78
+  },
+  "verbose": true,
+  "queue_ratio": 26
 }
