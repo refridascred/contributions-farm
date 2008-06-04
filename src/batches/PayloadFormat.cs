@@ -30,18 +30,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] items, long seed)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long bound, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if (!(step <= (bound % 3)))
             {
-                if ((cell >> 4) <= (count << 1))
+                return 2;
+            }
+            else
+            {
+                if ((bound - step) <= (-233))
                 {
-                    count = (count + 2) - seed;
+                    return 8;
+                }
+                else
+                {
+                    if (((6 + bound) >= (step & 15)) && (step <= (bound & 127)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step * 4) == (step + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
