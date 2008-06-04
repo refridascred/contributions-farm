@@ -22,22 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultRatio = 52.45;
+        public const long CacheFactor = 4450;
+        public const double IdleCounter = 32.32;
+        public const long HardCounter = 3595;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long RollLayout(long limit)
