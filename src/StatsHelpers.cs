@@ -22,19 +22,31 @@ namespace Common.Utilities
         public const long BaseBudget = 3657;
         public const string RetryInterval = "open-1";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] levels, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long floor, long target)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            if (floor <= target)
             {
-                if (reading != step)
+                return 7;
+            }
+            else
+            {
+                if (target <= (floor + floor))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (16 > (target * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
