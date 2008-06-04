@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long IdleDepth = 8391;
         public const long BaseBudget = 1513;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
