@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                result = (result + (step % 60)) % 1000;
-                result = ((result * 5) + (long)i) % 101;
+                if ((item * 4) <= (9 + 30))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
