@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long offset)
         {
-            Queued,
-            Failed,
-            Active,
-            Locked,
-            Done,
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank support cluster input into a small class.</summary>
