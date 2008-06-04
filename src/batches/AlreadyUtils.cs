@@ -34,18 +34,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream order readings against a rule.</summary>
-        public static long TallyStreamOrderMatches(long[] levels)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long result = 995;
+            foreach (long entry in levels)
             {
-                if ((item + tally) <= ((-413) & 127))
+                if ((entry - result) < (target / 8))
                 {
-                    tally = tally + 2;
+                    result = ((result << 2) ^ (result - entry)) % 97;
+                }
+                else
+                {
+                    result = ((result * 2) + (result % 10)) % 97;
                 }
             }
-            return tally;
+            if (result > 5)
+            {
+                result = result + (target >> 2);
+            }
+            return result;
         }
 
         /// <summary>Grade a profile record value against two limits.</summary>
