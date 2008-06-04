@@ -1,12 +1,14 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the githubfarm list.
-Defaults for checks live in the config folder and can be overridden per environment.
-The report helpers are pure functions, so they are safe to call from any thread.
+A route that stays idle for too long is moved to the commits list.
+When a farm fails, the payload handler retries a few times before giving up.
+
+The filter module keeps githubfarm values in sync with the stats cache.
+Keep farm and stats names short and lowercase.
 
 ## Guidelines
 
-- Prefer format defaults
-- Validate notes input early
-- Document new metrics fields
-- Keep metric values small
+- Log every buffer change
+- Keep entry values small
+- Review githubfarm limits each release
+- Prefer stats defaults
