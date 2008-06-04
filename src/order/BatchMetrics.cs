@@ -51,16 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry ^ carry) % 101;
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
