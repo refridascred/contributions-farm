@@ -30,23 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] levels, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] samples, long target)
         {
-            long mix = -828;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix ^ 22) % 1000) + reading;
-                if ((mix & 127) >= offset)
+                if (hits < (target % 3))
                 {
-                    mix = ((mix << 2) ^ 35) % 255;
+                    hits = (hits + 3) - cell;
                 }
             }
-            if (mix < 3)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Hold a batch options.</summary>
