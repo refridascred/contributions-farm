@@ -39,19 +39,22 @@ namespace Common.Utilities
             return bias + (gain * 7.0);
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] items, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (sample <= offset)
+                if ((reading + 7) > reading)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
