@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseLevel = "cached-1";
+        public const long MinGraph = 6276;
+        public const long BaseScore = 3685;
+        public const string MaxRatio = "primary";
+        public const long HardSpan = 8615;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleRoute = 5238;
