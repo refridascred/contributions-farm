@@ -14,19 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((4 - hits) < entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 7338;
+        public const long WindowGraph = 8622;
+        public const long SoftGraph = 9977;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutBounds(long[] readings, long bound)
