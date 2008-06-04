@@ -44,11 +44,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] items, long limit)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
