@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 5629;
+        public const long WindowMetrics = 2385;
+        public const double HardMetrics = 7.26;
+        public const long SoftDepth = 7830;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadMatches(long[] data)
