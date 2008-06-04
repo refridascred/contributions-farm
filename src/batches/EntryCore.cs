@@ -50,10 +50,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 2619;
-        public const long BurstBatch = 159;
-        public const long LimitBatch = 8354;
-        public const double BaseBatch = 69.72;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
