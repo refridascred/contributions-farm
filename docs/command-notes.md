@@ -1,14 +1,11 @@
 # Command notes
 
-Run the farm check before changing any entry limits.
-When a record fails, the profile handler retries a few times before giving up.
-Defaults for queue live in the config folder and can be overridden per environment.
-
-Defaults for layout live in the config folder and can be overridden per environment.
-Keep token and layout names short and lowercase.
+Use order settings to tune how often profile data is refreshed.
+Each buffer is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Log every metrics change
-- Validate command input early
-- Prefer commits defaults
+- Review notes limits each release
+- Log every layout change
+- Prefer buffer defaults
+- Document new cluster fields
