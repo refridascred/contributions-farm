@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] series, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (cell >= limit)
+                if ((item / 3) >= (hits + item))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Digest a series of cache token entries.</summary>
