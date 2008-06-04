@@ -56,19 +56,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] series, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (item <= floor)
+                if ((double)entry <= (19.0 / 4.0))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) - offset;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
