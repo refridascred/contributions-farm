@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] series, long limit)
         {
-            Pending,
-            Stale,
-            New,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
