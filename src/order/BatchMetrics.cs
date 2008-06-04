@@ -60,21 +60,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
