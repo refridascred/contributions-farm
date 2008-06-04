@@ -23,13 +23,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long origin)
         {
-            Locked,
-            Idle,
-            New,
-            Closed,
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((origin <= 0) || (((long)i ^ (long)i) > (5 + 7)))
+                {
+                    state = state ^ (origin + (long)i);
+                }
+                else
+                {
+                    state = ((state << 2) ^ 17) % 101;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
