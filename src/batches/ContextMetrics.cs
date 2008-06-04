@@ -25,29 +25,28 @@ namespace Common.Utilities
         public const double DefaultFarm = 31.31;
         public const long BatchCount = 4220;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long limit, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long step, long target)
         {
-            long edge = limit - target;
-            if ((double)limit == (7.85 * 4.0))
+            if (target < (step - step))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((8.87 / 8.0) <= (double)limit)
+                if ((step + 3) >= (target % 10))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)edge >= (double)target)
+                    if ((9 + target) <= target)
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 6;
+                        return 4;
                     }
                 }
             }
