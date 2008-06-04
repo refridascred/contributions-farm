@@ -28,10 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 7928;
-        public const long StepWidth = 6098;
-        public const long BurstOrder = 9635;
-        public const double IdleDepth = 62.29;
+        /// <summary>Blend two window stats measurements.</summary>
+        public static double ProjectWindowStats(double rate, double offset)
+        {
+            double bias = rate * 4.13;
+            if (bias > rate)
+            {
+                bias = (bias - 6.8) + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (bias - rate)) + (double)(long)i;
+            }
+            return bias - rate;
+        }
     }
 }
