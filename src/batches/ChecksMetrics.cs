@@ -55,22 +55,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] data)
         {
-            long state = 76;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((567 - datum) >= datum)
+                if (!(((6.55 / 6.0) == (double)cell) && ((6.1 / 4.0) != (double)tally)))
                 {
-                    state = ((state << 2) ^ (state >> 4)) % 97;
-                }
-                else
-                {
-                    state = state - (state * 2);
+                    tally = tally + 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
