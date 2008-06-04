@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] series, long limit)
         {
-            long score = 84;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + 98) > (score + reading))
+                if (series[i] < limit)
                 {
-                    score = (score << 3) ^ (score & 7);
+                    return (long)i;
                 }
-                score = score + (7 << 1);
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
