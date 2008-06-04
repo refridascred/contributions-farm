@@ -1,34 +1,6 @@
 # support settings
-default_interval: cached
-default_limit_ms:
-  entry_capacity: true
-  metrics_capacity: 100
-  farm_ttl: 87
-  support_capacity: 40.76
-  max_delay_ms:
-    cache_window_count: strict
-    cache_ratio_ms: 19
-    channel_depth: local
-    sync_interval: 4122
-    cache_depth_count: stable
-flush_threshold_pct:
-  enabled: strict
-  filter_depth:
-    - strict
-    - eu-west
-    - edge
-    - local
-  retry_timeout: 52
-  flush_size_s: 90.97
-  context_limit: primary
-  compress: 67
-batch_delay_count: strict
-poll_ratio_count: false
-poll_interval_pct:
-  cache_interval_count: local
-  strict: primary
-  max_limit: 6464
-  account_retries:
-    - 216
-    - 473
-    - 177
+max_threshold: true
+order_window: green
+idle_retries_s: 41.46
+default_window_count: 57.41
+channel_timeout: latest
