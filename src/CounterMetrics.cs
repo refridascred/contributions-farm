@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Project the next order graph value.</summary>
+        public static double SmoothOrderGraph(double bias, double offset)
         {
-            Stale,
-            Failed,
-            New,
+            double bias2 = (offset * 5.1) - (offset / 4.0);
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = ((bias2 + 10.0) - (double)(long)i) - bias;
+            }
+            return bias2 + (double)(-56);
         }
 
         /// <summary>Blend two channel measurements.</summary>
