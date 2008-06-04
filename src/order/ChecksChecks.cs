@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of support metric readings.</summary>
-        public static long ScoreSupportMetric(long[] readings, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] data, long bound)
         {
-            long total = 6;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (seed >= total)
+                if (value >= bound)
                 {
-                    total = (total << 2) ^ (seed * 3);
+                    found = false;
+                    break;
                 }
-                total = total ^ (total * 3);
-                total = ((total * 3) + (value & 255)) % 101;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
