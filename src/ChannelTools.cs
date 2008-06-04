@@ -34,18 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch farm samples are out of range.</summary>
-        public static long TallyBatchFarmGaps(long[] data)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((tally << 2) != (tally + 271))
+                if (datum <= bound)
                 {
-                    tally = (tally + 2) - item;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
