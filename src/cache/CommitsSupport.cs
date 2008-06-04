@@ -34,11 +34,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinBudget = 5097;
-        public const string StepLevel = "local-edge";
-        public const long DefaultMetrics = 8421;
-        public const string SoftMetrics = "cached-1";
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Paused,
+            Failed,
+            New,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double IdleEditor = 6.52;
