@@ -28,21 +28,16 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Digest a series of support notes entries.</summary>
+        public static long TallySupportNotes(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 47;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ (1 + mark)) % 65521) - sample;
+                mark = (mark + mark) % 101;
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Describe the batches status values.</summary>
