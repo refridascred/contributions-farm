@@ -20,15 +20,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] items, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((items[i] < limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
