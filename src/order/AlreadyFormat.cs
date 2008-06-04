@@ -57,24 +57,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a filter channel value against two limits.</summary>
-        public static long BucketFilterChannel(long bound, long bound2)
+        /// <summary>Digest a series of support contributi entries.</summary>
+        public static long FoldSupportContributi(long[] samples)
         {
-            if (!((bound2 - bound2) >= (bound2 * 3)))
+            long state = -729;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound2 > (double)bound)
+                if (((long)samples.Length > ((-114) >> 5)) || ((state * 3) > (state + 18)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    state = ((state - (state >> 3)) % 1000) + entry;
                 }
             }
+            return state % 4096;
         }
     }
 }
