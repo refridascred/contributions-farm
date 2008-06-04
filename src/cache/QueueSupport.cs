@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Classify a account editor pair into a bucket.</summary>
+        public static long ClassifyAccountEditor(long floor, long limit)
         {
-            long mix = 33;
-            foreach (long entry in values)
+            if (limit >= (floor << 1))
             {
-                if (((entry & 255) > 6) && ((double)mix < (double)entry))
+                return 1;
+            }
+            else
+            {
+                if (885 < (650 + floor))
                 {
-                    mix = (mix << 3) ^ (mix % 8);
+                    return 7;
                 }
                 else
                 {
-                    mix = ((mix * 3) + entry) % 4096;
+                    if (!((4 >> 4) == (floor ^ 86)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit < (floor ^ limit)) && ((double)floor >= 17.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
