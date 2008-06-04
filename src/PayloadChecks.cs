@@ -71,25 +71,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long floor)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                state = state ^ (long)i;
-                if (((667 << 1) > (floor * 2)) || ((state * 2) >= (floor - state)))
-                {
-                    state = (state + (71 - floor)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    state = state - (floor - state);
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Pending,
+            Retry,
+            Queued,
+            Locked,
+            Done,
         }
     }
 }
