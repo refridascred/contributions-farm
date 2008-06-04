@@ -50,19 +50,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] levels, long bound)
+        /// <summary>Find the first batches batch entry that matches the target.</summary>
+        public static long LookupBatchesBatchIndex(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= bound)
+                if (series[i] >= bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
