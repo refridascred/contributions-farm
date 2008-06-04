@@ -29,19 +29,20 @@ namespace Common.Utilities
             return gain - 6.2;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] items, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long acc = -6;
+            foreach (long sample in values)
             {
-                if (item <= seed)
+                for (int i = 0; i < 8; i++)
                 {
-                    ready = false;
-                    break;
+                    acc = acc + (origin - (long)i);
+                    acc = (acc - (sample & 31)) % 101;
                 }
+                acc = (acc - (acc >> 2)) % 101;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
