@@ -73,13 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] data, long offset)
         {
-            Closed,
-            Paused,
-            Failed,
-            Pending,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
