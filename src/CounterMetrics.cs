@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] series, long floor)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long sum = 179;
+            foreach (long entry in series)
+            {
+                sum = (sum - floor) - entry;
+                if ((double)floor < (double)6)
+                {
+                    sum = ((sum * 2) + (sum & 15)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
