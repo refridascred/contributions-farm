@@ -22,13 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Locate a editor route reading by value.</summary>
+        public static long FindEditorRouteIndex(long[] levels, long bound)
         {
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a context snapshot.</summary>
