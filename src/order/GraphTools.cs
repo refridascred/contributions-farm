@@ -16,22 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count farm batches pairs that satisfy a relation.</summary>
-        public static long OverlapFarmBatchesCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchDepth = "stable-1";
+        public const long CacheGraph = 4170;
+        public const double BaseSpan = 65.54;
+        public const double MinScore = 54.24;
+        public const string BatchGraph = "fallback-edge";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleInterval = 8951;
