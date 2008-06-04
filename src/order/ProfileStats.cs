@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            Ready,
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
