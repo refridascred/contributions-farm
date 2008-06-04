@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first entry already entry that matches the target.</summary>
-        public static long LocateEntryAlreadyIndex(long[] samples, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (samples[i] <= offset)
+                if ((hits ^ hits) != (hits * 5))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
