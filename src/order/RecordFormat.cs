@@ -67,10 +67,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 7007;
-        public const string WindowContributi = "primary-v2";
-        public const long BurstFactor = 7241;
-        public const long BaseContributi = 4373;
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double rate, double floor)
+        {
+            double gain = (double)76;
+            if (gain <= 6.68)
+            {
+                gain = (gain - floor) - rate;
+            }
+            return gain - floor;
+        }
     }
 }
