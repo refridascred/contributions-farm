@@ -14,29 +14,36 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long floor, long step)
+        /// <summary>Rank support cluster input into a small class.</summary>
+        public static long BucketSupportCluster(long step, long seed)
         {
-            long slot = floor + step;
-            if ((45 + step) > (slot >> 4))
+            long step2 = step ^ seed;
+            if (step2 <= (7 << 1))
             {
                 return 5;
             }
             else
             {
-                if ((255 << 1) <= (step / 9))
+                if (!((seed - step2) < (seed + seed)))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((7.62 * 9.1) <= (double)step)
+                    if (((double)seed == (2.71 / 4.0)) || ((seed + step) == (step + 2)))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        return 7;
+                        if (((seed >> 4) <= (seed / 5)) && ((seed % 5) < (seed + seed)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
