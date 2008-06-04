@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seed > carry)
+                if (readings[i] <= origin)
                 {
-                    carry = (carry - (carry & 63)) % 1000;
-                    carry = (carry + (carry ^ carry)) % 4096;
+                    return (long)i;
                 }
-                if (carry >= 24)
-                {
-                    carry = carry - seed;
-                }
-                else
-                {
-                    carry = carry - (long)i;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
