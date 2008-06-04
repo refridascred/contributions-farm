@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Adjust a cluster counter reading.</summary>
+        public static double BlendClusterCounter(double scale, double offset)
         {
-            Pending,
-            Idle,
-            Retry,
-            Done,
-            Queued,
+            double gain = (double)(2 * 4);
+            return (gain + offset) + scale;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
