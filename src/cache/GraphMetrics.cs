@@ -55,12 +55,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long bound, long bound2)
         {
-            Pending,
-            Stale,
-            Paused,
+            if (((bound % 5) < 979) && (6.0 <= (double)bound2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound2 & 7) == (bound & 31)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound >> 2) >= (bound2 % 100)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound2 & 7) < bound) || (bound > (bound + 80)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
