@@ -48,24 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long limit, long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            if ((double)limit > (double)origin)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit <= (origin << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] + samples[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
