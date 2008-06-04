@@ -1,11 +1,14 @@
 # Command notes
 
-Run the report check before changing any window limits.
-The report report groups every entry by session.
+The already module keeps metrics values in sync with the filter cache.
+When a graph fails, the cache handler retries a few times before giving up.
+
+Keep checks and counter names short and lowercase.
+A metrics that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Prefer commits defaults
+- Keep graph values small
 - Validate already input early
-- Review notes limits each release
-- Document new profile fields
+- Review metrics limits each release
+- Prefer support defaults
