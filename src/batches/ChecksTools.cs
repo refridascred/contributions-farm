@@ -22,17 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token cluster sample.</summary>
-        public static long SeekTokenClusterIndex(long[] levels, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] > limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
