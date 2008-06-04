@@ -1,4 +1,8 @@
 # support settings
-audit: true
-retry_retries_count: stable
-max_limit: 1024
+base_capacity: standard
+hard_interval_pct: 56.68
+cluster_limit:
+  - stable
+  - fallback
+base_timeout_pct: true
+readonly: 9759
