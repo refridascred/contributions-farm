@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] readings, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (item > (7 >> 2))
+                if (!((9.53 + 13.0) <= (double)item) || (((floor & 63) != (93 + seen)) || (seen >= (seen - seen))))
                 {
-                    matches = (matches + 1) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
