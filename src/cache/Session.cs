@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] items, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            long acc = 14;
+            foreach (long reading in items)
             {
-                if (((double)(long)i > 5.9) || (mark <= (origin + mark)))
+                if (((acc + offset) >= (reading & 127)) && ((acc + reading) <= (5 & 127)))
                 {
-                    mark = mark - (mark / 2);
+                    acc = (acc + (offset ^ offset)) % 255;
                 }
-                if ((0.4 / 3.0) < (double)mark)
+                else
                 {
-                    continue;
+                    acc = acc + 59;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            if (acc > 87)
+            {
+                acc = ((acc << 3) ^ offset) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
