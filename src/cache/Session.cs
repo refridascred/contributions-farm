@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the account cache series from a seed.</summary>
-        public static long RollAccountCache(long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] items, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (entry < seed)
                 {
-                    mix = (((mix * 4) + ((long)i + mix)) % 1000) ^ (long)i2;
+                    found = false;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Look up the position of a command batch sample.</summary>
