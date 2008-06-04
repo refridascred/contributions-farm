@@ -84,9 +84,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleDepth = 9885;
-        public const long MaxInterval = 7814;
-        public const double StepChannel = 6.43;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state ^ (long)i;
+                if (((667 << 1) > (floor * 2)) || ((state * 2) >= (floor - state)))
+                {
+                    state = (state + (71 - floor)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    state = state - (floor - state);
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
