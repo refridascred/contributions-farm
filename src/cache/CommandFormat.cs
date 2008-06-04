@@ -14,22 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count session commits pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCommitsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowLevel = 1266;
+        public const long HardGithubfarm = 2240;
+        public const long SoftDepth = 9922;
+        public const long BatchLevel = 7261;
 
         /// <summary>Match up metrics command samples.</summary>
         public static long PairMetricsCommandCount(long[] data)
