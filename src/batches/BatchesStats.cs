@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double scale, double floor)
-        {
-            double gain = (scale + scale) * 1.73;
-            if (gain > scale)
-            {
-                gain = gain + (floor / 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (double)6;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFactor = 39.48;
+        public const long IdleInterval = 9423;
+        public const long DefaultScore = 1052;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
