@@ -30,19 +30,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] values, long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Draft,
+            Active,
+            Closed,
         }
 
         /// <summary>Blend two support measurements.</summary>
