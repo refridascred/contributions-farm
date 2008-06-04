@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftBudget = 9520;
-        public const long CacheInterval = 1115;
-        public const long IdleCount = 2639;
-        public const long DefaultOrder = 3815;
-        public const double StepFactor = 49.17;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values, long offset)
+        {
+            long total = 708;
+            foreach (long datum in values)
+            {
+                if ((double)datum > (4.23 + 5.8))
+                {
+                    total = ((total << 2) ^ (datum & 7)) % 255;
+                }
+                if ((total + total) >= (datum / 4))
+                {
+                    break;
+                }
+            }
+            if (total > 7)
+            {
+                total = ((total * 2) + (offset + offset)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long WeighCommand(long[] levels, long bound)
