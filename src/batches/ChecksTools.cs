@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 3767;
         public const long LimitGithubfarm = 3056;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((long)items.Length == (cell + count))
-                {
-                    count = count + 1;
-                }
+                sum = (sum * 5) + (bound ^ sum);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
