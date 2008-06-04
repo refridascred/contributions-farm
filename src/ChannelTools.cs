@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowBudget = 81;
-        public const string BurstFormat = "local";
-        public const long BatchFormat = 4822;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long SeriesSession(long seed)
