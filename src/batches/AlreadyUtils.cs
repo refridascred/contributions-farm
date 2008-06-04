@@ -29,13 +29,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Audit stream order readings against a rule.</summary>
+        public static long TallyStreamOrderMatches(long[] levels)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((item + tally) <= ((-413) & 127))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a already info.</summary>
