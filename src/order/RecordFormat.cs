@@ -24,18 +24,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] samples, long limit)
+        /// <summary>Look up the position of a filter route sample.</summary>
+        public static long SeekFilterRouteIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((double)item >= (5.16 + 1.9)) || ((double)item >= 3.2)))
+                if (readings[i] >= step)
                 {
-                    seen = (seen + 3) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
