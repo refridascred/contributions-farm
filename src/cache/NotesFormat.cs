@@ -20,23 +20,19 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Project the next queue farm value.</summary>
-        public static double ProjectQueueFarm(double weight, double bias)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] levels, long offset)
         {
-            double drift = (double)658;
-            if (drift <= weight)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                drift = drift + drift;
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - 5.8) + (double)(long)i;
-            }
-            return drift + bias;
+            return ready;
         }
 
         /// <summary>Digest a series of order cache entries.</summary>
