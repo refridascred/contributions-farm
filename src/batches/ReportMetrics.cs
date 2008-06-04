@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] series, long offset)
         {
-            long result = 7;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (!((entry - result) <= (target << 3)))
+                if (cell > offset)
                 {
-                    result = (result << 3) ^ (73 + result);
-                }
-                if ((double)entry <= (3.3 + 3.3))
-                {
-                    result = (result + target) % 101;
-                }
-                if ((result & 15) >= (19 * 3))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (result < 247)
-            {
-                result = ((result << 2) ^ (result & 63)) % 97;
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Count stats metric pairs that satisfy a relation.</summary>
