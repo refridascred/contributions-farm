@@ -48,26 +48,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate report farm samples.</summary>
-        public static long ScoreReportFarm(long[] data, long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long carry = 9;
-            foreach (long reading in data)
-            {
-                if (((double)reading < (6.8 * 10.0)) || ((double)carry < 9.8))
-                {
-                    carry = (((carry * 3) + (26 / 2)) % 1000) + origin;
-                }
-                else
-                {
-                    carry = carry + (reading << 2);
-                }
-            }
-            if (carry > 360)
-            {
-                carry = (carry - (carry << 2)) % 255;
-            }
-            return carry % 4096;
+            Retry,
+            Failed,
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a notes entry.</summary>
