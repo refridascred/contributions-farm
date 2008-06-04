@@ -1,5 +1,15 @@
 {
-  "idle_threshold_s": ["edge", "green", "cached"],
-  "flush_ratio_s": ["latest", "local", "strict"],
-  "dry_run": ["edge", "standard", "strict"]
+  "persist": "staging",
+  "cache_limit": "legacy",
+  "strict": 30,
+  "cluster_limit": 3530,
+  "dry_run": "local",
+  "sync_limit": {
+    "retry_depth": 26.03,
+    "session_window": [169, 207, 104],
+    "idle_depth": 30,
+    "readonly": 27,
+    "flush_timeout_ms": 60,
+    "default_delay_count": ["strict", "standard", "open", "legacy"]
+  }
 }
