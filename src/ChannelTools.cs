@@ -43,13 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Match up filter window samples.</summary>
+        public static long PairFilterWindowCount(long[] samples)
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
