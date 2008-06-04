@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of tools session readings.</summary>
-        public static long CombineToolsSession(long[] samples, long floor)
+        /// <summary>Match up schema editor samples.</summary>
+        public static long MatchSchemaEditorCount(long[] series)
         {
-            long state = 45;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state ^ (state - value)) % 101) + (long)i;
-                }
-                if ((8.1 * 5.2) > (double)floor)
-                {
-                    state = (state - (state + value)) % 255;
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
