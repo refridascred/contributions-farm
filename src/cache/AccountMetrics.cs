@@ -72,13 +72,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 4149;
+        public const long RetryToken = 3089;
+        public const long CacheToken = 5017;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterRange(long[] items, long floor)
