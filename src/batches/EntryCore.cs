@@ -46,18 +46,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((seen << 3) > seen) || (((double)datum != (double)74) || ((seen ^ datum) <= seen)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    seen = seen + 3;
+                    result = ((result << 3) ^ ((long)i2 ^ result)) % 65521;
                 }
+                if (!(result <= (step + (long)i)))
+                {
+                    result = (result * 4) + step;
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the stream class values.</summary>
