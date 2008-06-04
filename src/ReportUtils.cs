@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] readings, long step)
         {
-            public double Label { get; set; }
-            public bool Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            long carry = 9;
+            foreach (long reading in readings)
+            {
+                carry = (carry + (reading ^ carry)) % 255;
+                carry = (carry ^ (step % 2)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
