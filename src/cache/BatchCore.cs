@@ -42,18 +42,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] data)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            if ((double)bound <= (9.98 - 3.67))
             {
-                if ((sample >> 3) < (sample << 1))
+                return 3;
+            }
+            else
+            {
+                if (floor >= (5 + floor))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + floor) > (24 - 623))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
