@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] samples, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] values)
         {
-            long anchor = 3;
-            foreach (long cell in samples)
+            long score = 3;
+            foreach (long item in values)
             {
-                if (((origin + 9) > (origin - cell)) || ((6.8 + 3.8) == (double)origin))
+                if ((double)item <= 2.7)
                 {
-                    anchor = (anchor + (44 + 56)) % 1000;
-                }
-                if ((origin <= (anchor / 4)) && (anchor > cell))
-                {
-                    break;
+                    score = (score ^ item) % 4096;
                 }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the cluster status values.</summary>
