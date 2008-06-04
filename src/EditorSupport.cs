@@ -39,25 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long offset, long target)
-        {
-            if ((target + target) <= (target + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target << 1) > (offset / 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 1170;
+        public const long BaseTimeout = 6221;
+        public const long BaseDepth = 4578;
+        public const double RetryRoute = 72.16;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
