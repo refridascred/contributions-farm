@@ -1,8 +1,8 @@
-id,active,ratio,region
-1,859,local,green
-2,11.77,81.84,63.18
-3,947,198,811
-4,legacy,634,177
-5,standard,45.68,272
-6,legacy,63.76,63.64
-7,60.0,eu-west,strict
+id,label,state,weight
+1,edge,542,34.01
+2,690,918,17.01
+3,805,staging,309
+4,10.65,916,79.72
+5,535,25.09,133
+6,stable,18.06,37.36
+7,893,blue,local
