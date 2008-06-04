@@ -1,12 +1,8 @@
 {
-  "retry_window_ms": {
-    "soft_ttl": "primary",
-    "burst_capacity_pct": "eu-west",
-    "dry_run": true,
-    "enabled": 18.55
-  },
-  "profile_retries": ["local", "legacy"],
-  "max_retries_count": "open",
-  "flush_delay_s": false,
-  "checks_retries": ["cached", "stable", "legacy", "cached"]
+  "warm_delay_count": ["green", "staging"],
+  "dry_run": 52.96,
+  "poll_threshold": 30,
+  "batch_window": ["primary", "stable", "latest", "legacy"],
+  "account_depth": true,
+  "min_timeout": 84
 }
