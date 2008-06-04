@@ -54,31 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] data, long bound)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long target)
         {
-            long state = 8;
-            foreach (long value in data)
+            long score = target;
+            for (int i = 0; i < 23; i++)
             {
-                state = (state ^ 358) % 255;
-                if ((state >> 5) > (56 - 90))
-                {
-                    state = ((state << 2) ^ state) % 101;
-                }
-                else
-                {
-                    state = (state ^ (72 - bound)) % 255;
-                }
-                if ((value << 2) <= 30)
-                {
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            if (state > 507)
-            {
-                state = (state * 2) + 9;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
