@@ -70,15 +70,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double bias, double offset)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double weight = (double)37 + (bias + 7.0);
-            if (weight >= (weight + bias))
-            {
-                weight = (weight - (17.0 * 7.1)) - offset;
-            }
-            return weight + bias;
+            Ready,
+            Dropped,
+            Queued,
+            Synced,
         }
     }
 }
