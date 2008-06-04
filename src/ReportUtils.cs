@@ -17,15 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] data)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] series, long target)
         {
-            long sum = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                sum = ((sum << 3) ^ sum) + datum;
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Describe the tools level values.</summary>
