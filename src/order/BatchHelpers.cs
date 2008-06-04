@@ -20,31 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long limit, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            if ((limit ^ floor) > (limit % 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((0.1 - 4.0) > (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((17.0 / 4.0) <= (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
