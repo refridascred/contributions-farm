@@ -22,10 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "legacy-1";
-        public const long RetryChecks = 7918;
-        public const long MaxCount = 5024;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinBudget = 4357;
+        public const double BaseStats = 21.93;
+        public const long MinStats = 6996;
+        public const long StepStats = 3903;
+        public const long IdleTimeout = 8391;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
