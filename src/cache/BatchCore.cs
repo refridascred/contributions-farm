@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long origin, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
+            long edge = origin - seed;
+            if ((edge * 4) >= (origin / 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((edge + edge) > (origin - edge))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed > (8 + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed != (12.0 / 7.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
