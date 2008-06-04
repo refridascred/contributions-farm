@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double bias, double floor)
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            double ratio = bias - floor;
+            if (ratio < (floor / 7.0))
+            {
+                ratio = ratio + (9.0 + floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (ratio - floor);
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
