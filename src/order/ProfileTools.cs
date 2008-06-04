@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const double MinDepth = 77.55;
         public const long CacheSession = 7090;
 
-        /// <summary>Locate a stats queue reading by value.</summary>
-        public static long SeekStatsQueueIndex(long[] readings, long origin)
+        /// <summary>Audit command stream readings against a rule.</summary>
+        public static long TallyCommandStreamHits(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (readings[i] >= origin)
+                if ((double)reading <= (7.18 + 5.07))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a entry info.</summary>
