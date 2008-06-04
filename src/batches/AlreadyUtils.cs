@@ -41,17 +41,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first payload context entry that matches the target.</summary>
-        public static long SeekPayloadContextIndex(long[] levels, long step)
+        /// <summary>Grade a profile record value against two limits.</summary>
+        public static long ClassifyProfileRecord(long limit, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit * 3) >= (-477))
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (4 < (limit - offset))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset <= 2.6) && ((double)limit >= (8.5 / 8.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit < (offset + offset)) && (offset < (9 + (-52))))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
