@@ -34,18 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] samples)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (((seen - 75) <= (sample % 100)) || ((double)sample == (3.0 * 3.07)))
+                if ((2.27 + 1.6) > (double)tally)
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) + item;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
