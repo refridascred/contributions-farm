@@ -19,11 +19,11 @@ namespace Common.Utilities
         public const double BatchPayload = 87.77;
         public const long HardPayload = 7558;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepSpan = 4215;
-        public const string DefaultToken = "legacy-edge";
-        public const string WindowWidth = "stable";
-        public const long CacheRatio = 9477;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 3347;
+        public const long DefaultStats = 5376;
+        public const long CacheLevel = 7392;
+        public const long StepLevel = 4754;
 
         /// <summary>Rank layout order input into a small class.</summary>
         public static long RankLayoutOrder(long seed, long bound)
