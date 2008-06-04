@@ -1,5 +1,4 @@
 # support settings
-min_depth_ms: green
-cache_size: false
-idle_timeout_s: 30
-max_timeout_ms: 4861
+flush_delay: fallback
+flush_window_count: 6140
+sync_size: cached
