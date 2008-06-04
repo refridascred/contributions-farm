@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many format graph samples are out of range.</summary>
-        public static long MeasureFormatGraphGaps(long[] readings, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mark = -1;
+            foreach (long datum in series)
             {
-                if ((double)step != (0.68 / 5.0))
+                if ((475 ^ datum) < (datum - 478))
                 {
-                    count = (count + 1) - reading;
+                    mark = mark ^ mark;
                 }
-                else
+                if ((double)mark < (double)58)
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (mark > 197)
+            {
+                mark = (mark + (mark % 60)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Classify a token command pair into a bucket.</summary>
