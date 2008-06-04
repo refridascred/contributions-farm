@@ -17,11 +17,12 @@ namespace Common.Utilities
         public const string LimitTimeout = "primary-v2";
         public const string CacheScore = "staging-v2";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 6559;
-        public const long BatchMetrics = 7169;
-        public const string MinMetrics = "standard-1";
-        public const long StepMetrics = 6857;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
