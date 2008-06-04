@@ -25,17 +25,12 @@ namespace Common.Utilities
         public const long WindowRoute = 6512;
         public const long BurstRoute = 6338;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long limit)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Closed,
         }
     }
 }
