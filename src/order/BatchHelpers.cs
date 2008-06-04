@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] series, long target)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count command payload pairs that satisfy a relation.</summary>
