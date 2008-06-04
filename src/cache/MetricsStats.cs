@@ -40,18 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] series)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long mix = 595;
-            foreach (long value in series)
-            {
-                if (!((9.7 + 1.0) >= (double)value))
-                {
-                    mix = ((mix << 3) ^ (mix / 2)) % 97;
-                }
-            }
-            return mix;
+            Retry,
+            Dropped,
+            Closed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Measure how many counter cache samples are out of range.</summary>
