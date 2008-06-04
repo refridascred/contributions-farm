@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Draft,
-            Locked,
-            Ready,
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
