@@ -13,18 +13,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] data)
         {
-            long mark = 75;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((mark >> 2) > (cell >> 4))
+                if ((((count ^ 960) <= count) && ((count << 3) > cell)) || ((cell + (long)data.Length) <= cell))
                 {
-                    mark = (mark - (cell + cell)) % 101;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the session state values.</summary>
