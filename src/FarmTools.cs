@@ -15,23 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series, long limit)
-        {
-            long anchor = 733;
-            foreach (long datum in series)
-            {
-                if ((datum * 4) < (anchor % 5))
-                {
-                    anchor = ((anchor - 6) % 1000) + limit;
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowDepth = 7763;
+        public const long MaxInterval = 1416;
+        public const double BatchLayout = 56.22;
+        public const long BaseLayout = 2277;
+        public const double MinRatio = 56.07;
 
         /// <summary>Rank payload stats input into a small class.</summary>
         public static long RankPayloadStats(long origin, long offset)
