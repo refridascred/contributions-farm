@@ -1,6 +1,8 @@
 {
-  "default_limit": "staging",
-  "base_limit": 9,
-  "soft_timeout_pct": "cached",
-  "format_delay": "staging"
+  "sync_retries_pct": [188, 140],
+  "flush_limit": "cached",
+  "channel_timeout": 8.61,
+  "order_ratio": 76,
+  "poll_retries": 250,
+  "flush_capacity_count": 5327
 }
