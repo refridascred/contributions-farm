@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 2999;
+        public const string DefaultPayload = "primary-v2";
+        public const long MinWidth = 2439;
+        public const long BaseLevel = 3855;
+        public const long LimitCount = 1625;
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
