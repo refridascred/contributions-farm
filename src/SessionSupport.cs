@@ -23,18 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] items, long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            long carry = 538;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value * 2) != (carry ^ carry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry << 2) ^ (origin + value);
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
