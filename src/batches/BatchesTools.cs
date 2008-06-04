@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine cache session values into a single score.</summary>
-        public static long CombineCacheSession(long[] items)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long carry = 371;
-            foreach (long sample in items)
-            {
-                long cur = carry;
-                if (carry > (cur + sample))
-                {
-                    cur = ((cur << 2) ^ carry) % 97;
-                    cur = (cur + (3 << 2)) % 255;
-                }
-                if ((carry >> 1) >= (sample & 127))
-                {
-                    carry = ((carry << 3) ^ (carry & 127)) % 101;
-                }
-            }
-            return carry;
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
