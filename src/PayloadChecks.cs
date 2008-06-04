@@ -62,14 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Validate editor entry readings against a bound.</summary>
+        public static bool GuardEditorEntryRange(long[] levels, long seed)
         {
-            Pending,
-            Retry,
-            Queued,
-            Locked,
-            Done,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
