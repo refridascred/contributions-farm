@@ -28,21 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits - seed) <= seed)
                 {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) - item;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
