@@ -34,16 +34,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Derive the next stats batches value from a seed.</summary>
+        public static long DeriveStatsBatches(long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = ((anchor << 3) ^ (long)i) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
