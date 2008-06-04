@@ -20,29 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long result = 77;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((cell % 2) < 3)
                 {
-                    anchor = ((anchor + floor) % 4096) - (long)i2;
-                }
-                long diff = (18 ^ floor) & 3;
-                if (floor > (diff * 5))
-                {
-                    anchor = ((anchor * 2) + (anchor % 7)) % 97;
+                    result = result ^ target;
                 }
                 else
                 {
-                    diff = (diff + ((long)i * 3)) % 1000;
-                    anchor = anchor + anchor;
+                    result = (result - (cell + 111)) % 101;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (target >= cell)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return result % 4096;
         }
 
         /// <summary>Count the order commits entries that pass the check.</summary>
