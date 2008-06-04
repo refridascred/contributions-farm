@@ -1,5 +1,5 @@
 {
-  "min_timeout_s": ["cached", "edge"],
-  "payload_threshold": "green",
-  "entry_threshold": "green"
+  "counter_timeout": "green",
+  "strict": true,
+  "dry_run": false
 }
