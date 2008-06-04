@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 3767;
         public const long LimitGithubfarm = 3056;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Look up the position of a token cluster sample.</summary>
+        public static long SeekTokenClusterIndex(long[] levels, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum * 5) + (bound ^ sum);
-                sum = ((sum * 2) + (long)i) % 101;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
