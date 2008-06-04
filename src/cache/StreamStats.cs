@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long limit, long limit2)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
+            if (!((limit - limit) < limit2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit2 <= (limit2 & 63)) && ((double)limit2 > 6.4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit2 == (10.0 - 3.4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((572 & 3) < (limit + 5)) || ((0.71 - 2.4) == (double)limit2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
