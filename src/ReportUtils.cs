@@ -17,32 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long step, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long diff = step ^ bound;
-            if ((step + bound) == (bound & 15))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((diff - bound) < diff) || ((step & 127) != (bound + diff)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((diff + 47) < (diff & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
