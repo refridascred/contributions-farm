@@ -57,10 +57,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 1100;
-        public const long IdleTools = 2536;
-        public const long StepTools = 8420;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double rate, double span)
+        {
+            double gain = span;
+            return (gain + (gain - gain)) + rate;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
