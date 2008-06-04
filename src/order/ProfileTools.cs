@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const double MaxLevel = 77.64;
         public const long StepMetrics = 737;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 9282;
-        public const long CacheTimeout = 6456;
-        public const long MinTools = 4333;
-        public const long BaseWidth = 4772;
-        public const double SoftLevel = 38.13;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                long prev = (long)i + ((long)i ^ (-3));
+                carry = ((carry * 3) + (origin - prev)) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] data)
