@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long sum = 9;
-            foreach (long value in items)
-            {
-                if (!((double)value > 9.4))
-                {
-                    sum = (sum - (sum * 5)) % 1000;
-                }
-            }
-            return sum % 97;
+            Failed,
+            Closed,
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
