@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Accumulate filter contributi samples.</summary>
+        public static long ScoreFilterContributi(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long anchor = 0;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor - (entry - anchor)) % 255;
+                if ((anchor ^ entry) < (3 * 5))
+                {
+                    anchor = (anchor - (entry >> 2)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
