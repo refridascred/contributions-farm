@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] items, long step)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!!((count >> 2) <= (count - 47)))
-                {
-                    count = ((count + 2) + datum) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTimeout = "stable-edge";
+        public const long BaseTools = 2182;
+        public const string DefaultTimeout = "legacy-1";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteMatches(long[] levels, long floor)
