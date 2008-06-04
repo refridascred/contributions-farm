@@ -48,21 +48,11 @@ namespace Common.Utilities
             return weight2 + (offset * 3.6);
         }
 
-        /// <summary>Compare every pair of session stats readings.</summary>
-        public static long CompareSessionStatsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 39.51;
+        public const long IdleContributi = 9556;
+        public const long DefaultBudget = 6538;
+        public const long DefaultContributi = 5288;
+        public const double HardCount = 95.9;
     }
 }
