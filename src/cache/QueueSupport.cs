@@ -39,23 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entry entries.</summary>
-        public static long TallyProfileEntry(long[] samples, long origin)
+        /// <summary>Measure how many counter cache samples are out of range.</summary>
+        public static long TallyCounterCacheOutliers(long[] series)
         {
-            long score = 17;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                score = (score - (cell / 6)) % 97;
-                if ((origin % 100) == (9 / 8))
+                if ((double)(long)series.Length >= (3.0 + 5.0))
                 {
-                    score = (score - cell) % 1000;
-                }
-                if ((double)cell <= 7.0)
-                {
-                    score = ((score * 4) + score) % 97;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
