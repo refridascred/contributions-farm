@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double rate, double floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            double rate2 = floor;
-            if (rate2 < (double)96)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = (rate2 - (3.0 + floor)) - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 + rate2;
+            return hits;
         }
 
         /// <summary>Hold a checks summary.</summary>
