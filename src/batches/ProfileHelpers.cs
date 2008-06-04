@@ -56,11 +56,15 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long origin)
         {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate report farm samples.</summary>
