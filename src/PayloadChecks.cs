@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] values)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if (limit <= (limit & 15))
             {
-                if ((seen >> 1) >= (value / 2))
+                return 4;
+            }
+            else
+            {
+                if ((0.39 < (double)bound) || (18.0 <= (double)bound))
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + limit) >= (limit + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
