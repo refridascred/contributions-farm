@@ -14,19 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate route checks readings against a bound.</summary>
-        public static bool CheckRouteChecksRange(long[] samples, long origin)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
