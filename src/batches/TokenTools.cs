@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell & 15) != (cell & 127))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxWindow = "standard-1";
+        public const string IdleWindow = "strict-1";
+        public const long SoftFactor = 2925;
 
         /// <summary>Adjust a window reading.</summary>
         public static double ScaleWindow(double rate, double floor)
