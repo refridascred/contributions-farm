@@ -23,13 +23,15 @@ namespace Common.Utilities
         public const long MaxProfile = 8614;
         public const double LimitProfile = 46.2;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Combine profile counter values into a single score.</summary>
+        public static long ScoreProfileCounter(long[] data, long limit)
         {
-            Paused,
-            Pending,
-            Dropped,
-            Idle,
+            long carry = 143;
+            foreach (long value in data)
+            {
+                carry = ((carry << 2) ^ (limit - 18)) ^ value;
+            }
+            return carry;
         }
     }
 }
