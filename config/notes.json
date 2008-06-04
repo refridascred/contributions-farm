@@ -1,17 +1,16 @@
 {
-  "persist": [45, 377],
-  "max_delay": 1024,
-  "retry_delay_pct": 5277,
-  "metrics_window": {
-    "commits_interval": {
-      "route_interval": 6299,
-      "burst_delay_s": 9076,
-      "sync_ratio_pct": 74,
-      "stream_depth": ["blue", "open", "green", "staging"],
-      "record_retries": 78
-    },
-    "warm_ratio_s": "legacy",
-    "sync_interval": 1024,
-    "enabled": "standard"
-  }
+  "hard_threshold_pct": "stable",
+  "filter_threshold": {
+    "verbose": ["primary", "standard", "staging"],
+    "hard_retries_pct": 250,
+    "audit": ["standard", "strict"],
+    "warm_size_ms": {
+      "min_size_pct": "green",
+      "warm_window_s": 96,
+      "queue_threshold": 100,
+      "layout_timeout": 5229,
+      "filter_retries": ["fallback", "primary", "cached", "primary"]
+    }
+  },
+  "idle_interval_count": 250
 }
