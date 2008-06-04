@@ -27,24 +27,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a counter session pair into a bucket.</summary>
-        public static long BucketCounterSession(long offset, long target)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            if (offset > (offset & 63))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (target < (offset & 63))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
