@@ -21,17 +21,18 @@ namespace Common.Utilities
         public const double MaxLevel = 77.64;
         public const long StepMetrics = 737;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Count the entry queue entries that pass the check.</summary>
+        public static long MeasureEntryQueueGaps(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                long prev = (long)i + ((long)i ^ (-3));
-                carry = ((carry * 3) + (origin - prev)) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (!((1.66 * 15.0) <= (double)sample))
+                {
+                    tally = tally + 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
