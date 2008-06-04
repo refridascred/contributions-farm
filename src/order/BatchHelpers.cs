@@ -28,17 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a already buffer sample.</summary>
-        public static long FindAlreadyBufferIndex(long[] items, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] < target)
+                if ((step + count) >= count)
                 {
-                    return (long)i;
+                    count = (count + 3) + entry;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
