@@ -91,25 +91,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long target, long limit)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long lane = target ^ limit;
-            if ((limit - target) < (target - lane))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((6.37 + 6.55) > (double)lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
