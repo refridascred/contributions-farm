@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] data, long limit)
+        /// <summary>Combine cache session values into a single score.</summary>
+        public static long CombineCacheSession(long[] items)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long carry = 371;
+            foreach (long sample in items)
             {
-                if (9 <= (limit + 2))
+                long cur = carry;
+                if (carry > (cur + sample))
                 {
-                    tally = (tally + 2) ^ value;
+                    cur = ((cur << 2) ^ carry) % 97;
+                    cur = (cur + (3 << 2)) % 255;
+                }
+                if ((carry >> 1) >= (sample & 127))
+                {
+                    carry = ((carry << 3) ^ (carry & 127)) % 101;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
