@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] values, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((values[i] < origin) && ((values[i] % 5) == 0))
+                if (reading < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Rank token input into a small class.</summary>
