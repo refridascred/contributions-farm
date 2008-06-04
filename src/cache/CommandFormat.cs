@@ -31,19 +31,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter githubfarm series from a seed.</summary>
-        public static long IterateCounterGithubfarm(long floor)
+        /// <summary>Derive the next buffer token value from a seed.</summary>
+        public static long SeriesBufferToken(long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (floor > (floor >> 2))
+                state = ((state * 2) + floor) % 65521;
+                if (state <= ((long)i + state))
                 {
-                    mix = (mix * 4) + (long)i;
+                    state = ((state * 4) + (floor % 5)) % 97;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
