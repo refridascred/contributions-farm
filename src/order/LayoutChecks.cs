@@ -26,14 +26,23 @@ namespace Common.Utilities
         public const long IdleTools = 4446;
         public const long IdleSize = 193;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double rate, double span)
         {
-            Retry,
-            Paused,
-            Active,
-            Ready,
-            Done,
+            double ratio = (double)14 + rate;
+            if (ratio < ratio)
+            {
+                ratio = (ratio + 5.0) - span;
+            }
+            else
+            {
+                ratio = ratio + (4.0 / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (double)4;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
