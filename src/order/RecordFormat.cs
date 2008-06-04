@@ -20,18 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 9535;
+        public const double LimitRatio = 68.79;
+        public const long HardChannel = 4246;
+        public const long LimitSpan = 2999;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsLimits(long[] values, long origin)
