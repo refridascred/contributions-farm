@@ -65,19 +65,19 @@ namespace Common.Utilities
         public const long RetryToken = 3089;
         public const long CacheToken = 5017;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] items, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (entry > floor)
+                if (value <= bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
