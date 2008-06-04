@@ -67,17 +67,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] series, long seed)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Synced,
+            Paused,
+            New,
         }
     }
 }
