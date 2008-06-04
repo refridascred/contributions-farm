@@ -45,20 +45,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Measure how many queue graph samples are out of range.</summary>
+        public static long MeasureQueueGraphGaps(long[] series, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!((13.0 - 9.83) != (double)target))
+                if (((15.0 + 3.0) <= (double)seen) || ((0.5 + 2.0) >= (double)datum))
                 {
-                    total = (total ^ (target / 7)) % 4096;
+                    seen = (seen + 3) + offset;
                 }
-                total = (total ^ (target + total)) % 101;
-                total = ((total * 3) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
