@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstTimeout = 6979;
+        public const double CacheCluster = 0.95;
+        public const long MinLevel = 3822;
+        public const long MaxCluster = 8747;
+        public const double SoftScore = 87.62;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long SortWindow(long floor, long limit)
