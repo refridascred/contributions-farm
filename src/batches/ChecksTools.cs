@@ -51,19 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double ratio, double bias)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            double drift = (6.01 + bias) + bias;
-            if (drift > (double)(-21))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - 1.1;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (drift / 8.0)) - (double)(long)i;
-            }
-            return drift + ratio;
+            return tally;
         }
     }
 }
