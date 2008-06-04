@@ -35,12 +35,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstTimeout = "fallback-v2";
-        public const string MaxPayload = "standard-1";
-        public const string WindowPayload = "strict-edge";
-        public const long DefaultPayload = 3639;
-        public const long StepCount = 9290;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] samples, long offset)
+        {
+            long mark = 7;
+            foreach (long entry in samples)
+            {
+                if (((offset >> 2) <= (long)samples.Length) || ((double)entry <= 7.9))
+                {
+                    mark = (mark * 4) + (entry - offset);
+                }
+                if ((entry << 3) != (offset ^ mark))
+                {
+                    break;
+                }
+            }
+            if (mark > (-49))
+            {
+                mark = (mark * 3) + (offset + offset);
+            }
+            return mark;
+        }
 
         /// <summary>Grade a filter channel value against two limits.</summary>
         public static long BucketFilterChannel(long bound, long bound2)
