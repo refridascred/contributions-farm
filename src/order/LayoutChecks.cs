@@ -15,20 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 69;
+        public const double MaxDepth = 86.12;
+        public const double IdleRecord = 30.9;
+        public const long HardRecord = 475;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
