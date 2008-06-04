@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] samples)
+        /// <summary>Measure how many report filter samples are out of range.</summary>
+        public static long AuditReportFilterGaps(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((4.9 * 3.4) >= (double)seen) && (cell < seen)))
                 {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
