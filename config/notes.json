@@ -1,5 +1,13 @@
 {
-  "base_depth_count": false,
-  "compress": "local",
-  "stream_ttl": [179, 465, 446]
+  "warm_retries": 482,
+  "warm_interval_ms": 1.85,
+  "warm_ttl_s": false,
+  "report_depth": "green",
+  "payload_depth": {
+    "batch_window_s": 30,
+    "default_retries_count": 60,
+    "strict": 47,
+    "sync_threshold_s": [346, 174, 102]
+  },
+  "warm_timeout": "green"
 }
