@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            New,
-            Idle,
-            Synced,
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
