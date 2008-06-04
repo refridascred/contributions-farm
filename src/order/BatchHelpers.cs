@@ -23,17 +23,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long target, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = target + step;
+            if ((811 * 5) == (lane << 1))
             {
-                if ((values[i] >= origin) && ((values[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((7.63 < (double)target) && ((step / 7) <= (target & 7)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)(-84) <= (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
