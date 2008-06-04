@@ -1,7 +1,8 @@
 {
-  "context_limit": true,
-  "idle_size_pct": ["latest", "staging", "fallback"],
-  "cache_capacity_ms": "edge",
-  "poll_interval": "local",
-  "soft_limit_s": false
+  "payload_limit": 27,
+  "token_delay": 60,
+  "default_ratio": 10.68,
+  "audit": 62,
+  "session_ttl": 53.33,
+  "retry_size_count": 62.92
 }
