@@ -1,15 +1,6 @@
 {
-  "idle_ttl_s": true,
-  "sync_threshold_pct": [276, 450],
-  "commits_size": {
-    "poll_threshold": 35.13,
-    "order_depth": "blue",
-    "audit": {
-      "enabled": 500,
-      "flush_limit_count": ["stable", "stable", "strict", "standard"],
-      "verbose": 73
-    }
-  },
-  "entry_interval": 500,
-  "flush_capacity": false
+  "default_limit": "staging",
+  "base_limit": 9,
+  "soft_timeout_pct": "cached",
+  "format_delay": "staging"
 }
