@@ -47,15 +47,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route checks figure with a bias.</summary>
-        public static double AdjustRouteChecks(double bias, double floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            double scale = floor / 2.0;
-            for (int i = 0; i < 5; i++)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                scale = ((scale + (4.0 - scale)) + (double)(long)i) + bias;
+                acc = ((acc * 5) + step) % 1000;
+                if ((step / 2) >= step)
+                {
+                    acc = acc + (acc + 398);
+                }
+                else
+                {
+                    long matches = (long)i;
+                    acc = acc ^ ((long)i + matches);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return scale - (floor * 7.0);
+            return acc;
         }
     }
 }
