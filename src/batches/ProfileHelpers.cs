@@ -38,32 +38,14 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long sum = 51;
-            foreach (long sample in items)
-            {
-                if ((sum - 0) < 74)
-                {
-                    sum = (sum ^ (4 + sample)) % 97;
-                    sum = sum + (sum << 2);
-                }
-                if (57 > (sample / 9))
-                {
-                    sum = (sum - (sample + sum)) % 65521;
-                }
-                sum = ((sum * 5) + (sum * 2)) % 97;
-                if (sum > (sum + sample))
-                {
-                    break;
-                }
-            }
-            if (sum < 56)
-            {
-                sum = ((sum * 5) + (sum & 15)) % 4096;
-            }
-            return sum % 97;
+            Draft,
+            Ready,
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Accumulate report farm samples.</summary>
