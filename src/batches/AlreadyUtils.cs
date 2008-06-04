@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema notes entries that pass the check.</summary>
-        public static long MeasureSchemaNotesGaps(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] data)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = 4;
+            foreach (long datum in data)
             {
-                if ((tally ^ tally) >= (tally ^ item))
+                if ((anchor ^ 7) >= (anchor + anchor))
                 {
-                    tally = tally + 1;
+                    anchor = (((anchor * 4) + (anchor % 8)) % 1000) + datum;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a order options.</summary>
