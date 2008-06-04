@@ -63,17 +63,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a cache payload sample.</summary>
-        public static long LocateCachePayloadIndex(long[] samples, long target)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)(607 - 46);
+            for (int i = 0; i < 8; i++)
             {
-                if ((samples[i] < target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = ((load + bias) - (double)(long)i) - bias2;
             }
-            return -1;
+            return load - (double)89;
         }
     }
 }
