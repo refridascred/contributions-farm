@@ -1,5 +1,6 @@
 {
-  "flush_size": true,
-  "poll_interval": 30,
-  "min_delay_count": ["eu-west", "eu-west", "stable"]
+  "persist": 41.12,
+  "retry_capacity": "eu-west",
+  "compress": "blue",
+  "min_capacity_count": 1024
 }
