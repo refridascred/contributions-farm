@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a record schema reading.</summary>
-        public static double ScaleRecordSchema(double gain, double floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double rate, double offset)
         {
-            double weight = floor;
-            if (weight < (double)8)
+            double scale = (double)((-37) * 3);
+            if (scale > 2.0)
             {
-                weight = (weight - floor) + gain;
+                scale = ((scale + scale) - rate) + offset;
             }
             else
             {
-                weight = weight - 1.1;
+                scale = scale - 8.35;
             }
-            return weight + (double)295;
+            return scale + scale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
