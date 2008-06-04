@@ -1,8 +1,10 @@
 # support settings
-min_retries: 31.19
-batches_timeout: 61.98
-max_window:
-  - 419
-  - 373
-  - 23
-  - 111
+contributi_ttl: 58.72
+queue_threshold: true
+dry_run: 28
+batch_size: strict
+compress:
+  warm_capacity_s: 58
+  compress: true
+  flush_limit_ms: latest
+entry_interval: 4460
