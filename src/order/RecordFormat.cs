@@ -33,18 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache record samples are out of range.</summary>
-        public static long MeasureCacheRecordHits(long[] readings)
+        /// <summary>Rank profile buffer input into a small class.</summary>
+        public static long GradeProfileBuffer(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if ((seed ^ 661) >= (origin - seed))
             {
-                if ((19.0 / 4.0) > (double)sample)
+                return 0;
+            }
+            else
+            {
+                if ((seed & 31) < (64 - 2))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed & 255) < (origin + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit batch channel readings against a rule.</summary>
