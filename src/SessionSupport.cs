@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell - count) > (cell + cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks kind values.</summary>
