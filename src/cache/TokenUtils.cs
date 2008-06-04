@@ -27,25 +27,12 @@ namespace Common.Utilities
         public const string BaseFormat = "stable-edge";
         public const long IdleScore = 508;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long floor, long step)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long step2 = floor - step;
-            if ((1.24 + 9.0) == (double)step2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step2 - step) > 33)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Closed,
+            Retry,
+            Idle,
         }
     }
 }
