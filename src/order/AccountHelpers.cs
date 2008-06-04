@@ -50,10 +50,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleBudget = 1489;
-        public const long SoftTimeout = 7462;
-        public const double BatchScore = 60.09;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long origin, long limit)
+        {
+            if ((origin << 1) >= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (98 < (38 - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + origin) == (origin - (-804)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin + origin) > limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double rate, double floor)
