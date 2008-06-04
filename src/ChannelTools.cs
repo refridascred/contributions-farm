@@ -26,21 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Audit checks order readings against a rule.</summary>
+        public static long MeasureChecksOrderOutliers(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell >= (origin + 867)) && ((tally & 1) >= cell))
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up filter window samples.</summary>
