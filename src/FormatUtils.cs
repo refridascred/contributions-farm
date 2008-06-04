@@ -35,11 +35,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value < (20.0 / 5.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metric class values.</summary>
