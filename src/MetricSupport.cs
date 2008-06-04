@@ -21,13 +21,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Closed,
-            Paused,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 242;
+        public const double MinWidth = 88.46;
+        public const long BatchLevel = 6920;
+        public const long HardWidth = 9975;
+        public const double RetryCount = 12.81;
     }
 }
