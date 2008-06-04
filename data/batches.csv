@@ -1,9 +1,8 @@
-id,score,token,count,rank
-1,strict,585,39.81,legacy
-2,6.56,951,75.29,latest
-3,685,latest,788,167
-4,306,green,879,51.26
-5,fallback,42.86,845,cached
-6,83.34,latest,706,490
-7,staging,229,staging,284
-8,672,152,local,open
+id,rank,token,count
+1,90.95,37.69,41
+2,189,93.32,stable
+3,442,67.95,295
+4,988,77.08,863
+5,55,standard,local
+6,15.82,866,356
+7,611,primary,891
