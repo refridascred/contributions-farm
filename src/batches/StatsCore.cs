@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the stream account entries that pass the check.</summary>
-        public static long CountStreamAccountGaps(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] readings, long target)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            foreach (long datum in readings)
             {
-                if ((hits - 658) >= (hits + hits))
+                if ((hits >= (target + target)) && !((datum ^ datum) <= target))
                 {
-                    hits = (hits + 2) - entry;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
