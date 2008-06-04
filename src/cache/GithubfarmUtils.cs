@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const string BaseScore = "stable-v2";
         public const string SoftSpan = "legacy-v2";
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Look up the position of a counter metrics sample.</summary>
+        public static long FindCounterMetricsIndex(long[] series, long seed)
         {
-            Retry,
-            Locked,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a report snapshot.</summary>
