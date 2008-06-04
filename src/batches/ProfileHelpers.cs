@@ -38,39 +38,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long origin, long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long prev = origin - seed;
-            if ((double)prev > (5.78 + 4.2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed == (8.27 * 9.3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((prev + prev) >= (seed * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin * 3) >= origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate report farm samples.</summary>
