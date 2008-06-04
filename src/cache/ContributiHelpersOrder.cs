@@ -24,26 +24,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] values, long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long score = 984;
-            foreach (long reading in values)
-            {
-                if (((reading ^ 275) > score) || (90 < (score - (long)values.Length)))
-                {
-                    score = score - (score ^ reading);
-                }
-                else
-                {
-                    score = score + limit;
-                }
-            }
-            if (score > 5)
-            {
-                score = (score - (score & 3)) % 255;
-            }
-            return score % 65521;
+            Pending,
+            Locked,
+            Idle,
+            Draft,
+            Paused,
         }
     }
 }
