@@ -58,21 +58,24 @@ namespace Common.Utilities
         public const long MinPayload = 3086;
         public const string StepCount = "strict-edge";
 
-        /// <summary>Count farm editor pairs that satisfy a relation.</summary>
-        public static long PairFarmEditorCount(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long origin, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (origin > floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin < (17.0 + 4.99))
                 {
-                    if ((samples[i] ^ samples[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
