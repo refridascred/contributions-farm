@@ -1,9 +1,8 @@
-id,level,rank,count
-1,local,952,556
-2,63.66,latest,48.89
-3,fallback,5.76,45.74
-4,edge,14.05,369
-5,staging,113,27
-6,66.82,open,893
-7,499,85,454
-8,78,996,stable
+id,region,ratio,state,owner
+1,latest,44.18,90.17,primary
+2,184,open,green,307
+3,strict,8.29,blue,open
+4,fallback,legacy,47.54,75.95
+5,251,64,fallback,38.13
+6,590,staging,846,31.96
+7,50.98,blue,edge,fallback
