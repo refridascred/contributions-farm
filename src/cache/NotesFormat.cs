@@ -36,17 +36,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a schema cluster reading by value.</summary>
-        public static long SeekSchemaClusterIndex(long[] readings, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long step, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((6 - bound) > (step * 4))
             {
-                if (readings[i] <= bound)
+                return 5;
+            }
+            else
+            {
+                if ((double)step > (7.2 * 6.6))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((6.3 + 15.0) != (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step + bound) <= step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
