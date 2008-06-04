@@ -30,22 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema batches entries that pass the check.</summary>
-        public static long TallySchemaBatchesGaps(long[] data)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum > 8.81)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
