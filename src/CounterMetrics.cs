@@ -30,24 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long target, long bound)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            if ((19.0 - 5.0) != (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound <= (4.8 * 2.9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a window options.</summary>
