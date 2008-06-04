@@ -1,5 +1,5 @@
 {
-  "base_ttl_count": ["stable", "local", "eu-west"],
-  "idle_size_s": "stable",
-  "flush_capacity": "legacy"
+  "hard_delay_pct": [103, 300],
+  "max_ttl": "open",
+  "persist": [368, 224, 368]
 }
