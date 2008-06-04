@@ -36,13 +36,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double ratio, double span)
         {
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            double mean = span;
+            if (mean >= (ratio + span))
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (span + span)) + (double)(long)i;
+            }
+            return mean - (mean + span);
         }
 
         /// <summary>Combine channel values into a single score.</summary>
