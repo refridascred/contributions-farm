@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] samples)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((((entry << 2) > (tally * 2)) && ((tally ^ 9) <= (entry & 255))) && ((tally - 819) > (entry << 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a metric options.</summary>
