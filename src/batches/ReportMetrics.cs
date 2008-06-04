@@ -19,21 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stats metric pairs that satisfy a relation.</summary>
-        public static long MatchStatsMetricCount(long[] samples)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
