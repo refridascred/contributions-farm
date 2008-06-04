@@ -1,6 +1,8 @@
-id,region,owner,score
-1,81.23,95,749
-2,12.48,369,blue
-3,73.99,68,legacy
-4,69.36,662,fallback
-5,green,local,local
+id,active,ratio,region
+1,859,local,green
+2,11.77,81.84,63.18
+3,947,198,811
+4,legacy,634,177
+5,standard,45.68,272
+6,legacy,63.76,63.64
+7,60.0,eu-west,strict
