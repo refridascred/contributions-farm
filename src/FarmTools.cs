@@ -15,12 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowDepth = 7763;
-        public const long MaxInterval = 1416;
-        public const double BatchLayout = 56.22;
-        public const long BaseLayout = 2277;
-        public const double MinRatio = 56.07;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((6.9 + 7.6) >= (double)tally)
+                {
+                    tally = ((tally + 1) + cell) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long ScoreLayout(long[] data, long target)
