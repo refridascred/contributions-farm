@@ -36,22 +36,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] data, long floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((item >> 1) > (floor ^ 5))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit batch channel readings against a rule.</summary>
