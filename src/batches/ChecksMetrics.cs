@@ -27,21 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item <= seed)
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
