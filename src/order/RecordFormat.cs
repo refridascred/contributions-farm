@@ -24,17 +24,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a filter route sample.</summary>
-        public static long SeekFilterRouteIndex(long[] readings, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (readings[i] >= step)
+                if (item != step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
