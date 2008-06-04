@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleSize = "stable";
+        public const long StepRecord = 3518;
+        public const string DefaultRecord = "legacy-1";
+        public const double CacheRatio = 16.74;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
