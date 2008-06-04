@@ -21,24 +21,12 @@ namespace Common.Utilities
         public const double MaxLevel = 77.64;
         public const long StepMetrics = 737;
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double ratio, double span)
-        {
-            double drift = ratio * 0.26;
-            if (drift > 13.0)
-            {
-                drift = drift + span;
-            }
-            else
-            {
-                drift = drift + (drift * 6.9);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (16.0 + ratio)) + (double)(long)i;
-            }
-            return drift - (ratio + span);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 9282;
+        public const long CacheTimeout = 6456;
+        public const long MinTools = 4333;
+        public const long BaseWidth = 4772;
+        public const double SoftLevel = 38.13;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] data)
