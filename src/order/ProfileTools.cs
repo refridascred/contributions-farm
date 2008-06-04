@@ -56,17 +56,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first batches batch entry that matches the target.</summary>
-        public static long LookupBatchesBatchIndex(long[] series, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (series[i] >= bound)
+                if (datum > bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
