@@ -39,17 +39,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] samples, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (samples[i] <= floor)
+                if ((double)matches >= 7.44)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
