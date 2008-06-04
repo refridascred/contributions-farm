@@ -12,14 +12,16 @@ namespace Common.Utilities
         public const long RetryCache = 5088;
         public const double BurstCache = 36.7;
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long limit)
         {
-            Stale,
-            New,
-            Active,
-            Pending,
-            Done,
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc << 3) ^ (342 * 2)) % 101;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the payload level values.</summary>
