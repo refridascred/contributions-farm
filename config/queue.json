@@ -1,8 +1,7 @@
 {
-  "buffer_ratio": 12,
-  "hard_timeout": "legacy",
-  "persist": "local",
-  "schema_retries": 71.86,
-  "compress": [7, 487, 95],
-  "readonly": false
+  "cache_window": 76.63,
+  "cache_ratio": false,
+  "max_depth_ms": [416, 397],
+  "checks_threshold": false,
+  "retry_limit_ms": false
 }
