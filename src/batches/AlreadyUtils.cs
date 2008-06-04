@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next account queue value from a seed.</summary>
-        public static long StepAccountQueue(long limit)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double weight, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            double bias = 7.4;
+            if (bias <= (weight / 4.0))
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                bias = bias - bias;
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - (5.8 / 6.0);
         }
 
         /// <summary>Match up metric samples.</summary>
