@@ -30,19 +30,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double ratio, double floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double load = (ratio * 5.4) / 3.0;
-            if (load < 5.0)
-            {
-                load = (load + load) - floor;
-            }
-            else
-            {
-                load = load - ratio;
-            }
-            return load - (3.0 - 2.9);
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
