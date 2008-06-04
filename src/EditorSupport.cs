@@ -59,17 +59,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metric record entry that matches the target.</summary>
-        public static long FindMetricRecordIndex(long[] items, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 8;
+            foreach (long value in data)
             {
-                if ((items[i] > origin) && ((items[i] % 2) == 0))
+                state = (state ^ 358) % 255;
+                if ((state >> 5) > (56 - 90))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ state) % 101;
+                }
+                else
+                {
+                    state = (state ^ (72 - bound)) % 255;
+                }
+                if ((value << 2) <= 30)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state > 507)
+            {
+                state = (state * 2) + 9;
+            }
+            return state;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
