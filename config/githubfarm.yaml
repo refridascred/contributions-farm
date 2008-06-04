@@ -1,28 +1,4 @@
 # githubfarm settings
-warm_limit: staging
-warm_timeout_ms:
-  hard_limit_ms: 42.97
-  entry_depth: 67.86
-  payload_timeout: local
-soft_ttl: fallback
-report_depth: true
-filter_threshold:
-  editor_timeout:
-    compress:
-      - 255
-      - 108
-      - 128
-    default_ttl_pct: 4466
-    channel_limit: 78.88
-    counter_window: false
-    warm_limit:
-      - 342
-      - 193
-      - 407
-      - 482
-    verbose: 250
-  max_size: 11
-  flush_limit_pct: legacy
-  batches_ratio: edge
-  soft_capacity: false
-persist: open
+persist: 14.39
+contributi_ttl: 81.22
+burst_capacity_count: green
