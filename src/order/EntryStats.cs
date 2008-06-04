@@ -21,13 +21,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long floor)
         {
-            New,
-            Done,
-            Pending,
-            Retry,
+            long state = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state << 2) ^ (floor * 2)) % 255;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
