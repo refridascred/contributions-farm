@@ -16,19 +16,20 @@ namespace Common.Utilities
             return bias2 + (double)(-56);
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double rate, double bias)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] values, long bound)
         {
-            double ratio = rate;
-            if (ratio < rate)
+            long anchor = 4;
+            foreach (long entry in values)
             {
-                ratio = (ratio + (double)7) - bias;
+                anchor = anchor + 713;
+                anchor = (anchor ^ (entry << 1)) % 97;
+                if ((bound >= anchor) || (((long)values.Length & 1) <= entry))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (ratio * 2.54);
+            return anchor % 1000;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
