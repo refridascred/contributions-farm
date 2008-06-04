@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit window schema readings against a rule.</summary>
-        public static long TallyWindowSchemaGaps(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long score = 450;
+            foreach (long datum in values)
             {
-                if ((datum + seen) >= (seen - seen))
+                if (!((datum & 7) <= score))
                 {
-                    seen = seen + 3;
+                    score = (score + (datum - score)) % 1000;
                 }
-                else
+                if ((double)score >= (6.0 - 8.0))
                 {
-                    seen = seen - 1;
+                    score = ((score * 5) + (datum + datum)) % 65521;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the metric level values.</summary>
