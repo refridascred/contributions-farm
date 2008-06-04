@@ -26,22 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftLevel = 1.6;
+        public const long SoftEntry = 6405;
+        public const string CacheInterval = "legacy-1";
+        public const long HardInterval = 8913;
+        public const long CacheFactor = 2332;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double StepStats = 11.26;
