@@ -51,18 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream metric entries.</summary>
-        public static long FoldStreamMetric(long[] series, long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double ratio, double bias)
         {
-            long result = 64;
-            foreach (long item in series)
+            double drift = (6.01 + bias) + bias;
+            if (drift > (double)(-21))
             {
-                if (!((double)item <= (19.0 - 6.8)))
-                {
-                    result = (result - (375 & 63)) - floor;
-                }
+                drift = drift - 1.1;
             }
-            return result;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (drift / 8.0)) - (double)(long)i;
+            }
+            return drift + ratio;
         }
     }
 }
