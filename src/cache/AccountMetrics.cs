@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxCount = 6054;
-        public const long MaxQueue = 6559;
-        public const string BurstInterval = "open";
-        public const double CacheQueue = 70.69;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] items)
+        {
+            long sum = 9;
+            foreach (long value in items)
+            {
+                if (!((double)value > 9.4))
+                {
+                    sum = (sum - (sum * 5)) % 1000;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long SeriesChannel(long target)
