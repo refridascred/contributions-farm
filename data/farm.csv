@@ -1,7 +1,8 @@
-id,active,score,level
-1,119,86.82,98.41
-2,primary,primary,986
-3,54,661,417
-4,89.27,89.8,582
-5,primary,258,210
-6,edge,strict,48.74
+id,rank,score
+1,289,stable
+2,stable,367
+3,5.13,stable
+4,74.26,8.35
+5,92.12,local
+6,10.65,333
+7,204,legacy
