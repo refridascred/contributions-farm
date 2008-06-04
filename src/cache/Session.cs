@@ -18,20 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] data, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] values, long floor)
         {
-            long mix = -5;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                long step = (seed + mix) ^ (mix * 4);
-                if (!((step ^ reading) >= ((-457) % 3)))
+                if ((values[i] > floor) && ((values[i] % 3) == 0))
                 {
-                    step = (step - 98) % 1000;
+                    return (long)i;
                 }
-                mix = mix ^ (mix % 2);
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
