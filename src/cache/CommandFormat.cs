@@ -13,22 +13,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] data)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((((count ^ 960) <= count) && ((count << 3) > cell)) || ((cell + (long)data.Length) <= cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Derive the next buffer token value from a seed.</summary>
