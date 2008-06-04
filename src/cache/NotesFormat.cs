@@ -29,38 +29,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long step, long bound)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            if ((6 - bound) > (step * 4))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step > (7.2 * 6.6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.3 + 15.0) != (double)step)
+                    if ((samples[i] + samples[j]) == 0)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step + bound) <= step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
