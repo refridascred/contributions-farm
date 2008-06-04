@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double ratio, double offset)
-        {
-            double mean = offset;
-            if (mean <= 1.0)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean - (ratio + 20.0);
-            }
-            return mean - (7.0 * 4.6);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultCount = 7196;
+        public const long MinMetrics = 406;
+        public const long MinSpan = 3901;
+        public const string DefaultMetrics = "stable-edge";
+        public const double BaseRatio = 58.24;
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] data)
