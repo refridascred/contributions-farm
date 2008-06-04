@@ -29,12 +29,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public double Label { get; set; }
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitFactor = 5823;
+        public const long BaseWidth = 5534;
+        public const long BurstRatio = 6257;
+        public const long DefaultRoute = 183;
+        public const long LimitInterval = 9291;
     }
 }
