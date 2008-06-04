@@ -1,32 +1,6 @@
 # entry settings
-retry_timeout_pct:
-  soft_delay_pct:
-    idle_capacity_count: true
-    burst_depth:
-      - stable
-      - cached
-    idle_size_pct: 3188
-  session_size: 8947
-  hard_size: 17.83
-  session_ratio: 23.68
-  support_retries: 46.48
-  burst_depth: true
-soft_window_count: blue
-persist: local
-cache_size_pct:
-  - primary
-  - eu-west
-base_retries_count:
-  warm_interval_pct: latest
-  burst_ttl_s: legacy
-  soft_retries:
-    - open
-    - blue
-    - green
-    - strict
-  dry_run: 5178
-  metric_window: primary
-  default_capacity_ms: 96.48
-verbose:
-  - legacy
-  - latest
+order_ttl: 73
+hard_delay: true
+profile_size: standard
+filter_size: fallback
+hard_capacity_ms: 93.48
