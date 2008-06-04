@@ -21,31 +21,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long bound, long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            if (33 >= (target + target))
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (55 <= (target ^ 69))
+                total = ((total << 3) ^ (long)i) % 65521;
+                if (!(((-44) + total) > total))
                 {
-                    return 5;
+                    total = (total + (total - total)) % 101;
+                    total = (total - (438 ^ seed)) % 1000;
                 }
-                else
-                {
-                    if ((8.3 * 17.0) < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
