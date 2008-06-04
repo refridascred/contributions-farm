@@ -1,10 +1,7 @@
-id,weight,token,level
-1,25.52,62,7.65
-2,69.98,90.61,409
-3,664,standard,48
-4,75.98,156,443
-5,941,223,legacy
-6,staging,75.75,local
-7,73.62,76.26,374
-8,46,5.98,strict
-9,429,74.54,66.39
+id,ratio,active,owner
+1,509,506,fallback
+2,cached,619,3.99
+3,staging,51.44,439
+4,50.52,green,0
+5,264,922,293
+6,staging,254,eu-west
