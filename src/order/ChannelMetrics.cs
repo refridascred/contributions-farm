@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
