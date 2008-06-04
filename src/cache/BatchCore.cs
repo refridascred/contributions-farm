@@ -46,23 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits context entries.</summary>
-        public static long DigestCommitsContext(long[] values, long offset)
-        {
-            long result = 8;
-            foreach (long reading in values)
-            {
-                if (offset < result)
-                {
-                    result = (((result << 3) ^ (offset << 2)) % 1000) - reading;
-                }
-            }
-            if (result < 3)
-            {
-                result = result + (result * 2);
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 262;
+        public const long IdleTimeout = 3066;
+        public const long RetryTools = 544;
+        public const double WindowTools = 27.26;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long offset, long seed)
