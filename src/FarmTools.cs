@@ -33,10 +33,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 5137;
-        public const long BurstContext = 1653;
-        public const long DefaultContext = 3867;
-        public const double CacheContext = 77.54;
+        /// <summary>Rank payload stats input into a small class.</summary>
+        public static long RankPayloadStats(long origin, long offset)
+        {
+            if ((double)offset < (1.9 - 4.22))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin >= (offset - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
