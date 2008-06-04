@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Roll a contributi account counter forward.</summary>
+        public static long DeriveContributiAccount(long target)
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
-            public bool Limit { get; set; }
+            long state = target;
+            for (int i = 0; i < 23; i++)
+            {
+                state = state ^ (target ^ (long)i);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
