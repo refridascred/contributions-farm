@@ -35,13 +35,17 @@ namespace Common.Utilities
         public const long HardDepth = 5513;
         public const double RetryCommits = 65.28;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Look up the position of a cache support sample.</summary>
+        public static long FindCacheSupportIndex(long[] levels, long origin)
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
