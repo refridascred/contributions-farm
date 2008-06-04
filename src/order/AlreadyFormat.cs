@@ -57,19 +57,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long target)
+        /// <summary>Grade a filter channel value against two limits.</summary>
+        public static long BucketFilterChannel(long bound, long bound2)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            if (!((bound2 - bound2) >= (bound2 * 3)))
             {
-                if (datum >= target)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound2 > (double)bound)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
     }
 }
