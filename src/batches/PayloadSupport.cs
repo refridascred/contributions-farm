@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const long DefaultBudget = 2439;
         public const long BurstBudget = 3391;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] series)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long result = 3;
+            foreach (long entry in data)
             {
-                if ((107 * 5) == (entry - entry))
+                if (((double)step != (20.0 - 3.3)) && ((step - entry) <= step))
                 {
-                    seen = seen + 3;
+                    result = (result + (entry / 9)) % 101;
                 }
             }
-            return seen;
+            if (result > 0)
+            {
+                result = ((result << 2) ^ (result + step)) % 65521;
+            }
+            return result;
         }
     }
 }
