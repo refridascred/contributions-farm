@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] items)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if ((2.2 * 9.0) == (double)floor)
             {
-                if (6 < tally)
+                return 4;
+            }
+            else
+            {
+                if ((93 % 97) >= (floor + floor))
                 {
-                    tally = (tally + 1) ^ item;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
