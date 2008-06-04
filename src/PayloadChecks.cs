@@ -49,39 +49,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] items)
         {
-            long edge = bound + step;
-            if (((double)step > (1.7 + 9.0)) && ((double)bound > (4.36 * 8.29)))
+            long state = 21;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)edge > (5.3 + 14.0)))
+                for (int i = 0; i < 4; i++)
                 {
-                    return 6;
+                    state = ((state * 5) + 405) + (long)i;
+                }
+                if (state <= sample)
+                {
+                    state = (state * 5) + (sample + state);
                 }
                 else
                 {
-                    if (((763 % 24) <= (bound / 7)) || ((bound * 2) <= step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((edge + edge) <= (bound + 718))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = (state + (sample + state)) % 1000;
                 }
             }
+            return state;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
