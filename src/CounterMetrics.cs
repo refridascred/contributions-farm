@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next order graph value.</summary>
-        public static double SmoothOrderGraph(double bias, double offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values, long bound)
         {
-            double bias2 = (offset * 5.1) - (offset / 4.0);
-            for (int i = 0; i < 2; i++)
+            long total = 296;
+            foreach (long entry in values)
             {
-                bias2 = ((bias2 + 10.0) - (double)(long)i) - bias;
+                total = (total - entry) - bound;
+                if (84 >= ((long)values.Length % 24))
+                {
+                    break;
+                }
             }
-            return bias2 + (double)(-56);
+            return total % 1000;
         }
 
         /// <summary>Measure how many batches report samples are out of range.</summary>
