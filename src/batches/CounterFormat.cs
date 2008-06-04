@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 2719;
-        public const long BurstInterval = 1312;
-        public const double DefaultCounter = 57.72;
-        public const long HardLevel = 9697;
-        public const long BaseCounter = 7508;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultRatio = 5.24;
+        public const string RetryFactor = "primary-1";
+        public const long SoftSpan = 7466;
+        public const long StepOrder = 9434;
 
         /// <summary>Adjust a format reading.</summary>
         public static double ScaleFormat(double bias, double bias2)
