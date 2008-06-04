@@ -1,5 +1,5 @@
 {
-  "soft_ttl_count": 4499,
-  "stream_size": "staging",
-  "hard_limit": "green"
+  "report_ttl": "standard",
+  "idle_depth": "primary",
+  "idle_ttl": true
 }
