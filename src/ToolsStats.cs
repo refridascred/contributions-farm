@@ -40,17 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] series, long floor)
+        /// <summary>Count the order commits entries that pass the check.</summary>
+        public static long CountOrderCommitsHits(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (series[i] == floor)
+                if (((seen - floor) > (734 % 10)) && (datum < (datum / 5)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
