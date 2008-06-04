@@ -15,16 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Iterate the order stream series from a seed.</summary>
+        public static long RollOrderStream(long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                carry = (carry ^ (target ^ 6)) % 65521;
-                carry = ((carry * 5) + (long)i) % 101;
+                anchor = (anchor + (seed + anchor)) % 97;
+                anchor = ((anchor << 3) ^ ((long)i & 127)) % 101;
+                if ((seed >> 3) >= seed)
+                {
+                    anchor = (anchor << 3) ^ (seed % 100);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
