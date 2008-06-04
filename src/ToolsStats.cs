@@ -59,31 +59,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long floor, long limit)
+        /// <summary>Fold a list of queue channel readings.</summary>
+        public static long FoldQueueChannel(long[] samples, long target)
         {
-            if ((double)limit == (double)floor)
+            long acc = 44;
+            foreach (long value in samples)
             {
-                return 4;
+                acc = ((acc ^ value) % 255) + target;
             }
-            else
-            {
-                if ((4 >> 3) > (floor - limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit >= (3.49 + 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
