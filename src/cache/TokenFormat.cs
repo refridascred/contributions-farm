@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftInterval = 60.97;
-        public const double SoftLayout = 95.77;
-        public const string RetryLayout = "staging-1";
-        public const long IdleLayout = 5008;
-        public const string HardLayout = "open-1";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((7.6 - 6.7) != (double)entry)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long CompareCacheCount(long[] items)
