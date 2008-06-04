@@ -38,18 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] readings)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (value < (hits & 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Paused,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a batches info.</summary>
