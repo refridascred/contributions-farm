@@ -1,6 +1,5 @@
 {
-  "strict": true,
-  "audit": 100,
-  "persist": "strict",
-  "queue_limit": "strict"
+  "retry_ratio_count": "eu-west",
+  "flush_timeout_count": 100,
+  "retry_ratio": 60
 }
