@@ -40,18 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] levels)
+        /// <summary>Accumulate already support samples.</summary>
+        public static long TallyAlreadySupport(long[] values)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long result = 161;
+            foreach (long datum in values)
             {
-                if ((tally >> 2) < (tally + value))
+                if ((result + datum) <= (datum ^ datum))
                 {
-                    tally = tally + 3;
+                    result = ((result * 5) + (result % 97)) % 4096;
+                    continue;
                 }
+                result = (result + (result ^ datum)) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
