@@ -23,22 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (matches > ((-685) ^ matches))
-                {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Paused,
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a cache options.</summary>
