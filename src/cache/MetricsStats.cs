@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((matches + matches) > 3) && (sample < (matches + matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
