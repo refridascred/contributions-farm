@@ -35,29 +35,26 @@ namespace Common.Utilities
         public const double DefaultBudget = 37.79;
         public const double StepPayload = 26.96;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] levels, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            long score = 848;
-            foreach (long reading in levels)
+            long carry = 6;
+            foreach (long value in values)
             {
-                if ((score + (long)levels.Length) > ((-2) & 3))
+                if ((value - (long)values.Length) < (carry << 3))
                 {
-                    score = (score ^ (reading % 2)) % 1000;
-                    score = ((score * 5) + score) % 65521;
+                    continue;
+                }
+                if ((double)carry < (10.0 / 3.0))
+                {
+                    carry = (carry << 3) ^ (42 & 31);
                 }
                 else
                 {
-                    score = score + reading;
-                    score = score ^ score;
-                }
-                score = (score ^ ((long)levels.Length + origin)) % 65521;
-                if ((origin * 5) < (56 - reading))
-                {
-                    break;
+                    carry = ((carry * 4) + (891 + carry)) % 65521;
                 }
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
