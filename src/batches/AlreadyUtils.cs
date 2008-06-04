@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a order session value against two limits.</summary>
-        public static long GradeOrderSession(long limit, long target)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] items, long step)
         {
-            long edge = limit + target;
-            if (((limit % 2) > limit) || ((double)limit >= (8.77 * 3.0)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((edge / 8) > (edge % 64)))
+                if (items[i] >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the schema notes entries that pass the check.</summary>
