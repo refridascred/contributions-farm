@@ -30,14 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many batch farm samples are out of range.</summary>
+        public static long TallyBatchFarmGaps(long[] data)
         {
-            Retry,
-            Done,
-            Synced,
-            Closed,
-            Locked,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally << 2) != (tally + 271))
+                {
+                    tally = (tally + 2) - item;
+                }
+            }
+            return tally;
         }
     }
 }
