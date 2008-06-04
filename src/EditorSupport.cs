@@ -43,17 +43,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] readings, long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Synced,
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
