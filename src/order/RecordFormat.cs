@@ -20,13 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
             public long Count { get; set; }
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many cache record samples are out of range.</summary>
