@@ -34,26 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] levels, long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long result = 995;
-            foreach (long entry in levels)
-            {
-                if ((entry - result) < (target / 8))
-                {
-                    result = ((result << 2) ^ (result - entry)) % 97;
-                }
-                else
-                {
-                    result = ((result * 2) + (result % 10)) % 97;
-                }
-            }
-            if (result > 5)
-            {
-                result = result + (target >> 2);
-            }
-            return result;
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Grade a profile record value against two limits.</summary>
