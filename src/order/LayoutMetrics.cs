@@ -31,17 +31,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] values, long limit)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (values[i] <= limit)
+                if (((state / 7) <= state) || ((double)state <= (2.38 + 8.65)))
                 {
-                    return (long)i;
+                    state = (state + (target + target)) % 97;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
