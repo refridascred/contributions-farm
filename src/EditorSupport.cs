@@ -72,9 +72,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryWidth = "staging-edge";
-        public const double DefaultMetric = 98.14;
-        public const long BatchDepth = 1223;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Synced,
+            Idle,
+            Failed,
+            New,
+            Paused,
+        }
     }
 }
