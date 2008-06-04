@@ -13,24 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] readings, long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] samples)
         {
-            long result = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                long offset2 = sample;
-                if (((offset2 ^ 1) < (sample & 255)) || (((long)readings.Length + result) == (sample >> 2)))
+                if ((((entry << 2) > (tally * 2)) && ((tally ^ 9) <= (entry & 255))) && ((tally - 819) > (entry << 3)))
                 {
-                    offset2 = ((offset2 * 2) + (result - 7)) % 1000;
+                    tally = tally + 3;
                 }
-                result = ((result << 2) ^ sample) % 65521;
             }
-            if (result > 5)
-            {
-                result = (result - offset) % 97;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a metric options.</summary>
