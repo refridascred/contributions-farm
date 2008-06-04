@@ -14,18 +14,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] values, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long origin, long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long prev = origin + step;
+            if ((prev / 2) > (prev << 1))
             {
-                if (((92 + count) == (count / 9)) && ((floor % 10) >= (count % 24)))
+                return 2;
+            }
+            else
+            {
+                if ((step % 10) > 2)
                 {
-                    count = (count + 3) + cell;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a batch reading.</summary>
