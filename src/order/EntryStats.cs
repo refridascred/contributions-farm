@@ -40,10 +40,25 @@ namespace Common.Utilities
         public const long StepStats = 4288;
         public const long StepTimeout = 7878;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryFormat = "staging-v2";
-        public const string IdleBudget = "staging-1";
-        public const long MaxScore = 6357;
-        public const string MinFormat = "cached-1";
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long bound, long target)
+        {
+            long span = bound - target;
+            if ((span & 127) > (bound >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((4.23 + 3.0) > (double)target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
