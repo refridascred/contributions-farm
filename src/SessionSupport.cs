@@ -37,19 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] readings, long step)
+        /// <summary>Derive the next context session value from a seed.</summary>
+        public static long DeriveContextSession(long target)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading != step)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score - score) % 4096;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return stale;
+            return score;
         }
     }
 }
