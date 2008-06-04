@@ -1,7 +1,8 @@
-id,count,ratio
-1,488,413
-2,534,208
-3,92.43,955
-4,83.13,89.99
-5,4.82,standard
-6,fallback,586
+id,level,count
+1,standard,295
+2,strict,95.17
+3,edge,37.73
+4,797,local
+5,655,local
+6,318,standard
+7,62.69,890
