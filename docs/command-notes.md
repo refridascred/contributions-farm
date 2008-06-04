@@ -1,12 +1,10 @@
 # Command notes
 
-Use entry settings to tune how often cluster data is refreshed.
-Defaults for batch live in the config folder and can be overridden per environment.
-Keep filter and context names short and lowercase.
+Each metric is validated before it reaches the layout queue.
+Use already settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Review stats limits each release
-- Log every layout change
-- Prefer window defaults
-- Document new graph fields
+- Log every contributi change
+- Validate stream input early
+- Prefer session defaults
