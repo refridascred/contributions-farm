@@ -36,19 +36,15 @@ namespace Common.Utilities
         public const double DefaultFarm = 31.31;
         public const long BatchCount = 4220;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double gain, double bias)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long bound)
         {
-            double gain2 = (double)32 * 4.18;
-            if (gain2 <= (gain2 - gain))
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                gain2 = gain2 + gain;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - bias) + (double)(long)i;
-            }
-            return gain2 + (double)7;
+            return sum;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
