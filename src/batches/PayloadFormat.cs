@@ -15,12 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 9066;
-        public const long DefaultDepth = 2692;
-        public const double RetryScore = 9.83;
-        public const long LimitBudget = 5233;
-        public const long DefaultWidth = 84;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!!((double)offset <= 3.0))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphMatches(long[] values, long floor)
