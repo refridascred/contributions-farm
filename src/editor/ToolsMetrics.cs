@@ -19,19 +19,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double gain, double floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double rate = (2.5 - floor) * 7.0;
-            if (rate >= (1.2 - floor))
-            {
-                rate = (rate - rate) - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - 18.0) + (double)(long)i;
-            }
-            return rate - (1.94 * 12.0);
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a counter summary.</summary>
