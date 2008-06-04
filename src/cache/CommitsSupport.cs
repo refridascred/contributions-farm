@@ -90,18 +90,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] levels, long offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry <= (19.0 / 4.0))
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            Dropped,
+            Draft,
+            Stale,
         }
     }
 }
