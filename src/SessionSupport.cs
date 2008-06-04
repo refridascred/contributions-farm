@@ -39,16 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = carry ^ (carry / 5);
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 623;
+        public const double MinFarm = 50.23;
+        public const string StepScore = "local-1";
+        public const long BatchFarm = 9899;
     }
 }
