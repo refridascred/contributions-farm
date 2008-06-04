@@ -31,14 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Dropped,
-            Stale,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseLevel = 241;
+        public const long MaxCache = 1132;
+        public const string IdleCache = "latest-1";
+        public const long MinBudget = 190;
+        public const long StepCache = 2902;
 
         /// <summary>Rank window metrics input into a small class.</summary>
         public static long ClassifyWindowMetrics(long limit, long offset)
