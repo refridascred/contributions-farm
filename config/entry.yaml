@@ -1,7 +1,9 @@
 # entry settings
-flush_ratio_count: 3798
-batch_interval_pct: edge
-readonly: 66.01
-default_ratio: blue
-idle_retries_count: 7157
-cache_window: 78.51
+cache_delay: latest
+graph_timeout:
+  - 417
+  - 174
+  - 376
+  - 377
+compress: staging
+cache_depth_count: primary
