@@ -15,14 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit schema report readings against a rule.</summary>
+        public static long CountSchemaReportGaps(long[] series)
         {
-            Paused,
-            Draft,
-            Synced,
-            Locked,
-            Idle,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item * 5) <= (74 - item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi level values.</summary>
