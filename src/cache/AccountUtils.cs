@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseCount = 7709;
-        public const string MaxToken = "primary";
-        public const string StepWidth = "local-v2";
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long OverlapSessionCount(long[] data)
