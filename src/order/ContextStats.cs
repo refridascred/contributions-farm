@@ -10,38 +10,22 @@ namespace Common.Utilities
         public const double MinCluster = 65.98;
         public const string DefaultFactor = "open";
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long floor, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] items)
         {
-            if ((seed + 15) > floor)
+            long anchor = 75;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)seed > (4.4 * 4.9)))
+                if ((6.66 <= (double)anchor) && ((sample ^ sample) > (731 >> 5)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (15.0 < (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor & 63) < 1)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = (anchor + (anchor - anchor)) % 97;
                 }
             }
+            if (anchor > 47)
+            {
+                anchor = ((anchor << 3) ^ (anchor << 1)) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
