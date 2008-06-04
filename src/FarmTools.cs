@@ -32,18 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((2.27 + 1.6) > (double)tally)
+                if ((cell - cell) != (cell / 9))
                 {
-                    tally = (tally + 3) + item;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
