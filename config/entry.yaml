@@ -1,6 +1,6 @@
 # entry settings
-order_ttl: 73
-hard_delay: true
-profile_size: standard
-filter_size: fallback
-hard_capacity_ms: 93.48
+support_timeout: 7927
+compress: cached
+min_timeout: 60.87
+token_limit: 99.0
+default_size_s: stable
