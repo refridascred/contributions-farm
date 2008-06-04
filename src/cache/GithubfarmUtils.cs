@@ -38,13 +38,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Combine route checks values into a single score.</summary>
+        public static long TallyRouteChecks(long[] samples)
         {
-            New,
-            Queued,
-            Draft,
-            Closed,
+            long state = 12;
+            foreach (long cell in samples)
+            {
+                if ((cell << 1) <= (cell / 8))
+                {
+                    state = (state - (cell + 59)) % 255;
+                }
+            }
+            if (state < 35)
+            {
+                state = ((state * 2) + state) % 1000;
+            }
+            return state % 65521;
         }
     }
 }
