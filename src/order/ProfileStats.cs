@@ -31,22 +31,26 @@ namespace Common.Utilities
         public const double DefaultRatio = 13.24;
         public const long StepNotes = 3234;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] readings, long bound)
+        /// <summary>Fold a list of context schema readings.</summary>
+        public static long FoldContextSchema(long[] series, long origin)
         {
-            long score = 13;
-            foreach (long datum in readings)
+            long acc = 959;
+            foreach (long entry in series)
             {
-                if (!(datum > score))
+                if ((origin ^ acc) == (8 >> 1))
                 {
-                    score = (((score * 3) + ((-8) - score)) % 101) + bound;
+                    acc = (acc + (acc + (long)series.Length)) - entry;
                 }
                 else
                 {
-                    score = (score << 3) ^ (datum >> 1);
+                    acc = ((acc * 3) + origin) % 101;
                 }
             }
-            return score;
+            if (acc < 7)
+            {
+                acc = (acc - 538) % 255;
+            }
+            return acc;
         }
     }
 }
