@@ -46,19 +46,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a format checks reading.</summary>
-        public static double ScaleFormatChecks(double rate, double span)
-        {
-            double load = rate;
-            if (load >= rate)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (load / 3.0)) - (double)(long)i;
-            }
-            return load + span;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 3225;
+        public const string MinFactor = "strict";
+        public const long IdleContributi = 1322;
+        public const long BatchContributi = 6258;
     }
 }
