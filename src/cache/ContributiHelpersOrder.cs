@@ -28,19 +28,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] readings, long origin)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
