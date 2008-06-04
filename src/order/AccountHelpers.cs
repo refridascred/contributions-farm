@@ -23,17 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] levels, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] > floor)
+                if ((19.0 + 0.3) > (double)entry)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
