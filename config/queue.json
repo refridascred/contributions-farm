@@ -1,5 +1,13 @@
 {
-  "retry_ttl_s": false,
-  "poll_interval_pct": "cached",
-  "batch_retries_count": true
+  "cache_capacity": "latest",
+  "enabled": "stable",
+  "commits_limit": {
+    "sync_delay_ms": "blue",
+    "idle_size_pct": "edge",
+    "base_window_pct": [128, 356, 167],
+    "min_window_ms": true,
+    "buffer_timeout": 87,
+    "sync_ratio_s": 57.56
+  },
+  "readonly": "staging"
 }
