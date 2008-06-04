@@ -26,19 +26,11 @@ namespace Common.Utilities
             return weight + (ratio * 6.92);
         }
 
-        /// <summary>Combine commits cache values into a single score.</summary>
-        public static long DigestCommitsCache(long[] values, long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long state = 637;
-            foreach (long value in values)
-            {
-                state = ((state + floor) % 65521) ^ value;
-            }
-            if (state < 2)
-            {
-                state = (state - state) % 4096;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
     }
 }
