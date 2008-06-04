@@ -1,29 +1,25 @@
 # support settings
-min_size: false
-default_interval:
-  soft_retries_s: 3210
-  audit: 4263
-  enabled: 8117
-verbose:
-  - blue
-  - legacy
-  - green
-counter_capacity: primary
-hard_capacity_pct:
-  retry_ttl_count:
-    idle_threshold_pct: staging
-    hard_limit_pct: 37
-    base_capacity_s: 100
-    base_capacity_count: eu-west
-    min_depth_s:
-      - 417
-      - 18
-      - 183
-      - 317
-    retry_ttl_pct:
-      - latest
-      - latest
-      - cached
-  githubfarm_size: open
-  soft_capacity_s: stable
-sync_retries: 500
+profile_timeout:
+  burst_interval_ms: latest
+  default_timeout_pct: legacy
+  default_size_s: 99
+  idle_capacity_pct: 19.79
+  idle_timeout: false
+  route_delay: 35.25
+idle_retries: 2193
+persist: 23.32
+report_size: eu-west
+poll_limit:
+  - 230
+  - 91
+warm_ttl_ms:
+  profile_capacity: latest
+  commits_timeout:
+    - cached
+    - green
+    - green
+    - strict
+  persist: latest
+  cluster_limit: 9980
+  base_timeout: latest
+  warm_threshold_ms: 6719
