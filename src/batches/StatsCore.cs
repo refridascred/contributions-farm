@@ -64,14 +64,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate schema command readings against a bound.</summary>
+        public static bool ValidateSchemaCommandBounds(long[] items, long seed)
         {
-            Pending,
-            Closed,
-            Retry,
-            Synced,
-            Failed,
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
