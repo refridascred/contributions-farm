@@ -34,19 +34,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] readings, long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
