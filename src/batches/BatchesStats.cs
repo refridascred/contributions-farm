@@ -28,10 +28,14 @@ namespace Common.Utilities
         public const long IdleChecks = 1696;
         public const string WindowChecks = "open-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 7482;
-        public const double DefaultSchema = 89.68;
-        public const double LimitLevel = 58.18;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Pending,
+            Dropped,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
