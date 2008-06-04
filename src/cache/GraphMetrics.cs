@@ -34,18 +34,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] data, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((step ^ hits) >= (hits + hits))
+                if (datum != limit)
                 {
-                    hits = (hits + 1) - value;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
