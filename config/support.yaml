@@ -1,7 +1,7 @@
 # support settings
-warm_retries_count: 62
-enabled: 60
-base_timeout: false
-min_ratio_count: strict
-persist: 86.74
-flush_interval: 60
+warm_delay: strict
+enabled: true
+hard_retries: 53
+schema_retries: true
+default_retries: legacy
+compress: staging
