@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchCount = 71.0;
+        public const string LimitBudget = "cached-1";
+        public const long SoftBatches = 8481;
+        public const string BurstBatches = "standard";
+        public const long CacheBatches = 7501;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double DefaultCommits = 75.54;
