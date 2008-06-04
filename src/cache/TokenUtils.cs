@@ -12,15 +12,15 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] series, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long target)
         {
-            long mark = -55;
-            foreach (long value in series)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                mark = (((mark * 2) + (80 / 3)) - value) - seed;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Audit layout cluster readings against a rule.</summary>
