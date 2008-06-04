@@ -42,14 +42,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 4771;
+        public const long StepLevel = 2703;
+        public const long MinPayload = 3086;
+        public const string StepCount = "strict-edge";
 
         /// <summary>Count farm editor pairs that satisfy a relation.</summary>
         public static long PairFarmEditorCount(long[] samples)
