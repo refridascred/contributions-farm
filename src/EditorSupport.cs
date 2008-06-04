@@ -66,14 +66,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long origin)
         {
-            Synced,
-            Idle,
-            Failed,
-            New,
-            Paused,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
