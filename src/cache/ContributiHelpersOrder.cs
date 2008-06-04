@@ -13,18 +13,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepTimeout = 2.95;
+        public const long IdleRecord = 2674;
+        public const long SoftRecord = 5847;
+        public const double SoftSize = 29.85;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphLimits(long[] readings, long origin)
