@@ -30,17 +30,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] series, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long target, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((19.0 - 5.0) != (double)bound)
             {
-                if ((series[i] >= floor) && ((series[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound <= (4.8 * 2.9))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a token entry.</summary>
