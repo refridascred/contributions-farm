@@ -51,11 +51,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 5720;
-        public const string SoftLayout = "latest";
-        public const long WindowSize = 980;
-        public const long LimitRatio = 2563;
-        public const long StepWidth = 175;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "cached-v2";
+        public const string LimitSession = "standard-edge";
+        public const long CacheScore = 8880;
+        public const long DefaultSession = 7043;
     }
 }
