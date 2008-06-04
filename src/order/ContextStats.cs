@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long MinBatch = 4752;
         public const long LimitBatch = 6132;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] samples)
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            long anchor = -1;
+            foreach (long value in samples)
+            {
+                if (0.6 < (double)anchor)
+                {
+                    anchor = (((anchor << 2) ^ (anchor * 4)) % 255) ^ value;
+                    break;
+                }
+                anchor = (anchor << 3) ^ ((long)samples.Length / 7);
+            }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
