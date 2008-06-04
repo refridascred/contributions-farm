@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = floor;
+            if (rate2 < (double)96)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate2 = (rate2 - (3.0 + floor)) - rate;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
