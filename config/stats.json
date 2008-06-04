@@ -1,5 +1,6 @@
 {
-  "batch_limit": true,
-  "hard_depth_count": "strict",
-  "context_retries": 15
+  "verbose": true,
+  "record_delay": "green",
+  "sync_retries_s": 79.09,
+  "soft_window": "standard"
 }
