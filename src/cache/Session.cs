@@ -53,19 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double weight, double offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] readings, long origin)
         {
-            double weight2 = (double)(439 % 8);
-            if (weight2 <= offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = (weight2 + (double)(-5)) - weight;
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - (offset - weight2)) - (double)(long)i;
-            }
-            return weight2 + (offset * 3.6);
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
