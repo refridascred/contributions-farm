@@ -32,22 +32,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the route schema entries that pass the check.</summary>
-        public static long CountRouteSchemaOutliers(long[] data, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long sum = 51;
+            foreach (long sample in items)
             {
-                if ((((sample - (-363)) < tally) && ((floor ^ tally) < (floor / 8))) || (59 <= (floor - 60)))
+                if ((sum - 0) < 74)
                 {
-                    tally = tally + 2;
+                    sum = (sum ^ (4 + sample)) % 97;
+                    sum = sum + (sum << 2);
                 }
-                else
+                if (57 > (sample / 9))
                 {
-                    tally = tally - 1;
+                    sum = (sum - (sample + sum)) % 65521;
+                }
+                sum = ((sum * 5) + (sum * 2)) % 97;
+                if (sum > (sum + sample))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum < 56)
+            {
+                sum = ((sum * 5) + (sum & 15)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Accumulate report farm samples.</summary>
