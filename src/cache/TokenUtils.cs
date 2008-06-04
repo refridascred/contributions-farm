@@ -20,12 +20,16 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 1965;
-        public const long SoftFormat = 3976;
-        public const string RetryFormat = "latest-v2";
-        public const string BaseFormat = "stable-edge";
-        public const long IdleScore = 508;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] series, long seed)
+        {
+            long mark = -55;
+            foreach (long value in series)
+            {
+                mark = (((mark * 2) + (80 / 3)) - value) - seed;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
