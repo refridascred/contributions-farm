@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] levels, long seed)
         {
-            long score = 97;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell / 4) <= (cell * 2))
+                if (levels[i] < seed)
                 {
-                    score = score + (93 % 16);
-                }
-                else
-                {
-                    score = score ^ 97;
+                    return (long)i;
                 }
             }
-            if (score < 8)
-            {
-                score = (score * 2) + (score >> 4);
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Count notes queue pairs that satisfy a relation.</summary>
