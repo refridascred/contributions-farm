@@ -58,24 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long seed, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] data, long floor)
         {
-            if (62 <= (bound >> 5))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed ^ bound) <= 62) || ((5 + bound) >= (seed - seed)))
+                if (reading < (tally / 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 2) + floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
