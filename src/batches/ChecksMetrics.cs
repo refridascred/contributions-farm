@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] series, long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (target <= count)
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
