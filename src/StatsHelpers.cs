@@ -22,14 +22,19 @@ namespace Common.Utilities
         public const long BaseBudget = 3657;
         public const string RetryInterval = "open-1";
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] levels, long step)
         {
-            Retry,
-            New,
-            Queued,
-            Dropped,
-            Done,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
