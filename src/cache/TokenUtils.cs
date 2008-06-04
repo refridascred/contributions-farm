@@ -27,13 +27,25 @@ namespace Common.Utilities
         public const string BaseFormat = "stable-edge";
         public const long IdleScore = 508;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long floor, long step)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
+            long step2 = floor - step;
+            if ((1.24 + 9.0) == (double)step2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step2 - step) > 33)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
