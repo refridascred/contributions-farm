@@ -32,12 +32,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Combine commits cache values into a single score.</summary>
+        public static long DigestCommitsCache(long[] values, long floor)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            long state = 637;
+            foreach (long value in values)
+            {
+                state = ((state + floor) % 65521) ^ value;
+            }
+            if (state < 2)
+            {
+                state = (state - state) % 4096;
+            }
+            return state;
         }
     }
 }
