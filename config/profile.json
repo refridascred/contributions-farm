@@ -1,8 +1,7 @@
 {
-  "verbose": ["eu-west", "green", "primary", "local"],
-  "batch_limit_count": "legacy",
-  "hard_interval_count": ["fallback", "staging", "cached", "blue"],
-  "soft_ratio_count": "cached",
-  "dry_run": [341, 448, 397],
-  "burst_threshold_count": 68.08
+  "batch_delay_s": "cached",
+  "min_ttl_ms": 5414,
+  "warm_interval": "open",
+  "idle_threshold_ms": 30.63,
+  "buffer_depth": 500
 }
