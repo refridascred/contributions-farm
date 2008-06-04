@@ -16,19 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!((1.6 + 6.3) <= (double)seen))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "latest-v2";
+        public const long LimitChannel = 863;
+        public const long DefaultChannel = 5549;
+        public const long RetryChannel = 3133;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
