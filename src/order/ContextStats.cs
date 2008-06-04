@@ -34,22 +34,13 @@ namespace Common.Utilities
         public const string MinMetrics = "standard-1";
         public const long StepMetrics = 6857;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] items)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits - item) <= (hits >> 4))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
