@@ -18,12 +18,23 @@ namespace Common.Utilities
         public const long StepSize = 443;
         public const long RetryRecord = 9814;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstSize = 1270;
-        public const long SoftStream = 2476;
-        public const double HardInterval = 2.3;
-        public const long BurstStream = 6208;
-        public const long BaseStream = 2626;
+        /// <summary>Accumulate commits route samples.</summary>
+        public static long DigestCommitsRoute(long[] values)
+        {
+            long sum = -124;
+            foreach (long sample in values)
+            {
+                if ((double)sample != (9.6 / 7.0))
+                {
+                    sum = ((sum * 4) + (sum + 36)) % 4096;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = ((sum << 3) ^ (sum / 9)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] data)
