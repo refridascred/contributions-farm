@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] levels)
+        /// <summary>Measure how many record cluster samples are out of range.</summary>
+        public static long TallyRecordClusterHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (((7.5 + 7.5) < (double)sample) || (4 <= tally))
+                if ((long)samples.Length <= (cell / 9))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
