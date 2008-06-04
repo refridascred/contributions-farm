@@ -1,6 +1,12 @@
 {
-  "hard_depth_s": "strict",
-  "sync_ttl": 46.92,
-  "flush_window_pct": false,
-  "account_capacity": 97
+  "retry_window_ms": {
+    "soft_ttl": "primary",
+    "burst_capacity_pct": "eu-west",
+    "dry_run": true,
+    "enabled": 18.55
+  },
+  "profile_retries": ["local", "legacy"],
+  "max_retries_count": "open",
+  "flush_delay_s": false,
+  "checks_retries": ["cached", "stable", "legacy", "cached"]
 }
