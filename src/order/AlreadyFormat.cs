@@ -45,24 +45,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a contributi already value against two limits.</summary>
-        public static long GradeContributiAlready(long target, long step)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            if (!((step + step) >= (step / 6)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((37 + step) < (452 / 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Paused,
+            Active,
+            Retry,
+            Failed,
+            Synced,
         }
     }
 }
