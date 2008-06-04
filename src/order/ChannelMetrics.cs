@@ -41,19 +41,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate contributi channel readings against a bound.</summary>
-        public static bool ValidateContributiChannelRange(long[] values, long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > step)
+                if (series[i] == bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
