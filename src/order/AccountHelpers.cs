@@ -32,19 +32,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] readings, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (sample < origin)
+                if (reading < offset)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
