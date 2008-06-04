@@ -1,6 +1,4 @@
 # entry settings
-support_timeout: 7927
-compress: cached
-min_timeout: 60.87
-token_limit: 99.0
-default_size_s: stable
+batches_ratio: 500
+session_interval: local
+soft_limit_count: 12.7
