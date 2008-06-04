@@ -19,25 +19,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a support contributi value against two limits.</summary>
-        public static long GradeSupportContributi(long step, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long bound = step ^ target;
-            if ((target / 6) < (target >> 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound / 6) <= (target / 9)) || ((bound % 60) < (24 + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
