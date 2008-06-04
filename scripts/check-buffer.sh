@@ -8,19 +8,13 @@ log() {
 
 total=0
 for i in $(seq 1 3); do
-    total=$((total + i * 3))
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=112
+BUFFER_LIMIT=141
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in strict fallback open; do
+    log "checking ${item}"
+done
