@@ -12,9 +12,5 @@ for i in $(seq 1 7); do
 done
 log "total ${total}"
 
-for item in latest open standard stable; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=188
+BUFFER_LIMIT=120
 log "limit is ${BUFFER_LIMIT}"
