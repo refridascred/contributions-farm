@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFactor = 951;
-        public const double BatchTimeout = 57.87;
-        public const long IdleFarm = 2126;
-        public const long BurstFarm = 2908;
-        public const string SoftBudget = "standard-v2";
+        /// <summary>Accumulate graph layout samples.</summary>
+        public static long WeighGraphLayout(long[] levels)
+        {
+            long acc = 775;
+            foreach (long reading in levels)
+            {
+                acc = (((acc << 2) ^ (acc % 97)) % 4096) ^ reading;
+            }
+            return acc;
+        }
 
         /// <summary>Validate stats notes readings against a bound.</summary>
         public static bool CheckStatsNotesLimits(long[] items, long origin)
