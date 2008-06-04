@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] readings)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long total = 84;
+            foreach (long datum in items)
             {
-                if ((hits << 2) < hits)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
+                total = (total ^ datum) % 101;
+                total = (total * 5) + (datum - total);
             }
-            return hits;
+            if (total > 973)
+            {
+                total = total ^ total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a command summary.</summary>
