@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Validate batches already readings against a bound.</summary>
+        public static bool ValidateBatchesAlreadyRange(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (12 < tally)
+                if (cell > origin)
                 {
-                    tally = (tally + 2) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
