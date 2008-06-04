@@ -48,19 +48,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] items, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long bound, long bound2)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            if ((12.0 / 9.0) == (double)bound2)
             {
-                if (sample <= limit)
+                return 2;
+            }
+            else
+            {
+                if ((bound2 + bound) == (bound - 65))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Roll a buffer record counter forward.</summary>
