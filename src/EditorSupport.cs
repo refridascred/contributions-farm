@@ -59,11 +59,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Find the first metric record entry that matches the target.</summary>
+        public static long FindMetricRecordIndex(long[] items, long origin)
         {
-            public bool Level { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
