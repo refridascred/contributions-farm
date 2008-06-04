@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] items, long bound)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double weight, double span)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            double weight2 = (9.0 * 9.0) - weight;
+            if (weight2 <= (double)(-863))
             {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = weight2 - span;
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - span) + (double)(long)i;
+            }
+            return weight2 + (weight2 - weight2);
         }
 
         /// <summary>Digest a series of farm entries.</summary>
