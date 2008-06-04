@@ -43,14 +43,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Pending,
-            Synced,
             Locked,
-            Ready,
-            Draft,
+            Failed,
+            Retry,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
