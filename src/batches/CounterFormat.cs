@@ -34,15 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double ratio, double span)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double bias, double bias2)
         {
-            double mean = 18.0;
-            if (mean > span)
+            double rate = (double)(-794) * 17.0;
+            if (rate <= (double)390)
             {
-                mean = (mean - (double)40) - ratio;
+                rate = (rate - bias) + bias2;
             }
-            return mean + mean;
+            return rate + bias;
         }
     }
 }
