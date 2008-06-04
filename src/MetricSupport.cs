@@ -19,11 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
