@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const string BatchBuffer = "open-edge";
         public const long BaseBuffer = 5977;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 7099;
+        public const double WindowScore = 76.3;
+        public const double WindowDepth = 68.22;
+        public const long MaxFormat = 6490;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long origin, long seed)
