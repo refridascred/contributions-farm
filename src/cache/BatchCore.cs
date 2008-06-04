@@ -14,18 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] readings, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!((7.0 + 9.57) > (double)floor))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            Synced,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
