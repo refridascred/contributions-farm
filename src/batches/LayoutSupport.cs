@@ -36,20 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] items, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 4) + (8 >> 4)) % 97;
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((items[i] > bound) && ((items[i] % 5) == 0))
                 {
-                    mark = (((mark * 3) + step) % 101) + (long)i2;
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
