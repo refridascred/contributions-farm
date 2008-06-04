@@ -38,15 +38,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of format token entries.</summary>
-        public static long TallyFormatToken(long[] samples, long offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long limit, long offset)
         {
-            long acc = 4;
-            foreach (long datum in samples)
+            if ((offset + 798) > 3)
             {
-                acc = ((acc - (datum % 2)) % 4096) + offset;
+                return 5;
             }
-            return acc % 97;
+            else
+            {
+                if ((limit / 2) > 9)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset - offset) > (limit - 446)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (5.3 - 7.7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
