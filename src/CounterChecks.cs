@@ -76,14 +76,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] values)
         {
-            Queued,
-            Done,
-            Paused,
-            Idle,
-            Closed,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample <= (9.82 / 2.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
