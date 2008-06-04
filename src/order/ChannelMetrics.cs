@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a cache session reading.</summary>
-        public static double AdjustCacheSession(double gain, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] readings, long origin)
         {
-            double mean = (gain / 5.0) - (gain / 6.0);
-            if (mean >= (double)384)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                mean = mean + (offset * 0.5);
+                if ((entry ^ hits) >= (entry % 64))
+                {
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                mean = mean + (gain + offset);
-            }
-            return mean + mean;
+            return hits;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
