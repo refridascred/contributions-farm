@@ -20,21 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] samples, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum ^ sum) % 255;
-                if (!(sum >= ((-220) + sum)))
+                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
                 {
-                    sum = sum ^ (sum << 1);
-                    continue;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
