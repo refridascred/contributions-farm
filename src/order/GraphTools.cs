@@ -38,39 +38,17 @@ namespace Common.Utilities
         public const long BaseTimeout = 2568;
         public const string BurstFactor = "fallback-1";
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long seed, long floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] samples, long target)
         {
-            long span = seed ^ floor;
-            if (span < (span % 2))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((span << 2) > span) || ((span + floor) > (floor * 2)))
+                if (samples[i] == target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor == (0.7 / 8.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((6 << 2) > (seed & 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
