@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long seed)
         {
-            long carry = 8;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((carry * 2) != (carry + datum)) && ((carry << 2) < (datum << 3)))
+                if (items[i] > seed)
                 {
-                    carry = ((carry * 4) + (datum + carry)) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
