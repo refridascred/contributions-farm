@@ -1,6 +1,10 @@
 {
-  "audit": "legacy",
-  "base_capacity_count": "latest",
-  "verbose": "primary",
-  "report_capacity": 18
+  "min_depth_count": 3942,
+  "persist": "fallback",
+  "poll_ratio_pct": {
+    "default_limit_s": 76,
+    "compress": 39,
+    "context_capacity": ["cached", "legacy", "cached", "eu-west"]
+  },
+  "idle_limit": "fallback"
 }
