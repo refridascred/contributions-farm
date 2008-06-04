@@ -33,11 +33,17 @@ namespace Common.Utilities
             return weight + (ratio * 6.92);
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Locate a stream batches reading by value.</summary>
+        public static long LookupStreamBatchesIndex(long[] series, long floor)
         {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
