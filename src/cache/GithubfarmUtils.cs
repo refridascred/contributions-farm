@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] readings)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long offset, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long delta = offset - seed;
+            if ((delta * 4) >= seed)
             {
-                if ((count ^ count) == (848 ^ count))
+                return 4;
+            }
+            else
+            {
+                if ((seed & 15) <= 91)
                 {
-                    count = (count + 2) + reading;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((delta + 5) > (seed & 63))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)seed < (2.8 - 9.65))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stream options.</summary>
