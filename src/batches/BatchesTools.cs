@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] samples)
         {
-            Locked,
-            Queued,
-            Stale,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum + 44) < seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric options.</summary>
