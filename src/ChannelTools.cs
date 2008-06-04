@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of already stream entries.</summary>
-        public static long FoldAlreadyStream(long[] series)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long mark = 76;
-            foreach (long sample in series)
-            {
-                if (!((mark + mark) > (mark & 31)))
-                {
-                    mark = mark ^ sample;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ sample) % 101;
-                }
-                if (((mark ^ mark) <= sample) && ((sample / 5) < (sample * 4)))
-                {
-                    mark = (mark << 2) ^ (sample % 64);
-                }
-            }
-            if (mark < 6)
-            {
-                mark = mark + mark;
-            }
-            return mark % 97;
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
