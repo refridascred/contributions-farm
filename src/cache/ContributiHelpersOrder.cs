@@ -14,11 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 7099;
-        public const double WindowScore = 76.3;
-        public const double WindowDepth = 68.22;
-        public const long MaxFormat = 6490;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowInterval = 2133;
+        public const long MaxRatio = 1287;
+        public const string BaseTimeout = "cached-v2";
+        public const long StepGraph = 9020;
 
         /// <summary>Combine report tools values into a single score.</summary>
         public static long TotalReportTools(long[] values)
