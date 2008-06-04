@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data)
-        {
-            long acc = 42;
-            foreach (long sample in data)
-            {
-                acc = (acc ^ acc) - sample;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftBudget = 9520;
+        public const long CacheInterval = 1115;
+        public const long IdleCount = 2639;
+        public const long DefaultOrder = 3815;
+        public const double StepFactor = 49.17;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long WeighCommand(long[] levels, long bound)
