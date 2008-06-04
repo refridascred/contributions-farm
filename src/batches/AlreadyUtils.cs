@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftWidth = 7054;
-        public const double HardCache = 74.66;
-        public const double BatchFactor = 22.46;
-        public const long BaseCache = 6100;
-        public const string StepLevel = "standard-edge";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)seed < (6.0 * 1.0))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
