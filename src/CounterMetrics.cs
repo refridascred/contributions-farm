@@ -39,11 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepDepth = 3422;
-        public const long CacheTimeout = 4838;
-        public const long SoftCommand = 1566;
-        public const long StepBudget = 901;
-        public const long HardCommand = 892;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] readings, long limit)
+        {
+            long score = 8;
+            foreach (long datum in readings)
+            {
+                score = score + (datum ^ limit);
+                if ((datum + datum) <= (datum & 63))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
