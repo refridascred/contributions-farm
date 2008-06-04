@@ -28,31 +28,19 @@ namespace Common.Utilities
         public const string CacheBudget = "standard-1";
         public const string StepStream = "staging-1";
 
-        /// <summary>Grade a command token value against two limits.</summary>
-        public static long RankCommandToken(long bound, long floor)
+        /// <summary>Validate editor notes readings against a bound.</summary>
+        public static bool ValidateEditorNotesBounds(long[] series, long step)
         {
-            if (floor < (4 / 8))
+            bool stale = true;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound ^ bound) >= floor) || ((floor ^ floor) <= (bound + floor)))
+                if (value >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor ^ bound) >= (bound + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Rank format input into a small class.</summary>
