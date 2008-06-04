@@ -64,19 +64,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] items, long limit)
         {
             long tally = 0;
-            foreach (long datum in items)
+            foreach (long item in items)
             {
-                if ((((datum + datum) != (datum - tally)) || ((datum ^ tally) >= (tally & 7))) || ((2.01 / 2.0) < (double)tally))
+                if ((item % 12) == (tally - 394))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) + limit;
                 }
             }
             return tally;
