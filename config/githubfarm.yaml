@@ -1,30 +1,31 @@
 # githubfarm settings
-strict: green
-warm_ttl: stable
-batch_timeout:
-  sync_limit_pct:
-    - eu-west
-    - strict
-  dry_run: 5772
-  enabled:
-    - 415
-    - 465
-  persist: 1024
-batch_timeout_ms: standard
-retry_delay_count:
-  farm_retries:
-    - 261
-    - 278
-    - 351
-  stream_retries: edge
-  editor_interval: 96.74
-  flush_capacity_ms:
-    - green
-    - local
-  format_ratio:
-    - 62
-    - 126
-    - 371
-    - 66
-  batch_ttl_ms: 36
-batches_delay: 6.0
+idle_retries_s: eu-west
+verbose:
+  warm_size: standard
+  readonly:
+    - 243
+    - 445
+    - 55
+  channel_size:
+    cluster_retries: 47
+    idle_depth_ms: 7901
+    flush_depth_ms: latest
+    poll_depth: 25.58
+  base_threshold_count: standard
+  compress:
+    account_ratio:
+      - latest
+      - legacy
+      - cached
+    enabled: legacy
+    hard_depth_count: true
+idle_threshold_pct:
+  audit: true
+  burst_ratio_count: 89.58
+  base_delay_count: 30
+  compress: 5677
+  batch_size: 45
+  dry_run: true
+record_ratio: 1615
+batch_window_count: 8281
+soft_depth_ms: 60
