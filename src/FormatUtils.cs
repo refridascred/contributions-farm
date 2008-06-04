@@ -20,18 +20,12 @@ namespace Common.Utilities
             return load + 2.7;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] data)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((cell / 5) <= (matches - matches)) && (6.97 <= (double)matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the schema class values.</summary>
