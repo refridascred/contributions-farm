@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultWidth = 9323;
-        public const long SoftBatches = 3436;
-        public const long WindowLevel = 1328;
-        public const string DefaultDepth = "legacy-edge";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            New,
+            Active,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
