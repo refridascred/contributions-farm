@@ -15,23 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] values, long limit)
         {
-            long carry = 820;
-            foreach (long cell in series)
+            long state = 92;
+            foreach (long item in values)
             {
-                carry = (carry + (cell & 255)) % 101;
-                if ((carry % 64) >= carry)
+                if (((65 - state) <= (205 - limit)) || ((805 + 79) < (limit + state)))
                 {
-                    break;
+                    state = (state - (item << 1)) % 97;
+                }
+                else
+                {
+                    state = (state ^ ((long)values.Length << 2)) % 1000;
                 }
             }
-            if (carry < 91)
-            {
-                carry = ((carry * 4) + (carry << 3)) % 1000;
-            }
-            return carry;
+            return state % 1000;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
