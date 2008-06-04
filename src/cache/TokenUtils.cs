@@ -30,18 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter channel samples are out of range.</summary>
-        public static long CountFilterChannelMatches(long[] readings)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((3.0 / 9.0) > (double)datum)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
