@@ -1,23 +1,25 @@
 {
-  "compress": {
-    "persist": 21.57,
-    "warm_delay": "fallback",
-    "filter_depth": {
-      "notes_retries": 250,
-      "batch_size_count": "eu-west",
-      "soft_limit": "strict"
+  "strict": 58,
+  "idle_depth_ms": false,
+  "session_ttl": 500,
+  "batch_timeout_pct": {
+    "githubfarm_limit": 48.76,
+    "min_threshold_pct": "open",
+    "readonly": {
+      "hard_timeout": 15,
+      "profile_size": 51,
+      "readonly": [348, 145, 367, 118],
+      "session_size": 86.25,
+      "max_limit_count": 1.64,
+      "contributi_ratio": 500
+    },
+    "poll_limit_s": 135,
+    "commits_depth": {
+      "verbose": ["green", "blue"],
+      "base_window_ms": 60,
+      "persist": 100
     }
   },
-  "default_depth_count": "primary",
-  "already_window": ["latest", "eu-west", "legacy"],
-  "retry_interval_s": 5.42,
-  "cache_threshold": 60,
-  "min_retries_pct": {
-    "persist": [153, 343, 266],
-    "compress": 91.11,
-    "enabled": 9.9,
-    "strict": true,
-    "cache_ratio": false,
-    "soft_ratio_s": ["strict", "local", "cached"]
-  }
+  "account_threshold": 69.56,
+  "compress": 30
 }
