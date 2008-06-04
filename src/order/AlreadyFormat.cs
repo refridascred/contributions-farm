@@ -13,31 +13,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long bound)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] items, long offset)
         {
-            if (((6 % 5) < bound) || ((double)bound > (1.35 + 15.0)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3.0 - 6.59) >= (double)floor)
+                if ((items[i] == offset) && ((items[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + 3) == (floor - floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two payload measurements.</summary>
