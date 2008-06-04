@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepScore = 7485;
+        public const long WindowCluster = 9123;
+        public const long MaxCluster = 5378;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
