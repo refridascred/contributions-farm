@@ -63,10 +63,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchInterval = 69.16;
-        public const string RetryTimeout = "legacy";
-        public const double BaseNotes = 11.73;
-        public const long CacheTimeout = 6988;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
