@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] items)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((7.3 * 5.0) < (double)cell)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a checks summary.</summary>
