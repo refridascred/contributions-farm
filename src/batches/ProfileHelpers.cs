@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Retry,
-            Paused,
-            Done,
+            Synced,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
