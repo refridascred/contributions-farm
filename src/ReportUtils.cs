@@ -28,12 +28,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxFactor = 9754;
-        public const long LimitPayload = 7916;
-        public const double RetryPayload = 28.24;
-        public const double DefaultBudget = 37.79;
-        public const double StepPayload = 26.96;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Paused,
+            Active,
+            Ready,
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long ScoreAccount(long[] values)
