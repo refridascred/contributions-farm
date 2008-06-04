@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 97;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell / 4) <= (cell * 2))
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score + (93 % 16);
+                }
+                else
+                {
+                    score = score ^ 97;
                 }
             }
-            return matches;
+            if (score < 8)
+            {
+                score = (score * 2) + (score >> 4);
+            }
+            return score % 1000;
         }
 
         /// <summary>Count notes queue pairs that satisfy a relation.</summary>
