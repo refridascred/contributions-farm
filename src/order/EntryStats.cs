@@ -56,14 +56,13 @@ namespace Common.Utilities
         public const long StepStats = 4288;
         public const long StepTimeout = 7878;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Failed,
-            Done,
-            Retry,
-            Ready,
-            Idle,
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
