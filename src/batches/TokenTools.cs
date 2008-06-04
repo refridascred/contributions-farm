@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 5935;
-        public const long StepLevel = 8768;
-        public const long BaseTimeout = 9414;
-        public const long MaxToken = 7097;
-        public const string MaxCount = "primary-1";
+        /// <summary>Classify a channel tools pair into a bucket.</summary>
+        public static long SortChannelTools(long floor, long seed)
+        {
+            if ((floor - seed) > (164 & 255))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor <= (16.0 / 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long StepGithubfarm(long limit)
