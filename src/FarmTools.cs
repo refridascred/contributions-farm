@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] readings, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            long sum = 81;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (step > (sum & 31))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum * 2) + value) % 65521;
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine session values into a single score.</summary>
