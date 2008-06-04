@@ -35,25 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long seed, long offset)
-        {
-            if (offset >= (offset + seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((547 - seed) < seed) || ((9.0 / 4.0) > (double)seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardBudget = 215;
+        public const double MinSupport = 92.68;
+        public const long BurstSize = 3073;
+        public const string BaseSupport = "staging";
+        public const long HardFactor = 9258;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
