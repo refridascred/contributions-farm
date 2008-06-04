@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 22.86;
+        public const string RetryContributi = "strict-v2";
+        public const double MinSpan = 56.7;
+        public const long LimitSize = 6159;
 
         /// <summary>Match up farm samples.</summary>
         public static long PairFarmCount(long[] levels)
