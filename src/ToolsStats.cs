@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] levels, long origin)
         {
-            Done,
-            Queued,
-            Draft,
-            Locked,
-            New,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
