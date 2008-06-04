@@ -53,13 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Audit channel batches readings against a rule.</summary>
+        public static long TallyChannelBatchesGaps(long[] series)
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!((item - tally) >= ((long)series.Length - tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
