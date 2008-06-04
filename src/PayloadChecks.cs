@@ -73,13 +73,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Draft,
+            Closed,
+            Paused,
             Failed,
-            Retry,
-            Synced,
+            Pending,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
