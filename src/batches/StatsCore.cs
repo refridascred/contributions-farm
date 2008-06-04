@@ -29,31 +29,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long origin, long seed)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (((origin / 9) >= 31) || (6 <= (origin - origin)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed << 2) <= 941)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + 1) > (origin ^ origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
