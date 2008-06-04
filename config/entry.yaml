@@ -1,9 +1,4 @@
 # entry settings
-persist:
-  - primary
-  - local
-support_window: 500
-warm_window_s:
-  - stable
-  - standard
-audit: true
+audit: 19
+idle_ratio_pct: true
+compress: latest
