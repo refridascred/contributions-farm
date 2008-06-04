@@ -35,11 +35,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleLevel = 642;
-        public const long BurstEditor = 1358;
-        public const string StepDepth = "stable-1";
-        public const long StepBudget = 3185;
+        /// <summary>Count the route schema entries that pass the check.</summary>
+        public static long CountRouteSchemaOutliers(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((((sample - (-363)) < tally) && ((floor ^ tally) < (floor / 8))) || (59 <= (floor - 60)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate report farm samples.</summary>
         public static long ScoreReportFarm(long[] data, long origin)
