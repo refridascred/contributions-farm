@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Audit window schema readings against a rule.</summary>
+        public static long TallyWindowSchemaGaps(long[] levels)
         {
-            long mark = 308;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (!((value / 6) >= 370))
+                if ((datum + seen) >= (seen - seen))
                 {
-                    mark = mark + (mark & 63);
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the metric level values.</summary>
