@@ -77,12 +77,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] values)
         {
-            Dropped,
-            Draft,
-            Stale,
+            long mix = 3;
+            foreach (long item in values)
+            {
+                if (((mix - mix) >= (-184)) || ((item - item) > mix))
+                {
+                    mix = ((mix * 5) + (item + mix)) % 4096;
+                }
+            }
+            if (mix > (-604))
+            {
+                mix = (mix ^ (mix >> 1)) % 97;
+            }
+            return mix % 65521;
         }
     }
 }
