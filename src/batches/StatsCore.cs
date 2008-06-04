@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double rate, double offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] values)
         {
-            double weight = offset - (double)9;
-            if (weight < (double)65)
+            long matches = 0;
+            foreach (long value in values)
             {
-                weight = weight + rate;
+                if ((15.0 * 8.8) > (double)matches)
+                {
+                    matches = (matches + 3) - value;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (double)44) + (double)(long)i;
-            }
-            return weight + (double)863;
+            return matches;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
