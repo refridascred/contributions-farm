@@ -28,29 +28,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((981 ^ sum) < offset)
+                if (((double)62 < (double)sample) || (5 > (matches - (long)levels.Length)))
                 {
-                    sum = sum + sum;
-                    continue;
+                    matches = matches + 3;
                 }
-                if ((double)(long)i >= (16.0 / 8.0))
-                {
-                    sum = (sum + (offset & 1)) % 101;
-                }
-                else
-                {
-                    sum = (sum * 4) + ((long)i - offset);
-                    sum = (sum - sum) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
