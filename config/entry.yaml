@@ -1,11 +1,11 @@
 # entry settings
-commits_threshold: 38.29
-audit: true
-persist:
-  retry_delay_ms: 8328
-  sync_size_pct: 41.57
-  metrics_ttl:
-    metrics_timeout: eu-west
-    format_delay: 8965
-    warm_interval_count: primary
-    warm_limit_count: eu-west
+format_capacity: edge
+batches_ratio:
+  - 204
+  - 162
+  - 205
+editor_ratio:
+  idle_timeout: 24
+  buffer_timeout: cached
+  enabled: strict
+format_delay: 35
