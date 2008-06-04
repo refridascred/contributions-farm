@@ -30,11 +30,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetrySize = 3216;
-        public const double IdleFormat = 55.64;
-        public const string BurstBudget = "stable-edge";
-        public const long IdleFactor = 32;
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] levels, long offset)
+        {
+            long mix = -828;
+            foreach (long reading in levels)
+            {
+                mix = ((mix ^ 22) % 1000) + reading;
+                if ((mix & 127) >= offset)
+                {
+                    mix = ((mix << 2) ^ 35) % 255;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
