@@ -39,19 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] levels, long origin)
+        /// <summary>Digest a series of profile entry entries.</summary>
+        public static long TallyProfileEntry(long[] samples, long origin)
         {
-            long anchor = 10;
-            foreach (long item in levels)
+            long score = 17;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor + (64 >> 4)) + item) + origin;
-                if ((double)anchor < (7.6 - 2.2))
+                score = (score - (cell / 6)) % 97;
+                if ((origin % 100) == (9 / 8))
                 {
-                    anchor = (anchor + (anchor / 9)) % 65521;
+                    score = (score - cell) % 1000;
+                }
+                if ((double)cell <= 7.0)
+                {
+                    score = ((score * 4) + score) % 97;
                 }
             }
-            return anchor;
+            return score;
         }
     }
 }
