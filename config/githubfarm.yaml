@@ -1,34 +1,10 @@
 # githubfarm settings
-dry_run: standard
-compress: 40.25
-warm_limit_pct: 42
-warm_ratio:
-  poll_retries_ms: 5255
-  burst_size: 45
-  notes_depth: false
-  persist: 7663
-  compress: local
-  enabled:
-    - open
-    - latest
-    - eu-west
-max_capacity_ms:
-  soft_window_pct: edge
-  cache_capacity:
-    batch_ttl_s:
-      - 304
-      - 315
-      - 104
-    hard_window:
-      - legacy
-      - blue
-      - strict
-      - legacy
-    audit: 500
-  audit: false
-  burst_ttl_ms: 14
-  editor_ratio:
-    sync_retries: cached
-    poll_interval_pct: false
-    commits_ratio: true
-    idle_delay: 98.36
+soft_capacity: 7168
+batch_interval_pct: 5077
+checks_threshold: 80
+warm_interval_ms: edge
+min_capacity:
+  - 235
+  - 29
+  - 287
+  - 86
