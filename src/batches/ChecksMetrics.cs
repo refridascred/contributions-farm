@@ -82,12 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] data, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] < seed)
+                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
