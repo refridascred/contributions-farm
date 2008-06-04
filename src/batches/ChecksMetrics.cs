@@ -76,9 +76,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxBudget = 2631;
-        public const long DefaultLevel = 4654;
-        public const string RetrySupport = "alpha-edge";
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
