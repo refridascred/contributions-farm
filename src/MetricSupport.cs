@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 9362;
-        public const long StepChecks = 9506;
-        public const double DefaultChecks = 92.26;
-        public const long IdleCount = 1807;
-        public const double BaseFactor = 26.18;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long seed)
