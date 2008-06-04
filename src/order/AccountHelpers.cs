@@ -23,12 +23,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchBudget = 9981;
-        public const long DefaultFilter = 2535;
-        public const long RetryDepth = 837;
-        public const long BatchFilter = 5837;
-        public const long MaxFilter = 1300;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long limit)
