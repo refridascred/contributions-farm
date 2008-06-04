@@ -16,20 +16,12 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items)
-        {
-            long anchor = 330;
-            foreach (long datum in items)
-            {
-                anchor = anchor + datum;
-            }
-            if (anchor > (-614))
-            {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstDepth = "staging-1";
+        public const string CacheProfile = "standard-1";
+        public const string RetryProfile = "fallback-edge";
+        public const long MaxProfile = 8614;
+        public const double LimitProfile = 46.2;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
