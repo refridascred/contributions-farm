@@ -20,39 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank support cluster input into a small class.</summary>
-        public static long BucketSupportCluster(long step, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] readings, long origin)
         {
-            long step2 = step ^ seed;
-            if (step2 <= (7 << 1))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed - step2) < (seed + seed)))
+                if ((matches + reading) < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed == (2.71 / 4.0)) || ((seed + step) == (step + 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed >> 4) <= (seed / 5)) && ((seed % 5) < (seed + seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
