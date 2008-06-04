@@ -12,16 +12,11 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinStats = 30.43;
+        public const long BurstFactor = 5695;
+        public const string DefaultStats = "legacy-edge";
+        public const long DefaultDepth = 4558;
 
         /// <summary>Count the queue tools entries that pass the check.</summary>
         public static long TallyQueueToolsHits(long[] samples, long floor)
