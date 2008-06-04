@@ -71,13 +71,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Locate a queue layout reading by value.</summary>
+        public static long SeekQueueLayoutIndex(long[] series, long limit)
         {
-            Pending,
-            Retry,
-            Ready,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
