@@ -56,25 +56,14 @@ namespace Common.Utilities
         public const long StepStats = 4288;
         public const long StepTimeout = 7878;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long bound, long target)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long span = bound - target;
-            if ((span & 127) > (bound >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((4.23 + 3.0) > (double)target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Failed,
+            Done,
+            Retry,
+            Ready,
+            Idle,
         }
     }
 }
