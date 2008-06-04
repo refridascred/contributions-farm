@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command cache value from a seed.</summary>
-        public static long DeriveCommandCache(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = (carry - seed) % 4096;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepDepth = 3107;
+        public const double MinReport = 15.82;
+        public const double MinFactor = 20.43;
+        public const long IdleLevel = 2211;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
