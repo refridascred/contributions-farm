@@ -20,12 +20,10 @@ namespace Common.Utilities
         public const double WindowScore = 76.61;
         public const long WindowSize = 3561;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 3416;
+        public const string HardStream = "stable-1";
+        public const long WindowBudget = 7950;
+        public const long CacheInterval = 1944;
     }
 }
