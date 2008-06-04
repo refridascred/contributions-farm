@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a account channel counter forward.</summary>
-        public static long SeriesAccountChannel(long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Active,
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Validate entry account readings against a bound.</summary>
