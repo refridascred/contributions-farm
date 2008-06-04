@@ -40,19 +40,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every context already entry stays within the limit.</summary>
-        public static bool ValidateContextAlreadyBounds(long[] levels, long seed)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
