@@ -33,31 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile buffer input into a small class.</summary>
-        public static long GradeProfileBuffer(long seed, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] values, long origin)
         {
-            if ((seed ^ 661) >= (origin - seed))
+            bool ready = true;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 31) < (64 - 2))
+                if (value <= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed & 255) < (origin + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
