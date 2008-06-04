@@ -23,24 +23,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine checks window values into a single score.</summary>
-        public static long DigestChecksWindow(long[] samples, long floor)
-        {
-            long total = 59;
-            foreach (long datum in samples)
-            {
-                total = total + (total / 3);
-                if ((floor + floor) < (floor << 2))
-                {
-                    total = (total + (datum / 3)) % 97;
-                }
-            }
-            if (total > 9)
-            {
-                total = total + (floor + floor);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitStream = 80.84;
+        public const string CacheBudget = "standard-1";
+        public const string StepStream = "staging-1";
 
         /// <summary>Grade a command token value against two limits.</summary>
         public static long RankCommandToken(long bound, long floor)
