@@ -19,12 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Queued,
-            Active,
-            New,
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
