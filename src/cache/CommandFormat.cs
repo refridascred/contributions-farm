@@ -41,18 +41,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((0 * 4) == (matches - datum))
-                {
-                    matches = (matches + 2) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "strict";
+        public const long LimitFactor = 8913;
+        public const long RetrySize = 928;
     }
 }
