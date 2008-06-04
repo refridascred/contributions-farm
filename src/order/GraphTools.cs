@@ -16,38 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long bound, long offset)
+        /// <summary>Audit farm report readings against a rule.</summary>
+        public static long AuditFarmReportMatches(long[] data, long step)
         {
-            if ((offset + offset) != (27 % 64))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 3) <= offset)
+                if ((2.55 + 2.92) == (double)step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset ^ bound) == (7 / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset <= (5 << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 2) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
