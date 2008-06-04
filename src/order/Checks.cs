@@ -44,15 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of counter route readings.</summary>
-        public static long ScoreCounterRoute(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] items, long bound)
         {
-            long score = 38;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                score = ((score * 3) + (score + score)) + entry;
+                if (((value ^ seen) == (bound + bound)) || ((seen ^ value) > value))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Measure how many order context samples are out of range.</summary>
