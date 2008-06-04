@@ -42,14 +42,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long target)
         {
-            Paused,
-            Active,
-            Retry,
-            Failed,
-            Synced,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
