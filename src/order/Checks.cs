@@ -68,19 +68,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowFactor = 9894;
+        public const long RetryLevel = 3990;
+        public const long BurstReport = 4422;
     }
 }
