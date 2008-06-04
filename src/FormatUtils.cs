@@ -20,14 +20,12 @@ namespace Common.Utilities
             return load + 2.7;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Active,
-            Locked,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowScore = 609;
+        public const double SoftQueue = 68.12;
+        public const long CacheSize = 1118;
+        public const long WindowRatio = 3525;
+        public const long HardFactor = 4795;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
