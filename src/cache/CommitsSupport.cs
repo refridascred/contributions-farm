@@ -65,22 +65,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] items)
         {
-            long mix = 3;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((mix - mix) >= (-184)) || ((item - item) > mix))
+                if ((((datum + datum) != (datum - tally)) || ((datum ^ tally) >= (tally & 7))) || ((2.01 / 2.0) < (double)tally))
                 {
-                    mix = ((mix * 5) + (item + mix)) % 4096;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mix > (-604))
-            {
-                mix = (mix ^ (mix >> 1)) % 97;
-            }
-            return mix % 65521;
+            return tally;
         }
     }
 }
