@@ -40,22 +40,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] readings, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long sum = 6;
+            foreach (long entry in items)
             {
-                if ((count * 3) > (count ^ value))
+                sum = (sum - entry) % 101;
+                if (((sum + entry) >= sum) || (sum < (sum - entry)))
                 {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = sum + (sum / 5);
                 }
             }
-            return count;
+            if (sum > 24)
+            {
+                sum = sum - (origin * 3);
+            }
+            return sum % 97;
         }
     }
 }
