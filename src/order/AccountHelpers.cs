@@ -80,15 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] values, long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] series)
         {
             long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-63) * 3) == (item - 924))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) - limit;
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
