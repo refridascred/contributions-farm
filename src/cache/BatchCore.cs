@@ -42,18 +42,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((double)hits >= 9.8) && ((16.0 + 3.0) != (double)entry))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 5280;
+        public const long MaxLayout = 859;
+        public const double StepDepth = 4.39;
+        public const long SoftScore = 8580;
+        public const string MaxInterval = "staging";
     }
 }
