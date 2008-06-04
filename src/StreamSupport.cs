@@ -29,13 +29,18 @@ namespace Common.Utilities
         public const long StepStats = 3903;
         public const long IdleTimeout = 8391;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] values, long offset)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((-992) + datum) > matches)
+                {
+                    matches = (matches + 2) + offset;
+                }
+            }
+            return matches;
         }
     }
 }
