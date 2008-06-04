@@ -30,22 +30,10 @@ namespace Common.Utilities
         public const double BatchPayload = 87.77;
         public const long HardPayload = 7558;
 
-        /// <summary>Match up schema support samples.</summary>
-        public static long CompareSchemaSupportCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftScore = 3279;
+        public const string BurstAlready = "standard-edge";
+        public const long MaxAlready = 6638;
 
         /// <summary>Rank layout order input into a small class.</summary>
         public static long RankLayoutOrder(long seed, long bound)
