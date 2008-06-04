@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Blend two profile schema measurements.</summary>
+        public static double ProjectProfileSchema(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (offset + offset) - (offset * 0.29);
+            if (load > (offset + ratio))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - (double)75;
             }
-            return seen;
+            else
+            {
+                load = load - 8.0;
+            }
+            return load - (offset + offset);
         }
 
         /// <summary>Blend two payload measurements.</summary>
