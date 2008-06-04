@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-The commits module keeps farm values in sync with the profile cache.
-The order report groups every profile by cluster.
+A context that stays idle for too long is moved to the queue list.
+Each profile is validated before it reaches the account queue.
+When a checks fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every stats change
-- Prefer profile defaults
-- Document new already fields
-- Review format limits each release
+- Validate already input early
+- Review token limits each release
+- Keep session values small
