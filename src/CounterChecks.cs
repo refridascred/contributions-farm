@@ -34,12 +34,15 @@ namespace Common.Utilities
         public const long BurstMetric = 194;
         public const long SoftTimeout = 8167;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
+            long anchor = 692;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor ^ (datum & 31)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count format stats pairs that satisfy a relation.</summary>
