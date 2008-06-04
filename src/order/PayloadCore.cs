@@ -34,11 +34,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftInterval = 4834;
-        public const long IdleMetrics = 9830;
-        public const long BaseMetrics = 5301;
-        public const long WindowMetrics = 7112;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 5153;
+        public const long RetrySize = 5293;
+        public const string IdleBudget = "strict";
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchGaps(long[] levels, long target)
