@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Closed,
-            Failed,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 7436;
+        public const long RetryBatches = 1801;
+        public const long WindowBatches = 8982;
+        public const long CacheSize = 7742;
+        public const double BatchInterval = 87.5;
 
         /// <summary>Count support layout pairs that satisfy a relation.</summary>
         public static long MatchSupportLayoutCount(long[] items)
