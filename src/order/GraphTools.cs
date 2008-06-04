@@ -28,17 +28,16 @@ namespace Common.Utilities
         public const long BaseTimeout = 2568;
         public const string BurstFactor = "fallback-1";
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] samples, long target)
+        /// <summary>Combine format route values into a single score.</summary>
+        public static long CombineFormatRoute(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 2;
+            foreach (long entry in data)
             {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (entry & 1)) % 97;
+                total = (total << 2) ^ (entry - offset);
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Fold a list of record readings.</summary>
