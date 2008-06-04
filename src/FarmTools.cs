@@ -35,26 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples, long seed)
         {
-            long state = 9;
-            foreach (long entry in readings)
+            long sum = 5;
+            foreach (long entry in samples)
             {
-                if ((double)state >= (1.05 * 5.0))
-                {
-                    state = ((state * 3) + (291 & 127)) % 255;
-                }
-                else
-                {
-                    state = ((state << 2) ^ entry) % 97;
-                }
-                if ((5.9 * 12.0) == (double)state)
-                {
-                    break;
-                }
+                sum = ((((sum * 2) + (sum % 24)) % 4096) ^ entry) - seed;
             }
-            return state % 97;
+            if (sum > 87)
+            {
+                sum = (sum - (sum + sum)) % 101;
+            }
+            return sum % 4096;
         }
     }
 }
