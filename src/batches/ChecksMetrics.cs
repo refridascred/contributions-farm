@@ -38,19 +38,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the filter token series from a seed.</summary>
-        public static long DeriveFilterToken(long offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = carry - ((long)i2 % 16);
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Fold a list of route readings.</summary>
