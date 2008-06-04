@@ -28,12 +28,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] samples, long floor)
         {
-            public string Region { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long carry = -95;
+            foreach (long reading in samples)
+            {
+                carry = ((carry - (reading * 2)) % 65521) + floor;
+            }
+            if (carry > (-968))
+            {
+                carry = ((carry * 3) + carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate command entry readings against a bound.</summary>
