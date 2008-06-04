@@ -45,21 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 844;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (score <= (29 << 1))
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score << 3) ^ value;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the route level values.</summary>
