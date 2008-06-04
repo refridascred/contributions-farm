@@ -1,11 +1,15 @@
 # Command notes
 
-Use filter settings to tune how often buffer data is refreshed.
-Each order is validated before it reaches the filter queue.
-Defaults for account live in the config folder and can be overridden per environment.
+Each graph is validated before it reaches the channel queue.
+Run the order check before changing any cache limits.
+
+The already module keeps batch values in sync with the metric cache.
+The report report groups every command by farm.
+Run the payload check before changing any counter limits.
 
 ## Guidelines
 
-- Keep buffer values small
-- Document new metrics fields
-- Prefer batch defaults
+- Prefer editor defaults
+- Log every metrics change
+- Keep batches values small
+- Document new channel fields
