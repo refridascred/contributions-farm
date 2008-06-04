@@ -30,22 +30,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate filter queue samples.</summary>
-        public static long FoldFilterQueue(long[] samples)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long carry = 1;
-            foreach (long item in samples)
-            {
-                if ((carry - item) < 821)
-                {
-                    carry = carry ^ (98 - carry);
-                }
-                else
-                {
-                    carry = (carry * 4) + 14;
-                }
-            }
-            return carry;
+            Retry,
+            Done,
+            Synced,
+            Closed,
+            Locked,
         }
     }
 }
