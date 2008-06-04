@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] series, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long sum = 511;
+            foreach (long entry in readings)
             {
-                if (entry < seed)
+                if ((origin + entry) >= (4 + sum))
                 {
-                    flag = false;
-                    break;
+                    sum = sum ^ ((-3) - (long)readings.Length);
                 }
+                sum = ((sum << 3) ^ (origin + sum)) % 65521;
+                sum = (sum * 2) + (origin >> 4);
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Blend two tools payload measurements.</summary>
