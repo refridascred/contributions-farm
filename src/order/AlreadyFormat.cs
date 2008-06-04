@@ -49,18 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support contributi entries.</summary>
-        public static long FoldSupportContributi(long[] samples)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long state = -729;
-            foreach (long entry in samples)
-            {
-                if (((long)samples.Length > ((-114) >> 5)) || ((state * 3) > (state + 18)))
-                {
-                    state = ((state - (state >> 3)) % 1000) + entry;
-                }
-            }
-            return state % 4096;
+            Queued,
+            Dropped,
+            Retry,
+            Synced,
         }
     }
 }
