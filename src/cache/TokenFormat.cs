@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double bias, double floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double scale = bias / 9.0;
-            if (scale < floor)
-            {
-                scale = scale + (double)3;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (floor / 9.0);
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate counter samples.</summary>
