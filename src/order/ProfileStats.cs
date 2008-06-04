@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long limit, long step)
         {
-            long score = 3;
-            foreach (long item in values)
+            if (((step * 3) <= (168 * 5)) || (331 < limit))
             {
-                if ((double)item <= 2.7)
+                return 4;
+            }
+            else
+            {
+                if (step < (10 + limit))
                 {
-                    score = (score ^ item) % 4096;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return score;
         }
 
         /// <summary>Hold a payload header.</summary>
