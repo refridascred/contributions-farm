@@ -58,32 +58,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long offset, long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long bound2 = offset + bound;
-            if ((double)bound2 > (5.0 * 9.1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset / 6) > bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset < bound2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Idle,
+            Done,
+            Pending,
         }
     }
 }
