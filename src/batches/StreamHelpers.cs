@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many batches profile samples are out of range.</summary>
-        public static long MeasureBatchesProfileOutliers(long[] items, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (!((1 >= (29 - entry)) && ((entry % 12) == (origin + 0))))
+                if (((datum / 3) > matches) || (datum < (matches & 127)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
