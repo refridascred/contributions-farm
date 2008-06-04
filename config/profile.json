@@ -1,8 +1,6 @@
 {
-  "min_delay_ms": "edge",
-  "idle_retries_ms": 17.66,
-  "checks_delay": false,
-  "batch_ratio": 21.13,
-  "route_interval": [321, 464, 400],
-  "burst_delay_s": 7147
+  "strict": true,
+  "audit": 100,
+  "persist": "strict",
+  "queue_limit": "strict"
 }
