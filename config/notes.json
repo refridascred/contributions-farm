@@ -1,8 +1,6 @@
 {
-  "batch_retries": 250,
-  "persist": false,
-  "strict": 30,
-  "sync_delay_pct": [184, 197, 259, 413],
-  "flush_ttl_count": 30,
-  "default_ratio_s": "legacy"
+  "flush_capacity": ["stable", "strict", "strict"],
+  "retry_threshold_pct": [168, 120, 199],
+  "token_size": "fallback",
+  "cache_depth_pct": 7614
 }
