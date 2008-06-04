@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public bool Owner { get; set; }
-            public double Count { get; set; }
+            Locked,
+            Pending,
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
