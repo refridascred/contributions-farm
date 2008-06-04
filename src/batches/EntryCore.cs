@@ -22,16 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools format entries.</summary>
-        public static long DigestToolsFormat(long[] items)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            long acc = -7;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc << 2) ^ (acc / 7)) + reading;
-                acc = ((acc << 2) ^ (acc >> 2)) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a session info.</summary>
