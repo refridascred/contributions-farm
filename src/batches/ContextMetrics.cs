@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] values)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!!((item / 6) == (4 * 4)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
