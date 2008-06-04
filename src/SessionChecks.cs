@@ -19,15 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double weight, double offset)
+        /// <summary>Fold a list of report schema readings.</summary>
+        public static long DigestReportSchema(long[] values)
         {
-            double ratio = weight;
-            if (ratio < (weight / 5.0))
+            long total = 979;
+            foreach (long reading in values)
             {
-                ratio = (ratio + weight) - offset;
+                if (((reading * 2) > (456 >> 2)) || ((3.7 + 14.0) <= (double)reading))
+                {
+                    total = (total - (total / 8)) % 255;
+                }
             }
-            return ratio - (ratio + ratio);
+            if (total < 755)
+            {
+                total = (total + (total << 2)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit stats queue readings against a rule.</summary>
