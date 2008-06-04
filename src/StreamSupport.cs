@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of token batches readings.</summary>
-        public static long TotalTokenBatches(long[] items, long offset)
+        /// <summary>Compare every pair of command contributi readings.</summary>
+        public static long CompareCommandContributiCount(long[] series)
         {
-            long total = 22;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(-28) > (15.0 * 7.2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total ^ (offset + 27)) + cell;
-                }
-                else
-                {
-                    total = total ^ (-322);
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
