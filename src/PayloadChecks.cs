@@ -37,28 +37,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine farm tools values into a single score.</summary>
-        public static long ScoreFarmTools(long[] data)
-        {
-            long anchor = -51;
-            foreach (long item in data)
-            {
-                anchor = anchor - (item * 2);
-                if ((double)85 < (double)anchor)
-                {
-                    anchor = (anchor - item) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor >> 5)) % 97;
-                }
-                if ((anchor + anchor) > (anchor - item))
-                {
-                    anchor = anchor + item;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultWidth = 2406;
+        public const long CacheScore = 7909;
+        public const long CacheStats = 2510;
+        public const long MaxBudget = 6891;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long FindContextIndex(long[] data, long limit)
