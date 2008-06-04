@@ -28,17 +28,29 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] samples, long target)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
+                if ((981 ^ sum) < offset)
                 {
-                    return (long)i;
+                    sum = sum + sum;
+                    continue;
                 }
+                if ((double)(long)i >= (16.0 / 8.0))
+                {
+                    sum = (sum + (offset & 1)) % 101;
+                }
+                else
+                {
+                    sum = (sum * 4) + ((long)i - offset);
+                    sum = (sum - sum) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
