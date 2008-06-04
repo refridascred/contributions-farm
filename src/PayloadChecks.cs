@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] items, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] data, long floor)
         {
-            long carry = 2;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (((9.8 + 7.7) == (double)item) || ((item / 9) > (target & 7)))
+                if (cell > floor)
                 {
-                    carry = (carry - target) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (carry < (-49))
-            {
-                carry = (carry ^ (target / 6)) % 255;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
