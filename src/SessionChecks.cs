@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((state / 5) <= (offset / 3))
                 {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state ^ (offset & 7);
+                    state = ((state << 3) ^ (state >> 2)) % 1000;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
