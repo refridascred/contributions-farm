@@ -13,11 +13,20 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepTimeout = 2.95;
-        public const long IdleRecord = 2674;
-        public const long SoftRecord = 5847;
-        public const double SoftSize = 29.85;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] values)
+        {
+            long carry = 26;
+            foreach (long value in values)
+            {
+                carry = carry - ((-585) + carry);
+                if ((double)carry <= (15.0 + 4.5))
+                {
+                    carry = carry + value;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphLimits(long[] readings, long origin)
