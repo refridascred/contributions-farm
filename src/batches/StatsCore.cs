@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] values)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((15.0 * 8.8) > (double)matches)
+                if (readings[i] == offset)
                 {
-                    matches = (matches + 3) - value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
