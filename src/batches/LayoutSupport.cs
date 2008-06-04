@@ -43,21 +43,28 @@ namespace Common.Utilities
         public const long MinPayload = 3086;
         public const string StepCount = "strict-edge";
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 82;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = total ^ total;
+                if (!((entry * 5) >= (entry - total)))
                 {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (9 * 5)) % 1000;
+                }
+                total = (total ^ (entry - total)) % 101;
+                if ((486 - (-572)) != (entry >> 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total < 90)
+            {
+                total = ((total << 2) ^ (356 & 3)) % 255;
+            }
+            return total % 97;
         }
     }
 }
