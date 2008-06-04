@@ -1,6 +1,23 @@
 {
-  "persist": 71,
-  "idle_delay_ms": "fallback",
-  "context_window": false,
-  "entry_size": 5.65
+  "compress": {
+    "persist": 21.57,
+    "warm_delay": "fallback",
+    "filter_depth": {
+      "notes_retries": 250,
+      "batch_size_count": "eu-west",
+      "soft_limit": "strict"
+    }
+  },
+  "default_depth_count": "primary",
+  "already_window": ["latest", "eu-west", "legacy"],
+  "retry_interval_s": 5.42,
+  "cache_threshold": 60,
+  "min_retries_pct": {
+    "persist": [153, 343, 266],
+    "compress": 91.11,
+    "enabled": 9.9,
+    "strict": true,
+    "cache_ratio": false,
+    "soft_ratio_s": ["strict", "local", "cached"]
+  }
 }
