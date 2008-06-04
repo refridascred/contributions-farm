@@ -63,10 +63,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepScore = 84.88;
-        public const double RetrySize = 65.84;
-        public const double BatchBuffer = 66.59;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 5385;
+        public const double BatchLevel = 96.77;
+        public const long BaseCount = 1467;
+        public const double LimitCommand = 50.72;
 
         /// <summary>Measure how many queue checks samples are out of range.</summary>
         public static long MeasureQueueChecksHits(long[] values, long seed)
