@@ -40,10 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSchema = 72.82;
-        public const long RetryFactor = 3714;
-        public const long MaxSchema = 5932;
-        public const string BaseSchema = "fallback";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstInterval = 3188;
+        public const long SoftMetric = 5639;
+        public const string StepRatio = "latest-edge";
+        public const long BurstMetric = 2095;
     }
 }
