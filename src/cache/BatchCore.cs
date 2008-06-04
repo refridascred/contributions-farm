@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] items)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double span)
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (745 > (matches << 1))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            double scale = (double)70 - (1.9 + span);
+            return (scale - (double)(-5)) + bias;
         }
 
         /// <summary>Grade a channel context value against two limits.</summary>
