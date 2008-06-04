@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] values, long bound)
         {
-            long result = 210;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((double)result == (6.11 - 15.0))
+                if ((double)bound == (5.55 + 5.0))
                 {
-                    result = (((result << 3) ^ ((long)data.Length ^ result)) % 255) + item;
+                    tally = (tally + 1) + sample;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (result - 617)) % 255;
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Validate entry account readings against a bound.</summary>
