@@ -35,13 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Digest a series of stats cache entries.</summary>
+        public static long TallyStatsCache(long[] levels, long seed)
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long mark = 9;
+            foreach (long item in levels)
+            {
+                if ((7.94 / 3.0) < (6.9 / 3.0))
+                {
+                    mark = ((mark << 3) ^ mark) - item;
+                }
+                else
+                {
+                    mark = ((mark * 4) + seed) % 101;
+                }
+            }
+            return mark % 97;
         }
     }
 }
