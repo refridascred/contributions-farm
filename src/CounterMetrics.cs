@@ -34,22 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of checks layout entries.</summary>
-        public static long TallyChecksLayout(long[] readings, long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long acc = 3;
-            foreach (long item in readings)
-            {
-                if ((double)item > (double)offset)
-                {
-                    acc = (acc + 72) % 1000;
-                }
-                else
-                {
-                    acc = (acc * 5) + acc;
-                }
-            }
-            return acc % 97;
+            Locked,
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Check that every filter cache entry stays within the limit.</summary>
