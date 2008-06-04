@@ -40,14 +40,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            Draft,
-            Ready,
-            Pending,
-            New,
-            Locked,
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
