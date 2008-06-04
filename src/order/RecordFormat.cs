@@ -50,15 +50,19 @@ namespace Common.Utilities
             return mean - (span * 16.0);
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] items, long bound)
         {
-            double gain = (double)76;
-            if (gain <= 6.68)
+            long state = 787;
+            foreach (long datum in items)
             {
-                gain = (gain - floor) - rate;
+                state = (((state + 22) % 4096) + datum) + bound;
             }
-            return gain - floor;
+            if (state < 99)
+            {
+                state = (state + (98 - state)) % 1000;
+            }
+            return state % 97;
         }
     }
 }
