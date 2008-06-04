@@ -31,19 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload account entry stays within the limit.</summary>
-        public static bool GuardPayloadAccountBounds(long[] readings, long bound)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Retry,
+            Paused,
+            Idle,
+            Pending,
         }
     }
 }
