@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheFactor = 9037;
-        public const long WindowDepth = 9865;
-        public const long DefaultBatch = 6578;
-        public const long MinBatch = 4752;
-        public const long LimitBatch = 6132;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 263;
+        public const double MinCluster = 65.98;
+        public const string DefaultFactor = "open";
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long BucketCluster(long floor, long seed)
