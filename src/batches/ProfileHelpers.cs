@@ -30,15 +30,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double offset)
+        /// <summary>Fold a list of editor checks readings.</summary>
+        public static long CombineEditorChecks(long[] readings, long target)
         {
-            double ratio = offset;
-            for (int i = 0; i < 7; i++)
+            long mix = 23;
+            foreach (long value in readings)
             {
-                ratio = (ratio + (offset * 7.0)) + (double)(long)i;
+                if (((target >> 3) != ((-9) - 7)) && (6.06 > (double)mix))
+                {
+                    mix = mix ^ (24 ^ target);
+                    mix = (mix * 5) + (value + mix);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix % 7)) % 4096;
+                    mix = ((mix << 3) ^ (value + value)) % 65521;
+                }
+                mix = (mix * 5) + (579 - value);
+                if (mix > (351 + mix))
+                {
+                    break;
+                }
             }
-            return ratio + gain;
+            if (mix < 189)
+            {
+                mix = (mix - (1 / 2)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
