@@ -41,19 +41,15 @@ namespace Common.Utilities
             return bias + (gain * 7.0);
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] values, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] samples, long floor)
         {
             long count = 0;
-            foreach (long reading in values)
+            foreach (long entry in samples)
             {
-                if ((reading + 7) > reading)
+                if ((floor ^ count) != (56 << 2))
                 {
-                    count = (count + 3) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) + entry;
                 }
             }
             return count;
