@@ -1,6 +1,10 @@
-id,region,token,label
-1,latest,39.2,open
-2,strict,1,open
-3,blue,27.19,primary
-4,38,166,legacy
-5,54.44,cached,staging
+id,owner,count
+1,primary,standard
+2,570,54.66
+3,696,560
+4,56.76,70.58
+5,stable,709
+6,95.05,legacy
+7,283,31.84
+8,395,275
+9,512,12.18
