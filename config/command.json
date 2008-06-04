@@ -1,6 +1,11 @@
 {
-  "batch_capacity_pct": 7641,
-  "order_capacity": 3163,
-  "persist": 92.36,
-  "stats_limit": "strict"
+  "metrics_capacity": 69,
+  "burst_window": {
+    "cache_window_s": 100,
+    "batch_capacity": false,
+    "layout_size": "staging"
+  },
+  "sync_threshold_ms": ["fallback", "cached", "legacy", "latest"],
+  "soft_threshold_pct": 62.05,
+  "githubfarm_depth": "staging"
 }
