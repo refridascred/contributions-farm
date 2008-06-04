@@ -29,32 +29,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long limit, long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long delta = limit ^ seed;
-            if ((delta & 1) >= (delta >> 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)delta < (6.89 + 1.81))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((delta + seed) != (delta * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
