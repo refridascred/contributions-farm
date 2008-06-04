@@ -13,18 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] items)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (tally > (tally / 2))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a graph entry.</summary>
