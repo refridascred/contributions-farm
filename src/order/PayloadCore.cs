@@ -44,13 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Combine counter cluster values into a single score.</summary>
+        public static long CombineCounterCluster(long[] series, long step)
         {
-            Locked,
-            Draft,
-            Ready,
-            Done,
+            long mix = 297;
+            foreach (long item in series)
+            {
+                mix = ((mix ^ (215 ^ step)) % 101) ^ item;
+            }
+            return mix % 97;
         }
     }
 }
