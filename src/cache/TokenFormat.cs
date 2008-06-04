@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] items, long limit)
         {
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
+            long result = 2;
+            foreach (long cell in items)
+            {
+                result = (result - (limit >> 4)) ^ cell;
+            }
+            if (result < 656)
+            {
+                result = ((result * 3) + (result + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Accumulate counter samples.</summary>
