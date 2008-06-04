@@ -1,14 +1,15 @@
 # Command notes
 
-The already module keeps metrics values in sync with the filter cache.
-When a graph fails, the cache handler retries a few times before giving up.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Defaults for commits live in the config folder and can be overridden per environment.
+Use report settings to tune how often token data is refreshed.
 
-Keep checks and counter names short and lowercase.
-A metrics that stays idle for too long is moved to the cache list.
+Keep githubfarm and schema names short and lowercase.
+The batch report groups every contributi by batches.
 
 ## Guidelines
 
-- Keep graph values small
-- Validate already input early
-- Review metrics limits each release
-- Prefer support defaults
+- Prefer layout defaults
+- Review metric limits each release
+- Validate support input early
+- Keep batch values small
