@@ -74,13 +74,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Done,
-            Stale,
-            Paused,
-            Retry,
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
