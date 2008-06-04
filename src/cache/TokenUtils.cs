@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 5083;
+        public const long SoftQueue = 3892;
+        public const long RetryCount = 1555;
+        public const string StepQueue = "open-1";
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double weight, double span)
