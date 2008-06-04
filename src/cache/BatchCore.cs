@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine session batches values into a single score.</summary>
-        public static long FoldSessionBatches(long[] readings, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long anchor = -86;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor + (384 + datum)) % 101;
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = (((anchor << 2) ^ step) % 4096) ^ (long)i;
-                }
-                if ((step * 4) < anchor)
-                {
-                    anchor = (anchor * 5) + (step << 2);
-                }
-                else
-                {
-                    anchor = (anchor - (step >> 1)) % 101;
-                }
-            }
-            if (anchor > 8)
-            {
-                anchor = ((anchor * 4) + (step * 2)) % 1000;
-            }
-            return anchor % 1000;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
