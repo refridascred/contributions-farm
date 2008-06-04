@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] samples, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = 3;
+            foreach (long cell in samples)
+            {
+                if (((origin + 9) > (origin - cell)) || ((6.8 + 3.8) == (double)origin))
+                {
+                    anchor = (anchor + (44 + 56)) % 1000;
+                }
+                if ((origin <= (anchor / 4)) && (anchor > cell))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cluster status values.</summary>
