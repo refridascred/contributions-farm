@@ -1,5 +1,9 @@
 # githubfarm settings
-filter_depth: 64.45
-report_window: staging
-strict: stable
-verbose: local
+sync_window:
+  - 135
+  - 440
+  - 149
+burst_threshold_pct: true
+max_size: green
+schema_interval: 1460
+sync_ratio_pct: green
