@@ -1,7 +1,19 @@
 {
-  "strict": false,
-  "warm_delay_s": 58.76,
-  "token_delay": 1307,
-  "warm_limit": 57.35,
-  "enabled": "legacy"
+  "dry_run": [170, 204, 161, 245],
+  "retry_depth": ["primary", "staging"],
+  "poll_size_s": {
+    "token_limit": 1024,
+    "schema_delay": 71.21,
+    "filter_limit": "latest",
+    "graph_delay": 80.11,
+    "readonly": {
+      "soft_ratio": "stable",
+      "soft_interval_ms": 30,
+      "soft_ttl_pct": "stable",
+      "poll_capacity_pct": "open"
+    }
+  },
+  "command_delay": "eu-west",
+  "flush_threshold_pct": "cached",
+  "burst_timeout_s": "staging"
 }
