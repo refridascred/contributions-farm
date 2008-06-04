@@ -45,15 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] series)
+        /// <summary>Audit layout context readings against a rule.</summary>
+        public static long TallyLayoutContextMatches(long[] data, long origin)
         {
-            long acc = 32;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                acc = (acc + (acc ^ acc)) + entry;
+                if (sample >= (hits & 63))
+                {
+                    hits = (hits + 3) + origin;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
