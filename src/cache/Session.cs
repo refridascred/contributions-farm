@@ -34,26 +34,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] series, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] data)
         {
-            long state = 7;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (!((state - value) != ((-692) << 2)))
+                if ((6.6 / 9.0) == (double)hits)
                 {
-                    state = ((state * 4) + (value & 3)) - origin;
+                    hits = (hits + 1) + entry;
                 }
                 else
                 {
-                    state = state - (state & 127);
+                    hits = hits - 1;
                 }
             }
-            if (state > 0)
-            {
-                state = ((state << 3) ^ (state % 12)) % 101;
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Combine support values into a single score.</summary>
