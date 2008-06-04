@@ -43,12 +43,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] levels, long step)
         {
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
