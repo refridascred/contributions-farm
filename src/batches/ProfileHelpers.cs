@@ -79,11 +79,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "legacy-v2";
-        public const long LimitBatches = 176;
-        public const long LimitRatio = 3412;
-        public const double MinBatches = 12.78;
-        public const long BurstRatio = 1429;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long target, long limit)
+        {
+            long lane = target ^ limit;
+            if ((limit - target) < (target - lane))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.37 + 6.55) > (double)lane)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
