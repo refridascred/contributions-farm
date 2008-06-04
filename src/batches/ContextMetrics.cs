@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the cache status values.</summary>
