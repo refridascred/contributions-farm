@@ -30,15 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] levels, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] series)
         {
-            long score = 50;
-            foreach (long entry in levels)
+            long score = 7;
+            foreach (long sample in series)
             {
-                score = ((score * 2) + (score ^ floor)) ^ entry;
+                score = (((score << 3) ^ score) % 1000) ^ sample;
             }
-            return score % 1000;
+            return score % 4096;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
