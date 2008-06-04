@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] data, long floor)
+        /// <summary>Locate a filter record reading by value.</summary>
+        public static long SeekFilterRecordIndex(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > floor)
+                if (values[i] <= floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
