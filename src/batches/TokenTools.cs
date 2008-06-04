@@ -22,17 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a editor route reading by value.</summary>
-        public static long FindEditorRouteIndex(long[] levels, long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(148 * 4);
+            if (ratio > gain)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)614;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - gain) + (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Digest a series of stats cache entries.</summary>
