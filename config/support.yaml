@@ -1,5 +1,17 @@
 # support settings
-sync_ratio_s: 1454
-support_ratio: 24
-idle_limit_ms: staging
-compress: blue
+base_retries_count: open
+enabled: staging
+min_depth: 100
+readonly: 6304
+min_window_ms: 97.04
+persist:
+  retry_retries: false
+  enabled: blue
+  cache_delay:
+    - eu-west
+    - local
+    - latest
+  sync_size_count:
+    hard_interval_pct: staging
+    min_timeout: primary
+    batch_limit_ms: 8130
