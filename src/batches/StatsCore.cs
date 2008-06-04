@@ -61,10 +61,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 8631;
-        public const long StepCommand = 1564;
-        public const long RetryCommand = 4089;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Synced,
+            Idle,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
