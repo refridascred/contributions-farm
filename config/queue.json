@@ -1,7 +1,6 @@
 {
-  "verbose": true,
-  "persist": "staging",
-  "sync_ttl_ms": 4798,
-  "audit": [24, 473, 257, 260],
-  "poll_retries": ["green", "open", "primary"]
+  "contributi_threshold": 250,
+  "payload_ratio": 5,
+  "readonly": 31,
+  "flush_timeout": "green"
 }
