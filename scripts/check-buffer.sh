@@ -6,13 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-stable}"
+mode="${1:-primary}"
 case "${mode}" in
     stable)
         log "fast path"
@@ -22,5 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=75
+BUFFER_LIMIT=258
 log "limit is ${BUFFER_LIMIT}"
