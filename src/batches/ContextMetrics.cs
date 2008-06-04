@@ -36,15 +36,12 @@ namespace Common.Utilities
         public const double DefaultFarm = 31.31;
         public const long BatchCount = 4220;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Locked,
+            Stale,
+            Synced,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
