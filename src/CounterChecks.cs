@@ -49,20 +49,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepInterval = 68.77;
+        public const long LimitSchema = 8615;
+        public const long BaseSchema = 9088;
+        public const long BatchSchema = 1633;
+        public const long MinSchema = 1296;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
