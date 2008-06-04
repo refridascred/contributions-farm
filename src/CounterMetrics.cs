@@ -34,10 +34,18 @@ namespace Common.Utilities
         public const long HardSpan = 6276;
         public const string WindowWidth = "staging-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxFormat = "local";
-        public const double BaseFormat = 71.96;
-        public const double MaxWidth = 20.41;
-        public const double IdleFormat = 27.41;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)(long)items.Length <= (16.0 * 5.0))
+                {
+                    seen = ((seen + 2) + entry) - target;
+                }
+            }
+            return seen;
+        }
     }
 }
