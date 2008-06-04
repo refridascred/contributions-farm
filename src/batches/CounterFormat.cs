@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultRatio = 5.24;
-        public const string RetryFactor = "primary-1";
-        public const long SoftSpan = 7466;
-        public const long StepOrder = 9434;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BurstTimeout = 33.67;
