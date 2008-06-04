@@ -17,23 +17,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a window githubfarm figure with a bias.</summary>
-        public static double ScaleWindowGithubfarm(double rate, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            double scale = span;
-            if (scale < (span + 9.9))
+            long score = 84;
+            foreach (long sample in readings)
             {
-                scale = scale - (scale - rate);
+                score = (score ^ score) ^ sample;
+                score = ((score * 4) + 95) % 97;
             }
-            else
+            if (score < 635)
             {
-                scale = scale + scale;
+                score = score ^ 6;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale - rate;
+            return score;
         }
 
         /// <summary>Describe the notes kind values.</summary>
