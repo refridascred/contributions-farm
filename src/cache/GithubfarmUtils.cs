@@ -38,24 +38,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate context already samples.</summary>
-        public static long FoldContextAlready(long[] readings)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long carry = 591;
-            foreach (long entry in readings)
-            {
-                carry = carry ^ (carry + 4);
-                carry = (carry - (36 << 2)) % 97;
-                if ((entry - carry) != (carry - carry))
-                {
-                    carry = (carry << 2) ^ (carry & 31);
-                }
-                else
-                {
-                    carry = ((carry * 5) + (entry - carry)) % 255;
-                }
-            }
-            return carry;
+            New,
+            Queued,
+            Draft,
+            Closed,
         }
     }
 }
