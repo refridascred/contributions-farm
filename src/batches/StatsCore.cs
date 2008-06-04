@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count the stream account entries that pass the check.</summary>
+        public static long CountStreamAccountGaps(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits - 658) >= (hits + hits))
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next queue value.</summary>
