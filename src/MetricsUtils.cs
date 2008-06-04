@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double ratio, double span)
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            double mean = 5.32;
+            if (mean < (20.0 / 4.0))
+            {
+                mean = mean - 6.1;
+            }
+            return mean + (ratio + span);
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
