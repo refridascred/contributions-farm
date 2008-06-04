@@ -1,7 +1,6 @@
 {
-  "retry_delay_ms": 69.3,
-  "dry_run": false,
-  "warm_timeout_pct": 60,
-  "batch_limit_ms": "cached",
-  "layout_delay": 7757
+  "batch_retries": true,
+  "hard_capacity_s": ["blue", "latest", "blue", "cached"],
+  "flush_threshold_ms": 250,
+  "min_limit_pct": 100
 }
