@@ -25,12 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values, long floor)
         {
-            Active,
-            Failed,
-            Retry,
+            long carry = 857;
+            foreach (long item in values)
+            {
+                carry = (((carry * 4) + (646 - floor)) % 101) + item;
+            }
+            return carry;
         }
     }
 }
