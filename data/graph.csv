@@ -1,6 +1,10 @@
-id,label,level,weight
-1,192,391,42.81
-2,583,43.54,open
-3,39.61,920,primary
-4,69.66,711,336
-5,open,148,599
+id,owner,region,count
+1,65.74,open,latest
+2,62.51,1.44,staging
+3,26.43,544,164
+4,0.8,22.47,74.35
+5,primary,635,cached
+6,67.81,664,66.89
+7,cached,49.56,edge
+8,136,66.83,local
+9,37.57,891,112
