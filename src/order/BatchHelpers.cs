@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count command payload pairs that satisfy a relation.</summary>
