@@ -91,10 +91,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 96.93;
-        public const double CacheAlready = 90.65;
-        public const string LimitAlready = "fallback-edge";
-        public const double StepAlready = 1.26;
+        /// <summary>Measure how many queue checks samples are out of range.</summary>
+        public static long MeasureQueueChecksHits(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (14.0 >= (double)matches)
+                {
+                    matches = ((matches + 1) - datum) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
