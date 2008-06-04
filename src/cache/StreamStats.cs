@@ -28,21 +28,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
                 {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
