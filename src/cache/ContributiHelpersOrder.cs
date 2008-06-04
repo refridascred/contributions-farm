@@ -24,26 +24,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine report tools values into a single score.</summary>
-        public static long TotalReportTools(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] values, long limit)
         {
-            long carry = 201;
-            foreach (long value in values)
+            long score = 984;
+            foreach (long reading in values)
             {
-                if (!((carry << 2) == (carry % 100)))
+                if (((reading ^ 275) > score) || (90 < (score - (long)values.Length)))
                 {
-                    carry = (((carry * 2) + carry) % 4096) + value;
+                    score = score - (score ^ reading);
                 }
                 else
                 {
-                    carry = (carry + (1 / 9)) % 4096;
+                    score = score + limit;
                 }
             }
-            if (carry < 5)
+            if (score > 5)
             {
-                carry = ((carry << 3) ^ carry) % 65521;
+                score = (score - (score & 3)) % 255;
             }
-            return carry % 1000;
+            return score % 65521;
         }
     }
 }
