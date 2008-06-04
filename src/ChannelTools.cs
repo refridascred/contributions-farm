@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long step)
+        /// <summary>Audit cluster filter readings against a rule.</summary>
+        public static long CountClusterFilterOutliers(long[] items, long offset)
         {
-            long delta = offset ^ step;
-            if ((double)delta != (4.71 + 0.1))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < offset)
+                if ((reading >> 2) == (reading + reading))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 3) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit checks order readings against a rule.</summary>
