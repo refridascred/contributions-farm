@@ -43,12 +43,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Check that every filter cache entry stays within the limit.</summary>
+        public static bool VerifyFilterCacheLimits(long[] data, long step)
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
