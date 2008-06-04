@@ -16,15 +16,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double weight, double floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            double drift = 8.0;
-            for (int i = 0; i < 4; i++)
+            long mark = 1;
+            foreach (long item in levels)
             {
-                drift = ((drift - floor) + (double)(long)i) - weight;
+                if ((mark - mark) > (item << 2))
+                {
+                    mark = (mark * 4) + (50 + mark);
+                }
+                if ((59 & 127) < item)
+                {
+                    mark = mark ^ (item & 63);
+                }
             }
-            return drift - (double)744;
+            return mark;
         }
 
         /// <summary>Hold a session info.</summary>
