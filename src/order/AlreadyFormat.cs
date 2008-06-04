@@ -19,23 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] data, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long mark = 643;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 3) + (836 - value)) % 1000;
-                if ((350 ^ seed) < value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < 59)
-            {
-                mark = mark + (seed * 4);
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
