@@ -16,19 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stats payload samples are out of range.</summary>
-        public static long TallyStatsPayloadOutliers(long[] data, long step)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell > step) || (step <= cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 2719;
+        public const long BurstInterval = 1312;
+        public const double DefaultCounter = 57.72;
+        public const long HardLevel = 9697;
+        public const long BaseCounter = 7508;
 
         /// <summary>Adjust a format reading.</summary>
         public static double ScaleFormat(double bias, double bias2)
