@@ -45,25 +45,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long target, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] series)
         {
-            long next = target ^ floor;
-            if ((floor + next) >= (target >> 3))
+            long mix = 595;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((next + 95) < (floor - 97))
+                if (!((9.7 + 1.0) >= (double)value))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    mix = ((mix << 3) ^ (mix / 2)) % 97;
                 }
             }
+            return mix;
         }
 
         /// <summary>Match up contributi samples.</summary>
