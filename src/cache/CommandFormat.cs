@@ -31,11 +31,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long offset, long floor)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            long gap = offset ^ floor;
+            if (!((gap % 16) < floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + 3) < (floor & 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
