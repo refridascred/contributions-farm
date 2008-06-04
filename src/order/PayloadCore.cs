@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] series, long limit)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long carry = 6;
-            foreach (long entry in series)
-            {
-                carry = (((carry << 2) ^ carry) + entry) + limit;
-            }
-            return carry;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
