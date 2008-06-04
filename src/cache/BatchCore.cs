@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "fallback-edge";
-        public const long BatchInterval = 3052;
-        public const long StepSupport = 5943;
-        public const string MinSupport = "latest-1";
-        public const long MaxSupport = 6151;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (745 > (matches << 1))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultTools = 262;
