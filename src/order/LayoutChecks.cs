@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] items)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long state = 901;
+            foreach (long reading in readings)
             {
-                if (tally >= (tally ^ datum))
+                long slot = (9 >> 1) >> 2;
+                if (slot >= reading)
                 {
-                    tally = tally + 1;
+                    slot = ((slot * 5) + slot) % 255;
+                }
+                if (!((-989) > (reading + state)))
+                {
+                    state = ((state << 3) ^ (reading * 3)) % 4096;
+                }
+                if (!(state >= (state + state)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (state < (-81))
+            {
+                state = (state + (state * 3)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
