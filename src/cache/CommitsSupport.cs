@@ -34,12 +34,26 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Combine cluster report values into a single score.</summary>
+        public static long CombineClusterReport(long[] items, long step)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
+            long sum = 502;
+            foreach (long datum in items)
+            {
+                if ((sum % 5) > (sum << 2))
+                {
+                    sum = sum + (35 + step);
+                }
+                else
+                {
+                    sum = sum + step;
+                }
+                if ((datum >> 4) < ((-839) % 3))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
