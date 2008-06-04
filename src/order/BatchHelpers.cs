@@ -20,21 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count command payload pairs that satisfy a relation.</summary>
-        public static long OverlapCommandPayloadCount(long[] data)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long limit, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit ^ floor) > (limit % 8))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((0.1 - 4.0) > (double)floor)
                 {
-                    if ((data[i] + data[j]) == 14)
+                    return 7;
+                }
+                else
+                {
+                    if (!((17.0 / 4.0) <= (double)limit))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
