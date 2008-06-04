@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the tools stats entries that pass the check.</summary>
-        public static long MeasureToolsStatsHits(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long carry = 8;
+            foreach (long datum in series)
             {
-                if (0.9 > (double)tally)
+                if (((carry * 2) != (carry + datum)) && ((carry << 2) < (datum << 3)))
                 {
-                    tally = (tally + 2) ^ cell;
+                    carry = ((carry * 4) + (datum + carry)) % 1000;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a format header.</summary>
