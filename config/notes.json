@@ -1,6 +1,7 @@
 {
-  "base_retries_s": [479, 43, 175, 119],
-  "soft_limit_pct": 60,
-  "audit": true,
-  "queue_interval": 7.0
+  "readonly": true,
+  "flush_timeout_s": "fallback",
+  "poll_ratio_ms": ["fallback", "fallback", "cached", "eu-west"],
+  "record_capacity": 85.19,
+  "batch_window_ms": "stable"
 }
