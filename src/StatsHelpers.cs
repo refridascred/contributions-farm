@@ -19,19 +19,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long target)
+        /// <summary>Derive the next counter account value from a seed.</summary>
+        public static long RollCounterAccount(long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (((2.0 + 2.17) <= (double)carry) && (carry <= target))
-                {
-                    carry = (carry << 2) ^ (carry / 5);
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
+                anchor = anchor + (anchor + 12);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
