@@ -59,22 +59,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] series, long limit)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] samples, long offset)
         {
-            long result = 38;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit + limit) != (limit % 8))
+                if (samples[i] >= offset)
                 {
-                    result = ((result ^ (80 % 100)) % 4096) ^ datum;
+                    return (long)i;
                 }
             }
-            if (result < 759)
-            {
-                result = ((result * 4) + limit) % 255;
-            }
-            return result;
+            return -1;
         }
     }
 }
