@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long BaseTools = 2182;
         public const string DefaultTimeout = "legacy-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] levels, long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches + datum) >= (429 * 5))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
+            Dropped,
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Grade a support contributi value against two limits.</summary>
