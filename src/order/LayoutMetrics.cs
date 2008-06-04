@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 9637;
-        public const long HardEntry = 3894;
-        public const string SoftSpan = "latest";
-        public const string BatchDepth = "primary-1";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardTimeout = "fallback";
+        public const long DefaultInterval = 6733;
+        public const string DefaultTimeout = "strict-1";
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
