@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] samples, long origin)
         {
-            Stale,
-            Dropped,
-            Ready,
-            Done,
-            Paused,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
