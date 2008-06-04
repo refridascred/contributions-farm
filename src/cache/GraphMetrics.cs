@@ -44,18 +44,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] samples, long origin)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long limit)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)origin != (19.0 - 17.0))
+                if ((limit * 2) > result)
                 {
-                    seen = (seen + 2) + datum;
+                    result = (result + ((long)i ^ limit)) % 97;
                 }
+                if ((result + limit) >= 31)
+                {
+                    result = (result << 3) ^ (result / 8);
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
     }
 }
