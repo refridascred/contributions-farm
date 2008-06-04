@@ -1,8 +1,11 @@
 {
-  "readonly": "fallback",
-  "burst_capacity_pct": false,
-  "max_ttl_pct": 24.17,
-  "poll_threshold_ms": 61,
-  "route_timeout": 45.76,
-  "max_capacity_s": 94.85
+  "hard_window_ms": 4.48,
+  "report_ratio": {
+    "stats_ratio": "legacy",
+    "compress": 250,
+    "base_ttl_count": true,
+    "already_threshold": 15,
+    "base_delay_s": 98
+  },
+  "warm_ratio": 60
 }
