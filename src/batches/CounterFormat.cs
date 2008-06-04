@@ -22,20 +22,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 7669;
+        public const double BurstRatio = 72.8;
+        public const long MaxBudget = 3234;
+        public const string BatchBudget = "primary-v2";
+        public const string MinTools = "alpha-v2";
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long floor, long floor2)
