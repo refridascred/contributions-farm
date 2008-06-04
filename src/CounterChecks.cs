@@ -71,19 +71,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] items, long seed)
+        /// <summary>Check that every metric account entry stays within the limit.</summary>
+        public static bool VerifyMetricAccountBounds(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (datum > seed)
+                if (value != target)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
