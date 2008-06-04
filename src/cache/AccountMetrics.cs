@@ -31,38 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long target, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] data, long target)
         {
-            if (target >= (floor % 24))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - target) <= (target + floor))
+                if ((entry + entry) <= 669)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((9 > (target & 63)) && (9 >= floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor << 1) > (target % 64))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = (seen + 1) - target;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every metric counter entry stays within the limit.</summary>
