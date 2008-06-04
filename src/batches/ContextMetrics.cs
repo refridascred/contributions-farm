@@ -14,23 +14,37 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long origin, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long bound, long step)
         {
-            long span = origin - target;
-            if ((span - span) != (origin << 3))
+            long delta = bound - step;
+            if ((1.0 / 8.0) > (double)bound)
             {
                 return 8;
             }
             else
             {
-                if (target <= 8)
+                if ((28 ^ step) != (delta & 255))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    return 2;
+                    if (((double)delta == (6.88 / 2.0)) && (684 >= (step * 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (8.39 >= (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
