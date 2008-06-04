@@ -30,12 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 6848;
-        public const long HardCount = 3034;
-        public const double MaxScore = 1.45;
-        public const string LimitFactor = "primary";
-        public const double DefaultSupport = 59.67;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BasePayload = 4771;
