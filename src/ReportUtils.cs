@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] readings, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] series)
         {
-            long carry = 9;
-            foreach (long reading in readings)
+            long score = 52;
+            foreach (long reading in series)
             {
-                carry = (carry + (reading ^ carry)) % 255;
-                carry = (carry ^ (step % 2)) % 255;
+                if ((double)score == (double)reading)
+                {
+                    score = ((score << 2) ^ (94 * 5)) % 4096;
+                }
+                else
+                {
+                    score = (score + (score << 2)) % 101;
+                }
             }
-            return carry % 97;
+            return score;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
