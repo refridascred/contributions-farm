@@ -1,11 +1,42 @@
 # githubfarm settings
-min_size_ms: 75
-hard_retries_pct: 13.7
-report_window:
-  - 420
-  - 97
-  - 452
-  - 116
-compress: 18.08
-batch_delay: 250
-readonly: green
+min_retries:
+  - 110
+  - 131
+  - 341
+min_retries_ms:
+  - legacy
+  - local
+  - eu-west
+base_retries:
+  enabled: legacy
+  strict: green
+  flush_limit: true
+  default_size:
+    strict: edge
+    already_delay:
+      - 471
+      - 411
+      - 198
+      - 437
+    dry_run: standard
+    base_depth:
+      - strict
+      - stable
+      - eu-west
+    retry_threshold_count: 97.54
+    batch_threshold_s: 7.44
+  hard_limit_s:
+    - open
+    - primary
+    - green
+    - open
+  default_size_ms: false
+dry_run: 85.57
+hard_interval: 4165
+verbose:
+  persist: 1024
+  min_window_pct: 100
+  dry_run:
+    - 429
+    - 493
+    - 463
