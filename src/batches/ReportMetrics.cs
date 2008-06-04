@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double span)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            double gain = span;
-            if (gain <= span)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain + 20.0) - scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + span;
+            return seen;
         }
 
         /// <summary>Count stats metric pairs that satisfy a relation.</summary>
