@@ -48,18 +48,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter queue entries that pass the check.</summary>
-        public static long AuditFilterQueueMatches(long[] items, long offset)
+        /// <summary>Roll a graph command counter forward.</summary>
+        public static long IterateGraphCommand(long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches ^ 5) == (85 + matches))
-                {
-                    matches = ((matches + 3) - reading) - offset;
-                }
+                total = (total - (91 & 15)) % 1000;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Rank checks editor input into a small class.</summary>
