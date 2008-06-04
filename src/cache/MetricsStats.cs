@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Rank stream order input into a small class.</summary>
+        public static long BucketStreamOrder(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((step - step) != (32 & 255))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((floor << 2) >= 0) && (floor >= (floor + step)))
                 {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a cache summary.</summary>
