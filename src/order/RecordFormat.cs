@@ -67,11 +67,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 3168;
-        public const string DefaultFactor = "stable-edge";
-        public const long CacheTimeout = 2672;
-        public const string SoftReport = "fallback-1";
-        public const long IdleFactor = 1260;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = ((mark << 3) ^ (358 + 895)) - (long)i2;
+                }
+                mark = (mark * 2) + (0 - seed);
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
