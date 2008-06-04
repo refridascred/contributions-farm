@@ -23,18 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long carry = 538;
+            foreach (long value in items)
             {
-                if ((cell - count) > (cell + cell))
+                if ((value * 2) != (carry ^ carry))
                 {
-                    count = count + 2;
+                    carry = (carry << 2) ^ (origin + value);
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
