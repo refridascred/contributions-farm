@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] readings, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)floor > (double)reading)
+                if ((seen >> 1) >= (value / 2))
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
