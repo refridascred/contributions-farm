@@ -1,5 +1,5 @@
 # entry settings
-strict: 2.36
-enabled: 82.66
-metrics_interval: true
-burst_interval_s: 4542
+burst_threshold: 26.29
+batch_ratio: 44.74
+retry_size: fallback
+sync_window_ms: staging
