@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 6211;
-        public const long WindowCommand = 9561;
-        public const string RetryCommand = "fallback";
-        public const long HardTimeout = 8276;
-        public const double LimitCommand = 60.54;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            New,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
