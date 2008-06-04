@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "latest-v2";
-        public const double WindowTools = 89.34;
-        public const long CacheBudget = 7464;
-        public const long WindowSpan = 6314;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Dropped,
+            Idle,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteOutliers(long[] data)
