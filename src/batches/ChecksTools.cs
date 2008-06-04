@@ -53,16 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state + limit) % 65521;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLevel = "stable-1";
+        public const string MinLayout = "strict-1";
+        public const long HardDepth = 5780;
+        public const long BaseLayout = 3358;
     }
 }
