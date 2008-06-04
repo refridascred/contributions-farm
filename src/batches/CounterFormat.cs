@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of stats session readings.</summary>
-        public static long FoldStatsSession(long[] samples)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            long carry = 89;
-            foreach (long entry in samples)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                carry = (carry ^ ((long)samples.Length / 3)) + entry;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            if (carry > 0)
-            {
-                carry = carry + (19 ^ carry);
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Measure how many stats payload samples are out of range.</summary>
