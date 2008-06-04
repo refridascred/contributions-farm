@@ -50,13 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
