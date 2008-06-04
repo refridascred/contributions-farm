@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] series, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum != target)
+                if (values[i] <= floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the tools level values.</summary>
