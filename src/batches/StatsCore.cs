@@ -20,13 +20,17 @@ namespace Common.Utilities
             return drift + (double)600;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] levels, long seed)
         {
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
