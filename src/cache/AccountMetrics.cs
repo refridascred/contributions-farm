@@ -31,15 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the context support series from a seed.</summary>
-        public static long IterateContextSupport(long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] levels, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((double)(long)levels.Length > (double)hits)
+                {
+                    hits = ((hits + 3) + sample) - step;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Check that every metric counter entry stays within the limit.</summary>
