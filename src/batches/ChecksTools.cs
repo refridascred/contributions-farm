@@ -30,19 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double rate, double bias)
+        /// <summary>Accumulate account counter samples.</summary>
+        public static long ScoreAccountCounter(long[] samples)
         {
-            double drift = rate + rate;
-            if (drift > (drift / 4.0))
+            long state = 4;
+            foreach (long item in samples)
             {
-                drift = drift - bias;
+                if ((item << 2) < state)
+                {
+                    state = (state + (item + item)) % 4096;
+                }
+                if ((item + 11) == (item + item))
+                {
+                    state = (state * 2) + item;
+                }
             }
-            else
-            {
-                drift = drift - (double)935;
-            }
-            return drift - (drift * 13.0);
+            return state;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
