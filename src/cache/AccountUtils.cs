@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseCount = 7709;
+        public const string MaxToken = "primary";
+        public const string StepWidth = "local-v2";
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long OverlapSessionCount(long[] data)
