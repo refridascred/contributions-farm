@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the graph stream entries that pass the check.</summary>
-        public static long TallyGraphStreamMatches(long[] items, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double rate, double bias)
         {
-            long count = 0;
-            foreach (long value in items)
+            double gain = (double)(15 - 38);
+            if (gain >= rate)
             {
-                if ((count - value) >= (limit - limit))
-                {
-                    count = count + 3;
-                }
+                gain = (gain - 0.64) - bias;
             }
-            return count;
+            else
+            {
+                gain = gain + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain - (rate / 4.0);
         }
 
         /// <summary>Describe the metric level values.</summary>
