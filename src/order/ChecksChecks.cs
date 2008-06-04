@@ -41,13 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
