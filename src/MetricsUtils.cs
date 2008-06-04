@@ -30,30 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm route readings.</summary>
-        public static long WeighFarmRoute(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] values, long target)
         {
-            long score = -1;
-            foreach (long cell in items)
+            long state = 120;
+            foreach (long reading in values)
             {
-                if ((cell % 12) > (cell + score))
+                if ((6 ^ target) != (state << 1))
                 {
-                    score = (score << 2) ^ (score - 645);
+                    state = ((state << 3) ^ (reading + target)) % 4096;
                 }
                 else
                 {
-                    score = (score - score) % 1000;
-                }
-                if (score < (cell + cell))
-                {
-                    score = score - cell;
+                    state = state - (state + 5);
                 }
             }
-            if (score < 54)
-            {
-                score = score ^ score;
-            }
-            return score % 4096;
+            return state % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
