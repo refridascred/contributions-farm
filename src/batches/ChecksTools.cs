@@ -24,19 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] readings, long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double rate, double bias)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            double drift = rate + rate;
+            if (drift > (drift / 4.0))
             {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - bias;
             }
-            return found;
+            else
+            {
+                drift = drift - (double)935;
+            }
+            return drift - (drift * 13.0);
         }
 
         /// <summary>Project the next batch cache value.</summary>
