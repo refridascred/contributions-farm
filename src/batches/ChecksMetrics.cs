@@ -85,17 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] levels, long limit)
+        /// <summary>Iterate the batches contributi series from a seed.</summary>
+        public static long StepBatchesContributi(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                long delta = (long)i * 2;
+                result = result ^ (delta - bound);
+                result = ((result * 2) + (result + delta)) % 101;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
