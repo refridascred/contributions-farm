@@ -21,22 +21,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] series)
+        /// <summary>Look up the position of a queue token sample.</summary>
+        public static long SeekQueueTokenIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seen >= (datum + 434))
+                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
