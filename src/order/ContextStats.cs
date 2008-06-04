@@ -12,20 +12,38 @@ namespace Common.Utilities
         public const long MinBatch = 4752;
         public const long LimitBatch = 6132;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] samples)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long floor, long seed)
         {
-            long anchor = -1;
-            foreach (long value in samples)
+            if ((seed + 15) > floor)
             {
-                if (0.6 < (double)anchor)
-                {
-                    anchor = (((anchor << 2) ^ (anchor * 4)) % 255) ^ value;
-                    break;
-                }
-                anchor = (anchor << 3) ^ ((long)samples.Length / 7);
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (!((double)seed > (4.4 * 4.9)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (15.0 < (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor & 63) < 1)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
