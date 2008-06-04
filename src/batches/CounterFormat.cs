@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] series, long origin)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] levels)
         {
-            long result = 80;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((result / 4) == (origin + datum)) || ((double)result == (4.62 / 4.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result + (origin + result)) % 97;
-                    result = result + (162 / 4);
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result << 2) ^ datum) % 101;
-                result = (result - (datum + origin)) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
