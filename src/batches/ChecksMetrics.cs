@@ -29,20 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] values, long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long acc = -6;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = acc + (origin - (long)i);
-                    acc = (acc - (sample & 31)) % 101;
-                }
-                acc = (acc - (acc >> 2)) % 101;
-            }
-            return acc;
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
