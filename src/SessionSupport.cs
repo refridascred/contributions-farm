@@ -39,12 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] items)
         {
-            Locked,
-            Queued,
-            Idle,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((count ^ sample) <= count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
