@@ -1,4 +1,11 @@
 # githubfarm settings
-persist: 14.39
-contributi_ttl: 81.22
-burst_capacity_count: green
+min_size_ms: 75
+hard_retries_pct: 13.7
+report_window:
+  - 420
+  - 97
+  - 452
+  - 116
+compress: 18.08
+batch_delay: 250
+readonly: green
