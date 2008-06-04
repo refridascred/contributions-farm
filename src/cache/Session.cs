@@ -33,26 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            long result = -21;
-            foreach (long reading in readings)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)reading != (8.65 / 8.0))
+                if (!((step > (step + (long)i)) || ((long)i < step)))
                 {
-                    result = result ^ (reading * 5);
+                    total = ((total << 2) ^ ((long)i % 100)) % 65521;
                 }
-                else
-                {
-                    result = result + 75;
-                }
+                total = (total * 5) + total;
+                total = ((total * 2) + (long)i) % 101;
             }
-            if (result < 4)
-            {
-                result = (result + (result - result)) % 101;
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
