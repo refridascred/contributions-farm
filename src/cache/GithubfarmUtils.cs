@@ -38,24 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long step, long target)
+        /// <summary>Digest a series of metric tools entries.</summary>
+        public static long FoldMetricTools(long[] data)
         {
-            if (!(0 > (target - target)))
+            long carry = 32;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step / 6) <= (target + target))
+                carry = ((carry * 4) + (carry / 6)) % 101;
+                if (((entry >> 3) <= (5 - 80)) && ((double)entry >= (double)859))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            return carry;
         }
     }
 }
