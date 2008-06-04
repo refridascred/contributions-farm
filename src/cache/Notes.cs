@@ -14,21 +14,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 6;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total - (total << 3)) ^ (long)i;
+                }
+                total = (total - (sample * 5)) % 255;
+                if ((sample + sample) < (sample & 15))
+                {
+                    total = (total - (long)values.Length) % 101;
                 }
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
