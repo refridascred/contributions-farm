@@ -36,11 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next already profile value.</summary>
-        public static double ScaleAlreadyProfile(double bias, double floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] levels, long origin)
         {
-            double mean = 5.0;
-            return ((mean + mean) + bias) + floor;
+            long anchor = 10;
+            foreach (long item in levels)
+            {
+                anchor = ((anchor + (64 >> 4)) + item) + origin;
+                if ((double)anchor < (7.6 - 2.2))
+                {
+                    anchor = (anchor + (anchor / 9)) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
