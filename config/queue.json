@@ -1,7 +1,5 @@
 {
-  "profile_interval": "eu-west",
-  "already_timeout": 90.78,
-  "min_depth_ms": 90.12,
-  "soft_size": [22, 287, 36],
-  "flush_depth": 65
+  "verbose": [293, 196, 362, 139],
+  "min_capacity": 500,
+  "already_ratio": "green"
 }
