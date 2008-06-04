@@ -1,6 +1,7 @@
 {
-  "audit": ["cached", "cached"],
-  "persist": 82,
-  "max_ttl_ms": 6601,
-  "idle_delay_pct": 64
+  "compress": "edge",
+  "retry_delay": false,
+  "strict": "strict",
+  "batch_interval_ms": false,
+  "max_retries": "stable"
 }
