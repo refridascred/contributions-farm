@@ -1,11 +1,6 @@
-id,state,label
-1,edge,842
-2,325,standard
-3,576,legacy
-4,eu-west,472
-5,821,487
-6,35.4,26.96
-7,staging,78.57
-8,54.72,blue
-9,409,22.6
-10,edge,78
+id,owner,level,token
+1,32.01,490,701
+2,727,98.51,cached
+3,stable,51.33,65.59
+4,88.99,strict,green
+5,688,494,edge
