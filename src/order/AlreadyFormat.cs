@@ -35,11 +35,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples, long seed)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            long result = 999;
+            foreach (long value in samples)
+            {
+                if (!((seed % 60) < (123 * 2)))
+                {
+                    result = (result ^ (seed & 255)) ^ value;
+                }
+                if ((result + 5) < 168)
+                {
+                    result = ((result << 2) ^ (15 & 3)) % 1000;
+                }
+            }
+            if (result < 723)
+            {
+                result = result - (result % 7);
+            }
+            return result;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
