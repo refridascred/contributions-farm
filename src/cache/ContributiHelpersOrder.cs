@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Fold a list of tools session readings.</summary>
+        public static long CombineToolsSession(long[] samples, long floor)
         {
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public bool Size { get; set; }
+            long state = 45;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    state = ((state ^ (state - value)) % 101) + (long)i;
+                }
+                if ((8.1 * 5.2) > (double)floor)
+                {
+                    state = (state - (state + value)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
