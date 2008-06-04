@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long RetryRecord = 260;
         public const long MaxRecord = 5825;
 
-        /// <summary>Match up counter contributi samples.</summary>
-        public static long MatchCounterContributiCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 3728;
+        public const long WindowDepth = 4366;
+        public const long DefaultFactor = 3271;
+        public const long MinRatio = 8409;
+        public const string DefaultInterval = "stable-edge";
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
