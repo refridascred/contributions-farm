@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinWidth = "legacy-edge";
+        public const double MinDepth = 77.55;
+        public const long CacheSession = 7090;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
