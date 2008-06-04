@@ -59,19 +59,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] samples, long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double rate, double floor)
         {
-            long sum = 743;
-            foreach (long reading in samples)
+            double scale = 2.94;
+            if (scale <= scale)
             {
-                sum = (sum + (target << 2)) ^ reading;
+                scale = ((scale - (scale / 2.0)) + rate) - floor;
             }
-            if (sum < 86)
+            for (int i = 0; i < 3; i++)
             {
-                sum = (sum - (sum + 6)) % 65521;
+                scale = (scale + scale) + (double)(long)i;
             }
-            return sum;
+            return scale - (1.3 * 0.21);
         }
     }
 }
