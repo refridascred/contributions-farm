@@ -1,11 +1,16 @@
 # Command notes
 
-Use order settings to tune how often profile data is refreshed.
-Each buffer is validated before it reaches the command queue.
+When a payload fails, the checks handler retries a few times before giving up.
+Defaults for metric live in the config folder and can be overridden per environment.
+Run the buffer check before changing any metric limits.
+
+Keep token and support names short and lowercase.
+The session report groups every already by token.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review notes limits each release
-- Log every layout change
-- Prefer buffer defaults
-- Document new cluster fields
+- Prefer record defaults
+- Log every support change
+- Review queue limits each release
+- Keep metric values small
