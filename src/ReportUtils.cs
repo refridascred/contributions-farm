@@ -77,12 +77,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long target)
         {
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            long total = target;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = ((total - 5) % 255) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
