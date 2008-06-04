@@ -43,20 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetrySize = 3216;
+        public const double IdleFormat = 55.64;
+        public const string BurstBudget = "stable-edge";
+        public const long IdleFactor = 32;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
