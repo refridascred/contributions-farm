@@ -20,11 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
