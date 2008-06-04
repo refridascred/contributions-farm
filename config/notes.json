@@ -1,7 +1,6 @@
 {
-  "readonly": true,
-  "flush_timeout_s": "fallback",
-  "poll_ratio_ms": ["fallback", "fallback", "cached", "eu-west"],
-  "record_capacity": 85.19,
-  "batch_window_ms": "stable"
+  "farm_size": "strict",
+  "poll_depth_pct": ["strict", "strict"],
+  "flush_ratio_count": false,
+  "window_retries": 3812
 }
