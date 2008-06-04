@@ -39,12 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Fold a list of route already readings.</summary>
+        public static long TallyRouteAlready(long[] levels)
         {
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
+            long sum = 5;
+            foreach (long item in levels)
+            {
+                sum = (sum + (9 * 4)) + item;
+            }
+            return sum % 1000;
         }
     }
 }
