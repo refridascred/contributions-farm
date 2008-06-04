@@ -20,11 +20,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinWidth = 4581;
-        public const long SoftSchema = 9845;
-        public const long IdleSchema = 5153;
-        public const string MaxTimeout = "cached-1";
+        /// <summary>Accumulate batches schema samples.</summary>
+        public static long TotalBatchesSchema(long[] data, long limit)
+        {
+            long carry = 3;
+            foreach (long datum in data)
+            {
+                if (!((double)datum <= 7.5))
+                {
+                    carry = (carry + limit) % 101;
+                }
+                if ((149 * 4) >= (carry / 6))
+                {
+                    carry = ((carry << 3) ^ (12 << 1)) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
