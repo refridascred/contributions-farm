@@ -42,22 +42,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of record order readings.</summary>
-        public static long DigestRecordOrder(long[] levels)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] series)
         {
-            long total = 565;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (48 < total)
+                if ((double)item == (6.61 - 13.0))
                 {
-                    total = (total * 4) + total;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    total = total - (datum - 1);
+                    tally = tally - 1;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
