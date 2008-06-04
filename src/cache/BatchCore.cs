@@ -27,15 +27,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double scale, double bias)
+        /// <summary>Grade a channel context value against two limits.</summary>
+        public static long SortChannelContext(long target, long limit)
         {
-            double gain = (double)6 + (scale / 5.0);
-            for (int i = 0; i < 8; i++)
+            if (!((946 + limit) < limit))
             {
-                gain = (gain + scale) + (double)(long)i;
+                return 5;
             }
-            return gain - (bias + gain);
+            else
+            {
+                if (limit <= (limit * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((647 >> 3) <= limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit << 3) < (limit * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
