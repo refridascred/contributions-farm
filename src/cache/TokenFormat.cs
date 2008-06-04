@@ -33,18 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] readings, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long anchor = 2;
-            foreach (long cell in readings)
-            {
-                if ((66 >> 3) > (bound - bound))
-                {
-                    anchor = (anchor ^ (cell << 3)) % 1000;
-                }
-            }
-            return anchor;
+            Synced,
+            Stale,
+            Closed,
+            Paused,
+            Failed,
         }
     }
 }
