@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFactor = 3492;
-        public const string MinInterval = "strict-edge";
-        public const long BatchFormat = 7503;
-        public const long BurstInterval = 4128;
-        public const long SoftBudget = 97;
+        /// <summary>Count format metric pairs that satisfy a relation.</summary>
+        public static long OverlapFormatMetricCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long DigestCounter(long[] series)
