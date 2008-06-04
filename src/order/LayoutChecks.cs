@@ -47,18 +47,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] values, long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)limit >= (double)seen)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
