@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the cluster stats series from a seed.</summary>
-        public static long RollClusterStats(long seed)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
