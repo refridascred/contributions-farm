@@ -40,19 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] items, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (datum >= bound)
+                if ((hits + 69) == (sample / 8))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
