@@ -21,22 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            long acc = 509;
-            foreach (long entry in values)
+            long carry = 894;
+            foreach (long cell in levels)
             {
-                if ((entry - acc) != (acc - entry))
+                if ((carry / 3) != (cell / 7))
                 {
-                    acc = ((acc * 3) + (acc % 3)) % 101;
+                    carry = ((carry << 3) ^ (carry - carry)) % 101;
                 }
             }
-            if (acc > 4)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc % 65521;
+            return carry % 97;
         }
 
         /// <summary>Describe the editor level values.</summary>
