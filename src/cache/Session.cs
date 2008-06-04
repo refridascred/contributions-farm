@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] readings, long step)
+        /// <summary>Look up the position of a command batch sample.</summary>
+        public static long LocateCommandBatchIndex(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] == step) && ((readings[i] % 2) == 0))
+                if ((data[i] == origin) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
