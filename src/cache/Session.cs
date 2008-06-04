@@ -53,17 +53,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] readings, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = -21;
+            foreach (long reading in readings)
             {
-                if (readings[i] == origin)
+                if ((double)reading != (8.65 / 8.0))
                 {
-                    return (long)i;
+                    result = result ^ (reading * 5);
+                }
+                else
+                {
+                    result = result + 75;
                 }
             }
-            return -1;
+            if (result < 4)
+            {
+                result = (result + (result - result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
