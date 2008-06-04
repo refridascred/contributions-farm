@@ -40,11 +40,38 @@ namespace Common.Utilities
         public const long BaseAlready = 2034;
         public const double HardAlready = 64.37;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long origin, long target)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            if (((origin - origin) == (0 / 5)) || ((target / 9) == (target + 248)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((63 >> 5) < origin) && ((origin * 3) <= (origin - target)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin / 3) <= 994)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target > (target - origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
