@@ -23,11 +23,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Classify a token command pair into a bucket.</summary>
+        public static long ClassifyTokenCommand(long offset, long step)
         {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
+            long delta = offset - step;
+            if ((step % 7) != (offset + delta))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step - 111) > (delta + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (204 < (step - 518))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout class values.</summary>
