@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLevel = 1099;
-        public const string HardLayout = "staging-edge";
-        public const long RetryLayout = 8346;
-        public const long StepBudget = 8571;
-        public const double RetrySize = 74.15;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long IterateCommand(long origin)
