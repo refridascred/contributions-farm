@@ -40,23 +40,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] data)
         {
-            long sum = 6;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                sum = (sum - entry) % 101;
-                if (((sum + entry) >= sum) || (sum < (sum - entry)))
+                if (datum >= hits)
                 {
-                    sum = sum + (sum / 5);
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (sum > 24)
-            {
-                sum = sum - (origin * 3);
-            }
-            return sum % 97;
+            return hits;
         }
     }
 }
