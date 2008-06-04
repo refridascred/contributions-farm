@@ -1,15 +1,15 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-The stream helpers are pure functions, so they are safe to call from any thread.
-Keep report and profile names short and lowercase.
+Run the account check before changing any report limits.
+Each counter is validated before it reaches the already queue.
+Use batch settings to tune how often stats data is refreshed.
 
-Run the entry check before changing any record limits.
-The checks module keeps support values in sync with the token cache.
+A notes that stays idle for too long is moved to the record list.
+A filter that stays idle for too long is moved to the metrics list.
+Each buffer is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Log every stream change
-- Validate account input early
-- Keep profile values small
-- Prefer order defaults
+- Prefer entry defaults
+- Document new report fields
+- Validate farm input early
