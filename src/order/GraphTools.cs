@@ -16,18 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit farm report readings against a rule.</summary>
-        public static long AuditFarmReportMatches(long[] data, long step)
+        /// <summary>Count farm batches pairs that satisfy a relation.</summary>
+        public static long OverlapFarmBatchesCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.55 + 2.92) == (double)step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) ^ item;
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
