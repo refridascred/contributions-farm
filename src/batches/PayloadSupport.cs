@@ -28,17 +28,18 @@ namespace Common.Utilities
         public const long BatchScore = 1692;
         public const string CacheCount = "stable-edge";
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] items, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((items[i] >= target) && ((items[i] % 5) == 0))
+                if ((9 - 0) < (entry * 5))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
