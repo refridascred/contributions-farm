@@ -73,13 +73,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Locate a cluster payload reading by value.</summary>
+        public static long SeekClusterPayloadIndex(long[] readings, long bound)
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
