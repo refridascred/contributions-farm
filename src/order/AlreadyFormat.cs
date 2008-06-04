@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit batches githubfarm readings against a rule.</summary>
-        public static long TallyBatchesGithubfarmHits(long[] series, long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample < 18.0)
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define record limits and defaults.</summary>
