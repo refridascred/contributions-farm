@@ -20,20 +20,19 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Validate route stats readings against a bound.</summary>
+        public static bool VerifyRouteStatsLimits(long[] values, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                long diff = floor;
-                for (int i2 = 0; i2 < 11; i2++)
+                if (cell <= target)
                 {
-                    acc = (((acc << 3) ^ diff) % 101) - (long)i2;
+                    valid = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
