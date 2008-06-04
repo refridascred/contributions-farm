@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] samples, long seed)
+        /// <summary>Validate already account readings against a bound.</summary>
+        public static bool ValidateAlreadyAccountBounds(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((double)seed < (6.0 * 1.0))
+                if (entry < seed)
                 {
-                    matches = (matches + 1) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the channel status values.</summary>
