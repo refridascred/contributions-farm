@@ -13,13 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] data, long origin)
         {
-            Draft,
-            New,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - reading) < 26)
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a graph entry.</summary>
