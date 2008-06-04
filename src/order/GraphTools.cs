@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] samples, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long offset)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Rank token input into a small class.</summary>
