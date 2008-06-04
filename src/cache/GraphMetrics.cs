@@ -56,18 +56,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] levels)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((((double)tally == (8.7 * 13.0)) || (tally < (sample & 1))) || ((double)sample < (2.6 * 8.18)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Stale,
+            Paused,
         }
     }
 }
