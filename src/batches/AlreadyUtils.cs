@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double weight, double offset)
+        /// <summary>Grade a order session value against two limits.</summary>
+        public static long GradeOrderSession(long limit, long target)
         {
-            double bias = 7.4;
-            if (bias <= (weight / 4.0))
+            long edge = limit + target;
+            if (((limit % 2) > limit) || ((double)limit >= (8.77 * 3.0)))
             {
-                bias = bias - bias;
+                return 7;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                bias = (bias + offset) + (double)(long)i;
+                if (!((edge / 8) > (edge % 64)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return bias - (5.8 / 6.0);
         }
 
         /// <summary>Count the schema notes entries that pass the check.</summary>
