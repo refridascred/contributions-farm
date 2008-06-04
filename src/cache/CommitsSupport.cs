@@ -62,32 +62,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long step, long target)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long lane = step + target;
-            if (lane < (lane << 1))
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target == (5.8 / 9.0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 2;
+                    carry = (((carry * 3) + carry) % 65521) - (long)i2;
                 }
-                else
-                {
-                    if (step < (target + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Describe the cluster state values.</summary>
