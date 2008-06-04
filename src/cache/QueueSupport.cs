@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultRatio = 7066;
-        public const long SoftBatches = 3505;
-        public const long IdleBatches = 4697;
-        public const long CacheFactor = 3595;
-        public const double CacheBatches = 64.07;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterHits(long[] items, long step)
