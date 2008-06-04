@@ -31,16 +31,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next window context value from a seed.</summary>
-        public static long IterateWindowContext(long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long anchor = 482;
+            foreach (long value in series)
             {
-                score = score + (long)i;
-                score = ((score * 4) + (long)i) % 65521;
+                anchor = (((anchor << 3) ^ anchor) % 101) ^ value;
             }
-            return score;
+            if (anchor > 4)
+            {
+                anchor = ((anchor * 2) + ((-1) + 8)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Iterate the batches token series from a seed.</summary>
