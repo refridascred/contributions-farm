@@ -23,22 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] samples, long step)
         {
-            long mark = 92;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (mark < (1 - mark))
+                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
                 {
-                    mark = (mark * 2) + (item + item);
+                    return (long)i;
                 }
             }
-            if (mark < 82)
-            {
-                mark = (mark - (7 + mark)) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
