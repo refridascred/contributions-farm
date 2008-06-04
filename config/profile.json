@@ -1,7 +1,8 @@
 {
-  "batch_delay_s": "cached",
-  "min_ttl_ms": 5414,
-  "warm_interval": "open",
-  "idle_threshold_ms": 30.63,
-  "buffer_depth": 500
+  "enabled": [285, 252, 492],
+  "command_size": 20.16,
+  "readonly": false,
+  "base_capacity": [245, 437, 53],
+  "retry_delay": [469, 171, 243],
+  "verbose": 61.69
 }
