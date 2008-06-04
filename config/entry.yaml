@@ -1,5 +1,4 @@
 # entry settings
-verbose: 76.67
-entry_ratio: blue
-account_timeout: 4778
-retry_ratio: false
+compress: 9.27
+default_retries: latest
+batch_timeout_count: 60
