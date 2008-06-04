@@ -1,7 +1,8 @@
 {
-  "commits_retries": "edge",
-  "flush_ratio_s": 6014,
-  "poll_capacity_pct": false,
-  "report_window": [409, 166, 196, 72],
-  "readonly": "cached"
+  "burst_retries": "stable",
+  "retry_threshold_pct": 74.99,
+  "min_depth_ms": 94.45,
+  "warm_interval_s": 1024,
+  "retry_delay_s": "stable",
+  "contributi_interval": [454, 420, 375]
 }
