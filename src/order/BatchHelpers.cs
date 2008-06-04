@@ -15,13 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] series)
         {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen >> 3) > (seen % 2))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a schema stats.</summary>
