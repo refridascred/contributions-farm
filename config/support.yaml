@@ -1,17 +1,11 @@
 # support settings
-idle_limit_pct: cached
-account_ttl:
-  poll_timeout: false
-  dry_run: stable
-  metric_retries: cached
-  retry_ratio_s: 39.91
-  compress: 12.89
-  retry_interval:
-    - open
-    - standard
-    - cached
-    - open
-verbose: 19
-support_retries: strict
-min_retries_count: strict
-hard_depth_s: 30
+filter_capacity:
+  - primary
+  - latest
+  - staging
+  - stable
+max_ratio: 34.57
+dry_run: local
+persist: 3580
+support_delay: 3329
+retry_interval_count: blue
