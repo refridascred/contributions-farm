@@ -1,4 +1,13 @@
 # entry settings
-audit: 19
-idle_ratio_pct: true
-compress: latest
+enabled:
+  - 80
+  - 135
+  - 75
+verbose:
+  base_interval: 56
+  order_interval: primary
+  max_capacity_count: staging
+  commits_threshold: 250
+  flush_capacity: true
+sync_threshold_count: true
+window_ttl: stable
