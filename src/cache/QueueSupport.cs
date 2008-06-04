@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long limit, long bound)
+        /// <summary>Validate record support readings against a bound.</summary>
+        public static bool CheckRecordSupportRange(long[] data, long origin)
         {
-            if ((0.49 / 7.0) > (double)bound)
+            bool found = true;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (132 >= limit)
+                if (item != origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(limit >= (bound % 24)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((52 * 3) >= limit) || ((limit & 7) < (5 % 97)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the batches state values.</summary>
