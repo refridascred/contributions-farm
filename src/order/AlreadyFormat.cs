@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Audit batches githubfarm readings against a rule.</summary>
+        public static long TallyBatchesGithubfarmHits(long[] series, long bound)
         {
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample < 18.0)
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of route readings.</summary>
