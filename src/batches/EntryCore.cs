@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] levels, long floor)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = offset + rate;
+            return scale - (rate + offset);
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
