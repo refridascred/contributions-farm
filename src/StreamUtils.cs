@@ -58,18 +58,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stream route entries that pass the check.</summary>
-        public static long CountStreamRouteHits(long[] data)
+        /// <summary>Find the first graph session entry that matches the target.</summary>
+        public static long SeekGraphSessionIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((11 - tally) >= (reading / 5))
+                if (series[i] < step)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
