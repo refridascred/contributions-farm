@@ -32,14 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            Stale,
-            Idle,
-            Draft,
-            Synced,
-            Closed,
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc ^ (acc << 3)) % 1000;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
