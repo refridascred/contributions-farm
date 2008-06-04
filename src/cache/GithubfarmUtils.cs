@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "strict";
-        public const long WindowBudget = 1465;
-        public const long LimitAlready = 8421;
-        public const long MinAlready = 2677;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 46.75;
+        public const long SoftCount = 8242;
+        public const double BaseDepth = 25.49;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] series, long step)
