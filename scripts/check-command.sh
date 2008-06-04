@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+COMMAND_LIMIT=66
+log "limit is ${COMMAND_LIMIT}"
+
+for item in fallback green staging standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-cached}"
 case "${mode}" in
-    legacy)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=438
-log "limit is ${COMMAND_LIMIT}"
-
-for item in edge local standard cached; do
-    log "checking ${item}"
-done
