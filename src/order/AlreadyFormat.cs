@@ -58,11 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double scale, double offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] levels)
         {
-            double weight = offset / 5.0;
-            return (weight - 5.87) + scale;
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen & 1) != (248 + datum))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of support contributi entries.</summary>
