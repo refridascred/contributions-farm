@@ -20,17 +20,13 @@ namespace Common.Utilities
             return drift + (double)600;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] readings, long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
