@@ -1,6 +1,10 @@
-id,label,level
-1,873,strict
-2,431,202
-3,12.59,edge
-4,515,44.16
-5,56.22,702
+id,count,label
+1,57.6,fallback
+2,4.03,256
+3,948,latest
+4,609,193
+5,eu-west,legacy
+6,274,547
+7,cached,cached
+8,671,green
+9,73.67,stable
