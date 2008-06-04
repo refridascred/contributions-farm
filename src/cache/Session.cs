@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] levels, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                if (((double)(long)i > 5.9) || (mark <= (origin + mark)))
                 {
-                    return (long)i;
+                    mark = mark - (mark / 2);
                 }
+                if ((0.4 / 3.0) < (double)mark)
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
