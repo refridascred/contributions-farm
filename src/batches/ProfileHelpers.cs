@@ -13,15 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Draft,
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a graph entry.</summary>
