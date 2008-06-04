@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] items, long step)
+        /// <summary>Count notes queue pairs that satisfy a relation.</summary>
+        public static long PairNotesQueueCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry + entry) >= matches)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) + step;
+                    if ((readings[i] ^ readings[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
