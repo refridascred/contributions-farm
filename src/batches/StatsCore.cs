@@ -74,13 +74,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long offset, long floor)
         {
-            Failed,
-            Synced,
-            Paused,
-            New,
+            if ((315 > (floor + offset)) && ((offset ^ floor) == (offset + 732)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)floor == (0.7 + 3.85)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor % 2) <= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
