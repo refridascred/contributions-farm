@@ -23,18 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchBudget = 9981;
+        public const long DefaultFilter = 2535;
+        public const long RetryDepth = 837;
+        public const long BatchFilter = 5837;
+        public const long MaxFilter = 1300;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long limit)
