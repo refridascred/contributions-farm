@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long step)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long offset, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            if ((offset ^ floor) <= (floor + offset))
             {
-                mark = ((mark * 3) + step) % 255;
-                mark = ((mark * 5) + (long)i) % 97;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (!((offset - floor) > (offset >> 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset + offset) > (65 + floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset > floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor summary.</summary>
