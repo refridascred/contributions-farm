@@ -29,12 +29,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitBudget = 2269;
-        public const long SoftPayload = 5789;
-        public const long HardInterval = 117;
-        public const long StepDepth = 1344;
-        public const long BasePayload = 5775;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((tally % 60) >= (item - tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutRange(long[] samples, long limit)
