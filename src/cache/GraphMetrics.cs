@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
