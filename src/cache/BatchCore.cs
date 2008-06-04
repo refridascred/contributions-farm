@@ -14,12 +14,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] items, long origin)
         {
-            Synced,
-            Stale,
-            Paused,
+            long score = 54;
+            foreach (long reading in items)
+            {
+                if (((3.58 + 4.02) <= (double)origin) && ((reading + origin) >= (score + origin)))
+                {
+                    score = score ^ (origin >> 2);
+                }
+            }
+            if (score < 43)
+            {
+                score = (score ^ (origin + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
