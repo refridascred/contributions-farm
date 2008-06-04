@@ -23,21 +23,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = 8.68;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = ((load - span) + (double)(long)i) + bias;
             }
-            return tally;
+            return load - (span + 5.01);
         }
 
         /// <summary>Hold a record snapshot.</summary>
