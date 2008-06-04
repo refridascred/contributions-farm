@@ -41,11 +41,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] series)
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!((item + tally) >= (75 ^ tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
