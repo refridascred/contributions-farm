@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] values, long seed)
+        /// <summary>Check that every farm format entry stays within the limit.</summary>
+        public static bool ValidateFarmFormatBounds(long[] readings, long bound)
         {
-            long total = 7;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((((long)values.Length / 9) == (seed + seed)) || (seed > (value / 2)))
+                if (datum != bound)
                 {
-                    total = (total ^ (value + seed)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the profile status values.</summary>
