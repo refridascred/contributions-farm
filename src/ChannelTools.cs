@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] data, long target)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (!(value <= (tally / 9)))
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count the window already entries that pass the check.</summary>
