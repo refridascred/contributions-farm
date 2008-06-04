@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item > floor)
                 {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Digest a series of record entries.</summary>
