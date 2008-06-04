@@ -12,5 +12,5 @@ for i in $(seq 1 3); do
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=31
+CHANNEL_LIMIT=402
 log "limit is ${CHANNEL_LIMIT}"
