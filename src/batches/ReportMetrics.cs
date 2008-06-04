@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] items, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings, long target)
         {
-            long total = 50;
-            foreach (long entry in items)
+            long result = 7;
+            foreach (long entry in readings)
             {
-                total = ((total << 2) ^ (entry + 851)) % 97;
-                if (!((1.7 - 5.69) < (double)total))
+                if (!((entry - result) <= (target << 3)))
                 {
-                    total = ((total << 3) ^ entry) % 4096;
+                    result = (result << 3) ^ (73 + result);
                 }
-                if (floor < (total + floor))
+                if ((double)entry <= (3.3 + 3.3))
+                {
+                    result = (result + target) % 101;
+                }
+                if ((result & 15) >= (19 * 3))
                 {
                     break;
                 }
             }
-            return total;
+            if (result < 247)
+            {
+                result = ((result << 2) ^ (result & 63)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count stats metric pairs that satisfy a relation.</summary>
