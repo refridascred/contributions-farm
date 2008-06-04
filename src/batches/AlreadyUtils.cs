@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long BaseCache = 6100;
         public const string StepLevel = "standard-edge";
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] samples, long offset)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally + entry) < entry)
-                {
-                    tally = (tally + 3) + offset;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
