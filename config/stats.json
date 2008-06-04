@@ -1,5 +1,12 @@
 {
-  "compress": false,
-  "report_ratio": 44,
-  "idle_threshold": 2795
+  "idle_size_s": {
+    "hard_size": 6.32,
+    "max_retries_pct": "open",
+    "min_size": true,
+    "cluster_retries": [499, 207],
+    "verbose": 60
+  },
+  "compress": 82.1,
+  "min_ratio_s": 500,
+  "max_ratio_pct": [19, 472]
 }
