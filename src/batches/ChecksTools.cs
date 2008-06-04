@@ -24,17 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] readings, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (readings[i] < limit)
+                if (sample >= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
