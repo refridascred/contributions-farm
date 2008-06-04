@@ -34,14 +34,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Failed,
-            Paused,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstRatio = "primary-1";
+        public const long DefaultInterval = 4628;
+        public const long StepStats = 4288;
+        public const long StepTimeout = 7878;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string RetryFormat = "staging-v2";
