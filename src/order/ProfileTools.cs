@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a already header.</summary>
