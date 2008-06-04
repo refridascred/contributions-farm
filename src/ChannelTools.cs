@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit cluster filter readings against a rule.</summary>
-        public static long CountClusterFilterOutliers(long[] items, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] data, long target)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long value in data)
             {
-                if ((reading >> 2) == (reading + reading))
+                if (!(value <= (tally / 9)))
                 {
-                    tally = (tally + 3) + offset;
+                    tally = (tally + 2) - target;
                 }
             }
             return tally;
