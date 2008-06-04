@@ -52,19 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] items, long offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            double scale2 = (double)(441 + 946);
+            if (scale2 > scale)
             {
-                if (cell < offset)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = (scale2 - scale) + offset;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + scale) - (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
