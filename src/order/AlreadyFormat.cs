@@ -14,13 +14,31 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long bound)
         {
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            if (((6 % 5) < bound) || ((double)bound > (1.35 + 15.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3.0 - 6.59) >= (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + 3) == (floor - floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
