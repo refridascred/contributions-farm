@@ -40,16 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double bias, double span)
-        {
-            double load = 8.68;
-            for (int i = 0; i < 4; i++)
-            {
-                load = ((load - span) + (double)(long)i) + bias;
-            }
-            return load - (span + 5.01);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchSpan = 413;
+        public const string BatchMetric = "standard-1";
+        public const long MinMetric = 6403;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
