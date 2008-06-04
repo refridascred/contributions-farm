@@ -77,15 +77,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double rate, double floor)
+        /// <summary>Look up the position of a record commits sample.</summary>
+        public static long LookupRecordCommitsIndex(long[] samples, long bound)
         {
-            double ratio = rate;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - floor) + (double)(long)i;
+                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (double)86;
+            return -1;
         }
 
         /// <summary>Hold a profile options.</summary>
