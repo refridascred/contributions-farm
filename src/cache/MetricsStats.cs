@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long score = 927;
+            foreach (long sample in levels)
             {
-                if (((matches + matches) > 3) && (sample < (matches + matches)))
+                if (((score + score) > (sample % 8)) && (score <= (score ^ sample)))
                 {
-                    matches = matches + 2;
+                    score = ((score * 5) + (sample + score)) % 101;
                 }
-                else
+                if (!(score < (score + 135)))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return score % 1000;
         }
 
         /// <summary>Describe the payload status values.</summary>
