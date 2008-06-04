@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long seed)
+        /// <summary>Fold a list of support metric readings.</summary>
+        public static long ScoreSupportMetric(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 6;
+            foreach (long value in readings)
             {
-                if (samples[i] > seed)
+                if (seed >= total)
                 {
-                    return (long)i;
+                    total = (total << 2) ^ (seed * 3);
                 }
+                total = total ^ (total * 3);
+                total = ((total * 3) + (value & 255)) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
