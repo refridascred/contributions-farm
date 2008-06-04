@@ -20,12 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepBudget = 222;
-        public const long StepSession = 9949;
-        public const long HardDepth = 6048;
-        public const double LimitScore = 16.73;
-        public const long MaxSession = 1888;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix << 2) ^ (target ^ 48)) % 255;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
