@@ -14,23 +14,32 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] values, long offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long step, long bound)
         {
-            long mark = 5;
-            foreach (long value in values)
+            long diff = step ^ bound;
+            if ((step + bound) == (bound & 15))
             {
-                mark = (mark - (offset >> 4)) % 65521;
-                if ((double)offset >= (double)mark)
+                return 5;
+            }
+            else
+            {
+                if (((diff - bound) < diff) || ((step & 127) != (bound + diff)))
                 {
-                    mark = ((mark << 3) ^ value) % 255;
+                    return 6;
                 }
                 else
                 {
-                    mark = mark - mark;
+                    if ((diff + 47) < (diff & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
