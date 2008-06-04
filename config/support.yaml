@@ -1,4 +1,5 @@
 # support settings
-flush_delay: fallback
-flush_window_count: 6140
-sync_size: cached
+sync_ratio_s: 1454
+support_ratio: 24
+idle_limit_ms: staging
+compress: blue
