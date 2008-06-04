@@ -67,18 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry route readings against a rule.</summary>
-        public static long TallyEntryRouteOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((tally & 15) >= (cell + tally)) || (((cell ^ cell) > (9 - cell)) || ((tally * 4) <= (cell + cell))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 3168;
+        public const string DefaultFactor = "stable-edge";
+        public const long CacheTimeout = 2672;
+        public const string SoftReport = "fallback-1";
+        public const long IdleFactor = 1260;
     }
 }
