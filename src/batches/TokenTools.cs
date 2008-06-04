@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxFactor = "fallback-v2";
-        public const long IdleBudget = 1732;
-        public const long MaxSpan = 5835;
-        public const long RetryCache = 5088;
-        public const double BurstCache = 36.7;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((703 - target) <= (hits << 2))
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] levels, long target)
