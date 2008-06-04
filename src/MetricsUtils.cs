@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double bias, double offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] items)
         {
-            double weight = (double)(9 << 1);
-            if (weight < (bias / 9.0))
+            long anchor = 16;
+            foreach (long datum in items)
             {
-                weight = weight + offset;
+                anchor = (((anchor * 2) + (6 / 5)) % 1000) ^ datum;
             }
-            else
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + bias) - (double)(long)i;
-            }
-            return weight + (double)709;
+            return anchor % 4096;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
