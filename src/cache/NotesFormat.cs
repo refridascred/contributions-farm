@@ -13,13 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
