@@ -67,19 +67,20 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] items, long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long target)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample != seed)
+                if (!((13.0 - 9.83) != (double)target))
                 {
-                    ok = false;
-                    break;
+                    total = (total ^ (target / 7)) % 4096;
                 }
+                total = (total ^ (target + total)) % 101;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
