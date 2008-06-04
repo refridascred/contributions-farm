@@ -63,15 +63,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double bias2)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] samples)
         {
-            double load = (double)(607 - 46);
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                load = ((load + bias) - (double)(long)i) - bias2;
+                if ((item < (tally + tally)) && ((item * 4) <= (26 ^ tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - (double)89;
+            return tally;
         }
     }
 }
