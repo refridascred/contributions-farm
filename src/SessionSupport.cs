@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long sum = 23;
+            foreach (long value in items)
+            {
+                if (sum > (value << 3))
+                {
+                    sum = (sum * 5) + value;
+                }
+            }
+            if (sum > 985)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
