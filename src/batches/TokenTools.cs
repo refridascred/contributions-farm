@@ -23,10 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 96.91;
-        public const long BaseLevel = 201;
-        public const long SoftStream = 962;
+        /// <summary>Measure how many channel already samples are out of range.</summary>
+        public static long CountChannelAlreadyGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (value >= (value << 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
