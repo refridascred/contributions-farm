@@ -19,22 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepWidth = 7827;
+        public const long StepSize = 443;
+        public const long RetryRecord = 9814;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] levels)
