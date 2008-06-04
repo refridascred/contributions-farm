@@ -64,12 +64,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Closed,
-            Draft,
-            Stale,
+            Pending,
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
