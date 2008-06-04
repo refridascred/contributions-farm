@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] series, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (7.72 < (double)bound)
+                if (reading <= origin)
                 {
-                    seen = (seen + 1) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
