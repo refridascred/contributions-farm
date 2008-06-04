@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 7637;
+        public const long BurstReport = 1872;
+        public const long DefaultReport = 1398;
+        public const long IdleDepth = 8391;
+        public const long BaseBudget = 1513;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long IterateCommand(long origin)
