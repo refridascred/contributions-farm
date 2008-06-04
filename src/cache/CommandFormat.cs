@@ -48,21 +48,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = weight;
+            if (scale >= bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + (bias / 8.0);
             }
-            return count;
+            else
+            {
+                scale = scale + (double)477;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - (double)5;
         }
     }
 }
