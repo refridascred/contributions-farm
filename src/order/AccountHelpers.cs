@@ -80,17 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record commits sample.</summary>
-        public static long LookupRecordCommitsIndex(long[] samples, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
+                if (((-63) * 3) == (item - 924))
                 {
-                    return (long)i;
+                    count = (count + 1) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a profile options.</summary>
