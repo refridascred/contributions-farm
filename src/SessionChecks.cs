@@ -36,31 +36,19 @@ namespace Common.Utilities
         public const long WindowTools = 6105;
         public const long CacheDepth = 3849;
 
-        /// <summary>Grade a metrics context value against two limits.</summary>
-        public static long ClassifyMetricsContext(long offset, long step)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double gain, double span)
         {
-            if (((step % 8) > (2 ^ offset)) && ((2 - offset) <= 457))
+            double drift = gain;
+            if (drift >= (double)87)
             {
-                return 6;
+                drift = drift - (gain - gain);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((step / 4) <= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step > 14.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                drift = (drift - span) + (double)(long)i;
             }
+            return drift + (double)747;
         }
     }
 }
