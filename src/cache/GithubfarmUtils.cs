@@ -37,22 +37,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine route checks values into a single score.</summary>
-        public static long TallyRouteChecks(long[] samples)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long state = 12;
-            foreach (long cell in samples)
-            {
-                if ((cell << 1) <= (cell / 8))
-                {
-                    state = (state - (cell + 59)) % 255;
-                }
-            }
-            if (state < 35)
-            {
-                state = ((state * 2) + state) % 1000;
-            }
-            return state % 65521;
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
