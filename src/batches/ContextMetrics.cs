@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const double DefaultFarm = 31.31;
         public const long BatchCount = 4220;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] values)
         {
-            Locked,
-            Stale,
-            Synced,
+            long score = -9;
+            foreach (long datum in values)
+            {
+                score = score ^ (datum >> 5);
+            }
+            if (score > 248)
+            {
+                score = score ^ ((long)values.Length + 993);
+            }
+            return score;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
