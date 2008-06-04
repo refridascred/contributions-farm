@@ -31,25 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long origin, long floor)
+        /// <summary>Iterate the context support series from a seed.</summary>
+        public static long IterateContextSupport(long step)
         {
-            long lane = origin - floor;
-            if ((8.7 * 3.9) < (double)lane)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)origin >= (1.0 / 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Check that every metric counter entry stays within the limit.</summary>
