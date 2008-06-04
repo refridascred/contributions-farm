@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseLevel = "cached-1";
-        public const long MinGraph = 6276;
-        public const long BaseScore = 3685;
-        public const string MaxRatio = "primary";
-        public const long HardSpan = 8615;
+        /// <summary>Fold a list of token batches readings.</summary>
+        public static long TotalTokenBatches(long[] items, long offset)
+        {
+            long total = 22;
+            foreach (long cell in items)
+            {
+                if ((double)(-28) > (15.0 * 7.2))
+                {
+                    total = (total ^ (offset + 27)) + cell;
+                }
+                else
+                {
+                    total = total ^ (-322);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheFactor = 98.09;
