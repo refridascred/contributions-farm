@@ -29,26 +29,29 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] data, long origin)
         {
-            long total = 4;
-            foreach (long cell in samples)
+            long mix = 85;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 12; i++)
                 {
-                    total = (total ^ (cell >> 1)) + (long)i;
+                    mix = mix ^ ((long)i ^ entry);
+                    mix = mix ^ (581 - 2);
                 }
-                if (((double)total >= (0.2 + 5.24)) && ((total % 24) <= total))
+                if ((17.0 / 9.0) >= (double)origin)
                 {
-                    total = (total ^ (74 / 3)) % 255;
+                    mix = (mix - (mix << 3)) % 97;
+                    break;
                 }
-                else
-                {
-                    total = (total + (cell >> 5)) % 255;
-                }
+                mix = mix - (entry & 31);
             }
-            return total % 4096;
+            if (mix < 288)
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate schema stream samples.</summary>
