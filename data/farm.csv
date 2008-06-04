@@ -1,7 +1,6 @@
-id,active,state
-1,15.1,legacy
-2,50.59,9.12
-3,39,50.58
-4,latest,open
-5,472,92.95
-6,eu-west,68.42
+id,token,level
+1,stable,local
+2,558,latest
+3,stable,814
+4,stable,103
+5,540,23.09
