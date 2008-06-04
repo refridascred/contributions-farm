@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] data, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((state / 5) <= (offset / 3))
+                if (((offset ^ 869) >= (7 ^ entry)) && ((entry > (tally + tally)) && (28 <= offset)))
                 {
-                    state = state ^ (offset & 7);
-                    state = ((state << 3) ^ (state >> 2)) % 1000;
+                    tally = tally + 2;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
