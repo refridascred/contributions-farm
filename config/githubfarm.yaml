@@ -1,6 +1,5 @@
 # githubfarm settings
-max_ttl_ms: true
-enabled:
-  - primary
-  - stable
-persist: 1024
+hard_timeout: 414
+audit: 3139
+metrics_ttl: 1
+base_window: latest
