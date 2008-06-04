@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long target, long bound)
-        {
-            long gap = target - bound;
-            if (((bound ^ target) >= (gap + target)) && ((gap << 1) < gap))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.2 - 8.37) <= (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((7.0 / 9.0) >= (double)gap))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 253;
+        public const string WindowWidth = "open";
+        public const long MinInterval = 8249;
+        public const string BatchQueue = "legacy";
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] data)
