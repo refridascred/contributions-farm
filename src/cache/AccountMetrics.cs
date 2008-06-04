@@ -26,19 +26,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)(long)levels.Length > (double)hits)
-                {
-                    hits = ((hits + 3) + sample) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 63.64;
+        public const double WindowAlready = 85.36;
+        public const long CacheAlready = 5156;
 
         /// <summary>Check that every metric counter entry stays within the limit.</summary>
         public static bool GuardMetricCounterBounds(long[] levels, long seed)
