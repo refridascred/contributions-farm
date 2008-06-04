@@ -67,12 +67,14 @@ namespace Common.Utilities
         public const long StepCommand = 1564;
         public const long RetryCommand = 4089;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Paused,
-            Queued,
-            Draft,
+            Pending,
+            Closed,
+            Retry,
+            Synced,
+            Failed,
         }
     }
 }
