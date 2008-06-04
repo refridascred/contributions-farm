@@ -1,6 +1,6 @@
 # githubfarm settings
-soft_ratio_ms: 250
-idle_limit_count: 59
-idle_timeout_count: true
-soft_timeout_pct: blue
-sync_threshold: cached
+poll_threshold_count: standard
+max_interval_count: 54
+farm_timeout: fallback
+hard_timeout_ms: 47
+verbose: 58
