@@ -17,14 +17,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long limit)
         {
-            Pending,
-            Active,
-            Retry,
-            Failed,
-            New,
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum << 3) ^ (limit / 6)) % 4096;
+                sum = (sum ^ (49 & 15)) % 101;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
