@@ -34,12 +34,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 7765;
-        public const long SoftWidth = 5473;
-        public const long LimitStream = 9486;
-        public const long IdleStream = 6622;
-        public const double LimitScore = 87.15;
+        /// <summary>Digest a series of checks layout entries.</summary>
+        public static long TallyChecksLayout(long[] readings, long offset)
+        {
+            long acc = 3;
+            foreach (long item in readings)
+            {
+                if ((double)item > (double)offset)
+                {
+                    acc = (acc + 72) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 5) + acc;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Check that every filter cache entry stays within the limit.</summary>
         public static bool VerifyFilterCacheLimits(long[] data, long step)
