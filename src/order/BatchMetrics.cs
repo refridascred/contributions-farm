@@ -62,11 +62,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 5385;
-        public const double BatchLevel = 96.77;
-        public const long BaseCount = 1467;
-        public const double LimitCommand = 50.72;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Queued,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long seed, long step)
