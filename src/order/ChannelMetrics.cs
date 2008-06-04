@@ -33,18 +33,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] readings, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((hits - seed) <= seed)
+                if (((double)matches <= (5.93 + 0.27)) && (((240 * 4) <= value) && ((4 / 3) <= (value ^ value))))
                 {
-                    hits = (hits + 3) - item;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
