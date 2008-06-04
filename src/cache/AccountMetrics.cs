@@ -31,15 +31,14 @@ namespace Common.Utilities
         public const double WindowAlready = 85.36;
         public const long CacheAlready = 5156;
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double weight, double floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double drift = (weight + weight) - floor;
-            if (drift <= (drift - floor))
-            {
-                drift = drift + weight;
-            }
-            return drift + (double)(-882);
+            Stale,
+            Closed,
+            Draft,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define token limits and defaults.</summary>
