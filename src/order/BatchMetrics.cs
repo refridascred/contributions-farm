@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((8.6 / 2.0) == (double)seen)
-                {
-                    seen = (seen + 1) ^ datum;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
