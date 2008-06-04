@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] items)
         {
-            long score = 52;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((double)score == (double)reading)
+                if (count <= (cell >> 4))
                 {
-                    score = ((score << 2) ^ (94 * 5)) % 4096;
-                }
-                else
-                {
-                    score = (score + (score << 2)) % 101;
+                    count = count + 2;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
