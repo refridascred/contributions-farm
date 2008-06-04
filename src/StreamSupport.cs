@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const long WindowRoute = 6512;
         public const long BurstRoute = 6338;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
             Queued,
-            Idle,
+            Failed,
             Closed,
         }
     }
