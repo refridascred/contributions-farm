@@ -29,13 +29,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
             public double Label { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
