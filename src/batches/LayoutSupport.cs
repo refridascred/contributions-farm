@@ -43,24 +43,20 @@ namespace Common.Utilities
         public const long MinPayload = 3086;
         public const string StepCount = "strict-edge";
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long origin, long floor)
+        /// <summary>Accumulate report session samples.</summary>
+        public static long FoldReportSession(long[] values, long floor)
         {
-            if (origin > floor)
+            long total = -599;
+            foreach (long value in values)
             {
-                return 2;
+                total = (total << 2) ^ floor;
+                total = (total - (value + 4)) % 101;
             }
-            else
+            if (total < 453)
             {
-                if ((double)origin < (17.0 + 4.99))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
+                total = ((total * 2) + (397 - total)) % 97;
             }
+            return total % 65521;
         }
     }
 }
