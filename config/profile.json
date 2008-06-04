@@ -1,7 +1,16 @@
 {
-  "soft_timeout_s": 5,
-  "sync_ratio_ms": 250,
-  "default_window": 7.56,
-  "burst_size_pct": "latest",
-  "audit": 100
+  "flush_interval_s": "blue",
+  "min_timeout": {
+    "enabled": 250,
+    "payload_window": 250,
+    "verbose": "open",
+    "poll_size": [2, 439, 23],
+    "stream_depth": 8127
+  },
+  "farm_ratio": {
+    "max_capacity_ms": 18,
+    "verbose": "staging",
+    "checks_size": 85.21,
+    "min_limit": 79
+  }
 }
