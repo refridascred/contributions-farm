@@ -54,19 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double gain, double span)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] readings, long seed)
         {
-            double drift = gain;
-            if (drift >= (double)87)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                drift = drift - (gain - gain);
+                if ((item - tally) == (item / 3))
+                {
+                    tally = (tally + 1) + seed;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + (double)747;
+            return tally;
         }
     }
 }
