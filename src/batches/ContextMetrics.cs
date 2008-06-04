@@ -16,12 +16,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long origin, long target)
         {
-            Retry,
-            Queued,
-            Idle,
+            long span = origin - target;
+            if ((span - span) != (origin << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target <= 8)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
