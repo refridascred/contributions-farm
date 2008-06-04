@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] series, long target)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (score <= target)
+                if (entry < target)
                 {
-                    score = (score ^ (score % 12)) % 1000;
-                    score = score - score;
+                    stale = false;
+                    break;
                 }
-                if (!((317 + score) < score))
-                {
-                    score = (score ^ ((-69) % 10)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Describe the editor level values.</summary>
