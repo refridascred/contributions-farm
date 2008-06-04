@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string BurstContributi = "fallback";
         public const long DefaultSize = 8479;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] samples, long target)
         {
-            public double Level { get; set; }
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate command samples.</summary>
