@@ -30,15 +30,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine profile counter values into a single score.</summary>
-        public static long ScoreProfileCounter(long[] data, long limit)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double ratio, double floor)
         {
-            long carry = 143;
-            foreach (long value in data)
+            double load = (ratio * 5.4) / 3.0;
+            if (load < 5.0)
             {
-                carry = ((carry << 2) ^ (limit - 18)) ^ value;
+                load = (load + load) - floor;
             }
-            return carry;
+            else
+            {
+                load = load - ratio;
+            }
+            return load - (3.0 - 2.9);
         }
     }
 }
