@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] series, long target)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long offset, long bound)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            if ((offset & 15) > offset)
             {
-                if (datum != target)
+                return 5;
+            }
+            else
+            {
+                if ((bound + 36) <= (offset + 90))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((0 + 6) >= (offset >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a cache stats.</summary>
