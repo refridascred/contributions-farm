@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] samples, long limit)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((4 >= (limit - limit)) && ((reading % 2) <= limit))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
