@@ -26,19 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double weight, double span)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            double mean = weight;
-            if (mean > (double)(-35))
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean + (span * 9.4);
+                anchor = (anchor ^ seed) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (span + 2.0)) + (double)(long)i;
-            }
-            return mean + 3.34;
+            return anchor;
         }
 
         /// <summary>Hold a record snapshot.</summary>
