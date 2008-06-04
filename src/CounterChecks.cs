@@ -44,15 +44,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long anchor = 692;
-            foreach (long datum in readings)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = (anchor ^ (datum & 31)) % 101;
+                sum = ((sum * 5) + (sum << 2)) % 1000;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
