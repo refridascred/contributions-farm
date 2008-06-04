@@ -39,25 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long bound, long floor)
+        /// <summary>Check that every queue channel entry stays within the limit.</summary>
+        public static bool VerifyQueueChannelLimits(long[] levels, long offset)
         {
-            long cur = bound + floor;
-            if ((cur % 97) <= (cur ^ cur))
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound + floor) > (floor + 611)) && ((1.46 - 0.9) < (double)floor))
+                if (reading < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
