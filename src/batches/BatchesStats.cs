@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit schema queue readings against a rule.</summary>
-        public static long AuditSchemaQueueHits(long[] values, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            double mean = scale;
+            if (mean >= (double)77)
             {
-                if ((limit + 925) <= (limit & 1))
-                {
-                    seen = (seen + 3) + cell;
-                }
+                mean = mean + scale;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (floor - 9.24);
         }
 
         /// <summary>Validate batches metric readings against a bound.</summary>
