@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] samples)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long mix = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix - (mix & 255)) + entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix < 88)
-            {
-                mix = mix - (mix - (-764));
-            }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Iterate the entry report series from a seed.</summary>
