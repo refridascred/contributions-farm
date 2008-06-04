@@ -1,15 +1,7 @@
 # support settings
-warm_capacity: open
-warm_size_ms: 26.5
-idle_timeout: 1024
-profile_ttl:
-  format_ratio: 51
-  context_retries: local
-  base_interval: false
-  hard_depth_ms: true
-default_capacity:
-  - 35
-  - 198
-  - 493
-  - 258
-burst_capacity: stable
+warm_retries_count: 62
+enabled: 60
+base_timeout: false
+min_ratio_count: strict
+persist: 86.74
+flush_interval: 60
