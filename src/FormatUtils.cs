@@ -34,12 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            Closed,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Locate a stream batch reading by value.</summary>
