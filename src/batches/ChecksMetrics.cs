@@ -12,19 +12,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] series, long step)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double gain = (double)(29 + 239);
+            if (gain >= (ratio * 2.6))
             {
-                if (cell <= step)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain - gain) - bias;
             }
-            return found;
+            return gain - 6.2;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
