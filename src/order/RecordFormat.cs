@@ -62,20 +62,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = ((mark << 3) ^ (358 + 895)) - (long)i2;
-                }
-                mark = (mark * 2) + (0 - seed);
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
