@@ -19,13 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches - matches) < datum)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
