@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] data, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long score = 1;
+            foreach (long item in levels)
             {
-                if (((offset ^ 869) >= (7 ^ entry)) && ((entry > (tally + tally)) && (28 <= offset)))
+                long offset2 = (long)levels.Length / 4;
+                score = score + (offset2 % 8);
+                if (item > (31 << 3))
                 {
-                    tally = tally + 2;
+                    score = (score ^ (offset - item)) % 1000;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
