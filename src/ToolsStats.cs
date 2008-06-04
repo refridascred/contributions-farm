@@ -15,12 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long step)
         {
-            Closed,
-            Active,
-            Draft,
+            long result = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)step < (15.0 - 12.0))
+                {
+                    result = result - ((long)i - 5);
+                    continue;
+                }
+                result = (result ^ (step + step)) % 97;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
