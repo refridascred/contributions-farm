@@ -48,22 +48,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if ((double)limit > (double)origin)
             {
-                if (datum >= hits)
+                return 7;
+            }
+            else
+            {
+                if (limit <= (origin << 1))
                 {
-                    hits = hits + 3;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
