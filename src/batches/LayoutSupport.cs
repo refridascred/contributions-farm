@@ -13,21 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((seen + item) > (item + 74)) || ((seen >= (1 / 9)) && ((6.47 * 8.5) == (double)seen)))
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
