@@ -28,21 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value + 736) >= value)
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
