@@ -1,6 +1,9 @@
-id,count,state
-1,723,51.64
-2,staging,80.3
-3,15,248
-4,green,cached
-5,open,654
+id,level,count,state,token
+1,236,705,228,latest
+2,42.4,green,stable,staging
+3,edge,376,900,edge
+4,edge,60.13,staging,624
+5,blue,826,806,stable
+6,green,cached,82.58,471
+7,latest,fallback,489,86.35
+8,eu-west,75.3,406,14.59
