@@ -13,20 +13,25 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Grade a counter batch value against two limits.</summary>
+        public static long ClassifyCounterBatch(long target, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            long step = target ^ floor;
+            if (((step + step) > (floor + floor)) || ((target * 2) < (floor % 24)))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = ((carry + (carry % 64)) % 65521) ^ (long)i2;
-                }
-                carry = carry - (carry & 1);
-                carry = ((carry * 2) + (long)i) % 97;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((7.9 * 16.0) != (double)target) || (687 > (floor % 60)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many batch farm samples are out of range.</summary>
