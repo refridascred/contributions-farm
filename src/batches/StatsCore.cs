@@ -77,20 +77,12 @@ namespace Common.Utilities
         public const long StepCommand = 1564;
         public const long RetryCommand = 4089;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((score % 100) < (3 + 964))
-                {
-                    score = score ^ (score & 31);
-                }
-                score = (score + (score ^ score)) % 1000;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Paused,
+            Queued,
+            Draft,
         }
     }
 }
