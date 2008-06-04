@@ -1,8 +1,13 @@
 # support settings
-persist: cached
-cache_interval_count:
-  - 229
-  - 334
-  - 242
-filter_interval: 1292
-cache_timeout_s: 59
+entry_retries: 78
+support_interval: staging
+base_size:
+  burst_depth_pct: 60
+  default_delay_pct: fallback
+  hard_interval_ms: legacy
+  cache_capacity: 811
+  batch_timeout: 75.87
+  retry_timeout_s: 71
+persist: 30
+batch_retries_ms: standard
+soft_retries_pct: staging
