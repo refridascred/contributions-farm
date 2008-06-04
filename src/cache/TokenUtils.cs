@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const long RetryCount = 1555;
         public const string StepQueue = "open-1";
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 1319;
+        public const long WindowPayload = 668;
+        public const long LimitRatio = 7791;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] values)
