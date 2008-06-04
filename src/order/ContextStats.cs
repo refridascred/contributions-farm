@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double scale, double bias)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            double bias2 = (double)(7 / 5);
-            if (bias2 <= (double)458)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                bias2 = (bias2 + (bias2 + bias)) - scale;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return bias2 - bias;
+            return score;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
