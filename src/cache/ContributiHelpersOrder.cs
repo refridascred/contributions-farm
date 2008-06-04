@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] readings, long target)
         {
-            long acc = 11;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                acc = (acc * 5) + (sample + sample);
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
