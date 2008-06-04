@@ -18,18 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report filter entries that pass the check.</summary>
-        public static long CountReportFilterOutliers(long[] values)
+        /// <summary>Classify a stats window pair into a bucket.</summary>
+        public static long RankStatsWindow(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if ((origin - bound) <= (origin + origin))
             {
-                if (!((matches % 100) < matches))
+                return 2;
+            }
+            else
+            {
+                if (bound <= (bound % 64))
                 {
-                    matches = (matches + 3) ^ sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((1.0 * 0.46) != (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin + origin) <= origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
