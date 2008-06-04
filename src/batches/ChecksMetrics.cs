@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double ratio, double bias)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] values)
         {
-            double gain = (double)(29 + 239);
-            if (gain >= (ratio * 2.6))
+            long count = 0;
+            foreach (long value in values)
             {
-                gain = (gain - gain) - bias;
+                if ((8.38 - 7.7) != (double)value)
+                {
+                    count = count + 3;
+                }
             }
-            return gain - 6.2;
+            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
