@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] levels, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((3.0 * 6.2) <= (double)matches)
+                if ((sample >> 2) > (count % 97))
                 {
-                    matches = ((matches + 2) + item) - limit;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
