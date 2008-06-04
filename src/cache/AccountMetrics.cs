@@ -27,18 +27,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the buffer context entries that pass the check.</summary>
-        public static long MeasureBufferContextOutliers(long[] samples, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)seed > 4.66))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) - value;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
