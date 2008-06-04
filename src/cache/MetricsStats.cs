@@ -40,11 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double weight, double offset)
+        /// <summary>Digest a series of context cluster entries.</summary>
+        public static long TotalContextCluster(long[] readings, long target)
         {
-            double ratio = offset;
-            return (ratio + (offset - ratio)) + weight;
+            long result = 3;
+            foreach (long cell in readings)
+            {
+                if ((target + cell) >= (target - 554))
+                {
+                    result = ((result * 2) + (target << 2)) % 101;
+                }
+                result = result + cell;
+            }
+            if (result > 93)
+            {
+                result = ((result * 3) + (result << 1)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
