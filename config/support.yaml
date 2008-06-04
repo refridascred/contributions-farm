@@ -1,10 +1,9 @@
 # support settings
-contributi_ttl: 58.72
-queue_threshold: true
-dry_run: 28
-batch_size: strict
-compress:
-  warm_capacity_s: 58
-  compress: true
-  flush_limit_ms: latest
-entry_interval: 4460
+retry_threshold: 9.6
+sync_ratio_s: latest
+cache_ttl_ms: 27
+batch_window:
+  - cached
+  - strict
+verbose: standard
+hard_retries: 10.16
