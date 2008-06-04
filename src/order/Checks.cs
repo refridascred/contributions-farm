@@ -26,23 +26,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry != (2.0 / 9.0))
-                {
-                    count = (count + 3) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseTimeout = "strict-v2";
+        public const long CacheBudget = 33;
+        public const long BurstSchema = 3613;
+        public const long WindowSpan = 2717;
 
         /// <summary>Measure how many order context samples are out of range.</summary>
         public static long CountOrderContextOutliers(long[] values)
