@@ -28,22 +28,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window context readings against a rule.</summary>
-        public static long TallyWindowContextOutliers(long[] levels)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double drift = ratio * 0.26;
+            if (drift > 13.0)
             {
-                if (((9 + matches) >= (sample + sample)) || ((double)matches >= (17.0 / 7.0)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + span;
             }
-            return matches;
+            else
+            {
+                drift = drift + (drift * 6.9);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (16.0 + ratio)) + (double)(long)i;
+            }
+            return drift - (ratio + span);
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
