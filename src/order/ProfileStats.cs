@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two batches schema measurements.</summary>
-        public static double ScaleBatchesSchema(double rate, double offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long step)
         {
-            double gain = (rate * 3.2) + (rate / 6.0);
-            for (int i = 0; i < 3; i++)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                gain = (gain - (double)(long)i) + offset;
+                mark = ((mark * 3) + step) % 255;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return gain + rate;
+            return mark;
         }
 
         /// <summary>Iterate the layout report series from a seed.</summary>
