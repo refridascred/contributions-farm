@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardRatio = 8543;
+        public const long MinCount = 267;
+        public const long DefaultChecks = 4211;
+        public const double HardChecks = 92.0;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] samples)
