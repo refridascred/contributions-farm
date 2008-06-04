@@ -76,38 +76,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long limit, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series, long bound)
         {
-            if (limit > offset)
+            long sum = 599;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset > (9 - 62)) || ((double)offset < (5.0 - 15.0)))
+                if ((bound % 24) > (item - 85))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit / 2) > (limit << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (6.0 / 3.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = ((sum * 4) + (item - sum)) % 101;
                 }
             }
+            if (sum > 136)
+            {
+                sum = (sum ^ (sum - bound)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Roll a already batches counter forward.</summary>
