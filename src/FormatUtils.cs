@@ -64,18 +64,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit session counter readings against a rule.</summary>
-        public static long MeasureSessionCounterOutliers(long[] levels)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((item << 3) < hits)
+                if ((seen + seen) > (627 - entry))
                 {
-                    hits = hits + 3;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
