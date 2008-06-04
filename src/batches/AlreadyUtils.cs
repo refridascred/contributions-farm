@@ -35,18 +35,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] items, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (((double)item > (6.0 + 6.0)) || ((double)seed > (7.8 - 10.0)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
