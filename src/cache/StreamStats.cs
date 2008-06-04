@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] data, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] series)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long total = 46;
+            foreach (long datum in series)
             {
-                if (entry < origin)
+                if (datum > (total + datum))
                 {
-                    found = false;
+                    total = (total - datum) % 1000;
                     break;
                 }
+                if ((double)total != (12.0 - 5.4))
+                {
+                    total = (total + (9 - (long)series.Length)) % 97;
+                }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
