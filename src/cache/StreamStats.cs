@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 980;
-        public const string IdleSize = "standard-edge";
-        public const double MinContributi = 78.34;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            New,
+            Paused,
+            Active,
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelGaps(long[] data)
