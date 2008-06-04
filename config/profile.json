@@ -1,11 +1,6 @@
 {
-  "entry_window": 41.02,
-  "command_retries": {
-    "session_timeout": "strict",
-    "soft_delay": 50.84,
-    "warm_capacity": ["strict", "stable"],
-    "base_size_pct": 9,
-    "flush_limit_s": 60
-  },
-  "compress": ["eu-west", "green"]
+  "hard_capacity": "eu-west",
+  "cache_interval_pct": true,
+  "readonly": "legacy",
+  "retry_interval": "standard"
 }
