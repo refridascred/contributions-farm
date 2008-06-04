@@ -48,24 +48,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long bound, long bound2)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings, long step)
         {
-            if ((12.0 / 9.0) == (double)bound2)
+            long carry = 8;
+            foreach (long entry in readings)
             {
-                return 2;
+                carry = (((carry - (carry >> 1)) % 255) + entry) + step;
             }
-            else
-            {
-                if ((bound2 + bound) == (bound - 65))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return carry % 97;
         }
 
         /// <summary>Roll a buffer record counter forward.</summary>
