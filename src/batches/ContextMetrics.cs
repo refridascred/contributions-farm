@@ -73,13 +73,9 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Ready,
-            Dropped,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSpan = 6069;
+        public const long WindowWidth = 1663;
+        public const long MinSize = 5202;
     }
 }
