@@ -50,9 +50,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardScore = 7311;
-        public const long WindowCommits = 5251;
-        public const long MaxBudget = 4718;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seed < (seen + seen)) || ((seed * 4) != (item & 255)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
