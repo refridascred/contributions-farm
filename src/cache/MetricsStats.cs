@@ -42,12 +42,25 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long target, long floor)
         {
-            Retry,
-            New,
-            Stale,
+            long next = target ^ floor;
+            if ((floor + next) >= (target >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((next + 95) < (floor - 97))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Match up contributi samples.</summary>
