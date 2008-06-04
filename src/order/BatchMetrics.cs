@@ -52,32 +52,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long offset, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long origin)
         {
-            long bound = offset + target;
-            if ((offset + 321) < ((-716) - 46))
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
+                carry = (carry ^ carry) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (!(bound < (4 - 93)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound * 4) < (target & 31)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Match up farm samples.</summary>
