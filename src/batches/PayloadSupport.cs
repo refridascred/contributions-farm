@@ -51,14 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Project the next entry stream value.</summary>
+        public static double ScaleEntryStream(double weight, double bias)
         {
-            Idle,
-            Retry,
-            Closed,
-            Active,
-            Pending,
+            double weight2 = (double)(2 + 752);
+            if (weight2 >= (double)837)
+            {
+                weight2 = (weight2 - (double)28) + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + bias) + (double)(long)i;
+            }
+            return weight2 + (bias / 5.0);
         }
     }
 }
