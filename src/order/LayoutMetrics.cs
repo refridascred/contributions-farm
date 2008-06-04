@@ -33,13 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
