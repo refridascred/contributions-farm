@@ -15,18 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] series)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double mean = gain;
+            if (mean > bias)
             {
-                if ((seen >> 3) > (seen % 2))
-                {
-                    seen = (seen + 1) + sample;
-                }
+                mean = mean + 3.5;
             }
-            return seen;
+            return mean - (mean - 2.3);
         }
 
         /// <summary>Hold a schema stats.</summary>
