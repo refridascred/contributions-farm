@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const long RetryCache = 5088;
         public const double BurstCache = 36.7;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            Stale,
+            New,
+            Active,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the payload level values.</summary>
