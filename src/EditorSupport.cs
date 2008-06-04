@@ -43,18 +43,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many metrics command samples are out of range.</summary>
-        public static long AuditMetricsCommandGaps(long[] items)
+        /// <summary>Audit buffer tools readings against a rule.</summary>
+        public static long AuditBufferToolsHits(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((matches % 100) < datum)
+                if ((bound & 7) < cell)
                 {
-                    matches = matches + 2;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
