@@ -20,18 +20,22 @@ namespace Common.Utilities
             return scale - (floor / 9.0);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = 46;
+            foreach (long cell in levels)
             {
-                if (!(value >= (hits >> 2)))
+                if (((offset ^ (long)levels.Length) == (acc % 10)) && ((double)acc >= (6.74 - 5.3)))
                 {
-                    hits = hits + 2;
+                    acc = (acc ^ (1 + acc)) % 4096;
+                }
+                if ((double)cell >= (6.41 - 4.1))
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
