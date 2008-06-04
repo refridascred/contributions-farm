@@ -57,19 +57,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items, long offset)
-        {
-            long anchor = -715;
-            foreach (long cell in items)
-            {
-                if (!((anchor + (-8)) == (anchor >> 4)))
-                {
-                    anchor = (anchor + (anchor + cell)) + offset;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 1100;
+        public const long IdleTools = 2536;
+        public const long StepTools = 8420;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
