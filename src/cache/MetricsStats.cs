@@ -20,19 +20,20 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double bias, double offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long limit)
         {
-            double gain = bias;
-            if (gain >= (offset / 3.0))
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                gain = gain + (offset * 2.4);
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = (anchor + (3 % 60)) ^ (long)i2;
+                }
+                anchor = ((anchor << 3) ^ (anchor >> 4)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (3.61 / 9.0)) + (double)(long)i;
-            }
-            return gain + (gain - offset);
+            return anchor;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
