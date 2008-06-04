@@ -41,18 +41,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (tally <= (bound + tally))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxFactor = 4987;
+        public const double StepScore = 7.63;
+        public const double WindowCount = 82.06;
+        public const long BatchCommits = 5994;
     }
 }
