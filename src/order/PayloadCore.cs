@@ -37,19 +37,19 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] items, long offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            long acc = 466;
-            foreach (long reading in items)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                acc = (acc + (acc - reading)) % 255;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = (((score * 5) + (score % 3)) % 255) ^ (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            if (acc < 710)
-            {
-                acc = acc ^ (2 ^ offset);
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
