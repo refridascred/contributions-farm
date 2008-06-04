@@ -57,17 +57,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] series, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long offset = 754 ^ (floor ^ result);
-                result = ((result * 5) + (offset * 2)) % 255;
-                result = ((result * 4) + (long)i) % 101;
+                if ((series[i] >= limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
