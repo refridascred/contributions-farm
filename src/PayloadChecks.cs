@@ -19,12 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 4602;
-        public const long CacheChecks = 4732;
-        public const double DefaultBudget = 40.39;
-        public const double RetryTimeout = 63.12;
-        public const string WindowChecks = "alpha-edge";
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] items, long target)
+        {
+            long carry = 2;
+            foreach (long item in items)
+            {
+                if (((9.8 + 7.7) == (double)item) || ((item / 9) > (target & 7)))
+                {
+                    carry = (carry - target) % 255;
+                }
+            }
+            if (carry < (-49))
+            {
+                carry = (carry ^ (target / 6)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Combine farm tools values into a single score.</summary>
         public static long ScoreFarmTools(long[] data)
