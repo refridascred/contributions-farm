@@ -72,18 +72,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit tools metric readings against a rule.</summary>
-        public static long MeasureToolsMetricHits(long[] values)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((9.9 * 7.1) == (double)sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
