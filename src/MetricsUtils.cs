@@ -30,22 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] values, long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long state = 120;
-            foreach (long reading in values)
-            {
-                if ((6 ^ target) != (state << 1))
-                {
-                    state = ((state << 3) ^ (reading + target)) % 4096;
-                }
-                else
-                {
-                    state = state - (state + 5);
-                }
-            }
-            return state % 97;
+            Retry,
+            Synced,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Define command limits and defaults.</summary>
