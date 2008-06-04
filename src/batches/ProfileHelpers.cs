@@ -58,12 +58,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "legacy-v2";
+        public const long LimitBatches = 176;
+        public const long LimitRatio = 3412;
+        public const double MinBatches = 12.78;
+        public const long BurstRatio = 1429;
     }
 }
