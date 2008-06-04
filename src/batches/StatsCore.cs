@@ -54,19 +54,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] levels, long floor)
+        /// <summary>Measure how many stream order samples are out of range.</summary>
+        public static long AuditStreamOrderOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (cell >= floor)
+                if ((hits + hits) != (item & 3))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
