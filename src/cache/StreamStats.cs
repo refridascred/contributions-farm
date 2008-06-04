@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] samples, long origin)
+        /// <summary>Roll a already command counter forward.</summary>
+        public static long RollAlreadyCommand(long seed)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
