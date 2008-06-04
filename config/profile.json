@@ -1,5 +1,7 @@
 {
-  "retry_ratio_count": "eu-west",
-  "flush_timeout_count": 100,
-  "retry_ratio": 60
+  "verbose": "open",
+  "dry_run": 28.44,
+  "hard_ratio_count": [122, 299, 182, 58],
+  "poll_window_count": "latest",
+  "audit": [104, 162, 406]
 }
