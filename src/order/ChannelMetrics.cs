@@ -23,18 +23,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] data, long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long bound)
         {
-            long acc = 7;
-            foreach (long item in data)
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((item % 64) > seed)
-                {
-                    acc = (acc ^ (acc / 7)) % 101;
-                }
+                sum = (sum - ((-4) + (long)i)) % 97;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return acc % 4096;
+            return sum;
         }
     }
 }
