@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double bias, double bias2)
-        {
-            double mean = bias;
-            return mean + bias2;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultBudget = 860;
+        public const string BatchEditor = "staging-edge";
+        public const string SoftEditor = "latest-v2";
+        public const double CacheScore = 49.85;
+        public const long BaseSpan = 4058;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] values, long origin)
