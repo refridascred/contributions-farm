@@ -38,17 +38,39 @@ namespace Common.Utilities
         public const double DefaultRatio = 13.24;
         public const long StepNotes = 3234;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] data, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long offset, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset2 = offset ^ step;
+            if ((offset > (step - offset2)) && (offset <= (offset2 % 64)))
             {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (44 >= (offset2 % 64))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!(offset > step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset ^ offset) <= (offset & 7)) || ((step - step) < 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
