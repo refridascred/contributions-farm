@@ -14,20 +14,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] readings, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed + mix) > seed)
+                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
                 {
-                    mix = (mix * 3) + (75 / 4);
-                    continue;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank cache queue input into a small class.</summary>
