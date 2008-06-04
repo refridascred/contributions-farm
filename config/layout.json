@@ -1,5 +1,7 @@
 {
-  "poll_ratio_count": 9.99,
-  "audit": 19.34,
-  "dry_run": "local"
+  "warm_size_s": 89.96,
+  "max_ttl_s": ["legacy", "eu-west", "strict"],
+  "contributi_capacity": 79.78,
+  "sync_threshold_s": 97,
+  "persist": 83.62
 }
