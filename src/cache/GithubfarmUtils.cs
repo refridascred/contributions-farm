@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 46.75;
-        public const long SoftCount = 8242;
-        public const double BaseDepth = 25.49;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultFactor = 6549;
+        public const double MaxBatch = 7.23;
+        public const long BaseWidth = 9727;
+        public const string BaseScore = "stable-v2";
+        public const string SoftSpan = "legacy-v2";
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TallyCounter(long[] series, long step)
