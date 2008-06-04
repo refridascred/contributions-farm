@@ -22,32 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long bound, long origin)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double rate, double span)
         {
-            long next = bound + origin;
-            if ((bound / 5) >= bound)
+            double mean = rate;
+            if (mean <= 6.47)
             {
-                return 0;
+                mean = (mean + (7.4 - mean)) + span;
             }
             else
             {
-                if ((2 >> 4) <= (bound / 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((1 + origin) <= next))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mean = mean + rate;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
