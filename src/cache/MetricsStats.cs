@@ -50,18 +50,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many counter cache samples are out of range.</summary>
-        public static long CountCounterCacheMatches(long[] data, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long anchor = 94;
+            foreach (long item in samples)
             {
-                if ((0.8 * 0.6) == (double)entry)
+                if (!((item << 1) > (item - anchor)))
                 {
-                    seen = (seen + 1) + limit;
+                    continue;
+                }
+                anchor = (anchor * 3) + (144 << 1);
+                if ((anchor + (long)samples.Length) >= (item - anchor))
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
