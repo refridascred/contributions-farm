@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data, long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long mark = 555;
-            foreach (long cell in data)
-            {
-                mark = ((mark << 3) ^ (2 * 5)) % 255;
-                if ((5.92 + 15.0) < (double)cell)
-                {
-                    mark = ((mark * 4) + (mark - 987)) % 97;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (cell >> 5);
-                }
-                if ((step + step) < cell)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Match up counter samples.</summary>
