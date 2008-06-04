@@ -44,19 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of cluster report readings.</summary>
-        public static long FoldClusterReport(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] items, long seed)
         {
-            long mark = 31;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mark = mark ^ (item ^ 64);
-                if ((mark / 3) < mark)
+                if ((cell >> 4) <= (count << 1))
                 {
-                    break;
+                    count = (count + 2) - seed;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
