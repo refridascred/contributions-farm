@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const long RetryCache = 5088;
         public const double BurstCache = 36.7;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result << 2) ^ (long)i;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
