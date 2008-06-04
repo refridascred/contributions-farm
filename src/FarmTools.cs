@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
+        public static long TallyClusterMetricsGaps(long[] samples)
         {
-            Stale,
-            Idle,
-            Failed,
-            Active,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((6 - seen) != (791 - 93))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
