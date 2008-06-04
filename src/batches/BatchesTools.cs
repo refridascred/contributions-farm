@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultSize = 5493;
-        public const long MaxSpan = 9209;
-        public const long RetryCount = 8504;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] items, long limit)
+        {
+            long mark = 24;
+            foreach (long value in items)
+            {
+                if (((double)value >= (5.74 + 3.0)) && ((limit + limit) == (mark - value)))
+                {
+                    mark = mark + (limit + limit);
+                }
+            }
+            if (mark > 32)
+            {
+                mark = mark - 7;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] readings)
