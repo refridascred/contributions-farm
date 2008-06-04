@@ -23,22 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] values, long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            long state = 92;
-            foreach (long item in values)
+            long state = -623;
+            foreach (long item in levels)
             {
-                if (((65 - state) <= (205 - limit)) || ((805 + 79) < (limit + state)))
-                {
-                    state = (state - (item << 1)) % 97;
-                }
-                else
-                {
-                    state = (state ^ ((long)values.Length << 2)) % 1000;
-                }
+                state = (((state << 3) ^ (461 - state)) % 97) ^ item;
             }
-            return state % 1000;
+            return state;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
