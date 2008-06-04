@@ -33,15 +33,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Queued,
-            Locked,
-            Synced,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstCount = 7570;
+        public const double DefaultRatio = 13.24;
+        public const long StepNotes = 3234;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] data, long step)
