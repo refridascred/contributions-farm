@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double bias, double floor)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            double rate = (double)(188 - 627);
-            if (rate >= floor)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (rate / 6.0);
-            }
-            return rate - (bias - bias);
+            return count;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
