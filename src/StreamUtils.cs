@@ -63,17 +63,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first graph session entry that matches the target.</summary>
-        public static long SeekGraphSessionIndex(long[] series, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                result = result + (result - 4);
+                result = result + ((long)i + 48);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
