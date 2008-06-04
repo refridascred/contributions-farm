@@ -64,17 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a cluster payload reading by value.</summary>
-        public static long SeekClusterPayloadIndex(long[] readings, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (readings[i] >= bound)
+                if (item < offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
