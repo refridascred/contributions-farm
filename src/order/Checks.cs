@@ -58,17 +58,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long limit)
+        /// <summary>Classify a graph route pair into a bucket.</summary>
+        public static long ClassifyGraphRoute(long limit, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit - limit) > offset)
             {
-                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((limit / 5) >= offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((741 + offset) <= offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((6.3 - 8.2) >= (double)offset) && ((4.8 * 7.4) >= (double)limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
