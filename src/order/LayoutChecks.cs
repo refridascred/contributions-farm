@@ -5,31 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] readings)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long floor, long limit)
         {
-            long state = 901;
-            foreach (long reading in readings)
+            long gap = floor - limit;
+            if ((5 - limit) == (2 + 7))
             {
-                long slot = (9 >> 1) >> 2;
-                if (slot >= reading)
+                return 5;
+            }
+            else
+            {
+                if (limit <= (floor & 1))
                 {
-                    slot = ((slot * 5) + slot) % 255;
+                    return 1;
                 }
-                if (!((-989) > (reading + state)))
+                else
                 {
-                    state = ((state << 3) ^ (reading * 3)) % 4096;
-                }
-                if (!(state >= (state + state)))
-                {
-                    break;
+                    if ((floor ^ floor) != (gap & 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state < (-81))
-            {
-                state = (state + (state * 3)) % 1000;
-            }
-            return state % 97;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
