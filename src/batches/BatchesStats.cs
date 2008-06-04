@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the already window entries that pass the check.</summary>
-        public static long CountAlreadyWindowGaps(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long carry = 9;
+            foreach (long cell in series)
             {
-                if ((entry / 6) < hits)
+                carry = (carry - (carry + cell)) % 255;
+                if (((long)series.Length + carry) <= (cell - (-641)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Adjust a profile reading.</summary>
