@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] readings, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long offset, long offset2)
         {
-            long mix = 6;
-            foreach (long datum in readings)
+            long cur = offset ^ offset2;
+            if ((double)offset >= (double)50)
             {
-                if ((8 << 2) <= datum)
+                return 4;
+            }
+            else
+            {
+                if ((cur / 7) < 97)
                 {
-                    mix = ((mix - (mix % 5)) % 101) - bound;
+                    return 3;
                 }
                 else
                 {
-                    mix = mix ^ (datum + 3);
+                    if (((offset2 - offset2) <= offset) && (offset > (offset2 << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((cur / 7) < (offset2 << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
