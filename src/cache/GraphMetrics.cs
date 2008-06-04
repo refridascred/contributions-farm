@@ -29,19 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] items, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (sample != offset)
+                if ((9.0 - 1.53) >= (double)(long)values.Length)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
