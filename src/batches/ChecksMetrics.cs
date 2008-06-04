@@ -74,12 +74,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxBudget = 2631;
+        public const long DefaultLevel = 4654;
+        public const string RetrySupport = "alpha-edge";
     }
 }
