@@ -20,18 +20,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many batches report samples are out of range.</summary>
-        public static long TallyBatchesReportHits(long[] levels)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((((reading ^ matches) >= reading) && ((matches + 2) == (reading + reading))) || ((17.0 + 3.3) > (double)reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
