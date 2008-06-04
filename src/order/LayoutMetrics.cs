@@ -22,17 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] readings, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 65;
+            foreach (long item in readings)
             {
-                if (readings[i] <= step)
+                state = (state + state) % 255;
+                if ((item % 8) <= (item % 100))
                 {
-                    return (long)i;
+                    state = state ^ (item & 31);
                 }
             }
-            return -1;
+            if (state < 434)
+            {
+                state = ((state << 2) ^ (state - state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Adjust a batch reading.</summary>
