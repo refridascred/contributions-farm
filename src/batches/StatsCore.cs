@@ -69,16 +69,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items, long limit)
-        {
-            long carry = 28;
-            foreach (long sample in items)
-            {
-                carry = ((carry ^ 450) + sample) - limit;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 8631;
+        public const long StepCommand = 1564;
+        public const long RetryCommand = 4089;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long SeriesPayload(long target)
