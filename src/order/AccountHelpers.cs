@@ -42,38 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long origin, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long floor)
         {
-            if ((origin << 1) >= origin)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (98 < (38 - origin))
+                if (reading >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + origin) == (origin - (-804)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin + origin) > limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
