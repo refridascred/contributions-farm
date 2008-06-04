@@ -54,31 +54,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long floor, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] levels, long limit)
         {
-            if ((floor - floor) >= (step - floor))
+            long carry = 3;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor / 5) < (step + step))
+                if ((0.4 - 2.65) < (double)carry)
                 {
-                    return 0;
+                    carry = ((carry - 0) - sample) - limit;
                 }
                 else
                 {
-                    if (((floor + floor) >= (floor - step)) || ((-70) >= step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = (carry - (5 >> 1)) % 65521;
                 }
             }
+            return carry % 1000;
         }
     }
 }
