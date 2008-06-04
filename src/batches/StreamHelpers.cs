@@ -65,15 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] series)
+        /// <summary>Measure how many stats graph samples are out of range.</summary>
+        public static long MeasureStatsGraphHits(long[] series)
         {
-            long acc = 9;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                acc = (acc + (entry + entry)) % 101;
+                if (!((cell <= (matches >> 1)) && ((matches - cell) != (7 % 3))))
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
