@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double ratio, double span)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] values, long target)
         {
-            double weight = ratio * 3.8;
-            if (weight < (6.4 + weight))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - (double)46;
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - (span + ratio);
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
