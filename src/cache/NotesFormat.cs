@@ -29,18 +29,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of order cache entries.</summary>
-        public static long WeighOrderCache(long[] series)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double rate, double offset)
         {
-            long state = 680;
-            foreach (long entry in series)
+            double rate2 = rate * 15.0;
+            if (rate2 <= (rate2 + rate))
             {
-                if (((86 % 97) <= (long)series.Length) || ((state - 54) < entry))
-                {
-                    state = ((state * 4) + entry) % 65521;
-                }
+                rate2 = rate2 + (double)17;
             }
-            return state;
+            else
+            {
+                rate2 = rate2 - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 - offset) - (double)(long)i;
+            }
+            return rate2 - rate2;
         }
     }
 }
