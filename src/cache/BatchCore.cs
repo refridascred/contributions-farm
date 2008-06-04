@@ -14,23 +14,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] items, long origin)
-        {
-            long score = 54;
-            foreach (long reading in items)
-            {
-                if (((3.58 + 4.02) <= (double)origin) && ((reading + origin) >= (score + origin)))
-                {
-                    score = score ^ (origin >> 2);
-                }
-            }
-            if (score < 43)
-            {
-                score = (score ^ (origin + score)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "fallback-edge";
+        public const long BatchInterval = 3052;
+        public const long StepSupport = 5943;
+        public const string MinSupport = "latest-1";
+        public const long MaxSupport = 6151;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultTools = 262;
