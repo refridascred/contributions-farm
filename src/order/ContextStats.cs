@@ -15,18 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] values)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((long)values.Length ^ 92) < (792 / 3))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
