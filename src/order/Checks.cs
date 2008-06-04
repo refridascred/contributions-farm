@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a support contributi reading.</summary>
-        public static double BlendSupportContributi(double scale, double bias)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] items, long offset)
         {
-            double mean = (double)(86 / 3);
-            if (mean >= mean)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                mean = ((mean + 15.0) - scale) + bias;
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - (mean * 3.83);
+            return ready;
         }
 
         /// <summary>Describe the counter class values.</summary>
