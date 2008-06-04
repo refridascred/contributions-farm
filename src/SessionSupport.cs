@@ -23,21 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((9.23 * 5.21) == (double)tally)
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 2) + entry) - seed;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
