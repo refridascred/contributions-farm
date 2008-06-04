@@ -11,10 +11,17 @@ namespace Common.Utilities
         public const string BurstInterval = "open";
         public const double CacheQueue = 70.69;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryInterval = 912;
-        public const long RetryRecord = 2862;
-        public const long BurstRatio = 1963;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry ^ (target ^ 6)) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
