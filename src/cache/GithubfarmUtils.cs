@@ -12,20 +12,17 @@ namespace Common.Utilities
         public const string BaseScore = "stable-v2";
         public const string SoftSpan = "legacy-v2";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series, long step)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] series, long floor)
         {
-            long mix = 5;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                long gap = (mix + step) / 2;
-                if (gap < (mix >> 5))
+                if ((series[i] <= floor) && ((series[i] % 3) != 0))
                 {
-                    mix = (mix * 2) + (gap - gap);
+                    return (long)i;
                 }
-                mix = (mix + (0 ^ sample)) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
