@@ -36,13 +36,21 @@ namespace Common.Utilities
         public const string MinMetrics = "standard-1";
         public const long StepMetrics = 6857;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
