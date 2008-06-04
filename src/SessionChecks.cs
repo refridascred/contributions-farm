@@ -15,16 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                score = (score + (target % 5)) % 97;
-                score = ((score * 4) + (long)i) % 97;
+                if ((reading & 31) <= reading)
+                {
+                    count = count + 2;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
