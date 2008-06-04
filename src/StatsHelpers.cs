@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long BaseTools = 2182;
         public const string DefaultTimeout = "legacy-1";
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Dropped,
-            Queued,
-            Paused,
-            Draft,
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
