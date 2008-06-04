@@ -21,17 +21,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                sum = ((sum << 3) ^ (limit / 6)) % 4096;
-                sum = (sum ^ (49 & 15)) % 101;
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (seen >= (datum + 434))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
