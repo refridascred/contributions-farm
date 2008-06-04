@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate graph layout samples.</summary>
-        public static long WeighGraphLayout(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels, long origin)
         {
-            long acc = 775;
+            long mix = 5;
             foreach (long reading in levels)
             {
-                acc = (((acc << 2) ^ (acc % 97)) % 4096) ^ reading;
+                mix = (((mix - (mix ^ 4)) % 4096) + reading) + origin;
+                mix = ((mix * 2) + (451 / 5)) % 4096;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Validate stats notes readings against a bound.</summary>
