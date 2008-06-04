@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] samples, long seed)
         {
-            public double Count { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)matches > (1.4 * 7.0))
+                {
+                    matches = ((matches + 2) ^ datum) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
