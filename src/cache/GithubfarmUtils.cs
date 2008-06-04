@@ -34,19 +34,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double ratio, double span)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long origin)
         {
-            double scale = span - (span - span);
-            if (scale >= (scale / 8.0))
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                scale = (scale + scale) + ratio;
+                anchor = ((anchor << 3) ^ (long)i) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (double)1) + (double)(long)i;
-            }
-            return scale + scale;
+            return anchor;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
