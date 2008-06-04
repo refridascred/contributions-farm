@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=47
-log "limit is ${CHANNEL_LIMIT}"
-
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in standard cached open staging; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=122
+log "limit is ${CHANNEL_LIMIT}"
