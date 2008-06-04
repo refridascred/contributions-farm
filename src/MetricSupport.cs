@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] levels, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long step, long step2)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if ((48 >> 3) > (step >> 4))
             {
-                if ((matches & 3) == (reading + matches))
+                return 1;
+            }
+            else
+            {
+                if ((step2 + (-466)) > (step2 % 60))
                 {
-                    matches = (matches + 1) + offset;
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 * 4) == (step + step2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step2 - step) < 62)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
