@@ -20,22 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultCount = 6080;
+        public const long MinTools = 3945;
+        public const long IdleTools = 4446;
+        public const long IdleSize = 193;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
