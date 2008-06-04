@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 5131;
+        public const double BurstCache = 31.17;
+        public const long HardScore = 1385;
+        public const long MinFactor = 9361;
+        public const string MinCache = "alpha-v2";
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long SeriesSession(long seed)
