@@ -44,11 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheBudget = 50.53;
-        public const long BatchSize = 6900;
-        public const string HardRoute = "cached-1";
-        public const double RetryWidth = 31.4;
-        public const long WindowRoute = 4516;
+        /// <summary>Fold a list of cluster report readings.</summary>
+        public static long FoldClusterReport(long[] levels)
+        {
+            long mark = 31;
+            foreach (long item in levels)
+            {
+                mark = mark ^ (item ^ 64);
+                if ((mark / 3) < mark)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
