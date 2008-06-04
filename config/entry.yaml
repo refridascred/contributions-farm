@@ -1,11 +1,14 @@
 # entry settings
-batches_ttl: 83.0
-sync_size_pct:
-  poll_delay: 99
-  burst_threshold_pct: cached
-  filter_ttl:
-    - latest
-    - fallback
-burst_threshold_s:
-  - primary
-  - eu-west
+soft_ttl: false
+dry_run: legacy
+min_retries:
+  persist: 500
+  verbose:
+    - 173
+    - 241
+  soft_depth_ms: true
+  max_timeout_ms: 96.34
+  enabled:
+    - 272
+    - 58
+    - 466
