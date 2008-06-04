@@ -40,12 +40,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 8459;
-        public const long LimitTools = 9000;
-        public const string SoftScore = "local-1";
-        public const string StepTools = "fallback-v2";
-        public const double IdleCount = 92.08;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
