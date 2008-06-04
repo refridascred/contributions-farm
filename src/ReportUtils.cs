@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a contributi account counter forward.</summary>
-        public static long DeriveContributiAccount(long target)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
-            {
-                state = state ^ (target ^ (long)i);
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
