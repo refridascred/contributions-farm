@@ -1,15 +1,16 @@
 # Command notes
 
-Each graph is validated before it reaches the channel queue.
-Run the order check before changing any cache limits.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Defaults for schema live in the config folder and can be overridden per environment.
+The queue report groups every contributi by layout.
 
-The already module keeps batch values in sync with the metric cache.
-The report report groups every command by farm.
-Run the payload check before changing any counter limits.
+Run the buffer check before changing any command limits.
+The format module keeps stream values in sync with the payload cache.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Log every metrics change
-- Keep batches values small
-- Document new channel fields
+- Log every payload change
+- Keep format values small
+- Validate stream input early
+- Review cluster limits each release
