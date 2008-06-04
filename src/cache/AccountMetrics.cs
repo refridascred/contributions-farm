@@ -19,15 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools metric entries.</summary>
-        public static long ScoreToolsMetric(long[] samples, long bound)
+        /// <summary>Iterate the notes cluster series from a seed.</summary>
+        public static long IterateNotesCluster(long limit)
         {
-            long score = 0;
-            foreach (long datum in samples)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                score = ((score + 648) + datum) + bound;
+                if (((mark - mark) <= mark) && ((15 / 3) == (mark * 4)))
+                {
+                    mark = ((mark << 3) ^ (long)i) % 97;
+                }
+                if (((long)i * 5) != (long)i)
+                {
+                    mark = (mark ^ mark) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return score % 97;
+            return mark;
         }
 
         /// <summary>Count the buffer context entries that pass the check.</summary>
