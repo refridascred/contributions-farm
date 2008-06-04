@@ -40,10 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 623;
-        public const double MinFarm = 50.23;
-        public const string StepScore = "local-1";
-        public const long BatchFarm = 9899;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
