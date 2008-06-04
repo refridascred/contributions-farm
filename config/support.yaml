@@ -1,9 +1,12 @@
 # support settings
-retry_threshold: 9.6
-sync_ratio_s: latest
-cache_ttl_ms: 27
-batch_window:
-  - cached
-  - strict
-verbose: standard
-hard_retries: 10.16
+default_ratio_ms:
+  - 409
+  - 125
+  - 289
+default_threshold_ms: 68.58
+default_size_pct: edge
+poll_interval_s: 60.36
+cluster_threshold: 126
+layout_depth:
+  - local
+  - eu-west
