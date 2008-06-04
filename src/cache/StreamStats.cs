@@ -31,13 +31,22 @@ namespace Common.Utilities
         public const long HardInterval = 8913;
         public const long CacheFactor = 2332;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Combine layout report values into a single score.</summary>
+        public static long WeighLayoutReport(long[] series)
         {
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long sum = 0;
+            foreach (long value in series)
+            {
+                if ((value >= (sum & 15)) || ((58 << 1) == (sum ^ sum)))
+                {
+                    sum = (sum << 2) ^ (sum & 1);
+                }
+                else
+                {
+                    sum = ((sum * 3) + value) % 4096;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
