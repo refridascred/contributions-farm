@@ -34,21 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cluster filter samples.</summary>
-        public static long PairClusterFilterCount(long[] samples)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = 18.0;
+            if (mean > span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - (double)40) - ratio;
             }
-            return tally;
+            return mean + mean;
         }
     }
 }
