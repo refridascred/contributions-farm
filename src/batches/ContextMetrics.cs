@@ -70,19 +70,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double rate, double floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double bias, double offset)
         {
-            double scale = 2.94;
-            if (scale <= scale)
+            double weight = (double)37 + (bias + 7.0);
+            if (weight >= (weight + bias))
             {
-                scale = ((scale - (scale / 2.0)) + rate) - floor;
+                weight = (weight - (17.0 * 7.1)) - offset;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (1.3 * 0.21);
+            return weight + bias;
         }
     }
 }
