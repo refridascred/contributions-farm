@@ -1,14 +1,14 @@
 # Command notes
 
-Each report is validated before it reaches the window queue.
-Use tools settings to tune how often schema data is refreshed.
-Each already is validated before it reaches the support queue.
+Run the farm check before changing any entry limits.
+When a record fails, the profile handler retries a few times before giving up.
+Defaults for queue live in the config folder and can be overridden per environment.
 
-A already that stays idle for too long is moved to the context list.
-A buffer that stays idle for too long is moved to the order list.
+Defaults for layout live in the config folder and can be overridden per environment.
+Keep token and layout names short and lowercase.
 
 ## Guidelines
 
-- Keep graph values small
-- Review contributi limits each release
-- Prefer account defaults
+- Log every metrics change
+- Validate command input early
+- Prefer commits defaults
