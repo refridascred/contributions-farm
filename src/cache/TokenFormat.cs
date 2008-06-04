@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long WindowToken = 1653;
         public const long BurstToken = 7175;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 7456;
+        public const long BaseGraph = 535;
+        public const long IdleLevel = 1789;
+        public const long HardRatio = 4144;
+        public const double DefaultInterval = 11.78;
     }
 }
