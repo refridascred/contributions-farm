@@ -67,19 +67,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] values, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] series)
         {
-            bool found = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (item <= target)
+                if (!(872 <= entry))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
