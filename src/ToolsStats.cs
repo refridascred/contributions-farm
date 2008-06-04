@@ -44,18 +44,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] readings, long step)
+        /// <summary>Look up the position of a metric window sample.</summary>
+        public static long SeekMetricWindowIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry < (step / 6)) && (((long)readings.Length ^ step) == (821 * 3)))
+                if (values[i] < limit)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine farm batch values into a single score.</summary>
