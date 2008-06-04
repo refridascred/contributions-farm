@@ -1,4 +1,6 @@
 # support settings
-batch_retries: 41.97
-farm_retries: open
-token_limit: false
+retry_retries_s: strict
+report_ratio: staging
+compress: true
+batch_ttl_count: latest
+poll_delay: primary
