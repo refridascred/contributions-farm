@@ -21,39 +21,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank cache queue input into a small class.</summary>
-        public static long ClassifyCacheQueue(long limit, long limit2)
-        {
-            long diff = limit - limit2;
-            if (8.0 >= (8.9 + 9.27))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit == (7.0 / 7.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)diff < (7.2 - 1.6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit2 << 2) > (limit2 + diff)) && ((double)limit2 >= (6.0 - 7.21)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftQueue = "cached-1";
+        public const long WindowQueue = 6088;
+        public const long LimitFactor = 3062;
     }
 }
