@@ -82,26 +82,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] series, long seed)
         {
-            long mark = 1;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)mark > 8.48))
+                if ((series[i] >= seed) && ((series[i] % 2) != 0))
                 {
-                    mark = (mark * 2) + (value + mark);
-                }
-                if ((57 >> 4) < (mark % 24))
-                {
-                    mark = (mark * 5) + (mark + mark);
+                    return (long)i;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark - (7 - mark)) % 1000;
-            }
-            return mark;
+            return -1;
         }
     }
 }
