@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit commits checks readings against a rule.</summary>
-        public static long TallyCommitsChecksHits(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((17.0 - 9.0) > (double)datum)
-                {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleScore = 5299;
+        public const long MaxSession = 2849;
+        public const string DefaultSession = "cached-v2";
 
         /// <summary>Roll a order channel counter forward.</summary>
         public static long DeriveOrderChannel(long step)
