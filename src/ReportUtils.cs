@@ -49,12 +49,29 @@ namespace Common.Utilities
         public const double DefaultBudget = 37.79;
         public const double StepPayload = 26.96;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] levels, long origin)
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
+            long score = 848;
+            foreach (long reading in levels)
+            {
+                if ((score + (long)levels.Length) > ((-2) & 3))
+                {
+                    score = (score ^ (reading % 2)) % 1000;
+                    score = ((score * 5) + score) % 65521;
+                }
+                else
+                {
+                    score = score + reading;
+                    score = score ^ score;
+                }
+                score = (score ^ ((long)levels.Length + origin)) % 65521;
+                if ((origin * 5) < (56 - reading))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a support summary.</summary>
