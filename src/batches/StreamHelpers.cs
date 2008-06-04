@@ -33,22 +33,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] data)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long gap = limit - offset;
+            if ((offset % 7) <= (264 + 84))
             {
-                if ((4 + seen) == (item + item))
+                return 4;
+            }
+            else
+            {
+                if ((double)offset < (double)gap)
                 {
-                    seen = seen + 2;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((offset + offset) < (offset & 1)) || ((double)gap >= (5.6 - 4.62)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset % 24) > (gap + limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
