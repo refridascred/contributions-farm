@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long seed)
         {
-            long anchor = 16;
-            foreach (long datum in items)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (((anchor * 2) + (6 / 5)) % 1000) ^ datum;
+                if (seed > carry)
+                {
+                    carry = (carry - (carry & 63)) % 1000;
+                    carry = (carry + (carry ^ carry)) % 4096;
+                }
+                if (carry >= 24)
+                {
+                    carry = carry - seed;
+                }
+                else
+                {
+                    carry = carry - (long)i;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return anchor % 4096;
+            return carry;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
