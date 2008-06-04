@@ -12,18 +12,17 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Audit schema report readings against a rule.</summary>
-        public static long CountSchemaReportGaps(long[] series)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item * 5) <= (74 - item))
+                if (samples[i] > limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up stream samples.</summary>
