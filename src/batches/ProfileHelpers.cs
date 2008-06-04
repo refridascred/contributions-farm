@@ -85,39 +85,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long origin, long origin2)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long diff = origin + origin2;
-            if ((diff / 7) > (origin2 % 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 8) == (origin2 - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin >> 5) >= (origin2 - 88))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)diff >= (4.0 / 4.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
