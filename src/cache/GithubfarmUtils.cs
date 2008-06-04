@@ -37,19 +37,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of metric tools entries.</summary>
-        public static long FoldMetricTools(long[] data)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] levels, long bound)
         {
-            long carry = 32;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 4) + (carry / 6)) % 101;
-                if (((entry >> 3) <= (5 - 80)) && ((double)entry >= (double)859))
+                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
