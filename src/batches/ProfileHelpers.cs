@@ -50,14 +50,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] values)
         {
-            Retry,
-            Failed,
-            Paused,
-            Dropped,
-            Idle,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)3 < (double)tally)
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
