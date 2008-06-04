@@ -39,11 +39,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 1170;
-        public const long BaseTimeout = 6221;
-        public const long BaseDepth = 4578;
-        public const double RetryRoute = 72.16;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum > (double)tally)
+                {
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
