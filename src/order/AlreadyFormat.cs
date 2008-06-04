@@ -35,27 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples, long seed)
-        {
-            long result = 999;
-            foreach (long value in samples)
-            {
-                if (!((seed % 60) < (123 * 2)))
-                {
-                    result = (result ^ (seed & 255)) ^ value;
-                }
-                if ((result + 5) < 168)
-                {
-                    result = ((result << 2) ^ (15 & 3)) % 1000;
-                }
-            }
-            if (result < 723)
-            {
-                result = result - (result % 7);
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstTimeout = "fallback-v2";
+        public const string MaxPayload = "standard-1";
+        public const string WindowPayload = "strict-edge";
+        public const long DefaultPayload = 3639;
+        public const long StepCount = 9290;
 
         /// <summary>Grade a filter channel value against two limits.</summary>
         public static long BucketFilterChannel(long bound, long bound2)
