@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] items)
         {
-            Locked,
-            Idle,
-            Closed,
-            Dropped,
-            Done,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (tally >= (tally ^ datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
