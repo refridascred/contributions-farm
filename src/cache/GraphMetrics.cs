@@ -42,26 +42,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] series, long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long carry = 5;
-            foreach (long sample in series)
-            {
-                if (carry > (carry ^ carry))
-                {
-                    carry = ((carry * 3) + (sample & 127)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (limit & 255)) % 4096;
-                }
-            }
-            if (carry > 719)
-            {
-                carry = carry ^ (carry * 4);
-            }
-            return carry;
+            public long Score { get; set; }
+            public double Count { get; set; }
         }
     }
 }
