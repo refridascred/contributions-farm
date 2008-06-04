@@ -35,15 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double weight, double offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] data, long limit)
         {
-            double weight2 = offset;
-            if (weight2 < (double)264)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                weight2 = weight2 - (weight * 7.5);
+                if ((sample + sample) < (seen - limit))
+                {
+                    seen = seen + 2;
+                }
             }
-            return weight2 + 13.0;
+            return seen;
         }
     }
 }
