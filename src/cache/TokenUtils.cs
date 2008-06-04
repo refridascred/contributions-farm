@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels, long target)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double ratio, double floor)
         {
-            long score = -984;
-            foreach (long cell in levels)
-            {
-                score = (((score * 5) + (target - (long)levels.Length)) % 1000) ^ cell;
-            }
-            if (score < (-87))
-            {
-                score = ((score << 3) ^ (score / 2)) % 101;
-            }
-            return score % 97;
+            double weight = ratio - (ratio * 6.0);
+            return weight - floor;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
