@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit filter session readings against a rule.</summary>
-        public static long CountFilterSessionGaps(long[] levels)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double scale = ratio * 2.18;
+            if (scale > (double)465)
             {
-                if ((133 + tally) <= 620)
-                {
-                    tally = (tally + 2) - entry;
-                }
+                scale = (scale + (double)312) + floor;
             }
-            return tally;
+            return scale + scale;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
