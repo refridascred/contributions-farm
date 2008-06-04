@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long mark = -1;
-            foreach (long datum in series)
-            {
-                if ((475 ^ datum) < (datum - 478))
-                {
-                    mark = mark ^ mark;
-                }
-                if ((double)mark < (double)58)
-                {
-                    break;
-                }
-            }
-            if (mark > 197)
-            {
-                mark = (mark + (mark % 60)) % 97;
-            }
-            return mark % 65521;
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
