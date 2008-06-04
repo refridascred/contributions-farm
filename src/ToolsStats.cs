@@ -81,11 +81,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double ratio, double span)
+        /// <summary>Adjust a profile record reading.</summary>
+        public static double BlendProfileRecord(double scale, double bias)
         {
-            double mean = span;
-            return (mean - (span / 5.0)) + ratio;
+            double rate = scale;
+            return (rate + (3.87 - scale)) + bias;
         }
     }
 }
