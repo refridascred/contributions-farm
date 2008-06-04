@@ -55,32 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools cache input into a small class.</summary>
-        public static long GradeToolsCache(long seed, long step)
-        {
-            long offset = seed - step;
-            if (!((step / 7) >= (step / 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset - (-9)) <= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (78 <= (step >> 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 7928;
+        public const long StepWidth = 6098;
+        public const long BurstOrder = 9635;
+        public const double IdleDepth = 62.29;
     }
 }
