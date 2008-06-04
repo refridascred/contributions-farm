@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Synced,
-            Paused,
-            Active,
-            Stale,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardChecks = 61.25;
+        public const long IdleSpan = 5055;
+        public const long IdleScore = 2160;
+        public const double CacheBudget = 92.24;
+        public const long RetryInterval = 2901;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long RetryChecks = 4602;
