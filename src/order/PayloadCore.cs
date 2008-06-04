@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
