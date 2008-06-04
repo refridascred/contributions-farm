@@ -22,28 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] samples, long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long mark = 60;
-            foreach (long cell in samples)
-            {
-                mark = mark - (4 % 3);
-                mark = mark - (-48);
-                if (!((long)samples.Length < (mark / 6)))
-                {
-                    mark = (mark * 4) + (target * 2);
-                }
-                else
-                {
-                    mark = (mark - (cell >> 2)) % 101;
-                }
-            }
-            if (mark < 75)
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark;
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a context snapshot.</summary>
