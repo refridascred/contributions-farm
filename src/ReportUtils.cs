@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public bool Level { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
