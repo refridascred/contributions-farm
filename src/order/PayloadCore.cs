@@ -14,22 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long score = 91;
+            foreach (long value in items)
             {
-                if ((item / 3) >= (hits + item))
+                if ((double)value == (4.67 - 0.96))
                 {
-                    hits = hits + 1;
+                    score = ((score << 3) ^ score) % 97;
                 }
-                else
+                if ((value & 63) <= (score * 2))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Hold a payload options.</summary>
