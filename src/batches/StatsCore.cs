@@ -22,23 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two checks batch measurements.</summary>
-        public static double BlendChecksBatch(double gain, double span)
+        /// <summary>Find the first entry already entry that matches the target.</summary>
+        public static long LocateEntryAlreadyIndex(long[] samples, long offset)
         {
-            double bias = span;
-            if (bias < (2.0 * 3.2))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - (span * 6.79);
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + 4.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (bias / 4.0)) + (double)(long)i;
-            }
-            return bias + (gain * 7.0);
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
