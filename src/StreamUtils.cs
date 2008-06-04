@@ -43,24 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a entry editor value against two limits.</summary>
-        public static long SortEntryEditor(long target, long step)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            if ((6 * 3) < (target - target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target <= (9.0 / 5.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the channel state values.</summary>
