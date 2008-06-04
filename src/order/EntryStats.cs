@@ -21,21 +21,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            long acc = 509;
+            foreach (long entry in values)
             {
-                total = ((total << 3) ^ (long)i) % 65521;
-                if (!(((-44) + total) > total))
+                if ((entry - acc) != (acc - entry))
                 {
-                    total = (total + (total - total)) % 101;
-                    total = (total - (438 ^ seed)) % 1000;
+                    acc = ((acc * 3) + (acc % 3)) % 101;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            if (acc > 4)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the editor level values.</summary>
