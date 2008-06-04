@@ -13,21 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (tally > (tally / 2))
                 {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a graph entry.</summary>
