@@ -33,17 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first support batch entry that matches the target.</summary>
-        public static long LookupSupportBatchIndex(long[] items, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                mix = (mix * 4) + (long)i;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
