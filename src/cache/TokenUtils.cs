@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long RetryCount = 1555;
         public const string StepQueue = "open-1";
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double weight, double span)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] data)
         {
-            double weight2 = (9.0 * 9.0) - weight;
-            if (weight2 <= (double)(-863))
+            long count = 0;
+            foreach (long sample in data)
             {
-                weight2 = weight2 - span;
+                if (count > (sample % 16))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - span) + (double)(long)i;
-            }
-            return weight2 + (weight2 - weight2);
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
