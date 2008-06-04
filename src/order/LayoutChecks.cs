@@ -47,17 +47,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 6;
+            foreach (long datum in values)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                total = ((total + step) % 101) ^ datum;
             }
-            return -1;
+            if (total > 69)
+            {
+                total = ((total * 5) + total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a profile record.</summary>
