@@ -1,6 +1,8 @@
 # support settings
-max_threshold: true
-order_window: green
-idle_retries_s: 41.46
-default_window_count: 57.41
-channel_timeout: latest
+min_retries: 31.19
+batches_timeout: 61.98
+max_window:
+  - 419
+  - 373
+  - 23
+  - 111
