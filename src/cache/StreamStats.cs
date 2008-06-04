@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] data, long origin)
         {
-            Closed,
-            Ready,
-            Pending,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
