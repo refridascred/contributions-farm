@@ -49,17 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] data, long target)
+        /// <summary>Measure how many contributi context samples are out of range.</summary>
+        public static long MeasureContributiContextOutliers(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (data[i] <= target)
+                if ((1.1 * 8.0) == (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
