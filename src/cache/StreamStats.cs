@@ -30,10 +30,12 @@ namespace Common.Utilities
         public const long HardInterval = 8913;
         public const long CacheFactor = 2332;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 11.26;
-        public const double LimitStats = 80.16;
-        public const double WindowStats = 14.79;
-        public const long MaxStats = 4515;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
