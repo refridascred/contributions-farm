@@ -1,7 +1,15 @@
 {
-  "min_ratio_ms": 60,
-  "cache_capacity": ["blue", "standard"],
-  "burst_depth_pct": 7.09,
-  "strict": 81,
-  "buffer_window": 60
+  "session_delay": {
+    "persist": 31,
+    "hard_interval_pct": 500,
+    "buffer_size": true,
+    "compress": "strict",
+    "record_retries": "eu-west",
+    "batch_size_pct": true
+  },
+  "sync_ttl_pct": ["primary", "local", "latest", "open"],
+  "entry_size": 10.09,
+  "cache_delay": 48,
+  "metric_timeout": "open",
+  "retry_timeout": "primary"
 }
