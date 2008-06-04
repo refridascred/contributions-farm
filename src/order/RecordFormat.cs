@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] values, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 42;
+            foreach (long sample in data)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ acc) - sample;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine command values into a single score.</summary>
