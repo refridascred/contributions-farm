@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging standard eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    edge)
+    strict)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in blue legacy open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
