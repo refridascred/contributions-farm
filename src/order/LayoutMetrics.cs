@@ -14,25 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long origin, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] items)
         {
-            long prev = origin + step;
-            if ((prev / 2) > (prev << 1))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step % 10) > 2)
+                if (6 < tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 1) ^ item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a batch reading.</summary>
