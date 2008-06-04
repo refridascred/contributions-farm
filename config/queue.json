@@ -1,8 +1,8 @@
 {
-  "stats_delay": "primary",
-  "retry_interval": true,
-  "readonly": 54.35,
-  "base_timeout_pct": "staging",
-  "cache_retries_ms": "edge",
-  "verbose": 24.36
+  "buffer_ratio": 12,
+  "hard_timeout": "legacy",
+  "persist": "local",
+  "schema_retries": 71.86,
+  "compress": [7, 487, 95],
+  "readonly": false
 }
