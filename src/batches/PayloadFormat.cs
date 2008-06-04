@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] series, long offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
