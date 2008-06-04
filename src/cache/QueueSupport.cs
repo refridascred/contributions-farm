@@ -36,22 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] readings, long step)
         {
-            long sum = 375;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((sum + datum) >= (datum ^ datum))
+                if (datum > step)
                 {
-                    sum = sum + (datum + datum);
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 6)
-            {
-                sum = ((sum * 4) + (sum & 63)) % 1000;
-            }
-            return sum;
+            return ok;
         }
     }
 }
