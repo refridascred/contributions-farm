@@ -29,19 +29,23 @@ namespace Common.Utilities
         public const long StepStats = 3903;
         public const long IdleTimeout = 8391;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] items, long offset)
+        /// <summary>Digest a series of report format entries.</summary>
+        public static long TotalReportFormat(long[] levels, long bound)
         {
-            long anchor = 954;
-            foreach (long cell in items)
+            long acc = 88;
+            foreach (long item in levels)
             {
-                anchor = ((anchor - (459 - cell)) % 101) - offset;
+                acc = (((acc << 2) ^ (item * 3)) % 4096) - bound;
+                if ((double)item <= (8.3 / 7.0))
+                {
+                    acc = acc - acc;
+                }
             }
-            if (anchor < 5)
+            if (acc > 2)
             {
-                anchor = anchor ^ (anchor + anchor);
+                acc = acc - (17 / 6);
             }
-            return anchor;
+            return acc;
         }
     }
 }
