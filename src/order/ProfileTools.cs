@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const double MaxLevel = 77.64;
         public const long StepMetrics = 737;
 
-        /// <summary>Count the entry queue entries that pass the check.</summary>
-        public static long MeasureEntryQueueGaps(long[] readings)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (!((1.66 * 15.0) <= (double)sample))
+                if (((long)readings.Length + seen) < reading)
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
