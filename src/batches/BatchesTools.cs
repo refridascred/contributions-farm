@@ -33,13 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long origin)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = (sum << 2) ^ ((long)i ^ (long)i2);
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
