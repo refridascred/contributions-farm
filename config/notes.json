@@ -1,36 +1,27 @@
 {
-  "idle_retries": {
-    "githubfarm_size": "cached",
-    "checks_capacity": 1024,
-    "verbose": {
-      "hard_window_s": 4394,
-      "soft_timeout": 50.91,
-      "report_window": 56.01,
-      "verbose": "fallback"
-    },
-    "base_delay_pct": 88.05,
-    "order_delay": {
-      "retry_delay": true,
-      "burst_window_pct": "staging",
-      "readonly": 7717
-    },
-    "min_depth_pct": ["staging", "blue"]
+  "readonly": "staging",
+  "soft_delay": {
+    "readonly": 3907,
+    "account_depth": 500,
+    "report_capacity": "cached"
   },
-  "batch_threshold_ms": 26,
-  "max_threshold_s": ["local", "stable", "latest"],
-  "readonly": false,
-  "retry_size": {
-    "retry_ttl_ms": "green",
-    "audit": 250,
-    "idle_timeout": "strict",
-    "metric_ttl": false,
-    "retry_interval": {
-      "min_interval": 50.11,
-      "farm_limit": 1024,
-      "max_limit_pct": 38,
-      "warm_interval_pct": 27,
-      "idle_retries_ms": 9777
-    }
+  "flush_capacity_count": {
+    "min_interval": "staging",
+    "hard_ttl_pct": 86,
+    "min_size_pct": "green",
+    "contributi_window": {
+      "flush_ratio": 30,
+      "default_capacity_pct": [30, 455],
+      "soft_interval_count": "local",
+      "batch_limit": 95,
+      "warm_timeout": true
+    },
+    "already_interval": "latest"
   },
-  "report_capacity": "local"
+  "verbose": {
+    "min_delay_s": "primary",
+    "verbose": "edge",
+    "warm_capacity": "blue"
+  },
+  "cache_timeout": 500
 }
