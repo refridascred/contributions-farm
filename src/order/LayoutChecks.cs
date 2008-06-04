@@ -47,13 +47,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] values, long target)
         {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile record.</summary>
