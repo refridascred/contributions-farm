@@ -26,18 +26,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] values, long offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value & 15) != (seen + value))
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
