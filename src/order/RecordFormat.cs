@@ -30,13 +30,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Measure how many cache record samples are out of range.</summary>
+        public static long MeasureCacheRecordHits(long[] readings)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((19.0 / 4.0) > (double)sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit batch channel readings against a rule.</summary>
