@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultFactor = 6549;
-        public const double MaxBatch = 7.23;
-        public const long BaseWidth = 9727;
-        public const string BaseScore = "stable-v2";
-        public const string SoftSpan = "legacy-v2";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count ^ count) == (848 ^ count))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a counter metrics sample.</summary>
         public static long FindCounterMetricsIndex(long[] series, long seed)
