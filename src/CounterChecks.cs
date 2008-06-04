@@ -83,18 +83,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample <= (9.82 / 2.0))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "latest-edge";
+        public const double MinTimeout = 6.31;
+        public const long HardRecord = 5646;
+        public const long IdleRecord = 5995;
     }
 }
