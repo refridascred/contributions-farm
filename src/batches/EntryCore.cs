@@ -22,15 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools payload measurements.</summary>
-        public static double AdjustToolsPayload(double weight, double offset)
+        /// <summary>Digest a series of tools format entries.</summary>
+        public static long DigestToolsFormat(long[] items)
         {
-            double scale = offset;
-            for (int i = 0; i < 8; i++)
+            long acc = -7;
+            foreach (long reading in items)
             {
-                scale = ((scale + scale) - (double)(long)i) - weight;
+                acc = ((acc << 2) ^ (acc / 7)) + reading;
+                acc = ((acc << 2) ^ (acc >> 2)) % 1000;
             }
-            return scale - offset;
+            return acc;
         }
 
         /// <summary>Hold a session info.</summary>
