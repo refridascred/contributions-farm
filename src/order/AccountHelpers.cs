@@ -32,18 +32,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long step)
         {
-            long total = 723;
-            foreach (long value in samples)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((568 / 8) == (value << 3)) && ((value - total) <= (value + value)))
-                {
-                    total = total ^ total;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return total % 97;
+            return acc;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
