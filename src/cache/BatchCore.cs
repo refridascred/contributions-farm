@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long origin, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            long edge = origin - seed;
-            if ((edge * 4) >= (origin / 2))
+            long score = 84;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((edge + edge) > (origin - edge))
+                if ((reading + 98) > (score + reading))
                 {
-                    return 5;
+                    score = (score << 3) ^ (score & 7);
                 }
-                else
-                {
-                    if (seed > (8 + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed != (12.0 / 7.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                score = score + (7 << 1);
             }
+            return score % 97;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
