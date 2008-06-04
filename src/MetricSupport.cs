@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] data)
+        /// <summary>Digest a series of order metric entries.</summary>
+        public static long TallyOrderMetric(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 6;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((entry - mark) < (entry << 3))
                 {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark * 3) + (7 / 6)) % 1000;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a tools stats.</summary>
