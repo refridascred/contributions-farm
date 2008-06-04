@@ -49,19 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double gain, double span)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] samples, long origin)
         {
-            double load = gain;
-            if (load >= load)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                load = (load + (gain + gain)) - span;
+                if ((8 - datum) >= (origin - origin))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load + load;
+            return hits;
         }
     }
 }
