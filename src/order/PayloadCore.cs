@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Measure how many editor buffer samples are out of range.</summary>
+        public static long CountEditorBufferMatches(long[] samples)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((9 ^ tally) == (700 + item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the session state values.</summary>
