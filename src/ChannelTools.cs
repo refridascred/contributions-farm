@@ -44,21 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up filter window samples.</summary>
-        public static long PairFilterWindowCount(long[] samples)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Paused,
+            Stale,
         }
     }
 }
