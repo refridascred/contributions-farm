@@ -68,16 +68,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double weight, double bias)
-        {
-            double rate = (double)(7 + 542);
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate + (bias * 2.31)) + (double)(long)i) + weight;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCount = 8866;
+        public const string DefaultWidth = "alpha-1";
+        public const long MinLevel = 9911;
 
         /// <summary>Roll a stream contributi counter forward.</summary>
         public static long IterateStreamContributi(long floor)
