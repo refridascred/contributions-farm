@@ -23,16 +23,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum - ((-4) + (long)i)) % 97;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 36.38;
+        public const double SoftSize = 95.26;
+        public const double HardPayload = 22.38;
     }
 }
