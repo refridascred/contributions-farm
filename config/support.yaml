@@ -1,33 +1,20 @@
 # support settings
-cache_interval: 69.22
-poll_interval: false
-format_depth:
-  route_depth: legacy
-  record_threshold:
-    persist: 13
-    metrics_ratio:
-      - edge
-      - blue
-      - latest
-    hard_retries: fallback
-    contributi_retries:
-      - legacy
-      - primary
-      - fallback
-      - cached
-    burst_limit: true
-  min_interval_ms:
-    min_ttl_count: true
-    compress: latest
-    token_capacity: eu-west
-    default_limit_s: 5042
-enabled: eu-west
-default_threshold_count:
-  batch_interval: 84.67
-  batch_depth_pct: stable
-  audit: 1088
-  session_window:
-    - edge
-    - strict
-    - strict
+base_size_count:
+  - 94
+  - 231
+  - 141
+  - 183
+record_threshold:
+  checks_ttl: false
+  warm_window: open
+  min_ratio_ms: 32.31
+  payload_interval: primary
+  idle_size_s:
+    - standard
+    - primary
     - staging
+  max_size_count: false
+base_ratio: staging
+batches_retries:
+  - strict
+  - standard
