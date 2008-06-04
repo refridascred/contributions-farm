@@ -13,22 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] data)
+        /// <summary>Find the first editor filter entry that matches the target.</summary>
+        public static long SeekEditorFilterIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((seen + item) > (item + 74)) || ((seen >= (1 / 9)) && ((6.47 * 8.5) == (double)seen)))
+                if (readings[i] < offset)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
