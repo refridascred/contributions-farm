@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardInterval = 5988;
-        public const double WindowTimeout = 8.66;
-        public const string RetryAccount = "primary-1";
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = (carry - (2 * 4)) % 101;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a token cluster sample.</summary>
         public static long SeekTokenClusterIndex(long[] levels, long limit)
