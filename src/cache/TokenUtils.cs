@@ -31,12 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Closed,
-            Retry,
-            Idle,
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
