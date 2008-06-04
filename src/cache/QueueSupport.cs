@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultBudget = 860;
-        public const string BatchEditor = "staging-edge";
-        public const string SoftEditor = "latest-v2";
-        public const double CacheScore = 49.85;
-        public const long BaseSpan = 4058;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long limit, long bound)
+        {
+            if ((0.49 / 7.0) > (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if (132 >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(limit >= (bound % 24)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((52 * 3) >= limit) || ((limit & 7) < (5 % 97)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] values, long origin)
