@@ -27,12 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            Draft,
+            Active,
+            Retry,
         }
 
         /// <summary>Digest a series of format entries.</summary>
