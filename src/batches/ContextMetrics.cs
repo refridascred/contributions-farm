@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Queued,
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
