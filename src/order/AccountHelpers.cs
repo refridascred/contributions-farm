@@ -76,21 +76,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long limit, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (limit > offset)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset > (9 - 62)) || ((double)offset < (5.0 - 15.0)))
                 {
-                    if ((series[i] ^ series[j]) > 11)
+                    return 6;
+                }
+                else
+                {
+                    if ((limit / 2) > (limit << 1))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (6.0 / 3.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
