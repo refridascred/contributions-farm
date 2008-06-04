@@ -20,11 +20,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "legacy-1";
-        public const string WindowLevel = "legacy-1";
-        public const long HardChannel = 173;
-        public const string IdleChannel = "stable";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 1965;
+        public const long SoftFormat = 3976;
+        public const string RetryFormat = "latest-v2";
+        public const string BaseFormat = "stable-edge";
+        public const long IdleScore = 508;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
