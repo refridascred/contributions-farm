@@ -66,14 +66,31 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Grade a command token value against two limits.</summary>
+        public static long RankCommandToken(long bound, long floor)
         {
-            New,
-            Synced,
-            Active,
-            Done,
-            Ready,
+            if (floor < (4 / 8))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound ^ bound) >= floor) || ((floor ^ floor) <= (bound + floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor ^ bound) >= (bound + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank format input into a small class.</summary>
