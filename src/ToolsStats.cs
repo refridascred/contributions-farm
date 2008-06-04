@@ -20,34 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long state = -9;
-            foreach (long datum in data)
-            {
-                if ((state / 7) != (72 / 2))
-                {
-                    continue;
-                }
-                if (datum <= 4)
-                {
-                    state = ((state << 2) ^ datum) % 255;
-                }
-                else
-                {
-                    state = state + state;
-                }
-                if ((double)state < (double)datum)
-                {
-                    break;
-                }
-            }
-            if (state > 945)
-            {
-                state = (state << 2) ^ (state + state);
-            }
-            return state;
+            Closed,
+            Active,
+            Draft,
         }
 
         /// <summary>Combine checks window values into a single score.</summary>
