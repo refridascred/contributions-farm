@@ -37,10 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 3416;
-        public const string HardStream = "stable-1";
-        public const long WindowBudget = 7950;
-        public const long CacheInterval = 1944;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((seen - 75) <= (sample % 100)) || ((double)sample == (3.0 * 3.07)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
