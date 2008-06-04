@@ -20,19 +20,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Derive the next payload account value from a seed.</summary>
+        public static long DerivePayloadAccount(long origin)
         {
-            long anchor = 36;
-            foreach (long entry in series)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = ((anchor << 2) ^ (anchor + 78)) ^ entry;
-                if ((double)anchor == (6.92 / 8.0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    anchor = anchor - (anchor % 3);
+                    total = ((total ^ origin) % 65521) + (long)i2;
                 }
+                if ((double)total == (14.0 - 16.0))
+                {
+                    total = (total ^ total) % 97;
+                    continue;
+                }
+                else
+                {
+                    total = ((total * 4) + origin) % 255;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Fold a list of counter route readings.</summary>
