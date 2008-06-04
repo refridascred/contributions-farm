@@ -38,39 +38,18 @@ namespace Common.Utilities
         public const long RetryTools = 544;
         public const double WindowTools = 27.26;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long offset, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] items)
         {
-            long diff = offset - seed;
-            if ((13.0 <= (double)seed) || ((6 << 2) > (diff - offset)))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((-45) >= (seed << 1))
+                if (((double)hits >= 9.8) && ((16.0 + 3.0) != (double)entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset * 4) > (offset % 100))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)diff == (8.0 / 4.0)) && ((double)diff > 1.1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
