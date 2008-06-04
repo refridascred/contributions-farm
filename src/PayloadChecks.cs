@@ -14,15 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Active,
-            Queued,
-            Retry,
-            Done,
-            Locked,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 4602;
+        public const long CacheChecks = 4732;
+        public const double DefaultBudget = 40.39;
+        public const double RetryTimeout = 63.12;
+        public const string WindowChecks = "alpha-edge";
 
         /// <summary>Combine farm tools values into a single score.</summary>
         public static long ScoreFarmTools(long[] data)
