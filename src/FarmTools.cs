@@ -36,19 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] data, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] readings, long target)
         {
-            long acc = 25;
-            foreach (long value in data)
+            long total = 751;
+            foreach (long entry in readings)
             {
-                acc = acc - value;
-                if (!((double)7 <= (double)target))
+                if ((target - entry) > (target ^ entry))
                 {
-                    acc = (acc - acc) % 255;
+                    total = (total + total) % 97;
                 }
             }
-            return acc;
+            if (total > 5)
+            {
+                total = (total << 3) ^ ((-67) ^ total);
+            }
+            return total % 1000;
         }
     }
 }
