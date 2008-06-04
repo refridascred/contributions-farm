@@ -70,18 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats stream samples are out of range.</summary>
-        public static long CountStatsStreamOutliers(long[] data)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8 & 255) >= tally)
+                if (values[i] == offset)
                 {
-                    tally = (tally + 1) - reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
