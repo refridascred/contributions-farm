@@ -25,22 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] items, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] series, long step)
         {
-            long mark = 24;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (((double)value >= (5.74 + 3.0)) && ((limit + limit) == (mark - value)))
+                if (!((step >> 2) < (179 + step)))
                 {
-                    mark = mark + (limit + limit);
+                    tally = (tally + 1) + item;
                 }
             }
-            if (mark > 32)
-            {
-                mark = mark - 7;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
