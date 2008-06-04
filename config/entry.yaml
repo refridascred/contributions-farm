@@ -1,11 +1,5 @@
 # entry settings
-burst_capacity_pct:
-  max_ratio_count: 49.34
-  window_depth: green
-  base_depth_pct:
-    - 78
-    - 332
-    - 232
-  burst_threshold_s: strict
-already_ttl: 50
-cache_ratio: blue
+verbose: 76.67
+entry_ratio: blue
+account_timeout: 4778
+retry_ratio: false
