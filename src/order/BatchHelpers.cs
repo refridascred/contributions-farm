@@ -20,18 +20,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] samples, long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] items, long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((step + count) >= count)
+                if (entry < target)
                 {
-                    count = (count + 3) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
