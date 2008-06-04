@@ -30,24 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark + ((-6) * 2)) % 101;
-                if ((seed + (long)i) > (seed * 2))
-                {
-                    mark = (mark ^ (seed ^ 18)) % 101;
-                }
-                else
-                {
-                    mark = mark + seed;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
