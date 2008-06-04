@@ -75,21 +75,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (bias + bias2) + (double)0;
+            if (gain < (gain + bias))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - (5.87 / 2.0);
             }
-            return matches;
+            else
+            {
+                gain = gain - 6.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (double)92) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
