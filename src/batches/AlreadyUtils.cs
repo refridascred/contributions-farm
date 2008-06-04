@@ -35,19 +35,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (entry <= bound)
+                if (((double)item > (6.0 + 6.0)) || ((double)seed > (7.8 - 10.0)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
