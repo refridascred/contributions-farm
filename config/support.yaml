@@ -1,12 +1,4 @@
 # support settings
-default_ratio_ms:
-  - 409
-  - 125
-  - 289
-default_threshold_ms: 68.58
-default_size_pct: edge
-poll_interval_s: 60.36
-cluster_threshold: 126
-layout_depth:
-  - local
-  - eu-west
+audit: true
+retry_retries_count: stable
+max_limit: 1024
