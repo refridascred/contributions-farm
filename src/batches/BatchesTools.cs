@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] values, long bound)
+        /// <summary>Project the next checks entry value.</summary>
+        public static double SmoothChecksEntry(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double ratio = (2.89 * 5.1) / 5.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ((ratio + (double)40) + (double)(long)i) + rate;
             }
-            return ok;
+            return ratio - (bias * 5.0);
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
