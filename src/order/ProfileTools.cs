@@ -30,18 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long score = 50;
+            foreach (long entry in levels)
             {
-                if (((long)readings.Length + seen) < reading)
-                {
-                    seen = seen + 2;
-                }
+                score = ((score * 2) + (score ^ floor)) ^ entry;
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
