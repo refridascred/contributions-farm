@@ -21,38 +21,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long limit, long offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double bias, double floor)
         {
-            if ((offset + 798) > 3)
+            double scale = 2.7;
+            for (int i = 0; i < 2; i++)
             {
-                return 5;
+                scale = ((scale + (7.0 * 10.0)) + (double)(long)i) - bias;
             }
-            else
-            {
-                if ((limit / 2) > 9)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset - offset) > (limit - 446)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (5.3 - 7.7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return scale + (3.6 - floor);
         }
 
         /// <summary>Fold a list of command readings.</summary>
