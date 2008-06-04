@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values, long bound)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long total = 296;
-            foreach (long entry in values)
-            {
-                total = (total - entry) - bound;
-                if (84 >= ((long)values.Length % 24))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
