@@ -29,15 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] samples, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] items, long offset)
         {
-            long sum = 54;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                sum = ((sum * 4) + (sample % 5)) - seed;
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return flag;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
