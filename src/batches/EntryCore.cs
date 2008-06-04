@@ -16,22 +16,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            long mark = 1;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark - mark) > (item << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark * 4) + (50 + mark);
-                }
-                if ((59 & 127) < item)
-                {
-                    mark = mark ^ (item & 63);
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a session info.</summary>
