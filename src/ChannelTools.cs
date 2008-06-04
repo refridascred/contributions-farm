@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks order readings against a rule.</summary>
-        public static long MeasureChecksOrderOutliers(long[] items, long origin)
+        /// <summary>Count the window already entries that pass the check.</summary>
+        public static long CountWindowAlreadyGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((cell >= (origin + 867)) && ((tally & 1) >= cell))
+                if (entry <= (count % 24))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the queue status values.</summary>
