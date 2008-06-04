@@ -55,23 +55,29 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a support profile pair into a bucket.</summary>
-        public static long RankSupportProfile(long step, long step2)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long floor, long origin)
         {
-            long offset = step + step2;
-            if (offset <= (offset + offset))
+            if (origin <= (625 * 4))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (!((step2 / 6) <= (offset % 12)))
+                if (((86 ^ floor) < (floor * 3)) && ((floor - floor) != (floor >> 1)))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 5;
+                    if (((floor - origin) > (origin + origin)) || ((double)origin > (6.0 * 3.6)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
