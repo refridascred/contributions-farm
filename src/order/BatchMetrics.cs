@@ -29,22 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of record notes entries.</summary>
-        public static long ScoreRecordNotes(long[] values, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] items, long bound)
         {
-            long carry = 252;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (((value - origin) < (value & 15)) || ((value ^ value) < (long)values.Length))
+                if (datum >= bound)
                 {
-                    carry = (carry - (carry / 8)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (value ^ (long)values.Length)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
