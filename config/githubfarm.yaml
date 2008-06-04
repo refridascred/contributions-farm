@@ -1,30 +1,7 @@
 # githubfarm settings
-route_size:
-  window_capacity:
-    audit: 7166
-    enabled:
-      - 406
-      - 369
-      - 357
-      - 393
-    min_interval: false
-    retry_ttl_s: 11.3
-    hard_depth_count: blue
-  farm_delay: local
-  base_depth_pct: false
-  record_retries: cached
-default_depth_ms: true
-burst_retries_ms: 3653
-batch_retries_count:
-  persist:
-    already_timeout: true
-    hard_ratio: true
-    retry_depth_ms: 25.51
-    strict: true
-    min_timeout_ms: 30
-  checks_capacity: false
-  soft_capacity_ms: 3968
-  flush_timeout: false
-  base_threshold_s: standard
-  strict: eu-west
-warm_retries_pct: 7182
+cluster_delay: legacy
+readonly: 100
+batch_window: staging
+poll_window_count: cached
+warm_timeout_ms: latest
+warm_timeout_s: 500
