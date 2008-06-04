@@ -33,22 +33,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of editor profile readings.</summary>
-        public static long CompareEditorProfileCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 1386;
+        public const long MinProfile = 6240;
+        public const double SoftProfile = 79.52;
+        public const long RetrySpan = 7709;
+        public const double CacheDepth = 59.45;
 
         /// <summary>Digest a series of context cluster entries.</summary>
         public static long TotalContextCluster(long[] readings, long target)
