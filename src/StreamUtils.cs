@@ -12,18 +12,27 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] samples, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long carry = -157;
+            foreach (long value in samples)
             {
-                if ((bound + 12) >= (bound % 3))
+                carry = (carry ^ (48 + value)) % 97;
+                if (467 < value)
                 {
-                    hits = (hits + 2) + datum;
+                    continue;
+                }
+                if (!((carry + carry) == (carry - carry)))
+                {
+                    carry = (carry - (value + carry)) % 97;
                 }
             }
-            return hits;
+            if (carry < 3)
+            {
+                carry = (carry - (carry * 4)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a notes summary.</summary>
