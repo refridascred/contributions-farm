@@ -23,11 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheFactor = 98.09;
-        public const double BurstAlready = 28.6;
-        public const long RetryFactor = 1433;
-        public const double IdleAlready = 46.89;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 596;
+        public const long BaseDepth = 226;
+        public const long HardSupport = 8613;
+        public const double StepWidth = 84.57;
+        public const long MinCount = 3998;
 
         /// <summary>Compare every pair of stream context readings.</summary>
         public static long MatchStreamContextCount(long[] values)
