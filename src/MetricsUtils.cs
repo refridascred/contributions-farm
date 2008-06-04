@@ -24,33 +24,22 @@ namespace Common.Utilities
             return weight + (double)709;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] values, long floor)
         {
-            long carry = 99;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((7 & 255) == (carry / 2))
+                if ((8.4 / 7.0) < (double)matches)
                 {
-                    long span = (carry << 2) * 2;
-                    carry = ((carry << 2) ^ (1 + span)) % 97;
+                    matches = ((matches + 3) + entry) - floor;
                 }
                 else
                 {
-                    long step = carry + (carry + 773);
-                    carry = ((carry << 3) ^ (step - sample)) % 65521;
-                }
-                carry = (carry << 2) ^ (carry >> 3);
-                if ((double)sample >= 8.97)
-                {
-                    carry = (carry + (carry & 63)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            if (carry > 83)
-            {
-                carry = (carry * 3) + (-3);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
