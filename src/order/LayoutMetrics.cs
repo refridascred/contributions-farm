@@ -31,19 +31,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long offset)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < offset)
+                if (values[i] <= limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
