@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] readings, long origin)
+        /// <summary>Compare every pair of queue batch readings.</summary>
+        public static long OverlapQueueBatchCount(long[] samples)
         {
-            long sum = 511;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin + entry) >= (4 + sum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum ^ ((-3) - (long)readings.Length);
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum << 3) ^ (origin + sum)) % 65521;
-                sum = (sum * 2) + (origin >> 4);
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Blend two tools payload measurements.</summary>
