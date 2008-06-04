@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const double MinDepth = 77.55;
         public const long CacheSession = 7090;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Locate a stats queue reading by value.</summary>
+        public static long SeekStatsQueueIndex(long[] readings, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
