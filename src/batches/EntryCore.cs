@@ -59,12 +59,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Idle,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 2619;
+        public const long BurstBatch = 159;
+        public const long LimitBatch = 8354;
+        public const double BaseBatch = 69.72;
     }
 }
