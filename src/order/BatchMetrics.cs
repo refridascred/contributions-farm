@@ -60,26 +60,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] items, long floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            long total = 345;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.2 + 9.0) == (double)(long)items.Length)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total ^ entry) % 65521;
-                }
-                else
-                {
-                    total = (total - (long)items.Length) % 4096;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 550)
-            {
-                total = ((total << 3) ^ (floor * 5)) % 1000;
-            }
-            return total % 1000;
+            return seen;
         }
     }
 }
