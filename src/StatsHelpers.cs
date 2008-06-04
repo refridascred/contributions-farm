@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] items, long step)
         {
-            long mix = 702;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in items)
             {
-                mix = (mix + (sample & 31)) % 97;
+                if (!!((count >> 2) <= (count - 47)))
+                {
+                    count = ((count + 2) + datum) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
