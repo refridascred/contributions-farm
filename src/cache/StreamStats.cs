@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            New,
-            Paused,
-            Active,
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
