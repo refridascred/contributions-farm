@@ -43,18 +43,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] series)
+        /// <summary>Derive the next session graph value from a seed.</summary>
+        public static long DeriveSessionGraph(long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((item + tally) >= (75 ^ tally)))
+                state = state - (floor * 2);
+                if ((5 << 1) == (floor / 5))
                 {
-                    tally = tally + 2;
+                    continue;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
