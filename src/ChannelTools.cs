@@ -31,18 +31,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mark = 370;
-            foreach (long datum in items)
-            {
-                if ((9 >= datum) || (datum <= 92))
-                {
-                    mark = ((mark * 3) + (-3)) % 65521;
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
