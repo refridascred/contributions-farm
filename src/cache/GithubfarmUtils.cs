@@ -45,17 +45,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] levels, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long step, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!(0 > (target - target)))
             {
-                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((step / 6) <= (target + target))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
