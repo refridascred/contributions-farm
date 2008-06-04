@@ -83,10 +83,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstLevel = 9008;
-        public const long StepSupport = 9942;
-        public const double WindowSupport = 71.04;
-        public const string RetryInterval = "local-edge";
+        /// <summary>Roll a layout batches counter forward.</summary>
+        public static long DeriveLayoutBatches(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((long)i == (anchor << 1))
+                {
+                    anchor = (anchor * 3) + (anchor & 7);
+                    anchor = (anchor << 3) ^ (long)i;
+                }
+                else
+                {
+                    anchor = anchor + anchor;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = ((anchor ^ (anchor >> 5)) % 1000) + (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
