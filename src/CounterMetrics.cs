@@ -23,23 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((origin <= 0) || (((long)i ^ (long)i) > (5 + 7)))
+                if ((count + 738) > item)
                 {
-                    state = state ^ (origin + (long)i);
+                    count = count + 3;
                 }
-                else
-                {
-                    state = ((state << 2) ^ 17) % 101;
-                }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
