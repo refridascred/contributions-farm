@@ -15,15 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double gain, double bias)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double mean = gain;
-            if (mean > bias)
-            {
-                mean = mean + 3.5;
-            }
-            return mean - (mean - 2.3);
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a schema stats.</summary>
