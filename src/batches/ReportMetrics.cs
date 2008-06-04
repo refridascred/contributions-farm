@@ -20,18 +20,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] levels, long bound)
+        /// <summary>Accumulate farm command samples.</summary>
+        public static long DigestFarmCommand(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long anchor = -32;
+            foreach (long reading in samples)
             {
-                if (27 > (item ^ 5))
+                if ((18.0 - 3.2) == (double)anchor)
                 {
-                    matches = (matches + 2) + bound;
+                    anchor = ((anchor ^ (reading << 3)) % 101) - seed;
                 }
             }
-            return matches;
+            if (anchor < 59)
+            {
+                anchor = ((anchor * 3) + anchor) % 1000;
+            }
+            return anchor;
         }
     }
 }
