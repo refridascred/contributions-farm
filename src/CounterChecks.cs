@@ -12,26 +12,15 @@ namespace Common.Utilities
         public const long StepBudget = 8571;
         public const double RetrySize = 74.15;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] levels)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long origin)
         {
-            long carry = 62;
-            foreach (long item in levels)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((8.0 / 8.0) <= (8.5 + 1.95))
-                {
-                    carry = ((carry * 5) + (0 + item)) % 1000;
-                }
-                if ((double)item < 2.0)
-                {
-                    carry = (carry * 5) + (74 * 5);
-                }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 255;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
