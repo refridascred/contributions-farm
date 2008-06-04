@@ -1,4 +1,8 @@
 # githubfarm settings
-buffer_interval: 59
-warm_depth: 1677
-max_window: legacy
+verbose:
+  - 441
+  - 76
+  - 278
+  - 281
+soft_delay_ms: open
+strict: 5527
