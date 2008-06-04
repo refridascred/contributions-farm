@@ -31,18 +31,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] data, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long lane = origin - floor;
+            if ((8.7 * 3.9) < (double)lane)
             {
-                if ((entry + entry) <= 669)
+                return 0;
+            }
+            else
+            {
+                if ((double)origin >= (1.0 / 6.0))
                 {
-                    seen = (seen + 1) - target;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every metric counter entry stays within the limit.</summary>
