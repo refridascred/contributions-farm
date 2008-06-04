@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const long DefaultBudget = 2439;
         public const long BurstBudget = 3391;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Stale,
+            Dropped,
+            New,
             Done,
-            Active,
-            Failed,
         }
     }
 }
