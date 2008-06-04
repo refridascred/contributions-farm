@@ -98,11 +98,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            Paused,
+            Stale,
+            Ready,
         }
     }
 }
