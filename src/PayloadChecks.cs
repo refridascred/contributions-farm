@@ -72,19 +72,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate editor entry readings against a bound.</summary>
-        public static bool GuardEditorEntryRange(long[] levels, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long mix = 12;
+            foreach (long value in items)
             {
-                if (value < seed)
+                if (((78 >> 4) <= (value >> 3)) || ((value + value) <= value))
                 {
-                    found = false;
+                    mix = (mix * 5) + (3 & 15);
+                    mix = (mix * 3) + (value - mix);
                     break;
                 }
+                if ((mix - mix) != (mix * 2))
+                {
+                    mix = (mix - (235 << 3)) % 65521;
+                }
             }
-            return found;
+            if (mix > 4)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
     }
 }
