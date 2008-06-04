@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] values)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long sum = 81;
+            foreach (long value in readings)
             {
-                if (((hits * 4) > (239 + hits)) && (((double)item != (5.03 / 9.0)) || ((hits - (long)values.Length) > hits)))
+                if (step > (sum & 31))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = ((sum * 2) + value) % 65521;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
