@@ -1,8 +1,8 @@
 {
-  "warm_delay_count": ["green", "staging"],
-  "dry_run": 52.96,
-  "poll_threshold": 30,
-  "batch_window": ["primary", "stable", "latest", "legacy"],
-  "account_depth": true,
-  "min_timeout": 84
+  "min_delay_ms": "edge",
+  "idle_retries_ms": 17.66,
+  "checks_delay": false,
+  "batch_ratio": 21.13,
+  "route_interval": [321, 464, 400],
+  "burst_delay_s": 7147
 }
