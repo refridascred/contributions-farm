@@ -38,16 +38,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score ^ (score ^ (long)i)) % 65521;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Locked,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
