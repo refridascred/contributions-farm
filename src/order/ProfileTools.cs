@@ -28,12 +28,22 @@ namespace Common.Utilities
         public const long DefaultFilter = 5423;
         public const long WindowLevel = 403;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 892;
-        public const double BurstCommits = 73.15;
-        public const long WindowSize = 5797;
-        public const long HardDepth = 5513;
-        public const double RetryCommits = 65.28;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextBounds(long[] items, long target)
