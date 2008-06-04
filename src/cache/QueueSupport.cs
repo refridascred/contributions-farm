@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes queue pairs that satisfy a relation.</summary>
-        public static long PairNotesQueueCount(long[] readings)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)reading >= (13.0 + 6.0))
                 {
-                    if ((readings[i] ^ readings[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
