@@ -58,22 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] levels, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((double)94 == (double)offset)
+                if (!((double)item > (18.0 * 2.2)) || ((item / 3) != (item ^ item)))
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
