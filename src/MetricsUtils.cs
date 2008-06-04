@@ -61,33 +61,13 @@ namespace Common.Utilities
         public const string DefaultWidth = "alpha-1";
         public const long MinLevel = 9911;
 
-        /// <summary>Roll a stream contributi counter forward.</summary>
-        public static long IterateStreamContributi(long floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((floor >> 5) < floor)
-                {
-                    mix = (mix * 4) + mix;
-                }
-                else
-                {
-                    mix = mix + mix;
-                    mix = (mix ^ (401 - (long)i)) % 1000;
-                }
-                if (((2.8 * 6.2) < (double)mix) || ((mix + 504) >= (799 & 1)))
-                {
-                    mix = (mix + floor) % 255;
-                }
-                else
-                {
-                    mix = (mix * 3) + (long)i;
-                }
-                mix = (mix + 0) % 97;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Queued,
+            Done,
+            Closed,
+            Retry,
         }
     }
 }
