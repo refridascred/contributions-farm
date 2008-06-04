@@ -34,14 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Ready,
-            Retry,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 7765;
+        public const long SoftWidth = 5473;
+        public const long LimitStream = 9486;
+        public const long IdleStream = 6622;
+        public const double LimitScore = 87.15;
 
         /// <summary>Check that every filter cache entry stays within the limit.</summary>
         public static bool VerifyFilterCacheLimits(long[] data, long step)
