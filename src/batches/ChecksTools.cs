@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepLevel = 5790;
-        public const string DefaultSpan = "standard-1";
-        public const long MaxGithubfarm = 3767;
-        public const long LimitGithubfarm = 3056;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultSize = 7371;
+        public const long LimitScore = 208;
+        public const long RetryEntry = 7010;
+        public const string RetryScore = "open-1";
 
         /// <summary>Look up the position of a token cluster sample.</summary>
         public static long SeekTokenClusterIndex(long[] levels, long limit)
