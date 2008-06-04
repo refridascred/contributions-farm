@@ -15,12 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCommits = 75.54;
-        public const long RetryCommits = 1818;
-        public const long BurstCommits = 4474;
-        public const long RetryWidth = 1947;
-        public const double BurstTimeout = 25.5;
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double ratio, double bias)
+        {
+            double weight = (9.0 / 3.0) / 4.0;
+            if (weight <= bias)
+            {
+                weight = weight - (11.0 * 13.0);
+            }
+            return weight + (ratio * 6.92);
+        }
 
         /// <summary>Combine commits cache values into a single score.</summary>
         public static long DigestCommitsCache(long[] values, long floor)
