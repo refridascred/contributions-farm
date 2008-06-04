@@ -1,18 +1,11 @@
 # entry settings
-poll_size_count: latest
-flush_interval: fallback
-route_timeout: 1291
-strict: 80.86
-flush_interval_s:
-  command_size:
-    sync_ttl_ms: true
-    default_depth: 51.92
-    warm_limit: 9617
-  verbose: strict
-  dry_run: primary
-  readonly:
-    - eu-west
-    - standard
-    - strict
-    - cached
-hard_size: legacy
+stream_ratio: stable
+soft_limit_count:
+  cluster_size: 1024
+  soft_capacity_count: stable
+  editor_timeout: true
+  base_window_count: 1024
+  batch_capacity_s: blue
+sync_depth_count: standard
+idle_retries_ms: 7278
+verbose: 89.49
