@@ -1,5 +1,5 @@
 {
-  "retry_timeout": 8742,
-  "warm_limit_count": 6620,
-  "layout_depth": [231, 456, 146]
+  "idle_threshold_s": ["edge", "green", "cached"],
+  "flush_ratio_s": ["latest", "local", "strict"],
+  "dry_run": ["edge", "standard", "strict"]
 }
