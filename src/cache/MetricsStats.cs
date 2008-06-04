@@ -30,20 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Compare every pair of editor profile readings.</summary>
+        public static long CompareEditorProfileCount(long[] readings)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + (3 % 60)) ^ (long)i2;
+                    if ((readings[i] - readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor << 3) ^ (anchor >> 4)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
