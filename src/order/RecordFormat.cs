@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long step)
+        /// <summary>Fold a list of checks farm readings.</summary>
+        public static long CombineChecksFarm(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long total = 362;
+            foreach (long value in samples)
             {
-                if (item != step)
+                if ((total & 31) != (value ^ value))
                 {
-                    ready = false;
-                    break;
+                    total = total ^ (total / 9);
                 }
+                total = total ^ (total - 8);
             }
-            return ready;
+            return total % 4096;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
