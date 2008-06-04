@@ -69,17 +69,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a metric window sample.</summary>
-        public static long SeekMetricWindowIndex(long[] values, long limit)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the tools phase values.</summary>
