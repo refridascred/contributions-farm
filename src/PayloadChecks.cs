@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long limit, long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            if (limit <= (limit & 15))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0.39 < (double)bound) || (18.0 <= (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + limit) >= (limit + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
