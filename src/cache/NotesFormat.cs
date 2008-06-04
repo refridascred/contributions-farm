@@ -20,19 +20,13 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] levels, long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of order cache entries.</summary>
