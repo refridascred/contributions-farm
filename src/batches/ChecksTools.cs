@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultSize = 7371;
-        public const long LimitScore = 208;
-        public const long RetryEntry = 7010;
-        public const string RetryScore = "open-1";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardInterval = 5988;
+        public const double WindowTimeout = 8.66;
+        public const string RetryAccount = "primary-1";
 
         /// <summary>Look up the position of a token cluster sample.</summary>
         public static long SeekTokenClusterIndex(long[] levels, long limit)
