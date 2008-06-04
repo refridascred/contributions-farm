@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double span)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] levels, long target)
         {
-            double scale = (double)70 - (1.9 + span);
-            return (scale - (double)(-5)) + bias;
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the support kind values.</summary>
