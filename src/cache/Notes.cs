@@ -14,23 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] readings, long step)
         {
-            long total = 6;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 7; i++)
+                if (((23 << 1) >= tally) && ((double)tally < (double)4))
                 {
-                    total = (total - (total << 3)) ^ (long)i;
-                }
-                total = (total - (sample * 5)) % 255;
-                if ((sample + sample) < (sample & 15))
-                {
-                    total = (total - (long)values.Length) % 101;
+                    tally = ((tally + 3) + sample) - step;
                 }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
