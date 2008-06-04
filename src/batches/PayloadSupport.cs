@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double rate, double offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] readings, long bound)
         {
-            double scale = (double)((-37) * 3);
-            if (scale > 2.0)
+            long mix = 6;
+            foreach (long datum in readings)
             {
-                scale = ((scale + scale) - rate) + offset;
+                if ((8 << 2) <= datum)
+                {
+                    mix = ((mix - (mix % 5)) % 101) - bound;
+                }
+                else
+                {
+                    mix = mix ^ (datum + 3);
+                }
             }
-            else
-            {
-                scale = scale - 8.35;
-            }
-            return scale + scale;
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
