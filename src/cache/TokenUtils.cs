@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -984;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (((score * 5) + (target - (long)levels.Length)) % 1000) ^ cell;
             }
-            return seen;
+            if (score < (-87))
+            {
+                score = ((score << 3) ^ (score / 2)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
