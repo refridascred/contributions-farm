@@ -31,13 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Done,
-            Pending,
-            Stale,
-            New,
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
