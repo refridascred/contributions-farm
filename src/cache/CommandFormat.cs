@@ -31,25 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long offset, long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long gap = offset ^ floor;
-            if (!((gap % 16) < floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + 3) < (floor & 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
