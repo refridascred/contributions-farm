@@ -57,31 +57,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long origin, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] levels, long seed)
         {
-            if ((limit ^ origin) < limit)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-643) / 5) != (origin - limit))
+                if (!((reading + seed) < reading))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit < (origin % 24))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
