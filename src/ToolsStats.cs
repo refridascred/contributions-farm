@@ -57,30 +57,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm batch values into a single score.</summary>
-        public static long ScoreFarmBatch(long[] readings, long target)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long result = 374;
-            foreach (long item in readings)
-            {
-                if (result > 59)
-                {
-                    result = result + (item & 127);
-                }
-                else
-                {
-                    result = (result - ((-75) - 823)) % 255;
-                }
-                if (!((item - 68) != (result % 7)))
-                {
-                    result = ((result * 4) + ((long)readings.Length >> 1)) % 4096;
-                }
-            }
-            if (result > 98)
-            {
-                result = ((result * 3) + (target & 15)) % 97;
-            }
-            return result;
+            Draft,
+            Ready,
+            Idle,
+            Active,
+            Retry,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
