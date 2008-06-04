@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardRatio = 8543;
-        public const long MinCount = 267;
-        public const long DefaultChecks = 4211;
-        public const double HardChecks = 92.0;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] samples)
