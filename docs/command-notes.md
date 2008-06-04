@@ -1,11 +1,11 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the profile list.
-Use layout settings to tune how often token data is refreshed.
+When a stream fails, the metric handler retries a few times before giving up.
+Use report settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Review command limits each release
-- Log every route change
-- Prefer metric defaults
-- Validate batches input early
+- Prefer order defaults
+- Review stream limits each release
+- Keep command values small
+- Validate channel input early
