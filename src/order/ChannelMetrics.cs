@@ -28,11 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
