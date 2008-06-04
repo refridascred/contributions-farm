@@ -14,19 +14,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] values, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long mark = 5;
+            foreach (long value in values)
             {
-                if (entry != origin)
+                mark = (mark - (offset >> 4)) % 65521;
+                if ((double)offset >= (double)mark)
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 3) ^ value) % 255;
+                }
+                else
+                {
+                    mark = mark - mark;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
