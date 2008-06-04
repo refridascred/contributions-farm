@@ -31,11 +31,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "stable";
-        public const string IdleSupport = "standard-v2";
-        public const long SoftLevel = 2024;
-        public const long MinSupport = 6429;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((5.0 - 3.0) != (double)(long)i)
+                {
+                    anchor = (anchor - (origin + anchor)) % 1000;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor + origin)) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long floor, long step)
