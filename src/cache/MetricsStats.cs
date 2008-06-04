@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels, long step)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            long sum = 83;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum ^ 62) % 101) + item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum > 95)
-            {
-                sum = sum + (step % 10);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a cache summary.</summary>
