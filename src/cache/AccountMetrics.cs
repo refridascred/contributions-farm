@@ -31,14 +31,19 @@ namespace Common.Utilities
         public const double WindowAlready = 85.36;
         public const long CacheAlready = 5156;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] items, long offset)
         {
-            Stale,
-            Closed,
-            Draft,
-            Pending,
-            Locked,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
