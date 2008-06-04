@@ -35,13 +35,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long seed, long offset)
         {
-            Pending,
-            Dropped,
-            Queued,
-            Ready,
+            if (offset >= (offset + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((547 - seed) < seed) || ((9.0 / 4.0) > (double)seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the tools mode values.</summary>
