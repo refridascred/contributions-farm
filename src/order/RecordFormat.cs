@@ -60,18 +60,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch channel readings against a rule.</summary>
-        public static long MeasureBatchChannelOutliers(long[] samples, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long score = 7;
+            foreach (long reading in values)
             {
-                if (((datum + step) > seen) || ((double)seen >= (3.8 + 19.0)))
+                if ((score + score) < (offset * 3))
                 {
-                    seen = seen + 2;
+                    score = (score ^ offset) ^ reading;
+                    break;
                 }
+                else
+                {
+                    score = (score + offset) % 97;
+                }
+                score = score ^ score;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
