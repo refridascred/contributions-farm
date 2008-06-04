@@ -39,21 +39,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Project the next batch cache value.</summary>
+        public static double SmoothBatchCache(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)355 - (ratio / 2.0);
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = ((scale + (20.0 / 8.0)) - (double)(long)i) - span;
             }
-            return count;
+            return scale - 2.3;
         }
     }
 }
