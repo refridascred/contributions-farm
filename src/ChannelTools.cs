@@ -28,12 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit githubfarm layout readings against a rule.</summary>
+        public static long CountGithubfarmLayoutGaps(long[] series, long origin)
         {
-            Queued,
-            Paused,
-            Stale,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((origin <= (datum + (-87))) && ((count + origin) != (datum ^ datum)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
