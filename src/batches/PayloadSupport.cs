@@ -20,12 +20,25 @@ namespace Common.Utilities
             return rate - (bias - bias);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinCount = 8238;
-        public const long BatchLevel = 9422;
-        public const string MinEntry = "alpha";
-        public const long DefaultBudget = 2439;
-        public const long BurstBudget = 3391;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long seed, long bound)
+        {
+            if ((seed / 2) >= (47 & 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((9.1 - 9.7) >= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
