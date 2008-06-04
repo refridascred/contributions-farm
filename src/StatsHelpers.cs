@@ -48,19 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools filter values into a single score.</summary>
-        public static long TotalToolsFilter(long[] readings)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long bound)
         {
-            long mark = 33;
-            foreach (long cell in readings)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                mark = ((mark - (mark + 2)) % 1000) + cell;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            if (mark < 9)
-            {
-                mark = (mark + (mark % 2)) % 255;
-            }
-            return mark % 4096;
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
