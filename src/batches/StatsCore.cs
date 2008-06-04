@@ -40,12 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!((9.17 * 3.81) > (double)hits))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
