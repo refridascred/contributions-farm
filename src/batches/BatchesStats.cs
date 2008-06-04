@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data, long origin)
+        /// <summary>Audit schema queue readings against a rule.</summary>
+        public static long AuditSchemaQueueHits(long[] values, long limit)
         {
-            long result = 237;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                result = (result + 7) % 101;
-                if ((sample & 3) > origin)
+                if ((limit + 925) <= (limit & 1))
                 {
-                    result = result + (329 ^ result);
-                }
-                if (origin < (origin + sample))
-                {
-                    break;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Adjust a profile reading.</summary>
