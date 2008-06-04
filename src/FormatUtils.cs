@@ -20,18 +20,18 @@ namespace Common.Utilities
             return load + 2.7;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] data)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!!((0.2 / 5.0) < (double)item))
+                if (((cell / 5) <= (matches - matches)) && (6.97 <= (double)matches))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the schema class values.</summary>
