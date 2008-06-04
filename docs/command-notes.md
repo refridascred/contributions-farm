@@ -1,12 +1,12 @@
 # Command notes
 
-Keep account and format names short and lowercase.
-Use contributi settings to tune how often farm data is refreshed.
-The report module keeps order values in sync with the batch cache.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Keep already and schema names short and lowercase.
+Each cache is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Review stats limits each release
-- Prefer order defaults
-- Log every filter change
-- Validate contributi input early
+- Validate support input early
+- Log every payload change
+- Prefer githubfarm defaults
+- Document new metric fields
