@@ -36,12 +36,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long offset)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark << 2) ^ (offset >> 3)) % 97;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
