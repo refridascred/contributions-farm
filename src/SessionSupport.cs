@@ -39,12 +39,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitTimeout = "standard-edge";
+        public const long DefaultStats = 1029;
+        public const long MaxStats = 541;
     }
 }
