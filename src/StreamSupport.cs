@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long StepStats = 3903;
         public const long IdleTimeout = 8391;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] items, long offset)
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = 954;
+            foreach (long cell in items)
+            {
+                anchor = ((anchor - (459 - cell)) % 101) - offset;
+            }
+            if (anchor < 5)
+            {
+                anchor = anchor ^ (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
