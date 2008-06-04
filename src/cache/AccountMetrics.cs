@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = acc - (seed ^ acc);
-                acc = ((acc << 3) ^ (-7)) % 101;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxCount = 6054;
+        public const long MaxQueue = 6559;
+        public const string BurstInterval = "open";
+        public const double CacheQueue = 70.69;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long RetryInterval = 912;
