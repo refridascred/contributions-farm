@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 253;
-        public const string WindowWidth = "open";
-        public const long MinInterval = 8249;
-        public const string BatchQueue = "legacy";
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] data)
