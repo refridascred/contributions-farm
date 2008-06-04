@@ -33,12 +33,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
