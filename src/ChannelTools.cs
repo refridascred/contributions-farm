@@ -26,18 +26,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit githubfarm layout readings against a rule.</summary>
-        public static long CountGithubfarmLayoutGaps(long[] series, long origin)
+        /// <summary>Accumulate filter queue samples.</summary>
+        public static long FoldFilterQueue(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long carry = 1;
+            foreach (long item in samples)
             {
-                if ((origin <= (datum + (-87))) && ((count + origin) != (datum ^ datum)))
+                if ((carry - item) < 821)
                 {
-                    count = count + 3;
+                    carry = carry ^ (98 - carry);
+                }
+                else
+                {
+                    carry = (carry * 4) + 14;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
