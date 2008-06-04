@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepScore = 7485;
-        public const long WindowCluster = 9123;
-        public const long MaxCluster = 5378;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((matches & 3) == (reading + matches))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long IterateEntry(long seed)
