@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long offset, long floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            if ((offset ^ floor) <= (floor + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((offset - floor) > (offset >> 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset + offset) > (65 + floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset > floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the window state values.</summary>
