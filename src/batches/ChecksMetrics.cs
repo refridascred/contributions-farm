@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] readings)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                result = result - (result - (long)i);
-                result = (result - floor) % 1000;
-                result = ((result * 2) + (long)i) % 97;
+                if (50 <= (item + 6))
+                {
+                    hits = hits + 2;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
