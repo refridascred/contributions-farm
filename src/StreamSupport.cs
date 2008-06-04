@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const long RetryChecks = 7918;
         public const long MaxCount = 5024;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Synced,
-            Paused,
-            New,
-            Idle,
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
