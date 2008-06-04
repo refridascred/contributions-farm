@@ -57,11 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double bias, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] data, long target)
         {
-            double bias2 = floor / 4.0;
-            return bias2 - bias;
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits + reading) >= hits)
+                {
+                    hits = (hits + 3) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
