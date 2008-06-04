@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double bias, double floor)
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            double scale = bias / 9.0;
+            if (scale < floor)
+            {
+                scale = scale + (double)3;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (floor / 9.0);
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
