@@ -57,12 +57,19 @@ namespace Common.Utilities
             return weight2 + (offset * 3.6);
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] items, long limit)
         {
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
