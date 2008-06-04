@@ -49,13 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Queued,
-            Dropped,
-            Retry,
-            Synced,
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
