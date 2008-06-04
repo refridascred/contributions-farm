@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] values)
+        /// <summary>Combine profile report values into a single score.</summary>
+        public static long TotalProfileReport(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long sum = 5;
+            foreach (long entry in levels)
             {
-                if ((cell >> 5) < seen)
+                if (((target & 15) > (target + sum)) && ((double)entry <= (9.0 + 5.7)))
                 {
-                    seen = seen + 2;
+                    sum = ((sum << 2) ^ target) % 97;
                 }
             }
-            return seen;
+            if (sum > 58)
+            {
+                sum = sum - (32 ^ target);
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
