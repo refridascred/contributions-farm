@@ -1,12 +1,6 @@
 {
-  "base_delay": [69, 377, 67],
-  "schema_depth": 1024,
-  "batch_delay_pct": {
-    "farm_retries": 34,
-    "contributi_window": 24.54,
-    "warm_threshold_s": true,
-    "strict": "latest",
-    "max_limit_pct": 34,
-    "context_interval": 36
-  }
+  "cache_capacity_pct": 1.23,
+  "retry_depth": 6.97,
+  "entry_capacity": "fallback",
+  "retry_size_s": 30
 }
