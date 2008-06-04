@@ -55,15 +55,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double gain, double bias)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            double rate = (bias * 2.2) + bias;
+            if (rate > (bias / 7.0))
             {
-                result = ((result * 4) + (long)i) % 97;
+                rate = rate - bias;
             }
-            return result;
+            return rate - gain;
         }
 
         /// <summary>Define window limits and defaults.</summary>
