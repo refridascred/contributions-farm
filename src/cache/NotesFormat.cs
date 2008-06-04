@@ -20,19 +20,13 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Validate route stats readings against a bound.</summary>
-        public static bool VerifyRouteStatsLimits(long[] values, long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Draft,
+            Locked,
+            Retry,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
