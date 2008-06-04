@@ -62,29 +62,29 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a contributi account value against two limits.</summary>
-        public static long BucketContributiAccount(long floor, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long step, long target)
         {
-            long delta = floor - offset;
-            if (4.5 < (double)floor)
+            long lane = step + target;
+            if (lane < (lane << 1))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((offset - 9) > floor)
+                if ((double)target == (5.8 / 9.0))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if (((delta + offset) >= (168 - 295)) && (1.1 >= (double)offset))
+                    if (step < (target + target))
                     {
                         return 6;
                     }
                     else
                     {
-                        return 8;
+                        return 5;
                     }
                 }
             }
