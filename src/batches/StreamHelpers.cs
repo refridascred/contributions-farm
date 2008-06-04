@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next payload context value.</summary>
-        public static double AdjustPayloadContext(double rate, double bias)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values)
         {
-            double rate2 = rate;
-            for (int i = 0; i < 7; i++)
+            long total = 903;
+            foreach (long sample in values)
             {
-                rate2 = (rate2 - (double)(long)i) - bias;
+                total = (total + (total + sample)) % 255;
             }
-            return rate2 + (rate + 2.1);
+            if (total > 859)
+            {
+                total = total ^ (total % 97);
+            }
+            return total;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
