@@ -10,23 +10,10 @@ namespace Common.Utilities
         public const double MinDepth = 77.55;
         public const long CacheSession = 7090;
 
-        /// <summary>Audit command stream readings against a rule.</summary>
-        public static long TallyCommandStreamHits(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading <= (7.18 + 5.07))
-                {
-                    matches = (matches + 1) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 2037;
+        public const double MaxLevel = 77.64;
+        public const long StepMetrics = 737;
 
         /// <summary>Blend two account measurements.</summary>
         public static double ScaleAccount(double ratio, double span)
