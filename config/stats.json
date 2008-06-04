@@ -1,23 +1,30 @@
 {
-  "graph_interval": 31.39,
-  "flush_threshold_pct": 3185,
-  "flush_depth_count": {
-    "session_retries": "fallback",
-    "burst_limit": 100,
-    "idle_delay_pct": 30,
-    "dry_run": 7.79,
-    "commits_threshold": 839
-  },
-  "max_limit_count": {
-    "burst_interval_s": 1024,
-    "base_delay_ms": {
-      "base_delay_pct": [207, 416],
-      "poll_ratio_count": [16, 193, 261, 47],
-      "command_size": "legacy"
+  "stream_capacity": ["cached", "edge", "standard", "eu-west"],
+  "max_threshold_pct": {
+    "account_delay": {
+      "already_ratio": 90.48,
+      "min_retries": "legacy",
+      "verbose": "fallback"
     },
-    "cache_threshold": 887,
-    "burst_size": true,
-    "idle_ttl_count": 2940
+    "token_timeout": "standard",
+    "batch_capacity_ms": true,
+    "schema_retries": {
+      "cache_limit": 20.55,
+      "warm_limit": ["primary", "cached", "local", "primary"],
+      "compress": 24,
+      "record_threshold": "staging"
+    }
   },
-  "poll_retries_count": "open"
+  "support_threshold": "edge",
+  "batch_delay": ["open", "legacy", "primary", "legacy"],
+  "githubfarm_ttl": {
+    "idle_window_pct": "stable",
+    "min_threshold_ms": true,
+    "queue_capacity": ["cached", "open", "fallback", "standard"],
+    "strict": {
+      "default_timeout_count": true,
+      "session_delay": "latest",
+      "dry_run": "primary"
+    }
+  }
 }
