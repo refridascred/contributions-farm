@@ -27,11 +27,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 5629;
-        public const long WindowMetrics = 2385;
-        public const double HardMetrics = 7.26;
-        public const long SoftDepth = 7830;
+        /// <summary>Validate metric farm readings against a bound.</summary>
+        public static bool CheckMetricFarmRange(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double SmoothSession(double weight, double offset)
