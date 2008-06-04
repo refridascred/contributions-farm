@@ -43,13 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public double Total { get; set; }
             public long Level { get; set; }
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
