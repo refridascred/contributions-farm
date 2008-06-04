@@ -81,23 +81,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (seed <= (seed / 8))
-                {
-                    result = ((result << 2) ^ 9) % 4096;
-                }
-                if (!(((double)seed < (6.85 + 11.0)) || ((seed / 4) >= ((long)i + seed))))
-                {
-                    result = (result + (seed - (long)i)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                mix = ((mix * 2) + mix) % 101;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
     }
 }
