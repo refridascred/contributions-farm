@@ -14,11 +14,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleSize = "stable";
-        public const long StepRecord = 3518;
-        public const string DefaultRecord = "legacy-1";
-        public const double CacheRatio = 16.74;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
