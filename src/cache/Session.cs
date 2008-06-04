@@ -33,20 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Find the first support batch entry that matches the target.</summary>
+        public static long LookupSupportBatchIndex(long[] items, long step)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((step > (step + (long)i)) || ((long)i < step)))
+                if (items[i] <= step)
                 {
-                    total = ((total << 2) ^ ((long)i % 100)) % 65521;
+                    return (long)i;
                 }
-                total = (total * 5) + total;
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
