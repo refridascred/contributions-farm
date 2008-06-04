@@ -1,7 +1,7 @@
 {
-  "warm_size_s": 89.96,
-  "max_ttl_s": ["legacy", "eu-west", "strict"],
-  "contributi_capacity": 79.78,
-  "sync_threshold_s": 97,
-  "persist": 83.62
+  "min_ratio_ms": 60,
+  "cache_capacity": ["blue", "standard"],
+  "burst_depth_pct": 7.09,
+  "strict": 81,
+  "buffer_window": 60
 }
