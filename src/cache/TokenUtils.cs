@@ -38,22 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the queue tools entries that pass the check.</summary>
-        public static long TallyQueueToolsHits(long[] samples, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] values)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long acc = 535;
+            foreach (long item in values)
             {
-                if ((325 + item) >= (item - 101))
+                if ((item + item) < (acc * 2))
                 {
-                    tally = (tally + 1) - floor;
+                    acc = acc - (item % 64);
                 }
-                else
+                if (((item - acc) >= item) || (acc <= (acc * 4)))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return acc % 4096;
         }
     }
 }
