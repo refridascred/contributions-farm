@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long SoftSchema = 6887;
         public const long SoftFactor = 8078;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Retry,
-            Active,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 9050;
+        public const long HardProfile = 4737;
+        public const long SoftBudget = 7023;
+        public const double MaxProfile = 76.29;
+        public const string CacheLevel = "alpha-1";
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TallyMetric(long[] levels)
