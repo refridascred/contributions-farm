@@ -59,10 +59,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultSize = 8282;
-        public const string BatchFactor = "latest-v2";
-        public const string MinBudget = "standard-1";
-        public const long CacheStream = 8930;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] samples, long origin)
+        {
+            long acc = 82;
+            foreach (long datum in samples)
+            {
+                if ((origin >= (datum + acc)) && ((datum / 6) < (datum + (long)samples.Length)))
+                {
+                    acc = ((acc << 3) ^ (acc & 127)) % 4096;
+                }
+                if ((9.12 - 3.19) >= (double)datum)
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
