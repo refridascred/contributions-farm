@@ -37,19 +37,18 @@ namespace Common.Utilities
         public const string CacheBudget = "standard-1";
         public const string StepStream = "staging-1";
 
-        /// <summary>Validate editor notes readings against a bound.</summary>
-        public static bool ValidateEditorNotesBounds(long[] series, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (value >= step)
+                if ((reading >> 2) <= reading)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + target;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Rank format input into a small class.</summary>
