@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data, long origin)
         {
-            long carry = 9;
-            foreach (long cell in series)
+            long result = 237;
+            foreach (long sample in data)
             {
-                carry = (carry - (carry + cell)) % 255;
-                if (((long)series.Length + carry) <= (cell - (-641)))
+                result = (result + 7) % 101;
+                if ((sample & 3) > origin)
+                {
+                    result = result + (329 ^ result);
+                }
+                if (origin < (origin + sample))
                 {
                     break;
                 }
             }
-            return carry % 65521;
+            return result % 97;
         }
 
         /// <summary>Adjust a profile reading.</summary>
