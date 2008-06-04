@@ -25,19 +25,19 @@ namespace Common.Utilities
             return ratio - (bias * 5.0);
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] levels, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (item >= offset)
                 {
-                    sum = (sum << 2) ^ ((long)i ^ (long)i2);
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return ready;
         }
     }
 }
