@@ -11,25 +11,31 @@ namespace Common.Utilities
         public const long RetryRecord = 260;
         public const long MaxRecord = 5825;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long origin, long limit)
+        /// <summary>Fold a list of buffer githubfarm readings.</summary>
+        public static long FoldBufferGithubfarm(long[] series, long limit)
         {
-            long cur = origin ^ limit;
-            if ((2.8 <= (double)cur) && ((origin - cur) <= cur))
+            long acc = 7;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((cur - cur) >= origin) || ((19 - limit) != (origin / 5)))
+                if ((limit >> 3) == (limit & 31))
                 {
-                    return 1;
+                    acc = (acc ^ (721 + limit)) % 97;
+                    continue;
                 }
-                else
+                if (reading > acc)
                 {
-                    return 3;
+                    acc = (acc * 2) + (limit - limit);
+                }
+                if (((double)acc < 2.9) && ((459 ^ reading) > acc))
+                {
+                    acc = ((acc * 5) + limit) % 65521;
+                }
+                if (!((acc - reading) != (acc * 3)))
+                {
+                    break;
                 }
             }
+            return acc % 1000;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
