@@ -70,17 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] values, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 97;
+            foreach (long cell in values)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((((anchor * 5) + (anchor << 1)) % 97) ^ cell) - floor;
             }
-            return -1;
+            return anchor;
         }
     }
 }
