@@ -41,13 +41,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] data)
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
