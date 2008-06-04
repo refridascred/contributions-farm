@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
