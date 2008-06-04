@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next stream channel value.</summary>
-        public static double ProjectStreamChannel(double weight, double offset)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            double drift = 0.3 - (weight + offset);
-            if (drift <= (drift * 4.31))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + 9.8;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift / 9.0)) + (double)(long)i;
-            }
-            return drift + (double)600;
+            return count;
         }
 
         /// <summary>Blend two checks batch measurements.</summary>
