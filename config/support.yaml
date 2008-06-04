@@ -1,14 +1,7 @@
 # support settings
-cache_depth_count: 46
-cache_timeout: staging
-soft_interval_pct:
-  - fallback
-  - local
-  - green
-  - latest
-strict: 500
-retry_delay:
-  - 236
-  - 203
-  - 347
-  - 338
+cache_limit:
+  soft_window: 2543
+  route_ttl: 10
+  sync_delay_pct: 100
+poll_ttl_s: 60
+cache_size: cached
