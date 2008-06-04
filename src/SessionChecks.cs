@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((reading & 31) <= reading)
+                if (seed >= sample)
                 {
-                    count = count + 2;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count editor order pairs that satisfy a relation.</summary>
