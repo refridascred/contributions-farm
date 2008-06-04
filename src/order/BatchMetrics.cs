@@ -70,38 +70,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long seed, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] items, long floor)
         {
-            if (((seed << 1) < (seed + step)) || (seed <= (step + step)))
+            long total = 345;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (step <= seed)
+                if ((9.2 + 9.0) == (double)(long)items.Length)
                 {
-                    return 5;
+                    total = (total ^ entry) % 65521;
                 }
                 else
                 {
-                    if ((seed + step) <= (seed + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step > (seed * 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    total = (total - (long)items.Length) % 4096;
                 }
             }
+            if (total > 550)
+            {
+                total = ((total << 3) ^ (floor * 5)) % 1000;
+            }
+            return total % 1000;
         }
     }
 }
