@@ -1,6 +1,6 @@
-id,level,label,active
-1,25,259,blue
-2,legacy,95.72,latest
-3,32.14,strict,54.6
-4,edge,fallback,842
-5,latest,885,strict
+id,label,level
+1,873,strict
+2,431,202
+3,12.59,edge
+4,515,44.16
+5,56.22,702
