@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] items, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches + 71) < (offset / 9))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
