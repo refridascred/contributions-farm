@@ -60,15 +60,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double ratio, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] readings, long step)
         {
-            double scale = ratio;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                scale = (scale + (offset / 2.0)) + (double)(long)i;
+                if (((cell + 38) <= (9 & 63)) && ((hits <= step) && ((hits % 3) < (hits + hits))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale + (double)97;
+            return hits;
         }
     }
 }
