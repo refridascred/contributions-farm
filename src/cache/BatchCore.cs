@@ -34,11 +34,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 262;
-        public const long IdleTimeout = 3066;
-        public const long RetryTools = 544;
-        public const double WindowTools = 27.26;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)tally <= (double)offset)
+                {
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsMatches(long[] items)
