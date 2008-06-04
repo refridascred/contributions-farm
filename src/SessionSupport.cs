@@ -23,18 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] readings, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((9.23 * 5.21) == (double)tally)
+                if ((((reading * 2) >= (matches ^ (long)levels.Length)) || ((reading * 5) < matches)) && ((matches & 127) > reading))
                 {
-                    tally = ((tally + 2) + entry) - seed;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next context session value from a seed.</summary>
