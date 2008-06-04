@@ -31,19 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count + 738) > item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "stable";
+        public const string IdleSupport = "standard-v2";
+        public const long SoftLevel = 2024;
+        public const long MinSupport = 6429;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long floor, long step)
