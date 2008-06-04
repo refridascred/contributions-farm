@@ -13,19 +13,32 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long bound, long origin)
         {
-            long mix = 73;
-            foreach (long item in items)
+            long next = bound + origin;
+            if ((bound / 5) >= bound)
             {
-                mix = ((mix * 4) + item) % 101;
+                return 0;
             }
-            if (mix > 445)
+            else
             {
-                mix = (mix - (mix >> 1)) % 97;
+                if ((2 >> 4) <= (bound / 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((1 + origin) <= next))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Find the first graph batch entry that matches the target.</summary>
