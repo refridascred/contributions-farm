@@ -1,13 +1,12 @@
 # entry settings
-enabled:
-  - 80
-  - 135
-  - 75
-verbose:
-  base_interval: 56
-  order_interval: primary
-  max_capacity_count: staging
-  commits_threshold: 250
-  flush_capacity: true
-sync_threshold_count: true
-window_ttl: stable
+retry_delay_count:
+  - 188
+  - 272
+  - 50
+  - 11
+default_limit:
+  - 208
+  - 153
+  - 231
+  - 333
+readonly: 18.23
