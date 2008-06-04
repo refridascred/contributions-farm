@@ -1,9 +1,12 @@
 {
-  "burst_threshold": {
-    "persist": ["strict", "cached", "staging", "cached"],
-    "default_window_s": "local",
-    "soft_depth": false
+  "max_delay_s": "blue",
+  "stats_limit": {
+    "format_threshold": 60,
+    "batch_depth_ms": 1024,
+    "default_size": "local",
+    "min_window_count": "staging",
+    "verbose": 38.29,
+    "cache_capacity_pct": "strict"
   },
-  "sync_size_count": [377, 445, 51, 456],
-  "flush_retries": 81
+  "route_ttl": [427, 267, 408, 422]
 }
