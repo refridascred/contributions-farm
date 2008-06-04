@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] readings, long seed)
+        /// <summary>Measure how many metrics queue samples are out of range.</summary>
+        public static long CountMetricsQueueHits(long[] levels)
         {
-            long mix = 76;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((mix % 24) >= mix)
+                if (item <= (5 + count))
                 {
-                    mix = ((((mix << 3) ^ (132 << 1)) % 65521) ^ value) - seed;
+                    count = count + 1;
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
