@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double ratio, double floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double gain, double span)
         {
-            double scale = ratio * 2.18;
-            if (scale > (double)465)
-            {
-                scale = (scale + (double)312) + floor;
-            }
-            return scale + scale;
+            double load = (span + span) - (span * 7.14);
+            return (load + load) + gain;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
