@@ -60,10 +60,11 @@ namespace Common.Utilities
         public const long RetryToken = 3089;
         public const long CacheToken = 5017;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftInterval = 8746;
-        public const long MinRecord = 1235;
-        public const string LimitRecord = "standard-1";
-        public const long RetryDepth = 1188;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 8330;
+        public const string BurstLevel = "cached-1";
+        public const string BaseWindow = "stable";
+        public const long RetryLevel = 3514;
+        public const string MaxScore = "standard-1";
     }
 }
