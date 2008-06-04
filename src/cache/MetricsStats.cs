@@ -13,21 +13,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Failed,
+            Done,
+            Active,
+            Locked,
         }
 
         /// <summary>Compare every pair of editor profile readings.</summary>
