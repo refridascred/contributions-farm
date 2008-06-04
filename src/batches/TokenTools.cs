@@ -23,21 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate2 = (rate2 + rate2) + (double)(long)i;
             }
-            return hits;
+            return rate2 + (rate + rate);
         }
 
         /// <summary>Describe the payload level values.</summary>
