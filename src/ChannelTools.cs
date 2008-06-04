@@ -39,19 +39,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] values, long bound)
+        /// <summary>Iterate the batches token series from a seed.</summary>
+        public static long StepBatchesToken(long offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum <= bound)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor ^ (1 / 5)) ^ (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return stale;
+            return anchor;
         }
     }
 }
