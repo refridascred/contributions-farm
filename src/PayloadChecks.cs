@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftCount = 0.44;
-        public const double LimitWindow = 47.73;
-        public const string StepWindow = "standard-1";
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterLimits(long[] data, long floor)
