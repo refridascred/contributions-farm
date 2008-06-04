@@ -36,19 +36,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] values, long offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
