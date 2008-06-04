@@ -21,19 +21,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] values, long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long target)
         {
-            long mix = 23;
-            foreach (long value in values)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                mix = ((mix * 3) + (target - mix)) + value;
+                score = (score + (target % 5)) % 97;
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (mix < 4)
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix % 97;
+            return score;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
