@@ -1,5 +1,36 @@
 # support settings
-metrics_delay: legacy
-batch_depth_s: 19.1
-sync_timeout_pct: 22.32
-strict: 250
+retry_depth_s:
+  flush_delay: green
+  retry_size: 94.23
+  record_ratio: 95.87
+  warm_size_s: 74.5
+token_depth: latest
+batch_ratio:
+  window_capacity: 663
+  counter_size: false
+  compress: edge
+  cache_size_pct:
+    - primary
+    - green
+  enabled: 1391
+stats_timeout: 7
+githubfarm_capacity:
+  hard_retries: edge
+  farm_ratio:
+    - 327
+    - 79
+    - 411
+  audit: 2790
+  layout_ratio: false
+  base_limit_s:
+    retry_delay_ms: 80
+    hard_retries:
+      - 358
+      - 175
+      - 427
+      - 177
+    cache_limit_ms: primary
+    sync_ratio: 23.62
+    strict: edge
+    profile_ratio: blue
+  profile_size: staging
