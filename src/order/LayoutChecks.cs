@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long floor, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long step)
         {
-            long gap = floor - limit;
-            if ((5 - limit) == (2 + 7))
+            bool found = true;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit <= (floor & 1))
+                if (datum >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor ^ floor) != (gap & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
