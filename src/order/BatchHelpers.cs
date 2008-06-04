@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a commits order value against two limits.</summary>
-        public static long RankCommitsOrder(long step, long seed)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long offset = step - seed;
-            if ((seed + offset) == ((-302) & 31))
-            {
-                return 2;
-            }
-            else
-            {
-                if (8.8 >= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed * 4) > (offset & 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Queued,
+            Done,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a cache stats.</summary>
