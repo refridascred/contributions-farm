@@ -52,12 +52,12 @@ namespace Common.Utilities
         public const string StepTools = "fallback-v2";
         public const double IdleCount = 92.08;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Queued,
-            Closed,
-            Dropped,
+            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
