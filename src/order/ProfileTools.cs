@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinWidth = "legacy-edge";
-        public const double MinDepth = 77.55;
-        public const long CacheSession = 7090;
+        /// <summary>Derive the next already layout value from a seed.</summary>
+        public static long StepAlreadyLayout(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MaxMetrics = 2037;
