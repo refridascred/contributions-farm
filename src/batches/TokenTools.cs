@@ -46,10 +46,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 3225;
-        public const string MinFactor = "strict";
-        public const long IdleContributi = 1322;
-        public const long BatchContributi = 6258;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
