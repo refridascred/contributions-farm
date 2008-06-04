@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] data)
         {
-            Active,
-            Synced,
-            Queued,
-            Pending,
+            long result = 210;
+            foreach (long item in data)
+            {
+                if ((double)result == (6.11 - 15.0))
+                {
+                    result = (((result << 3) ^ ((long)data.Length ^ result)) % 255) + item;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result - 617)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate entry account readings against a bound.</summary>
