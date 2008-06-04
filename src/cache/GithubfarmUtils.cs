@@ -23,17 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a counter metrics sample.</summary>
-        public static long FindCounterMetricsIndex(long[] series, long seed)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
