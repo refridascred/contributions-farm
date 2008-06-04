@@ -39,15 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] items, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] values)
         {
             long seen = 0;
-            foreach (long entry in items)
+            foreach (long entry in values)
             {
-                if ((double)(long)items.Length <= (16.0 * 5.0))
+                if ((56 - entry) > (6 + entry))
                 {
-                    seen = ((seen + 2) + entry) - target;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
