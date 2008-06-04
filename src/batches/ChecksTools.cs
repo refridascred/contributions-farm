@@ -38,10 +38,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 148;
-        public const string SoftChecks = "standard";
-        public const long MinTimeout = 5721;
-        public const long BurstSpan = 6867;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
