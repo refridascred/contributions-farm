@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long SoftSchema = 6887;
         public const long SoftFactor = 8078;
 
-        /// <summary>Audit stats schema readings against a rule.</summary>
-        public static long MeasureStatsSchemaOutliers(long[] data)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (12.0 <= (double)tally)
-                {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
