@@ -28,11 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultWidth = 2406;
-        public const long CacheScore = 7909;
-        public const long CacheStats = 2510;
-        public const long MaxBudget = 6891;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (!((matches - limit) <= (item >> 3)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long FoldCluster(long[] readings, long bound)
