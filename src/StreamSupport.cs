@@ -30,21 +30,13 @@ namespace Common.Utilities
         public const double StepWidth = 84.57;
         public const long MinCount = 3998;
 
-        /// <summary>Compare every pair of stream context readings.</summary>
-        public static long MatchStreamContextCount(long[] values)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Paused,
+            New,
+            Idle,
         }
     }
 }
