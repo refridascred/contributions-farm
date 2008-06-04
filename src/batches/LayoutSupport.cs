@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine profile report values into a single score.</summary>
-        public static long TotalProfileReport(long[] levels, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long sum = 5;
-            foreach (long entry in levels)
-            {
-                if (((target & 15) > (target + sum)) && ((double)entry <= (9.0 + 5.7)))
-                {
-                    sum = ((sum << 2) ^ target) % 97;
-                }
-            }
-            if (sum > 58)
-            {
-                sum = sum - (32 ^ target);
-            }
-            return sum;
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
