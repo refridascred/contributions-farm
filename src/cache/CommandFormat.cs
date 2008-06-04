@@ -41,9 +41,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "strict";
-        public const long LimitFactor = 8913;
-        public const long RetrySize = 928;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (tally <= (bound + tally))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
     }
 }
