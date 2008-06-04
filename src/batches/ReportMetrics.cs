@@ -20,11 +20,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 5206;
-        public const double WindowFactor = 42.85;
-        public const long RetrySession = 6921;
-        public const string HardSession = "alpha-1";
-        public const long CacheSession = 5233;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (27 > (item ^ 5))
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
+        }
     }
 }
