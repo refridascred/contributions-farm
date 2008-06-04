@@ -87,24 +87,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long origin, long step)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if ((step + origin) <= (step - 72))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin << 2) > origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Queued,
+            Done,
+            Paused,
+            Idle,
+            Closed,
         }
     }
 }
