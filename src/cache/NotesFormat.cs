@@ -22,22 +22,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit batches stats readings against a rule.</summary>
-        public static long MeasureBatchesStatsOutliers(long[] readings)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (300 <= (tally % 7))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
