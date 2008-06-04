@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const double MinCluster = 65.98;
         public const string DefaultFactor = "open";
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] items)
-        {
-            long anchor = 75;
-            foreach (long sample in items)
-            {
-                if ((6.66 <= (double)anchor) && ((sample ^ sample) > (731 >> 5)))
-                {
-                    anchor = (anchor + (anchor - anchor)) % 97;
-                }
-            }
-            if (anchor > 47)
-            {
-                anchor = ((anchor << 3) ^ (anchor << 1)) % 4096;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 6365;
+        public const long WindowMetric = 1298;
+        public const double CacheMetric = 27.74;
+        public const string LimitTimeout = "primary-v2";
+        public const string CacheScore = "staging-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 6559;
