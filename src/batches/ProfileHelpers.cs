@@ -38,22 +38,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of record stream readings.</summary>
-        public static long TotalRecordStream(long[] samples, long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long step)
         {
-            long result = -9;
-            foreach (long reading in samples)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)result < (9.96 * 6.23))
+                if ((0.7 + 19.0) == (double)carry)
                 {
-                    result = (result - reading) % 1000;
+                    carry = (carry << 2) ^ (carry - carry);
                 }
+                double gain = (17.0 / 9.0) / 2.0;
+                if (13.0 >= gain)
+                {
+                    gain = gain + (gain / 5.0);
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            if (result < 77)
-            {
-                result = ((result * 5) + origin) % 1000;
-            }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Accumulate report farm samples.</summary>
