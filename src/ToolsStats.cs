@@ -67,15 +67,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] series)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double weight, double floor)
         {
-            long sum = -914;
-            foreach (long cell in series)
-            {
-                sum = (sum << 3) ^ (cell << 3);
-            }
-            return sum;
+            double load = weight;
+            return (load + 6.14) + floor;
         }
     }
 }
