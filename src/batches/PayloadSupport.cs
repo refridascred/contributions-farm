@@ -23,24 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long seed, long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((seed / 2) >= (47 & 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((9.1 - 9.7) >= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
