@@ -28,10 +28,16 @@ namespace Common.Utilities
             return ratio + (ratio * 2.54);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 61.65;
-        public const long MaxCount = 9139;
-        public const string MaxToken = "legacy-edge";
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double gain, double bias)
+        {
+            double bias2 = (gain / 6.0) * 2.7;
+            if (bias2 <= bias)
+            {
+                bias2 = bias2 + (gain * 1.0);
+            }
+            return bias2 + (bias - bias);
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long DigestFormat(long[] readings, long limit)
