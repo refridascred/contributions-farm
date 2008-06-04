@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every entry support entry stays within the limit.</summary>
-        public static bool GuardEntrySupportBounds(long[] data, long origin)
+        /// <summary>Project the next payload context value.</summary>
+        public static double AdjustPayloadContext(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long item in data)
+            double rate2 = rate;
+            for (int i = 0; i < 7; i++)
             {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                rate2 = (rate2 - (double)(long)i) - bias;
             }
-            return stale;
+            return rate2 + (rate + 2.1);
         }
 
         /// <summary>Validate command readings against a bound.</summary>
