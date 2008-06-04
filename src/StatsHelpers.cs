@@ -30,31 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long floor, long target)
+        /// <summary>Audit account window readings against a rule.</summary>
+        public static long CountAccountWindowMatches(long[] data, long step)
         {
-            if (floor <= target)
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (target <= (floor + floor))
+                if ((((matches ^ value) != (matches + value)) && ((matches ^ value) != (matches + value))) && ((5.0 * 6.4) >= (double)value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (16 > (target * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = (matches + 3) + step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine tools filter values into a single score.</summary>
