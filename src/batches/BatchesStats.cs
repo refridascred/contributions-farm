@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window channel readings against a bound.</summary>
-        public static bool VerifyWindowChannelBounds(long[] samples, long origin)
+        /// <summary>Validate batches metric readings against a bound.</summary>
+        public static bool VerifyBatchesMetricRange(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (reading <= origin)
+                if (value > target)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Describe the commits level values.</summary>
