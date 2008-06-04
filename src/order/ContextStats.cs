@@ -30,14 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 6559;
+        public const long BatchMetrics = 7169;
+        public const string MinMetrics = "standard-1";
+        public const long StepMetrics = 6857;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
