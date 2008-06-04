@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in stable edge blue strict; do
+    log "checking ${item}"
+done
+
 total=0
 for i in $(seq 1 3); do
-    total=$((total + i * 5))
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-CHANNEL_LIMIT=402
-log "limit is ${CHANNEL_LIMIT}"
