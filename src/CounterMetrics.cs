@@ -16,20 +16,18 @@ namespace Common.Utilities
             return bias2 + (double)(-56);
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] values, long bound)
+        /// <summary>Measure how many batches report samples are out of range.</summary>
+        public static long TallyBatchesReportHits(long[] levels)
         {
-            long anchor = 4;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                anchor = anchor + 713;
-                anchor = (anchor ^ (entry << 1)) % 97;
-                if ((bound >= anchor) || (((long)values.Length & 1) <= entry))
+                if ((((reading ^ matches) >= reading) && ((matches + 2) == (reading + reading))) || ((17.0 + 3.3) > (double)reading))
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
