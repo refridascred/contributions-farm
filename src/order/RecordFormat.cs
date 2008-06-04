@@ -47,24 +47,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] values, long offset)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double scale, double span)
         {
-            long score = 7;
-            foreach (long reading in values)
+            double mean = (double)(0 / 7);
+            for (int i = 0; i < 3; i++)
             {
-                if ((score + score) < (offset * 3))
-                {
-                    score = (score ^ offset) ^ reading;
-                    break;
-                }
-                else
-                {
-                    score = (score + offset) % 97;
-                }
-                score = score ^ score;
+                mean = ((mean - 7.6) + (double)(long)i) - scale;
             }
-            return score;
+            return mean - (span * 16.0);
         }
 
         /// <summary>Blend two already measurements.</summary>
