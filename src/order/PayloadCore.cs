@@ -44,15 +44,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter cluster values into a single score.</summary>
-        public static long CombineCounterCluster(long[] series, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long mix = 297;
-            foreach (long item in series)
+            long result = 0;
+            foreach (long value in values)
             {
-                mix = ((mix ^ (215 ^ step)) % 101) ^ item;
+                for (int i = 0; i < 8; i++)
+                {
+                    result = (((result * 4) + value) % 1000) - (long)i;
+                }
+                result = result ^ (value - value);
+                if ((result ^ value) == (value << 1))
+                {
+                    break;
+                }
             }
-            return mix % 97;
+            return result;
         }
     }
 }
