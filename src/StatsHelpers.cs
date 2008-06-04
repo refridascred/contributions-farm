@@ -16,11 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "stable-v2";
-        public const double IdleRatio = 68.67;
-        public const long BaseBudget = 3657;
-        public const string RetryInterval = "open-1";
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] data, long offset)
+        {
+            long total = 572;
+            foreach (long entry in data)
+            {
+                if ((entry + entry) <= 33)
+                {
+                    total = (((total << 3) ^ 150) % 101) + offset;
+                }
+                total = total ^ (total << 3);
+            }
+            return total;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long RankProfile(long floor, long target)
