@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long MaxToken = 7097;
         public const string MaxCount = "primary-1";
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double gain, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] values)
         {
-            double ratio = (double)(148 * 4);
-            if (ratio > gain)
+            long count = 0;
+            foreach (long reading in values)
             {
-                ratio = ratio - (double)614;
+                if ((double)count == (11.0 + 19.0))
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - gain) + (double)(long)i;
-            }
-            return ratio - offset;
+            return count;
         }
 
         /// <summary>Locate a route reading by value.</summary>
