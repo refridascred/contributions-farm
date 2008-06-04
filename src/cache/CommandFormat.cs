@@ -41,10 +41,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxFactor = 4987;
-        public const double StepScore = 7.63;
-        public const double WindowCount = 82.06;
-        public const long BatchCommits = 5994;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((count * 3) > (count ^ value))
+                {
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
