@@ -31,14 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            Synced,
-            Retry,
-            Paused,
-            Idle,
-            Pending,
+            long acc = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (step >= (acc * 4))
+                {
+                    acc = acc ^ step;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
