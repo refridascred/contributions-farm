@@ -33,19 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] series, long origin)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
