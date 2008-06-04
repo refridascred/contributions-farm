@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long BatchScore = 1692;
         public const string CacheCount = "stable-edge";
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] series)
         {
-            long hits = 0;
+            long seen = 0;
             foreach (long entry in series)
             {
-                if ((9 - 0) < (entry * 5))
+                if ((107 * 5) == (entry - entry))
                 {
-                    hits = hits + 2;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
