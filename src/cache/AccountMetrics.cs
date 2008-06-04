@@ -31,19 +31,15 @@ namespace Common.Utilities
         public const double WindowAlready = 85.36;
         public const long CacheAlready = 5156;
 
-        /// <summary>Check that every metric counter entry stays within the limit.</summary>
-        public static bool GuardMetricCounterBounds(long[] levels, long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            double drift = (weight + weight) - floor;
+            if (drift <= (drift - floor))
             {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift + weight;
             }
-            return valid;
+            return drift + (double)(-882);
         }
 
         /// <summary>Define token limits and defaults.</summary>
