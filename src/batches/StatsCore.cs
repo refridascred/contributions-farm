@@ -54,18 +54,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stream order samples are out of range.</summary>
-        public static long AuditStreamOrderOutliers(long[] values)
+        /// <summary>Compare every pair of metrics report readings.</summary>
+        public static long MatchMetricsReportCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits + hits) != (item & 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
