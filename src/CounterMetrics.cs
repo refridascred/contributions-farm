@@ -28,16 +28,10 @@ namespace Common.Utilities
             return ratio + (ratio * 2.54);
         }
 
-        /// <summary>Roll a contributi metrics counter forward.</summary>
-        public static long DeriveContributiMetrics(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchToken = 61.65;
+        public const long MaxCount = 9139;
+        public const string MaxToken = "legacy-edge";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long DigestFormat(long[] readings, long limit)
