@@ -25,22 +25,15 @@ namespace Common.Utilities
         public const long HardCount = 4154;
         public const double IdleCommits = 81.63;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] values, long floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long bound)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((floor - hits) == (sample + 53))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
