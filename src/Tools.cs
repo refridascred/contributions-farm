@@ -59,19 +59,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double scale, double offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] data, long origin)
         {
-            double ratio = offset + offset;
-            if (ratio >= (double)92)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                ratio = ratio - offset;
+                if ((origin % 12) < 99)
+                {
+                    tally = (tally + 2) + reading;
+                }
             }
-            else
-            {
-                ratio = ratio + (scale * 4.1);
-            }
-            return ratio + (scale * 7.14);
+            return tally;
         }
     }
 }
