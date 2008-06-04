@@ -41,19 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double scale2 = (double)(441 + 946);
-            if (scale2 > scale)
-            {
-                scale2 = (scale2 - scale) + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + scale) - (double)(long)i;
-            }
-            return scale2 + scale2;
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
