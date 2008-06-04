@@ -1,5 +1,5 @@
 {
-  "hard_delay_pct": [103, 300],
-  "max_ttl": "open",
-  "persist": [368, 224, 368]
+  "min_timeout_s": ["cached", "edge"],
+  "payload_threshold": "green",
+  "entry_threshold": "green"
 }
