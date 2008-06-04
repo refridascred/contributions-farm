@@ -1,8 +1,9 @@
-id,region,ratio,state,owner
-1,latest,44.18,90.17,primary
-2,184,open,green,307
-3,strict,8.29,blue,open
-4,fallback,legacy,47.54,75.95
-5,251,64,fallback,38.13
-6,590,staging,846,31.96
-7,50.98,blue,edge,fallback
+id,score,token,count,rank
+1,strict,585,39.81,legacy
+2,6.56,951,75.29,latest
+3,685,latest,788,167
+4,306,green,879,51.26
+5,fallback,42.86,845,cached
+6,83.34,latest,706,490
+7,staging,229,staging,284
+8,672,152,local,open
