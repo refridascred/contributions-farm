@@ -45,27 +45,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of cluster window readings.</summary>
-        public static long TotalClusterWindow(long[] readings, long seed)
-        {
-            long carry = 7;
-            foreach (long reading in readings)
-            {
-                if ((reading << 3) <= (seed << 1))
-                {
-                    carry = (carry * 2) + (reading + seed);
-                }
-                else
-                {
-                    carry = (carry - (3 >> 3)) % 65521;
-                }
-            }
-            if (carry < 6)
-            {
-                carry = (carry << 2) ^ (66 >> 2);
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 6.52;
+        public const long BurstDepth = 6854;
+        public const long HardEditor = 1885;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long SeriesBuffer(long target)
