@@ -33,21 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)matches == (13.0 - 7.0)))
                 {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = ((matches + 1) + entry) - step;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
