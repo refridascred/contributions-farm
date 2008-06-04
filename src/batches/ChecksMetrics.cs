@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 227;
-        public const string MinDepth = "primary";
-        public const string DefaultCounter = "open-edge";
-        public const long IdleCounter = 7897;
-        public const long LimitDepth = 3502;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (target <= count)
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesLimits(long[] series, long step)
