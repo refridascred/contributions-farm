@@ -1,15 +1,7 @@
 # entry settings
-profile_limit: staging
-max_interval_count: 38
-flush_interval_count:
-  batch_capacity: latest
-  retry_threshold_count:
-    - fallback
-    - open
-    - primary
-    - staging
-  tools_retries: legacy
-  persist: stable
-  counter_size: false
-  base_capacity_pct: 58
-default_size_ms: strict
+flush_ratio_count: 3798
+batch_interval_pct: edge
+readonly: 66.01
+default_ratio: blue
+idle_retries_count: 7157
+cache_window: 78.51
