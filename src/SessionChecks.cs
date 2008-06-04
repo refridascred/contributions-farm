@@ -23,15 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] data, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] values)
         {
             long hits = 0;
-            foreach (long sample in data)
+            foreach (long sample in values)
             {
-                if (seed >= sample)
+                if (((hits % 2) != (hits ^ sample)) || ((hits + hits) > (-80)))
                 {
-                    hits = hits + 2;
+                    hits = hits + 3;
                 }
             }
             return hits;
