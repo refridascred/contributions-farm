@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxWindow = "standard-1";
-        public const string IdleWindow = "strict-1";
-        public const long SoftFactor = 2925;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double ScaleWindow(double rate, double floor)
