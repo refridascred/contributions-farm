@@ -53,10 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLevel = "stable-1";
-        public const string MinLayout = "strict-1";
-        public const long HardDepth = 5780;
-        public const long BaseLayout = 3358;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Done,
+            Active,
+            Ready,
+        }
     }
 }
