@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const long WindowToken = 1653;
         public const long BurstToken = 7175;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 7456;
-        public const long BaseGraph = 535;
-        public const long IdleLevel = 1789;
-        public const long HardRatio = 4144;
-        public const double DefaultInterval = 11.78;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
