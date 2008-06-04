@@ -23,38 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stats window pair into a bucket.</summary>
-        public static long RankStatsWindow(long bound, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] data)
         {
-            if ((origin - bound) <= (origin + origin))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound <= (bound % 64))
+                if (matches > ((-685) ^ matches))
                 {
-                    return 5;
+                    matches = (matches + 3) + entry;
                 }
                 else
                 {
-                    if ((1.0 * 0.46) != (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
