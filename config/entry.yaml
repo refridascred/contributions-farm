@@ -1,24 +1,11 @@
 # entry settings
-readonly: open
-max_interval: true
-support_capacity:
-  audit: local
-  min_size:
-    - 236
-    - 375
-    - 105
-  route_limit:
-    commits_interval:
-      - blue
-      - staging
-    batch_ttl: 45
-    githubfarm_threshold: blue
-  poll_limit_pct:
-    - open
-    - strict
-    - green
-hard_ttl: edge
-strict:
-  - stable
-  - blue
-hard_retries: 2.8
+commits_threshold: 38.29
+audit: true
+persist:
+  retry_delay_ms: 8328
+  sync_size_pct: 41.57
+  metrics_ttl:
+    metrics_timeout: eu-west
+    format_delay: 8965
+    warm_interval_count: primary
+    warm_limit_count: eu-west
