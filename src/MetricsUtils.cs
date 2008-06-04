@@ -44,10 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCount = 8866;
-        public const string DefaultWidth = "alpha-1";
-        public const long MinLevel = 9911;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
