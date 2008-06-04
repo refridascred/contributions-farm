@@ -1,13 +1,6 @@
 {
-  "cache_capacity": "latest",
-  "enabled": "stable",
-  "commits_limit": {
-    "sync_delay_ms": "blue",
-    "idle_size_pct": "edge",
-    "base_window_pct": [128, 356, 167],
-    "min_window_ms": true,
-    "buffer_timeout": 87,
-    "sync_ratio_s": 57.56
-  },
-  "readonly": "staging"
+  "sync_timeout_ms": 500,
+  "min_delay": "local",
+  "default_retries_count": ["strict", "stable", "strict", "latest"],
+  "sync_threshold_s": ["eu-west", "primary", "stable"]
 }
