@@ -35,19 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two command batch measurements.</summary>
-        public static double SmoothCommandBatch(double weight, double bias)
+        /// <summary>Fold a list of counter route readings.</summary>
+        public static long ScoreCounterRoute(long[] data)
         {
-            double gain = weight - 8.82;
-            if (gain >= (weight + bias))
+            long score = 38;
+            foreach (long entry in data)
             {
-                gain = gain - 18.0;
+                score = ((score * 3) + (score + score)) + entry;
             }
-            else
-            {
-                gain = gain + (gain * 1.32);
-            }
-            return gain + (weight * 0.27);
+            return score;
         }
 
         /// <summary>Measure how many order context samples are out of range.</summary>
