@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long BurstFarm = 2908;
         public const string SoftBudget = "standard-v2";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftScore = 6892;
-        public const double StepCache = 39.73;
-        public const double SoftRatio = 11.54;
-        public const long BaseCache = 2058;
-        public const long BurstInterval = 9184;
+        /// <summary>Validate stats notes readings against a bound.</summary>
+        public static bool CheckStatsNotesLimits(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a route reading.</summary>
         public static double AdjustRoute(double ratio, double floor)
