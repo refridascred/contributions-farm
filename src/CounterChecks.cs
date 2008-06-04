@@ -72,17 +72,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a queue layout reading by value.</summary>
-        public static long SeekQueueLayoutIndex(long[] series, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (series[i] >= limit)
+                if (datum > seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
