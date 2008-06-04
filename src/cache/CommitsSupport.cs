@@ -47,17 +47,21 @@ namespace Common.Utilities
         public const long BurstDepth = 6854;
         public const long HardEditor = 1885;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] series, long target)
+        /// <summary>Count tools notes pairs that satisfy a relation.</summary>
+        public static long PairToolsNotesCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
