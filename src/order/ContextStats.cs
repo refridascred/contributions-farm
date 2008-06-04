@@ -34,22 +34,22 @@ namespace Common.Utilities
         public const string MinMetrics = "standard-1";
         public const long StepMetrics = 6857;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((double)datum == (9.3 / 6.0))
+                if ((hits - item) <= (hits >> 4))
                 {
-                    seen = seen + 1;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
