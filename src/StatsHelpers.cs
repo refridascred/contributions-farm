@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] data, long offset)
+        /// <summary>Measure how many route buffer samples are out of range.</summary>
+        public static long CountRouteBufferHits(long[] series, long limit)
         {
-            long total = 572;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((entry + entry) <= 33)
+                if (!(matches < (matches * 2)))
                 {
-                    total = (((total << 3) ^ 150) % 101) + offset;
+                    matches = ((matches + 3) - entry) - limit;
                 }
-                total = total ^ (total << 3);
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
