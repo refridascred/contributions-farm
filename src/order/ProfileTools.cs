@@ -28,13 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Audit window context readings against a rule.</summary>
+        public static long TallyWindowContextOutliers(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (((9 + matches) >= (sample + sample)) || ((double)matches >= (17.0 / 7.0)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
