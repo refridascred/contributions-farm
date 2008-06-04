@@ -42,18 +42,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of record support entries.</summary>
-        public static long WeighRecordSupport(long[] data, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            long anchor = 60;
-            foreach (long reading in data)
+            long score = 4;
+            foreach (long datum in data)
             {
-                if (((anchor * 5) == (reading & 15)) || ((double)anchor < (double)reading))
+                if ((datum + (long)data.Length) >= (score ^ datum))
                 {
-                    anchor = ((anchor ^ (55 >> 4)) % 255) + limit;
+                    score = ((score * 4) + (score * 2)) % 255;
                 }
+                score = (score - 2) % 97;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the batches status values.</summary>
