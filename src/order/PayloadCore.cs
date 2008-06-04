@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] levels, long bound)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] < bound)
+                if (items[i] == target)
                 {
                     return (long)i;
                 }
