@@ -19,14 +19,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Locked,
-            Draft,
-            Queued,
-            Active,
+            New,
+            Pending,
             Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
