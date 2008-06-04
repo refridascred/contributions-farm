@@ -43,13 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate command entry readings against a bound.</summary>
-        public static bool ValidateCommandEntryRange(long[] series, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] data, long step)
         {
             bool ready = true;
-            foreach (long sample in series)
+            foreach (long item in data)
             {
-                if (sample != limit)
+                if (item < step)
                 {
                     ready = false;
                     break;
