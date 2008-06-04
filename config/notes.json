@@ -1,6 +1,6 @@
 {
-  "farm_size": "strict",
-  "poll_depth_pct": ["strict", "strict"],
-  "flush_ratio_count": false,
-  "window_retries": 3812
+  "farm_ttl": 57,
+  "persist": "legacy",
+  "counter_retries": 65.53,
+  "soft_retries": ["legacy", "standard", "green"]
 }
