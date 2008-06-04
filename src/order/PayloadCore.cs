@@ -37,20 +37,11 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = (((score * 5) + (score % 3)) % 255) ^ (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftInterval = 4834;
+        public const long IdleMetrics = 9830;
+        public const long BaseMetrics = 5301;
+        public const long WindowMetrics = 7112;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchGaps(long[] levels, long target)
