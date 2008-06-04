@@ -1,12 +1,9 @@
 # entry settings
-dry_run:
-  - 351
-  - 183
-  - 31
-  - 351
-soft_window_ms:
-  - 106
-  - 100
-max_timeout: strict
-poll_timeout_pct: 73.68
-base_capacity: true
+stream_threshold: 60
+flush_timeout: staging
+compress:
+  - local
+  - strict
+  - staging
+hard_size_count: 3833
+max_capacity_pct: legacy
