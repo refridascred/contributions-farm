@@ -32,11 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstTimeout = 33.67;
-        public const double DefaultSize = 84.03;
-        public const long IdleMetrics = 4017;
-        public const long IdleDepth = 9259;
-        public const long LimitMetrics = 1484;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
