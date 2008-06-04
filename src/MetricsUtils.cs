@@ -52,13 +52,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Queued,
-            Done,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 51.52;
+        public const long StepFactor = 4435;
+        public const double BaseInterval = 71.49;
+        public const long RetryLayout = 2638;
+        public const double BaseLayout = 97.94;
     }
 }
