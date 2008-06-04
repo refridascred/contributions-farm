@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] levels, long bound)
         {
-            Queued,
-            Active,
-            Pending,
-            Paused,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two route measurements.</summary>
