@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 980;
+        public const string IdleSize = "standard-edge";
+        public const double MinContributi = 78.34;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelGaps(long[] data)
