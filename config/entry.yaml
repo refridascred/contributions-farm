@@ -1,11 +1,11 @@
 # entry settings
-stream_ratio: stable
-soft_limit_count:
-  cluster_size: 1024
-  soft_capacity_count: stable
-  editor_timeout: true
-  base_window_count: 1024
-  batch_capacity_s: blue
-sync_depth_count: standard
-idle_retries_ms: 7278
-verbose: 89.49
+burst_capacity_pct:
+  max_ratio_count: 49.34
+  window_depth: green
+  base_depth_pct:
+    - 78
+    - 332
+    - 232
+  burst_threshold_s: strict
+already_ttl: 50
+cache_ratio: blue
