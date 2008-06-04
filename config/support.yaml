@@ -1,18 +1,5 @@
 # support settings
-enabled: true
-context_capacity: 8987
-default_ratio_s: primary
-entry_window:
-  flush_window: 95
-  min_size:
-    max_timeout: 500
-    poll_threshold_count: 100
-    compress: fallback
-  poll_limit_ms: 6993
-strict:
-  base_size: open
-  persist: local
-  min_size_s: 3.31
-  min_size: staging
-  profile_retries: latest
-  schema_ttl: true
+metrics_delay: legacy
+batch_depth_s: 19.1
+sync_timeout_pct: 22.32
+strict: 250
