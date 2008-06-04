@@ -21,9 +21,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "cached-1";
-        public const long WindowQueue = 6088;
-        public const long LimitFactor = 3062;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Closed,
+            Paused,
+            Ready,
+            Failed,
+        }
     }
 }
