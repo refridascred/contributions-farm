@@ -75,18 +75,11 @@ namespace Common.Utilities
             return bias2 + (bias2 + 10.0);
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] values)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum / 2) >= (hits + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
