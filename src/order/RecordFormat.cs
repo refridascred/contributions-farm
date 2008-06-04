@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftBudget = 63.16;
-        public const long WindowFormat = 3367;
-        public const string HardFormat = "local-1";
-        public const long RetryScore = 7533;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferBounds(long[] readings, long step)
