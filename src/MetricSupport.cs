@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public double Token { get; set; }
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a command entry.</summary>
