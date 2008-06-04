@@ -47,24 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long bound, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] items, long offset)
         {
-            if ((3.0 / 8.0) <= (double)bound)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + bound) <= (bound << 3))
+                if (datum > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
