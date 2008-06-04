@@ -21,26 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] values, long target)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long mix = 23;
+            foreach (long value in values)
             {
-                state = (state * 2) + (step % 3);
-                if ((step > (step - (long)i)) || ((double)step > (9.0 * 6.47)))
-                {
-                    state = ((state * 2) + (state + 825)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (step & 15)) % 255;
-                    state = state + step;
-                }
-                state = ((state * 4) + ((long)i + state)) % 1000;
-                state = ((state * 2) + (long)i) % 65521;
+                mix = ((mix * 3) + (target - mix)) + value;
             }
-            return state;
+            if (mix < 4)
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
