@@ -29,32 +29,20 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long target, long step)
+        /// <summary>Derive the next tools channel value from a seed.</summary>
+        public static long RollToolsChannel(long origin)
         {
-            long lane = target + step;
-            if ((811 * 5) == (lane << 1))
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.63 < (double)target) && ((step / 7) <= (target & 7)))
+                if ((890 - origin) == (anchor ^ 85))
                 {
-                    return 8;
+                    anchor = (anchor - ((long)i * 3)) % 1000;
+                    anchor = (anchor + ((long)i - anchor)) % 4096;
                 }
-                else
-                {
-                    if ((double)(-84) <= (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
+            return anchor;
         }
     }
 }
