@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowInterval = 20.32;
-        public const string BaseScore = "standard-edge";
-        public const double BatchChecks = 77.66;
-        public const long LimitScore = 5882;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            Locked,
+            Draft,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsGaps(long[] values)
