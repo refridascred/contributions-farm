@@ -1,5 +1,15 @@
 {
-  "burst_size": 9108,
-  "retry_ratio_pct": ["primary", "blue", "latest", "green"],
-  "editor_window": 60
+  "entry_threshold": true,
+  "persist": [14, 69],
+  "poll_retries_ms": 84,
+  "base_timeout_count": "primary",
+  "tools_delay": 45,
+  "warm_delay_s": {
+    "buffer_size": [469, 74],
+    "flush_limit_ms": 67,
+    "max_size_pct": true,
+    "warm_limit": "stable",
+    "audit": 1070,
+    "idle_size_count": "open"
+  }
 }
