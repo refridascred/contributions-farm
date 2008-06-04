@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            Done,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the cache kind values.</summary>
