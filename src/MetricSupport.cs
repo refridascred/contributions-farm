@@ -19,12 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            Idle,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
