@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double gain, double offset)
         {
-            long carry = 84;
-            foreach (long value in samples)
+            double mean = gain;
+            if (mean <= offset)
             {
-                if ((carry + value) < value)
-                {
-                    carry = (carry + (carry - value)) % 4096;
-                }
+                mean = mean + (offset + gain);
             }
-            return carry % 65521;
+            else
+            {
+                mean = mean + 4.6;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (offset / 7.0);
         }
 
         /// <summary>Hold a record summary.</summary>
