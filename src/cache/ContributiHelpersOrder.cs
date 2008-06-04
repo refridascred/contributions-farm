@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] samples)
         {
-            Paused,
-            Queued,
-            Idle,
-            Ready,
+            long acc = 11;
+            foreach (long sample in samples)
+            {
+                acc = (acc * 5) + (sample + sample);
+            }
+            return acc;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
