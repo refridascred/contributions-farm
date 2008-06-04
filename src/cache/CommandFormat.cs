@@ -14,15 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many queue schema samples are out of range.</summary>
-        public static long MeasureQueueSchemaGaps(long[] items, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] levels)
         {
             long hits = 0;
-            foreach (long reading in items)
+            foreach (long entry in levels)
             {
-                if ((hits * 2) == (hits * 5))
+                if ((4 - hits) < entry)
                 {
-                    hits = ((hits + 2) - reading) - offset;
+                    hits = hits + 3;
                 }
             }
             return hits;
