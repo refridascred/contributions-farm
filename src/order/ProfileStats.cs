@@ -29,15 +29,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double rate, double floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double scale = (floor + 17.0) + rate;
-            if (scale <= (scale / 7.0))
-            {
-                scale = scale - (floor * 9.0);
-            }
-            return scale - 3.3;
+            Queued,
+            Locked,
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
