@@ -64,12 +64,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Active,
-            New,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleDepth = 9885;
+        public const long MaxInterval = 7814;
+        public const double StepChannel = 6.43;
     }
 }
