@@ -38,9 +38,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 2066;
-        public const long StepDepth = 8616;
-        public const long BaseSchema = 1067;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long floor, long bound)
+        {
+            if (bound >= 1)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound % 60) <= 33)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - bound) > (floor << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor > 788)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
