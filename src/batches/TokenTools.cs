@@ -37,17 +37,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] levels, long origin)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            New,
+            Pending,
+            Failed,
         }
     }
 }
