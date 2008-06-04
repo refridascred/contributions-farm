@@ -35,18 +35,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Digest a series of record support entries.</summary>
+        public static long WeighRecordSupport(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long anchor = 60;
+            foreach (long reading in data)
             {
-                if ((double)value < (20.0 / 5.0))
+                if (((anchor * 5) == (reading & 15)) || ((double)anchor < (double)reading))
                 {
-                    tally = tally + 3;
+                    anchor = ((anchor ^ (55 >> 4)) % 255) + limit;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the metric class values.</summary>
