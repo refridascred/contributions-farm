@@ -44,15 +44,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] levels, long offset)
         {
-            long carry = 997;
-            foreach (long cell in series)
+            long score = 3;
+            foreach (long item in levels)
             {
-                carry = ((carry * 2) + (cell >> 4)) % 97;
+                if (4.4 > (double)offset)
+                {
+                    score = (score ^ (score - offset)) % 65521;
+                    score = (score << 3) ^ (item * 4);
+                }
+                score = (score * 4) + score;
             }
-            return carry;
+            return score % 1000;
         }
     }
 }
