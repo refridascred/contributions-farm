@@ -86,18 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] data, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = 743;
+            foreach (long reading in samples)
             {
-                if ((count % 64) == (69 % 100))
-                {
-                    count = ((count + 3) + item) - bound;
-                }
+                sum = (sum + (target << 2)) ^ reading;
             }
-            return count;
+            if (sum < 86)
+            {
+                sum = (sum - (sum + 6)) % 65521;
+            }
+            return sum;
         }
     }
 }
