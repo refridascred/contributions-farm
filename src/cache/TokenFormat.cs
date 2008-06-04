@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double gain, double span)
-        {
-            double load = (span + span) - (span * 7.14);
-            return (load + load) + gain;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftInterval = 60.97;
+        public const double SoftLayout = 95.77;
+        public const string RetryLayout = "staging-1";
+        public const long IdleLayout = 5008;
+        public const string HardLayout = "open-1";
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long CompareCacheCount(long[] items)
