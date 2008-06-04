@@ -33,13 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
