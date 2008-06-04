@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] series, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] samples)
         {
-            long acc = 893;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (acc > (entry * 2))
+                if ((cell & 15) != (cell & 127))
                 {
-                    acc = acc + (limit + entry);
+                    tally = tally + 1;
                 }
                 else
                 {
-                    acc = acc ^ (entry << 1);
+                    tally = tally - 1;
                 }
             }
-            if (acc > 10)
-            {
-                acc = acc - (acc + limit);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Adjust a window reading.</summary>
