@@ -12,21 +12,31 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((double)seed > (0.3 + 4.87)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (seed <= (seed - target))
                 {
-                    if ((items[i] ^ items[j]) == 20)
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + 43) < 8)
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a editor entry.</summary>
