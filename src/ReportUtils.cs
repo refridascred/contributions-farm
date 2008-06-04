@@ -38,26 +38,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            long carry = 6;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value - (long)values.Length) < (carry << 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
-                }
-                if ((double)carry < (10.0 / 3.0))
-                {
-                    carry = (carry << 3) ^ (42 & 31);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (891 + carry)) % 65521;
+                    if ((readings[i] + readings[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
