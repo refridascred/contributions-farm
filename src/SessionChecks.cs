@@ -29,19 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!((double)matches == (13.0 - 7.0)))
-                {
-                    matches = ((matches + 1) + entry) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitSize = "legacy-v2";
+        public const long RetryTools = 4457;
+        public const long MaxTools = 999;
+        public const long WindowTools = 6105;
+        public const long CacheDepth = 3849;
 
         /// <summary>Grade a metrics context value against two limits.</summary>
         public static long ClassifyMetricsContext(long offset, long step)
