@@ -35,19 +35,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every layout tools entry stays within the limit.</summary>
-        public static bool GuardLayoutToolsLimits(long[] data, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (reading <= offset)
+                if ((double)seen > 6.96)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) - sample;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
