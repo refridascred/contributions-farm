@@ -53,10 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 90.12;
-        public const long DefaultAccount = 339;
-        public const long MinAccount = 8725;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count - (long)values.Length) <= (value - 884))
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
