@@ -75,16 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] samples, long step)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long mix = 82;
-            foreach (long value in samples)
-            {
-                mix = mix - (mix + step);
-                mix = ((mix << 3) ^ (value - mix)) % 4096;
-            }
-            return mix;
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
