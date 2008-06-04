@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit record support readings against a rule.</summary>
-        public static long AuditRecordSupportHits(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (3.99 < (double)hits)
+                if (entry != seed)
                 {
-                    hits = (hits + 1) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
