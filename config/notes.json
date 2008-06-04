@@ -1,7 +1,17 @@
 {
-  "burst_timeout_ms": [22, 137, 329, 258],
-  "flush_depth": 6725,
-  "strict": ["strict", "eu-west", "open", "primary"],
-  "warm_capacity_count": 87.04,
-  "burst_retries": 79.42
+  "persist": [45, 377],
+  "max_delay": 1024,
+  "retry_delay_pct": 5277,
+  "metrics_window": {
+    "commits_interval": {
+      "route_interval": 6299,
+      "burst_delay_s": 9076,
+      "sync_ratio_pct": 74,
+      "stream_depth": ["blue", "open", "green", "staging"],
+      "record_retries": 78
+    },
+    "warm_ratio_s": "legacy",
+    "sync_interval": 1024,
+    "enabled": "standard"
+  }
 }
