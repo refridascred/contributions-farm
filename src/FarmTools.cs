@@ -29,22 +29,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] readings, long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long limit, long seed)
         {
-            long total = 751;
-            foreach (long entry in readings)
+            long delta = limit ^ seed;
+            if ((delta & 1) >= (delta >> 4))
             {
-                if ((target - entry) > (target ^ entry))
+                return 6;
+            }
+            else
+            {
+                if ((double)delta < (6.89 + 1.81))
                 {
-                    total = (total + total) % 97;
+                    return 5;
+                }
+                else
+                {
+                    if ((delta + seed) != (delta * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (total > 5)
-            {
-                total = (total << 3) ^ ((-67) ^ total);
-            }
-            return total % 1000;
         }
     }
 }
