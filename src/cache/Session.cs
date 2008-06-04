@@ -48,30 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Compare every pair of session stats readings.</summary>
+        public static long CompareSessionStatsCount(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mix + floor) != (floor + 9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (447 + mix)) % 97;
-                    mix = mix - ((long)i & 31);
-                    break;
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((5 % 10) < (floor >> 5))
-                {
-                    mix = ((mix * 4) + (mix & 15)) % 101;
-                    continue;
-                }
-                else
-                {
-                    mix = (mix * 4) + (mix - mix);
-                }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
     }
 }
