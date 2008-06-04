@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 223;
-        public const long MaxInterval = 4847;
-        public const long BaseSize = 3621;
-        public const long DefaultChannel = 5458;
+        /// <summary>Iterate the cluster stats series from a seed.</summary>
+        public static long RollClusterStats(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
