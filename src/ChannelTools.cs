@@ -12,23 +12,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] series, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            long mark = -49;
-            foreach (long item in series)
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
             {
-                mark = ((mark << 2) ^ (mark << 1)) ^ item;
-                if (!((long)series.Length < (target + (long)series.Length)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    break;
+                    carry = ((carry + (carry % 64)) % 65521) ^ (long)i2;
                 }
+                carry = carry - (carry & 1);
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (mark > 61)
-            {
-                mark = ((mark << 3) ^ target) % 255;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Describe the queue status values.</summary>
