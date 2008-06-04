@@ -15,12 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinBudget = 4357;
-        public const double BaseStats = 21.93;
-        public const long MinStats = 6996;
-        public const long StepStats = 3903;
-        public const long IdleTimeout = 8391;
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesHits(long[] values, long offset)
