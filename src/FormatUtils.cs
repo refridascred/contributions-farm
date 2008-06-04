@@ -42,19 +42,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Locate a stream batch reading by value.</summary>
+        public static long LookupStreamBatchIndex(long[] values, long step)
         {
-            long score = 4;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + (long)data.Length) >= (score ^ datum))
+                if (values[i] >= step)
                 {
-                    score = ((score * 4) + (score * 2)) % 255;
+                    return (long)i;
                 }
-                score = (score - 2) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the batches status values.</summary>
