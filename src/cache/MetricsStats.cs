@@ -59,21 +59,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 38;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((limit + limit) != (limit % 8))
                 {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result ^ (80 % 100)) % 4096) ^ datum;
                 }
             }
-            return matches;
+            if (result < 759)
+            {
+                result = ((result * 4) + limit) % 255;
+            }
+            return result;
         }
     }
 }
