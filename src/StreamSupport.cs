@@ -18,25 +18,19 @@ namespace Common.Utilities
         public const long RetryFactor = 1433;
         public const double IdleAlready = 46.89;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long target, long floor)
+        /// <summary>Validate queue checks readings against a bound.</summary>
+        public static bool VerifyQueueChecksBounds(long[] values, long bound)
         {
-            long lane = target - floor;
-            if (floor > lane)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target > (9.2 + 7.9))
+                if (datum <= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
