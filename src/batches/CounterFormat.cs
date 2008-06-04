@@ -32,13 +32,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Queued,
-            Ready,
-            Stale,
-            Retry,
+            Closed,
+            Locked,
+            Failed,
+            Idle,
+            Paused,
         }
     }
 }
