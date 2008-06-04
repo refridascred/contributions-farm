@@ -1,6 +1,5 @@
 # support settings
-retry_retries_s: strict
-report_ratio: staging
-compress: true
-batch_ttl_count: latest
-poll_delay: primary
+compress: legacy
+githubfarm_retries: true
+audit: 30
+burst_timeout: 9015
