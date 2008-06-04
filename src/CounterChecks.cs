@@ -21,16 +21,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double bias, double floor)
-        {
-            double scale = 2.7;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = ((scale + (7.0 * 10.0)) + (double)(long)i) - bias;
-            }
-            return scale + (3.6 - floor);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultSize = 81.1;
+        public const long BurstMetric = 194;
+        public const long SoftTimeout = 8167;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
