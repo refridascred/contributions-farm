@@ -31,12 +31,16 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Derive the next window context value from a seed.</summary>
+        public static long IterateWindowContext(long offset)
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                score = score + (long)i;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Iterate the batches token series from a seed.</summary>
