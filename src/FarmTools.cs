@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] levels, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((6.9 + 7.6) >= (double)tally)
+                if ((10.0 + 10.0) == (double)carry)
                 {
-                    tally = ((tally + 1) + cell) + seed;
+                    carry = carry - (offset + (long)i);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Fold a list of session readings.</summary>
