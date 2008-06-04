@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] series)
         {
-            Draft,
-            Queued,
-            Done,
-            Pending,
-            Failed,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((0.41 * 7.37) >= (double)tally)
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
