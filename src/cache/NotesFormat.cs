@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] data, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                result = (result + (step % 60)) % 1000;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
