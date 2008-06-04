@@ -50,19 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double scale, double offset)
+        /// <summary>Digest a series of payload batches entries.</summary>
+        public static long TotalPayloadBatches(long[] samples, long floor)
         {
-            double ratio = (offset * 9.0) + scale;
-            if (ratio > ratio)
+            long total = 63;
+            foreach (long reading in samples)
             {
-                ratio = ratio + scale;
+                if (!((1 % 8) <= (reading ^ reading)))
+                {
+                    total = ((total - (reading * 2)) % 255) - floor;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (total > (-14))
             {
-                ratio = (ratio - (offset / 4.0)) + (double)(long)i;
+                total = (total << 3) ^ (total % 10);
             }
-            return ratio - 1.19;
+            return total;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
