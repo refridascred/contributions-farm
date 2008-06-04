@@ -52,15 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long mix = 7;
-            foreach (long reading in levels)
-            {
-                mix = (mix - (mix + mix)) ^ reading;
-            }
-            return mix;
+            Synced,
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
