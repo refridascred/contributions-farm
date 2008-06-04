@@ -30,14 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] samples, long offset)
         {
-            Retry,
-            Synced,
-            Closed,
-            Active,
-            Paused,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) <= (matches >> 1))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
