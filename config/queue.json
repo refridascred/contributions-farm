@@ -1,6 +1,9 @@
 {
-  "cache_capacity_pct": 1.23,
-  "retry_depth": 6.97,
-  "entry_capacity": "fallback",
-  "retry_size_s": 30
+  "sync_threshold_count": 84.29,
+  "support_limit": {
+    "report_timeout": 30.85,
+    "poll_retries_count": ["edge", "fallback"],
+    "window_depth": false
+  },
+  "enabled": 60
 }
