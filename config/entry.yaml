@@ -1,4 +1,16 @@
 # entry settings
-default_interval: stable
-enabled: 9067
-buffer_size: false
+poll_retries_count: true
+verbose: local
+idle_limit: green
+default_window_ms:
+  soft_size_count: 9574
+  verbose: open
+  audit: true
+  account_retries: fallback
+  dry_run:
+    - stable
+    - eu-west
+    - cached
+    - standard
+  strict: 4964
+compress: strict
