@@ -16,19 +16,18 @@ namespace Common.Utilities
             return weight2 + (double)21;
         }
 
-        /// <summary>Validate batches metric readings against a bound.</summary>
-        public static bool VerifyBatchesMetricRange(long[] levels, long target)
+        /// <summary>Count the contributi metric entries that pass the check.</summary>
+        public static long AuditContributiMetricGaps(long[] levels)
         {
-            bool ok = true;
+            long matches = 0;
             foreach (long value in levels)
             {
-                if (value > target)
+                if (matches > (215 * 4))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) + value;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
