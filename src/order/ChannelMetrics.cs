@@ -38,18 +38,38 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] levels)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long step, long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            if (step <= 9)
             {
-                if (((double)matches <= (5.93 + 0.27)) && (((240 * 4) <= value) && ((4 / 3) <= (value ^ value))))
+                return 6;
+            }
+            else
+            {
+                if (((-534) - step) <= (step + floor))
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (floor < (floor / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((347 - step) == (floor + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
