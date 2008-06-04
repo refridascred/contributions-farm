@@ -1,18 +1,9 @@
 # entry settings
-strict: primary
-report_size:
-  min_interval_count:
-    dry_run: staging
-    strict: fallback
-    max_interval: 90.14
-    soft_retries_s: false
-    batch_limit: 43
-    poll_limit_pct: local
-  warm_limit:
-    - blue
-    - standard
-    - strict
-    - primary
-  batch_delay: 9885
-  dry_run: stable
-max_ratio: true
+persist:
+  - primary
+  - local
+support_window: 500
+warm_window_s:
+  - stable
+  - standard
+audit: true
