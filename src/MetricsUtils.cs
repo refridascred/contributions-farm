@@ -57,18 +57,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings, long target)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long score = 572;
-            foreach (long datum in readings)
-            {
-                if ((target + score) != (score % 2))
-                {
-                    score = (score - (datum + score)) % 97;
-                }
-            }
-            return score;
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
