@@ -49,18 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] readings, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((offset - seen) >= (value - 401))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
