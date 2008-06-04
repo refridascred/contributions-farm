@@ -68,22 +68,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route batches readings.</summary>
-        public static long ScoreRouteBatches(long[] samples)
+        /// <summary>Audit context metric readings against a rule.</summary>
+        public static long CountContextMetricHits(long[] values)
         {
-            long result = 27;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((6.32 + 4.97) >= (double)result)
+                if ((seen / 9) > 56)
                 {
-                    result = ((result << 2) ^ (item << 3)) % 255;
+                    seen = (seen + 2) - sample;
                 }
             }
-            if (result > 749)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Roll a layout batches counter forward.</summary>
