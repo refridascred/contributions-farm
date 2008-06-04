@@ -1,11 +1,8 @@
 # support settings
-filter_capacity:
-  - primary
-  - latest
-  - staging
-  - stable
-max_ratio: 34.57
-dry_run: local
-persist: 3580
-support_delay: 3329
-retry_interval_count: blue
+persist: cached
+cache_interval_count:
+  - 229
+  - 334
+  - 242
+filter_interval: 1292
+cache_timeout_s: 59
