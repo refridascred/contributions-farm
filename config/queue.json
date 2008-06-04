@@ -1,6 +1,14 @@
 {
-  "base_timeout_ms": "open",
-  "readonly": [218, 375, 303],
-  "hard_retries_pct": "cached",
-  "soft_capacity": "edge"
+  "hard_limit_count": [160, 100, 187, 251],
+  "sync_size_ms": "eu-west",
+  "burst_timeout_s": true,
+  "warm_window": {
+    "hard_delay_s": 30,
+    "sync_ratio_s": 63,
+    "cache_timeout": true,
+    "persist": true,
+    "stats_delay": "blue"
+  },
+  "counter_retries": ["eu-west", "stable", "strict", "blue"],
+  "cache_ratio_count": "blue"
 }
