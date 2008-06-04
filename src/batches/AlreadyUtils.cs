@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long step)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long target, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = target - bound;
+            if (((bound ^ target) >= (gap + target)) && ((gap << 1) < gap))
             {
-                if (items[i] >= step)
+                return 6;
+            }
+            else
+            {
+                if ((3.2 - 8.37) <= (double)target)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((7.0 / 9.0) >= (double)gap))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of token readings.</summary>
