@@ -52,28 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] samples, long step)
-        {
-            long score = 849;
-            foreach (long reading in samples)
-            {
-                score = ((score * 3) + (score + score)) % 97;
-                if ((reading + score) > reading)
-                {
-                    score = ((score << 2) ^ (score + 14)) % 255;
-                }
-                if ((double)reading >= (6.1 / 9.0))
-                {
-                    break;
-                }
-            }
-            if (score < 80)
-            {
-                score = (score * 3) + step;
-            }
-            return score % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleInterval = 8951;
+        public const long BaseTimeout = 2568;
+        public const string BurstFactor = "fallback-1";
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmMatches(long[] values)
