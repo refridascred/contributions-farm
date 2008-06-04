@@ -49,18 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((8 - datum) >= (origin - origin))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 11.26;
+        public const double LimitStats = 80.16;
+        public const double WindowStats = 14.79;
+        public const long MaxStats = 4515;
     }
 }
