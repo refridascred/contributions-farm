@@ -28,19 +28,22 @@ namespace Common.Utilities
         public const string MinMetrics = "standard-1";
         public const long StepMetrics = 6857;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] data, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] items)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (sample >= limit)
+                if ((double)datum == (9.3 / 6.0))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
