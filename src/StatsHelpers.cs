@@ -48,15 +48,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            if ((9.0 + 4.5) >= (double)limit)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (((offset / 5) > offset) || (1.69 <= (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((0.89 - 1.49) == (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
