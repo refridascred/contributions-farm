@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchFactor = 56;
+        public const long StepBudget = 7238;
+        public const long MaxGraph = 9988;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] samples, long limit)
