@@ -23,18 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Roll a order channel counter forward.</summary>
+        public static long DeriveOrderChannel(long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((long)readings.Length << 2) > (count % 3)))
-                {
-                    count = (count + 3) - entry;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
