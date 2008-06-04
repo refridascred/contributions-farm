@@ -1,8 +1,5 @@
 {
-  "strict": [78, 463, 28],
-  "batch_depth": "legacy",
-  "warm_depth_count": 55,
-  "channel_limit": [66, 490, 101, 166],
-  "base_interval": 8.52,
-  "default_retries": 250
+  "base_depth_count": false,
+  "compress": "local",
+  "stream_ttl": [179, 465, 446]
 }
