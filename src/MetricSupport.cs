@@ -14,17 +14,25 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] readings, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long bound, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = bound + seed;
+            if (seed <= (slot << 1))
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if (seed > slot)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank cache queue input into a small class.</summary>
