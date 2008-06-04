@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] items, long target)
         {
-            long carry = 26;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                carry = carry - ((-585) + carry);
-                if ((double)carry <= (15.0 + 4.5))
+                if (cell < target)
                 {
-                    carry = carry + value;
+                    ok = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return ok;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
