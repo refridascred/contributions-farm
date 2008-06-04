@@ -20,13 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] data, long origin)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cache record samples are out of range.</summary>
