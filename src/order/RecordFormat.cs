@@ -80,19 +80,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] readings, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (item < offset)
+                if ((((origin * 4) >= seen) && ((double)origin > (double)891)) && ((origin > (7 + entry)) && (seen < (entry ^ seen))))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
