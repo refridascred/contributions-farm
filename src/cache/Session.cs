@@ -45,19 +45,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] readings, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] series)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long acc = 32;
+            foreach (long entry in series)
             {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc + (acc ^ acc)) + entry;
             }
-            return flag;
+            return acc;
         }
     }
 }
