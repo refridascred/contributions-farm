@@ -23,18 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel already samples are out of range.</summary>
-        public static long CountChannelAlreadyGaps(long[] series)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= (value << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the payload level values.</summary>
