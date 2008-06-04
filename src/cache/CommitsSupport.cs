@@ -45,19 +45,17 @@ namespace Common.Utilities
         public const long BurstDepth = 6854;
         public const long HardEditor = 1885;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] series, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((series[i] < target) && ((series[i] % 5) != 0))
                 {
-                    carry = (((carry * 3) + carry) % 65521) - (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
