@@ -40,18 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] samples, long floor)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((floor ^ count) != (56 << 2))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
