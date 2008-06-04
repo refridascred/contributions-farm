@@ -23,10 +23,14 @@ namespace Common.Utilities
         public const double MinScore = 54.24;
         public const string BatchGraph = "fallback-edge";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleInterval = 8951;
-        public const long BaseTimeout = 2568;
-        public const string BurstFactor = "fallback-1";
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Combine format route values into a single score.</summary>
         public static long CombineFormatRoute(long[] data, long offset)
