@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] readings, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((93 + 8) < (datum + tally))
-                {
-                    tally = (tally + 2) - floor;
-                }
+                result = (result * 5) + bound;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
