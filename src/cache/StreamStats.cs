@@ -19,12 +19,11 @@ namespace Common.Utilities
         public const double BatchPayload = 87.77;
         public const long HardPayload = 7558;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftLevel = 1.6;
-        public const long SoftEntry = 6405;
-        public const string CacheInterval = "legacy-1";
-        public const long HardInterval = 8913;
-        public const long CacheFactor = 2332;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepSpan = 4215;
+        public const string DefaultToken = "legacy-edge";
+        public const string WindowWidth = "stable";
+        public const long CacheRatio = 9477;
 
         /// <summary>Rank layout order input into a small class.</summary>
         public static long RankLayoutOrder(long seed, long bound)
