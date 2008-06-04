@@ -68,13 +68,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Find the first queue filter entry that matches the target.</summary>
+        public static long LookupQueueFilterIndex(long[] data, long seed)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
