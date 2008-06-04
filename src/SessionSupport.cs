@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many farm batches samples are out of range.</summary>
-        public static long MeasureFarmBatchesGaps(long[] items, long step)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((step % 64) > (count << 2))
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
