@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long floor, long offset)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            if ((floor * 2) != (offset * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor / 3) != (offset % 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Project the next checks entry value.</summary>
