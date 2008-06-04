@@ -20,14 +20,18 @@ namespace Common.Utilities
             return bias - (5.8 / 6.0);
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the schema notes entries that pass the check.</summary>
+        public static long MeasureSchemaNotesGaps(long[] data)
         {
-            Synced,
-            Retry,
-            Ready,
-            Queued,
-            Dropped,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally ^ tally) >= (tally ^ item))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
