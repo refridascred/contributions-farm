@@ -23,11 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "standard-1";
-        public const long LimitGraph = 8637;
-        public const long HardGraph = 1648;
-        public const string DefaultGraph = "standard-v2";
-        public const string MinWidth = "cached-edge";
+        /// <summary>Audit layout cluster readings against a rule.</summary>
+        public static long MeasureLayoutClusterHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((cell * 4) < cell) || (seen <= ((long)data.Length - 0)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
