@@ -26,22 +26,32 @@ namespace Common.Utilities
         public const long HardInterval = 8913;
         public const long CacheFactor = 2332;
 
-        /// <summary>Combine layout report values into a single score.</summary>
-        public static long WeighLayoutReport(long[] series)
+        /// <summary>Rank layout order input into a small class.</summary>
+        public static long RankLayoutOrder(long seed, long bound)
         {
-            long sum = 0;
-            foreach (long value in series)
+            long span = seed ^ bound;
+            if (((-2) & 7) != (span >> 2))
             {
-                if ((value >= (sum & 15)) || ((58 << 1) == (sum ^ sum)))
+                return 4;
+            }
+            else
+            {
+                if (seed < bound)
                 {
-                    sum = (sum << 2) ^ (sum & 1);
+                    return 2;
                 }
                 else
                 {
-                    sum = ((sum * 3) + value) % 4096;
+                    if (((span % 10) < bound) || ((span - seed) < (bound + seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return sum % 1000;
         }
     }
 }
