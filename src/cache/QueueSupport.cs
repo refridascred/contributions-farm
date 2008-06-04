@@ -40,19 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] series, long limit)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
