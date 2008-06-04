@@ -1,6 +1,7 @@
 {
-  "persist": "staging",
-  "soft_window_count": true,
-  "warm_ttl_ms": "edge",
-  "channel_depth": true
+  "commits_retries": "edge",
+  "flush_ratio_s": 6014,
+  "poll_capacity_pct": false,
+  "report_window": [409, 166, 196, 72],
+  "readonly": "cached"
 }
