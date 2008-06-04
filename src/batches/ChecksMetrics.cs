@@ -42,18 +42,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] samples, long target)
+        /// <summary>Iterate the filter token series from a seed.</summary>
+        public static long DeriveFilterToken(long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)target > (4.1 - 9.7))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    tally = (tally + 3) + reading;
+                    carry = carry - ((long)i2 % 16);
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Fold a list of route readings.</summary>
