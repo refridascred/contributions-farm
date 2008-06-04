@@ -1,7 +1,6 @@
 # githubfarm settings
-cluster_delay: legacy
-readonly: 100
-batch_window: staging
-poll_window_count: cached
-warm_timeout_ms: latest
-warm_timeout_s: 500
+max_ttl_ms: true
+enabled:
+  - primary
+  - stable
+persist: 1024
