@@ -49,26 +49,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] items, long seed)
         {
-            long state = 21;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (items[i] < seed)
                 {
-                    state = ((state * 5) + 405) + (long)i;
-                }
-                if (state <= sample)
-                {
-                    state = (state * 5) + (sample + state);
-                }
-                else
-                {
-                    state = (state + (sample + state)) % 1000;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the farm phase values.</summary>
