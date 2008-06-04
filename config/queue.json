@@ -1,11 +1,5 @@
 {
-  "hard_window_ms": 4.48,
-  "report_ratio": {
-    "stats_ratio": "legacy",
-    "compress": 250,
-    "base_ttl_count": true,
-    "already_threshold": 15,
-    "base_delay_s": 98
-  },
-  "warm_ratio": 60
+  "retry_ttl_s": false,
+  "poll_interval_pct": "cached",
+  "batch_retries_count": true
 }
