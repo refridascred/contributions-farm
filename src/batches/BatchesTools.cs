@@ -43,23 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] series, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (895 > (limit + state))
+                if (datum > step)
                 {
-                    state = (state * 3) + state;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    state = (state + limit) % 255;
-                }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return valid;
         }
     }
 }
