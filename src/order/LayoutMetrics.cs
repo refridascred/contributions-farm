@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchRecord = "strict-edge";
+        public const string RetryRecord = "strict-v2";
+        public const double CacheBudget = 78.44;
+        public const long CacheRecord = 8282;
+        public const double IdleRecord = 90.93;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricMatches(long[] items)
