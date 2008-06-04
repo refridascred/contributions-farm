@@ -59,18 +59,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Audit session counter readings against a rule.</summary>
+        public static long MeasureSessionCounterOutliers(long[] levels)
         {
-            long anchor = 70;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (!((12 - anchor) > anchor))
+                if ((item << 3) < hits)
                 {
-                    anchor = (anchor << 3) ^ value;
+                    hits = hits + 3;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
