@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] items, long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next payload account value from a seed.</summary>
