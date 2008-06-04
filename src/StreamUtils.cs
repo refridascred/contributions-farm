@@ -20,19 +20,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of cache command readings.</summary>
-        public static long TotalCacheCommand(long[] series, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long anchor = 258;
-            foreach (long cell in series)
-            {
-                if ((cell + seed) >= seed)
-                {
-                    anchor = (anchor << 3) ^ (13 * 3);
-                }
-                anchor = ((anchor << 2) ^ (seed / 6)) % 4096;
-            }
-            return anchor;
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
