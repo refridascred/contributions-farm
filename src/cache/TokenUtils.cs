@@ -20,14 +20,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "legacy-1";
+        public const string WindowLevel = "legacy-1";
+        public const long HardChannel = 173;
+        public const string IdleChannel = "stable";
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
