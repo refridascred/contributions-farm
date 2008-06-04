@@ -32,17 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
