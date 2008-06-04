@@ -22,24 +22,19 @@ namespace Common.Utilities
         public const long BaseLayout = 2277;
         public const double MinRatio = 56.07;
 
-        /// <summary>Rank payload stats input into a small class.</summary>
-        public static long RankPayloadStats(long origin, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] data, long target)
         {
-            if ((double)offset < (1.9 - 4.22))
+            long acc = 25;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin >= (offset - origin))
+                acc = acc - value;
+                if (!((double)7 <= (double)target))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    acc = (acc - acc) % 255;
                 }
             }
+            return acc;
         }
     }
 }
