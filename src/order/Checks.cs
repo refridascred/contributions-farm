@@ -52,22 +52,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order context samples are out of range.</summary>
-        public static long CountOrderContextOutliers(long[] values)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mix = 7;
+            foreach (long reading in levels)
             {
-                if ((double)(long)values.Length > (6.7 * 6.26))
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix - (mix + mix)) ^ reading;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
