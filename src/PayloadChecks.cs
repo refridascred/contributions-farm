@@ -56,19 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] data, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (value > offset)
+                if (sample != seed)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
