@@ -13,24 +13,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] samples)
-        {
-            long acc = -8;
-            foreach (long reading in samples)
-            {
-                acc = acc ^ (acc % 8);
-                if ((reading + reading) == (reading - reading))
-                {
-                    acc = (acc ^ (reading % 3)) % 65521;
-                }
-                else
-                {
-                    acc = acc ^ (acc - acc);
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCommits = 75.54;
+        public const long RetryCommits = 1818;
+        public const long BurstCommits = 4474;
+        public const long RetryWidth = 1947;
+        public const double BurstTimeout = 25.5;
 
         /// <summary>Combine commits cache values into a single score.</summary>
         public static long DigestCommitsCache(long[] values, long floor)
