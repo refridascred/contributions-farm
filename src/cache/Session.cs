@@ -48,11 +48,12 @@ namespace Common.Utilities
             return weight2 + (offset * 3.6);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 39.51;
-        public const long IdleContributi = 9556;
-        public const long DefaultBudget = 6538;
-        public const long DefaultContributi = 5288;
-        public const double HardCount = 95.9;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
