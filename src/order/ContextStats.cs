@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Locked,
-            Pending,
-            New,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheFactor = 9037;
+        public const long WindowDepth = 9865;
+        public const long DefaultBatch = 6578;
+        public const long MinBatch = 4752;
+        public const long LimitBatch = 6132;
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
