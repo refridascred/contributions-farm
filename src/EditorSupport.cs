@@ -43,12 +43,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many metrics command samples are out of range.</summary>
+        public static long AuditMetricsCommandGaps(long[] items)
         {
-            Locked,
-            Failed,
-            Retry,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches % 100) < datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two profile measurements.</summary>
