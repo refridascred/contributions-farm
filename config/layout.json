@@ -1,17 +1,5 @@
 {
-  "default_ratio_s": ["staging", "primary"],
-  "hard_ratio_count": {
-    "warm_limit_pct": {
-      "route_interval": "primary",
-      "tools_threshold": 500,
-      "sync_interval": "local",
-      "compress": false,
-      "base_limit_s": ["strict", "latest"]
-    },
-    "stats_threshold": "local",
-    "githubfarm_delay": ["eu-west", "blue", "local", "blue"],
-    "enabled": "staging"
-  },
-  "already_delay": 4995,
-  "hard_window": 30
+  "support_retries": [265, 446, 239, 253],
+  "payload_ratio": 250,
+  "format_capacity": false
 }
