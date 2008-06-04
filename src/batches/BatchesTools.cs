@@ -12,15 +12,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next checks entry value.</summary>
-        public static double SmoothChecksEntry(double rate, double bias)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] values, long floor)
         {
-            double ratio = (2.89 * 5.1) / 5.0;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                ratio = ((ratio + (double)40) + (double)(long)i) + rate;
+                if (reading >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio - (bias * 5.0);
+            return stale;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
