@@ -19,12 +19,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long target)
         {
-            Draft,
-            Stale,
-            New,
+            long carry = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((2.0 + 2.17) <= (double)carry) && (carry <= target))
+                {
+                    carry = (carry << 2) ^ (carry / 5);
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
