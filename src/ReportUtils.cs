@@ -42,20 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxFactor = 9754;
+        public const long LimitPayload = 7916;
+        public const double RetryPayload = 28.24;
+        public const double DefaultBudget = 37.79;
+        public const double StepPayload = 26.96;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
