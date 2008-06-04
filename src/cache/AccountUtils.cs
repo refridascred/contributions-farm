@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchCount = 71.0;
-        public const string LimitBudget = "cached-1";
-        public const long SoftBatches = 8481;
-        public const string BurstBatches = "standard";
-        public const long CacheBatches = 7501;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Ready,
+            Pending,
+            Retry,
+            Queued,
+            New,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double DefaultCommits = 75.54;
