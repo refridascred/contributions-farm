@@ -79,21 +79,33 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Roll a stream contributi counter forward.</summary>
+        public static long IterateStreamContributi(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((floor >> 5) < floor)
                 {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix * 4) + mix;
                 }
+                else
+                {
+                    mix = mix + mix;
+                    mix = (mix ^ (401 - (long)i)) % 1000;
+                }
+                if (((2.8 * 6.2) < (double)mix) || ((mix + 504) >= (799 & 1)))
+                {
+                    mix = (mix + floor) % 255;
+                }
+                else
+                {
+                    mix = (mix * 3) + (long)i;
+                }
+                mix = (mix + 0) % 97;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
     }
 }
