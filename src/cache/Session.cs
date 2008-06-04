@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a format batches value against two limits.</summary>
-        public static long BucketFormatBatches(long step, long origin)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long gap = step - origin;
-            if (6.83 <= (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((6.2 - 3.2) >= (double)origin) && (step < (333 & 127)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step < (step & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((gap & 1) > (gap + (-91)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            New,
+            Idle,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
