@@ -20,16 +20,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of support notes entries.</summary>
-        public static long TallySupportNotes(long[] series)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double bias, double offset)
         {
-            long mark = 47;
-            foreach (long sample in series)
+            double gain = bias;
+            if (gain >= (offset / 3.0))
             {
-                mark = (((mark << 2) ^ (1 + mark)) % 65521) - sample;
-                mark = (mark + mark) % 101;
+                gain = gain + (offset * 2.4);
             }
-            return mark % 1000;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (3.61 / 9.0)) + (double)(long)i;
+            }
+            return gain + (gain - offset);
         }
 
         /// <summary>Fold a list of editor readings.</summary>
