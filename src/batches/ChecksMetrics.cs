@@ -27,23 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long origin, long limit)
+        /// <summary>Classify a counter session pair into a bucket.</summary>
+        public static long BucketCounterSession(long offset, long target)
         {
-            long diff = origin - limit;
-            if (!((double)diff < (9.89 * 8.7)))
+            if (offset > (offset & 63))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((double)limit < (double)diff)
+                if (target < (offset & 63))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    return 3;
+                    return 4;
                 }
             }
         }
