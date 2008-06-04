@@ -37,21 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count editor order pairs that satisfy a relation.</summary>
-        public static long MatchEditorOrderCount(long[] levels)
+        /// <summary>Audit stats queue readings against a rule.</summary>
+        public static long CountStatsQueueHits(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading > (count + 193))
                 {
-                    if ((levels[i] + levels[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) - floor;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
