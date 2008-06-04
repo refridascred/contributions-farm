@@ -56,23 +56,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] values, long floor)
         {
-            long result = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if ((values[i] >= floor) && ((values[i] % 3) != 0))
                 {
-                    result = (((result * 4) + value) % 1000) - (long)i;
-                }
-                result = result ^ (value - value);
-                if ((result ^ value) == (value << 1))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
