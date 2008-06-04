@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = weight + span;
+            if (drift >= drift)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - (weight + weight);
             }
-            return count;
+            else
+            {
+                drift = drift - weight;
+            }
+            return drift - (span - weight);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
