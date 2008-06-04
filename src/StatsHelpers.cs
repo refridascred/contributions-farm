@@ -30,22 +30,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] values, long origin)
+        /// <summary>Grade a support contributi value against two limits.</summary>
+        public static long GradeSupportContributi(long step, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long bound = step ^ target;
+            if ((target / 6) < (target >> 4))
             {
-                if ((tally * 2) <= (sample - origin))
+                return 3;
+            }
+            else
+            {
+                if (((bound / 6) <= (target / 9)) || ((bound % 60) < (24 + bound)))
                 {
-                    tally = tally + 2;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
