@@ -1,13 +1,5 @@
 {
-  "burst_size_ms": ["legacy", "green", "eu-west", "stable"],
-  "idle_window_pct": 43.66,
-  "channel_limit": {
-    "min_retries_ms": 8,
-    "default_size": 9782,
-    "sync_threshold_ms": 4476,
-    "batch_depth": "stable",
-    "poll_threshold_s": ["local", "primary", "legacy", "cached"]
-  },
-  "soft_retries_s": "strict",
-  "cache_depth_pct": 4669
+  "min_limit_s": ["latest", "cached"],
+  "max_window_count": "local",
+  "hard_window_ms": 66
 }
