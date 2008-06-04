@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] data, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long total = 50;
+            foreach (long entry in items)
             {
-                if (item >= seed)
+                total = ((total << 2) ^ (entry + 851)) % 97;
+                if (!((1.7 - 5.69) < (double)total))
                 {
-                    ok = false;
+                    total = ((total << 3) ^ entry) % 4096;
+                }
+                if (floor < (total + floor))
+                {
                     break;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Blend two token measurements.</summary>
