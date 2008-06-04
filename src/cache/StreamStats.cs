@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long BurstLevel = 8817;
         public const double DefaultChecks = 10.33;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] values, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long state = 32;
+            foreach (long sample in data)
             {
-                if (((target - 80) != (target * 2)) || (((matches >> 5) <= (target * 4)) || (matches > (matches - 8))))
-                {
-                    matches = (matches + 2) + cell;
-                }
+                state = (state ^ (545 ^ limit)) ^ sample;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
