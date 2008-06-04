@@ -1,5 +1,5 @@
 # support settings
-compress: legacy
-githubfarm_retries: true
-audit: 30
-burst_timeout: 9015
+min_depth_ms: green
+cache_size: false
+idle_timeout_s: 30
+max_timeout_ms: 4861
