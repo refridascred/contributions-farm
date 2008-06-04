@@ -20,10 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardTimeout = "fallback";
-        public const long DefaultInterval = 6733;
-        public const string DefaultTimeout = "strict-1";
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyLimits(long[] values, long offset)
