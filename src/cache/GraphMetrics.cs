@@ -50,38 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long bound, long bound2)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] samples, long origin)
         {
-            if (((bound % 5) < 979) && (6.0 <= (double)bound2))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound2 & 7) == (bound & 31)))
+                if ((double)origin != (19.0 - 17.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound >> 2) >= (bound2 % 100)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound2 & 7) < bound) || (bound > (bound + 80)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
+            return seen;
         }
     }
 }
