@@ -1,16 +1,5 @@
 # entry settings
-poll_retries_count: true
-verbose: local
-idle_limit: green
-default_window_ms:
-  soft_size_count: 9574
-  verbose: open
-  audit: true
-  account_retries: fallback
-  dry_run:
-    - stable
-    - eu-west
-    - cached
-    - standard
-  strict: 4964
-compress: strict
+strict: 2.36
+enabled: 82.66
+metrics_interval: true
+burst_interval_s: 4542
