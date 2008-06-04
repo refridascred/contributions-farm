@@ -1,27 +1,32 @@
 # entry settings
-buffer_ttl: 7598
-batch_ttl_pct: local
-retry_size_pct: edge
-hard_timeout:
-  burst_ttl_pct:
-    hard_window: 54.0
-    idle_limit_pct: 30
-    readonly: 100
-  base_ratio_count: edge
-  soft_size_count: 30
-  compress: true
-  githubfarm_size:
-    - staging
-    - open
-    - eu-west
-  min_size_ms:
-    cache_ttl: false
-    farm_ratio: local
-    cache_depth_s: false
-    enabled:
-      - open
-      - local
-      - standard
+retry_timeout_pct:
+  soft_delay_pct:
+    idle_capacity_count: true
+    burst_depth:
+      - stable
       - cached
-    sync_limit: 80.05
-    account_limit: edge
+    idle_size_pct: 3188
+  session_size: 8947
+  hard_size: 17.83
+  session_ratio: 23.68
+  support_retries: 46.48
+  burst_depth: true
+soft_window_count: blue
+persist: local
+cache_size_pct:
+  - primary
+  - eu-west
+base_retries_count:
+  warm_interval_pct: latest
+  burst_ttl_s: legacy
+  soft_retries:
+    - open
+    - blue
+    - green
+    - strict
+  dry_run: 5178
+  metric_window: primary
+  default_capacity_ms: 96.48
+verbose:
+  - legacy
+  - latest
