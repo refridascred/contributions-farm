@@ -1,7 +1,45 @@
 # githubfarm settings
-persist: strict
-audit:
-  - 251
-  - 346
-  - 350
-readonly: 53.01
+filter_timeout:
+  commits_capacity:
+    layout_interval: true
+    cache_ratio: 4893
+    batch_interval: true
+    min_threshold_ms: edge
+    strict: false
+    compress: 23.98
+  retry_timeout_ms: false
+  audit:
+    context_size: false
+    audit: cached
+    cache_delay: 43.91
+    cache_capacity_s:
+      - eu-west
+      - blue
+    warm_delay_ms:
+      - primary
+      - staging
+      - legacy
+    command_size: standard
+  poll_delay_count: 3875
+  persist: green
+  retry_size_pct: 30
+persist: false
+poll_size_count:
+  compress:
+    flush_depth:
+      - 228
+      - 458
+      - 111
+    profile_timeout: false
+    cluster_window: 51
+    already_ttl: false
+  verbose: true
+  batch_ttl_s: local
+  base_threshold:
+    dry_run: eu-west
+    metrics_window: strict
+    readonly: fallback
+    queue_window: false
+  editor_retries: fallback
+sync_capacity: 100
+stats_window: 1.78
