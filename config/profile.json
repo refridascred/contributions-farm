@@ -1,13 +1,7 @@
 {
-  "persist": {
-    "enabled": ["local", "open"],
-    "burst_retries": 39,
-    "route_interval": 22.95,
-    "warm_capacity_count": "latest",
-    "burst_threshold_ms": 23.12,
-    "retry_ttl_s": ["strict", "latest"]
-  },
-  "max_retries_s": "standard",
-  "batch_depth_pct": 77,
-  "sync_ratio": 98.13
+  "farm_capacity": 33.62,
+  "idle_depth_pct": "edge",
+  "poll_ratio_s": 7710,
+  "audit": false,
+  "support_depth": 8429
 }
