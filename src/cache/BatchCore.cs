@@ -32,22 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] data, long offset)
+        /// <summary>Check that every cluster command entry stays within the limit.</summary>
+        public static bool VerifyClusterCommandRange(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((double)tally <= (double)offset)
+                if (cell > floor)
                 {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
