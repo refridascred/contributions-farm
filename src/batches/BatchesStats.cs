@@ -43,19 +43,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] levels, long step)
+        /// <summary>Combine cache checks values into a single score.</summary>
+        public static long TotalCacheChecks(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long anchor = 894;
+            foreach (long cell in levels)
             {
-                if (item != step)
+                if (cell < (offset * 3))
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor ^ (anchor + cell);
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ cell;
                 }
             }
-            return stale;
+            return anchor;
         }
     }
 }
