@@ -1,9 +1,12 @@
 # entry settings
-cache_delay: latest
-graph_timeout:
-  - 417
-  - 174
-  - 376
-  - 377
-compress: staging
-cache_depth_count: primary
+dry_run:
+  - 351
+  - 183
+  - 31
+  - 351
+soft_window_ms:
+  - 106
+  - 100
+max_timeout: strict
+poll_timeout_pct: 73.68
+base_capacity: true
