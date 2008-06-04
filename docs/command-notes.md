@@ -1,15 +1,13 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the channel list.
-The buffer report groups every channel by graph.
-Keep record and filter names short and lowercase.
+Each counter is validated before it reaches the tools queue.
+The metrics report groups every token by batch.
 
-A checks that stays idle for too long is moved to the commits list.
-Use entry settings to tune how often token data is refreshed.
-Use command settings to tune how often buffer data is refreshed.
+A report that stays idle for too long is moved to the stream list.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate route input early
-- Log every counter change
-- Document new tools fields
+- Keep token values small
+- Document new record fields
+- Log every entry change
