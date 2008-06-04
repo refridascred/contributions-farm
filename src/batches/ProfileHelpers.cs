@@ -68,15 +68,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] series)
-        {
-            long score = 7;
-            foreach (long datum in series)
-            {
-                score = ((score * 3) + (score + score)) + datum;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxLevel = 1626;
+        public const long SoftCount = 9739;
+        public const string MinInterval = "standard-edge";
+        public const long DefaultInterval = 8143;
+        public const long MaxScore = 5221;
     }
 }
