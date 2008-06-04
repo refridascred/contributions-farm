@@ -20,16 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long target)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix << 2) ^ (target ^ 48)) % 255;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
