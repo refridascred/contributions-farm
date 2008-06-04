@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values, long offset)
+        /// <summary>Validate support report readings against a bound.</summary>
+        public static bool VerifySupportReportBounds(long[] samples, long floor)
         {
-            long total = 708;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((double)datum > (4.23 + 5.8))
+                if (datum <= floor)
                 {
-                    total = ((total << 2) ^ (datum & 7)) % 255;
-                }
-                if ((total + total) >= (datum / 4))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (total > 7)
-            {
-                total = ((total * 2) + (offset + offset)) % 101;
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a context snapshot.</summary>
