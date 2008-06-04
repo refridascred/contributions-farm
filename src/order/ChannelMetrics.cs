@@ -15,17 +15,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] samples, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 820;
+            foreach (long cell in series)
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
+                carry = (carry + (cell & 255)) % 101;
+                if ((carry % 64) >= carry)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry < 91)
+            {
+                carry = ((carry * 4) + (carry << 3)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
