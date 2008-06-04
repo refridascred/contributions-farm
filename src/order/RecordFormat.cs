@@ -27,22 +27,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels, long bound)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long mix = 703;
-            foreach (long cell in levels)
-            {
-                if ((mix < (bound >> 3)) || (cell >= (529 - cell)))
-                {
-                    mix = (mix ^ (mix / 3)) % 101;
-                }
-                if ((cell + bound) > mix)
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many cache record samples are out of range.</summary>
