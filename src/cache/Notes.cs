@@ -28,12 +28,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] samples)
         {
-            Idle,
-            Closed,
-            New,
+            long total = 27;
+            foreach (long sample in samples)
+            {
+                if ((sample & 7) > (sample ^ total))
+                {
+                    total = (total - sample) % 255;
+                }
+                else
+                {
+                    total = (total ^ (sample - (long)samples.Length)) % 97;
+                    total = total + (total & 15);
+                }
+                total = total + sample;
+                if ((total + 868) >= (total ^ sample))
+                {
+                    total = (total + (sample + sample)) % 255;
+                }
+                else
+                {
+                    total = (total ^ (sample << 2)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of route batches readings.</summary>
