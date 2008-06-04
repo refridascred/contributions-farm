@@ -26,21 +26,9 @@ namespace Common.Utilities
         public const double DefaultRatio = 13.24;
         public const long StepNotes = 3234;
 
-        /// <summary>Compare every pair of commits contributi readings.</summary>
-        public static long PairCommitsContributiCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardScore = 7311;
+        public const long WindowCommits = 5251;
+        public const long MaxBudget = 4718;
     }
 }
