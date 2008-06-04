@@ -20,38 +20,14 @@ namespace Common.Utilities
             return (scale - (double)(-5)) + bias;
         }
 
-        /// <summary>Grade a channel context value against two limits.</summary>
-        public static long SortChannelContext(long target, long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if (!((946 + limit) < limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit <= (limit * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((647 >> 3) <= limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit << 3) < (limit * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
