@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open blue eu-west; do
+for item in edge cached local; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-mode="${1:-local}"
+mode="${1:-latest}"
 case "${mode}" in
-    primary)
+    local)
         log "fast path"
         ;;
     *)
