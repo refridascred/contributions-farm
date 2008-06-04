@@ -42,16 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context session value from a seed.</summary>
-        public static long DeriveContextSession(long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] samples, long step)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                score = (score - score) % 4096;
-                score = ((score * 2) + (long)i) % 101;
+                if (entry < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
