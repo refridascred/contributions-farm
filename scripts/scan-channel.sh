@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=140
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in stable blue fallback; do
+for item in edge stable; do
     log "checking ${item}"
 done
+
+mode="${1:-blue}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
