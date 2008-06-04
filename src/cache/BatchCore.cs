@@ -38,31 +38,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long bound, long floor)
+        /// <summary>Roll a already batches counter forward.</summary>
+        public static long RollAlreadyBatches(long seed)
         {
-            if ((double)bound <= (9.98 - 3.67))
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
+                acc = (acc + (seed / 9)) % 101;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (floor >= (5 + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + floor) > (24 - 623))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
