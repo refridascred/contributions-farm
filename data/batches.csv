@@ -1,10 +1,7 @@
-id,level,region,label,ratio
-1,893,64.43,95.43,42
-2,522,37.15,local,33.21
-3,27.01,open,601,566
-4,773,stable,legacy,554
-5,staging,88.72,94,771
-6,legacy,528,33.18,green
-7,477,standard,658,253
-8,primary,732,270,570
-9,795,edge,579,249
+id,weight,rank,score
+1,328,open,fallback
+2,293,868,legacy
+3,199,staging,427
+4,80.24,629,stable
+5,local,37.72,43.2
+6,standard,68.18,fallback
