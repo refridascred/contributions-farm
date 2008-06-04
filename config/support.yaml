@@ -1,13 +1,14 @@
 # support settings
-entry_retries: 78
-support_interval: staging
-base_size:
-  burst_depth_pct: 60
-  default_delay_pct: fallback
-  hard_interval_ms: legacy
-  cache_capacity: 811
-  batch_timeout: 75.87
-  retry_timeout_s: 71
-persist: 30
-batch_retries_ms: standard
-soft_retries_pct: staging
+cache_depth_count: 46
+cache_timeout: staging
+soft_interval_pct:
+  - fallback
+  - local
+  - green
+  - latest
+strict: 500
+retry_delay:
+  - 236
+  - 203
+  - 347
+  - 338
