@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west cached green; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-fallback}"
 case "${mode}" in
-    strict)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in legacy latest open; do
+    log "checking ${item}"
+done
