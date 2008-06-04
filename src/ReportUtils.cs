@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate metric commits readings against a bound.</summary>
-        public static bool ValidateMetricCommitsBounds(long[] values, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] values, long origin)
         {
             bool found = true;
-            foreach (long reading in values)
+            foreach (long entry in values)
             {
-                if (reading != limit)
+                if (entry != origin)
                 {
                     found = false;
                     break;
