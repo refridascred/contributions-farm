@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 7637;
-        public const long BurstReport = 1872;
-        public const long DefaultReport = 1398;
-        public const long IdleDepth = 8391;
-        public const long BaseBudget = 1513;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
