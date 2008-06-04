@@ -48,21 +48,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] levels, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long floor)
         {
-            long total = 89;
-            foreach (long item in levels)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                total = (total ^ (origin + item)) % 65521;
-                if ((3 - total) == (7 & 127))
+                if ((mix + floor) != (floor + 9))
                 {
-                    total = (total ^ (origin ^ item)) % 1000;
+                    mix = ((mix << 2) ^ (447 + mix)) % 97;
+                    mix = mix - ((long)i & 31);
                     break;
                 }
-                total = total + (long)levels.Length;
+                if ((5 % 10) < (floor >> 5))
+                {
+                    mix = ((mix * 4) + (mix & 15)) % 101;
+                    continue;
+                }
+                else
+                {
+                    mix = (mix * 4) + (mix - mix);
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
     }
 }
