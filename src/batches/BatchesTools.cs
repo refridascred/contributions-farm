@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] samples)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (!((datum + 44) < seen))
+                if (value != bound)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
