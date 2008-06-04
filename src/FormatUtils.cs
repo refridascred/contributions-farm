@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] readings, long origin)
         {
-            long total = 99;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                total = total ^ value;
-                if ((total * 2) > (value % 3))
+                if (datum < origin)
                 {
-                    total = total - (value >> 5);
+                    found = false;
+                    break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
