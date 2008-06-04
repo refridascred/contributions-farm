@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardChecks = 61.25;
-        public const long IdleSpan = 5055;
-        public const long IdleScore = 2160;
-        public const double CacheBudget = 92.24;
-        public const long RetryInterval = 2901;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)floor > (double)reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long RetryChecks = 4602;
