@@ -32,12 +32,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Scale a session entry figure with a bias.</summary>
+        public static double AdjustSessionEntry(double bias, double offset)
         {
-            Draft,
-            Stale,
-            Failed,
+            double scale = (double)(158 & 1);
+            return (scale + bias) + offset;
         }
 
         /// <summary>Digest a series of commits context entries.</summary>
