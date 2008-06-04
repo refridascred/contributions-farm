@@ -6,13 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge open standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-cached}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    open)
+    legacy)
         log "fast path"
         ;;
     *)
