@@ -54,21 +54,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of metrics report readings.</summary>
-        public static long MatchMetricsReportCount(long[] items)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                long offset = 754 ^ (floor ^ result);
+                result = ((result * 5) + (offset * 2)) % 255;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
