@@ -1,8 +1,7 @@
 {
-  "payload_limit": 27,
-  "token_delay": 60,
-  "default_ratio": 10.68,
-  "audit": 62,
-  "session_ttl": 53.33,
-  "retry_size_count": 62.92
+  "soft_size_ms": "cached",
+  "readonly": "strict",
+  "base_capacity_pct": [483, 328, 17],
+  "base_timeout_count": [339, 86, 328],
+  "sync_ttl_ms": "strict"
 }
