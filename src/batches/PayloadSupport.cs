@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] data)
+        /// <summary>Adjust a record schema reading.</summary>
+        public static double ScaleRecordSchema(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            double weight = floor;
+            if (weight < (double)8)
             {
-                if (!!((3.16 / 4.0) > (double)value))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = (weight - floor) + gain;
             }
-            return tally;
+            else
+            {
+                weight = weight - 1.1;
+            }
+            return weight + (double)295;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
