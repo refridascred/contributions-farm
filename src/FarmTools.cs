@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] series, long seed)
         {
-            Synced,
-            Closed,
-            Active,
-            Failed,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
