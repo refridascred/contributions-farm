@@ -55,19 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] levels, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (entry > target)
+                if (((entry - entry) < ((-83) ^ tally)) || (((tally + entry) <= (entry << 3)) || ((tally * 4) >= (entry - tally))))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
