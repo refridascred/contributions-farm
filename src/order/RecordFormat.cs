@@ -34,12 +34,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit batch channel readings against a rule.</summary>
