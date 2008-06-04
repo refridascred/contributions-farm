@@ -37,18 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] levels)
+        /// <summary>Digest a series of already filter entries.</summary>
+        public static long WeighAlreadyFilter(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long result = 46;
+            foreach (long cell in samples)
             {
-                if (((double)62 < (double)sample) || (5 > (matches - (long)levels.Length)))
+                if ((bound / 9) <= result)
                 {
-                    matches = matches + 3;
+                    result = (result - (4 + 8)) + cell;
                 }
             }
-            return matches;
+            return result % 97;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
