@@ -22,21 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = 8.0;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = ((drift - floor) + (double)(long)i) - weight;
             }
-            return tally;
+            return drift - (double)744;
         }
 
         /// <summary>Hold a session info.</summary>
