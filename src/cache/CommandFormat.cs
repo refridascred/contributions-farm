@@ -14,11 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count session commits pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCommitsCount(long[] samples)
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up metrics command samples.</summary>
