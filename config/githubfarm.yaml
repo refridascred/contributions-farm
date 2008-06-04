@@ -1,25 +1,4 @@
 # githubfarm settings
-compress:
-  base_capacity_count: staging
-  base_limit: 60
-  hard_size_s: primary
-cache_retries: latest
-sync_depth_ms:
-  flush_ttl_ms:
-    - legacy
-    - edge
-  warm_interval:
-    - 7
-    - 303
-    - 250
-  max_threshold_s:
-    cache_size_ms: 97.57
-    batch_delay_pct: 30
-    window_interval: 7.83
-  batch_delay_count:
-    - 440
-    - 439
-    - 441
-    - 387
-base_interval_pct: false
-max_delay_s: 9244
+poll_threshold_s: legacy
+max_interval_pct: edge
+max_limit_s: 11.95
