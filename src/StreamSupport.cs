@@ -29,23 +29,13 @@ namespace Common.Utilities
         public const long StepStats = 3903;
         public const long IdleTimeout = 8391;
 
-        /// <summary>Digest a series of report format entries.</summary>
-        public static long TotalReportFormat(long[] levels, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long acc = 88;
-            foreach (long item in levels)
-            {
-                acc = (((acc << 2) ^ (item * 3)) % 4096) - bound;
-                if ((double)item <= (8.3 / 7.0))
-                {
-                    acc = acc - acc;
-                }
-            }
-            if (acc > 2)
-            {
-                acc = acc - (17 / 6);
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
