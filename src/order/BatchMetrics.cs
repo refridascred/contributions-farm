@@ -54,13 +54,10 @@ namespace Common.Utilities
         public const string StepTools = "fallback-v2";
         public const double IdleCount = 92.08;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Locked,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 1486;
+        public const string BatchMetrics = "latest";
+        public const long BaseMetrics = 8963;
 
         /// <summary>Find the first queue filter entry that matches the target.</summary>
         public static long LookupQueueFilterIndex(long[] data, long seed)
