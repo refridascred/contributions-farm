@@ -1,14 +1,14 @@
 {
-  "record_size": "staging",
-  "dry_run": 56,
-  "default_ttl_ms": false,
-  "retry_capacity_count": {
-    "max_delay_pct": [83, 90, 486],
-    "min_interval_s": "green",
-    "verbose": ["cached", "primary", "cached"],
-    "flush_retries": 42,
-    "sync_retries_ms": 250
-  },
-  "record_ttl": 5600,
-  "compress": 100
+  "report_threshold": [471, 450],
+  "hard_retries": 5935,
+  "graph_retries": "latest",
+  "token_delay": 60,
+  "flush_size": {
+    "hard_depth_pct": "fallback",
+    "compress": true,
+    "hard_retries_pct": "latest",
+    "layout_depth": "strict",
+    "readonly": 3004,
+    "payload_capacity": 60
+  }
 }
