@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate session context samples.</summary>
-        public static long CombineSessionContext(long[] items)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long state = -31;
-            foreach (long cell in items)
-            {
-                state = ((state * 2) + (state - cell)) % 1000;
-            }
-            if (state < 72)
-            {
-                state = state + (state + state);
-            }
-            return state % 97;
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
