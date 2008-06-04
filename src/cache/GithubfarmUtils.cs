@@ -26,15 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next stats batches value from a seed.</summary>
-        public static long DeriveStatsBatches(long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] samples, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((bound > (37 % 16)) && (hits >= (bound & 63)))
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Locate a command reading by value.</summary>
