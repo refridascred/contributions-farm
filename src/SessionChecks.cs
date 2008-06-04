@@ -58,18 +58,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi context readings against a rule.</summary>
-        public static long MeasureContributiContextOutliers(long[] levels)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double scale = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                if (((count - cell) >= (cell % 8)) || ((count - count) >= count))
-                {
-                    count = count + 1;
-                }
+                scale = (scale + (offset / 2.0)) + (double)(long)i;
             }
-            return count;
+            return scale + (double)97;
         }
     }
 }
