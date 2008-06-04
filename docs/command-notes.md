@@ -1,10 +1,12 @@
 # Command notes
 
-Keep editor and buffer names short and lowercase.
-Run the editor check before changing any route limits.
+Keep account and format names short and lowercase.
+Use contributi settings to tune how often farm data is refreshed.
+The report module keeps order values in sync with the batch cache.
 
 ## Guidelines
 
-- Log every command change
-- Validate queue input early
-- Keep batches values small
+- Review stats limits each release
+- Prefer order defaults
+- Log every filter change
+- Validate contributi input early
