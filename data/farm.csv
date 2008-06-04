@@ -1,6 +1,6 @@
-id,state,weight,owner
-1,72.71,46,977
-2,563,188,474
-3,10.02,688,open
-4,329,419,green
-5,strict,8,45.23
+id,active,ratio,region,owner
+1,85.82,52.08,84.88,87.9
+2,latest,91.04,983,strict
+3,44.74,93.71,916,86.52
+4,10.76,947,blue,open
+5,open,153,587,257
