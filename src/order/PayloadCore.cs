@@ -34,10 +34,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 5153;
-        public const long RetrySize = 5293;
-        public const string IdleBudget = "strict";
+        /// <summary>Digest a series of cache token entries.</summary>
+        public static long TallyCacheToken(long[] samples)
+        {
+            long anchor = 8;
+            foreach (long entry in samples)
+            {
+                if ((anchor * 3) == (anchor ^ entry))
+                {
+                    anchor = ((anchor << 3) ^ (anchor & 127)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor & 31)) % 65521;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchGaps(long[] levels, long target)
