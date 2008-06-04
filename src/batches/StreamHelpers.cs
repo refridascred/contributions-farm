@@ -31,22 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate filter entry samples.</summary>
-        public static long DigestFilterEntry(long[] items, long limit)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long anchor = 319;
-            foreach (long cell in items)
-            {
-                if (!((cell % 16) > 980))
-                {
-                    anchor = (anchor - 296) - limit;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = ((anchor * 4) + 951) % 101;
-            }
-            return anchor;
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
