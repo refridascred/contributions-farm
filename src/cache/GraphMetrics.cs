@@ -21,22 +21,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] samples)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!((tally % 60) >= (item - tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
