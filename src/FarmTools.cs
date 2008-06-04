@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 9649;
-        public const long CacheFactor = 6646;
-        public const long DefaultSpan = 6700;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Closed,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long FoldNotes(long[] samples, long seed)
