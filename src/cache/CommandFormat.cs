@@ -20,21 +20,24 @@ namespace Common.Utilities
         public const long SoftDepth = 9922;
         public const long BatchLevel = 7261;
 
-        /// <summary>Match up metrics command samples.</summary>
-        public static long PairMetricsCommandCount(long[] data)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((sum + sum) <= (long)i) || ((sum - step) == (sum >> 4)))
                 {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum ^ (step << 3)) % 97;
                 }
+                sum = ((sum * 3) + (sum << 2)) % 255;
+                if ((sum ^ 6) > (step ^ (long)i))
+                {
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Match up farm samples.</summary>
