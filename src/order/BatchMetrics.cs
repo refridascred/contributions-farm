@@ -60,11 +60,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
