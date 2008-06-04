@@ -22,23 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account stream samples.</summary>
-        public static long DigestAccountStream(long[] data)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long result = 113;
-            foreach (long datum in data)
-            {
-                if (!((result + datum) == (datum * 4)))
-                {
-                    result = (result - result) % 65521;
-                }
-                result = result + (67 - datum);
-            }
-            if (result > 10)
-            {
-                result = ((result << 2) ^ (result << 2)) % 65521;
-            }
-            return result % 4096;
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
