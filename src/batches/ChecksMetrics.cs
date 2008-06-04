@@ -45,15 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
