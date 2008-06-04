@@ -76,19 +76,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long sum = 3;
-            foreach (long cell in values)
-            {
-                sum = (sum + (sum - cell)) % 101;
-                if ((cell <= (sum + sum)) && ((double)cell > (2.0 + 6.7)))
-                {
-                    sum = (sum - (199 + sum)) % 97;
-                }
-            }
-            return sum % 4096;
+            Done,
+            Stale,
+            Paused,
+            Retry,
         }
     }
 }
