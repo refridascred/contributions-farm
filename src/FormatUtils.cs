@@ -56,12 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double scale, double offset)
         {
-            Retry,
-            Dropped,
-            Pending,
+            double ratio = (offset * 9.0) + scale;
+            if (ratio > ratio)
+            {
+                ratio = ratio + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (offset / 4.0)) + (double)(long)i;
+            }
+            return ratio - 1.19;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
