@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Validate cluster order readings against a bound.</summary>
+        public static bool CheckClusterOrderLimits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((datum + tally) < tally)
+                if (entry != origin)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
