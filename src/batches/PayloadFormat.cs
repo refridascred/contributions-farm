@@ -42,11 +42,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 2355;
-        public const long IdleGraph = 7377;
-        public const long BatchRatio = 830;
-        public const string IdleSize = "alpha-v2";
-        public const string SoftInterval = "latest-1";
+        /// <summary>Fold a list of record order readings.</summary>
+        public static long DigestRecordOrder(long[] levels)
+        {
+            long total = 565;
+            foreach (long datum in levels)
+            {
+                if (48 < total)
+                {
+                    total = (total * 4) + total;
+                }
+                else
+                {
+                    total = total - (datum - 1);
+                }
+            }
+            return total;
+        }
     }
 }
