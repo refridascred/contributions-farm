@@ -20,14 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            New,
-            Pending,
-            Failed,
-            Synced,
-            Dropped,
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
