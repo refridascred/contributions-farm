@@ -38,12 +38,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] data)
         {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((4 + seen) == (item + item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
