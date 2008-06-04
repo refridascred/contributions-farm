@@ -30,33 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor checks readings.</summary>
-        public static long CombineEditorChecks(long[] readings, long target)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] values)
         {
-            long mix = 23;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((target >> 3) != ((-9) - 7)) && (6.06 > (double)mix))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix ^ (24 ^ target);
-                    mix = (mix * 5) + (value + mix);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix % 7)) % 4096;
-                    mix = ((mix << 3) ^ (value + value)) % 65521;
-                }
-                mix = (mix * 5) + (579 - value);
-                if (mix > (351 + mix))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 189)
-            {
-                mix = (mix - (1 / 2)) % 255;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
