@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] values)
+        /// <summary>Validate entry account readings against a bound.</summary>
+        public static bool ValidateEntryAccountRange(long[] data, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((8.38 - 7.7) != (double)value)
+                if (reading < step)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
