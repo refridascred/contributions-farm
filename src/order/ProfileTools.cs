@@ -18,11 +18,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 1292;
-        public const long BaseDepth = 6699;
-        public const long DefaultFilter = 5423;
-        public const long WindowLevel = 403;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] data)
