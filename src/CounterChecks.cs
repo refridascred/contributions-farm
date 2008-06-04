@@ -57,14 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] data)
         {
-            Ready,
-            Stale,
-            Draft,
-            Queued,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((((-27) / 4) != (datum >> 1)) && ((datum / 9) >= (49 & 7)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the queue mode values.</summary>
