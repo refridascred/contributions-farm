@@ -26,13 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
