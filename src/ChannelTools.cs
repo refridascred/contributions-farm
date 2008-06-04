@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] samples, long seed)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)matches > (1.4 * 7.0))
-                {
-                    matches = ((matches + 2) ^ datum) + seed;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
