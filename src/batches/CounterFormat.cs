@@ -34,18 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order graph readings against a rule.</summary>
-        public static long CountOrderGraphMatches(long[] readings)
+        /// <summary>Combine commits batches values into a single score.</summary>
+        public static long FoldCommitsBatches(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long acc = -929;
+            foreach (long value in data)
             {
-                if ((((sample >> 2) >= 798) && (sample > (2 & 63))) && ((matches & 255) < sample))
+                if (acc > (value - 23))
                 {
-                    matches = matches + 1;
+                    acc = acc + value;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 1000;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
