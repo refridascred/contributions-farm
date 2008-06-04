@@ -55,19 +55,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] values, long target)
+        /// <summary>Rank tools cache input into a small class.</summary>
+        public static long GradeToolsCache(long seed, long step)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long offset = seed - step;
+            if (!((step / 7) >= (step / 3)))
             {
-                if (reading > target)
+                return 4;
+            }
+            else
+            {
+                if ((offset - (-9)) <= step)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (78 <= (step >> 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
