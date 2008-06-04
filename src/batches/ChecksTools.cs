@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseCount = 9886;
-        public const long CacheDepth = 9741;
-        public const double CacheWindow = 20.54;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepLevel = 5790;
+        public const string DefaultSpan = "standard-1";
+        public const long MaxGithubfarm = 3767;
+        public const long LimitGithubfarm = 3056;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteMatches(long[] items)
