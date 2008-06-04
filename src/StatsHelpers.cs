@@ -57,18 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] data, long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading < (tally / 4))
-                {
-                    tally = (tally + 2) + floor;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
