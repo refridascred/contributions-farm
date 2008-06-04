@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] samples, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((double)step > (4.0 - 0.38))
+                if ((double)matches <= (8.09 - 19.0))
                 {
-                    tally = (tally + 3) ^ item;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
