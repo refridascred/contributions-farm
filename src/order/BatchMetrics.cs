@@ -54,11 +54,12 @@ namespace Common.Utilities
         public const string StepTools = "fallback-v2";
         public const double IdleCount = 92.08;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 4161;
-        public const long LimitContext = 6466;
-        public const long SoftContext = 1446;
-        public const long BurstContext = 8221;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Find the first queue filter entry that matches the target.</summary>
         public static long LookupQueueFilterIndex(long[] data, long seed)
