@@ -34,12 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Closed,
+            Synced,
             Locked,
-            Idle,
+            Done,
+            Active,
             Retry,
         }
     }
