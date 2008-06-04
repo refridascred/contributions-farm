@@ -1,10 +1,9 @@
 # support settings
-retry_timeout_ms: 100
-cache_timeout: standard
-persist: local
-checks_delay: eu-west
-enabled: true
-editor_limit:
-  hard_limit_s: 93.05
-  idle_depth_ms: latest
-  window_retries: green
+default_size_ms: eu-west
+warm_capacity_count:
+  - blue
+  - edge
+warm_ttl_count: true
+compress: 100
+flush_window_s: false
+sync_limit: 2.95
