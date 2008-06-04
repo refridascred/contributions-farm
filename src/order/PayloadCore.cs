@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Active,
-            Synced,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowInterval = 20.32;
+        public const string BaseScore = "standard-edge";
+        public const double BatchChecks = 77.66;
+        public const long LimitScore = 5882;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsGaps(long[] values)
