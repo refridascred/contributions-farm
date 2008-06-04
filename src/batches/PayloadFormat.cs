@@ -47,22 +47,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((double)item == (6.61 - 13.0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheBudget = 50.53;
+        public const long BatchSize = 6900;
+        public const string HardRoute = "cached-1";
+        public const double RetryWidth = 31.4;
+        public const long WindowRoute = 4516;
     }
 }
