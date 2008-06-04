@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] values, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long score = 27;
+            foreach (long datum in samples)
             {
-                if (item != limit)
+                if ((19.0 - 3.7) == (double)(long)samples.Length)
                 {
-                    valid = false;
+                    score = (((score << 3) ^ (score & 63)) % 101) ^ datum;
+                }
+                if ((double)score >= (0.9 / 2.0))
+                {
                     break;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Hold a cache stats.</summary>
