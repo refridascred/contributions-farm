@@ -29,18 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((9.0 - 1.53) >= (double)(long)values.Length)
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
