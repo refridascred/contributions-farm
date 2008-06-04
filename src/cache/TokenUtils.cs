@@ -23,26 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Count the queue tools entries that pass the check.</summary>
+        public static long TallyQueueToolsHits(long[] samples, long floor)
         {
-            long result = 976;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((result >> 5) >= result)
+                if ((325 + item) >= (item - 101))
                 {
-                    result = (((result << 2) ^ (result >> 5)) % 65521) ^ datum;
+                    tally = (tally + 1) - floor;
                 }
                 else
                 {
-                    result = (result - result) % 4096;
+                    tally = tally - 1;
                 }
             }
-            if (result > 9)
-            {
-                result = result + result;
-            }
-            return result;
+            return tally;
         }
     }
 }
