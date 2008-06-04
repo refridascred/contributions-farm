@@ -80,28 +80,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long mix = 12;
-            foreach (long value in items)
-            {
-                if (((78 >> 4) <= (value >> 3)) || ((value + value) <= value))
-                {
-                    mix = (mix * 5) + (3 & 15);
-                    mix = (mix * 3) + (value - mix);
-                    break;
-                }
-                if ((mix - mix) != (mix * 2))
-                {
-                    mix = (mix - (235 << 3)) % 65521;
-                }
-            }
-            if (mix > 4)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
