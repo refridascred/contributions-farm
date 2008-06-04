@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstTimeout = 6979;
-        public const double CacheCluster = 0.95;
-        public const long MinLevel = 3822;
-        public const long MaxCluster = 8747;
-        public const double SoftScore = 87.62;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchRange(long[] series, long target)
