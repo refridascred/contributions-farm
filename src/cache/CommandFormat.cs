@@ -31,11 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Iterate the counter githubfarm series from a seed.</summary>
+        public static long IterateCounterGithubfarm(long floor)
         {
-            public bool Score { get; set; }
-            public bool Weight { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (floor > (floor >> 2))
+                {
+                    mix = (mix * 4) + (long)i;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
