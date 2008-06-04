@@ -21,17 +21,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a queue token sample.</summary>
-        public static long SeekQueueTokenIndex(long[] readings, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
+                if (datum != origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
