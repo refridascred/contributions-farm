@@ -29,19 +29,21 @@ namespace Common.Utilities
         public const long RetryFactor = 1433;
         public const double IdleAlready = 46.89;
 
-        /// <summary>Validate queue checks readings against a bound.</summary>
-        public static bool VerifyQueueChecksBounds(long[] values, long bound)
+        /// <summary>Compare every pair of stream context readings.</summary>
+        public static long MatchStreamContextCount(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] - values[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
