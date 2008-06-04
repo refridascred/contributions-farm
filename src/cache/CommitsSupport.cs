@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long RetryRecord = 260;
         public const long MaxRecord = 5825;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 3728;
-        public const long WindowDepth = 4366;
-        public const long DefaultFactor = 3271;
-        public const long MinRatio = 8409;
-        public const string DefaultInterval = "stable-edge";
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            New,
+            Ready,
+            Done,
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
