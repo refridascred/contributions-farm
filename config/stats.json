@@ -1,13 +1,5 @@
 {
-  "hard_delay_count": 60,
-  "idle_limit_ms": "edge",
-  "payload_threshold": ["local", "local", "strict", "primary"],
-  "sync_size_pct": 36.26,
-  "hard_timeout": "strict",
-  "warm_ttl": {
-    "cache_capacity_pct": 3804,
-    "hard_capacity_count": true,
-    "hard_ttl_ms": 1024,
-    "batches_window": "local"
-  }
+  "retry_timeout": 8742,
+  "warm_limit_count": 6620,
+  "layout_depth": [231, 456, 146]
 }
