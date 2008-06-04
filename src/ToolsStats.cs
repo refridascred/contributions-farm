@@ -25,15 +25,23 @@ namespace Common.Utilities
         public const long SoftTimeout = 3113;
         public const long WindowTimeout = 3239;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Combine checks window values into a single score.</summary>
+        public static long DigestChecksWindow(long[] samples, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long total = 59;
+            foreach (long datum in samples)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                total = total + (total / 3);
+                if ((floor + floor) < (floor << 2))
+                {
+                    total = (total + (datum / 3)) % 97;
+                }
             }
-            return result;
+            if (total > 9)
+            {
+                total = total + (floor + floor);
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
