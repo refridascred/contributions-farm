@@ -57,14 +57,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long floor, long limit)
         {
-            Queued,
-            Failed,
-            Pending,
-            Paused,
-            Closed,
+            if ((double)limit == (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4 >> 3) > (floor - limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit >= (3.49 + 3.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two checks measurements.</summary>
