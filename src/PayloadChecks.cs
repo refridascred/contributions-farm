@@ -49,19 +49,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] samples, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
