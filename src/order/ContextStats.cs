@@ -34,13 +34,14 @@ namespace Common.Utilities
         public const string MinMetrics = "standard-1";
         public const long StepMetrics = 6857;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
+            New,
+            Pending,
+            Closed,
+            Retry,
+            Synced,
         }
     }
 }
