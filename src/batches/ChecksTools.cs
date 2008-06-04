@@ -38,25 +38,17 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long floor, long bound)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] readings, long limit)
         {
-            long offset = floor ^ bound;
-            if ((double)floor <= (10.0 + 3.5))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor <= (offset % 16))
+                if (readings[i] < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of stream metric entries.</summary>
