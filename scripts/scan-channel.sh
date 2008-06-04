@@ -7,21 +7,20 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-blue}"
+CHANNEL_LIMIT=210
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    strict)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in legacy cached; do
-    log "checking ${item}"
-done
