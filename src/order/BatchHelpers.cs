@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 22.86;
-        public const string RetryContributi = "strict-v2";
-        public const double MinSpan = 56.7;
-        public const long LimitSize = 6159;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
