@@ -45,16 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double gain, double span)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            double load = gain;
+            if (load >= load)
             {
-                score = score ^ (score >> 2);
-                score = ((score * 5) + (long)i) % 1000;
+                load = (load + (gain + gain)) - span;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
