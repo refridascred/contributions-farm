@@ -1,4 +1,30 @@
 # githubfarm settings
-poll_threshold_s: legacy
-max_interval_pct: edge
-max_limit_s: 11.95
+strict: green
+warm_ttl: stable
+batch_timeout:
+  sync_limit_pct:
+    - eu-west
+    - strict
+  dry_run: 5772
+  enabled:
+    - 415
+    - 465
+  persist: 1024
+batch_timeout_ms: standard
+retry_delay_count:
+  farm_retries:
+    - 261
+    - 278
+    - 351
+  stream_retries: edge
+  editor_interval: 96.74
+  flush_capacity_ms:
+    - green
+    - local
+  format_ratio:
+    - 62
+    - 126
+    - 371
+    - 66
+  batch_ttl_ms: 36
+batches_delay: 6.0
