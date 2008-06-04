@@ -32,11 +32,32 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 69;
-        public const double MaxDepth = 86.12;
-        public const double IdleRecord = 30.9;
-        public const long HardRecord = 475;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long bound, long bound2)
+        {
+            if (((bound % 24) <= (bound / 4)) && ((bound - bound) != ((-802) * 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound2 + 3) != (bound2 + bound2)) && ((bound * 3) <= bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - 69) < (bound2 - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
