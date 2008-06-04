@@ -58,38 +58,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph route pair into a bucket.</summary>
-        public static long ClassifyGraphRoute(long limit, long offset)
-        {
-            if ((limit - limit) > offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit / 5) >= offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((741 + offset) <= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((6.3 - 8.2) >= (double)offset) && ((4.8 * 7.4) >= (double)limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchInterval = 69.16;
+        public const string RetryTimeout = "legacy";
+        public const double BaseNotes = 11.73;
+        public const long CacheTimeout = 6988;
     }
 }
