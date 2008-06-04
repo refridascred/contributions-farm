@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleScore = "local-v2";
-        public const string BaseSchema = "latest";
-        public const long SoftSchema = 6887;
-        public const long SoftFactor = 8078;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] series, long target)
+        {
+            long mix = 580;
+            foreach (long item in series)
+            {
+                mix = (mix * 2) + (mix % 10);
+                mix = mix - (mix << 1);
+                if ((item ^ 6) >= (target - item))
+                {
+                    mix = (mix * 5) + (-762);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
