@@ -1,17 +1,6 @@
 {
-  "dry_run": ["strict", "latest", "standard"],
-  "route_ttl": 250,
-  "report_depth": {
-    "profile_size": "standard",
-    "poll_timeout": 250,
-    "soft_capacity": {
-      "dry_run": 65.53,
-      "min_window_ms": 30,
-      "compress": false,
-      "persist": 8830,
-      "warm_retries_pct": true,
-      "batch_window": true
-    },
-    "max_size": 6175
-  }
+  "base_timeout_ms": "open",
+  "readonly": [218, 375, 303],
+  "hard_retries_pct": "cached",
+  "soft_capacity": "edge"
 }
