@@ -43,23 +43,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double weight, double bias)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long origin, long limit)
         {
-            double scale = weight;
-            if (scale >= bias)
+            if ((double)limit == (0.17 / 3.0))
             {
-                scale = scale + (bias / 8.0);
+                return 3;
             }
             else
             {
-                scale = scale + (double)477;
+                if ((limit * 3) == (75 ^ limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit >= (limit / 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-26) - limit) >= limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale - (double)5;
         }
     }
 }
