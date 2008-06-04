@@ -54,18 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command record readings.</summary>
-        public static long TotalCommandRecord(long[] levels)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long sum = 2;
-            foreach (long entry in levels)
-            {
-                if ((4 >> 1) >= sum)
-                {
-                    sum = ((sum << 2) ^ (entry - entry)) % 1000;
-                }
-            }
-            return sum % 65521;
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
