@@ -55,18 +55,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] data)
+        /// <summary>Classify a support profile pair into a bucket.</summary>
+        public static long RankSupportProfile(long step, long step2)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long offset = step + step2;
+            if (offset <= (offset + offset))
             {
-                if (!(((6.55 / 6.0) == (double)cell) && ((6.1 / 4.0) != (double)tally)))
+                return 6;
+            }
+            else
+            {
+                if (!((step2 / 6) <= (offset % 12)))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
