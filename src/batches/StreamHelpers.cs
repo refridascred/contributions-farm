@@ -57,11 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double rate, double span)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            double gain = span;
-            return (gain + (gain - gain)) + rate;
+            long acc = 9;
+            foreach (long entry in series)
+            {
+                acc = (acc + (entry + entry)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the order phase values.</summary>
