@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many cluster metrics samples are out of range.</summary>
-        public static long TallyClusterMetricsGaps(long[] samples)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double weight = ratio * 3.8;
+            if (weight < (6.4 + weight))
             {
-                if ((6 - seen) != (791 - 93))
-                {
-                    seen = (seen + 1) + value;
-                }
+                weight = weight - (double)46;
             }
-            return seen;
+            return weight - (span + ratio);
         }
 
         /// <summary>Audit format readings against a rule.</summary>
