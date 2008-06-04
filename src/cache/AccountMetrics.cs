@@ -70,18 +70,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] levels, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (!((reading + seed) < reading))
+                if (entry > floor)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
