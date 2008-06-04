@@ -61,19 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm batch entry stays within the limit.</summary>
-        public static bool CheckFarmBatchBounds(long[] readings, long step)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double ratio = (scale * 8.5) / 7.0;
+            return (ratio + (double)(-14)) + floor;
         }
     }
 }
