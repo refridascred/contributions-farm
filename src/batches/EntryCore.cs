@@ -48,15 +48,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long carry = 8;
-            foreach (long entry in readings)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                carry = (((carry - (carry >> 1)) % 255) + entry) + step;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry % 97;
+            return carry;
         }
 
         /// <summary>Roll a buffer record counter forward.</summary>
