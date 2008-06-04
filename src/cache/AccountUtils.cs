@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double scale, double bias)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] values, long step)
         {
-            double drift = 7.0;
-            for (int i = 0; i < 5; i++)
+            long carry = 0;
+            foreach (long datum in values)
             {
-                drift = ((drift + (scale / 9.0)) - (double)(long)i) + bias;
+                if ((carry + (-9)) < carry)
+                {
+                    carry = (carry + (datum + 0)) - step;
+                }
             }
-            return drift + scale;
+            return carry % 4096;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
