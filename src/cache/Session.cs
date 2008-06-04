@@ -48,12 +48,12 @@ namespace Common.Utilities
             return weight2 + (offset * 3.6);
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
