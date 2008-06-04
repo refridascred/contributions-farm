@@ -1,7 +1,5 @@
 {
-  "soft_delay": [18, 25],
-  "strict": 2376,
-  "hard_limit_ms": "legacy",
-  "enabled": true,
-  "min_limit": "local"
+  "persist": "cached",
+  "checks_threshold": [105, 144],
+  "warm_capacity_s": 66.14
 }
