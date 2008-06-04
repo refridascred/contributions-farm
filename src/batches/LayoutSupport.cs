@@ -30,18 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 6848;
+        public const long HardCount = 3034;
+        public const double MaxScore = 1.45;
+        public const string LimitFactor = "primary";
+        public const double DefaultSupport = 59.67;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BasePayload = 4771;
