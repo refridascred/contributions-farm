@@ -20,21 +20,14 @@ namespace Common.Utilities
             return bias - (5.8 / 6.0);
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Retry,
+            Ready,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
