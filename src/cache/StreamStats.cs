@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long BurstLevel = 8817;
         public const double DefaultChecks = 10.33;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] data, long limit)
-        {
-            long state = 32;
-            foreach (long sample in data)
-            {
-                state = (state ^ (545 ^ limit)) ^ sample;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleFactor = 8211;
+        public const double HardLevel = 55.18;
+        public const double BatchPayload = 87.77;
+        public const long HardPayload = 7558;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double SoftLevel = 1.6;
