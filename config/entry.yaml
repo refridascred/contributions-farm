@@ -1,23 +1,4 @@
 # entry settings
-max_interval_s:
-  idle_limit: true
-  burst_capacity: 83.21
-  hard_timeout_s:
-    hard_ttl: latest
-    farm_retries: strict
-    burst_capacity_pct: 51
-    metrics_ratio: 74.9
-    cache_delay_s: fallback
-  cache_capacity: 30
-poll_capacity_pct: staging
-poll_delay: latest
-min_capacity_s: latest
-counter_retries:
-  - 412
-  - 18
-  - 76
-  - 396
-poll_ttl:
-  - local
-  - legacy
-  - stable
+default_interval: stable
+enabled: 9067
+buffer_size: false
