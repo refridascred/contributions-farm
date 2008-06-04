@@ -1,31 +1,4 @@
 # githubfarm settings
-idle_retries_s: eu-west
-verbose:
-  warm_size: standard
-  readonly:
-    - 243
-    - 445
-    - 55
-  channel_size:
-    cluster_retries: 47
-    idle_depth_ms: 7901
-    flush_depth_ms: latest
-    poll_depth: 25.58
-  base_threshold_count: standard
-  compress:
-    account_ratio:
-      - latest
-      - legacy
-      - cached
-    enabled: legacy
-    hard_depth_count: true
-idle_threshold_pct:
-  audit: true
-  burst_ratio_count: 89.58
-  base_delay_count: 30
-  compress: 5677
-  batch_size: 45
-  dry_run: true
-record_ratio: 1615
-batch_window_count: 8281
-soft_depth_ms: 60
+cache_timeout: 100
+burst_threshold_s: 61.16
+batches_limit: 75.61
