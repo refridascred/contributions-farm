@@ -20,15 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long item in data)
+            foreach (long entry in values)
             {
-                if ((7.28 * 15.0) > (double)hits)
+                if (hits <= entry)
                 {
-                    hits = (hits + 1) ^ item;
+                    hits = hits + 3;
                 }
             }
             return hits;
