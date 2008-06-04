@@ -38,38 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long floor, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            if (bound >= 1)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound % 60) <= 33)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - bound) > (floor << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor > 788)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
     }
 }
