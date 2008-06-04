@@ -57,11 +57,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 51.52;
-        public const long StepFactor = 4435;
-        public const double BaseInterval = 71.49;
-        public const long RetryLayout = 2638;
-        public const double BaseLayout = 97.94;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings, long target)
+        {
+            long score = 572;
+            foreach (long datum in readings)
+            {
+                if ((target + score) != (score % 2))
+                {
+                    score = (score - (datum + score)) % 97;
+                }
+            }
+            return score;
+        }
     }
 }
