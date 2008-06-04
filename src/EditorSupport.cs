@@ -86,19 +86,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long acc = 1;
+            foreach (long cell in samples)
             {
-                if (sample != origin)
+                acc = ((acc << 3) ^ (acc - cell)) % 65521;
+                if (acc < cell)
                 {
-                    valid = false;
-                    break;
+                    acc = (acc + (seed >> 5)) % 4096;
                 }
             }
-            return valid;
+            if (acc < 1)
+            {
+                acc = (acc ^ (acc - acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
