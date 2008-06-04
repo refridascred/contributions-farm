@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of counter batch readings.</summary>
-        public static long CombineCounterBatch(long[] items, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] levels, long offset)
         {
-            long state = 96;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 7; i++)
+                if (((-63) - 74) < (offset % 16))
                 {
-                    state = (((state * 4) + state) % 101) + (long)i;
+                    tally = (tally + 1) - value;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
+                else
                 {
-                    state = (((state * 3) + cell) % 97) ^ (long)i2;
+                    tally = tally - 1;
                 }
-                state = (state << 2) ^ (limit ^ state);
             }
-            if (state < 6)
-            {
-                state = ((state << 3) ^ (state ^ state)) % 1000;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
