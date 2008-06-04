@@ -34,27 +34,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine cluster report values into a single score.</summary>
-        public static long CombineClusterReport(long[] items, long step)
-        {
-            long sum = 502;
-            foreach (long datum in items)
-            {
-                if ((sum % 5) > (sum << 2))
-                {
-                    sum = sum + (35 + step);
-                }
-                else
-                {
-                    sum = sum + step;
-                }
-                if ((datum >> 4) < ((-839) % 3))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinBudget = 5097;
+        public const string StepLevel = "local-edge";
+        public const long DefaultMetrics = 8421;
+        public const string SoftMetrics = "cached-1";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double IdleEditor = 6.52;
