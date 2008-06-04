@@ -32,10 +32,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstCount = 7570;
-        public const double DefaultRatio = 13.24;
-        public const long StepNotes = 3234;
+        /// <summary>Combine cluster metrics values into a single score.</summary>
+        public static long ScoreClusterMetrics(long[] items, long floor)
+        {
+            long mark = 137;
+            foreach (long sample in items)
+            {
+                if ((3.8 / 8.0) <= (double)floor)
+                {
+                    mark = ((mark * 2) + floor) % 255;
+                }
+                if (((double)sample <= 4.2) || ((mark ^ floor) != (mark / 3)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardScore = 7311;
