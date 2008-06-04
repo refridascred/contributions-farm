@@ -12,22 +12,16 @@ namespace Common.Utilities
         public const long MaxToken = 7097;
         public const string MaxCount = "primary-1";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] values)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)count == (11.0 + 19.0))
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (result << 2) ^ (long)i;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Locate a route reading by value.</summary>
