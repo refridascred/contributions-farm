@@ -30,12 +30,13 @@ namespace Common.Utilities
         public const long HardInterval = 8913;
         public const long CacheFactor = 2332;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
             public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
