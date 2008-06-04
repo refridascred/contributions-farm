@@ -12,16 +12,34 @@ namespace Common.Utilities
         public const long RetryCache = 5088;
         public const double BurstCache = 36.7;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] levels, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            long mix = -615;
+            foreach (long sample in levels)
             {
-                acc = ((acc << 3) ^ (342 * 2)) % 101;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (!(90 >= (sample & 1)))
+                {
+                    mix = mix ^ sample;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = (mix + (sample - 808)) - (long)i;
+                }
+                if ((7 * 2) <= sample)
+                {
+                    mix = mix ^ (3 >> 5);
+                }
+                else
+                {
+                    mix = mix - (target & 31);
+                }
             }
-            return acc;
+            if (mix < 251)
+            {
+                mix = mix + (49 + target);
+            }
+            return mix;
         }
 
         /// <summary>Describe the payload level values.</summary>
