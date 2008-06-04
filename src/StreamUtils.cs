@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long BaseSize = 3621;
         public const long DefaultChannel = 5458;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of cache command readings.</summary>
