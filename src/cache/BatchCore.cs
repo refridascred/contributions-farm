@@ -42,11 +42,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 5280;
-        public const long MaxLayout = 859;
-        public const double StepDepth = 4.39;
-        public const long SoftScore = 8580;
-        public const string MaxInterval = "staging";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample >> 3) < (sample << 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
