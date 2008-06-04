@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepLevel = "open-edge";
-        public const long RetryCommits = 1420;
-        public const long LimitSpan = 3294;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Paused,
+            Active,
+            Pending,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
