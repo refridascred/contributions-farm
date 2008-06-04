@@ -1,16 +1,8 @@
 {
-  "flush_interval_s": "blue",
-  "min_timeout": {
-    "enabled": 250,
-    "payload_window": 250,
-    "verbose": "open",
-    "poll_size": [2, 439, 23],
-    "stream_depth": 8127
-  },
-  "farm_ratio": {
-    "max_capacity_ms": 18,
-    "verbose": "staging",
-    "checks_size": 85.21,
-    "min_limit": 79
-  }
+  "verbose": ["eu-west", "green", "primary", "local"],
+  "batch_limit_count": "legacy",
+  "hard_interval_count": ["fallback", "staging", "cached", "blue"],
+  "soft_ratio_count": "cached",
+  "dry_run": [341, 448, 397],
+  "burst_threshold_count": 68.08
 }
