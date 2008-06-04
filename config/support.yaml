@@ -1,20 +1,15 @@
 # support settings
-base_size_count:
-  - 94
-  - 231
-  - 141
-  - 183
-record_threshold:
-  checks_ttl: false
-  warm_window: open
-  min_ratio_ms: 32.31
-  payload_interval: primary
-  idle_size_s:
-    - standard
-    - primary
-    - staging
-  max_size_count: false
-base_ratio: staging
-batches_retries:
+warm_capacity_pct:
+  token_depth: 8410
+  githubfarm_ttl: true
+  cluster_timeout: 4.15
+  verbose: 30
+min_retries: false
+poll_limit: standard
+profile_size: strict
+batches_delay:
+  - local
+  - cached
   - strict
-  - standard
+  - latest
+max_limit_s: edge
