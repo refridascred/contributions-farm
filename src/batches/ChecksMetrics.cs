@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long floor)
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
+            long result = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                result = result - (result - (long)i);
+                result = (result - floor) % 1000;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
