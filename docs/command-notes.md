@@ -1,11 +1,14 @@
 # Command notes
 
-The window module keeps account values in sync with the context cache.
-Use metrics settings to tune how often session data is refreshed.
+Each context is validated before it reaches the stats queue.
+Use tools settings to tune how often stream data is refreshed.
+
+The already report groups every graph by entry.
+The metric module keeps queue values in sync with the commits cache.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Review contributi limits each release
-- Log every command change
-- Keep filter values small
+- Validate report input early
+- Keep session values small
+- Review window limits each release
+- Log every batch change
