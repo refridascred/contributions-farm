@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] readings, long offset)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Paused,
-            Idle,
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
