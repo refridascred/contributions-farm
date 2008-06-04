@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
