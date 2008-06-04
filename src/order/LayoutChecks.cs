@@ -69,11 +69,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Scale a buffer commits figure with a bias.</summary>
+        public static double AdjustBufferCommits(double bias, double floor)
         {
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
+            double bias2 = floor * 1.85;
+            if (bias2 <= (floor * 7.9))
+            {
+                bias2 = bias2 + floor;
+            }
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 + (bias2 + 10.0);
         }
 
         /// <summary>Audit channel tools readings against a rule.</summary>
