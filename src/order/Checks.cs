@@ -26,11 +26,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseTimeout = "strict-v2";
-        public const long CacheBudget = 33;
-        public const long BurstSchema = 3613;
-        public const long WindowSpan = 2717;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Stale,
+            Locked,
+            Queued,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Measure how many order context samples are out of range.</summary>
         public static long CountOrderContextOutliers(long[] values)
