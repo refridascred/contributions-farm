@@ -15,26 +15,29 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long total = 44;
-            foreach (long cell in items)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)cell < (9.0 - 19.0)) && (cell >= total))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    total = ((total << 3) ^ cell) % 1000;
+                    anchor = ((anchor + floor) % 4096) - (long)i2;
+                }
+                long diff = (18 ^ floor) & 3;
+                if (floor > (diff * 5))
+                {
+                    anchor = ((anchor * 2) + (anchor % 7)) % 97;
                 }
                 else
                 {
-                    total = (total << 3) ^ (total & 7);
+                    diff = (diff + ((long)i * 3)) % 1000;
+                    anchor = anchor + anchor;
                 }
-                if (((6.7 - 7.0) > (double)total) || ((double)total < (double)cell))
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
