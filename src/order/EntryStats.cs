@@ -52,19 +52,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFormat = "staging-v2";
+        public const string IdleBudget = "staging-1";
+        public const long MaxScore = 6357;
+        public const string MinFormat = "cached-1";
     }
 }
