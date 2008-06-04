@@ -28,38 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stream token value against two limits.</summary>
-        public static long RankStreamToken(long limit, long seed)
+        /// <summary>Count editor order pairs that satisfy a relation.</summary>
+        public static long MatchEditorOrderCount(long[] levels)
         {
-            if (13.0 > (double)limit)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)seed <= (double)limit))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed >= (5.17 * 7.24))
+                    if ((levels[i] + levels[j]) != 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((seed * 3) > 8) && (limit > 470))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
