@@ -44,15 +44,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] values, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            long anchor = 97;
-            foreach (long cell in values)
+            long carry = 997;
+            foreach (long cell in series)
             {
-                anchor = ((((anchor * 5) + (anchor << 1)) % 97) ^ cell) - floor;
+                carry = ((carry * 2) + (cell >> 4)) % 97;
             }
-            return anchor;
+            return carry;
         }
     }
 }
