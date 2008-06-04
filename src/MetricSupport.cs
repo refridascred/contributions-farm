@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long WindowCluster = 9123;
         public const long MaxCluster = 5378;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Idle,
-            Failed,
-            Retry,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleSize = 1056;
+        public const double BaseLevel = 51.41;
+        public const long WindowSize = 4428;
+        public const long MinFactor = 7043;
+        public const long IdleTools = 2898;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long seed)
