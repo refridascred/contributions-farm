@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west stable; do
+for item in green blue fallback legacy; do
     log "checking ${item}"
 done
 
+mode="${1:-standard}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 10); do
     total=$((total + i * 5))
 done
 log "total ${total}"
-
-COMMAND_LIMIT=275
-log "limit is ${COMMAND_LIMIT}"
