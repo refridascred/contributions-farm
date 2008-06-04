@@ -30,21 +30,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = (mark + ((-6) * 2)) % 101;
+                if ((seed + (long)i) > (seed * 2))
                 {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark ^ (seed ^ 18)) % 101;
                 }
+                else
+                {
+                    mark = mark + seed;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
