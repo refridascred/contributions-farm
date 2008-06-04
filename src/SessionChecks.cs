@@ -51,10 +51,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "cached-v2";
-        public const string LimitSession = "standard-edge";
-        public const long CacheScore = 8880;
-        public const long DefaultSession = 7043;
+        /// <summary>Audit contributi context readings against a rule.</summary>
+        public static long MeasureContributiContextOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((count - cell) >= (cell % 8)) || ((count - count) >= count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
