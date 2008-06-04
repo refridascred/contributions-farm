@@ -39,11 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
+            Idle,
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a tools info.</summary>
