@@ -64,22 +64,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long anchor = 70;
+            foreach (long value in series)
             {
-                if ((item < (tally + tally)) && ((item * 4) <= (26 ^ tally)))
+                if (!((12 - anchor) > anchor))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = (anchor << 3) ^ value;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
