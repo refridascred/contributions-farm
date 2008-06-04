@@ -28,32 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long step, long target)
-        {
-            if (target < (step - step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + 3) >= (target % 10))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((9 + target) <= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 60.18;
+        public const long BurstProfile = 5699;
+        public const long BatchScore = 5063;
+        public const long LimitSize = 494;
+        public const long LimitProfile = 8098;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool ValidateEntryRange(long[] items, long offset)
