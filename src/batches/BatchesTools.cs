@@ -23,31 +23,19 @@ namespace Common.Utilities
             return ratio - (bias * 5.0);
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long limit, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] readings, long limit)
         {
-            if (((478 + limit) >= (283 * 2)) && (limit > (offset & 7)))
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-2) + offset) != (583 / 6))
+                if (sample > limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit <= (offset * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
