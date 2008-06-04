@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches <= (8.09 - 19.0))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 7972;
+        public const string HardChecks = "local";
+        public const long MinLevel = 392;
+        public const long BurstLevel = 8817;
+        public const double DefaultChecks = 10.33;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelGaps(long[] data)
