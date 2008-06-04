@@ -76,12 +76,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double scale, double span)
         {
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Level { get; set; }
+            double mean = (span - 9.5) / 8.0;
+            if (mean <= span)
+            {
+                mean = mean + (16.0 * 9.0);
+            }
+            else
+            {
+                mean = mean + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (6.9 / 7.0)) + (double)(long)i;
+            }
+            return mean + scale;
         }
     }
 }
