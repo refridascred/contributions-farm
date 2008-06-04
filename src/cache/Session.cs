@@ -55,19 +55,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] items, long limit)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
