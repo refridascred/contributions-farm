@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long target)
+        /// <summary>Accumulate session context samples.</summary>
+        public static long CombineSessionContext(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long state = -31;
+            foreach (long cell in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                state = ((state * 2) + (state - cell)) % 1000;
             }
-            return anchor;
+            if (state < 72)
+            {
+                state = state + (state + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
