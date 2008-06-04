@@ -84,15 +84,18 @@ namespace Common.Utilities
             return bias2 + (bias2 + 10.0);
         }
 
-        /// <summary>Audit channel tools readings against a rule.</summary>
-        public static long AuditChannelToolsHits(long[] items)
+        /// <summary>Count record payload pairs that satisfy a relation.</summary>
+        public static long CompareRecordPayloadCount(long[] readings)
         {
             long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seen < (seen & 255))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) ^ reading;
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
