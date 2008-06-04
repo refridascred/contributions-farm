@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] samples, long floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
