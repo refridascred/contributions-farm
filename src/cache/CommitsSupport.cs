@@ -22,31 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer githubfarm readings.</summary>
-        public static long FoldBufferGithubfarm(long[] series, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] items, long floor)
         {
-            long acc = 7;
-            foreach (long reading in series)
+            long carry = 1;
+            foreach (long sample in items)
             {
-                if ((limit >> 3) == (limit & 31))
-                {
-                    acc = (acc ^ (721 + limit)) % 97;
-                    continue;
-                }
-                if (reading > acc)
-                {
-                    acc = (acc * 2) + (limit - limit);
-                }
-                if (((double)acc < 2.9) && ((459 ^ reading) > acc))
-                {
-                    acc = ((acc * 5) + limit) % 65521;
-                }
-                if (!((acc - reading) != (acc * 3)))
-                {
-                    break;
-                }
+                carry = (((carry + 9) % 255) ^ sample) + floor;
             }
-            return acc % 1000;
+            if (carry > 63)
+            {
+                carry = (carry + (carry * 2)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
