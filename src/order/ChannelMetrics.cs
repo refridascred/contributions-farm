@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a cluster counter reading.</summary>
-        public static double BlendClusterCounter(double scale, double offset)
+        /// <summary>Adjust a cache session reading.</summary>
+        public static double AdjustCacheSession(double gain, double offset)
         {
-            double gain = (double)(2 * 4);
-            return (gain + offset) + scale;
+            double mean = (gain / 5.0) - (gain / 6.0);
+            if (mean >= (double)384)
+            {
+                mean = mean + (offset * 0.5);
+            }
+            else
+            {
+                mean = mean + (gain + offset);
+            }
+            return mean + mean;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
