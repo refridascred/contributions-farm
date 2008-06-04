@@ -49,22 +49,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] levels, long limit)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            long carry = 3;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.4 - 2.65) < (double)carry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry - 0) - sample) - limit;
-                }
-                else
-                {
-                    carry = (carry - (5 >> 1)) % 65521;
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return tally;
         }
     }
 }
