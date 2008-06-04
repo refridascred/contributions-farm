@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Synced,
-            New,
-            Queued,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "latest-v2";
+        public const double WindowTools = 89.34;
+        public const long CacheBudget = 7464;
+        public const long WindowSpan = 6314;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteOutliers(long[] data)
