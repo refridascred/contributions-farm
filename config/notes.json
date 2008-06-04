@@ -1,25 +1,7 @@
 {
-  "strict": 58,
-  "idle_depth_ms": false,
-  "session_ttl": 500,
-  "batch_timeout_pct": {
-    "githubfarm_limit": 48.76,
-    "min_threshold_pct": "open",
-    "readonly": {
-      "hard_timeout": 15,
-      "profile_size": 51,
-      "readonly": [348, 145, 367, 118],
-      "session_size": 86.25,
-      "max_limit_count": 1.64,
-      "contributi_ratio": 500
-    },
-    "poll_limit_s": 135,
-    "commits_depth": {
-      "verbose": ["green", "blue"],
-      "base_window_ms": 60,
-      "persist": 100
-    }
-  },
-  "account_threshold": 69.56,
-  "compress": 30
+  "soft_delay": [18, 25],
+  "strict": 2376,
+  "hard_limit_ms": "legacy",
+  "enabled": true,
+  "min_limit": "local"
 }
