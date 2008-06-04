@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 890;
-        public const long BaseSize = 4090;
-        public const long MaxScore = 5195;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
