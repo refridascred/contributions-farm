@@ -50,15 +50,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double gain, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] levels, long offset)
         {
-            double rate = (bias * 2.2) + bias;
-            if (rate > (bias / 7.0))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                rate = rate - bias;
+                if ((double)94 == (double)offset)
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return rate - gain;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
