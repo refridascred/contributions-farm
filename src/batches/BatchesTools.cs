@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((sample >> 2) > (count % 97))
+                if (9 <= (limit + 2))
                 {
-                    count = count + 3;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
