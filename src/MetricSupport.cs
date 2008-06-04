@@ -29,18 +29,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] data)
+        /// <summary>Rank cache queue input into a small class.</summary>
+        public static long ClassifyCacheQueue(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long diff = limit - limit2;
+            if (8.0 >= (8.9 + 9.27))
             {
-                if ((double)seen > 6.96)
+                return 6;
+            }
+            else
+            {
+                if ((double)limit == (7.0 / 7.0))
                 {
-                    seen = (seen + 2) - sample;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)diff < (7.2 - 1.6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((limit2 << 2) > (limit2 + diff)) && ((double)limit2 >= (6.0 - 7.21)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
