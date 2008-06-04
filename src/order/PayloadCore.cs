@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long bound, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] series, long limit)
         {
-            if ((offset ^ bound) >= (bound + offset))
+            long carry = 6;
+            foreach (long entry in series)
             {
-                return 7;
+                carry = (((carry << 2) ^ carry) + entry) + limit;
             }
-            else
-            {
-                if ((double)bound <= (double)28)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset <= (bound & 63))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
