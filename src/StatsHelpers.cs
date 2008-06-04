@@ -30,18 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account window readings against a rule.</summary>
-        public static long CountAccountWindowMatches(long[] data, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((((matches ^ value) != (matches + value)) && ((matches ^ value) != (matches + value))) && ((5.0 * 6.4) >= (double)value))
+                if ((tally * 2) <= (sample - origin))
                 {
-                    matches = (matches + 3) + step;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine tools filter values into a single score.</summary>
