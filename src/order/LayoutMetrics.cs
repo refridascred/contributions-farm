@@ -23,12 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Adjust a checks window reading.</summary>
+        public static double SmoothChecksWindow(double bias, double offset)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            double rate = offset;
+            if (rate >= offset)
+            {
+                rate = (rate - 13.0) + bias;
+            }
+            return rate - (rate / 4.0);
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
