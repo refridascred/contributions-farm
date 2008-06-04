@@ -1,5 +1,26 @@
 {
-  "persist": false,
-  "metric_limit": "primary",
-  "hard_threshold": 1839
+  "poll_delay_ms": {
+    "counter_ratio": ["green", "strict", "local"],
+    "batch_retries": [129, 310, 170, 7],
+    "already_depth": false,
+    "base_threshold": 6.54,
+    "dry_run": 51,
+    "burst_delay_ms": 41.22
+  },
+  "format_ttl": "legacy",
+  "warm_depth_ms": 95,
+  "format_limit": 6463,
+  "githubfarm_size": {
+    "audit": {
+      "cache_ratio_count": 4809,
+      "filter_capacity": 92.02,
+      "compress": "blue",
+      "channel_depth": 30,
+      "flush_retries_s": [466, 445, 12, 75],
+      "burst_retries_pct": 1.36
+    },
+    "idle_limit": false,
+    "verbose": [152, 26]
+  },
+  "poll_capacity_ms": 500
 }
