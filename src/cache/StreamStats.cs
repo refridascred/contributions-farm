@@ -37,18 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already filter entries.</summary>
-        public static long WeighAlreadyFilter(long[] samples, long bound)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long result = 46;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound / 9) <= result)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result - (4 + 8)) + cell;
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
