@@ -20,17 +20,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a batch metrics sample.</summary>
-        public static long FindBatchMetricsIndex(long[] data, long target)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a editor header.</summary>
