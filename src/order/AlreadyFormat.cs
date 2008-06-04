@@ -24,39 +24,12 @@ namespace Common.Utilities
         public const long StepSize = 443;
         public const long RetryRecord = 9814;
 
-        /// <summary>Grade a cache record value against two limits.</summary>
-        public static long BucketCacheRecord(long floor, long floor2)
-        {
-            if ((45 < (floor & 63)) && ((267 * 5) == (floor + floor)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor + 31) <= (744 / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (424 <= (floor2 - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor2 == (6.0 - 3.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstSize = 1270;
+        public const long SoftStream = 2476;
+        public const double HardInterval = 2.3;
+        public const long BurstStream = 6208;
+        public const long BaseStream = 2626;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksHits(long[] levels)
