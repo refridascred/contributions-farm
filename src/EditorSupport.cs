@@ -51,15 +51,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double bias, double floor)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            double bias2 = floor / 4.0;
+            return bias2 - bias;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
