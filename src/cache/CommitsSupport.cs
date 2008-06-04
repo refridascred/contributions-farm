@@ -26,19 +26,26 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double ratio, double span)
+        /// <summary>Fold a list of cluster window readings.</summary>
+        public static long TotalClusterWindow(long[] readings, long seed)
         {
-            double mean = span;
-            if (mean >= (ratio + span))
+            long carry = 7;
+            foreach (long reading in readings)
             {
-                mean = mean - mean;
+                if ((reading << 3) <= (seed << 1))
+                {
+                    carry = (carry * 2) + (reading + seed);
+                }
+                else
+                {
+                    carry = (carry - (3 >> 3)) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (carry < 6)
             {
-                mean = (mean - (span + span)) + (double)(long)i;
+                carry = (carry << 2) ^ (66 >> 2);
             }
-            return mean - (mean + span);
+            return carry;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
