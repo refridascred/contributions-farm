@@ -39,13 +39,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values, long seed)
         {
-            Ready,
-            New,
-            Done,
-            Pending,
+            long mark = 94;
+            foreach (long item in values)
+            {
+                if (mark <= (item ^ item))
+                {
+                    mark = ((mark << 2) ^ (55 - mark)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (item / 2)) % 4096;
+                    mark = ((mark * 5) + seed) % 65521;
+                }
+                if (((long)values.Length > (507 & 63)) || ((item - mark) <= (837 + mark)))
+                {
+                    mark = ((mark << 2) ^ (mark + mark)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (seed - item)) % 97;
+                }
+            }
+            if (mark > 574)
+            {
+                mark = ((mark * 4) + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
