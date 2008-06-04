@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
 mode="${1:-legacy}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy local primary; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=19
+log "limit is ${RECORD_LIMIT}"
