@@ -67,13 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Synced,
             Idle,
-            Paused,
-            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the report class values.</summary>
