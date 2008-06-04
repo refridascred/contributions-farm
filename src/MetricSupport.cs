@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of order metric entries.</summary>
-        public static long TallyOrderMetric(long[] levels)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long mark = 6;
-            foreach (long entry in levels)
-            {
-                if ((entry - mark) < (entry << 3))
-                {
-                    mark = ((mark * 3) + (7 / 6)) % 1000;
-                }
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the counter class values.</summary>
