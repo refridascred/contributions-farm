@@ -60,19 +60,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a buffer commits figure with a bias.</summary>
-        public static double AdjustBufferCommits(double bias, double floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double bias2 = floor * 1.85;
-            if (bias2 <= (floor * 7.9))
-            {
-                bias2 = bias2 + floor;
-            }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + (bias2 + 10.0);
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
