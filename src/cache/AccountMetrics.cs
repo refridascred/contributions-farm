@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the notes cluster series from a seed.</summary>
-        public static long IterateNotesCluster(long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((mark - mark) <= mark) && ((15 / 3) == (mark * 4)))
-                {
-                    mark = ((mark << 3) ^ (long)i) % 97;
-                }
-                if (((long)i * 5) != (long)i)
-                {
-                    mark = (mark ^ mark) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the buffer context entries that pass the check.</summary>
