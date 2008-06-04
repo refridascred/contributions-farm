@@ -64,19 +64,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate schema command readings against a bound.</summary>
-        public static bool ValidateSchemaCommandBounds(long[] items, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long total = 0;
+            foreach (long item in levels)
             {
-                if (sample < seed)
+                if ((37 >= seed) && (item >= (seed - 0)))
                 {
-                    found = false;
-                    break;
+                    total = ((total << 3) ^ (seed & 127)) % 97;
+                }
+                else
+                {
+                    total = (total - (item << 2)) % 1000;
                 }
             }
-            return found;
+            if (total > 3)
+            {
+                total = total + (seed ^ 14);
+            }
+            return total;
         }
     }
 }
