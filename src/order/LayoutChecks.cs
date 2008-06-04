@@ -55,13 +55,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit channel tools readings against a rule.</summary>
+        public static long AuditChannelToolsHits(long[] items)
         {
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (seen < (seen & 255))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next editor value.</summary>
