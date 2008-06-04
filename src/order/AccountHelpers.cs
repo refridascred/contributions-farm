@@ -23,19 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] data, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((19.0 + 0.3) > (double)entry)
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseInterval = 56.23;
+        public const long IdleStream = 8759;
+        public const double HardStream = 96.43;
+        public const long DefaultLevel = 5984;
+        public const long LimitStream = 8858;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long limit)
