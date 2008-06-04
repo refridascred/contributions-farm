@@ -42,11 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheTimeout = "fallback-edge";
-        public const double DefaultSession = 90.68;
-        public const long IdleTimeout = 7918;
-        public const long HardSession = 3528;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Digest a series of payload batches entries.</summary>
         public static long TotalPayloadBatches(long[] samples, long floor)
