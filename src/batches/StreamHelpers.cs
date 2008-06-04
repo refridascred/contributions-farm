@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] samples, long seed)
+        /// <summary>Measure how many batches profile samples are out of range.</summary>
+        public static long MeasureBatchesProfileOutliers(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (sample >= seed)
+                if (!((1 >= (29 - entry)) && ((entry % 12) == (origin + 0))))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
