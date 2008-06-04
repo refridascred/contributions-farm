@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long BurstFarm = 2908;
         public const string SoftBudget = "standard-v2";
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Derive the next metrics editor value from a seed.</summary>
+        public static long StepMetricsEditor(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc * 3) + (bound + 304)) ^ (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a graph entry.</summary>
