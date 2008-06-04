@@ -1,27 +1,5 @@
 {
-  "readonly": "staging",
-  "soft_delay": {
-    "readonly": 3907,
-    "account_depth": 500,
-    "report_capacity": "cached"
-  },
-  "flush_capacity_count": {
-    "min_interval": "staging",
-    "hard_ttl_pct": 86,
-    "min_size_pct": "green",
-    "contributi_window": {
-      "flush_ratio": 30,
-      "default_capacity_pct": [30, 455],
-      "soft_interval_count": "local",
-      "batch_limit": 95,
-      "warm_timeout": true
-    },
-    "already_interval": "latest"
-  },
-  "verbose": {
-    "min_delay_s": "primary",
-    "verbose": "edge",
-    "warm_capacity": "blue"
-  },
-  "cache_timeout": 500
+  "retry_retries_s": "stable",
+  "layout_delay": "edge",
+  "retry_capacity_pct": 250
 }
