@@ -29,12 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitSize = "legacy-v2";
-        public const long RetryTools = 4457;
-        public const long MaxTools = 999;
-        public const long WindowTools = 6105;
-        public const long CacheDepth = 3849;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Active,
+            Draft,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double BlendGithubfarm(double gain, double span)
