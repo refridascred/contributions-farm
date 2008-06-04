@@ -25,19 +25,32 @@ namespace Common.Utilities
         public const double DefaultFarm = 31.31;
         public const long BatchCount = 4220;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long limit, long target)
         {
-            long score = -9;
-            foreach (long datum in values)
+            long edge = limit - target;
+            if ((double)limit == (7.85 * 4.0))
             {
-                score = score ^ (datum >> 5);
+                return 7;
             }
-            if (score > 248)
+            else
             {
-                score = score ^ ((long)values.Length + 993);
+                if ((8.87 / 8.0) <= (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)edge >= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
