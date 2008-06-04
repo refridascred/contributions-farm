@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a channel tools pair into a bucket.</summary>
-        public static long SortChannelTools(long floor, long seed)
-        {
-            if ((floor - seed) > (164 & 255))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor <= (16.0 / 2.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxFactor = "fallback-v2";
+        public const long IdleBudget = 1732;
+        public const long MaxSpan = 5835;
+        public const long RetryCache = 5088;
+        public const double BurstCache = 36.7;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long StepGithubfarm(long limit)
