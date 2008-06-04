@@ -32,10 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 80.84;
-        public const string CacheBudget = "standard-1";
-        public const string StepStream = "staging-1";
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long MeasureCounterGaps(long[] data, long target)
