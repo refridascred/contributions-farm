@@ -25,18 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] samples, long bound)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((bound > (37 % 16)) && (hits >= (bound & 63)))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Locate a command reading by value.</summary>
