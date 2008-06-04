@@ -1,24 +1,11 @@
 # entry settings
-already_ratio: 5721
-retry_depth_ms: 1281
-batch_capacity_s: open
-sync_window_pct: legacy
-dry_run:
-  account_retries: 500
-  report_depth:
-    - stable
-    - standard
-    - cached
-  flush_window_count: 15
-  hard_threshold_count:
-    flush_ttl: false
-    default_timeout_ms: 68.89
-    idle_timeout_count: stable
-    sync_interval: 75.22
-    poll_delay_pct:
-      - 483
-      - 348
-      - 39
-    hard_retries_pct: staging
-  strict: false
-  schema_retries: true
+batches_ttl: 83.0
+sync_size_pct:
+  poll_delay: 99
+  burst_threshold_pct: cached
+  filter_ttl:
+    - latest
+    - fallback
+burst_threshold_s:
+  - primary
+  - eu-west
