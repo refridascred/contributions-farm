@@ -28,12 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseLevel = 241;
-        public const long MaxCache = 1132;
-        public const string IdleCache = "latest-1";
-        public const long MinBudget = 190;
-        public const long StepCache = 2902;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = mark - ((long)i - (long)i);
+                if (!(mark < (offset - offset)))
+                {
+                    mark = (mark ^ (mark * 2)) % 97;
+                    mark = (mark * 5) + mark;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TallyRecord(long[] readings)
