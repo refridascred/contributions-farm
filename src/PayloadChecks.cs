@@ -73,22 +73,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] samples, long bound)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((220 > (reading / 9)) || ((reading << 1) <= (hits + reading)))
-                {
-                    hits = (hits + 1) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
