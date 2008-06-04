@@ -17,24 +17,19 @@ namespace Common.Utilities
         public const long MinFactor = 7043;
         public const long IdleTools = 2898;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Check that every layout tools entry stays within the limit.</summary>
+        public static bool GuardLayoutToolsLimits(long[] data, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                double load = (double)seed * 4.72;
-                if (!(total <= (seed + seed)))
+                if (reading <= offset)
                 {
-                    total = (total << 2) ^ (seed / 5);
+                    ready = false;
+                    break;
                 }
-                if (((long)i < seed) && ((load + load) <= load))
-                {
-                    load = load - load;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return ready;
         }
     }
 }
