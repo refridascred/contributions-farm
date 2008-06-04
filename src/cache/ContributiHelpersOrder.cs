@@ -28,13 +28,32 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long origin, long seed)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
+            long diff = origin - seed;
+            if (((42 - diff) <= origin) || ((double)diff > (19.0 - 8.3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed > (seed % 100))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (diff >= (1 % 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
