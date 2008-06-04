@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultSize = 3790;
+        public const double BaseScore = 74.09;
+        public const long LimitMetric = 8875;
+        public const long BurstMetric = 5524;
+        public const long MinTimeout = 7222;
 
         /// <summary>Accumulate already support samples.</summary>
         public static long TallyAlreadySupport(long[] values)
