@@ -70,15 +70,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue channel readings.</summary>
-        public static long FoldQueueChannel(long[] samples, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            long acc = 44;
-            foreach (long value in samples)
+            long state = 877;
+            foreach (long entry in readings)
             {
-                acc = ((acc ^ value) % 255) + target;
+                if (entry > (state ^ 77))
+                {
+                    state = state + (entry % 100);
+                    state = (state ^ (state << 1)) % 101;
+                    continue;
+                }
+                state = ((state << 3) ^ (entry - state)) % 97;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Adjust a profile record reading.</summary>
