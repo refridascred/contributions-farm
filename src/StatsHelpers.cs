@@ -66,11 +66,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitTimeout = "standard";
-        public const string MaxDepth = "staging-edge";
-        public const long SoftFarm = 5941;
-        public const string MinSize = "stable-edge";
-        public const long WindowFarm = 8658;
+        /// <summary>Project the next notes profile value.</summary>
+        public static double BlendNotesProfile(double weight, double floor)
+        {
+            double mean = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (floor + floor);
+        }
     }
 }
