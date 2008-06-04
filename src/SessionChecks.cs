@@ -41,22 +41,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] readings, long step)
+        /// <summary>Grade a metrics context value against two limits.</summary>
+        public static long ClassifyMetricsContext(long offset, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if (((step % 8) > (2 ^ offset)) && ((2 - offset) <= 457))
             {
-                if (((cell + 38) <= (9 & 63)) && ((hits <= step) && ((hits % 3) < (hits + hits))))
+                return 6;
+            }
+            else
+            {
+                if ((step / 4) <= offset)
                 {
-                    hits = hits + 3;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)step > 14.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
