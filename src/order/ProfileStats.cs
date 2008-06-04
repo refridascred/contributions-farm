@@ -38,39 +38,22 @@ namespace Common.Utilities
         public const double DefaultRatio = 13.24;
         public const long StepNotes = 3234;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long offset, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] readings, long bound)
         {
-            long offset2 = offset ^ step;
-            if ((offset > (step - offset2)) && (offset <= (offset2 % 64)))
+            long score = 13;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (44 >= (offset2 % 64))
+                if (!(datum > score))
                 {
-                    return 0;
+                    score = (((score * 3) + ((-8) - score)) % 101) + bound;
                 }
                 else
                 {
-                    if (!(offset > step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset ^ offset) <= (offset & 7)) || ((step - step) < 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = (score << 3) ^ (datum >> 1);
                 }
             }
+            return score;
         }
     }
 }
