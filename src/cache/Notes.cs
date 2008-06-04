@@ -74,21 +74,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstLevel = 9008;
+        public const long StepSupport = 9942;
+        public const double WindowSupport = 71.04;
+        public const string RetryInterval = "local-edge";
     }
 }
