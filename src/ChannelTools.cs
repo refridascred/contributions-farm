@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 5131;
-        public const double BurstCache = 31.17;
-        public const long HardScore = 1385;
-        public const long MinFactor = 9361;
-        public const string MinCache = "alpha-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowBudget = 81;
+        public const string BurstFormat = "local";
+        public const long BatchFormat = 4822;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long SeriesSession(long seed)
