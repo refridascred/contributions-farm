@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "strict-v2";
-        public const double WindowBuffer = 13.56;
-        public const double DefaultBuffer = 88.64;
-        public const string BatchBuffer = "open-edge";
-        public const long BaseBuffer = 5977;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Paused,
+            Queued,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 7099;
