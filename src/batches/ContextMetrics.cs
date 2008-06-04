@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] values, long seed)
         {
-            Queued,
-            Paused,
-            New,
-            Failed,
+            long total = 7;
+            foreach (long value in values)
+            {
+                if ((((long)values.Length / 9) == (seed + seed)) || (seed > (value / 2)))
+                {
+                    total = (total ^ (value + seed)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
