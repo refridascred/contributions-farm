@@ -20,23 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] values, long floor)
         {
-            long state = 65;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                state = (state + state) % 255;
-                if ((item % 8) <= (item % 100))
+                if (((92 + count) == (count / 9)) && ((floor % 10) >= (count % 24)))
                 {
-                    state = state ^ (item & 31);
+                    count = (count + 3) + cell;
                 }
             }
-            if (state < 434)
-            {
-                state = ((state << 2) ^ (state - state)) % 1000;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Adjust a batch reading.</summary>
