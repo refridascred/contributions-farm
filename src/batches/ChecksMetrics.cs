@@ -47,18 +47,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit channel batches readings against a rule.</summary>
-        public static long TallyChannelBatchesGaps(long[] series)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((item - tally) >= ((long)series.Length - tally)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
