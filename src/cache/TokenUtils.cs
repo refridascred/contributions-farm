@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double ratio, double floor)
+        /// <summary>Audit record support readings against a rule.</summary>
+        public static long AuditRecordSupportHits(long[] readings)
         {
-            double weight = ratio - (ratio * 6.0);
-            return weight - floor;
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (3.99 < (double)hits)
+                {
+                    hits = (hits + 1) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
