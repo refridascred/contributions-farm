@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultCount = 7196;
-        public const long MinMetrics = 406;
-        public const long MinSpan = 3901;
-        public const string DefaultMetrics = "stable-edge";
-        public const double BaseRatio = 58.24;
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double bias, double span)
+        {
+            double rate = span;
+            if (rate >= (3.6 / 9.0))
+            {
+                rate = rate + (bias + rate);
+            }
+            else
+            {
+                rate = rate - (double)350;
+            }
+            return rate + (bias + 13.0);
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] data)
