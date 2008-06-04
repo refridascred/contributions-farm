@@ -16,12 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchDepth = "stable-1";
-        public const long CacheGraph = 4170;
-        public const double BaseSpan = 65.54;
-        public const double MinScore = 54.24;
-        public const string BatchGraph = "fallback-edge";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 7814;
+        public const double MinBatches = 97.99;
+        public const long LimitBatches = 3842;
+        public const long RetryCount = 5056;
+        public const long RetryBatches = 6325;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
