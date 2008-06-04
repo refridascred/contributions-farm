@@ -27,15 +27,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double ratio, double floor)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double weight = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = ((weight + (weight * 0.03)) - (double)(long)i) + ratio;
-            }
-            return weight + weight;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
