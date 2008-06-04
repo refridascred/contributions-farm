@@ -43,17 +43,13 @@ namespace Common.Utilities
         public const long CacheStats = 2510;
         public const long MaxBudget = 6891;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] data, long limit)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
