@@ -45,21 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count format stats pairs that satisfy a relation.</summary>
-        public static long CompareFormatStatsCount(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally - tally) < (9 + tally))
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) - entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
