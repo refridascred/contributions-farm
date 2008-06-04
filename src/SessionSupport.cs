@@ -14,18 +14,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] levels)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long floor, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long slot = floor + step;
+            if ((45 + step) > (slot >> 4))
             {
-                if ((((reading * 2) >= (matches ^ (long)levels.Length)) || ((reading * 5) < matches)) && ((matches & 127) > reading))
+                return 5;
+            }
+            else
+            {
+                if ((255 << 1) <= (step / 9))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((7.62 * 9.1) <= (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next context session value from a seed.</summary>
