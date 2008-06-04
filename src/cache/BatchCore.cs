@@ -27,19 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster command entry stays within the limit.</summary>
-        public static bool VerifyClusterCommandRange(long[] items, long floor)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            double gain = (double)6 + (scale / 5.0);
+            for (int i = 0; i < 8; i++)
             {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + scale) + (double)(long)i;
             }
-            return ready;
+            return gain - (bias + gain);
         }
 
         /// <summary>Grade a command value against two limits.</summary>
