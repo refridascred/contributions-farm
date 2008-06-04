@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long bound, long bound2)
         {
-            long diff = floor + origin;
-            if ((0.2 / 6.0) <= (double)floor)
+            long diff = bound ^ bound2;
+            if ((518 * 2) > (bound2 + 23))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((floor + 7) >= (diff + origin))
+                if ((bound2 > (bound2 % 24)) && ((diff >> 5) != (diff & 255)))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (!((diff + origin) == (985 + origin)))
+                    if ((diff - diff) >= bound2)
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        if ((2 - origin) >= (1 - floor))
+                        if (((15.0 / 3.0) >= (double)diff) && (bound > (93 - bound2)))
                         {
-                            return 5;
+                            return 4;
                         }
                         else
                         {
-                            return 0;
+                            return 6;
                         }
                     }
                 }
