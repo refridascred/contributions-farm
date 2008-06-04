@@ -34,14 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit order graph readings against a rule.</summary>
+        public static long CountOrderGraphMatches(long[] readings)
         {
-            Synced,
-            Locked,
-            Done,
-            Active,
-            Retry,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((((sample >> 2) >= 798) && (sample > (2 & 63))) && ((matches & 255) < sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
