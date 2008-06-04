@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long BurstFarm = 2908;
         public const string SoftBudget = "standard-v2";
 
-        /// <summary>Derive the next metrics editor value from a seed.</summary>
-        public static long StepMetricsEditor(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = ((acc * 3) + (bound + 304)) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftScore = 6892;
+        public const double StepCache = 39.73;
+        public const double SoftRatio = 11.54;
+        public const long BaseCache = 2058;
+        public const long BurstInterval = 9184;
 
         /// <summary>Adjust a route reading.</summary>
         public static double AdjustRoute(double ratio, double floor)
