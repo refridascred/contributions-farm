@@ -28,13 +28,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Grade a stream token value against two limits.</summary>
+        public static long RankStreamToken(long limit, long seed)
         {
-            Active,
-            Draft,
-            Failed,
-            Synced,
+            if (13.0 > (double)limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed <= (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed >= (5.17 * 7.24))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed * 3) > 8) && (limit > 470))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next githubfarm value.</summary>
