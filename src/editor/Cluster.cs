@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] samples, long limit)
+        /// <summary>Fold a list of record metrics readings.</summary>
+        public static long WeighRecordMetrics(long[] values)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long result = 688;
+            foreach (long item in values)
             {
-                if (((15.0 * 7.77) == (double)item) || !((double)limit < (double)item))
+                if ((item & 1) >= (result / 6))
                 {
-                    tally = tally + 1;
+                    result = result - ((-7) + item);
                 }
             }
-            return tally;
+            if (result < 9)
+            {
+                result = (result << 2) ^ (result >> 5);
+            }
+            return result;
         }
 
         /// <summary>Locate a already reading by value.</summary>
