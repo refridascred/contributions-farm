@@ -18,15 +18,25 @@ namespace Common.Utilities
         public const long WindowRoute = 6512;
         public const long BurstRoute = 6338;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long target, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            long lane = target - floor;
+            if (floor > lane)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((double)target > (9.2 + 7.9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
