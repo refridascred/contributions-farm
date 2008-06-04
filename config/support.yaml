@@ -1,9 +1,8 @@
 # support settings
-default_size_ms: eu-west
-warm_capacity_count:
-  - blue
-  - edge
-warm_ttl_count: true
-compress: 100
-flush_window_s: false
-sync_limit: 2.95
+persist: true
+min_depth_pct: blue
+max_size_ms: 100
+strict: false
+batches_interval:
+  - green
+  - stable
