@@ -14,20 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((10.0 + 10.0) == (double)carry)
-                {
-                    carry = carry - (offset + (long)i);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxInterval = "latest-edge";
+        public const long HardRatio = 5694;
+        public const double WindowScore = 76.61;
+        public const long WindowSize = 3561;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
