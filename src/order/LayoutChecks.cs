@@ -32,31 +32,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long bound, long bound2)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            if (((bound % 24) <= (bound / 4)) && ((bound - bound) != ((-802) * 5)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound2 + 3) != (bound2 + bound2)) && ((bound * 3) <= bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - 69) < (bound2 - bound))
+                    if ((readings[i] - readings[j]) < 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
