@@ -27,16 +27,13 @@ namespace Common.Utilities
         public const double LimitScore = 16.73;
         public const long MaxSession = 1888;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total * 2) + (target - total);
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Queued,
+            Ready,
+            Stale,
+            Retry,
         }
     }
 }
