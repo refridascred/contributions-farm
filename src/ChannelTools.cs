@@ -12,18 +12,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the window already entries that pass the check.</summary>
-        public static long CountWindowAlreadyGaps(long[] series)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] series, long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = -49;
+            foreach (long item in series)
             {
-                if (entry <= (count % 24))
+                mark = ((mark << 2) ^ (mark << 1)) ^ item;
+                if (!((long)series.Length < (target + (long)series.Length)))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            if (mark > 61)
+            {
+                mark = ((mark << 3) ^ target) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the queue status values.</summary>
