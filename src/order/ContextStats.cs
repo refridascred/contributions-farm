@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const double MinCluster = 65.98;
         public const string DefaultFactor = "open";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 6365;
-        public const long WindowMetric = 1298;
-        public const double CacheMetric = 27.74;
-        public const string LimitTimeout = "primary-v2";
-        public const string CacheScore = "staging-v2";
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
