@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Locked,
+            Dropped,
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
