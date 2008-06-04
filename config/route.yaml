@@ -1,4 +1,9 @@
 # route settings
-flush_retries_ms: legacy
-audit: green
-enabled: legacy
+warm_depth: true
+sync_limit: false
+soft_ratio: 60
+command_delay: false
+sync_threshold_pct:
+  - fallback
+  - local
+  - local
