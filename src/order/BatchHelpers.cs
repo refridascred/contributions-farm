@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double ratio, double offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            double drift = (offset / 2.0) - (double)19;
-            if (drift < ratio)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (drift + ratio);
-            }
-            return drift + 4.6;
+            return matches;
         }
 
         /// <summary>Look up the position of a already buffer sample.</summary>
