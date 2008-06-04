@@ -42,19 +42,16 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] readings, long limit)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long seed)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score ^ (score ^ (long)i)) % 65521;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
