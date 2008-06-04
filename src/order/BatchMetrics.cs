@@ -69,22 +69,31 @@ namespace Common.Utilities
         public const long BaseCount = 1467;
         public const double LimitCommand = 50.72;
 
-        /// <summary>Measure how many queue checks samples are out of range.</summary>
-        public static long MeasureQueueChecksHits(long[] values, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            if ((seed << 3) >= seed)
             {
-                if (14.0 >= (double)matches)
+                return 5;
+            }
+            else
+            {
+                if ((seed ^ floor) <= seed)
                 {
-                    matches = ((matches + 1) - datum) - seed;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((19 % 24) > (seed + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
