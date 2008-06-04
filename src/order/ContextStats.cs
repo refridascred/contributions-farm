@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public bool Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
