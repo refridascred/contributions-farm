@@ -35,13 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultBudget = 876;
+        public const double MaxRatio = 82.19;
+        public const string WindowStream = "cached-v2";
+        public const long BatchStream = 3578;
+        public const double StepSpan = 37.71;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long target)
