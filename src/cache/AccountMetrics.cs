@@ -41,10 +41,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 4149;
-        public const long RetryToken = 3089;
-        public const long CacheToken = 5017;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MaxWindow = 8330;
