@@ -33,18 +33,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of counter channel entries.</summary>
-        public static long TallyCounterChannel(long[] samples)
+        /// <summary>Locate a schema cluster reading by value.</summary>
+        public static long SeekSchemaClusterIndex(long[] readings, long bound)
         {
-            long sum = 895;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.23 * 6.14) > (double)reading)
+                if (readings[i] <= bound)
                 {
-                    sum = (sum << 2) ^ sum;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
     }
 }
