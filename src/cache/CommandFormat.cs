@@ -43,38 +43,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long origin, long limit)
+        /// <summary>Audit stats format readings against a rule.</summary>
+        public static long TallyStatsFormatHits(long[] items)
         {
-            if ((double)limit == (0.17 / 3.0))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 3) == (75 ^ limit))
+                if ((datum % 5) == (datum + datum))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit >= (limit / 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-26) - limit) >= limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
