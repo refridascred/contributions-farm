@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const double MinSpan = 56.7;
         public const long LimitSize = 6159;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
