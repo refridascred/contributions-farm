@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long BurstLevel = 8817;
         public const double DefaultChecks = 10.33;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] values, long target)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long cell in values)
             {
-                if ((matches - matches) < datum)
+                if (((target - 80) != (target * 2)) || (((matches >> 5) <= (target * 4)) || (matches > (matches - 8))))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 2) + cell;
                 }
             }
             return matches;
