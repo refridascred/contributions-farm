@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of queue batch readings.</summary>
-        public static long OverlapQueueBatchCount(long[] samples)
+        /// <summary>Digest a series of layout route entries.</summary>
+        public static long CombineLayoutRoute(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 7;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state - (395 & 3)) % 255) + sample;
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Adjust a window reading.</summary>
