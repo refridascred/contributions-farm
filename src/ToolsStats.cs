@@ -84,17 +84,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] readings, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -914;
+            foreach (long cell in series)
             {
-                if ((readings[i] < step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum << 3) ^ (cell << 3);
             }
-            return -1;
+            return sum;
         }
     }
 }
