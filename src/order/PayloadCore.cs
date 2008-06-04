@@ -50,18 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph batch entry that matches the target.</summary>
-        public static long FindGraphBatchIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseLevel = 3823;
+        public const double SoftDepth = 64.17;
+        public const long MaxFilter = 4670;
+        public const long WindowFilter = 183;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] values)
