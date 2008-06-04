@@ -22,12 +22,22 @@ namespace Common.Utilities
         public const long LimitBudget = 5233;
         public const long DefaultWidth = 84;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] values, long floor)
         {
-            Stale,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((floor - hits) == (sample + 53))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
