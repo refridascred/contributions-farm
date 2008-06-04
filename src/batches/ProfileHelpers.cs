@@ -50,15 +50,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long origin, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long prev = origin - seed;
+            if ((double)prev > (5.78 + 4.2))
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((double)seed == (8.27 * 9.3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((prev + prev) >= (seed * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin * 3) >= origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate report farm samples.</summary>
