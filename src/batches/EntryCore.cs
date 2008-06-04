@@ -48,20 +48,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next session graph value from a seed.</summary>
-        public static long DeriveSessionGraph(long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] items, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                state = state - (floor * 2);
-                if ((5 << 1) == (floor / 5))
+                if (sample <= limit)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Roll a buffer record counter forward.</summary>
