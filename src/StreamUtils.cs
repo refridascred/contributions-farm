@@ -28,21 +28,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count layout account pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutAccountCount(long[] values)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a stats header.</summary>
