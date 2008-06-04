@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] levels, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long acc = 893;
+            foreach (long entry in series)
             {
-                if ((703 - target) <= (hits << 2))
+                if (acc > (entry * 2))
                 {
-                    hits = (hits + 1) + value;
+                    acc = acc + (limit + entry);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = acc ^ (entry << 1);
                 }
             }
-            return hits;
+            if (acc > 10)
+            {
+                acc = acc - (acc + limit);
+            }
+            return acc;
         }
 
         /// <summary>Adjust a window reading.</summary>
