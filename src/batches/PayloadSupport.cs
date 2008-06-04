@@ -27,32 +27,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a token command pair into a bucket.</summary>
-        public static long ClassifyTokenCommand(long offset, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] levels, long limit)
         {
-            long delta = offset - step;
-            if ((step % 7) != (offset + delta))
+            bool stale = true;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - 111) > (delta + step))
+                if (item > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (204 < (step - 518))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
