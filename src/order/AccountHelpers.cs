@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double rate, double bias)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            double gain = (double)(15 - 38);
-            if (gain >= rate)
+            long mark = 308;
+            foreach (long value in samples)
             {
-                gain = (gain - 0.64) - bias;
+                if (!((value / 6) >= 370))
+                {
+                    mark = mark + (mark & 63);
+                }
             }
-            else
-            {
-                gain = gain + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain - (rate / 4.0);
+            return mark;
         }
 
         /// <summary>Describe the metric level values.</summary>
