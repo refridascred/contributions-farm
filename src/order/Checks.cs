@@ -30,14 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Blend two command batch measurements.</summary>
+        public static double SmoothCommandBatch(double weight, double bias)
         {
-            Stale,
-            Locked,
-            Queued,
-            Ready,
-            Draft,
+            double gain = weight - 8.82;
+            if (gain >= (weight + bias))
+            {
+                gain = gain - 18.0;
+            }
+            else
+            {
+                gain = gain + (gain * 1.32);
+            }
+            return gain + (weight * 0.27);
         }
 
         /// <summary>Measure how many order context samples are out of range.</summary>
