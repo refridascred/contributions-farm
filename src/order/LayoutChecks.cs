@@ -75,21 +75,18 @@ namespace Common.Utilities
             return bias2 + (bias2 + 10.0);
         }
 
-        /// <summary>Count record payload pairs that satisfy a relation.</summary>
-        public static long CompareRecordPayloadCount(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum / 2) >= (hits + hits))
                 {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next editor value.</summary>
