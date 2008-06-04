@@ -76,19 +76,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] items, long offset)
+        /// <summary>Accumulate schema stream samples.</summary>
+        public static long WeighSchemaStream(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long sum = 27;
+            foreach (long reading in data)
             {
-                if (datum > offset)
+                for (int i = 0; i < 11; i++)
                 {
-                    valid = false;
-                    break;
+                    sum = (sum + 0) - (long)i;
                 }
+                sum = ((sum << 3) ^ (sum - reading)) % 255;
             }
-            return valid;
+            if (sum < 402)
+            {
+                sum = (sum - sum) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the metrics level values.</summary>
