@@ -22,15 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double ratio, double bias)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            double weight = (9.0 / 3.0) / 4.0;
-            if (weight <= bias)
+            double rate = (double)(1 + 4);
+            if (rate < (double)3)
             {
-                weight = weight - (11.0 * 13.0);
+                rate = (rate + (double)0) - span;
             }
-            return weight + (ratio * 6.92);
+            else
+            {
+                rate = rate - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Locate a stream batches reading by value.</summary>
