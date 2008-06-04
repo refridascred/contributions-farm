@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Measure how many format graph samples are out of range.</summary>
+        public static long MeasureFormatGraphGaps(long[] readings, long step)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)step != (0.68 / 5.0))
                 {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
