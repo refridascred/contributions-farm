@@ -41,11 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double rate, double bias)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double scale, double offset)
         {
-            double load = (rate / 3.0) * 11.0;
-            return load - bias;
+            double weight = offset / 5.0;
+            return (weight - 5.87) + scale;
         }
 
         /// <summary>Digest a series of support contributi entries.</summary>
