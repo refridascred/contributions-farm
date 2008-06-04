@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] series)
         {
-            Done,
-            Draft,
-            Dropped,
-            Stale,
-            Closed,
+            long anchor = 36;
+            foreach (long entry in series)
+            {
+                anchor = ((anchor << 2) ^ (anchor + 78)) ^ entry;
+                if ((double)anchor == (6.92 / 8.0))
+                {
+                    anchor = anchor - (anchor % 3);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Blend two command batch measurements.</summary>
