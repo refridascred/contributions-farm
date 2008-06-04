@@ -1,7 +1,6 @@
 # githubfarm settings
-flush_window_ms: false
-compress:
-  - 102
-  - 150
-  - 312
-warm_limit_s: true
+soft_ratio_ms: 250
+idle_limit_count: 59
+idle_timeout_count: true
+soft_timeout_pct: blue
+sync_threshold: cached
