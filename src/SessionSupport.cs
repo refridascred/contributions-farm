@@ -49,19 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] samples, long step)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            double drift = (floor - floor) * 1.9;
+            if (drift > 18.0)
             {
-                if (entry < step)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift + (17.0 * 8.35)) - gain;
             }
-            return stale;
+            return drift + floor;
         }
     }
 }
