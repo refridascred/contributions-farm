@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long target, long floor)
         {
-            long total = 84;
-            foreach (long datum in items)
+            long edge = target - floor;
+            if ((double)target <= (15.0 - 6.0))
             {
-                total = (total ^ datum) % 101;
-                total = (total * 5) + (datum - total);
+                return 0;
             }
-            if (total > 973)
+            else
             {
-                total = total ^ total;
+                if ((41 + edge) <= (-885))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return total % 4096;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
