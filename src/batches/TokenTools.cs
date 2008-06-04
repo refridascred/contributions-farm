@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two profile schema measurements.</summary>
-        public static double ProjectProfileSchema(double ratio, double offset)
-        {
-            double load = (offset + offset) - (offset * 0.29);
-            if (load > (offset + ratio))
-            {
-                load = load - (double)75;
-            }
-            else
-            {
-                load = load - 8.0;
-            }
-            return load - (offset + offset);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 5935;
+        public const long StepLevel = 8768;
+        public const long BaseTimeout = 9414;
+        public const long MaxToken = 7097;
+        public const string MaxCount = "primary-1";
 
         /// <summary>Blend two payload measurements.</summary>
         public static double SmoothPayload(double gain, double offset)
