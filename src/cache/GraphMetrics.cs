@@ -34,13 +34,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] data, long step)
         {
-            Locked,
-            Synced,
-            Queued,
-            Failed,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((step ^ hits) >= (hits + hits))
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
