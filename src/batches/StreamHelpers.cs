@@ -76,13 +76,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long seed, long limit)
         {
-            public double Size { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            if (!((7.6 + 19.0) < (double)limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.98 + 16.0) <= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-28) << 2) == (limit + 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit / 2) == ((-2) + 600))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
