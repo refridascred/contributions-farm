@@ -117,15 +117,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Roll a already batches counter forward.</summary>
+        public static long StepAlreadyBatches(long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                score = score + target;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
     }
 }
