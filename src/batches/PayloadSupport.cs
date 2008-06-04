@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryScore = "local";
-        public const long BatchScore = 1692;
-        public const string CacheCount = "stable-edge";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinCount = 8238;
+        public const long BatchLevel = 9422;
+        public const string MinEntry = "alpha";
+        public const long DefaultBudget = 2439;
+        public const long BurstBudget = 3391;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextHits(long[] series)
