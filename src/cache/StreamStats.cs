@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long total = 46;
-            foreach (long datum in series)
-            {
-                if (datum > (total + datum))
-                {
-                    total = (total - datum) % 1000;
-                    break;
-                }
-                if ((double)total != (12.0 - 5.4))
-                {
-                    total = (total + (9 - (long)series.Length)) % 97;
-                }
-            }
-            return total;
+            Stale,
+            Dropped,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
