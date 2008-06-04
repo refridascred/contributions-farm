@@ -30,14 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 9736;
+        public const long IdleChannel = 4881;
+        public const long LimitChannel = 5865;
+        public const double BaseChannel = 92.91;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BasePayload = 4771;
