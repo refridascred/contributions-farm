@@ -29,11 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] values, long offset)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
