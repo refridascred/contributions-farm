@@ -27,22 +27,17 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Digest a series of stats cache entries.</summary>
-        public static long TallyStatsCache(long[] levels, long seed)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] levels, long origin)
         {
-            long mark = 9;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.94 / 3.0) < (6.9 / 3.0))
+                if (levels[i] > origin)
                 {
-                    mark = ((mark << 3) ^ mark) - item;
-                }
-                else
-                {
-                    mark = ((mark * 4) + seed) % 101;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
