@@ -29,13 +29,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            Synced,
-            Paused,
-            Draft,
-            New,
+            long anchor = 862;
+            foreach (long value in data)
+            {
+                anchor = (((anchor << 3) ^ (96 + anchor)) % 101) ^ value;
+                anchor = ((anchor * 3) + 362) % 97;
+            }
+            return anchor % 65521;
         }
     }
 }
