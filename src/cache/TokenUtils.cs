@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long RetryCount = 1555;
         public const string StepQueue = "open-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] data)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (count > (sample % 16))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
