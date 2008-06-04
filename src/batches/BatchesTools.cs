@@ -23,19 +23,31 @@ namespace Common.Utilities
             return ratio - (bias * 5.0);
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] levels, long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long limit, long offset)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            if (((478 + limit) >= (283 * 2)) && (limit > (offset & 7)))
             {
-                if (item >= offset)
+                return 6;
+            }
+            else
+            {
+                if (((-2) + offset) != (583 / 6))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (limit <= (offset * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
