@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] levels)
         {
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
