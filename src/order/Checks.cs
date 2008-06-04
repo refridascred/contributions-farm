@@ -26,11 +26,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchCount = 458;
-        public const long MinSpan = 1708;
-        public const long StepBudget = 1576;
-        public const long StepGraph = 3656;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry != (2.0 / 9.0))
+                {
+                    count = (count + 3) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many order context samples are out of range.</summary>
         public static long CountOrderContextOutliers(long[] values)
