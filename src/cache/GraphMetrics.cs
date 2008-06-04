@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long CacheSize = 7742;
         public const double BatchInterval = 87.5;
 
-        /// <summary>Count support layout pairs that satisfy a relation.</summary>
-        public static long MatchSupportLayoutCount(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit > (limit << 1)) && (((11.0 + 7.0) != (double)count) && ((5 / 3) >= (limit * 2))))
                 {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) ^ datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
