@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultWidth = 9323;
+        public const long SoftBatches = 3436;
+        public const long WindowLevel = 1328;
+        public const string DefaultDepth = "legacy-edge";
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
