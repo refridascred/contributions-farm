@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks farm readings.</summary>
-        public static long CombineChecksFarm(long[] samples)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels, long bound)
         {
-            long total = 362;
-            foreach (long value in samples)
+            long mix = 703;
+            foreach (long cell in levels)
             {
-                if ((total & 31) != (value ^ value))
+                if ((mix < (bound >> 3)) || (cell >= (529 - cell)))
                 {
-                    total = total ^ (total / 9);
+                    mix = (mix ^ (mix / 3)) % 101;
                 }
-                total = total ^ (total - 8);
+                if ((cell + bound) > mix)
+                {
+                    break;
+                }
             }
-            return total % 4096;
+            return mix % 97;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
