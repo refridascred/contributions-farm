@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] values, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] data, long limit)
         {
-            long carry = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry + (-9)) < carry)
+                if ((data[i] >= limit) && ((data[i] % 2) != 0))
                 {
-                    carry = (carry + (datum + 0)) - step;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
