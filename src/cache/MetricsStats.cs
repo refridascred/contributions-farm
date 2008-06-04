@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank stream order input into a small class.</summary>
-        public static long BucketStreamOrder(long step, long floor)
-        {
-            if ((step - step) != (32 & 255))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((floor << 2) >= 0) && (floor >= (floor + step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleSize = 812;
+        public const long BatchInterval = 7265;
+        public const long WindowSpan = 2947;
+        public const string RetryChecks = "strict";
+        public const double HardChecks = 53.52;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
