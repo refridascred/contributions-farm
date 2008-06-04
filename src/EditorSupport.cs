@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 2999;
-        public const string DefaultPayload = "primary-v2";
-        public const long MinWidth = 2439;
-        public const long BaseLevel = 3855;
-        public const long LimitCount = 1625;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 5376;
+        public const string BurstContributi = "fallback";
+        public const long DefaultSize = 8479;
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
