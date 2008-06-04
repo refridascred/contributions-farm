@@ -13,18 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] series, long limit)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double ratio = rate;
+            if (ratio < rate)
             {
-                if ((8 * 3) <= value)
-                {
-                    tally = (tally + 3) - limit;
-                }
+                ratio = (ratio + (double)7) - bias;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (ratio * 2.54);
         }
 
         /// <summary>Define window limits and defaults.</summary>
