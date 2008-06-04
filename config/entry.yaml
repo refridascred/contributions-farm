@@ -1,11 +1,9 @@
 # entry settings
-format_capacity: edge
-batches_ratio:
-  - 204
-  - 162
-  - 205
-editor_ratio:
-  idle_timeout: 24
-  buffer_timeout: cached
-  enabled: strict
-format_delay: 35
+entry_ttl: legacy
+dry_run: 1024
+sync_ratio_count:
+  - 446
+  - 210
+  - 415
+  - 113
+burst_interval_ms: false
