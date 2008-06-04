@@ -60,19 +60,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] levels, long target)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (entry > target)
                 {
-                    total = ((total - 5) % 255) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return stale;
         }
     }
 }
