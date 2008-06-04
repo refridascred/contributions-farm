@@ -30,14 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Failed,
-            Locked,
-            New,
-            Paused,
-            Queued,
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a buffer header.</summary>
