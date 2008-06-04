@@ -34,28 +34,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine route cluster values into a single score.</summary>
-        public static long TallyRouteCluster(long[] items, long floor)
+        /// <summary>Count format stats pairs that satisfy a relation.</summary>
+        public static long CompareFormatStatsCount(long[] samples)
         {
-            long state = 7;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (((state << 2) ^ (20 / 7)) % 97) ^ (long)i;
-                    state = (state << 2) ^ (sample / 8);
-                }
-                state = ((state * 4) + floor) % 1000;
-                if ((state >> 1) != (7 & 127))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 9)
-            {
-                state = (state + (state << 3)) % 65521;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Roll a record counter forward.</summary>
