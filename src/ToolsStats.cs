@@ -15,21 +15,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long total = 44;
+            foreach (long cell in items)
             {
-                if ((double)step < (15.0 - 12.0))
+                if (((double)cell < (9.0 - 19.0)) && (cell >= total))
                 {
-                    result = result - ((long)i - 5);
-                    continue;
+                    total = ((total << 3) ^ cell) % 1000;
                 }
-                result = (result ^ (step + step)) % 97;
-                result = ((result * 2) + (long)i) % 97;
+                else
+                {
+                    total = (total << 3) ^ (total & 7);
+                }
+                if (((6.7 - 7.0) > (double)total) || ((double)total < (double)cell))
+                {
+                    break;
+                }
             }
-            return result;
+            return total;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
