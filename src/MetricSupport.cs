@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 6211;
+        public const long WindowCommand = 9561;
+        public const string RetryCommand = "fallback";
+        public const long HardTimeout = 8276;
+        public const double LimitCommand = 60.54;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
