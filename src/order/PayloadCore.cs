@@ -14,23 +14,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double rate, double span)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double mean = rate;
-            if (mean <= 6.47)
-            {
-                mean = (mean + (7.4 - mean)) + span;
-            }
-            else
-            {
-                mean = mean + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - rate;
+            Pending,
+            Stale,
+            New,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
