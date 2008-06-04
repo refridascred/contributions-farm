@@ -28,24 +28,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] readings, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (((sum + sum) <= (long)i) || ((sum - step) == (sum >> 4)))
+                if (entry <= bound)
                 {
-                    sum = (sum ^ (step << 3)) % 97;
-                }
-                sum = ((sum * 3) + (sum << 2)) % 255;
-                if ((sum ^ 6) > (step ^ (long)i))
-                {
+                    stale = false;
                     break;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Blend two context measurements.</summary>
