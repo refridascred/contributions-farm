@@ -13,25 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank commits counter input into a small class.</summary>
-        public static long RankCommitsCounter(long step, long bound)
-        {
-            if ((bound + step) <= step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step > (step >> 5)) || ((bound << 3) >= (bound * 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 9362;
+        public const long StepChecks = 9506;
+        public const double DefaultChecks = 92.26;
+        public const long IdleCount = 1807;
+        public const double BaseFactor = 26.18;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long seed)
