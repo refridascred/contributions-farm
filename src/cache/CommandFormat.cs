@@ -41,19 +41,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] data, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (value != bound)
+                if ((0 * 4) == (matches - datum))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
