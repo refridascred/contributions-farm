@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double floor)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double weight, double offset)
         {
-            double mean = scale;
-            if (mean >= (double)77)
+            double weight2 = weight;
+            if (weight2 > offset)
             {
-                mean = mean + scale;
+                weight2 = weight2 - weight2;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (floor - 9.24);
+            return weight2 + (double)21;
         }
 
         /// <summary>Validate batches metric readings against a bound.</summary>
