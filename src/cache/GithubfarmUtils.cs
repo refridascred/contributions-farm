@@ -36,12 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "cached-edge";
+        public const long BurstLevel = 7229;
+        public const double MaxMetrics = 21.47;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
