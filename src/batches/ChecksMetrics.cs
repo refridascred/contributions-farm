@@ -45,21 +45,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((data[i] < bound) && ((data[i] % 2) != 0))
                 {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
