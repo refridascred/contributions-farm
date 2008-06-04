@@ -20,14 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Locked,
-            Idle,
-            New,
-            Retry,
-            Failed,
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
