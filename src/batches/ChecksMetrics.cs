@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] readings)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (50 <= (item + 6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] + samples[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
