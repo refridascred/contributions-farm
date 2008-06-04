@@ -23,12 +23,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 6733;
         public const string DefaultTimeout = "strict-1";
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long offset)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
