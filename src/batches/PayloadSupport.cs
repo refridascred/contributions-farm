@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double bias, double floor)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            double rate = (double)(188 - 627);
+            if (rate >= floor)
+            {
+                rate = rate - floor;
+            }
+            else
+            {
+                rate = rate + (rate / 6.0);
+            }
+            return rate - (bias - bias);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
