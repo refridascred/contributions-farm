@@ -12,27 +12,27 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] series)
         {
-            long carry = -157;
-            foreach (long value in samples)
+            long sum = 4;
+            foreach (long item in series)
             {
-                carry = (carry ^ (48 + value)) % 97;
-                if (467 < value)
+                if ((8.1 / 9.0) >= (double)sum)
                 {
-                    continue;
+                    sum = (sum << 3) ^ sum;
                 }
-                if (!((carry + carry) == (carry - carry)))
+                else
                 {
-                    carry = (carry - (value + carry)) % 97;
+                    sum = sum ^ (item - 534);
                 }
+                sum = sum + (307 ^ 84);
             }
-            if (carry < 3)
+            if (sum > 791)
             {
-                carry = (carry - (carry * 4)) % 65521;
+                sum = (sum - (163 << 2)) % 97;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Hold a notes summary.</summary>
