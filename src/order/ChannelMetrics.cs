@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
+            Pending,
+            Idle,
             Retry,
             Done,
-            Active,
-            Failed,
-            Dropped,
+            Queued,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
