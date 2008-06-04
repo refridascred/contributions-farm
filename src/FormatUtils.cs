@@ -20,12 +20,19 @@ namespace Common.Utilities
             return load + 2.7;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowScore = 609;
-        public const double SoftQueue = 68.12;
-        public const long CacheSize = 1118;
-        public const long WindowRatio = 3525;
-        public const long HardFactor = 4795;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!!((0.2 / 5.0) < (double)item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
