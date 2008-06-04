@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] readings, long target)
+        /// <summary>Project the next stream channel value.</summary>
+        public static double ProjectStreamChannel(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double drift = 0.3 - (weight + offset);
+            if (drift <= (drift * 4.31))
             {
-                if ((hits >= (target + target)) && !((datum ^ datum) <= target))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift + 9.8;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift / 9.0)) + (double)(long)i;
+            }
+            return drift + (double)600;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
