@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route already readings.</summary>
-        public static long TallyRouteAlready(long[] levels)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] samples, long seed)
         {
-            long sum = 5;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                sum = (sum + (9 * 4)) + item;
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum % 1000;
+            return found;
         }
     }
 }
