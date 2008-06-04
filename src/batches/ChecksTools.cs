@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] levels)
-        {
-            long carry = 2;
-            foreach (long value in levels)
-            {
-                if ((carry % 60) == (carry ^ value))
-                {
-                    carry = ((carry * 4) + (value - carry)) % 65521;
-                }
-            }
-            if (carry > 7)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseCount = 9886;
+        public const long CacheDepth = 9741;
+        public const double CacheWindow = 20.54;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteMatches(long[] items)
