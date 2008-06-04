@@ -64,18 +64,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] values)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((seen + seen) > (627 - entry))
+                if (((double)value > (9.44 - 0.7)) && ((hits + value) < (hits % 7)))
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
