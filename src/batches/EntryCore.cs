@@ -30,19 +30,13 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Token { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
