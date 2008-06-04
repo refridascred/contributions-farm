@@ -35,18 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter cache samples are out of range.</summary>
-        public static long TallyCounterCacheOutliers(long[] series)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long sum = 375;
+            foreach (long datum in levels)
             {
-                if ((double)(long)series.Length >= (3.0 + 5.0))
+                if ((sum + datum) >= (datum ^ datum))
                 {
-                    matches = (matches + 3) + entry;
+                    sum = sum + (datum + datum);
                 }
             }
-            return matches;
+            if (sum > 6)
+            {
+                sum = ((sum * 4) + (sum & 63)) % 1000;
+            }
+            return sum;
         }
     }
 }
