@@ -20,22 +20,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the account batch entries that pass the check.</summary>
-        public static long AuditAccountBatchHits(long[] readings)
+        /// <summary>Look up the position of a batch metrics sample.</summary>
+        public static long FindBatchMetricsIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry / 7) < count)
+                if ((data[i] == target) && ((data[i] % 5) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a editor header.</summary>
