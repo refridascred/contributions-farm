@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long CacheSize = 7742;
         public const double BatchInterval = 87.5;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] series, long limit)
+        /// <summary>Accumulate account stream samples.</summary>
+        public static long DigestAccountStream(long[] data)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long result = 113;
+            foreach (long datum in data)
             {
-                if ((limit > (limit << 1)) && (((11.0 + 7.0) != (double)count) && ((5 / 3) >= (limit * 2))))
+                if (!((result + datum) == (datum * 4)))
                 {
-                    count = (count + 1) ^ datum;
+                    result = (result - result) % 65521;
                 }
+                result = result + (67 - datum);
             }
-            return count;
+            if (result > 10)
+            {
+                result = ((result << 2) ^ (result << 2)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a notes entry.</summary>
