@@ -22,18 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 2500;
+        public const double BatchAccount = 55.88;
+        public const string DefaultBudget = "fallback";
+        public const long MaxCount = 9301;
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
