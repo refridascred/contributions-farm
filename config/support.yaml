@@ -1,15 +1,17 @@
 # support settings
-warm_capacity_pct:
-  token_depth: 8410
-  githubfarm_ttl: true
-  cluster_timeout: 4.15
-  verbose: 30
-min_retries: false
-poll_limit: standard
-profile_size: strict
-batches_delay:
-  - local
-  - cached
-  - strict
-  - latest
-max_limit_s: edge
+idle_limit_pct: cached
+account_ttl:
+  poll_timeout: false
+  dry_run: stable
+  metric_retries: cached
+  retry_ratio_s: 39.91
+  compress: 12.89
+  retry_interval:
+    - open
+    - standard
+    - cached
+    - open
+verbose: 19
+support_retries: strict
+min_retries_count: strict
+hard_depth_s: 30
