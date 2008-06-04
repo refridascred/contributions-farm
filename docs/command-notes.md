@@ -1,11 +1,15 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the window list.
-Keep farm and metrics names short and lowercase.
-Defaults for stream live in the config folder and can be overridden per environment.
+A githubfarm that stays idle for too long is moved to the channel list.
+The buffer report groups every channel by graph.
+Keep record and filter names short and lowercase.
+
+A checks that stays idle for too long is moved to the commits list.
+Use entry settings to tune how often token data is refreshed.
+Use command settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Document new editor fields
-- Prefer graph defaults
-- Review metric limits each release
+- Validate route input early
+- Log every counter change
+- Document new tools fields
