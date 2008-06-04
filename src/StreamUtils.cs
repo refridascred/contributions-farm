@@ -35,12 +35,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultBudget = 876;
-        public const double MaxRatio = 82.19;
-        public const string WindowStream = "cached-v2";
-        public const long BatchStream = 3578;
-        public const double StepSpan = 37.71;
+        /// <summary>Count layout account pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutAccountCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long SeriesNotes(long target)
