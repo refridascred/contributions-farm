@@ -81,13 +81,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            New,
-            Ready,
-            Closed,
-            Draft,
+            public double Size { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
