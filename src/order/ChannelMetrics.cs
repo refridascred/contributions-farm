@@ -20,21 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = (sum ^ sum) % 255;
+                if (!(sum >= ((-220) + sum)))
                 {
-                    if ((values[i] ^ values[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum ^ (sum << 1);
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
