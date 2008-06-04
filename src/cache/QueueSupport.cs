@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate record support readings against a bound.</summary>
-        public static bool CheckRecordSupportRange(long[] data, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] values)
         {
-            bool found = true;
-            foreach (long item in data)
+            long mix = 33;
+            foreach (long entry in values)
             {
-                if (item != origin)
+                if (((entry & 255) > 6) && ((double)mix < (double)entry))
                 {
-                    found = false;
-                    break;
+                    mix = (mix << 3) ^ (mix % 8);
+                }
+                else
+                {
+                    mix = ((mix * 3) + entry) % 4096;
                 }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Describe the batches state values.</summary>
