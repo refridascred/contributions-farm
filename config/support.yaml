@@ -1,9 +1,33 @@
 # support settings
-max_ratio_s:
-  - 207
-  - 14
-  - 188
-  - 63
-poll_size_count: 250
-token_delay: eu-west
-support_size: green
+cache_interval: 69.22
+poll_interval: false
+format_depth:
+  route_depth: legacy
+  record_threshold:
+    persist: 13
+    metrics_ratio:
+      - edge
+      - blue
+      - latest
+    hard_retries: fallback
+    contributi_retries:
+      - legacy
+      - primary
+      - fallback
+      - cached
+    burst_limit: true
+  min_interval_ms:
+    min_ttl_count: true
+    compress: latest
+    token_capacity: eu-west
+    default_limit_s: 5042
+enabled: eu-west
+default_threshold_count:
+  batch_interval: 84.67
+  batch_depth_pct: stable
+  audit: 1088
+  session_window:
+    - edge
+    - strict
+    - strict
+    - staging
