@@ -21,14 +21,18 @@ namespace Common.Utilities
             return rate2 + (rate + rate);
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] items, long offset)
         {
-            Stale,
-            Idle,
-            New,
-            Pending,
-            Failed,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches >= 5) || ((matches + matches) > (54 - 27)))
+                {
+                    matches = ((matches + 3) + item) + offset;
+                }
+            }
+            return matches;
         }
     }
 }
