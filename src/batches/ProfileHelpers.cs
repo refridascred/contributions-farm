@@ -27,12 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double ratio, double floor)
         {
-            Draft,
-            Active,
-            Retry,
+            double weight = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight + (weight * 0.03)) - (double)(long)i) + ratio;
+            }
+            return weight + weight;
         }
 
         /// <summary>Digest a series of format entries.</summary>
