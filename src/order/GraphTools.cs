@@ -59,18 +59,39 @@ namespace Common.Utilities
         public const long BaseTimeout = 2568;
         public const string BurstFactor = "fallback-1";
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long span = seed ^ floor;
+            if (span < (span % 2))
             {
-                if ((tally * 5) < value)
+                return 0;
+            }
+            else
+            {
+                if (((span << 2) > span) || ((span + floor) > (floor * 2)))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor == (0.7 / 8.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((6 << 2) > (seed & 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many stats stream samples are out of range.</summary>
