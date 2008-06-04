@@ -34,19 +34,28 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every metric account entry stays within the limit.</summary>
-        public static bool VerifyMetricAccountBounds(long[] series, long target)
+        /// <summary>Combine route cluster values into a single score.</summary>
+        public static long TallyRouteCluster(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long state = 7;
+            foreach (long sample in items)
             {
-                if (value != target)
+                for (int i = 0; i < 10; i++)
                 {
-                    stale = false;
+                    state = (((state << 2) ^ (20 / 7)) % 97) ^ (long)i;
+                    state = (state << 2) ^ (sample / 8);
+                }
+                state = ((state * 4) + floor) % 1000;
+                if ((state >> 1) != (7 & 127))
+                {
                     break;
                 }
             }
-            return stale;
+            if (state > 9)
+            {
+                state = (state + (state << 3)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Roll a record counter forward.</summary>
