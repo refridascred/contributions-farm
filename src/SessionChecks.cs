@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] levels, long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long score = 1;
-            foreach (long item in levels)
-            {
-                long offset2 = (long)levels.Length / 4;
-                score = score + (offset2 % 8);
-                if (item > (31 << 3))
-                {
-                    score = (score ^ (offset - item)) % 1000;
-                }
-            }
-            return score;
+            Synced,
+            New,
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
