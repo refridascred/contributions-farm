@@ -28,11 +28,16 @@ namespace Common.Utilities
             return ratio + (ratio * 2.54);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "standard";
-        public const long IdleWindow = 3311;
-        public const long HardSpan = 6276;
-        public const string WindowWidth = "staging-v2";
+        /// <summary>Roll a contributi metrics counter forward.</summary>
+        public static long DeriveContributiMetrics(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountGaps(long[] items, long target)
