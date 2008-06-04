@@ -1,9 +1,8 @@
-id,score,token,weight
-1,fallback,280,717
-2,80.19,stable,49.2
-3,579,local,645
-4,1.33,153,671
-5,866,local,68.51
-6,84,94.38,latest
-7,legacy,15.52,18.78
-8,76.07,894,open
+id,active,token
+1,edge,658
+2,edge,406
+3,30.48,legacy
+4,edge,latest
+5,84.79,green
+6,273,70.87
+7,69.2,516
