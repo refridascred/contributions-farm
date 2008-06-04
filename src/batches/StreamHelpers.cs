@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] data, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) != 0))
+                if (entry <= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Accumulate filter entry samples.</summary>
