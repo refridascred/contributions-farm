@@ -20,27 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long sum = 4;
-            foreach (long item in series)
-            {
-                if ((8.1 / 9.0) >= (double)sum)
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                else
-                {
-                    sum = sum ^ (item - 534);
-                }
-                sum = sum + (307 ^ 84);
-            }
-            if (sum > 791)
-            {
-                sum = (sum - (163 << 2)) % 97;
-            }
-            return sum;
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count layout account pairs that satisfy a relation.</summary>
