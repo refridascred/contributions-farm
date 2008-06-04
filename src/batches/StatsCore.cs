@@ -22,22 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits ^ hits) != (hits * 5))
-                {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
