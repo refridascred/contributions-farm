@@ -52,18 +52,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] levels, long target)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double gain2 = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (5.0 <= (double)target)
-                {
-                    seen = (seen + 2) + item;
-                }
+                gain2 = ((gain2 + 16.0) - (double)(long)i) + gain;
             }
-            return seen;
+            return gain2 + (double)750;
         }
     }
 }
