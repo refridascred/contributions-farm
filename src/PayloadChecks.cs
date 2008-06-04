@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Dropped,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftCount = 0.44;
+        public const double LimitWindow = 47.73;
+        public const string StepWindow = "standard-1";
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterLimits(long[] data, long floor)
