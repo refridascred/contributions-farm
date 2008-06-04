@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 5376;
-        public const string BurstContributi = "fallback";
-        public const long DefaultSize = 8479;
+        /// <summary>Accumulate cluster entry samples.</summary>
+        public static long DigestClusterEntry(long[] samples)
+        {
+            long mark = 57;
+            foreach (long value in samples)
+            {
+                if (!(mark > (value >> 5)))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long SeekCommandIndex(long[] samples, long target)
