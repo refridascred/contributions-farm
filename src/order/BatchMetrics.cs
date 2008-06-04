@@ -39,18 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] levels)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits + 69) == (sample / 8))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
