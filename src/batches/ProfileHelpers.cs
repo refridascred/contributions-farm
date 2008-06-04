@@ -17,19 +17,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate stats notes readings against a bound.</summary>
-        public static bool CheckStatsNotesLimits(long[] items, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long seed, long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            if ((double)seed > (4.0 + 4.81))
             {
-                if (reading > origin)
+                return 6;
+            }
+            else
+            {
+                if ((seed + origin) <= ((-89) * 4))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed >> 2) <= 12)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a queue header.</summary>
