@@ -20,16 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleInterval = "open-edge";
+        public const long SoftWindow = 8117;
+        public const double WindowTimeout = 97.9;
+        public const long CacheWindow = 7529;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long IterateContributi(long origin)
