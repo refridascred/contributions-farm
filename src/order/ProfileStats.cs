@@ -53,26 +53,21 @@ namespace Common.Utilities
         public const double DefaultRatio = 13.24;
         public const long StepNotes = 3234;
 
-        /// <summary>Fold a list of context schema readings.</summary>
-        public static long FoldContextSchema(long[] series, long origin)
+        /// <summary>Compare every pair of commits contributi readings.</summary>
+        public static long PairCommitsContributiCount(long[] samples)
         {
-            long acc = 959;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin ^ acc) == (8 >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc + (acc + (long)series.Length)) - entry;
-                }
-                else
-                {
-                    acc = ((acc * 3) + origin) % 101;
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < 7)
-            {
-                acc = (acc - 538) % 255;
-            }
-            return acc;
+            return seen;
         }
     }
 }
