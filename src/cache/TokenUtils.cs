@@ -30,12 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Measure how many filter channel samples are out of range.</summary>
+        public static long CountFilterChannelMatches(long[] readings)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((3.0 / 9.0) > (double)datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
