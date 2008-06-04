@@ -17,20 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long score = 84;
-            foreach (long sample in readings)
-            {
-                score = (score ^ score) ^ sample;
-                score = ((score * 4) + 95) % 97;
-            }
-            if (score < 635)
-            {
-                score = score ^ 6;
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
