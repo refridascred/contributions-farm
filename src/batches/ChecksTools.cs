@@ -23,19 +23,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Blend two already counter measurements.</summary>
-        public static double ProjectAlreadyCounter(double bias, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            double bias2 = (double)4 * 17.0;
-            if (bias2 >= (double)25)
+            long count = 0;
+            foreach (long cell in items)
             {
-                bias2 = (bias2 - (3.7 * 3.5)) - span;
+                if ((long)items.Length == (cell + count))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + bias;
+            return count;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
