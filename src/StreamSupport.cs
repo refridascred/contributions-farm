@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] data)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample >= 302) && ((tally * 3) > (sample - tally)))
+                if (series[i] >= target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
