@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] values, long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long limit, long floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            if ((18.0 * 1.2) <= (double)limit)
             {
-                if (value < offset)
+                return 4;
+            }
+            else
+            {
+                if ((floor >> 2) != (9 + 5))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!(limit >= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor <= (floor + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the context class values.</summary>
