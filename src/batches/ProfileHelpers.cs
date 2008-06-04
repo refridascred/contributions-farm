@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long BurstFarm = 2908;
         public const string SoftBudget = "standard-v2";
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] data, long origin)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading - reading) < 26)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) - origin;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a graph entry.</summary>
