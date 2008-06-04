@@ -28,9 +28,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 36.38;
-        public const double SoftSize = 95.26;
-        public const double HardPayload = 22.38;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((18 <= (seed & 1)) || ((9 % 3) >= mix))
+                {
+                    mix = (mix ^ (mix * 4)) % 255;
+                    mix = (mix - mix) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
