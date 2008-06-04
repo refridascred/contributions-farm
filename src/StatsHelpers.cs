@@ -57,15 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Combine tools filter values into a single score.</summary>
+        public static long TotalToolsFilter(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long mark = 33;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                mark = ((mark - (mark + 2)) % 1000) + cell;
             }
-            return anchor;
+            if (mark < 9)
+            {
+                mark = (mark + (mark % 2)) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
