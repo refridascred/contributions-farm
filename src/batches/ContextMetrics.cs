@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFactor = 273;
-        public const long CacheWidth = 4028;
-        public const double DefaultFarm = 31.31;
-        public const long BatchCount = 4220;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!!((item / 6) == (4 * 4)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long step, long target)
