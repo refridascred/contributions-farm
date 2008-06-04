@@ -14,25 +14,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long bound, long seed)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long step)
         {
-            long slot = bound + seed;
-            if (seed <= (slot << 1))
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (seed > slot)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
 
         /// <summary>Rank cache queue input into a small class.</summary>
