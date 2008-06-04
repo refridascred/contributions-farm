@@ -17,14 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] data)
         {
-            Draft,
-            Idle,
-            Active,
-            Ready,
-            New,
+            long sum = 0;
+            foreach (long datum in data)
+            {
+                sum = ((sum << 3) ^ sum) + datum;
+            }
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
