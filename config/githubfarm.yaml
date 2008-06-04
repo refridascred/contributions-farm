@@ -1,10 +1,7 @@
 # githubfarm settings
-soft_capacity: 7168
-batch_interval_pct: 5077
-checks_threshold: 80
-warm_interval_ms: edge
-min_capacity:
-  - 235
-  - 29
-  - 287
-  - 86
+batch_capacity_pct: false
+default_timeout_s: false
+warm_size_pct: 250
+hard_ttl: 682
+hard_depth_s: false
+enabled: 17
