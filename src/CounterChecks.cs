@@ -58,11 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter already figure with a bias.</summary>
-        public static double AdjustFilterAlready(double bias, double offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] values, long seed)
         {
-            double mean = offset * 5.7;
-            return (mean - (double)25) + bias;
+            long mix = 619;
+            foreach (long cell in values)
+            {
+                if ((mix + mix) <= (cell * 2))
+                {
+                    mix = ((mix << 3) ^ (mix / 3)) + seed;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Locate a queue layout reading by value.</summary>
