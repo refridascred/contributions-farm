@@ -46,14 +46,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            New,
-            Pending,
-            Closed,
-            Retry,
-            Synced,
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
