@@ -1,8 +1,5 @@
 {
-  "enabled": [285, 252, 492],
-  "command_size": 20.16,
-  "readonly": false,
-  "base_capacity": [245, 437, 53],
-  "retry_delay": [469, 171, 243],
-  "verbose": 61.69
+  "retry_timeout_ms": "latest",
+  "flush_ttl_count": false,
+  "report_depth": 80.83
 }
