@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Done,
-            Dropped,
-            Queued,
+            public double Token { get; set; }
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
