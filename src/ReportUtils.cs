@@ -48,17 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch schema entry that matches the target.</summary>
-        public static long LocateBatchSchemaIndex(long[] data, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((data[i] < target) && ((data[i] % 2) != 0))
+                if (item > origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a tools info.</summary>
