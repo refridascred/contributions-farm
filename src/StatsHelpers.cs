@@ -58,13 +58,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long seed, long bound)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
+            if (62 <= (bound >> 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed ^ bound) <= 62) || ((5 + bound) >= (seed - seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
