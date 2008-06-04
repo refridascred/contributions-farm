@@ -1,9 +1,24 @@
 # githubfarm settings
-sync_window:
-  - 135
-  - 440
-  - 149
-burst_threshold_pct: true
-max_size: green
-schema_interval: 1460
-sync_ratio_pct: green
+order_ttl: false
+poll_interval_s: true
+poll_timeout_count: 70.58
+cache_limit_pct: 88.56
+min_delay_count:
+  cache_threshold:
+    - 49
+    - 429
+  buffer_delay:
+    - staging
+    - blue
+    - primary
+    - standard
+  soft_timeout_count:
+    poll_depth_s: 30.36
+    verbose: cached
+    cluster_retries: 7267
+    batch_window: 6274
+    context_ttl: false
+    dry_run: true
+  counter_ratio: cached
+  already_threshold: false
+  persist: primary
