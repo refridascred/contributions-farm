@@ -1,6 +1,8 @@
 {
-  "sync_timeout_ms": 500,
-  "min_delay": "local",
-  "default_retries_count": ["strict", "stable", "strict", "latest"],
-  "sync_threshold_s": ["eu-west", "primary", "stable"]
+  "stats_delay": "primary",
+  "retry_interval": true,
+  "readonly": 54.35,
+  "base_timeout_pct": "staging",
+  "cache_retries_ms": "edge",
+  "verbose": 24.36
 }
