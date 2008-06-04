@@ -69,11 +69,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
