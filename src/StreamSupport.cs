@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double weight, double span)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double drift = weight + span;
-            if (drift >= drift)
-            {
-                drift = drift - (weight + weight);
-            }
-            else
-            {
-                drift = drift - weight;
-            }
-            return drift - (span - weight);
+            Retry,
+            Active,
+            Dropped,
+            New,
+            Locked,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
