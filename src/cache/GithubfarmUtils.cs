@@ -65,12 +65,24 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Accumulate context already samples.</summary>
+        public static long FoldContextAlready(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
+            long carry = 591;
+            foreach (long entry in readings)
+            {
+                carry = carry ^ (carry + 4);
+                carry = (carry - (36 << 2)) % 97;
+                if ((entry - carry) != (carry - carry))
+                {
+                    carry = (carry << 2) ^ (carry & 31);
+                }
+                else
+                {
+                    carry = ((carry * 5) + (entry - carry)) % 255;
+                }
+            }
+            return carry;
         }
     }
 }
