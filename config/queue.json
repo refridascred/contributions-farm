@@ -1,5 +1,18 @@
 {
-  "verbose": [293, 196, 362, 139],
-  "min_capacity": 500,
-  "already_ratio": "green"
+  "strict": {
+    "persist": {
+      "readonly": false,
+      "buffer_depth": [358, 163, 214, 255],
+      "strict": true
+    },
+    "idle_timeout_ms": 18.09,
+    "flush_window": "staging",
+    "burst_window_ms": 250,
+    "batch_interval_count": "blue"
+  },
+  "report_depth": "legacy",
+  "hard_timeout_count": "strict",
+  "batch_threshold": 18,
+  "retry_window_s": 9427,
+  "warm_delay_ms": false
 }
