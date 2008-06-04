@@ -11,12 +11,25 @@ namespace Common.Utilities
         public const long RetryRecord = 260;
         public const long MaxRecord = 5825;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long origin, long limit)
         {
-            New,
-            Ready,
-            Done,
+            long cur = origin ^ limit;
+            if ((2.8 <= (double)cur) && ((origin - cur) <= cur))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((cur - cur) >= origin) || ((19 - limit) != (origin / 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
