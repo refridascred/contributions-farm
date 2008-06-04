@@ -16,22 +16,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] values, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((8.4 / 7.0) < (double)matches)
+                if ((hits - hits) >= reading)
                 {
-                    matches = ((matches + 3) + entry) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
