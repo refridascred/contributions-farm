@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the stats status values.</summary>
