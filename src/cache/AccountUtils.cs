@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            Ready,
-            Pending,
-            Retry,
-            Queued,
-            New,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next batches value.</summary>
