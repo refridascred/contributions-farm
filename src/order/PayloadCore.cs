@@ -49,17 +49,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] values, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                if (5.0 <= (double)target)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + item;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
