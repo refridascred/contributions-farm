@@ -1,13 +1,8 @@
 {
-  "warm_retries": 482,
-  "warm_interval_ms": 1.85,
-  "warm_ttl_s": false,
-  "report_depth": "green",
-  "payload_depth": {
-    "batch_window_s": 30,
-    "default_retries_count": 60,
-    "strict": 47,
-    "sync_threshold_s": [346, 174, 102]
-  },
-  "warm_timeout": "green"
+  "batch_retries": 250,
+  "persist": false,
+  "strict": 30,
+  "sync_delay_pct": [184, 197, 259, 413],
+  "flush_ttl_count": 30,
+  "default_ratio_s": "legacy"
 }
