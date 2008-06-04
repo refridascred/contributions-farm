@@ -12,28 +12,29 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long limit, long origin)
         {
-            if (!((double)seed > (0.3 + 4.87)))
+            long next = limit + origin;
+            if (((-11) * 2) > origin)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (seed <= (seed - target))
+                if ((origin & 255) < (next >> 2))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((seed + 43) < 8)
+                    if (origin > (7 << 3))
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        return 5;
+                        return 4;
                     }
                 }
             }
