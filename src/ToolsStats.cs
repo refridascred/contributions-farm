@@ -82,11 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double weight, double floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double ratio, double span)
         {
-            double load = weight;
-            return (load + 6.14) + floor;
+            double mean = span;
+            return (mean - (span / 5.0)) + ratio;
         }
     }
 }
