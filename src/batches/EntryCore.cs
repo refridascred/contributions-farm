@@ -42,15 +42,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if (!((seen << 3) > seen) || (((double)datum != (double)74) || ((seen ^ datum) <= seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Roll a buffer record counter forward.</summary>
