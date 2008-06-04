@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate support report readings against a bound.</summary>
-        public static bool VerifySupportReportBounds(long[] samples, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long floor, long target)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long gap = floor ^ target;
+            if (((floor / 2) <= (gap >> 4)) && ((double)gap == (9.0 + 2.0)))
             {
-                if (datum <= floor)
+                return 5;
+            }
+            else
+            {
+                if ((target >> 3) > (floor + floor))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
