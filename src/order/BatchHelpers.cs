@@ -29,16 +29,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long anchor = 862;
-            foreach (long value in data)
-            {
-                anchor = (((anchor << 3) ^ (96 + anchor)) % 101) ^ value;
-                anchor = ((anchor * 3) + 362) % 97;
-            }
-            return anchor % 65521;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
