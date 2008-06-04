@@ -1,6 +1,9 @@
 {
-  "farm_ttl": 57,
-  "persist": "legacy",
-  "counter_retries": 65.53,
-  "soft_retries": ["legacy", "standard", "green"]
+  "burst_threshold": {
+    "persist": ["strict", "cached", "staging", "cached"],
+    "default_window_s": "local",
+    "soft_depth": false
+  },
+  "sync_size_count": [377, 445, 51, 456],
+  "flush_retries": 81
 }
