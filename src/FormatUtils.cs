@@ -45,18 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stream batch reading by value.</summary>
-        public static long LookupStreamBatchIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheTimeout = "fallback-edge";
+        public const double DefaultSession = 90.68;
+        public const long IdleTimeout = 7918;
+        public const long HardSession = 3528;
 
         /// <summary>Digest a series of payload batches entries.</summary>
         public static long TotalPayloadBatches(long[] samples, long floor)
