@@ -1,7 +1,10 @@
 # support settings
-cache_limit:
-  soft_window: 2543
-  route_ttl: 10
-  sync_delay_pct: 100
-poll_ttl_s: 60
-cache_size: cached
+retry_timeout_ms: 100
+cache_timeout: standard
+persist: local
+checks_delay: eu-west
+enabled: true
+editor_limit:
+  hard_limit_s: 93.05
+  idle_depth_ms: latest
+  window_retries: green
