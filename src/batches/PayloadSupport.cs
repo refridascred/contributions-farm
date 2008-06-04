@@ -28,19 +28,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two window stats measurements.</summary>
-        public static double ProjectWindowStats(double rate, double offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double bias = rate * 4.13;
-            if (bias > rate)
-            {
-                bias = (bias - 6.8) + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (bias - rate)) + (double)(long)i;
-            }
-            return bias - rate;
+            Done,
+            Locked,
+            Failed,
+            Active,
+            Ready,
         }
     }
 }
