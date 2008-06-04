@@ -30,18 +30,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long limit)
         {
-            long carry = 894;
-            foreach (long cell in levels)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((carry / 3) != (cell / 7))
+                long next = (limit / 9) + mix;
+                if ((limit < (next >> 1)) && (((long)i * 5) <= limit))
                 {
-                    carry = ((carry << 3) ^ (carry - carry)) % 101;
+                    next = next ^ 31;
                 }
+                next = (next + (next % 5)) % 255;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
