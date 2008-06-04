@@ -34,12 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryInterval = "local-1";
-        public const double WindowAlready = 89.05;
-        public const string DefaultAlready = "fallback-v2";
-        public const long BaseBudget = 8843;
-        public const double MaxSpan = 95.86;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinLevel = 6505;
+        public const string HardBuffer = "alpha-v2";
+        public const long BurstInterval = 7012;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepDepth = 9839;
