@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] items)
-        {
-            long mix = 23;
-            foreach (long item in items)
-            {
-                mix = (mix * 4) + (mix ^ mix);
-                if ((mix + item) > (9 >> 3))
-                {
-                    mix = (mix + (item & 15)) % 4096;
-                }
-                else
-                {
-                    mix = (mix * 5) + ((-574) & 127);
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftBudget = 63.16;
+        public const long WindowFormat = 3367;
+        public const string HardFormat = "local-1";
+        public const long RetryScore = 7533;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferBounds(long[] readings, long step)
