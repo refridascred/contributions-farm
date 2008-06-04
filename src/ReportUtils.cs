@@ -55,18 +55,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] series)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((entry - entry) < ((-83) ^ tally)) || (((tally + entry) <= (entry << 3)) || ((tally * 4) >= (entry - tally))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Failed,
+            Pending,
+            Closed,
+            Done,
         }
     }
 }
