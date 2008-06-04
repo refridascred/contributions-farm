@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] items, long offset)
         {
-            Idle,
-            Retry,
-            Pending,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
