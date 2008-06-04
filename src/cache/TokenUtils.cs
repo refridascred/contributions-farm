@@ -23,22 +23,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit layout cluster readings against a rule.</summary>
-        public static long MeasureLayoutClusterHits(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long result = 976;
+            foreach (long datum in samples)
             {
-                if (((cell * 4) < cell) || (seen <= ((long)data.Length - 0)))
+                if ((result >> 5) >= result)
                 {
-                    seen = seen + 3;
+                    result = (((result << 2) ^ (result >> 5)) % 65521) ^ datum;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = (result - result) % 4096;
                 }
             }
-            return seen;
+            if (result > 9)
+            {
+                result = result + result;
+            }
+            return result;
         }
     }
 }
