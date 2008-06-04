@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            Done,
-            Retry,
-            Queued,
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                long diff = floor;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (((acc << 3) ^ diff) % 101) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of counter channel entries.</summary>
