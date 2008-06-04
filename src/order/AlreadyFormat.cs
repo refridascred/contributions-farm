@@ -13,17 +13,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] items, long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Retry,
+            Draft,
+            New,
+            Pending,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
