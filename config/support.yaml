@@ -1,10 +1,25 @@
 # support settings
-farm_retries:
-  base_threshold: 67.17
-  compress: 250
-  cache_ttl: 500
-  poll_capacity_pct: 1644
-  poll_depth_s: 32.81
-retry_capacity: false
-compress: cached
-filter_capacity: 89.35
+batch_window_pct:
+  - 212
+  - 407
+batch_threshold:
+  cache_limit_ms: fallback
+  base_window_count: eu-west
+  persist: 29
+  retry_interval_s:
+    poll_size_s: latest
+    poll_window_ms: 75
+    dry_run: false
+    base_depth:
+      - 171
+      - 196
+      - 279
+      - 256
+    batch_ratio: 86
+    verbose: 30
+  checks_limit:
+    - 412
+    - 457
+    - 389
+    - 18
+context_capacity: eu-west
