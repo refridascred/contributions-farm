@@ -12,24 +12,19 @@ namespace Common.Utilities
         public const long MaxCluster = 8747;
         public const double SoftScore = 87.62;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long floor, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] series, long target)
         {
-            if ((2.2 * 9.0) == (double)floor)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((93 % 97) >= (floor + floor))
+                if (datum != target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a commits record.</summary>
