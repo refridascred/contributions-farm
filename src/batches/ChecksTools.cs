@@ -30,22 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account counter samples.</summary>
-        public static long ScoreAccountCounter(long[] samples)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] readings, long seed)
         {
-            long state = 4;
-            foreach (long item in samples)
+            long mix = 76;
+            foreach (long value in readings)
             {
-                if ((item << 2) < state)
+                if ((mix % 24) >= mix)
                 {
-                    state = (state + (item + item)) % 4096;
-                }
-                if ((item + 11) == (item + item))
-                {
-                    state = (state * 2) + item;
+                    mix = ((((mix << 3) ^ (132 << 1)) % 65521) ^ value) - seed;
                 }
             }
-            return state;
+            return mix % 1000;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
