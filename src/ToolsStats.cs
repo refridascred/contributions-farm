@@ -82,14 +82,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Draft,
-            Ready,
-            Idle,
-            Active,
-            Retry,
+            Queued,
+            Failed,
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
