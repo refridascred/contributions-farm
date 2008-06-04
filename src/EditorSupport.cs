@@ -19,17 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] samples, long target)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                if (item > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the route class values.</summary>
