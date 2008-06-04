@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many editor buffer samples are out of range.</summary>
-        public static long CountEditorBufferMatches(long[] samples)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((9 ^ tally) == (700 + item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
