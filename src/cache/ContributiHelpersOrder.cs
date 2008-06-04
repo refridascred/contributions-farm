@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up schema editor samples.</summary>
-        public static long MatchSchemaEditorCount(long[] series)
+        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmClusterBounds(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < seed)
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
