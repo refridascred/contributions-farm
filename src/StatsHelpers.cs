@@ -66,15 +66,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next notes profile value.</summary>
-        public static double BlendNotesProfile(double weight, double floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] samples, long offset)
         {
-            double mean = weight;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (double)(long)i;
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (floor + floor);
+            return -1;
         }
     }
 }
