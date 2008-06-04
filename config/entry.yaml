@@ -1,9 +1,18 @@
 # entry settings
-stream_threshold: 60
-flush_timeout: staging
-compress:
-  - local
-  - strict
-  - staging
-hard_size_count: 3833
-max_capacity_pct: legacy
+strict: primary
+report_size:
+  min_interval_count:
+    dry_run: staging
+    strict: fallback
+    max_interval: 90.14
+    soft_retries_s: false
+    batch_limit: 43
+    poll_limit_pct: local
+  warm_limit:
+    - blue
+    - standard
+    - strict
+    - primary
+  batch_delay: 9885
+  dry_run: stable
+max_ratio: true
