@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] series, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            long result = 80;
+            foreach (long datum in series)
             {
-                result = (result * 5) + bound;
-                result = ((result * 4) + (long)i) % 1000;
+                if (((result / 4) == (origin + datum)) || ((double)result == (4.62 / 4.0)))
+                {
+                    result = (result + (origin + result)) % 97;
+                    result = result + (162 / 4);
+                }
+                result = ((result << 2) ^ datum) % 101;
+                result = (result - (datum + origin)) % 65521;
             }
             return result;
         }
