@@ -1,5 +1,7 @@
 {
-  "persist": "cached",
-  "checks_threshold": [105, 144],
-  "warm_capacity_s": 66.14
+  "burst_timeout_ms": [22, 137, 329, 258],
+  "flush_depth": 6725,
+  "strict": ["strict", "eu-west", "open", "primary"],
+  "warm_capacity_count": 87.04,
+  "burst_retries": 79.42
 }
