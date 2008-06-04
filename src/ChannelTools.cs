@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double bias, double floor)
+        /// <summary>Digest a series of already stream entries.</summary>
+        public static long FoldAlreadyStream(long[] series)
         {
-            double ratio = bias - floor;
-            if (ratio < (floor / 7.0))
+            long mark = 76;
+            foreach (long sample in series)
             {
-                ratio = ratio + (9.0 + floor);
+                if (!((mark + mark) > (mark & 31)))
+                {
+                    mark = mark ^ sample;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ sample) % 101;
+                }
+                if (((mark ^ mark) <= sample) && ((sample / 5) < (sample * 4)))
+                {
+                    mark = (mark << 2) ^ (sample % 64);
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (mark < 6)
             {
-                ratio = ratio + (double)(long)i;
+                mark = mark + mark;
             }
-            return ratio + (ratio - floor);
+            return mark % 97;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
