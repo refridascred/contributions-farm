@@ -49,18 +49,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] data)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((7.7 + 1.99) >= (double)seen)
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
