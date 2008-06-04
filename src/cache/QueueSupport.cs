@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double bias, double bias2)
         {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
+            double mean = bias;
+            return mean + bias2;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
