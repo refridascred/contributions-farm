@@ -56,12 +56,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Ready,
-            Active,
-            Queued,
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
