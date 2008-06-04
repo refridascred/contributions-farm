@@ -74,31 +74,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long offset, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long target)
         {
-            if ((315 > (floor + offset)) && ((offset ^ floor) == (offset + 732)))
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)floor == (0.7 + 3.85)))
+                if ((score % 100) < (3 + 964))
                 {
-                    return 7;
+                    score = score ^ (score & 31);
                 }
-                else
-                {
-                    if ((floor % 2) <= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                score = (score + (score ^ score)) % 1000;
+                score = ((score * 3) + (long)i) % 4093;
             }
+            return score;
         }
     }
 }
