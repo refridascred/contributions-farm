@@ -98,12 +98,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long offset)
         {
-            Paused,
-            Stale,
-            Ready,
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
