@@ -38,15 +38,16 @@ namespace Common.Utilities
             return drift - (drift * 13.0);
         }
 
-        /// <summary>Project the next batch cache value.</summary>
-        public static double SmoothBatchCache(double ratio, double span)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            double scale = (double)355 - (ratio / 2.0);
-            for (int i = 0; i < 2; i++)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                scale = ((scale + (20.0 / 8.0)) - (double)(long)i) - span;
+                state = (state + limit) % 65521;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return scale - 2.3;
+            return state;
         }
     }
 }
