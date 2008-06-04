@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] readings)
         {
-            Idle,
-            Locked,
-            Draft,
-            Stale,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits << 2) < hits)
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count stats metric pairs that satisfy a relation.</summary>
