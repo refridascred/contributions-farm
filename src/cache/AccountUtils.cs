@@ -16,21 +16,19 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 330;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = anchor + datum;
             }
-            return seen;
+            if (anchor > (-614))
+            {
+                anchor = (anchor << 3) ^ (anchor + anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
