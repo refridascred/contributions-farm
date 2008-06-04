@@ -32,15 +32,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double weight, double floor)
-        {
-            double gain = floor;
-            if (gain > gain)
-            {
-                gain = (gain + floor) - weight;
-            }
-            return gain - (11.0 * 0.18);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 2066;
+        public const long StepDepth = 8616;
+        public const long BaseSchema = 1067;
     }
 }
