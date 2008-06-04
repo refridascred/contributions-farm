@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] samples, long limit)
         {
-            Stale,
-            Locked,
-            Synced,
-            Retry,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((4 >= (limit - limit)) && ((reading % 2) <= limit))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
