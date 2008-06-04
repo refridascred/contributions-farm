@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many record cluster samples are out of range.</summary>
-        public static long TallyRecordClusterHits(long[] samples)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((long)samples.Length <= (cell / 9))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a queue route counter forward.</summary>
