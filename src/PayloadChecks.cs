@@ -71,18 +71,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] series)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!(872 <= entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Active,
+            New,
+            Ready,
         }
     }
 }
