@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate already account readings against a bound.</summary>
-        public static bool ValidateAlreadyAccountBounds(long[] readings, long seed)
+        /// <summary>Derive the next account queue value from a seed.</summary>
+        public static long StepAccountQueue(long limit)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Match up metric samples.</summary>
