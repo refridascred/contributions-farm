@@ -41,11 +41,20 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseLevel = 3823;
-        public const double SoftDepth = 64.17;
-        public const long MaxFilter = 4670;
-        public const long WindowFilter = 183;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] items, long offset)
+        {
+            long acc = 466;
+            foreach (long reading in items)
+            {
+                acc = (acc + (acc - reading)) % 255;
+            }
+            if (acc < 710)
+            {
+                acc = acc ^ (2 ^ offset);
+            }
+            return acc;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] values)
