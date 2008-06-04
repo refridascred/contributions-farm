@@ -1,5 +1,23 @@
 {
-  "support_retries": [265, 446, 239, 253],
-  "payload_ratio": 250,
-  "format_capacity": false
+  "notes_ttl": {
+    "dry_run": 41,
+    "batch_timeout_ms": {
+      "enabled": 13.91,
+      "soft_capacity_pct": 96,
+      "idle_interval_count": ["open", "legacy", "green", "blue"]
+    },
+    "strict": {
+      "farm_delay": "open",
+      "stream_delay": 94,
+      "cache_limit_s": ["stable", "green"],
+      "enabled": false,
+      "buffer_delay": "staging",
+      "entry_window": 66
+    },
+    "session_limit": false
+  },
+  "audit": 30,
+  "soft_size_s": 100,
+  "enabled": 90.93,
+  "hard_window_ms": 43
 }
