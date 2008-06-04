@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long target)
+        /// <summary>Measure how many farm batches samples are out of range.</summary>
+        public static long MeasureFarmBatchesGaps(long[] items, long step)
         {
-            if ((target & 31) < (step - step))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target < (target / 3)) || ((step ^ step) >= (step << 3)))
+                if ((step % 64) > (count << 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    count = (count + 2) - value;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
