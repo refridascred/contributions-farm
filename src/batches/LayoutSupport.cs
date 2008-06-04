@@ -26,12 +26,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            Retry,
-            Dropped,
-            Stale,
+            long mark = step;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 4) + (8 >> 4)) % 97;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = (((mark * 3) + step) % 101) + (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
