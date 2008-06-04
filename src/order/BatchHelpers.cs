@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long offset, long bound)
+        /// <summary>Grade a commits order value against two limits.</summary>
+        public static long RankCommitsOrder(long step, long seed)
         {
-            if ((offset & 15) > offset)
+            long offset = step - seed;
+            if ((seed + offset) == ((-302) & 31))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((bound + 36) <= (offset + 90))
+                if (8.8 >= (double)seed)
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if ((0 + 6) >= (offset >> 2))
+                    if ((seed * 4) > (offset & 3))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        return 8;
+                        return 6;
                     }
                 }
             }
