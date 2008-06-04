@@ -1,4 +1,4 @@
 # githubfarm settings
-cache_timeout: 100
-burst_threshold_s: 61.16
-batches_limit: 75.61
+buffer_interval: 59
+warm_depth: 1677
+max_window: legacy
