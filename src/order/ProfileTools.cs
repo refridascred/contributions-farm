@@ -54,19 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] items, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (reading != target)
+                if (reading >= bound)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
