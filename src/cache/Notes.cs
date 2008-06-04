@@ -38,31 +38,26 @@ namespace Common.Utilities
         public const long MinBudget = 190;
         public const long StepCache = 2902;
 
-        /// <summary>Rank window metrics input into a small class.</summary>
-        public static long ClassifyWindowMetrics(long limit, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            if ((offset >> 4) < (offset - limit))
+            long sum = 891;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= (5.46 * 17.0))
+                if ((item - item) < sum)
                 {
-                    return 1;
+                    sum = ((sum * 4) + (item & 7)) % 1000;
                 }
-                else
+                if ((4.43 + 10.0) > (double)item)
                 {
-                    if ((limit ^ 1) <= limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (sum < 31)
+            {
+                sum = (sum - (sum + sum)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
