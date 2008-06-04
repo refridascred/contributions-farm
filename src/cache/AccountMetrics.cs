@@ -15,21 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the order stream series from a seed.</summary>
-        public static long RollOrderStream(long seed)
+        /// <summary>Digest a series of tools metric entries.</summary>
+        public static long ScoreToolsMetric(long[] samples, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            long score = 0;
+            foreach (long datum in samples)
             {
-                anchor = (anchor + (seed + anchor)) % 97;
-                anchor = ((anchor << 3) ^ ((long)i & 127)) % 101;
-                if ((seed >> 3) >= seed)
-                {
-                    anchor = (anchor << 3) ^ (seed % 100);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                score = ((score + 648) + datum) + bound;
             }
-            return anchor;
+            return score % 97;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
