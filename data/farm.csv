@@ -1,6 +1,11 @@
-id,count,region
-1,382,122
-2,232,870
-3,edge,921
-4,eu-west,cached
-5,66,463
+id,token,weight,score
+1,17.19,16.61,latest
+2,local,24.85,25.19
+3,991,blue,810
+4,116,441,103
+5,strict,green,76.06
+6,cached,fallback,917
+7,3.79,774,65.56
+8,20.33,32.44,41.5
+9,691,44,strict
+10,127,staging,546
