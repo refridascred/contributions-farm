@@ -40,10 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchSpan = 413;
-        public const string BatchMetric = "standard-1";
-        public const long MinMetric = 6403;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double weight, double span)
+        {
+            double mean = weight;
+            if (mean > (double)(-35))
+            {
+                mean = mean + (span * 9.4);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (span + 2.0)) + (double)(long)i;
+            }
+            return mean + 3.34;
+        }
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
