@@ -31,21 +31,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "standard-1";
+        public const long LimitGraph = 8637;
+        public const long HardGraph = 1648;
+        public const string DefaultGraph = "standard-v2";
+        public const string MinWidth = "cached-edge";
     }
 }
