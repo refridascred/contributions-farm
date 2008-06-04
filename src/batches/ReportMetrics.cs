@@ -24,19 +24,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double bias, double span)
+        /// <summary>Count stats metric pairs that satisfy a relation.</summary>
+        public static long MatchStatsMetricCount(long[] samples)
         {
-            double rate = span;
-            if (rate >= (3.6 / 9.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + (bias + rate);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (double)350;
-            }
-            return rate + (bias + 13.0);
+            return count;
         }
 
         /// <summary>Match up stream samples.</summary>
