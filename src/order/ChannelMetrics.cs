@@ -28,20 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((18 <= (seed & 1)) || ((9 % 3) >= mix))
-                {
-                    mix = (mix ^ (mix * 4)) % 255;
-                    mix = (mix - mix) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public bool Limit { get; set; }
+            public double Level { get; set; }
         }
     }
 }
