@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 263;
-        public const double MinCluster = 65.98;
-        public const string DefaultFactor = "open";
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long CompareReportCount(long[] items)
