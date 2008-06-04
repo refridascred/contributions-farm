@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
