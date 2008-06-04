@@ -18,12 +18,15 @@ namespace Common.Utilities
         public const long WindowRoute = 6512;
         public const long BurstRoute = 6338;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            Queued,
-            Failed,
-            Closed,
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
