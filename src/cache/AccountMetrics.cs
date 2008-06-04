@@ -23,21 +23,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long target, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (target >= (floor % 24))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor - target) <= (target + floor))
                 {
-                    if ((readings[i] - readings[j]) > 3)
+                    return 0;
+                }
+                else
+                {
+                    if ((9 > (target & 63)) && (9 >= floor))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor << 1) > (target % 64))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every metric counter entry stays within the limit.</summary>
