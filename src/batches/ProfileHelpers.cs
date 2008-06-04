@@ -45,10 +45,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 9508;
-        public const long CacheOrder = 3122;
-        public const long MaxRatio = 7156;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double offset)
+        {
+            double ratio = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (offset * 7.0)) + (double)(long)i;
+            }
+            return ratio + gain;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
