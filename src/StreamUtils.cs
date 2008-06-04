@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] samples, long bound)
         {
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((bound + 12) >= (bound % 3))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes summary.</summary>
