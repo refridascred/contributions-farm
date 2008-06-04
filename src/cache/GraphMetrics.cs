@@ -31,13 +31,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitBudget = 2269;
+        public const long SoftPayload = 5789;
+        public const long HardInterval = 117;
+        public const long StepDepth = 1344;
+        public const long BasePayload = 5775;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutRange(long[] samples, long limit)
