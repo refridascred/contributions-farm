@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long SoftSchema = 6887;
         public const long SoftFactor = 8078;
 
-        /// <summary>Roll a order channel counter forward.</summary>
-        public static long DeriveOrderChannel(long step)
+        /// <summary>Audit stats schema readings against a rule.</summary>
+        public static long MeasureStatsSchemaOutliers(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (12.0 <= (double)tally)
+                {
+                    tally = (tally + 2) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
