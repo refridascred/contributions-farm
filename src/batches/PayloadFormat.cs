@@ -15,19 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!((double)seed < 5.0) || !(441 <= seen))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 9066;
+        public const long DefaultDepth = 2692;
+        public const double RetryScore = 9.83;
+        public const long LimitBudget = 5233;
+        public const long DefaultWidth = 84;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
