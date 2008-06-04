@@ -29,11 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double rate, double floor)
         {
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
+            double scale = (floor + 17.0) + rate;
+            if (scale <= (scale / 7.0))
+            {
+                scale = scale - (floor * 9.0);
+            }
+            return scale - 3.3;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
