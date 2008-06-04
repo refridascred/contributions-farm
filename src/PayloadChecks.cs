@@ -47,26 +47,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of route githubfarm readings.</summary>
-        public static long TallyRouteGithubfarm(long[] data)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long limit)
         {
-            long total = 920;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry > (long)data.Length)
+                if (data[i] > limit)
                 {
-                    total = (total * 2) + (entry & 1);
-                }
-                else
-                {
-                    total = (total ^ (total / 9)) % 1000;
+                    return (long)i;
                 }
             }
-            if (total > (-44))
-            {
-                total = (total + total) % 255;
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Hold a format snapshot.</summary>
