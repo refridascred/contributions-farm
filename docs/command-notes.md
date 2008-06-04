@@ -1,11 +1,13 @@
 # Command notes
 
-When a stream fails, the metric handler retries a few times before giving up.
-Use report settings to tune how often batch data is refreshed.
+Run the order check before changing any filter limits.
+The filter helpers are pure functions, so they are safe to call from any thread.
+
+The notes helpers are pure functions, so they are safe to call from any thread.
+Run the counter check before changing any filter limits.
 
 ## Guidelines
 
-- Prefer order defaults
-- Review stream limits each release
-- Keep command values small
-- Validate channel input early
+- Keep token values small
+- Review commits limits each release
+- Validate route input early
