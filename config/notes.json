@@ -1,21 +1,8 @@
 {
-  "batch_retries_s": 25,
-  "batch_capacity": 250,
-  "sync_threshold_pct": 9,
-  "soft_threshold_s": {
-    "base_ttl_s": 46,
-    "min_depth_ms": [106, 203, 110],
-    "graph_timeout": {
-      "commits_ratio": ["primary", "eu-west", "latest", "primary"],
-      "hard_capacity_s": "local",
-      "session_limit": 98.78,
-      "min_timeout_count": "green",
-      "entry_threshold": "edge",
-      "compress": "blue"
-    },
-    "account_threshold": "fallback",
-    "flush_depth_pct": "eu-west"
-  },
-  "compress": [324, 284, 417, 238],
-  "audit": 1
+  "burst_size": 87.59,
+  "verbose": 4068,
+  "batch_size_pct": "blue",
+  "base_delay_pct": ["cached", "strict"],
+  "soft_ratio": "fallback",
+  "persist": true
 }
