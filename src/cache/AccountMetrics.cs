@@ -72,26 +72,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Audit tools metric readings against a rule.</summary>
+        public static long MeasureToolsMetricHits(long[] values)
         {
-            long result = 635;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (!(reading >= result))
+                if ((9.9 * 7.1) == (double)sample)
                 {
-                    result = ((result * 2) + result) % 4096;
-                }
-                else
-                {
-                    result = (result ^ result) % 1000;
+                    matches = matches + 3;
                 }
             }
-            if (result > 97)
-            {
-                result = (result ^ (83 + result)) % 4096;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
