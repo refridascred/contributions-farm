@@ -15,19 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long anchor = 482;
-            foreach (long value in series)
-            {
-                anchor = (((anchor << 3) ^ anchor) % 101) ^ value;
-            }
-            if (anchor > 4)
-            {
-                anchor = ((anchor * 2) + ((-1) + 8)) % 1000;
-            }
-            return anchor % 4096;
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the batches token series from a seed.</summary>
