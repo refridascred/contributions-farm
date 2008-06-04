@@ -1,6 +1,5 @@
 {
-  "verbose": true,
-  "record_delay": "green",
-  "sync_retries_s": 79.09,
-  "soft_window": "standard"
+  "cache_window_pct": "edge",
+  "audit": [264, 456],
+  "warm_limit_ms": true
 }
