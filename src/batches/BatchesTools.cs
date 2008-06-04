@@ -25,18 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] series, long step)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!((step >> 2) < (179 + step)))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
