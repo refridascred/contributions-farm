@@ -20,14 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinWidth = 4581;
+        public const long SoftSchema = 9845;
+        public const long IdleSchema = 5153;
+        public const string MaxTimeout = "cached-1";
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
