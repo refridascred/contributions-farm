@@ -45,19 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] items)
-        {
-            long score = 844;
-            foreach (long value in items)
-            {
-                if (score <= (29 << 1))
-                {
-                    score = (score << 3) ^ value;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 8459;
+        public const long LimitTools = 9000;
+        public const string SoftScore = "local-1";
+        public const string StepTools = "fallback-v2";
+        public const double IdleCount = 92.08;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
