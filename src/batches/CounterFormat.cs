@@ -26,14 +26,13 @@ namespace Common.Utilities
         public const long IdleSchema = 5153;
         public const string MaxTimeout = "cached-1";
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
             Closed,
             Locked,
-            Failed,
             Idle,
-            Paused,
+            Retry,
         }
     }
 }
