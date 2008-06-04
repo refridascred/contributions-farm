@@ -1,7 +1,11 @@
 # support settings
-warm_delay: strict
-enabled: true
-hard_retries: 53
-schema_retries: true
-default_retries: legacy
-compress: staging
+notes_ratio:
+  - 179
+  - 12
+  - 203
+idle_size_pct: 5
+retry_capacity_pct: false
+enabled:
+  - 153
+  - 262
+  - 341
