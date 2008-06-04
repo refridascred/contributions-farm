@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of layout route entries.</summary>
-        public static long CombineLayoutRoute(long[] values)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] levels, long floor)
         {
-            long state = 7;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state - (395 & 3)) % 255) + sample;
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
