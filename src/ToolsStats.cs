@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long limit, long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            if ((18.0 * 1.2) <= (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor >> 2) != (9 + 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(limit >= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor <= (floor + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Queued,
+            Draft,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the context class values.</summary>
