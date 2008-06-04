@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first cluster channel entry that matches the target.</summary>
-        public static long FindClusterChannelIndex(long[] readings, long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Blend two tools payload measurements.</summary>
