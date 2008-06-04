@@ -1,12 +1,10 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Keep already and schema names short and lowercase.
-Each cache is validated before it reaches the order queue.
+When a account fails, the schema handler retries a few times before giving up.
+The schema module keeps payload values in sync with the stream cache.
 
 ## Guidelines
 
-- Validate support input early
-- Log every payload change
-- Prefer githubfarm defaults
-- Document new metric fields
+- Prefer schema defaults
+- Document new token fields
+- Keep tools values small
