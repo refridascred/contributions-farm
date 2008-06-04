@@ -21,12 +21,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] readings, long target)
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (target > value)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
