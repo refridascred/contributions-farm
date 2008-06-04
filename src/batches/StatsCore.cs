@@ -20,17 +20,23 @@ namespace Common.Utilities
             return drift + (double)600;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] levels, long seed)
+        /// <summary>Blend two checks batch measurements.</summary>
+        public static double BlendChecksBatch(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = span;
+            if (bias < (2.0 * 3.2))
             {
-                if ((levels[i] >= seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - (span * 6.79);
             }
-            return -1;
+            else
+            {
+                bias = bias + 4.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (bias / 4.0)) + (double)(long)i;
+            }
+            return bias + (gain * 7.0);
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
