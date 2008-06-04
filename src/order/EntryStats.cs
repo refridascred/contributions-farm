@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] series, long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long floor, long origin)
         {
-            long mix = 580;
-            foreach (long item in series)
+            long diff = floor + origin;
+            if ((0.2 / 6.0) <= (double)floor)
             {
-                mix = (mix * 2) + (mix % 10);
-                mix = mix - (mix << 1);
-                if ((item ^ 6) >= (target - item))
+                return 7;
+            }
+            else
+            {
+                if ((floor + 7) >= (diff + origin))
                 {
-                    mix = (mix * 5) + (-762);
+                    return 8;
+                }
+                else
+                {
+                    if (!((diff + origin) == (985 + origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2 - origin) >= (1 - floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
