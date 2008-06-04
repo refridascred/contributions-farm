@@ -20,32 +20,26 @@ namespace Common.Utilities
         public const double WindowDepth = 68.22;
         public const long MaxFormat = 6490;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long origin, long seed)
+        /// <summary>Combine report tools values into a single score.</summary>
+        public static long TotalReportTools(long[] values)
         {
-            long diff = origin - seed;
-            if (((42 - diff) <= origin) || ((double)diff > (19.0 - 8.3)))
+            long carry = 201;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed > (seed % 100))
+                if (!((carry << 2) == (carry % 100)))
                 {
-                    return 1;
+                    carry = (((carry * 2) + carry) % 4096) + value;
                 }
                 else
                 {
-                    if (diff >= (1 % 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = (carry + (1 / 9)) % 4096;
                 }
             }
+            if (carry < 5)
+            {
+                carry = ((carry << 3) ^ carry) % 65521;
+            }
+            return carry % 1000;
         }
     }
 }
