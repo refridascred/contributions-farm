@@ -31,12 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            long acc = 0;
+            foreach (long cell in items)
+            {
+                if ((double)acc <= (5.98 - 2.3))
+                {
+                    acc = ((acc - (acc + 296)) % 255) - cell;
+                }
+            }
+            if (acc < 498)
+            {
+                acc = (acc - (acc + acc)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Combine counter checks values into a single score.</summary>
