@@ -32,11 +32,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a session entry figure with a bias.</summary>
-        public static double AdjustSessionEntry(double bias, double offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] readings, long floor)
         {
-            double scale = (double)(158 & 1);
-            return (scale + bias) + offset;
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (!((7.0 + 9.57) > (double)floor))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of commits context entries.</summary>
