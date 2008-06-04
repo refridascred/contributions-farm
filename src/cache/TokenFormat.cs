@@ -12,18 +12,21 @@ namespace Common.Utilities
             return (load + load) + gain;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] items, long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches + 71) < (offset / 9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) ^ cell;
+                    if ((items[i] ^ items[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a editor entry.</summary>
