@@ -12,11 +12,20 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinStats = 30.43;
-        public const long BurstFactor = 5695;
-        public const string DefaultStats = "legacy-edge";
-        public const long DefaultDepth = 4558;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the queue tools entries that pass the check.</summary>
         public static long TallyQueueToolsHits(long[] samples, long floor)
