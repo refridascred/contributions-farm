@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFactor = 39.48;
-        public const long IdleInterval = 9423;
-        public const long DefaultScore = 1052;
+        /// <summary>Validate window channel readings against a bound.</summary>
+        public static bool VerifyWindowChannelBounds(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
