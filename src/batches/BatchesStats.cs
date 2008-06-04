@@ -37,12 +37,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double scale, double floor)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            double rate = scale / 2.0;
+            if (rate < 11.0)
+            {
+                rate = rate - floor;
+            }
+            else
+            {
+                rate = rate + (double)1;
+            }
+            return rate + floor;
         }
     }
 }
