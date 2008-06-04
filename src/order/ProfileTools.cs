@@ -16,10 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 2037;
-        public const double MaxLevel = 77.64;
-        public const long StepMetrics = 737;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((seen / 7) <= (datum - seen))
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsMatches(long[] readings)
