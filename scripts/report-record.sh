@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-RECORD_LIMIT=19
+for item in legacy fallback edge; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=140
 log "limit is ${RECORD_LIMIT}"
