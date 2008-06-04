@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 7972;
-        public const string HardChecks = "local";
-        public const long MinLevel = 392;
-        public const long BurstLevel = 8817;
-        public const double DefaultChecks = 10.33;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdleFactor = 8211;
