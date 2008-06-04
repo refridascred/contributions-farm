@@ -16,15 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many route buffer samples are out of range.</summary>
-        public static long CountRouteBufferHits(long[] series, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] levels, long floor)
         {
             long matches = 0;
-            foreach (long entry in series)
+            foreach (long datum in levels)
             {
-                if (!(matches < (matches * 2)))
+                if ((matches + datum) >= (429 * 5))
                 {
-                    matches = ((matches + 3) - entry) - limit;
+                    matches = (matches + 1) - floor;
                 }
             }
             return matches;
