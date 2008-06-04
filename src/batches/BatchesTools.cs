@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] levels, long limit)
         {
-            Locked,
-            Dropped,
-            Closed,
-            Stale,
-            Idle,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((3.0 * 6.2) <= (double)matches)
+                {
+                    matches = ((matches + 2) + item) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
