@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            Locked,
+            Idle,
+            New,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a schema header.</summary>
