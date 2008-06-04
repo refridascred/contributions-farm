@@ -49,18 +49,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit context metric readings against a rule.</summary>
-        public static long CountContextMetricHits(long[] values)
+        /// <summary>Rank window metrics input into a small class.</summary>
+        public static long ClassifyWindowMetrics(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            if ((offset >> 4) < (offset - limit))
             {
-                if ((seen / 9) > 56)
+                return 0;
+            }
+            else
+            {
+                if ((double)limit <= (5.46 * 17.0))
                 {
-                    seen = (seen + 2) - sample;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit ^ 1) <= limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
