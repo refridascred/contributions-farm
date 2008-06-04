@@ -49,15 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double gain, double floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double drift = (floor - floor) * 1.9;
-            if (drift > 18.0)
-            {
-                drift = (drift + (17.0 * 8.35)) - gain;
-            }
-            return drift + floor;
+            Locked,
+            Stale,
+            Active,
+            Dropped,
+            New,
         }
     }
 }
