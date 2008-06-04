@@ -45,11 +45,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long floor, long step)
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
+            if ((floor - floor) >= (step - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor / 5) < (step + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor + floor) >= (floor - step)) || ((-70) >= step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
