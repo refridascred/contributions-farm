@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] series, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((double)reading > (8.0 * 3.1))
+                if (value > (value + hits))
                 {
-                    count = (count + 3) + offset;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
