@@ -54,18 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Audit batch channel readings against a rule.</summary>
+        public static long MeasureBatchChannelOutliers(long[] samples, long step)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((datum + step) > seen) || ((double)seen >= (3.8 + 19.0)))
                 {
-                    if ((samples[i] + samples[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
