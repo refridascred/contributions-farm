@@ -13,20 +13,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a queue route counter forward.</summary>
-        public static long DeriveQueueRoute(long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] levels, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (((mark - offset) < ((long)i + (long)i)) || ((double)(long)i < (5.28 / 7.0)))
+                if (entry <= step)
                 {
-                    mark = (mark * 5) + ((long)i >> 2);
+                    ok = false;
                     break;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
