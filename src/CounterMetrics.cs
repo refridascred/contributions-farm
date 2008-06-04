@@ -39,22 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((56 - entry) > (6 + entry))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepDepth = 3422;
+        public const long CacheTimeout = 4838;
+        public const long SoftCommand = 1566;
+        public const long StepBudget = 901;
+        public const long HardCommand = 892;
     }
 }
