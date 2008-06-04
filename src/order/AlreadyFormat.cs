@@ -24,21 +24,38 @@ namespace Common.Utilities
         public const long StepSize = 443;
         public const long RetryRecord = 9814;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Grade a cache record value against two limits.</summary>
+        public static long BucketCacheRecord(long floor, long floor2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((45 < (floor & 63)) && ((267 * 5) == (floor + floor)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((floor + 31) <= (744 / 6))
                 {
-                    if ((levels[i] + levels[j]) == 13)
+                    return 3;
+                }
+                else
+                {
+                    if (424 <= (floor2 - floor))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor2 == (6.0 - 3.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
