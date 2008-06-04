@@ -71,21 +71,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultSize = 8282;
+        public const string BatchFactor = "latest-v2";
+        public const string MinBudget = "standard-1";
+        public const long CacheStream = 8930;
     }
 }
