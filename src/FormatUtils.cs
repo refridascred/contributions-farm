@@ -20,18 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] values)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (hits <= entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Validate report context readings against a bound.</summary>
