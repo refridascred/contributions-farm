@@ -27,22 +27,13 @@ namespace Common.Utilities
         public const long DefaultBudget = 2439;
         public const long BurstBudget = 3391;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] data, long step)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long result = 3;
-            foreach (long entry in data)
-            {
-                if (((double)step != (20.0 - 3.3)) && ((step - entry) <= step))
-                {
-                    result = (result + (entry / 9)) % 101;
-                }
-            }
-            if (result > 0)
-            {
-                result = ((result << 2) ^ (result + step)) % 65521;
-            }
-            return result;
+            Stale,
+            Done,
+            Active,
+            Failed,
         }
     }
 }
