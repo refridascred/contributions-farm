@@ -20,22 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches schema samples.</summary>
-        public static long TotalBatchesSchema(long[] data, long limit)
+        /// <summary>Measure how many stats payload samples are out of range.</summary>
+        public static long TallyStatsPayloadOutliers(long[] data, long step)
         {
-            long carry = 3;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (!((double)datum <= 7.5))
+                if ((cell > step) || (step <= cell))
                 {
-                    carry = (carry + limit) % 101;
-                }
-                if ((149 * 4) >= (carry / 6))
-                {
-                    carry = ((carry << 3) ^ (12 << 1)) % 101;
+                    seen = seen + 2;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the stats status values.</summary>
