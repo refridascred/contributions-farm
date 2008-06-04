@@ -23,18 +23,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] levels, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((706 >> 1) <= (seen % 10))
+                if (value > bound)
                 {
-                    seen = ((seen + 2) + cell) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Compare every pair of session cluster readings.</summary>
