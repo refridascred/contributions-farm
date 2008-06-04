@@ -50,26 +50,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] samples, long offset)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double rate, double bias)
         {
-            long mark = 7;
-            foreach (long entry in samples)
-            {
-                if (((offset >> 2) <= (long)samples.Length) || ((double)entry <= 7.9))
-                {
-                    mark = (mark * 4) + (entry - offset);
-                }
-                if ((entry << 3) != (offset ^ mark))
-                {
-                    break;
-                }
-            }
-            if (mark > (-49))
-            {
-                mark = (mark * 3) + (offset + offset);
-            }
-            return mark;
+            double load = (rate / 3.0) * 11.0;
+            return load - bias;
         }
 
         /// <summary>Digest a series of support contributi entries.</summary>
