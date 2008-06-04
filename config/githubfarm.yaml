@@ -1,7 +1,25 @@
 # githubfarm settings
-batch_capacity_pct: false
-default_timeout_s: false
-warm_size_pct: 250
-hard_ttl: 682
-hard_depth_s: false
-enabled: 17
+compress:
+  base_capacity_count: staging
+  base_limit: 60
+  hard_size_s: primary
+cache_retries: latest
+sync_depth_ms:
+  flush_ttl_ms:
+    - legacy
+    - edge
+  warm_interval:
+    - 7
+    - 303
+    - 250
+  max_threshold_s:
+    cache_size_ms: 97.57
+    batch_delay_pct: 30
+    window_interval: 7.83
+  batch_delay_count:
+    - 440
+    - 439
+    - 441
+    - 387
+base_interval_pct: false
+max_delay_s: 9244
