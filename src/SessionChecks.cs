@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] values)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double ratio = weight;
+            if (ratio < (weight / 5.0))
             {
-                if (((hits % 2) != (hits ^ sample)) || ((hits + hits) > (-80)))
-                {
-                    hits = hits + 3;
-                }
+                ratio = (ratio + weight) - offset;
             }
-            return hits;
+            return ratio - (ratio + ratio);
         }
 
         /// <summary>Audit stats queue readings against a rule.</summary>
