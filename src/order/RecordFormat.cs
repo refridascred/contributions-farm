@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] samples, long target)
         {
-            Dropped,
-            Idle,
-            Failed,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next command cache value from a seed.</summary>
