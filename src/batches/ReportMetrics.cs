@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] series, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double span)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double gain = span;
+            if (gain <= span)
             {
-                if (cell > offset)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain + 20.0) - scale;
             }
-            return found;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + span;
         }
 
         /// <summary>Count stats metric pairs that satisfy a relation.</summary>
