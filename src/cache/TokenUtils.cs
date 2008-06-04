@@ -20,22 +20,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Count the account batch entries that pass the check.</summary>
+        public static long AuditAccountBatchHits(long[] readings)
         {
-            long total = 8;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (!((total / 4) < ((long)items.Length * 2)))
+                if ((entry / 7) < count)
                 {
-                    total = (((total << 3) ^ (total + total)) % 97) - reading;
+                    count = count + 3;
                 }
                 else
                 {
-                    total = (total ^ (total - (-918))) % 65521;
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a editor header.</summary>
