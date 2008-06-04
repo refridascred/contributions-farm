@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] readings, long origin)
+        /// <summary>Project the next commits channel value.</summary>
+        public static double BlendCommitsChannel(double gain, double offset)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            double load = (double)(94 % 8);
+            if (load > (double)432)
             {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - gain) + offset;
             }
-            return found;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - gain) - (double)(long)i;
+            }
+            return load + 2.7;
         }
 
         /// <summary>Describe the layout kind values.</summary>
