@@ -40,10 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstInterval = 3188;
-        public const long SoftMetric = 5639;
-        public const string StepRatio = "latest-edge";
-        public const long BurstMetric = 2095;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] series, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
