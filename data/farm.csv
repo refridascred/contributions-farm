@@ -1,7 +1,6 @@
-id,token,count
-1,80.21,502
-2,local,local
-3,406,864
-4,eu-west,901
-5,242,stable
-6,green,17.88
+id,ratio,weight
+1,43.9,70.64
+2,latest,local
+3,62.28,58
+4,799,831
+5,cached,773
