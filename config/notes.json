@@ -1,5 +1,7 @@
 {
-  "retry_retries_s": "stable",
-  "layout_delay": "edge",
-  "retry_capacity_pct": 250
+  "soft_retries_count": [405, 383],
+  "idle_limit": ["primary", "eu-west", "blue"],
+  "strict": ["cached", "stable", "legacy"],
+  "enabled": 5573,
+  "sync_timeout": 30
 }
