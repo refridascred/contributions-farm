@@ -63,22 +63,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepScore = 84.88;
+        public const double RetrySize = 65.84;
+        public const double BatchBuffer = 66.59;
 
         /// <summary>Measure how many queue checks samples are out of range.</summary>
         public static long MeasureQueueChecksHits(long[] values, long seed)
