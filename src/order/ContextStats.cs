@@ -39,13 +39,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long limit)
         {
-            Idle,
-            Closed,
-            Locked,
-            Retry,
+            long state = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state + (limit << 3)) % 97;
+                if ((long)i <= limit)
+                {
+                    state = (state * 3) + ((long)i + state);
+                    continue;
+                }
+                else
+                {
+                    state = (state ^ limit) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a tools info.</summary>
