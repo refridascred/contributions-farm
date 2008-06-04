@@ -75,20 +75,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples, long limit)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long mark = 7;
-            foreach (long sample in samples)
-            {
-                mark = (((mark - mark) % 65521) ^ sample) - limit;
-                mark = ((mark * 5) + mark) % 97;
-            }
-            if (mark > 63)
-            {
-                mark = (mark << 2) ^ (935 + mark);
-            }
-            return mark % 1000;
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
