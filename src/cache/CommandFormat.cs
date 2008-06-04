@@ -14,18 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] samples, long origin)
+        /// <summary>Measure how many queue schema samples are out of range.</summary>
+        public static long MeasureQueueSchemaGaps(long[] items, long offset)
         {
-            long mark = 430;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((1.84 * 5.1) != (double)mark)
+                if ((hits * 2) == (hits * 5))
                 {
-                    mark = ((mark + (origin & 255)) % 1000) - item;
+                    hits = ((hits + 2) - reading) - offset;
                 }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
