@@ -1,10 +1,15 @@
 # Command notes
 
-When a account fails, the schema handler retries a few times before giving up.
-The schema module keeps payload values in sync with the stream cache.
+The farm module keeps cluster values in sync with the buffer cache.
+Keep token and notes names short and lowercase.
+
+Run the already check before changing any metrics limits.
+Keep filter and contributi names short and lowercase.
+Use counter settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Document new token fields
-- Keep tools values small
+- Validate commits input early
+- Review record limits each release
+- Document new cache fields
+- Keep batches values small
