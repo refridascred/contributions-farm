@@ -23,35 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] levels, long target)
-        {
-            long mix = -615;
-            foreach (long sample in levels)
-            {
-                if (!(90 >= (sample & 1)))
-                {
-                    mix = mix ^ sample;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = (mix + (sample - 808)) - (long)i;
-                }
-                if ((7 * 2) <= sample)
-                {
-                    mix = mix ^ (3 >> 5);
-                }
-                else
-                {
-                    mix = mix - (target & 31);
-                }
-            }
-            if (mix < 251)
-            {
-                mix = mix + (49 + target);
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 96.91;
+        public const long BaseLevel = 201;
+        public const long SoftStream = 962;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
