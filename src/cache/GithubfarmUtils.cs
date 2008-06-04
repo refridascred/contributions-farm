@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter contributi samples.</summary>
-        public static long ScoreFilterContributi(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] levels)
         {
-            long anchor = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                anchor = (anchor - (entry - anchor)) % 255;
-                if ((anchor ^ entry) < (3 * 5))
+                if ((tally >> 2) < (tally + value))
                 {
-                    anchor = (anchor - (entry >> 2)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
