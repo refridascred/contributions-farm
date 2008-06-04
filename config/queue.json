@@ -1,6 +1,7 @@
 {
-  "retry_capacity_ms": 73,
-  "sync_delay_ms": "edge",
-  "window_ratio": false,
-  "retry_size": "blue"
+  "retry_delay_ms": 69.3,
+  "dry_run": false,
+  "warm_timeout_pct": 60,
+  "batch_limit_ms": "cached",
+  "layout_delay": 7757
 }
