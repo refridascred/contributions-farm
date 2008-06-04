@@ -42,12 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Dropped,
-            New,
-            Done,
+            Idle,
+            Retry,
+            Closed,
+            Active,
+            Pending,
         }
     }
 }
