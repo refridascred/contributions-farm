@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const double BatchPayload = 87.77;
         public const long HardPayload = 7558;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Match up schema support samples.</summary>
+        public static long CompareSchemaSupportCount(long[] levels)
         {
-            long carry = 604;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((value * 2) != ((-815) % 97)) || ((double)value < (1.0 + 1.5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry * 5) + carry;
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Rank layout order input into a small class.</summary>
