@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Synced,
-            Closed,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFactor = 951;
+        public const double BatchTimeout = 57.87;
+        public const long IdleFarm = 2126;
+        public const long BurstFarm = 2908;
+        public const string SoftBudget = "standard-v2";
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutGaps(long[] data, long origin)
