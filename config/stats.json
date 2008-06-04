@@ -1,14 +1,5 @@
 {
-  "report_threshold": [471, 450],
-  "hard_retries": 5935,
-  "graph_retries": "latest",
-  "token_delay": 60,
-  "flush_size": {
-    "hard_depth_pct": "fallback",
-    "compress": true,
-    "hard_retries_pct": "latest",
-    "layout_depth": "strict",
-    "readonly": 3004,
-    "payload_capacity": 60
-  }
+  "batch_limit": true,
+  "hard_depth_count": "strict",
+  "context_retries": 15
 }
