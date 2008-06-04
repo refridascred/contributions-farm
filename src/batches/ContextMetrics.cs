@@ -30,26 +30,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long step)
-        {
-            long span = offset + step;
-            if ((step / 9) <= (span >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)offset > (double)89))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFactor = 273;
+        public const long CacheWidth = 4028;
+        public const double DefaultFarm = 31.31;
+        public const long BatchCount = 4220;
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double gain, double bias)
