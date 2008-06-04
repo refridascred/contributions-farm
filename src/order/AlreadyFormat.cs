@@ -13,14 +13,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] data, long seed)
         {
-            Done,
-            Retry,
-            Draft,
-            New,
-            Pending,
+            long mark = 643;
+            foreach (long value in data)
+            {
+                mark = ((mark * 3) + (836 - value)) % 1000;
+                if ((350 ^ seed) < value)
+                {
+                    break;
+                }
+            }
+            if (mark < 59)
+            {
+                mark = mark + (seed * 4);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
