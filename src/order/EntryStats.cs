@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleScore = 5299;
-        public const long MaxSession = 2849;
-        public const string DefaultSession = "cached-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleScore = "local-v2";
+        public const string BaseSchema = "latest";
+        public const long SoftSchema = 6887;
+        public const long SoftFactor = 8078;
 
         /// <summary>Roll a order channel counter forward.</summary>
         public static long DeriveOrderChannel(long step)
