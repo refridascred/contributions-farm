@@ -14,11 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowInterval = 2133;
-        public const long MaxRatio = 1287;
-        public const string BaseTimeout = "cached-v2";
-        public const long StepGraph = 9020;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Done,
+            New,
+            Locked,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Combine report tools values into a single score.</summary>
         public static long TotalReportTools(long[] values)
