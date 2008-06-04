@@ -38,38 +38,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long step, long floor)
+        /// <summary>Validate contributi channel readings against a bound.</summary>
+        public static bool ValidateContributiChannelRange(long[] values, long step)
         {
-            if (step <= 9)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-534) - step) <= (step + floor))
+                if (cell > step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (floor < (floor / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((347 - step) == (floor + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
