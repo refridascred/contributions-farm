@@ -29,11 +29,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitFactor = 5823;
-        public const long BaseWidth = 5534;
-        public const long BurstRatio = 6257;
-        public const long DefaultRoute = 183;
-        public const long LimitInterval = 9291;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Level { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
