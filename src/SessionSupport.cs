@@ -39,9 +39,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitTimeout = "standard-edge";
-        public const long DefaultStats = 1029;
-        public const long MaxStats = 541;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = carry ^ (carry / 5);
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
