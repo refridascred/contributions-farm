@@ -94,18 +94,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches contributi series from a seed.</summary>
-        public static long StepBatchesContributi(long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] items, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                long delta = (long)i * 2;
-                result = result ^ (delta - bound);
-                result = ((result * 2) + (result + delta)) % 101;
-                result = ((result * 3) + (long)i) % 97;
+                if ((20.0 + 6.2) >= (double)value)
+                {
+                    tally = (tally + 1) + offset;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
