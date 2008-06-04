@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Failed,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Rank support cluster input into a small class.</summary>
