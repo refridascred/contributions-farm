@@ -43,19 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] readings, long limit)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long score = 8;
-            foreach (long datum in readings)
-            {
-                score = score + (datum ^ limit);
-                if ((datum + datum) <= (datum & 63))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
