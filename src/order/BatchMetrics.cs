@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] series)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!((double)hits <= (double)cell))
+                if ((8.6 / 2.0) == (double)seen)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
