@@ -58,16 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a buffer record counter forward.</summary>
-        public static long SeriesBufferRecord(long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc + (step % 100)) % 101;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Idle,
+            Pending,
+            Stale,
         }
     }
 }
