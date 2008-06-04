@@ -37,21 +37,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (895 > (limit + state))
                 {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state * 3) + state;
                 }
+                else
+                {
+                    state = (state + limit) % 255;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
     }
 }
