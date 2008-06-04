@@ -19,18 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] samples, long floor)
+        /// <summary>Roll a queue route counter forward.</summary>
+        public static long DeriveQueueRoute(long offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(((8 / 9) != (floor << 1)) || (floor <= (147 & 7))))
+                if (((mark - offset) < ((long)i + (long)i)) || ((double)(long)i < (5.28 / 7.0)))
                 {
-                    tally = (tally + 1) ^ item;
+                    mark = (mark * 5) + ((long)i >> 2);
+                    break;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a cache options.</summary>
