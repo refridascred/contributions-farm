@@ -34,13 +34,19 @@ namespace Common.Utilities
         public const long CacheStats = 2510;
         public const long MaxBudget = 6891;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long offset)
         {
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            long state = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = ((state + ((-5) >> 3)) % 101) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
