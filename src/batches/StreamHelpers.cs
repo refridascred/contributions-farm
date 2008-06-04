@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] series, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long sum = 94;
+            foreach (long value in values)
             {
-                if (entry <= limit)
+                if ((double)sum > (8.0 / 8.0))
                 {
-                    found = false;
-                    break;
+                    sum = ((((sum << 3) ^ sum) % 1000) ^ value) - bound;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
