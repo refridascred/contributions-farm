@@ -64,18 +64,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] items, long step)
+        /// <summary>Roll a buffer record counter forward.</summary>
+        public static long SeriesBufferRecord(long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(step < (tally & 7)) || ((double)step <= (2.7 * 12.0)))
-                {
-                    tally = (tally + 1) + value;
-                }
+                acc = (acc + (step % 100)) % 101;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
     }
 }
