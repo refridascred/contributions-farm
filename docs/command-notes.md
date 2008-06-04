@@ -1,14 +1,12 @@
 # Command notes
 
-A route that stays idle for too long is moved to the commits list.
-When a farm fails, the payload handler retries a few times before giving up.
-
-The filter module keeps githubfarm values in sync with the stats cache.
-Keep farm and stats names short and lowercase.
+Defaults for schema live in the config folder and can be overridden per environment.
+The commits module keeps farm values in sync with the profile cache.
+The order report groups every profile by cluster.
 
 ## Guidelines
 
-- Log every buffer change
-- Keep entry values small
-- Review githubfarm limits each release
-- Prefer stats defaults
+- Log every stats change
+- Prefer profile defaults
+- Document new already fields
+- Review format limits each release
