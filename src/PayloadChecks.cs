@@ -49,19 +49,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every record stream entry stays within the limit.</summary>
-        public static bool VerifyRecordStreamLimits(long[] samples, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long step)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long edge = bound + step;
+            if (((double)step > (1.7 + 9.0)) && ((double)bound > (4.36 * 8.29)))
             {
-                if (value >= limit)
+                return 0;
+            }
+            else
+            {
+                if (!((double)edge > (5.3 + 14.0)))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((763 % 24) <= (bound / 7)) || ((bound * 2) <= step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((edge + edge) <= (bound + 718))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
