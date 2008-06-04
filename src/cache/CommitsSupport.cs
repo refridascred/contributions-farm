@@ -48,19 +48,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data, long bound)
+        /// <summary>Grade a contributi account value against two limits.</summary>
+        public static long BucketContributiAccount(long floor, long offset)
         {
-            long total = 436;
-            foreach (long sample in data)
+            long delta = floor - offset;
+            if (4.5 < (double)floor)
             {
-                total = (total ^ (total << 1)) % 255;
-                if ((bound >> 2) >= (27 + sample))
+                return 2;
+            }
+            else
+            {
+                if ((offset - 9) > floor)
                 {
-                    total = (total * 2) + bound;
+                    return 7;
+                }
+                else
+                {
+                    if (((delta + offset) >= (168 - 295)) && (1.1 >= (double)offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
