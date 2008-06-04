@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] items, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if ((1.0 + 9.0) != (double)bound)
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
