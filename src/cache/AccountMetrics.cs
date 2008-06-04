@@ -41,22 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "alpha-v2";
+        public const long BaseNotes = 5967;
+        public const long MinNotes = 8392;
+        public const long DefaultNotes = 7610;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterHits(long[] readings)
