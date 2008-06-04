@@ -66,19 +66,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] data, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (item < step)
+                if (sample != seed)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
