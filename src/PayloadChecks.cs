@@ -49,21 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Check that every record stream entry stays within the limit.</summary>
+        public static bool VerifyRecordStreamLimits(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value >= limit)
                 {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
