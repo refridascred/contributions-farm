@@ -34,32 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long limit)
-        {
-            if ((9.0 + 4.5) >= (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset / 5) > offset) || (1.69 <= (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.89 - 1.49) == (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryInterval = "local-1";
+        public const double WindowAlready = 89.05;
+        public const string DefaultAlready = "fallback-v2";
+        public const long BaseBudget = 8843;
+        public const double MaxSpan = 95.86;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepDepth = 9839;
