@@ -20,20 +20,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next buffer token value from a seed.</summary>
-        public static long SeriesBufferToken(long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] data, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                state = ((state * 2) + floor) % 65521;
-                if (state <= ((long)i + state))
+                if ((matches + matches) > (entry * 5))
                 {
-                    state = ((state * 4) + (floor % 5)) % 97;
+                    matches = (matches + 3) + step;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
