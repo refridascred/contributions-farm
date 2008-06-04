@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary latest legacy edge; do
+CHANNEL_LIMIT=140
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in stable blue fallback; do
     log "checking ${item}"
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
