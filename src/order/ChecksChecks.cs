@@ -21,19 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] levels, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (entry <= step)
+                if (reading >= floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Hold a channel options.</summary>
