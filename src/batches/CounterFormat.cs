@@ -34,22 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits batches values into a single score.</summary>
-        public static long FoldCommitsBatches(long[] data)
+        /// <summary>Match up cluster filter samples.</summary>
+        public static long PairClusterFilterCount(long[] samples)
         {
-            long acc = -929;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (acc > (value - 23))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = acc + value;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 1000;
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
