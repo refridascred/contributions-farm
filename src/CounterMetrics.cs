@@ -32,19 +32,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every filter cache entry stays within the limit.</summary>
-        public static bool VerifyFilterCacheLimits(long[] data, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long floor, long step)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long next = floor - step;
+            if ((floor * 5) >= (floor << 3))
             {
-                if (cell >= step)
+                return 0;
+            }
+            else
+            {
+                if (!((double)step == (0.6 / 9.0)))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (6.61 > (8.87 + 2.4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((next + step) < (next << 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
