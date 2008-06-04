@@ -56,19 +56,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] items, long bound)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a already header.</summary>
