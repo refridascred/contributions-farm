@@ -20,13 +20,23 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Project the next queue farm value.</summary>
+        public static double ProjectQueueFarm(double weight, double bias)
         {
-            New,
-            Draft,
-            Locked,
-            Retry,
+            double drift = (double)658;
+            if (drift <= weight)
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - 5.8) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Digest a series of order cache entries.</summary>
