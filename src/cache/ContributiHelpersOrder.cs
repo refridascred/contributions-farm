@@ -48,14 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Fold a list of command record readings.</summary>
+        public static long TotalCommandRecord(long[] levels)
         {
-            Pending,
-            Locked,
-            Idle,
-            Draft,
-            Paused,
+            long sum = 2;
+            foreach (long entry in levels)
+            {
+                if ((4 >> 1) >= sum)
+                {
+                    sum = ((sum << 2) ^ (entry - entry)) % 1000;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
