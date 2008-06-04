@@ -31,15 +31,17 @@ namespace Common.Utilities
             return ratio + (ratio * 2.54);
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double gain, double bias)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long floor)
         {
-            double bias2 = (gain / 6.0) * 2.7;
-            if (bias2 <= bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = bias2 + (gain * 1.0);
+                if ((series[i] >= floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (bias - bias);
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
