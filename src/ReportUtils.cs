@@ -23,12 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] samples, long bound)
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the tools level values.</summary>
