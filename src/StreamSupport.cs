@@ -32,18 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] values, long offset)
+        /// <summary>Check that every schema token entry stays within the limit.</summary>
+        public static bool VerifySchemaTokenBounds(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (((-992) + datum) > matches)
+                if (datum < bound)
                 {
-                    matches = (matches + 2) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
