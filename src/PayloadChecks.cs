@@ -57,17 +57,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] items, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (items[i] < seed)
+                if (datum != offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Validate editor entry readings against a bound.</summary>
