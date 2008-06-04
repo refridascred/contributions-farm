@@ -52,18 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
-            {
-                long seen = ((long)i << 3) << 3;
-                total = ((total * 4) + (seen + total)) % 65521;
-                seen = (seen - ((long)i - (-69))) % 1000;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
