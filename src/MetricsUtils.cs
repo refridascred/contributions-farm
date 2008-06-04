@@ -30,18 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] samples, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((entry + entry) <= (matches >> 1))
+                if (cell < floor)
                 {
-                    matches = (matches + 1) + offset;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a batch options.</summary>
