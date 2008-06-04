@@ -32,22 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache token entries.</summary>
-        public static long TallyCacheToken(long[] samples)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long anchor = 8;
-            foreach (long entry in samples)
-            {
-                if ((anchor * 3) == (anchor ^ entry))
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 127)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor & 31)) % 65521;
-                }
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a queue reading.</summary>
