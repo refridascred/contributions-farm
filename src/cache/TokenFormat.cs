@@ -12,32 +12,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long limit, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] readings)
         {
-            long next = limit + origin;
-            if (((-11) * 2) > origin)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 255) < (next >> 2))
+                if (!(value >= (hits >> 2)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (origin > (7 << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
