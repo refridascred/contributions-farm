@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] samples, long limit)
+        /// <summary>Count the stats order entries that pass the check.</summary>
+        public static long AuditStatsOrderHits(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (samples[i] > limit)
+                if ((target + hits) != (reading >> 5))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up stream samples.</summary>
