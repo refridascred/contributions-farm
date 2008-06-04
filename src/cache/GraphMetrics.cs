@@ -54,18 +54,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] levels, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long carry = 5;
+            foreach (long sample in series)
             {
-                if (cell >= (seed - count))
+                if (carry > (carry ^ carry))
                 {
-                    count = count + 2;
+                    carry = ((carry * 3) + (sample & 127)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (limit & 255)) % 4096;
                 }
             }
-            return count;
+            if (carry > 719)
+            {
+                carry = carry ^ (carry * 4);
+            }
+            return carry;
         }
     }
 }
