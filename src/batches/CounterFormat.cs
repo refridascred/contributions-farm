@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const long SoftSpan = 7466;
         public const long StepOrder = 9434;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double bias, double bias2)
-        {
-            double rate = (double)(-794) * 17.0;
-            if (rate <= (double)390)
-            {
-                rate = (rate - bias) + bias2;
-            }
-            return rate + bias;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstTimeout = 33.67;
+        public const double DefaultSize = 84.03;
+        public const long IdleMetrics = 4017;
+        public const long IdleDepth = 9259;
+        public const long LimitMetrics = 1484;
     }
 }
