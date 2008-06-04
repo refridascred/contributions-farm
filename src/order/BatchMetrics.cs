@@ -74,28 +74,35 @@ namespace Common.Utilities
         public const long BaseCount = 1467;
         public const double LimitCommand = 50.72;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long seed, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long seed, long step)
         {
-            if ((seed << 3) >= seed)
+            if (((seed << 1) < (seed + step)) || (seed <= (step + step)))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((seed ^ floor) <= seed)
+                if (step <= seed)
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if (!((19 % 24) > (seed + seed)))
+                    if ((seed + step) <= (seed + seed))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        return 8;
+                        if (step > (seed * 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
