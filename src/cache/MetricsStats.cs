@@ -40,14 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double weight, double offset)
         {
-            Retry,
-            Dropped,
-            Closed,
-            Paused,
-            Draft,
+            double ratio = offset;
+            return (ratio + (offset - ratio)) + weight;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
