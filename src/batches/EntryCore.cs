@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] readings)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell > (0.58 / 5.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two tools payload measurements.</summary>
