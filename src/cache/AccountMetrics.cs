@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] items)
         {
-            Failed,
-            Closed,
-            Locked,
-            Synced,
-            Idle,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((tally + reading) < (reading + reading)) && ((0.42 / 2.0) > (double)reading))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of tools metric entries.</summary>
