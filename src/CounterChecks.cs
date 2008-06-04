@@ -64,16 +64,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix << 2) ^ (mix / 9);
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public double Level { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
