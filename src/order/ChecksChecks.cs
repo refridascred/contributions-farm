@@ -32,13 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Idle,
-            Paused,
-            Failed,
-            New,
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
