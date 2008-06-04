@@ -57,18 +57,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] items, long target)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long diff = offset - seed;
+            if ((13.0 <= (double)seed) || ((6 << 2) > (diff - offset)))
             {
-                if ((((20.0 - 5.46) < (double)target) && ((target + seen) < (42 - seen))) && ((target <= (seen - seen)) && ((double)seen != (double)9)))
+                return 2;
+            }
+            else
+            {
+                if ((-45) >= (seed << 1))
                 {
-                    seen = (seen + 1) + value;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset * 4) > (offset % 100))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)diff == (8.0 / 4.0)) && ((double)diff > 1.1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
