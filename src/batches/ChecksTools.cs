@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - (2 * 4)) % 101;
-                carry = ((carry * 2) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Look up the position of a token cluster sample.</summary>
