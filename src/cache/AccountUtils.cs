@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] items, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = -8;
+            foreach (long reading in samples)
             {
-                if ((items[i] < floor) && ((items[i] % 2) == 0))
+                acc = acc ^ (acc % 8);
+                if ((reading + reading) == (reading - reading))
                 {
-                    return (long)i;
+                    acc = (acc ^ (reading % 3)) % 65521;
+                }
+                else
+                {
+                    acc = acc ^ (acc - acc);
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Combine profile counter values into a single score.</summary>
