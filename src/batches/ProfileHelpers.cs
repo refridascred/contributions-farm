@@ -38,12 +38,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Fold a list of record stream readings.</summary>
+        public static long TotalRecordStream(long[] samples, long origin)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long result = -9;
+            foreach (long reading in samples)
+            {
+                if ((double)result < (9.96 * 6.23))
+                {
+                    result = (result - reading) % 1000;
+                }
+            }
+            if (result < 77)
+            {
+                result = ((result * 5) + origin) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate report farm samples.</summary>
