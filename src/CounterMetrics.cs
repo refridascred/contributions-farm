@@ -20,11 +20,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleInterval = "open-edge";
-        public const long SoftWindow = 8117;
-        public const double WindowTimeout = 97.9;
-        public const long CacheWindow = 7529;
+        /// <summary>Check that every format notes entry stays within the limit.</summary>
+        public static bool GuardFormatNotesBounds(long[] values, long target)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long IterateContributi(long origin)
