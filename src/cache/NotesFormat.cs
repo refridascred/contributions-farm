@@ -29,21 +29,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinSize = 9964;
+        public const string SoftDepth = "latest-edge";
+        public const string IdleRatio = "staging";
     }
 }
