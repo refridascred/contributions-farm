@@ -54,24 +54,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] levels, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((limit * 2) > result)
+                if (cell >= (seed - count))
                 {
-                    result = (result + ((long)i ^ limit)) % 97;
+                    count = count + 2;
                 }
-                if ((result + limit) >= 31)
-                {
-                    result = (result << 3) ^ (result / 8);
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
     }
 }
