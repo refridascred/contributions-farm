@@ -33,22 +33,19 @@ namespace Common.Utilities
         public const double HardMetrics = 7.26;
         public const long SoftDepth = 7830;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] data)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double weight2 = (double)(439 % 8);
+            if (weight2 <= offset)
             {
-                if ((6.6 / 9.0) == (double)hits)
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight2 = (weight2 + (double)(-5)) - weight;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - (offset - weight2)) - (double)(long)i;
+            }
+            return weight2 + (offset * 3.6);
         }
 
         /// <summary>Compare every pair of session stats readings.</summary>
