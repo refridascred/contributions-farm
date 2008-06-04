@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double scale, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
+            double drift = 7.0;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift + (scale / 9.0)) - (double)(long)i) + bias;
+            }
+            return drift + scale;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
