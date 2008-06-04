@@ -90,10 +90,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 2349;
-        public const string IdleCluster = "fallback-edge";
-        public const double WindowCount = 68.27;
-        public const string SoftDepth = "primary-v2";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] samples, long step)
+        {
+            long mix = 82;
+            foreach (long value in samples)
+            {
+                mix = mix - (mix + step);
+                mix = ((mix << 3) ^ (value - mix)) % 4096;
+            }
+            return mix;
+        }
     }
 }
