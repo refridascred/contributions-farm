@@ -51,18 +51,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] readings, long seed)
+        /// <summary>Scale a route checks figure with a bias.</summary>
+        public static double AdjustRouteChecks(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double scale = floor / 2.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((item - tally) == (item / 3))
-                {
-                    tally = (tally + 1) + seed;
-                }
+                scale = ((scale + (4.0 - scale)) + (double)(long)i) + bias;
             }
-            return tally;
+            return scale - (floor * 7.0);
         }
     }
 }
