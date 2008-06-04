@@ -26,10 +26,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 63.64;
-        public const double WindowAlready = 85.36;
-        public const long CacheAlready = 5156;
+        /// <summary>Count the buffer context entries that pass the check.</summary>
+        public static long MeasureBufferContextOutliers(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)seed > 4.66))
+                {
+                    seen = (seen + 2) - value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteRange(long[] items, long offset)
