@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] samples, long seed)
         {
-            long total = 903;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                total = (total + (total + sample)) % 255;
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 859)
-            {
-                total = total ^ (total % 97);
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
