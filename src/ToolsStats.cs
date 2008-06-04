@@ -20,21 +20,34 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up buffer counter samples.</summary>
-        public static long PairBufferCounterCount(long[] readings)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = -9;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((state / 7) != (72 / 2))
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
+                }
+                if (datum <= 4)
+                {
+                    state = ((state << 2) ^ datum) % 255;
+                }
+                else
+                {
+                    state = state + state;
+                }
+                if ((double)state < (double)datum)
+                {
+                    break;
                 }
             }
-            return count;
+            if (state > 945)
+            {
+                state = (state << 2) ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Combine checks window values into a single score.</summary>
