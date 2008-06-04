@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a batch batches figure with a bias.</summary>
-        public static double ScaleBatchBatches(double gain, double bias)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] data, long seed)
         {
-            double scale = gain;
-            return scale - bias;
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
