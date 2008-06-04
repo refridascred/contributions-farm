@@ -26,11 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 9535;
-        public const double LimitRatio = 68.79;
-        public const long HardChannel = 4246;
-        public const long LimitSpan = 2999;
+        /// <summary>Derive the next command cache value from a seed.</summary>
+        public static long DeriveCommandCache(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = (carry - seed) % 4096;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsLimits(long[] values, long origin)
