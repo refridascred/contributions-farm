@@ -43,13 +43,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Validate command entry readings against a bound.</summary>
+        public static bool ValidateCommandEntryRange(long[] series, long limit)
         {
-            Closed,
-            Done,
-            Locked,
-            Active,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the stream route entries that pass the check.</summary>
