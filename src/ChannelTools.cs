@@ -13,25 +13,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a counter batch value against two limits.</summary>
-        public static long ClassifyCounterBatch(long target, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] items)
         {
-            long step = target ^ floor;
-            if (((step + step) > (floor + floor)) || ((target * 2) < (floor % 24)))
+            long mark = 370;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((7.9 * 16.0) != (double)target) || (687 > (floor % 60)))
+                if ((9 >= datum) || (datum <= 92))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    mark = ((mark * 3) + (-3)) % 65521;
                 }
             }
+            return mark;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
