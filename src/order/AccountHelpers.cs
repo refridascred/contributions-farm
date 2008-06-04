@@ -23,13 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] levels, long bound)
         {
-            Synced,
-            Stale,
-            Failed,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a session counter forward.</summary>
