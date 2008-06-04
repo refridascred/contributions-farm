@@ -63,11 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 9063;
-        public const long LimitGithubfarm = 9914;
-        public const long BaseGithubfarm = 5086;
-        public const string StepGithubfarm = "staging";
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] levels)
