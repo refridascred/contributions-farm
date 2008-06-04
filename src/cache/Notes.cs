@@ -40,32 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] samples)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long total = 27;
-            foreach (long sample in samples)
-            {
-                if ((sample & 7) > (sample ^ total))
-                {
-                    total = (total - sample) % 255;
-                }
-                else
-                {
-                    total = (total ^ (sample - (long)samples.Length)) % 97;
-                    total = total + (total & 15);
-                }
-                total = total + sample;
-                if ((total + 868) >= (total ^ sample))
-                {
-                    total = (total + (sample + sample)) % 255;
-                }
-                else
-                {
-                    total = (total ^ (sample << 2)) % 65521;
-                }
-            }
-            return total;
+            Dropped,
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit context metric readings against a rule.</summary>
