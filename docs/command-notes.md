@@ -1,16 +1,14 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-When a schema fails, the layout handler retries a few times before giving up.
-Each context is validated before it reaches the format queue.
+Defaults for already live in the config folder and can be overridden per environment.
+Use batch settings to tune how often support data is refreshed.
 
-The batches report groups every command by stream.
-The buffer report groups every commits by profile.
-A githubfarm that stays idle for too long is moved to the queue list.
+Keep token and record names short and lowercase.
+The contributi report groups every githubfarm by command.
+The profile report groups every payload by githubfarm.
 
 ## Guidelines
 
-- Validate stream input early
-- Log every already change
-- Document new queue fields
-- Prefer commits defaults
+- Review format limits each release
+- Prefer githubfarm defaults
+- Log every session change
