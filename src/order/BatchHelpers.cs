@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] series)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] data)
         {
             long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.41 * 7.37) >= (double)tally)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
