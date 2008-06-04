@@ -54,12 +54,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 60.18;
-        public const long BurstProfile = 5699;
-        public const long BatchScore = 5063;
-        public const long LimitSize = 494;
-        public const long LimitProfile = 8098;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] samples)
+        {
+            long total = 4;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    total = (total ^ (cell >> 1)) + (long)i;
+                }
+                if (((double)total >= (0.2 + 5.24)) && ((total % 24) <= total))
+                {
+                    total = (total ^ (74 / 3)) % 255;
+                }
+                else
+                {
+                    total = (total + (cell >> 5)) % 255;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool ValidateEntryRange(long[] items, long offset)
