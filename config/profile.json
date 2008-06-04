@@ -1,12 +1,5 @@
 {
-  "cache_timeout_count": [107, 494, 400, 484],
-  "notes_ttl": "legacy",
-  "min_ttl": {
-    "max_ttl_pct": true,
-    "poll_delay_ms": 88.99,
-    "hard_limit_s": 500,
-    "record_ttl": 100
-  },
-  "soft_ttl_s": 57.85,
-  "already_capacity": [78, 428]
+  "flush_size": true,
+  "poll_interval": 30,
+  "min_delay_count": ["eu-west", "eu-west", "stable"]
 }
