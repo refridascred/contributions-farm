@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] readings, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((93 + 8) < (datum + tally))
+                {
+                    tally = (tally + 2) - floor;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
