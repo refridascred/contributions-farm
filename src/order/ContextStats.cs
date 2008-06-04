@@ -36,21 +36,19 @@ namespace Common.Utilities
         public const string MinMetrics = "standard-1";
         public const long StepMetrics = 6857;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample >= limit)
                 {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
