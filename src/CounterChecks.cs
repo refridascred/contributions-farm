@@ -32,18 +32,12 @@ namespace Common.Utilities
             return scale + (3.6 - floor);
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values, long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long mix = 619;
-            foreach (long cell in values)
-            {
-                if ((mix + mix) <= (cell * 2))
-                {
-                    mix = ((mix << 3) ^ (mix / 3)) + seed;
-                }
-            }
-            return mix;
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every metric account entry stays within the limit.</summary>
