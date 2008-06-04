@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleSize = 812;
-        public const long BatchInterval = 7265;
-        public const long WindowSpan = 2947;
-        public const string RetryChecks = "strict";
-        public const double HardChecks = 53.52;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
