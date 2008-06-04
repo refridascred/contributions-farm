@@ -48,13 +48,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] data)
         {
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public bool Token { get; set; }
-            public double Label { get; set; }
+            long result = 635;
+            foreach (long reading in data)
+            {
+                if (!(reading >= result))
+                {
+                    result = ((result * 2) + result) % 4096;
+                }
+                else
+                {
+                    result = (result ^ result) % 1000;
+                }
+            }
+            if (result > 97)
+            {
+                result = (result ^ (83 + result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
