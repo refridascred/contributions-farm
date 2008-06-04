@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmClusterBounds(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "strict-v2";
+        public const double WindowBuffer = 13.56;
+        public const double DefaultBuffer = 88.64;
+        public const string BatchBuffer = "open-edge";
+        public const long BaseBuffer = 5977;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool VerifyContributiRange(long[] items, long target)
