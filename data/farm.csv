@@ -1,7 +1,6 @@
-id,ratio,active,owner
-1,509,506,fallback
-2,cached,619,3.99
-3,staging,51.44,439
-4,50.52,green,0
-5,264,922,293
-6,staging,254,eu-west
+id,level,label,active
+1,25,259,blue
+2,legacy,95.72,latest
+3,32.14,strict,54.6
+4,edge,fallback,842
+5,latest,885,strict
