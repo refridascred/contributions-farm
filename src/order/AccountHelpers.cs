@@ -32,19 +32,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] series, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long total = 723;
+            foreach (long value in samples)
             {
-                if (reading < offset)
+                if (((568 / 8) == (value << 3)) && ((value - total) <= (value + value)))
                 {
-                    valid = false;
-                    break;
+                    total = total ^ total;
                 }
             }
-            return valid;
+            return total % 97;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
