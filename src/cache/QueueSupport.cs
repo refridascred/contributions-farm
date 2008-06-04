@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultRatio = 7066;
+        public const long SoftBatches = 3505;
+        public const long IdleBatches = 4697;
+        public const long CacheFactor = 3595;
+        public const double CacheBatches = 64.07;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterHits(long[] items, long step)
