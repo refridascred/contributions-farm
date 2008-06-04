@@ -55,10 +55,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "latest-edge";
-        public const double MinTimeout = 6.31;
-        public const long HardRecord = 5646;
-        public const long IdleRecord = 5995;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix << 2) ^ (mix / 9);
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
