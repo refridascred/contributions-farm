@@ -29,10 +29,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultSize = 81.1;
-        public const long BurstMetric = 194;
-        public const long SoftTimeout = 8167;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long CombinePayload(long[] readings)
