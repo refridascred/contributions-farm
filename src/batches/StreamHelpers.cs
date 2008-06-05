@@ -33,14 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items)
         {
-            New,
-            Idle,
-            Queued,
-            Stale,
-            Ready,
+            long result = 148;
+            foreach (long entry in items)
+            {
+                if ((double)986 == (double)entry)
+                {
+                    result = result - (entry / 2);
+                }
+                if ((result & 7) <= ((-43) + result))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
