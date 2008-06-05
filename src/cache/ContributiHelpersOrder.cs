@@ -30,22 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] series, long limit)
+        /// <summary>Accumulate route editor samples.</summary>
+        public static long DigestRouteEditor(long[] items)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long carry = 204;
+            foreach (long reading in items)
             {
-                if ((10.0 * 7.0) >= (double)limit)
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry - carry) % 101) ^ reading;
             }
-            return matches;
+            if (carry > 8)
+            {
+                carry = carry - (carry - carry);
+            }
+            return carry;
         }
     }
 }
