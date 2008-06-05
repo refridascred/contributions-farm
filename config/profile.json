@@ -1,7 +1,6 @@
 {
-  "burst_timeout": 60,
-  "verbose": 6061,
-  "retry_ratio_pct": [232, 304, 371],
-  "persist": 80.23,
-  "default_retries_pct": "legacy"
+  "sync_retries_s": 7375,
+  "enabled": 500,
+  "cache_delay_ms": 50.0,
+  "queue_timeout": ["eu-west", "staging", "primary", "legacy"]
 }
