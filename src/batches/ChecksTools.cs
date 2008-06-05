@@ -36,14 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Dropped,
-            Synced,
-            Done,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 6717;
+        public const double StepFactor = 43.1;
+        public const double BatchDepth = 98.84;
+        public const long WindowSize = 732;
+        public const long LimitChannel = 9188;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
