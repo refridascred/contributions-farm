@@ -62,10 +62,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryInterval = 9252;
-        public const string WindowFactor = "alpha-1";
-        public const string SoftSpan = "latest";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (datum <= (matches >> 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyMatches(long[] samples, long target)
