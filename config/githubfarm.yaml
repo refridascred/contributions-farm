@@ -1,6 +1,4 @@
 # githubfarm settings
-counter_limit: 39.33
-poll_capacity_s: edge
-retry_delay_s: 97
-buffer_depth: staging
-cache_ttl: local
+base_ratio_ms: eu-west
+already_retries: 34.56
+format_limit: 85.14
