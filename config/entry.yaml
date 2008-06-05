@@ -1,23 +1,13 @@
 # entry settings
-sync_retries:
-  soft_delay_count: fallback
-  retry_ttl_count: 6363
-  soft_threshold_s: 47
-  sync_ttl_pct: false
-sync_size_count: staging
-default_capacity: 3029
-hard_limit: primary
-order_size:
-  sync_window_ms: 9757
-  burst_threshold: 72
-  poll_depth_ms: strict
-  sync_window:
-    - edge
-    - latest
-    - strict
-  readonly:
-    readonly: 619
-    min_window: green
-    cache_ttl_ms: 9114
-    dry_run: false
-  session_ttl: 30
+burst_limit_ms:
+  dry_run: open
+  default_size_ms: 52.22
+  idle_threshold_count: 100
+  flush_threshold_ms:
+    - 122
+    - 285
+    - 451
+  stream_retries: true
+  entry_timeout: true
+min_ttl: 30
+verbose: eu-west
