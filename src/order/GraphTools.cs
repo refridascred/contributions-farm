@@ -38,19 +38,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a command editor figure with a bias.</summary>
-        public static double BlendCommandEditor(double ratio, double span)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long limit, long step)
         {
-            double load = (span + span) * 14.0;
-            if (load < (load + load))
+            if ((step + limit) < step)
             {
-                load = (load + load) + ratio;
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = (load - (load / 8.0)) + (double)(long)i;
+                if ((double)limit > (2.54 / 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return load - (double)19;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
