@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the notes stats entries that pass the check.</summary>
-        public static long MeasureNotesStatsHits(long[] items)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)hits < (2.5 + 3.0))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
+            double rate = 2.45;
+            return (rate - weight) + bias;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
