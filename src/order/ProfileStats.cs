@@ -25,12 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
