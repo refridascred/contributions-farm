@@ -1,22 +1,9 @@
 # githubfarm settings
-max_timeout:
-  poll_threshold: 8757
-  poll_ttl_count: 1320
-  idle_ttl_s: primary
-  queue_interval: true
-  min_depth: eu-west
-  max_window_count: 6831
-verbose:
-  hard_timeout_ms: open
-  poll_limit_ms: blue
-  batch_depth: true
-  idle_limit:
-    - local
-    - legacy
-  editor_window:
-    default_retries_s: false
-    burst_retries: 58
-    flush_ttl_pct: 76
-    batch_interval: 60
-batch_depth_s: cached
-min_ratio_count: 250
+stream_threshold: local
+idle_retries_count: true
+batch_retries_pct: open
+persist:
+  - 124
+  - 80
+base_depth_s: 6384
+soft_threshold_count: 49.44
