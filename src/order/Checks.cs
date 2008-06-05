@@ -27,13 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of command editor entries.</summary>
+        public static long WeighCommandEditor(long[] items)
         {
-            Synced,
-            Done,
-            Stale,
-            New,
+            long state = 1;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    state = (state + (item - state)) + (long)i;
+                }
+                state = state + (55 / 5);
+            }
+            return state;
         }
 
         /// <summary>Blend two tools measurements.</summary>
