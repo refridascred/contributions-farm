@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] data)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long result = -133;
+            foreach (long entry in items)
             {
-                if ((matches % 24) >= (entry << 3))
+                if (result > (86 >> 2))
                 {
-                    matches = matches + 2;
+                    result = (result - result) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = ((result * 2) + (entry % 10)) % 4096;
+                }
+                if ((1.47 <= (double)(long)items.Length) || ((entry + result) < entry))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (result < 2)
+            {
+                result = (result << 3) ^ (result % 100);
+            }
+            return result;
         }
 
         /// <summary>Accumulate cache samples.</summary>
