@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "stable-1";
+        public const string BaseAccount = "staging-v2";
+        public const string MinBudget = "alpha-edge";
+        public const double RetryAccount = 11.71;
+        public const string MaxCount = "primary-1";
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsOutliers(long[] readings)
