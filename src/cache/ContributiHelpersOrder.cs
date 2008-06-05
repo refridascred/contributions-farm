@@ -28,17 +28,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] levels, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (levels[i] >= offset)
+                if (((tally + tally) <= (reading - reading)) || ((tally / 7) == (8 >> 5)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
