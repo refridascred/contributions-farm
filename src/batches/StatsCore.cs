@@ -63,11 +63,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardFactor = 97.04;
-        public const long HardReport = 3108;
-        public const double CacheReport = 45.94;
-        public const long BaseFactor = 2742;
+        /// <summary>Check that every layout route entry stays within the limit.</summary>
+        public static bool VerifyLayoutRouteRange(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] readings)
