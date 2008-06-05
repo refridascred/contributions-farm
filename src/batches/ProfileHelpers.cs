@@ -39,22 +39,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] levels, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading & 31) < (reading % 60))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the account mode values.</summary>
