@@ -17,18 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Measure how many support session samples are out of range.</summary>
+        public static long CountSupportSessionGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (sample > (hits % 10))
+                if ((double)seen < (double)value)
                 {
-                    hits = hits + 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
