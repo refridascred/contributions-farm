@@ -1,11 +1,6 @@
-id,active
-1,708
-2,open
-3,primary
-4,open
-5,25.63
-6,20.44
-7,staging
-8,168
-9,723
-10,272
+id,owner,count,ratio,rank
+1,356,197,53.21,59.89
+2,283,75.15,standard,659
+3,922,9.56,395,strict
+4,946,blue,66.61,840
+5,27.46,eu-west,94.57,open
