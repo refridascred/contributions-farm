@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a channel metric counter forward.</summary>
-        public static long RollChannelMetric(long origin)
+        /// <summary>Digest a series of already queue entries.</summary>
+        public static long CombineAlreadyQueue(long[] data, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            long sum = 0;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = ((score ^ (origin + (long)i)) % 4096) + (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                sum = (((sum << 2) ^ (reading - reading)) % 255) - target;
+                sum = ((sum * 5) + sum) % 4096;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
