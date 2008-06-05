@@ -19,19 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] readings, long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Idle,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the route class values.</summary>
