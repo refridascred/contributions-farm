@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next batches schema value.</summary>
-        public static double BlendBatchesSchema(double gain, double bias)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] data)
         {
-            double bias2 = 5.7;
-            if (bias2 <= gain)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = (bias2 - 2.6) + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 - bias2;
+            return seen;
         }
 
         /// <summary>Fold a list of editor metrics readings.</summary>
