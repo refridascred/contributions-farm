@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleWidth = 6709;
-        public const long HardMetrics = 5944;
-        public const long SoftLevel = 4312;
-        public const string DefaultMetrics = "alpha";
-        public const string WindowMetrics = "staging-edge";
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextRange(long[] series, long offset)
