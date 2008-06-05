@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long HardCount = 7398;
         public const long LimitLevel = 4609;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = ((result + (result + result)) % 4096) ^ (long)i2;
+                }
+                result = ((result << 3) ^ ((long)i + limit)) % 65521;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
