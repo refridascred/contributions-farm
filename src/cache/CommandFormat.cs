@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitSize = 75.26;
+        public const long MaxBatch = 7038;
+        public const long RetryBatch = 962;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double BaseRatio = 23.4;
