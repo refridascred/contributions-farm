@@ -19,13 +19,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Locate a profile batches reading by value.</summary>
+        public static long LocateProfileBatchesIndex(long[] data, long seed)
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
