@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Measure how many schema stream samples are out of range.</summary>
+        public static long TallySchemaStreamMatches(long[] values, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                mark = (mark + (mark + mark)) % 97;
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (value > (value % 2))
+                {
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
