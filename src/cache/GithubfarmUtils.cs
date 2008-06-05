@@ -27,21 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Count the stats notes entries that pass the check.</summary>
+        public static long MeasureStatsNotesOutliers(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches >> 4) >= matches)
                 {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 1) ^ entry) + bound;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the farm mode values.</summary>
