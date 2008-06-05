@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the token format entries that pass the check.</summary>
-        public static long MeasureTokenFormatOutliers(long[] samples)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count + 0) != ((-6) - (-5)))
+                if (samples[i] == limit)
                 {
-                    count = (count + 1) - item;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a report reading.</summary>
