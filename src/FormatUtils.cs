@@ -45,12 +45,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long seed, long seed2)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long prev = seed ^ seed2;
+            if ((410 - seed2) >= (prev >> 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)prev > 4.7) || ((seed2 * 4) >= seed2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.46 / 8.0) >= (double)seed2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed2 + seed2) == (89 % 12))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine tools format values into a single score.</summary>
