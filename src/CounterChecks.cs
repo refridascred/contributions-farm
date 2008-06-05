@@ -60,13 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Closed,
-            Queued,
-            Retry,
-            Synced,
+            Idle,
+            Paused,
+            Stale,
             Done,
         }
 
