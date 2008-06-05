@@ -13,19 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] readings, long floor)
+        /// <summary>Compare every pair of metrics batch readings.</summary>
+        public static long CompareMetricsBatchCount(long[] data)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Accumulate profile context samples.</summary>
