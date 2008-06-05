@@ -103,20 +103,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] readings, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] series, long floor)
         {
-            long acc = 238;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long item in series)
             {
-                acc = (acc - acc) ^ value;
-                acc = (acc ^ (acc ^ acc)) % 4096;
-                if (!((603 - offset) < (acc - acc)))
+                if (item <= floor)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return acc % 4096;
+            return stale;
         }
     }
 }
