@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Validate batches editor readings against a bound.</summary>
+        public static bool ValidateBatchesEditorLimits(long[] readings, long step)
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the already cluster entries that pass the check.</summary>
