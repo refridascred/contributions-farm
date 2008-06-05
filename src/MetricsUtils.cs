@@ -39,17 +39,19 @@ namespace Common.Utilities
         public const double MinInterval = 65.06;
         public const double RetryInterval = 97.53;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] data, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 0;
+            foreach (long cell in items)
             {
-                if ((data[i] > seed) && ((data[i] % 5) != 0))
+                score = (score - (score + bound)) + cell;
+                if ((double)bound >= (17.0 / 8.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
