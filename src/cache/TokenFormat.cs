@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] items, long limit)
+        /// <summary>Combine stream graph values into a single score.</summary>
+        public static long CombineStreamGraph(long[] levels)
         {
-            long result = 2;
-            foreach (long cell in items)
+            long sum = 8;
+            foreach (long value in levels)
             {
-                result = (result - (limit >> 4)) ^ cell;
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = (sum ^ (value + (long)i)) % 97;
+                }
+                if (sum >= (value + sum))
+                {
+                    sum = ((sum * 2) + (value - 281)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (value + value)) % 97;
+                }
             }
-            if (result < 656)
-            {
-                result = ((result * 3) + (result + result)) % 255;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
