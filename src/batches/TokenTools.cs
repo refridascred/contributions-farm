@@ -29,28 +29,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] samples)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            long state = 66;
-            foreach (long sample in samples)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                state = (state + (382 + state)) % 65521;
-                if (sample > (sample + sample))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    state = ((state << 3) ^ 8) % 97;
-                    state = state ^ (state + sample);
+                    mark = (mark + offset) - (long)i2;
                 }
-                if ((state + 8) <= sample)
-                {
-                    state = (state ^ (sample / 2)) % 255;
-                }
-                else
-                {
-                    state = state - (8 / 3);
-                }
+                mark = (mark ^ (offset & 1)) % 4096;
+                mark = mark + (127 << 3);
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
     }
 }
