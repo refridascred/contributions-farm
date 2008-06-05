@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] values, long offset)
+        /// <summary>Fold a list of profile command readings.</summary>
+        public static long TotalProfileCommand(long[] items)
         {
-            bool found = true;
-            foreach (long value in values)
+            long sum = 91;
+            foreach (long datum in items)
             {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum ^ (sum ^ 82)) % 1000) + datum;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Measure how many layout already samples are out of range.</summary>
