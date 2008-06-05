@@ -1,22 +1,5 @@
 # githubfarm settings
-sync_ttl: 63
-enabled:
-  retry_threshold_ms: true
-  sync_delay_pct: 88.46
-  soft_retries_s: staging
-  max_size: 84.56
-  base_window: open
-  cache_window_count: staging
-audit:
-  layout_window:
-    buffer_depth: 9384
-    flush_capacity_pct: edge
-    enabled: open
-  default_interval_pct: 250
-  flush_capacity_count: 26.45
-  max_interval: local
-  compress: 61
-  dry_run: 70
-max_ttl: true
-queue_interval: 58
-default_ttl_count: 6712
+default_timeout_count: true
+warm_window_ms: 1024
+flush_ttl_count: 75.85
+cache_retries_s: true
