@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+for item in latest local strict; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    blue)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=316
-log "limit is ${BUFFER_LIMIT}"
