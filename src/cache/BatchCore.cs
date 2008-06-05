@@ -48,19 +48,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] samples, long offset)
+        /// <summary>Compare every pair of checks report readings.</summary>
+        public static long OverlapChecksReportCount(long[] series)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
