@@ -60,19 +60,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double ratio, double offset)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double bias = 1.2;
-            if (bias > bias)
-            {
-                bias = (bias - (double)642) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + ratio) + (double)(long)i;
-            }
-            return bias - ratio;
+            Queued,
+            Pending,
+            Dropped,
+            Done,
         }
     }
 }
