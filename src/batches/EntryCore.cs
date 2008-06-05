@@ -24,22 +24,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long carry = 90;
-            foreach (long datum in series)
-            {
-                if ((datum + datum) >= datum)
-                {
-                    carry = carry + (datum - datum);
-                }
-            }
-            if (carry < 891)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 4096;
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
