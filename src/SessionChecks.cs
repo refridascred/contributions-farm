@@ -19,14 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Stale,
-            Queued,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 4211;
+        public const string BaseCache = "staging";
+        public const string DefaultScore = "fallback-edge";
+        public const long BurstSize = 1945;
 
         /// <summary>Audit stats queue readings against a rule.</summary>
         public static long CountStatsQueueHits(long[] samples, long floor)
