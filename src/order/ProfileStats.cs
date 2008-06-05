@@ -35,17 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] items, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                score = (score + (7 & 127)) % 97;
-                score = (score - (limit - limit)) % 4096;
-                score = ((score * 2) + (long)i) % 97;
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
     }
 }
