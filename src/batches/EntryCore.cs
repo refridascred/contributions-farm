@@ -61,12 +61,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
