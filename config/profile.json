@@ -1,10 +1,14 @@
 {
-  "verbose": {
-    "flush_delay_count": 100,
-    "batch_retries": "fallback",
-    "stream_ratio": 23.5,
-    "batch_ratio_pct": "open"
+  "idle_threshold_ms": 4,
+  "support_capacity": {
+    "hard_timeout": 7493,
+    "min_limit": {
+      "batches_capacity": "latest",
+      "retry_window": 10,
+      "base_capacity": false
+    },
+    "flush_ratio_s": 6612
   },
-  "cache_delay": "strict",
-  "dry_run": 0.88
+  "base_limit_count": false,
+  "burst_limit": 16
 }
