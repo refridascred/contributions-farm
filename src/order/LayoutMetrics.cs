@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] samples, long origin)
         {
-            Synced,
-            Pending,
-            Closed,
-            Stale,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((-1) > (seen & 31))
+                {
+                    seen = ((seen + 3) - value) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
