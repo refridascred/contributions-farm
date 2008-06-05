@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepDepth = 3107;
-        public const double MinReport = 15.82;
-        public const double MinFactor = 20.43;
-        public const long IdleLevel = 2211;
+        /// <summary>Iterate the contributi counter series from a seed.</summary>
+        public static long SeriesContributiCounter(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((double)score >= (14.0 * 2.65)) && ((score % 10) < (score << 2)))
+                {
+                    score = (score - score) % 97;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
