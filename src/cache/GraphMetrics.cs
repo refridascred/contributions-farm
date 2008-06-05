@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] values, long origin)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the command kind values.</summary>
