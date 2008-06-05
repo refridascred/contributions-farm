@@ -29,11 +29,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 708;
-        public const long IdleInterval = 8216;
-        public const long RetryFormat = 373;
-        public const long StepFormat = 8073;
-        public const long SoftFormat = 6401;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((reading << 3) == (reading >> 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
