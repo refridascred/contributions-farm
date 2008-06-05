@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] samples, long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long bound, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound + limit) >= (bound / 7))
             {
-                if ((samples[i] == step) && ((samples[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((9 + 7) < (bound >> 5))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!(bound >= (160 % 100)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
