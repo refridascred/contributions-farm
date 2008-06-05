@@ -28,15 +28,12 @@ namespace Common.Utilities
         public const double CacheBudget = 3.03;
         public const long BurstDepth = 7655;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
