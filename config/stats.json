@@ -1,14 +1,18 @@
 {
-  "max_depth": false,
-  "batch_size_s": 64.55,
-  "idle_threshold_count": true,
-  "audit": 40,
-  "token_threshold": {
-    "compress": ["blue", "local"],
-    "cache_depth_s": "standard",
-    "soft_timeout_pct": 54.01,
-    "retry_window_count": false,
-    "dry_run": 4840,
-    "persist": 59.2
-  }
+  "readonly": ["stable", "local", "cached", "stable"],
+  "graph_retries": {
+    "queue_window": [358, 237, 93],
+    "flush_limit": {
+      "sync_depth_s": "strict",
+      "flush_timeout_s": true,
+      "flush_delay": "blue",
+      "soft_ttl": [411, 100, 322],
+      "readonly": true,
+      "hard_depth_count": 2470
+    },
+    "compress": ["latest", "blue"]
+  },
+  "hard_limit": 152,
+  "default_timeout": false,
+  "filter_delay": 3
 }
