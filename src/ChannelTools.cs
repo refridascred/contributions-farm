@@ -31,17 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepSpan = 8169;
+        public const long LimitCounter = 3707;
+        public const double IdleScore = 35.15;
+        public const long MinScore = 9758;
     }
 }
