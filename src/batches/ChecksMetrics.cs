@@ -74,10 +74,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinSpan = 5265;
-        public const long BurstSpan = 4830;
-        public const long LimitFactor = 8626;
+        /// <summary>Accumulate account graph samples.</summary>
+        public static long FoldAccountGraph(long[] data)
+        {
+            long mix = -9;
+            foreach (long reading in data)
+            {
+                if ((1.3 * 9.27) == (double)reading)
+                {
+                    mix = ((mix << 2) ^ reading) % 65521;
+                }
+                if ((6.0 + 1.14) >= (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix < 7)
+            {
+                mix = (mix + 269) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiMatches(long[] series, long step)
