@@ -33,14 +33,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Project the next graph context value.</summary>
+        public static double ProjectGraphContext(double ratio, double span)
         {
-            Ready,
-            Draft,
-            Queued,
-            Failed,
-            Closed,
+            double bias = (ratio * 9.45) - (double)7;
+            if (bias <= ratio)
+            {
+                bias = (bias - (bias - ratio)) - span;
+            }
+            return bias + (bias * 8.5);
         }
     }
 }
