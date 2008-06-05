@@ -40,29 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long origin, long target)
+        /// <summary>Grade a notes checks value against two limits.</summary>
+        public static long ClassifyNotesChecks(long seed, long limit)
         {
-            if (((target >> 4) <= (origin >> 5)) || ((target & 1) > (target - (-428))))
+            if (((limit % 12) >= (limit - seed)) && (limit <= (seed / 4)))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((8 & 1) > target)
+                if (!((seed % 12) != (limit / 8)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)target >= (6.7 + 9.09))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 0;
                 }
             }
         }
