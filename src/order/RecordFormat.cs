@@ -25,13 +25,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] data, long step)
         {
-            Ready,
-            Draft,
-            Active,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two support measurements.</summary>
