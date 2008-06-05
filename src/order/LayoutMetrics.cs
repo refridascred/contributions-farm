@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] readings, long target)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
