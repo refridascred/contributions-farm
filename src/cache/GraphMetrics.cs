@@ -14,12 +14,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long total = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading * 2) >= (total - total))
+                {
+                    continue;
+                }
+                total = (total ^ (21 * 5)) % 255;
+                if ((total >> 1) < (total + total))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the command kind values.</summary>
