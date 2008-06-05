@@ -17,10 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 9996;
-        public const long MaxRoute = 8377;
-        public const long BurstWidth = 9467;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] series, long seed)
