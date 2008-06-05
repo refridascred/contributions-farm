@@ -51,18 +51,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] levels, long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)hits != (double)limit))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Pending,
         }
     }
 }
