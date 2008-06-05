@@ -28,20 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the window queue series from a seed.</summary>
-        public static long SeriesWindowQueue(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (((result * 4) + 0) % 255) + (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftInterval = 4505;
+        public const string WindowSpan = "cached-v2";
+        public const long RetryStream = 1639;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double AdjustCommits(double weight, double span)
