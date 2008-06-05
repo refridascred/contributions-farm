@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] items, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((double)matches > (7.2 * 7.05))
+                {
+                    matches = ((matches + 3) - item) - origin;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Scale a channel commits figure with a bias.</summary>
