@@ -1,12 +1,5 @@
 # support settings
-warm_interval_count:
-  - 380
-  - 305
-cache_interval_pct: 4990
-hard_size_count:
-  retry_ttl: 19.52
-  context_threshold: legacy
-  soft_timeout_pct: 1131
-  hard_interval: false
-  sync_ratio: true
-  token_interval: false
+hard_ttl_ms: blue
+max_interval_pct: edge
+base_size_pct: 500
+format_ttl: 6.85
