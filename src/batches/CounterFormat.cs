@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] series, long target)
         {
-            long sum = 990;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((sum % 8) > (entry - entry))
+                if (matches < (sample & 31))
                 {
-                    sum = sum - (entry - 434);
-                }
-                if ((sum - entry) > sum)
-                {
-                    break;
+                    matches = (matches + 1) + target;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine command support values into a single score.</summary>
