@@ -67,16 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long seed)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 2) + (anchor * 3)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Retry,
+            Active,
+            New,
+            Draft,
         }
     }
 }
