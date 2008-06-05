@@ -1,10 +1,6 @@
-id,token,weight,ratio,owner
-1,948,685,68.31,802
-2,564,35.74,4.81,93.47
-3,109,932,824,763
-4,829,952,standard,185
-5,edge,218,92.15,330
-6,edge,68.43,cached,edge
-7,16,eu-west,10.26,92.61
-8,6.52,666,22,67.25
-9,208,open,12.25,66.93
+id,region,weight,label
+1,479,cached,58.71
+2,325,97.91,47.29
+3,84.94,latest,stable
+4,896,726,local
+5,33.22,standard,blue
