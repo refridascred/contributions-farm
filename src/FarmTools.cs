@@ -12,12 +12,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] readings)
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            long mark = 5;
+            foreach (long value in readings)
+            {
+                mark = (mark * 4) + (value * 4);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Find the first schema command entry that matches the target.</summary>
