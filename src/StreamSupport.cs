@@ -23,18 +23,21 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] samples)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((78 + reading) < (reading + 29))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
