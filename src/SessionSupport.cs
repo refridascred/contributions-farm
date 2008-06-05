@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 341;
-        public const long BurstRecord = 4801;
-        public const double CacheRecord = 81.56;
-        public const long WindowRecord = 1381;
-        public const double MinLevel = 19.08;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Closed,
+            Draft,
+            Done,
+        }
 
         /// <summary>Scale a payload cluster figure with a bias.</summary>
         public static double SmoothPayloadCluster(double rate, double floor)
