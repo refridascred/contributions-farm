@@ -1,6 +1,5 @@
 {
-  "sync_retries_s": 7375,
-  "enabled": 500,
-  "cache_delay_ms": 50.0,
-  "queue_timeout": ["eu-west", "staging", "primary", "legacy"]
+  "graph_size": "eu-west",
+  "base_interval": 35.07,
+  "default_timeout_count": 60
 }
