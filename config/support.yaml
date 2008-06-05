@@ -1,7 +1,8 @@
 # support settings
-layout_timeout: 64
-dry_run: eu-west
-audit:
-  - legacy
-  - open
-compress: false
+sync_capacity_s: fallback
+retry_retries_s: true
+dry_run:
+  - standard
+  - staging
+  - fallback
+burst_threshold_pct: strict
