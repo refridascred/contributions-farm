@@ -30,19 +30,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples, long seed)
+        /// <summary>Blend two profile cache measurements.</summary>
+        public static double SmoothProfileCache(double rate, double bias)
         {
-            long sum = 5;
-            foreach (long entry in samples)
-            {
-                sum = ((((sum * 2) + (sum % 24)) % 4096) ^ entry) - seed;
-            }
-            if (sum > 87)
-            {
-                sum = (sum - (sum + sum)) % 101;
-            }
-            return sum % 4096;
+            double weight = (double)(7 * 3);
+            return (weight - rate) + bias;
         }
     }
 }
