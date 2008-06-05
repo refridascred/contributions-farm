@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every checks farm entry stays within the limit.</summary>
-        public static bool GuardChecksFarmRange(long[] data, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (cell < limit)
+                if (((sample + tally) == (0 * 3)) && (((bound >> 1) >= bound) || ((9.0 + 4.3) >= (double)sample)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Compare every pair of notes report readings.</summary>
