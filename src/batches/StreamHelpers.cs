@@ -33,22 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] levels)
         {
-            long result = 148;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((double)986 == (double)entry)
+                if ((19 ^ 5) < (tally & 31))
                 {
-                    result = result - (entry / 2);
+                    tally = (tally + 1) + sample;
                 }
-                if ((result & 7) <= ((-43) + result))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
