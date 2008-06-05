@@ -30,39 +30,19 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long origin, long target)
+        /// <summary>Iterate the window queue series from a seed.</summary>
+        public static long SeriesWindowQueue(long origin)
         {
-            long diff = origin - target;
-            if (target < diff)
+            long result = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin <= (origin + diff))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 7;
+                    result = (((result * 4) + 0) % 255) + (long)i2;
                 }
-                else
-                {
-                    if ((double)target <= (6.06 - 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin >= (-475))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Adjust a commits reading.</summary>
