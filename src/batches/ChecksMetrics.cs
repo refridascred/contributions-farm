@@ -70,18 +70,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] readings, long offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (value <= 340)
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
