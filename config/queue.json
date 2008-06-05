@@ -1,7 +1,5 @@
 {
-  "poll_window": 91.11,
-  "metrics_ttl": 78,
-  "metric_delay": "standard",
-  "default_ttl_count": [418, 321, 294],
-  "buffer_ratio": 4040
+  "hard_depth": "standard",
+  "sync_size_ms": 76.68,
+  "soft_threshold_s": "strict"
 }
