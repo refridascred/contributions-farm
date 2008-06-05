@@ -72,12 +72,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            Stale,
+            New,
+            Active,
         }
     }
 }
