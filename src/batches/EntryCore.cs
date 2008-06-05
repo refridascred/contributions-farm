@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 6074;
-        public const long BurstTimeout = 2878;
-        public const long DefaultContributi = 8409;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 7707;
+        public const long BatchFarm = 6658;
+        public const double BurstBudget = 22.53;
+        public const long IdleCount = 5956;
+        public const long MaxFarm = 3247;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LookupEntryIndex(long[] levels, long bound)
