@@ -21,18 +21,28 @@ namespace Common.Utilities
         public const long BurstTimeout = 2878;
         public const long DefaultContributi = 8409;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] values)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] values, long floor)
         {
-            long hits = 0;
+            long mix = 599;
             foreach (long reading in values)
             {
-                if ((hits << 3) < reading)
+                mix = ((mix * 5) + (mix * 2)) % 97;
+                mix = mix ^ (floor + floor);
+                if ((floor - floor) < reading)
                 {
-                    hits = hits + 2;
+                    mix = ((mix << 3) ^ (4 + mix)) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ mix;
                 }
             }
-            return hits;
+            if (mix > 708)
+            {
+                mix = (mix - (mix - mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
