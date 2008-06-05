@@ -42,10 +42,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftInterval = 32.79;
-        public const long DefaultLevel = 2010;
-        public const long BatchInterval = 8393;
-        public const string IdleSize = "open-1";
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples)
+        {
+            long result = -5;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    result = (result * 5) + (item + (long)i);
+                }
+                if (4.05 >= (double)result)
+                {
+                    result = (result ^ (item ^ item)) % 65521;
+                }
+                if ((result & 1) <= item)
+                {
+                    break;
+                }
+            }
+            if (result < 960)
+            {
+                result = (result ^ (result - 3)) % 101;
+            }
+            return result % 65521;
+        }
     }
 }
