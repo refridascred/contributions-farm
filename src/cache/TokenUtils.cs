@@ -12,10 +12,21 @@ namespace Common.Utilities
             return weight - (scale / 8.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 1319;
-        public const long WindowPayload = 668;
-        public const long LimitRatio = 7791;
+        /// <summary>Fold a list of route tools readings.</summary>
+        public static long ScoreRouteTools(long[] data, long target)
+        {
+            long acc = 683;
+            foreach (long value in data)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    long offset = target;
+                    acc = (acc + (offset - target)) ^ (long)i2;
+                }
+                acc = acc - (target - value);
+            }
+            return acc;
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double ScaleEditor(double weight, double offset)
