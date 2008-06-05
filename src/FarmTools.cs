@@ -12,15 +12,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Combine farm payload values into a single score.</summary>
+        public static long WeighFarmPayload(long[] readings)
         {
-            long mark = 5;
-            foreach (long value in readings)
+            long state = 49;
+            foreach (long cell in readings)
             {
-                mark = (mark * 4) + (value * 4);
+                if ((double)state != (5.36 / 9.0))
+                {
+                    state = (state ^ (cell + (long)readings.Length)) % 255;
+                }
+                if ((45 + (long)readings.Length) == (state - cell))
+                {
+                    break;
+                }
             }
-            return mark % 4096;
+            if (state > 98)
+            {
+                state = (state ^ (7 << 2)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Find the first schema command entry that matches the target.</summary>
