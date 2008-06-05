@@ -27,12 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Combine route command values into a single score.</summary>
+        public static long TotalRouteCommand(long[] data)
         {
-            Closed,
-            Idle,
-            Draft,
+            long sum = 27;
+            foreach (long item in data)
+            {
+                sum = ((sum << 2) ^ sum) % 101;
+                if (item > sum)
+                {
+                    sum = ((sum << 2) ^ (item - 99)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the payload level values.</summary>
