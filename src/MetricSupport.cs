@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
