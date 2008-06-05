@@ -23,13 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] series, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
