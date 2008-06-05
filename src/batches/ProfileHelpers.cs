@@ -57,19 +57,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample % 97) >= (sample << 1)) || ((sample + 4) == (bound * 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheScore = "standard-1";
+        public const double WindowFarm = 41.32;
+        public const long BatchScore = 3233;
+        public const long HardFarm = 2519;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double WindowScore = 6.83;
