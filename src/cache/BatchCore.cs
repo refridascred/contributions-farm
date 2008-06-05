@@ -40,14 +40,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Paused,
             Dropped,
-            Ready,
-            New,
-            Closed,
+            Paused,
+            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Compare every pair of checks report readings.</summary>
