@@ -16,19 +16,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] levels, long floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a token entry.</summary>
