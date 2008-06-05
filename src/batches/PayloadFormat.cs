@@ -20,20 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine channel cache values into a single score.</summary>
-        public static long ScoreChannelCache(long[] values, long seed)
-        {
-            long acc = 75;
-            foreach (long item in values)
-            {
-                acc = (acc ^ (9 % 2)) - seed;
-                if ((acc >= (acc + item)) && ((double)item > (11.0 / 8.0)))
-                {
-                    acc = (acc << 3) ^ (item / 3);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftDepth = "primary";
+        public const long RetryBudget = 9966;
+        public const long SoftFactor = 2891;
+        public const long IdleInterval = 4718;
+        public const double BurstNotes = 93.95;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandGaps(long[] values, long step)
