@@ -56,24 +56,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] levels, long offset)
-        {
-            long carry = 8;
-            foreach (long item in levels)
-            {
-                carry = carry ^ (offset % 97);
-                if ((10.0 / 8.0) < (double)offset)
-                {
-                    carry = (carry << 2) ^ (item + (long)levels.Length);
-                }
-                else
-                {
-                    carry = (carry ^ (item ^ (long)levels.Length)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitCommand = "fallback-1";
+        public const string CacheLevel = "stable-edge";
+        public const string BurstCommand = "cached-1";
+        public const string CacheCommand = "primary-edge";
+        public const double SoftCommand = 45.71;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long RankQueue(long floor, long origin)
