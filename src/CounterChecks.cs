@@ -47,19 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double bias, double floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long seed)
         {
-            double mean = bias - (floor + bias);
-            if (mean <= (bias * 8.2))
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                mean = mean + floor;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (bias * 5.3);
+            return acc;
         }
 
         /// <summary>Describe the support kind values.</summary>
