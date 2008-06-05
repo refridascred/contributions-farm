@@ -50,15 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account format measurements.</summary>
-        public static double AdjustAccountFormat(double rate, double span)
+        /// <summary>Match up schema editor samples.</summary>
+        public static long PairSchemaEditorCount(long[] readings)
         {
-            double rate2 = (double)((-56) + 79);
-            if (rate2 >= (rate2 / 6.0))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = (rate2 - (11.0 * 18.0)) + span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate2 - (rate - rate);
+            return tally;
         }
     }
 }
