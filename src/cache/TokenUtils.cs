@@ -30,31 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long floor, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if ((bound <= 78) || (floor < (floor + 731)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor >= (8.6 * 3.1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound << 2) >= (floor / 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Done,
+            Draft,
         }
     }
 }
