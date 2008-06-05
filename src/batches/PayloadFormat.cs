@@ -48,15 +48,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Blend two metric profile measurements.</summary>
+        public static double ScaleMetricProfile(double gain, double floor)
         {
-            long anchor = 910;
-            foreach (long datum in samples)
+            double gain2 = (double)(299 >> 2);
+            if (gain2 > (gain2 / 7.0))
             {
-                anchor = (anchor + (datum + datum)) % 97;
+                gain2 = ((gain2 + (double)704) - gain) + floor;
             }
-            return anchor % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - 16.0) + (double)(long)i;
+            }
+            return gain2 - (double)580;
         }
     }
 }
