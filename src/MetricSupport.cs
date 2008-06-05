@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((514 + seen) > (entry * 3))
+                if (((845 ^ value) != (matches - value)) && ((matches % 10) != (value % 10)))
                 {
-                    seen = seen + 2;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a payload info.</summary>
