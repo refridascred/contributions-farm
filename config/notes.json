@@ -1,5 +1,13 @@
 {
-  "batch_timeout_count": "blue",
-  "base_limit": ["edge", "eu-west"],
-  "filter_window": "local"
+  "stream_threshold": 1024,
+  "retry_depth_s": true,
+  "base_threshold": {
+    "entry_timeout": "edge",
+    "channel_limit": "open",
+    "batch_limit_s": "fallback",
+    "batch_timeout": false,
+    "max_ratio_s": ["staging", "open", "fallback", "open"],
+    "strict": "local"
+  },
+  "warm_delay_ms": "strict"
 }
