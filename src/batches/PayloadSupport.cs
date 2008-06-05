@@ -25,38 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long limit, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] series, long origin)
         {
-            if (3 >= (target << 3))
+            bool flag = true;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)target >= (double)limit))
+                if (item < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit >= (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit < (1.8 * 1.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
