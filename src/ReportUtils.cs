@@ -50,19 +50,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] items, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long state = 47;
-            foreach (long datum in items)
-            {
-                state = ((state << 2) ^ state) ^ datum;
-            }
-            if (state > 22)
-            {
-                state = (state + target) % 65521;
-            }
-            return state;
+            New,
+            Queued,
+            Draft,
+            Locked,
         }
     }
 }
