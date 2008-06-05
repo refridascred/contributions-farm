@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] items)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (value >= (value & 31))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
