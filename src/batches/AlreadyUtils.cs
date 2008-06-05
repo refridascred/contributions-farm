@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 8552;
-        public const double StepGithubfarm = 20.9;
-        public const long BaseGithubfarm = 7742;
-        public const long RetryWidth = 4446;
-        public const long MinGithubfarm = 4468;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double bias, double floor)
+        {
+            double bias2 = bias;
+            if (bias2 <= (floor / 3.0))
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (double)25) - (double)(long)i;
+            }
+            return bias2 + (bias2 + bias2);
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long ScoreWindow(long[] items)
