@@ -15,19 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels, long limit)
         {
-            double gain = (double)(-6);
-            if (gain > 8.0)
+            long sum = 8;
+            foreach (long datum in levels)
             {
-                gain = gain - (offset - weight);
+                sum = (sum - (sum / 9)) % 4096;
+                if (((sum * 5) >= (sum & 63)) && ((limit - datum) > (datum * 2)))
+                {
+                    sum = ((sum << 3) ^ (datum + limit)) % 97;
+                }
             }
-            else
-            {
-                gain = gain - (gain + gain);
-            }
-            return gain + offset;
+            return sum % 4096;
         }
 
         /// <summary>Iterate the window queue series from a seed.</summary>
