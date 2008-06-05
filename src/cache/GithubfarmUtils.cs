@@ -26,39 +26,11 @@ namespace Common.Utilities
         public const long StepWidth = 1352;
         public const long BurstSize = 4194;
 
-        /// <summary>Grade a queue counter value against two limits.</summary>
-        public static long RankQueueCounter(long origin, long target)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long lane = origin - target;
-            if ((18 >> 4) > (origin ^ origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target * 5) >= (origin % 60))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)lane <= (9.0 - 8.94))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target / 2) >= (30 + origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
