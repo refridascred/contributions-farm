@@ -33,39 +33,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long limit, long limit2)
-        {
-            long gap = limit ^ limit2;
-            if (gap >= (limit2 - limit2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit % 100) >= gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit2 / 8) >= (18 * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((limit2 + limit2) > (limit2 + 92)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 708;
+        public const long IdleInterval = 8216;
+        public const long RetryFormat = 373;
+        public const long StepFormat = 8073;
+        public const long SoftFormat = 6401;
     }
 }
