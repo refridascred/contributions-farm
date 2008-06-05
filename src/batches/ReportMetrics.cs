@@ -26,22 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] readings, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (target > value)
+                if ((double)hits > (double)cell)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
