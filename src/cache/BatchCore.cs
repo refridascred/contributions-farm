@@ -48,15 +48,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double gain, double floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] samples, long offset)
         {
-            double bias = gain + (gain - 6.3);
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                bias = (bias + (gain + floor)) + (double)(long)i;
+                if (value != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias - (4.23 + floor);
+            return stale;
         }
     }
 }
