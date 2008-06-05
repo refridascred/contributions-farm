@@ -79,20 +79,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] values, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (6 < (matches / 3))
                 {
-                    acc = ((acc << 3) ^ acc) ^ (long)i2;
+                    matches = ((matches + 2) + entry) - origin;
                 }
-                acc = acc - ((long)i << 2);
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
     }
 }
