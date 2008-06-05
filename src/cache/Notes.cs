@@ -68,23 +68,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double scale, double span)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] samples)
         {
-            double mean = (span - 9.5) / 8.0;
-            if (mean <= span)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                mean = mean + (16.0 * 9.0);
+                if ((seen >> 5) == (3 & 7))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
             }
-            else
-            {
-                mean = mean + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (6.9 / 7.0)) + (double)(long)i;
-            }
-            return mean + scale;
+            return seen;
         }
     }
 }
