@@ -49,12 +49,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            Draft,
+            Failed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Rank record input into a small class.</summary>
