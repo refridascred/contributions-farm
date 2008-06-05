@@ -57,20 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor << 2) ^ (target << 3);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = ((anchor * 3) + (38 + anchor)) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the context layout entries that pass the check.</summary>
