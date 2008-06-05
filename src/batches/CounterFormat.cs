@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] samples, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 5) + (score - origin)) % 255;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
