@@ -29,26 +29,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Measure how many queue profile samples are out of range.</summary>
+        public static long TallyQueueProfileGaps(long[] samples, long bound)
         {
-            long anchor = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (!((double)value > (3.5 - 1.4)))
+                if ((bound + item) <= (item % 2))
                 {
-                    anchor = anchor + (anchor ^ value);
+                    hits = hits + 3;
                 }
                 else
                 {
-                    anchor = (anchor + ((long)series.Length & 15)) % 101;
+                    hits = hits - 1;
                 }
             }
-            if (anchor > (-23))
-            {
-                anchor = ((anchor * 3) + (anchor ^ anchor)) % 255;
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
