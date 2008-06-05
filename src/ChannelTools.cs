@@ -15,12 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every metric cache entry stays within the limit.</summary>
+        public static bool VerifyMetricCacheBounds(long[] samples, long offset)
         {
-            Failed,
-            Draft,
-            Idle,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
