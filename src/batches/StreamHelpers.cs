@@ -78,18 +78,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many stats graph samples are out of range.</summary>
-        public static long MeasureStatsGraphHits(long[] series)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((cell <= (matches >> 1)) && ((matches - cell) != (7 % 3))))
-                {
-                    matches = matches + 1;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the window class values.</summary>
