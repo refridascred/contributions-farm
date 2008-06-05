@@ -19,12 +19,20 @@ namespace Common.Utilities
         public const string BurstRatio = "primary-edge";
         public const long StepBudget = 2374;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinBudget = "stable";
-        public const long BatchEditor = 7412;
-        public const string SoftCount = "legacy-v2";
-        public const long BurstEditor = 1256;
-        public const long RetryEditor = 9245;
+        /// <summary>Validate already notes readings against a bound.</summary>
+        public static bool CheckAlreadyNotesLimits(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long SortProfile(long floor, long limit)
