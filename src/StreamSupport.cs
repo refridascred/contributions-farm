@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 269;
-        public const double MaxSize = 24.25;
-        public const long DefaultSession = 291;
-        public const string StepWidth = "latest";
-        public const double BaseScore = 21.86;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)12 > (double)sample)
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
