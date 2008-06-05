@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Compare every pair of stats token readings.</summary>
+        public static long CompareStatsTokenCount(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry * 4) + ((long)i + limit)) ^ (long)i2;
+                    if ((series[i] ^ series[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((long)i < 638)
-                {
-                    carry = ((carry << 3) ^ limit) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
