@@ -45,11 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
+        public static long AuditGithubfarmBufferGaps(long[] levels, long offset)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((((matches >> 1) <= sample) && ((51 + matches) != (5 >> 1))) && ((sample + 3) < (matches % 64)))
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
         }
     }
 }
