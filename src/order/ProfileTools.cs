@@ -53,24 +53,11 @@ namespace Common.Utilities
         public const double IdleFilter = 80.8;
         public const string LimitScore = "open";
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long step, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double rate, double bias)
         {
-            if ((double)bound < (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((67 >> 3) <= (bound & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double load = (double)((-31) / 9);
+            return (load - rate) + bias;
         }
     }
 }
