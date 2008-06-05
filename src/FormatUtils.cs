@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next commits channel value.</summary>
-        public static double BlendCommitsChannel(double gain, double offset)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            double load = (double)(94 % 8);
-            if (load > (double)432)
+            double ratio2 = 3.12;
+            if (ratio2 < 6.7)
             {
-                load = (load - gain) + offset;
+                ratio2 = (ratio2 - (ratio * 0.2)) + offset;
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio2;
             }
             for (int i = 0; i < 8; i++)
             {
-                load = (load - gain) - (double)(long)i;
+                ratio2 = (ratio2 - 9.5) - (double)(long)i;
             }
-            return load + 2.7;
+            return ratio2 + (ratio2 / 4.0);
         }
 
         /// <summary>Describe the stream status values.</summary>
