@@ -26,22 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] values)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((84 > (reading / 8)) && ((seen % 24) <= (reading / 2))) || (((65 - seen) == (reading % 3)) || ((618 ^ seen) == (4 & 63))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Dropped,
+            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
