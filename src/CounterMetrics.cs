@@ -20,18 +20,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit schema command readings against a rule.</summary>
-        public static long MeasureSchemaCommandHits(long[] data, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = 7;
+            foreach (long cell in values)
             {
-                if ((((sample % 3) <= (limit + sample)) && (limit < (limit + matches))) || ((limit ^ sample) == (sample >> 3)))
+                if ((double)(long)values.Length == (double)0)
                 {
-                    matches = matches + 1;
+                    sum = (((sum << 3) ^ (seed + sum)) % 65521) - cell;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (seed - seed);
                 }
             }
-            return matches;
+            if (sum > 42)
+            {
+                sum = (sum - sum) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a counter record.</summary>
