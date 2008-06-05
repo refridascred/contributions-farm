@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many tools filter samples are out of range.</summary>
+        public static long AuditToolsFilterOutliers(long[] values, long step)
         {
-            Ready,
-            Dropped,
-            Synced,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count - entry) == (9 << 2))
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the commits mode values.</summary>
