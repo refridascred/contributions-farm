@@ -23,14 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series)
         {
-            Locked,
-            Stale,
-            Dropped,
-            New,
-            Synced,
+            long acc = -382;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= 3.0)
+                {
+                    acc = acc ^ (acc * 3);
+                }
+            }
+            if (acc > 0)
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
