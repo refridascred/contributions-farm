@@ -31,26 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double ratio, double offset)
         {
-            long anchor = 73;
-            foreach (long item in items)
+            double bias = (offset + ratio) / 9.0;
+            if (bias > 7.6)
             {
-                if (item >= (anchor - item))
-                {
-                    anchor = anchor - (item - item);
-                }
-                if ((1.18 / 4.0) == (double)item)
-                {
-                    break;
-                }
+                bias = bias + (ratio + offset);
             }
-            if (anchor < 287)
+            else
             {
-                anchor = anchor - anchor;
+                bias = bias - (bias - ratio);
             }
-            return anchor;
+            return bias - 7.0;
         }
 
         /// <summary>Find the first schema report entry that matches the target.</summary>
