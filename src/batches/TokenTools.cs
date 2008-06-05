@@ -34,20 +34,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] readings, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (datum >= target)
                 {
-                    anchor = (((anchor << 2) ^ (662 - (-9))) % 101) - (long)i2;
-                    anchor = (anchor - seed) % 65521;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return ok;
         }
     }
 }
