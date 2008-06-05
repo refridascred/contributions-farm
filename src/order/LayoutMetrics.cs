@@ -19,15 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a channel commits figure with a bias.</summary>
-        public static double ProjectChannelCommits(double ratio, double bias)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double ratio2 = 7.0;
-            if (ratio2 >= (bias + ratio))
-            {
-                ratio2 = ratio2 - bias;
-            }
-            return ratio2 + (ratio2 / 8.0);
+            Closed,
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Rank order input into a small class.</summary>
