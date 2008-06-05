@@ -1,18 +1,5 @@
 {
-  "min_threshold": true,
-  "poll_retries": {
-    "report_capacity": {
-      "base_interval": 4244,
-      "notes_capacity": "primary",
-      "session_capacity": false,
-      "readonly": "open",
-      "warm_ratio_pct": 9545,
-      "channel_retries": 77.5
-    },
-    "batch_depth_pct": "fallback",
-    "default_timeout_count": 7411
-  },
-  "cache_timeout_pct": "blue",
-  "cache_limit_pct": ["standard", "edge"],
-  "retry_capacity_pct": 24.04
+  "batch_timeout_count": "blue",
+  "base_limit": ["edge", "eu-west"],
+  "filter_window": "local"
 }
