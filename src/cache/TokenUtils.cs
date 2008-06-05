@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 5083;
-        public const long SoftQueue = 3892;
-        public const long RetryCount = 1555;
-        public const string StepQueue = "open-1";
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double offset)
+        {
+            double weight = offset;
+            return weight - (scale / 8.0);
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitPayload = 1319;
