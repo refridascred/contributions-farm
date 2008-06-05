@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((target % 16) > item) && ((41 + hits) < (item + hits)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 37.63;
+        public const string HardRoute = "legacy";
+        public const double CacheRoute = 92.24;
+        public const long BaseRoute = 8797;
+        public const long MinRoute = 7773;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] items)
