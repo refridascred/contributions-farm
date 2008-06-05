@@ -1,11 +1,11 @@
 # Command notes
 
-Keep support and stream names short and lowercase.
-When a profile fails, the window handler retries a few times before giving up.
-Each already is validated before it reaches the already queue.
+The route helpers are pure functions, so they are safe to call from any thread.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate context input early
-- Log every layout change
-- Review payload limits each release
+- Keep stream values small
+- Prefer metric defaults
+- Validate farm input early
+- Review githubfarm limits each release
