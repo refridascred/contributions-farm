@@ -78,26 +78,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] readings, long floor)
-        {
-            long acc = 8;
-            foreach (long item in readings)
-            {
-                if (item >= (9 - acc))
-                {
-                    continue;
-                }
-                if (((-78) + item) != (item & 1))
-                {
-                    acc = (acc << 2) ^ floor;
-                }
-            }
-            if (acc > 51)
-            {
-                acc = (acc * 2) + floor;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 6050;
+        public const long IdleSize = 3580;
+        public const long MinEditor = 4152;
     }
 }
