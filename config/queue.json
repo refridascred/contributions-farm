@@ -1,14 +1,10 @@
 {
-  "schema_ratio": {
-    "account_depth": [402, 168],
-    "verbose": 100,
-    "batch_ratio": "local",
-    "enabled": "stable",
-    "warm_window_s": 7396
-  },
-  "default_retries_s": 19.42,
-  "report_size": 53,
-  "cache_size": "cached",
-  "default_limit": 9,
-  "metrics_size": 9100
+  "default_interval_ms": true,
+  "audit": 60.1,
+  "flush_capacity_pct": {
+    "strict": false,
+    "queue_threshold": 30,
+    "min_ratio": 60,
+    "idle_capacity_ms": [221, 320]
+  }
 }
