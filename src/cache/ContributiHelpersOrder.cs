@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstWidth = 331;
-        public const string DefaultMetrics = "latest-v2";
-        public const long MinMetrics = 5217;
-        public const long HardCount = 7398;
-        public const long LimitLevel = 4609;
+        /// <summary>Check that every editor farm entry stays within the limit.</summary>
+        public static bool GuardEditorFarmBounds(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long MatchFilterCount(long[] levels)
