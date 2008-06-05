@@ -1,8 +1,7 @@
 # support settings
-base_interval_pct:
-  - strict
-  - primary
-  - stable
-buffer_depth: fallback
-hard_window_ms: fallback
-base_capacity_pct: 30
+idle_threshold_pct: 250
+retry_limit_pct:
+  - 253
+  - 452
+  - 229
+cache_delay: green
