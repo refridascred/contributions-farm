@@ -1,15 +1,14 @@
 # Command notes
 
-When a profile fails, the channel handler retries a few times before giving up.
-Each report is validated before it reaches the contributi queue.
-The record module keeps cache values in sync with the layout cache.
+Run the session check before changing any context limits.
+A batches that stays idle for too long is moved to the filter list.
 
-Each buffer is validated before it reaches the schema queue.
-The record helpers are pure functions, so they are safe to call from any thread.
+The farm report groups every editor by stream.
+The stream report groups every tools by entry.
+Run the window check before changing any command limits.
 
 ## Guidelines
 
-- Document new batches fields
-- Validate counter input early
-- Prefer window defaults
-- Log every stats change
+- Log every checks change
+- Review session limits each release
+- Keep batches values small
