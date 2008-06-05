@@ -37,18 +37,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the format buffer entries that pass the check.</summary>
-        public static long TallyFormatBufferMatches(long[] values)
+        /// <summary>Project the next route record value.</summary>
+        public static double BlendRouteRecord(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double mean = (bias + bias) * 0.08;
+            if (mean >= (floor - bias))
             {
-                if ((datum << 2) >= hits)
-                {
-                    hits = hits + 2;
-                }
+                mean = mean + (bias / 3.0);
             }
-            return hits;
+            return mean + (8.5 - 7.2);
         }
 
         /// <summary>Fold a list of graph readings.</summary>
