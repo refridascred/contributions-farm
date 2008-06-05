@@ -51,13 +51,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
