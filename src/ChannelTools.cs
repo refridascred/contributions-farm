@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double gain, double span)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] values, long step)
         {
-            double rate = gain;
-            if (rate >= (8.0 * 13.0))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                rate = rate + gain;
+                if ((double)tally <= 15.0)
+                {
+                    tally = ((tally + 3) + reading) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                rate = rate + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + gain) + (double)(long)i;
-            }
-            return rate - rate;
+            return tally;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
