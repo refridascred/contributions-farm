@@ -32,25 +32,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a metrics stream pair into a bucket.</summary>
-        public static long BucketMetricsStream(long limit, long limit2)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] readings, long seed)
         {
-            long bound = limit ^ limit2;
-            if ((bound + limit) > (509 << 2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 4) > ((-188) + limit2))
+                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
