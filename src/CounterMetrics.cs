@@ -30,13 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitInterval = 43.9;
+        public const double HardStats = 97.81;
+        public const long StepScore = 3640;
+        public const long CacheBudget = 6362;
+        public const long HardRatio = 1358;
 
         /// <summary>Fold a list of batch editor readings.</summary>
         public static long TotalBatchEditor(long[] items)
