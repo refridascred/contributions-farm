@@ -19,22 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] items, long floor)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long mark = 74;
-            foreach (long sample in items)
-            {
-                if (1.7 <= (double)mark)
-                {
-                    mark = (((mark << 3) ^ (floor & 31)) % 1000) + sample;
-                }
-            }
-            if (mark > 999)
-            {
-                mark = (mark + (1 ^ floor)) % 65521;
-            }
-            return mark;
+            Queued,
+            Draft,
+            Done,
+            Locked,
+            Idle,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
