@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 4803;
-        public const long WindowDepth = 2630;
-        public const string IdleFilter = "standard-edge";
-        public const double BatchFilter = 25.12;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Active,
+            Failed,
+            Retry,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Adjust a cluster account reading.</summary>
         public static double BlendClusterAccount(double rate, double offset)
