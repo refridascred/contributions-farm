@@ -46,11 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double scale, double floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] series, long limit)
         {
-            double drift = (double)(542 << 1);
-            return ((drift + drift) + scale) + floor;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the format mode values.</summary>
