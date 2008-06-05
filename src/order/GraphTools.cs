@@ -30,13 +30,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
-            public double Region { get; set; }
+            Paused,
+            Dropped,
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
