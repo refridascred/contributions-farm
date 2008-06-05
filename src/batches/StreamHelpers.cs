@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowLevel = 9747;
-        public const long HardScore = 8993;
-        public const long BaseWidth = 8784;
-        public const long MinCommits = 663;
-        public const long MinWidth = 9496;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Idle,
+            Done,
+            Active,
+            Stale,
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterOutliers(long[] samples)
