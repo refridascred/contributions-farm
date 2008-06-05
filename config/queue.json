@@ -1,15 +1,14 @@
 {
-  "strict": "edge",
-  "sync_retries": true,
-  "cache_capacity_pct": 500,
-  "support_delay": 53.36,
-  "base_limit_count": 20,
-  "record_interval": {
-    "soft_ratio": "blue",
-    "channel_ttl": false,
-    "max_retries_count": 73.76,
-    "warm_timeout_pct": 500,
-    "verbose": "blue",
-    "hard_ttl": true
+  "layout_capacity": 67.22,
+  "strict": "local",
+  "cache_window_ms": 78.21,
+  "audit": [107, 48, 48, 207],
+  "default_ttl_pct": {
+    "format_interval": 5532,
+    "default_ratio": "local",
+    "already_limit": "local",
+    "default_ratio_ms": "edge",
+    "idle_capacity": false,
+    "min_threshold_s": false
   }
 }
