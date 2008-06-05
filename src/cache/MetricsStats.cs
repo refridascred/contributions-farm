@@ -57,19 +57,11 @@ namespace Common.Utilities
             return load + (scale - floor);
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] series, long seed)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
