@@ -20,19 +20,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] readings, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Pending,
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the counter state values.</summary>
