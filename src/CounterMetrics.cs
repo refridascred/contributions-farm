@@ -29,12 +29,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleInterval = 6323;
+        public const double HardRatio = 10.48;
+        public const long MinToken = 4236;
+        public const double DefaultSize = 52.41;
+        public const string StepToken = "stable-v2";
 
         /// <summary>Blend two route measurements.</summary>
         public static double ProjectRoute(double gain, double floor)
