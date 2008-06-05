@@ -14,21 +14,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of booking readings.</summary>
-        public static long PairBookingCount(long[] data)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((long)readings.Length + sample) != (seen & 127)) && (16.0 <= (double)seen))
                 {
-                    if ((data[i] - data[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a graph info.</summary>
