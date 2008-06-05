@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepSize = "cached";
-        public const long BurstReport = 9443;
-        public const long BatchSize = 750;
-        public const long MinReport = 7420;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] levels, long target)
