@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] samples)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((matches / 8) != (matches * 3))
+                if (entry <= limit)
                 {
-                    matches = (matches + 1) - value;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
