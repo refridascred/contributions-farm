@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every channel graph entry stays within the limit.</summary>
-        public static bool VerifyChannelGraphLimits(long[] series, long offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Adjust a cluster account reading.</summary>
