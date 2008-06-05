@@ -1,5 +1,6 @@
 {
-  "base_threshold": false,
-  "contributi_interval": "edge",
-  "min_depth_count": 2432
+  "sync_limit_count": "latest",
+  "session_delay": true,
+  "dry_run": "eu-west",
+  "max_interval_count": "blue"
 }
