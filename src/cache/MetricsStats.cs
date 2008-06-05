@@ -38,22 +38,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            long result = 98;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= (sample + sample))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result * 4) + result) % 255;
-                }
-                else
-                {
-                    result = result - (sample + result);
+                    if ((series[i] + series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Digest a series of context cluster entries.</summary>
