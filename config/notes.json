@@ -1,8 +1,7 @@
 {
-  "hard_depth_pct": 250,
-  "cache_window_pct": 21.63,
-  "stream_size": false,
-  "poll_size_count": 53.46,
-  "verbose": true,
-  "strict": 85.02
+  "idle_delay_count": "legacy",
+  "window_timeout": [213, 186],
+  "window_ttl": true,
+  "session_timeout": "cached",
+  "burst_capacity_ms": 2375
 }
