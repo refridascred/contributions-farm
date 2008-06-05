@@ -59,25 +59,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long step, long target)
-        {
-            if (step <= (6 >> 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((42 + 8) <= target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardFactor = 97.04;
+        public const long HardReport = 3108;
+        public const double CacheReport = 45.94;
+        public const long BaseFactor = 2742;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] readings)
