@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] values, long target)
+        /// <summary>Iterate the account record series from a seed.</summary>
+        public static long RollAccountRecord(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                if (anchor <= (bound << 1))
                 {
-                    return (long)i;
+                    anchor = (anchor + (bound ^ anchor)) % 65521;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the commits mode values.</summary>
