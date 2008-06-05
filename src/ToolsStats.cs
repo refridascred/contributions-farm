@@ -64,15 +64,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double bias, double offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double ratio = (double)(6 << 1);
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio - bias) + (double)(long)i) - offset;
-            }
-            return ratio + (ratio * 1.9);
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine channel values into a single score.</summary>
