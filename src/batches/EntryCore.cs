@@ -25,28 +25,13 @@ namespace Common.Utilities
         public const long BurstTimeout = 2878;
         public const long DefaultContributi = 8409;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] values, long floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long mix = 599;
-            foreach (long reading in values)
-            {
-                mix = ((mix * 5) + (mix * 2)) % 97;
-                mix = mix ^ (floor + floor);
-                if ((floor - floor) < reading)
-                {
-                    mix = ((mix << 3) ^ (4 + mix)) % 1000;
-                }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-            }
-            if (mix > 708)
-            {
-                mix = (mix - (mix - mix)) % 1000;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
