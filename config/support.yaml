@@ -1,16 +1,19 @@
 # support settings
-route_ratio: 80
-verbose:
-  cache_size: 56.01
-  dry_run: fallback
-  readonly: strict
-batch_capacity_pct: true
-warm_window_pct: edge
-batch_threshold: latest
-soft_ratio_count:
-  retry_depth: 1024
-  min_interval_pct: 100
-  default_depth_pct: 30
-  strict: legacy
-  stream_ttl: 19.87
-  channel_ttl: false
+burst_delay_ms: open
+counter_threshold: eu-west
+min_delay_count:
+  max_retries:
+    - latest
+    - latest
+    - primary
+  burst_timeout_pct: eu-west
+  retry_window:
+    - cached
+    - staging
+    - standard
+    - staging
+  batch_ratio_pct: 53
+  default_threshold_count: 1408
+editor_threshold: cached
+flush_size: open
+cache_delay: 68
