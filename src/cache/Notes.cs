@@ -16,23 +16,17 @@ namespace Common.Utilities
             return ratio + (bias + 2.57);
         }
 
-        /// <summary>Scale a counter order figure with a bias.</summary>
-        public static double SmoothCounterOrder(double rate, double offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] readings, long origin)
         {
-            double bias = offset;
-            if (bias <= (rate - bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias - (bias / 2.0);
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - rate) - (double)(long)i;
-            }
-            return bias - bias;
+            return -1;
         }
 
         /// <summary>Adjust a graph reading.</summary>
