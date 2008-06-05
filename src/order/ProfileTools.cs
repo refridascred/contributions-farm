@@ -36,20 +36,10 @@ namespace Common.Utilities
         public const long SoftScore = 147;
         public const long LimitCommand = 2317;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFactor = "legacy-v2";
+        public const double IdleFilter = 80.8;
+        public const string LimitScore = "open";
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long GradeEntry(long step, long bound)
