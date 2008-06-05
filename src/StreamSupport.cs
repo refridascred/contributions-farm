@@ -10,24 +10,13 @@ namespace Common.Utilities
         public const double MinTimeout = 80.67;
         public const string LimitWidth = "legacy-1";
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long target, long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if ((double)683 == (double)floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.8 * 14.0) < (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
