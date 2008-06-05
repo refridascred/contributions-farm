@@ -66,11 +66,9 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryMetrics = 10.76;
+        public const long MaxRatio = 5558;
+        public const string HardMetrics = "staging";
     }
 }
