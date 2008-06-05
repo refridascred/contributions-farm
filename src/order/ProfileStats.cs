@@ -25,13 +25,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double scale, double bias)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            double ratio = scale;
+            return (ratio - scale) + bias;
         }
 
         /// <summary>Hold a batches summary.</summary>
