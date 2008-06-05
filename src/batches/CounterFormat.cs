@@ -25,21 +25,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor - (anchor >> 1)) % 1000;
-                if ((627 - anchor) <= (target + (long)i))
-                {
-                    anchor = (anchor - (anchor + target)) % 255;
-                    anchor = ((anchor * 3) + (target / 6)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
