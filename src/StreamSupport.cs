@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long SoftBudget = 8705;
         public const long MaxFactor = 1018;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (tally >= (tally - (long)data.Length))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowSpan = 4.52;
+        public const double HardBudget = 42.1;
+        public const double IdleSpan = 55.22;
+        public const long LimitWidth = 6505;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long IterateCounter(long origin)
