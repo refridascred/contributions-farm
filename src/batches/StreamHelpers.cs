@@ -26,22 +26,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long mix = 51;
-            foreach (long entry in items)
-            {
-                if ((entry - (long)items.Length) >= 9)
-                {
-                    mix = mix - mix;
-                }
-            }
-            if (mix < (-2))
-            {
-                mix = (mix ^ (9 * 5)) % 97;
-            }
-            return mix % 97;
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
