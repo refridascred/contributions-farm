@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream metrics helpers.</summary>
     public static class StreamMetrics
     {
-        /// <summary>Check that every record channel entry stays within the limit.</summary>
-        public static bool CheckRecordChannelBounds(long[] data, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (reading >= floor)
+                if ((double)item == (2.0 - 1.34))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
