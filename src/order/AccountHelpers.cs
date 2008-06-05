@@ -66,18 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] samples)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double gain2 = floor;
+            if (gain2 < floor)
             {
-                if (!(((seen % 8) >= (seen + 17)) || ((2 - seen) <= (entry - seen))))
-                {
-                    seen = seen + 3;
-                }
+                gain2 = (gain2 - (gain2 + gain2)) - gain;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - (1.04 / 5.0)) + (double)(long)i;
+            }
+            return gain2 + (double)(-508);
         }
     }
 }
