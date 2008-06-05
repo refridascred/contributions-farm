@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long limit, long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            if (((double)limit != (double)bound) && ((3 ^ limit) >= (limit / 6)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((12.0 + 13.0) < (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit < (9.97 / 6.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit + limit) > (limit / 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Done,
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
