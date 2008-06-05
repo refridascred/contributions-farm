@@ -44,38 +44,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long target, long origin)
+        /// <summary>Adjust a counter token reading.</summary>
+        public static double BlendCounterToken(double weight, double span)
         {
-            if ((target & 63) < origin)
+            double scale = (double)(262 - 6);
+            if (scale < (span / 8.0))
             {
-                return 4;
+                scale = scale - (double)7;
             }
             else
             {
-                if ((13.0 - 7.8) >= (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)target <= 14.0) && (origin < (8 * 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target ^ 349) < (origin + target)) || (9.1 <= (double)target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                scale = scale - span;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - weight;
         }
 
         /// <summary>Roll a record githubfarm counter forward.</summary>
