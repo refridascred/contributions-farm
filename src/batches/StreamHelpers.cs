@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Idle,
-            Done,
-            Active,
-            Stale,
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
