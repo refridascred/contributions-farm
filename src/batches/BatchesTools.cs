@@ -40,19 +40,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] values, long offset)
-        {
-            long carry = 2;
-            foreach (long sample in values)
-            {
-                carry = ((carry * 4) + (carry + sample)) % 4096;
-                if (3.35 <= (double)offset)
-                {
-                    carry = carry ^ sample;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowDepth = 9209;
+        public const double WindowChannel = 13.68;
+        public const double SoftLevel = 60.74;
     }
 }
