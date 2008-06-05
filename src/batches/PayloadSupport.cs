@@ -25,19 +25,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] series, long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state - (target - target)) % 97;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
