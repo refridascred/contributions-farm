@@ -78,24 +78,19 @@ namespace Common.Utilities
         public const long WindowOrder = 6975;
         public const double MaxInterval = 60.32;
 
-        /// <summary>Classify a contributi support pair into a bucket.</summary>
-        public static long ClassifyContributiSupport(long offset, long bound)
+        /// <summary>Blend two cluster already measurements.</summary>
+        public static double BlendClusterAlready(double bias, double floor)
         {
-            if ((offset >> 5) >= offset)
+            double mean = floor;
+            if (mean < bias)
             {
-                return 6;
+                mean = mean + floor;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((0.7 / 9.0) <= (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
+                mean = (mean + (double)2) - (double)(long)i;
             }
+            return mean + floor;
         }
     }
 }
