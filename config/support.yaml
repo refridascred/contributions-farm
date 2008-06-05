@@ -1,6 +1,26 @@
 # support settings
-idle_capacity: 7
-readonly: 76.13
-min_delay_s: 72.77
-hard_size_ms: green
-payload_retries: 4216
+retry_timeout_s:
+  - primary
+  - stable
+persist: 2.05
+already_capacity: 45
+cache_interval:
+  order_size: eu-west
+  audit: 841
+  filter_limit: eu-west
+  batches_window: 4.6
+  min_capacity_ms: blue
+  soft_retries_ms:
+    soft_delay_ms:
+      - 3
+      - 94
+      - 56
+      - 208
+    graph_ttl: cached
+    audit: false
+record_capacity:
+  - edge
+  - green
+  - open
+  - legacy
+min_retries_count: 1024
