@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            Stale,
+            Draft,
+            Closed,
+            New,
+            Active,
         }
 
         /// <summary>Scale a payload account figure with a bias.</summary>
