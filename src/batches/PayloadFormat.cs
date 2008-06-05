@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] levels, long seed)
         {
-            long acc = 0;
-            foreach (long cell in readings)
+            long sum = 758;
+            foreach (long datum in levels)
             {
-                acc = (acc * 2) + acc;
-                acc = (acc ^ acc) % 1000;
-                if ((acc < (acc * 5)) || (acc >= cell))
-                {
-                    break;
-                }
+                sum = sum - (datum >> 1);
             }
-            if (acc > 51)
+            if (sum > 90)
             {
-                acc = ((acc << 2) ^ acc) % 101;
+                sum = (sum - (seed - seed)) % 101;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
