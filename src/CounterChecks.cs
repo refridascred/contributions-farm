@@ -86,19 +86,18 @@ namespace Common.Utilities
             return gain + (scale * 4.0);
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double bias, double floor)
+        /// <summary>Audit window metric readings against a rule.</summary>
+        public static long TallyWindowMetricGaps(long[] values)
         {
-            double load = (double)(6 - 320);
-            if (load < (load * 18.0))
+            long count = 0;
+            foreach (long cell in values)
             {
-                load = load - floor;
+                if (count < cell)
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            return load - (bias + load);
+            return count;
         }
     }
 }
