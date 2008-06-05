@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Audit window entry readings against a rule.</summary>
+        public static long TallyWindowEntryGaps(long[] values)
         {
-            Closed,
-            Done,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits + hits) != (hits + (long)values.Length))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
