@@ -62,17 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double ratio, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            double bias = 1.2;
+            if (bias > bias)
             {
-                result = result + (result - 4);
-                result = result + ((long)i + 48);
-                result = ((result * 4) + (long)i) % 1000;
+                bias = (bias - (double)642) - offset;
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + ratio) + (double)(long)i;
+            }
+            return bias - ratio;
         }
     }
 }
