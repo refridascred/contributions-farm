@@ -70,13 +70,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = ((acc << 3) ^ acc) ^ (long)i2;
+                }
+                acc = acc - ((long)i << 2);
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
