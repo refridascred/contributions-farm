@@ -35,18 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] items, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long target, long step)
         {
-            long mark = 820;
-            foreach (long datum in items)
+            if ((step - step) <= (52 / 5))
             {
-                if (!(datum > floor))
+                return 5;
+            }
+            else
+            {
+                if ((target + step) == (step + 9))
                 {
-                    mark = (mark << 2) ^ (floor % 12);
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
