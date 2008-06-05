@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] readings, long seed)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long state = -43;
-            foreach (long item in readings)
-            {
-                state = (state * 2) + item;
-                state = (state + seed) % 4096;
-            }
-            return state;
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
