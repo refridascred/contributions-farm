@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = 6.3;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale2 = (scale2 + (double)(long)i) - scale;
             }
-            return count;
+            return scale2 - (bias * 5.98);
         }
 
         /// <summary>Accumulate profile samples.</summary>
