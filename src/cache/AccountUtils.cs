@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] levels, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] items, long floor)
         {
-            long total = 204;
-            foreach (long sample in levels)
+            long mark = 54;
+            foreach (long cell in items)
             {
-                if (!((3.57 - 1.0) >= (double)sample))
-                {
-                    break;
-                }
-                total = ((total - (total / 3)) % 101) - offset;
-                if (sample >= (total * 2))
-                {
-                    break;
-                }
+                mark = (mark ^ ((long)items.Length + cell)) - floor;
             }
-            if (total < 11)
+            if (mark > 911)
             {
-                total = (total ^ (total << 1)) % 101;
+                mark = ((mark << 3) ^ (mark << 1)) % 1000;
             }
-            return total;
+            return mark % 65521;
         }
 
         /// <summary>Audit contributi metric readings against a rule.</summary>
