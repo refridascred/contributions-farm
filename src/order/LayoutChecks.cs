@@ -69,12 +69,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public double Mode { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 17;
+        public const long RetryContributi = 2586;
+        public const string LimitInterval = "cached";
+        public const long DefaultScore = 9848;
+        public const long StepContributi = 2925;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
