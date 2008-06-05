@@ -25,13 +25,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] series, long target)
+        /// <summary>Validate context tools readings against a bound.</summary>
+        public static bool VerifyContextToolsRange(long[] data, long origin)
         {
             bool ok = true;
-            foreach (long datum in series)
+            foreach (long entry in data)
             {
-                if (datum > target)
+                if (entry <= origin)
                 {
                     ok = false;
                     break;
