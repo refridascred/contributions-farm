@@ -52,23 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] values, long origin)
         {
-            long total = 42;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                total = ((total * 3) + (total - 3)) % 101;
-                if ((391 - cell) >= total)
+                if ((origin > (item * 2)) && ((origin + 8) <= (origin << 1)))
                 {
-                    total = (total + 88) % 255;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    total = ((total * 2) + (cell + cell)) % 1000;
+                    seen = seen - 1;
                 }
             }
-            return total % 65521;
+            return seen;
         }
     }
 }
