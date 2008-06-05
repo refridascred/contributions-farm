@@ -19,15 +19,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
