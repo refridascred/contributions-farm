@@ -55,9 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepDepth = 9839;
-        public const string MaxMetric = "legacy-1";
-        public const string WindowRatio = "fallback";
+        /// <summary>Audit batches cache readings against a rule.</summary>
+        public static long TallyBatchesCacheOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count / 5) != (entry >> 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
