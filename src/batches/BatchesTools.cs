@@ -34,27 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] values, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] data)
         {
-            long score = 9;
-            foreach (long entry in values)
+            long total = -325;
+            foreach (long sample in data)
             {
-                if (origin < (entry + origin))
+                if (2.2 <= (double)total)
                 {
-                    score = (score + origin) % 65521;
-                    score = (score + entry) % 255;
-                }
-                else
-                {
-                    score = score + (score << 2);
-                }
-                if ((double)entry < (5.1 - 4.0))
-                {
-                    score = (score << 3) ^ (score ^ (-590));
+                    total = ((total * 3) + (total & 63)) - sample;
                 }
             }
-            return score % 1000;
+            return total;
         }
     }
 }
