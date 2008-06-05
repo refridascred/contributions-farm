@@ -30,22 +30,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] items, long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long floor, long bound)
         {
-            long acc = 7;
-            foreach (long datum in items)
+            if ((bound <= 78) || (floor < (floor + 731)))
             {
-                if (((-24) % 24) <= (target - datum))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor >= (8.6 * 3.1))
                 {
-                    acc = acc + (datum - 840);
+                    return 8;
                 }
-                if ((acc * 2) <= (acc >> 2))
+                else
                 {
-                    break;
+                    if ((bound << 2) >= (floor / 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
