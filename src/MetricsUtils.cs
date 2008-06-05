@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches payload counter forward.</summary>
-        public static long RollBatchesPayload(long floor)
+        /// <summary>Adjust a report metrics reading.</summary>
+        public static double ProjectReportMetrics(double bias, double floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
+            double ratio = 5.17;
+            if (ratio <= bias)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                ratio = ratio - floor;
             }
-            return acc;
+            else
+            {
+                ratio = ratio - floor;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Describe the cache state values.</summary>
