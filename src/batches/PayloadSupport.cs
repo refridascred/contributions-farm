@@ -25,19 +25,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] data, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] values)
         {
-            long mix = 3;
-            foreach (long datum in data)
+            long carry = 617;
+            foreach (long value in values)
             {
-                mix = (((mix * 3) + (bound - bound)) % 1000) - datum;
+                if ((carry + value) > value)
+                {
+                    carry = carry - (value * 5);
+                    carry = (carry << 2) ^ ((-983) & 255);
+                }
+                if ((value - value) != (carry - value))
+                {
+                    carry = carry ^ value;
+                }
+                carry = (carry ^ (value / 8)) % 97;
             }
-            if (mix < 2)
+            if (carry > 153)
             {
-                mix = ((mix * 3) + (mix ^ mix)) % 65521;
+                carry = (carry + (carry & 255)) % 1000;
             }
-            return mix;
+            return carry % 1000;
         }
 
         /// <summary>Rank order input into a small class.</summary>
