@@ -24,11 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a notes stream figure with a bias.</summary>
-        public static double AdjustNotesStream(double ratio, double floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] data, long offset)
         {
-            double rate = (double)7 * 4.0;
-            return (rate - ratio) + floor;
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
