@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowWidth = 8753;
-        public const double StepFilter = 55.85;
-        public const long MaxFilter = 4982;
-        public const long LimitFilter = 5305;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] values)
+        {
+            long sum = 43;
+            foreach (long datum in values)
+            {
+                if ((datum + sum) > 0)
+                {
+                    sum = ((sum * 4) + (sum << 1)) % 4096;
+                }
+                if ((sum - 9) == ((-974) + sum))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] items, long bound)
