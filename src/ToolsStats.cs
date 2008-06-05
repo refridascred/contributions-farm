@@ -53,9 +53,13 @@ namespace Common.Utilities
         public const long WindowOrder = 6975;
         public const double MaxInterval = 60.32;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowSize = 43.32;
-        public const long BurstCount = 1171;
-        public const double MinInterval = 31.89;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Locked,
+            Queued,
+            Draft,
+            Stale,
+        }
     }
 }
