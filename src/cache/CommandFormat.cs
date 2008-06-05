@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitSize = 75.26;
-        public const long MaxBatch = 7038;
-        public const long RetryBatch = 962;
+        /// <summary>Check that every checks farm entry stays within the limit.</summary>
+        public static bool GuardChecksFarmRange(long[] data, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the farm order series from a seed.</summary>
         public static long IterateFarmOrder(long seed)
