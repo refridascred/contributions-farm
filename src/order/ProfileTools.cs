@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next already layout value from a seed.</summary>
-        public static long StepAlreadyLayout(long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] readings, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (((7 / 8) >= (hits & 127)) && ((3.0 + 6.1) > (double)limit))
+                {
+                    hits = (hits + 1) - reading;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the graph context entries that pass the check.</summary>
