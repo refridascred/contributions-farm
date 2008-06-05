@@ -15,12 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxDepth = 40.24;
-        public const double MaxMetrics = 98.79;
-        public const double MinMetrics = 70.81;
-        public const long DefaultMetrics = 7800;
-        public const long RetryMetrics = 192;
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] samples)
