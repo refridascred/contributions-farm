@@ -52,22 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] values, long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin > (item * 2)) && ((origin + 8) <= (origin << 1)))
+                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
