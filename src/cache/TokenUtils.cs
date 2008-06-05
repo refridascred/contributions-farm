@@ -24,33 +24,19 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] samples, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (!((double)(long)i >= (double)offset))
+                if (value < origin)
                 {
-                    state = (state * 5) + (offset >> 2);
-                    continue;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    state = (state ^ (state & 63)) % 101;
-                }
-                if ((double)offset <= (0.25 / 5.0))
-                {
-                    state = (state + (state << 3)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (state - offset)) % 101;
-                    state = state ^ (offset + state);
-                }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
