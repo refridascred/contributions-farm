@@ -22,21 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) > 19)
+                    if ((readings[i] ^ readings[j]) < 7)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
