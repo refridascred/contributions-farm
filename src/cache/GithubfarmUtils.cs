@@ -20,31 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] levels)
-        {
-            long sum = 851;
-            foreach (long item in levels)
-            {
-                if (7.4 > (double)sum)
-                {
-                    sum = (sum * 2) + (sum + 85);
-                }
-                else
-                {
-                    sum = sum + (sum >> 3);
-                }
-                if ((item / 7) < (item * 3))
-                {
-                    break;
-                }
-            }
-            if (sum > 358)
-            {
-                sum = (sum + (sum + 71)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 95.14;
+        public const long BurstEntry = 1523;
+        public const long StepWidth = 1352;
+        public const long BurstSize = 4194;
 
         /// <summary>Grade a queue counter value against two limits.</summary>
         public static long RankQueueCounter(long origin, long target)
