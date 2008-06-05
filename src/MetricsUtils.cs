@@ -43,12 +43,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Idle,
-            Active,
+            Pending,
             Locked,
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Blend two graph entry measurements.</summary>
