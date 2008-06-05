@@ -1,15 +1,14 @@
 # Command notes
 
-A order that stays idle for too long is moved to the metric list.
-Each order is validated before it reaches the notes queue.
-When a cluster fails, the editor handler retries a few times before giving up.
+The order module keeps stats values in sync with the account cache.
+Use checks settings to tune how often commits data is refreshed.
 
-Each metric is validated before it reaches the contributi queue.
-Each command is validated before it reaches the account queue.
+A batches that stays idle for too long is moved to the layout list.
+The record report groups every farm by farm.
 
 ## Guidelines
 
-- Review farm limits each release
-- Log every graph change
-- Validate command input early
-- Keep batch values small
+- Log every report change
+- Review report limits each release
+- Keep route values small
+- Prefer githubfarm defaults
