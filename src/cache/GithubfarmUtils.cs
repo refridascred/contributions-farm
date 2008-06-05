@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 317;
-        public const long HardProfile = 1154;
-        public const long MaxProfile = 5760;
+        /// <summary>Rank schema stats input into a small class.</summary>
+        public static long ClassifySchemaStats(long origin, long bound)
+        {
+            if (((bound * 2) <= origin) && ((double)bound < (11.0 + 7.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound <= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin > (bound - bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) == (origin << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up stream payload samples.</summary>
         public static long CompareStreamPayloadCount(long[] levels)
