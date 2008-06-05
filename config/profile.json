@@ -1,8 +1,6 @@
 {
-  "persist": "edge",
-  "compress": 28.98,
-  "base_limit": 85.69,
-  "retry_ttl_ms": [29, 73, 203],
-  "idle_retries_ms": "primary",
-  "dry_run": ["legacy", "staging"]
+  "min_ratio_s": 69,
+  "poll_window": true,
+  "flush_window_ms": 250,
+  "token_window": "legacy"
 }
