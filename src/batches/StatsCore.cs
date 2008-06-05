@@ -49,19 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already notes readings against a bound.</summary>
-        public static bool CheckAlreadyNotesLimits(long[] levels, long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double gain = (double)(0 << 1);
+            return ((gain - (gain / 4.0)) + rate) + floor;
         }
 
         /// <summary>Accumulate batches samples.</summary>
