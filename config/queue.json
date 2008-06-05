@@ -1,5 +1,8 @@
 {
-  "cache_capacity_pct": "standard",
-  "persist": [451, 190],
-  "contributi_retries": 1025
+  "max_size_s": 44.05,
+  "retry_ratio": "edge",
+  "readonly": 12,
+  "idle_retries": 60,
+  "retry_capacity": 5716,
+  "batch_interval_pct": [128, 94, 269]
 }
