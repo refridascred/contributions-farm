@@ -41,12 +41,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstLayout = "alpha-1";
-        public const long WindowWidth = 3316;
-        public const long WindowDepth = 2478;
-        public const string MaxLevel = "cached-edge";
-        public const long HardLevel = 9632;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long SeriesChecks(long target)
