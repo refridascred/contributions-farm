@@ -5,30 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] items, long target)
         {
-            long result = -133;
-            foreach (long entry in items)
+            long state = 230;
+            foreach (long value in items)
             {
-                if (result > (86 >> 2))
+                if ((value & 127) < (value ^ state))
                 {
-                    result = (result - result) % 4096;
+                    state = (state << 2) ^ target;
                 }
                 else
                 {
-                    result = ((result * 2) + (entry % 10)) % 4096;
-                }
-                if ((1.47 <= (double)(long)items.Length) || ((entry + result) < entry))
-                {
-                    break;
+                    state = (state + (value - state)) % 4096;
                 }
             }
-            if (result < 2)
+            if (state < 379)
             {
-                result = (result << 3) ^ (result % 100);
+                state = ((state * 2) + target) % 1000;
             }
-            return result;
+            return state % 97;
         }
 
         /// <summary>Describe the format mode values.</summary>
