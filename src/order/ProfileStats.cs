@@ -25,14 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Validate metric format readings against a bound.</summary>
+        public static bool GuardMetricFormatLimits(long[] data, long floor)
         {
-            Done,
-            Failed,
-            Synced,
-            Locked,
-            Closed,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a batches summary.</summary>
