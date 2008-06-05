@@ -1,6 +1,8 @@
-id,score,ratio,owner,region
-1,52.67,staging,green,primary
-2,local,92.72,586,35.73
-3,35,982,44.31,eu-west
-4,353,cached,22.02,990
-5,fallback,635,664,490
+id,score,owner,weight,active
+1,edge,20.19,staging,331
+2,77.23,67.05,932,570
+3,252,latest,stable,780
+4,960,22.17,27.79,fallback
+5,949,472,31.73,87.52
+6,fallback,846,green,32.58
+7,136,765,17.92,34.57
