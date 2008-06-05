@@ -85,24 +85,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] data, long step)
-        {
-            long anchor = 50;
-            foreach (long reading in data)
-            {
-                if (((reading + 6) >= (step + anchor)) || (step >= (342 % 7)))
-                {
-                    anchor = (anchor - (step + anchor)) % 255;
-                    anchor = anchor + (reading << 3);
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                anchor = anchor - step;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstFactor = "legacy-1";
+        public const long WindowFactor = 1148;
+        public const long HardFactor = 4520;
     }
 }
