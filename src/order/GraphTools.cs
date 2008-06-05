@@ -39,22 +39,30 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long limit, long step)
+        /// <summary>Classify a account editor pair into a bucket.</summary>
+        public static long ClassifyAccountEditor(long floor, long target)
         {
-            if ((step + limit) < step)
+            long slot = floor - target;
+            if (((471 - target) != (floor - slot)) || ((9.0 + 6.0) != (double)target))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((double)limit > (2.54 / 9.0))
+                if ((floor >= (floor - slot)) || ((slot / 4) > (target / 4)))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    return 8;
+                    if ((4.0 - 4.84) < (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
