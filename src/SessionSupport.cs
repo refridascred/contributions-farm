@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] data, long offset)
+        /// <summary>Audit payload window readings against a rule.</summary>
+        public static long TallyPayloadWindowMatches(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (entry <= offset)
+                if ((item + item) > (seed + hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Accumulate session samples.</summary>
