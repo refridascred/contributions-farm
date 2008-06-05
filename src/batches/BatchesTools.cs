@@ -42,9 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowDepth = 9209;
-        public const double WindowChannel = 13.68;
-        public const double SoftLevel = 60.74;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 93;
+        public const long WindowRecord = 1031;
+        public const double BurstRecord = 54.55;
+        public const long MinScore = 7393;
+        public const long CacheRecord = 5199;
     }
 }
