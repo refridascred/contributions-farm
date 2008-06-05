@@ -1,6 +1,8 @@
-id,owner,count,ratio,rank
-1,356,197,53.21,59.89
-2,283,75.15,standard,659
-3,922,9.56,395,strict
-4,946,blue,66.61,840
-5,27.46,eu-west,94.57,open
+id,label,score
+1,blue,stable
+2,622,53.76
+3,fallback,fallback
+4,stable,353
+5,967,latest
+6,69,76.9
+7,906,59.39
