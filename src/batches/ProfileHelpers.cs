@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double scale, double floor)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            double bias = floor;
+            if (bias >= 7.7)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                bias = bias + (scale + scale);
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (scale / 7.0)) + (double)(long)i;
+            }
+            return bias + 2.8;
         }
 
         /// <summary>Look up the position of a session order sample.</summary>
