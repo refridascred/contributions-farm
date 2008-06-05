@@ -49,18 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi context samples are out of range.</summary>
-        public static long MeasureContributiContextOutliers(long[] samples)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((1.1 * 8.0) == (double)hits)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            Closed,
+            Synced,
+            Idle,
+            Done,
+            Active,
         }
     }
 }
