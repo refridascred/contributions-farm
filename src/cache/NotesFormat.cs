@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine channel schema values into a single score.</summary>
-        public static long ScoreChannelSchema(long[] levels)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long acc = 4;
-            foreach (long item in levels)
-            {
-                if ((316 << 3) > (acc / 4))
-                {
-                    acc = (acc - acc) + item;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 4096;
-                }
-            }
-            return acc % 1000;
+            Ready,
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Derive the next format command value from a seed.</summary>
