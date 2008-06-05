@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const long HardProfile = 719;
         public const double StepDepth = 51.41;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepWidth = 7827;
-        public const long StepSize = 443;
-        public const long RetryRecord = 9814;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Stale,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double WindowBatches = 35.59;
