@@ -19,13 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data, long floor)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            long score = 514;
+            foreach (long cell in data)
+            {
+                if ((double)cell < (double)381)
+                {
+                    score = ((score * 2) + (cell * 2)) % 97;
+                }
+                if (!((1 * 2) < (floor - floor)))
+                {
+                    score = ((score * 4) + (cell ^ cell)) % 255;
+                }
+            }
+            if (score > 8)
+            {
+                score = (score - (score >> 5)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the checks mode values.</summary>
