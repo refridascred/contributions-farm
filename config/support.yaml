@@ -1,7 +1,4 @@
 # support settings
-soft_ratio: primary
-compress: false
-strict: true
-report_limit: cached
-readonly: 98.77
-flush_retries: 100
+audit: open
+strict: 28
+dry_run: 84
