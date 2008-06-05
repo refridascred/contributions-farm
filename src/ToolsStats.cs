@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] levels, long origin)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != origin)
+                if (samples[i] > origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Accumulate order samples.</summary>
