@@ -42,13 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftInterval = 32.79;
+        public const long DefaultLevel = 2010;
+        public const long BatchInterval = 8393;
+        public const string IdleSize = "open-1";
     }
 }
