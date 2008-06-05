@@ -33,10 +33,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "fallback-v2";
-        public const double LimitInterval = 93.87;
-        public const long BurstSpan = 5686;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Pending,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] series)
