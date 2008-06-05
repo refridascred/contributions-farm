@@ -23,14 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Paused,
-            Locked,
-            Stale,
-            Retry,
-            Synced,
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
