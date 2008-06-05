@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many batch stats samples are out of range.</summary>
+        public static long MeasureBatchStatsHits(long[] items, long limit)
         {
-            Dropped,
-            Draft,
-            Queued,
-            Paused,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!(limit <= (limit - seen)))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
