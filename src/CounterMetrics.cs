@@ -45,13 +45,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long origin)
         {
-            Closed,
-            Failed,
-            Ready,
-            Done,
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = acc + origin;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
