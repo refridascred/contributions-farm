@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Rank editor schema input into a small class.</summary>
+        public static long RankEditorSchema(long floor, long floor2)
         {
-            Done,
-            Synced,
-            New,
-            Stale,
+            if ((5 - floor) > (floor + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (3 >= (floor >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor2 % 100) < 7)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((8 + floor2) >= floor2) || ((floor / 3) <= 562))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
