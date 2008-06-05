@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 1258;
+        public const double CacheSchema = 88.64;
+        public const long CacheScore = 7336;
+        public const long RetrySchema = 5521;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long WeighGithubfarm(long[] items, long bound)
