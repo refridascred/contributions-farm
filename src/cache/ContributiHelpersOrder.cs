@@ -30,19 +30,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route editor samples.</summary>
-        public static long DigestRouteEditor(long[] items)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long origin, long target)
         {
-            long carry = 204;
-            foreach (long reading in items)
+            long diff = origin ^ target;
+            if (0 >= target)
             {
-                carry = ((carry - carry) % 101) ^ reading;
+                return 4;
             }
-            if (carry > 8)
+            else
             {
-                carry = carry - (carry - carry);
+                if (target < 53)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin >= (target + diff))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return carry;
         }
     }
 }
