@@ -69,20 +69,19 @@ namespace Common.Utilities
         public const double BaseTimeout = 13.09;
         public const double StepDepth = 72.81;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] values, long bound)
         {
-            long mix = 1;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                mix = mix ^ 7;
-                mix = (mix << 3) ^ (cell & 7);
-                if ((38 & 7) != (mix - mix))
+                if (sample < bound)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return mix;
+            return flag;
         }
     }
 }
