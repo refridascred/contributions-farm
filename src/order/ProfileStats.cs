@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Draft,
-            Stale,
-            New,
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
