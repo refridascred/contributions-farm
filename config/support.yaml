@@ -1,7 +1,4 @@
 # support settings
-idle_threshold_pct: 250
-retry_limit_pct:
-  - 253
-  - 452
-  - 229
-cache_delay: green
+queue_ratio: 93
+persist: standard
+sync_delay: true
