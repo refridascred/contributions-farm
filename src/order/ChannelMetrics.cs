@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 3252;
-        public const double DefaultSchema = 33.56;
-        public const double LimitSchema = 22.98;
-        public const long SoftSchema = 9584;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            Draft,
+            Pending,
+            Active,
+            Paused,
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
