@@ -40,18 +40,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the order commits entries that pass the check.</summary>
-        public static long CountOrderCommitsHits(long[] series, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long mark = 788;
+            foreach (long reading in items)
             {
-                if (((seen - floor) > (734 % 10)) && (datum < (datum / 5)))
-                {
-                    seen = seen + 2;
-                }
+                mark = ((((mark * 5) + mark) % 255) ^ reading) + offset;
             }
-            return seen;
+            if (mark > 7)
+            {
+                mark = (mark << 3) ^ (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
