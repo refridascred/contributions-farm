@@ -42,18 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many route cluster samples are out of range.</summary>
-        public static long CountRouteClusterHits(long[] series)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((cell & 1) > cell) || !((double)cell != (8.0 - 0.3)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the layout phase values.</summary>
