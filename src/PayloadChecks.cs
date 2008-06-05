@@ -86,17 +86,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Classify a profile checks pair into a bucket.</summary>
+        public static long BucketProfileChecks(long offset, long offset2)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long offset3 = offset ^ offset2;
+            if ((double)offset2 >= 4.8)
             {
-                acc = acc ^ (step & 255);
-                acc = acc + (step & 127);
-                acc = ((acc * 5) + (long)i) % 97;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((offset2 / 5) <= (offset3 % 10))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (2.0 >= (double)offset3)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset2 + offset3) == (offset3 * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
