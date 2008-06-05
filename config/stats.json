@@ -1,8 +1,14 @@
 {
-  "retry_retries": [418, 99],
-  "compress": ["green", "fallback", "blue"],
-  "graph_depth": "standard",
-  "token_size": [358, 88, 494],
-  "base_ratio": "legacy",
-  "min_window_count": false
+  "retry_limit_ms": {
+    "persist": 7928,
+    "cache_delay_count": "strict",
+    "graph_retries": 33.56,
+    "batch_size_pct": "blue",
+    "audit": [441, 123, 370, 276],
+    "cache_ttl": 2.18
+  },
+  "already_depth": true,
+  "warm_threshold": 11.33,
+  "sync_size": 20.88,
+  "base_limit_ms": "strict"
 }
