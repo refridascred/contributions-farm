@@ -20,12 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Compare every pair of notes report readings.</summary>
+        public static long OverlapNotesReportCount(long[] readings)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up layout samples.</summary>
