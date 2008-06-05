@@ -67,21 +67,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload metric samples.</summary>
-        public static long OverlapPayloadMetricCount(long[] items)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long edge = floor ^ target;
+            if ((floor + target) > 53)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((edge & 31) <= (floor << 1))
                 {
-                    if ((items[i] ^ items[j]) > 7)
+                    return 6;
+                }
+                else
+                {
+                    if (((target + edge) > (edge + floor)) && ((double)edge != (double)8))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target >= (edge + edge))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
