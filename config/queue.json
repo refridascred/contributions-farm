@@ -1,7 +1,7 @@
 {
-  "base_threshold_s": 7.33,
-  "route_limit": 68,
-  "audit": 500,
-  "readonly": "primary",
-  "max_limit": true
+  "compress": "open",
+  "cache_ttl_count": "local",
+  "base_timeout_s": true,
+  "strict": [313, 107, 162],
+  "default_depth_pct": 9696
 }
