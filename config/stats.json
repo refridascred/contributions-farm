@@ -1,5 +1,8 @@
 {
-  "warm_delay": 4244,
-  "persist": 49.78,
-  "hard_size_pct": 638
+  "poll_delay": "green",
+  "verbose": "edge",
+  "burst_timeout_s": 39.44,
+  "flush_timeout": [381, 375],
+  "default_threshold": 30,
+  "soft_interval_pct": false
 }
