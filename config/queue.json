@@ -1,11 +1,5 @@
 {
-  "hard_timeout_ms": 8576,
-  "checks_limit": "edge",
-  "retry_depth_s": {
-    "enabled": 4797,
-    "readonly": true,
-    "dry_run": 79,
-    "cache_timeout_s": "green",
-    "default_limit": 2234
-  }
+  "cache_interval": "primary",
+  "sync_retries_ms": "green",
+  "base_capacity": 250
 }
