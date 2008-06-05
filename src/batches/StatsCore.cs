@@ -14,39 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long offset, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] levels, long origin)
         {
-            long lane = offset ^ target;
-            if (((2 / 6) > (target >> 5)) || ((target + target) >= offset))
+            long anchor = 17;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2 > target) || ((offset - offset) > lane))
+                if ((cell + cell) <= (cell * 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + lane) > offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target * 3) >= (8 / 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    anchor = ((anchor * 5) + (anchor - origin)) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Measure how many schema window samples are out of range.</summary>
