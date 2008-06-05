@@ -54,12 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            Pending,
-            Dropped,
-            Queued,
+            long anchor = 85;
+            foreach (long cell in items)
+            {
+                if (5 >= (anchor ^ anchor))
+                {
+                    anchor = (anchor ^ 344) % 101;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (cell << 2);
+                }
+            }
+            return anchor;
         }
     }
 }
