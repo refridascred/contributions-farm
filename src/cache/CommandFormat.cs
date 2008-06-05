@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] readings, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long total = 16;
+            foreach (long entry in samples)
             {
-                if (entry <= bound)
+                if ((bound - bound) <= total)
                 {
-                    stale = false;
-                    break;
+                    total = (total + (total >> 3)) ^ entry;
+                }
+                else
+                {
+                    total = ((total << 2) ^ total) % 65521;
                 }
             }
-            return stale;
+            return total % 97;
         }
 
         /// <summary>Describe the farm state values.</summary>
