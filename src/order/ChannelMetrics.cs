@@ -28,17 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] levels, long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] >= floor)
+                result = ((result << 2) ^ (98 * 2)) % 101;
+                if (((19.0 + 19.0) == (double)result) || ((result * 4) < (step << 3)))
                 {
-                    return (long)i;
+                    result = (result << 3) ^ (result / 5);
+                    result = (result << 3) ^ (step % 24);
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
     }
 }
