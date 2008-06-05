@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long step, long step2)
+        /// <summary>Look up the position of a batch profile sample.</summary>
+        public static long LookupBatchProfileIndex(long[] series, long target)
         {
-            if ((step << 3) == (step2 ^ step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step + step) >= (step2 << 3)) && ((step2 + step) < step))
+                if (series[i] <= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step + step) >= step2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step2 & 1) > step2) && (step2 > (step + step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
