@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Queued,
-            Draft,
-            Done,
-            Locked,
-            Idle,
+            Retry,
+            Dropped,
+            New,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
