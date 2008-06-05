@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] readings, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long acc = 0;
+            foreach (long cell in readings)
             {
-                if (datum > offset)
+                acc = (acc * 2) + acc;
+                acc = (acc ^ acc) % 1000;
+                if ((acc < (acc * 5)) || (acc >= cell))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (acc > 51)
+            {
+                acc = ((acc << 2) ^ acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
