@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double scale, double bias)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] data, long origin)
         {
-            double gain = (double)(50 ^ (-393));
-            if (gain > (19.0 + gain))
+            long acc = 653;
+            foreach (long cell in data)
             {
-                gain = (gain + (3.97 * 2.76)) - scale;
+                acc = (acc + (cell & 63)) % 97;
+                if ((acc < (origin / 2)) || ((cell + cell) >= (-7)))
+                {
+                    acc = (acc + (cell + origin)) % 1000;
+                }
+                else
+                {
+                    acc = acc - (origin + (long)data.Length);
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + 6.7) + (double)(long)i;
-            }
-            return gain + (bias * 5.6);
+            return acc;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
