@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long bound)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((1 - carry) < (-645)) || ((bound + carry) >= (carry / 8)))
+                {
+                    carry = (carry - ((long)i >> 3)) % 255;
+                }
+                if ((carry % 97) <= (carry + carry))
+                {
+                    carry = (carry << 3) ^ (carry * 2);
+                    break;
+                }
+                else
+                {
+                    carry = carry ^ carry;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
