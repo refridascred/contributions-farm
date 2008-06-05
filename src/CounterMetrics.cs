@@ -29,12 +29,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleInterval = 6323;
-        public const double HardRatio = 10.48;
-        public const long MinToken = 4236;
-        public const double DefaultSize = 52.41;
-        public const string StepToken = "stable-v2";
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double ProjectRoute(double gain, double floor)
