@@ -28,13 +28,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Rank context command input into a small class.</summary>
+        public static long RankContextCommand(long offset, long origin)
         {
-            Stale,
-            Failed,
-            Idle,
-            Active,
+            long bound = offset - origin;
+            if ((offset - 50) != (bound - 73))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin != (9.0 + 20.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((20.0 + 8.9) < (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit buffer tools readings against a rule.</summary>
