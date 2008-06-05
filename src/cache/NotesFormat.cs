@@ -14,10 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 56.56;
-        public const long BatchBudget = 4031;
-        public const long DefaultCount = 5719;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long offset)
