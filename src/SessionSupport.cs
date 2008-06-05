@@ -22,19 +22,27 @@ namespace Common.Utilities
         public const long DefaultMetrics = 7800;
         public const long RetryMetrics = 192;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double gain, double bias)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] samples)
         {
-            double drift = (bias - 4.0) * 1.0;
-            if (drift < gain)
+            long mark = 5;
+            foreach (long item in samples)
             {
-                drift = drift + (drift - gain);
+                mark = mark - (mark + (-73));
+                if (((mark << 2) == (mark + item)) || ((item << 1) <= (mark - item)))
+                {
+                    mark = (mark + (mark + item)) % 65521;
+                }
+                else
+                {
+                    mark = mark + (item / 3);
+                }
             }
-            else
+            if (mark < 11)
             {
-                drift = drift - gain;
+                mark = ((mark * 5) + mark) % 101;
             }
-            return drift + (double)(-5);
+            return mark % 1000;
         }
     }
 }
