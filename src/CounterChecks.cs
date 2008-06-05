@@ -68,12 +68,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Ready,
-            Locked,
-            Active,
+            Pending,
+            Closed,
+            Done,
+            Queued,
+            Failed,
         }
     }
 }
