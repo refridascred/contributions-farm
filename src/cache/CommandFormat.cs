@@ -27,12 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultInterval = 26.35;
-        public const long StepBudget = 8869;
-        public const long DefaultProfile = 7391;
-        public const long MinProfile = 7951;
-        public const long RetryProfile = 6303;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Closed,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
