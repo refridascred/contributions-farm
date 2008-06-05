@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double scale, double bias)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double mean = scale;
-            if (mean < (3.99 * 1.0))
-            {
-                mean = (mean + scale) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (6.0 / 8.0)) - (double)(long)i;
-            }
-            return mean + 7.0;
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a graph summary.</summary>
