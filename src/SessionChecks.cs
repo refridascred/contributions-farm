@@ -62,21 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = weight;
+            if (mean >= mean)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean + (2.0 * 8.0);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - span;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
