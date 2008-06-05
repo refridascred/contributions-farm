@@ -43,22 +43,19 @@ namespace Common.Utilities
         public const long WindowLayout = 4414;
         public const string HardBudget = "legacy-edge";
 
-        /// <summary>Digest a series of notes stats entries.</summary>
-        public static long WeighNotesStats(long[] readings, long target)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] values, long bound)
         {
-            long score = 811;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (((double)574 == (double)cell) && ((target - target) < score))
+                if (reading >= bound)
                 {
-                    score = (score - 92) % 255;
-                }
-                if ((target & 3) <= target)
-                {
-                    score = (score ^ (target - cell)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return stale;
         }
     }
 }
