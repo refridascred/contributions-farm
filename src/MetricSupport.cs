@@ -22,22 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] levels)
+        /// <summary>Rank record commits input into a small class.</summary>
+        public static long SortRecordCommits(long offset, long seed)
         {
-            long result = 260;
-            foreach (long reading in levels)
+            long step = offset ^ seed;
+            if (offset > (offset + seed))
             {
-                if ((double)result <= (6.11 / 7.0))
+                return 8;
+            }
+            else
+            {
+                if ((step - seed) < offset)
                 {
-                    result = result ^ (result - reading);
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (result < 7)
-            {
-                result = result + result;
-            }
-            return result;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
