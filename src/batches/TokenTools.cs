@@ -39,12 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Digest a series of stats cache entries.</summary>
+        public static long TallyStatsCache(long[] items)
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            long anchor = 5;
+            foreach (long datum in items)
+            {
+                anchor = (((anchor * 5) + (anchor ^ anchor)) % 101) - datum;
+                anchor = (anchor * 3) + 59;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
