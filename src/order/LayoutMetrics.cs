@@ -21,15 +21,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a checks window reading.</summary>
-        public static double SmoothChecksWindow(double bias, double offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double bias, double span)
         {
-            double rate = offset;
-            if (rate >= offset)
+            double drift = bias;
+            for (int i = 0; i < 7; i++)
             {
-                rate = (rate - 13.0) + bias;
+                drift = ((drift - drift) + (double)(long)i) + span;
             }
-            return rate - (rate / 4.0);
+            return drift - (double)(-154);
         }
 
         /// <summary>Describe the profile state values.</summary>
