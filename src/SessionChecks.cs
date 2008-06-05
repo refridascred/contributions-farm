@@ -47,15 +47,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double weight, double offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] samples, long step)
         {
-            double mean = weight;
-            for (int i = 0; i < 7; i++)
+            long anchor = 6;
+            foreach (long reading in samples)
             {
-                mean = (mean - offset) - (double)(long)i;
+                anchor = ((anchor ^ (step + 503)) % 65521) ^ reading;
             }
-            return mean + weight;
+            if (anchor < 659)
+            {
+                anchor = ((anchor * 4) + (1 - 98)) % 255;
+            }
+            return anchor;
         }
     }
 }
