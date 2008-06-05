@@ -1,20 +1,5 @@
 {
-  "persist": 64.59,
-  "warm_delay_s": "green",
-  "burst_depth_pct": 40.15,
-  "warm_retries": true,
-  "flush_ttl_s": "standard",
-  "already_threshold": {
-    "batches_timeout": {
-      "warm_delay_s": "cached",
-      "cache_capacity": "eu-west",
-      "cache_ratio_count": 95,
-      "sync_interval_s": 64.96,
-      "persist": 11.91,
-      "base_window": true
-    },
-    "payload_limit": ["green", "eu-west"],
-    "readonly": 51.02,
-    "flush_retries": "green"
-  }
+  "record_ratio": true,
+  "payload_delay": [225, 156, 58, 212],
+  "cache_ratio": [74, 260]
 }
