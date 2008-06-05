@@ -1,5 +1,13 @@
 {
-  "warm_ttl_count": "blue",
-  "warm_window": 8806,
-  "max_size_s": "legacy"
+  "batch_retries": [19, 61, 37],
+  "min_delay": {
+    "verbose": "standard",
+    "metric_size": ["cached", "standard", "legacy"],
+    "warm_window": "open",
+    "already_capacity": true,
+    "warm_timeout": 76
+  },
+  "min_ttl_pct": false,
+  "compress": 38,
+  "default_delay": [278, 423]
 }
