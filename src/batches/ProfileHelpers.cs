@@ -38,19 +38,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of report context entries.</summary>
-        public static long ScoreReportContext(long[] data, long origin)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long state = -975;
-            foreach (long reading in data)
-            {
-                state = ((state - reading) % 4096) + origin;
-            }
-            if (state > 53)
-            {
-                state = ((state * 2) + (state * 5)) % 1000;
-            }
-            return state;
+            Locked,
+            Pending,
+            Draft,
+            Done,
         }
 
         /// <summary>Match up route samples.</summary>
