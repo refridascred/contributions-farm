@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
