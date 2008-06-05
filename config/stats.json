@@ -1,6 +1,7 @@
 {
-  "sync_threshold_s": "blue",
-  "retry_capacity": 89,
-  "retry_ratio_ms": 9276,
-  "compress": "latest"
+  "base_ratio": 4844,
+  "enabled": "stable",
+  "warm_window": "blue",
+  "stream_limit": 2,
+  "verbose": [449, 481]
 }
