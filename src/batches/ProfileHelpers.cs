@@ -51,39 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long origin, long target)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            long edge = origin ^ target;
-            if (!((double)origin < 0.64))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (target <= edge)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((12.0 / 7.0) != (double)target))
+                    if ((levels[i] + levels[j]) == 1)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)edge <= 6.6)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
