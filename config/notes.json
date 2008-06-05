@@ -1,8 +1,15 @@
 {
-  "token_interval": 60,
-  "notes_threshold": "edge",
-  "audit": ["legacy", "local"],
-  "burst_threshold_s": [493, 491, 485],
-  "burst_capacity_count": "eu-west",
-  "retry_size": "strict"
+  "base_limit_count": 16.82,
+  "batch_limit": 80.42,
+  "soft_delay": {
+    "flush_retries": {
+      "flush_capacity_pct": "blue",
+      "command_ttl": 5327,
+      "hard_interval": "green",
+      "batch_retries_ms": 500
+    },
+    "poll_limit_count": true,
+    "soft_interval_count": 4426,
+    "hard_threshold_count": 15
+  }
 }
