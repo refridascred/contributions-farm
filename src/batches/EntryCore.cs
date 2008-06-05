@@ -51,10 +51,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 7799;
-        public const double DefaultTools = 92.62;
-        public const long MaxTools = 7908;
-        public const double HardTimeout = 12.27;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
