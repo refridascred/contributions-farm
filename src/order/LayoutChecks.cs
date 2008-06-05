@@ -16,14 +16,18 @@ namespace Common.Utilities
             return drift + (ratio - ratio);
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] series, long floor)
         {
-            Failed,
-            Pending,
-            Idle,
-            Paused,
-            Active,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((double)floor < (double)7) && ((long)series.Length >= item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many queue profile samples are out of range.</summary>
