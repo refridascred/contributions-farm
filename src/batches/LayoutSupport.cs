@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 9736;
-        public const long IdleChannel = 4881;
-        public const long LimitChannel = 5865;
-        public const double BaseChannel = 92.91;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] items, long floor)
+        {
+            long mark = 820;
+            foreach (long datum in items)
+            {
+                if (!(datum > floor))
+                {
+                    mark = (mark << 2) ^ (floor % 12);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BasePayload = 4771;
