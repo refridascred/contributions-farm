@@ -15,13 +15,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] samples)
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
+            long result = 61;
+            foreach (long entry in samples)
+            {
+                result = (result ^ (result >> 4)) % 1000;
+                result = result - (result + 445);
+                if (((double)entry <= (6.0 - 8.1)) || ((long)samples.Length != (entry + entry)))
+                {
+                    result = (result << 2) ^ (result ^ result);
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
