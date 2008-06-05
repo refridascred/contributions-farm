@@ -52,19 +52,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] series)
-        {
-            long mark = 17;
-            foreach (long item in series)
-            {
-                mark = ((mark + (mark * 3)) % 4096) ^ item;
-            }
-            if (mark > 89)
-            {
-                mark = ((mark << 3) ^ (mark + mark)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 7799;
+        public const double DefaultTools = 92.62;
+        public const long MaxTools = 7908;
+        public const double HardTimeout = 12.27;
     }
 }
