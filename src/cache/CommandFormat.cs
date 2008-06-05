@@ -27,21 +27,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 69;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((66 << 2) >= entry)
                 {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score ^ (score & 63);
+                }
+                else
+                {
+                    score = score - (entry % 3);
+                }
+                if ((score << 1) >= (score / 8))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
