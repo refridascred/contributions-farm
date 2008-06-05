@@ -33,12 +33,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Dropped,
-            Synced,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchRecord = "cached";
+        public const long BaseRecord = 7310;
+        public const string StepRecord = "staging-edge";
+        public const long CacheWidth = 9421;
     }
 }
