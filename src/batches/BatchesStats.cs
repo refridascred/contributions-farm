@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            Dropped,
+            New,
+            Ready,
+            Draft,
         }
 
         /// <summary>Roll a account counter forward.</summary>
