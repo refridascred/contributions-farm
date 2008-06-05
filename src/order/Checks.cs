@@ -55,21 +55,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Paused,
+            Failed,
+            Pending,
+            Active,
         }
     }
 }
