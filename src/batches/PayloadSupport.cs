@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long LimitChannel = 9878;
         public const long SoftRatio = 3378;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] levels, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] items, long offset)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long datum in items)
             {
-                if ((item & 127) == (26 ^ hits))
+                if (offset < (2 << 3))
                 {
-                    hits = (hits + 2) + bound;
+                    hits = (hits + 2) - datum;
                 }
             }
             return hits;
