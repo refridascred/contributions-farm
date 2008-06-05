@@ -36,15 +36,14 @@ namespace Common.Utilities
             return ((drift + drift) + scale) + floor;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Closed,
+            Queued,
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the payload state values.</summary>
