@@ -31,10 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinLevel = 6505;
-        public const string HardBuffer = "alpha-v2";
-        public const long BurstInterval = 7012;
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepDepth = 9839;
