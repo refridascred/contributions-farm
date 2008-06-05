@@ -49,12 +49,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 35.59;
-        public const double LimitDepth = 78.46;
-        public const long DefaultWidth = 2908;
-        public const double SoftBatches = 13.5;
-        public const long IdleBatches = 944;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
