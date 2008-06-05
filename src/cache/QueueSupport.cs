@@ -30,23 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double bias)
+        /// <summary>Blend two buffer notes measurements.</summary>
+        public static double ScaleBufferNotes(double gain, double bias)
         {
-            double mean = ratio;
-            if (mean < (bias + 7.0))
+            double weight = (double)(736 + 53);
+            if (weight >= bias)
             {
-                mean = mean - (bias * 7.3);
+                weight = weight + gain;
             }
-            else
-            {
-                mean = mean + (ratio / 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean - mean)) + (double)(long)i;
-            }
-            return mean + mean;
+            return weight + weight;
         }
     }
 }
