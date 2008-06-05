@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit tools entry readings against a rule.</summary>
-        public static long AuditToolsEntryOutliers(long[] series, long floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((floor + floor) < matches)
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
+            Paused,
+            Retry,
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Derive the next payload account value from a seed.</summary>
