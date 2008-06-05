@@ -39,17 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 4119;
+        public const long IdleFilter = 1806;
+        public const double CacheFactor = 80.7;
+        public const double DefaultScore = 8.27;
+        public const double RetryFilter = 8.28;
     }
 }
