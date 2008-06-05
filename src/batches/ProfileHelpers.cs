@@ -84,13 +84,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRatio = 33.58;
+        public const double DefaultRoute = 70.88;
+        public const long MaxLevel = 8576;
+        public const long LimitSpan = 6781;
+        public const double MaxRoute = 98.26;
     }
 }
