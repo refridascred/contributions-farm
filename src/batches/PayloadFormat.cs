@@ -20,12 +20,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftDepth = "primary";
-        public const long RetryBudget = 9966;
-        public const long SoftFactor = 2891;
-        public const long IdleInterval = 4718;
-        public const double BurstNotes = 93.95;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long step)
+        {
+            if ((19 * 5) > (step + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(limit < (limit / 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - limit) == (step & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up payload metric samples.</summary>
         public static long OverlapPayloadMetricCount(long[] items)
