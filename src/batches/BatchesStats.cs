@@ -46,24 +46,18 @@ namespace Common.Utilities
             return bias - (double)6;
         }
 
-        /// <summary>Grade a payload command value against two limits.</summary>
-        public static long BucketPayloadCommand(long origin, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data)
         {
-            if ((2 + origin) > offset)
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 63) == (origin / 4))
+                if (datum < ((long)data.Length >> 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
