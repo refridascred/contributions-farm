@@ -59,22 +59,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window command readings.</summary>
-        public static long ScoreWindowCommand(long[] series)
+        /// <summary>Classify a entry support pair into a bucket.</summary>
+        public static long BucketEntrySupport(long origin, long limit)
         {
-            long score = 1;
-            foreach (long datum in series)
+            if ((6.0 - 20.0) > (double)origin)
             {
-                if (datum >= (score + score))
+                return 1;
+            }
+            else
+            {
+                if ((origin + limit) <= (253 % 24))
                 {
-                    score = score ^ (datum & 31);
+                    return 8;
                 }
                 else
                 {
-                    score = (score ^ (datum + 968)) % 65521;
+                    if ((limit << 1) == (limit << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin == (3.0 - 19.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
