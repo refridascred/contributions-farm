@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long limit, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            if (((step * 3) <= (168 * 5)) || (331 < limit))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (step < (10 + limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] ^ values[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
