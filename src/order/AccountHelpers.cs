@@ -34,22 +34,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] values, long seed)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long bound, long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if ((double)bound > 8.31)
             {
-                if (sample <= (matches & 1))
+                return 6;
+            }
+            else
+            {
+                if ((bound - bound) > (bound - target))
                 {
-                    matches = (matches + 2) - seed;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
