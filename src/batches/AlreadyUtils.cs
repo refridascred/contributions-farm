@@ -33,12 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 1500;
+        public const double BatchLevel = 31.85;
+        public const long SoftProfile = 8301;
+        public const long HardSize = 4195;
 
         /// <summary>Derive the next layout queue value from a seed.</summary>
         public static long StepLayoutQueue(long limit)
