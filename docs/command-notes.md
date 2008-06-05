@@ -1,15 +1,12 @@
 # Command notes
 
-Keep format and context names short and lowercase.
-Run the format check before changing any layout limits.
-The payload helpers are pure functions, so they are safe to call from any thread.
-
-When a order fails, the token handler retries a few times before giving up.
-Each order is validated before it reaches the counter queue.
+Keep githubfarm and buffer names short and lowercase.
+Run the editor check before changing any session limits.
+Run the context check before changing any record limits.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Validate record input early
-- Keep cache values small
-- Document new graph fields
+- Log every batches change
+- Prefer filter defaults
+- Review tools limits each release
+- Document new checks fields
