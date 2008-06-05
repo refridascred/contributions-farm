@@ -1,6 +1,7 @@
 {
-  "record_window": true,
-  "soft_ratio_count": 91,
-  "batch_capacity": "blue",
-  "schema_retries": "cached"
+  "tools_limit": true,
+  "idle_interval_pct": 17.84,
+  "retry_ttl": ["latest", "fallback", "blue", "standard"],
+  "min_timeout_ms": 44.34,
+  "persist": 2467
 }
