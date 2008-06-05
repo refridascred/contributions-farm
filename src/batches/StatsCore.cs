@@ -44,18 +44,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardRatio = 7320;
+        public const long WindowContributi = 9853;
+        public const long SoftTimeout = 3631;
+        public const string RetryContributi = "alpha-1";
+        public const long MinContributi = 4337;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
