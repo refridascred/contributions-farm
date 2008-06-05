@@ -79,26 +79,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] data, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long seed, long seed2)
         {
-            long acc = 18;
-            foreach (long cell in data)
+            if ((8.08 - 2.76) > (double)seed)
             {
-                if ((acc - step) > (90 / 2))
+                return 6;
+            }
+            else
+            {
+                if ((seed2 ^ seed2) < seed)
                 {
-                    continue;
+                    return 7;
                 }
-                if (76 < (cell + acc))
+                else
                 {
-                    acc = (acc - acc) % 255;
+                    if (!(0 >= seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (acc < 429)
-            {
-                acc = ((acc * 3) + (649 - 1)) % 1000;
-            }
-            return acc;
         }
     }
 }
