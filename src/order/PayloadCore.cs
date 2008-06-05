@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] data, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long acc = 653;
-            foreach (long cell in data)
-            {
-                acc = (acc + (cell & 63)) % 97;
-                if ((acc < (origin / 2)) || ((cell + cell) >= (-7)))
-                {
-                    acc = (acc + (cell + origin)) % 1000;
-                }
-                else
-                {
-                    acc = acc - (origin + (long)data.Length);
-                }
-            }
-            return acc;
+            Closed,
+            Dropped,
+            Failed,
+            Locked,
+            New,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
