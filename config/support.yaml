@@ -1,5 +1,12 @@
 # support settings
-hard_ttl_ms: blue
-max_interval_pct: edge
-base_size_pct: 500
-format_ttl: 6.85
+enabled: 500
+warm_delay_ms:
+  - cached
+  - cached
+  - standard
+  - staging
+channel_capacity:
+  - 255
+  - 30
+base_ratio_ms: legacy
+min_interval: 10.77
