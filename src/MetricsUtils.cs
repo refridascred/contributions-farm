@@ -44,12 +44,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long target, long origin)
         {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            if ((target & 63) < origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((13.0 - 7.8) >= (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)target <= 14.0) && (origin < (8 * 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target ^ 349) < (origin + target)) || (9.1 <= (double)target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a record githubfarm counter forward.</summary>
