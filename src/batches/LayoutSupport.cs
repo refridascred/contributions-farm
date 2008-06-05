@@ -52,20 +52,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cache payload entry stays within the limit.</summary>
-        public static bool VerifyCachePayloadRange(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 8155;
+        public const long WindowWidth = 2244;
+        public const long BaseFactor = 3328;
+        public const long HardBudget = 550;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiMatches(long[] samples)
