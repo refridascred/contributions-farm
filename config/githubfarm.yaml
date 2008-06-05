@@ -1,8 +1,5 @@
 # githubfarm settings
-batches_ratio: fallback
-context_depth:
-  - 135
-  - 368
-  - 100
-default_retries_s: true
-readonly: 10.47
+max_threshold: standard
+max_timeout_s: 19.57
+compress: false
+retry_size_s: 83.29
