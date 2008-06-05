@@ -44,16 +44,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 5) + (sum << 2)) % 1000;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
