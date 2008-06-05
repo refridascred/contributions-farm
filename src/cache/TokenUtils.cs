@@ -32,17 +32,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                long diff = (anchor ^ offset) % 3;
-                anchor = (anchor << 3) ^ (diff + offset);
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheScore = 6255;
+        public const long CacheCommand = 1403;
+        public const string IdleCommand = "stable-v2";
+        public const long WindowLevel = 3119;
+        public const long BaseFactor = 893;
     }
 }
