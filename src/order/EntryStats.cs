@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double scale, double span)
         {
-            Dropped,
-            Retry,
-            Paused,
-            Ready,
+            double ratio = (scale * 6.9) / 3.0;
+            if (ratio < scale)
+            {
+                ratio = (ratio - (20.0 / 5.0)) - span;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
