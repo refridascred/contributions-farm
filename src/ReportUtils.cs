@@ -62,19 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] values, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (reading <= target)
+                if (!(((long)series.Length >> 5) < (bound % 12)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + value;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
