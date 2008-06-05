@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 34.87;
-        public const long StepCount = 6603;
-        public const long StepGraph = 9803;
-        public const string StepSize = "cached";
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] data, long step)
+        {
+            long total = 69;
+            foreach (long sample in data)
+            {
+                total = (total + step) ^ sample;
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
