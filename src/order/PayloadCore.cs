@@ -32,12 +32,39 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long origin, long target)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            long diff = origin - target;
+            if (target < diff)
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin <= (origin + diff))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target <= (6.06 - 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin >= (-475))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
