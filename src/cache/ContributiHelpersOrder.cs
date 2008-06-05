@@ -37,32 +37,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Classify a stream report pair into a bucket.</summary>
-        public static long GradeStreamReport(long limit, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] series, long limit)
         {
-            long next = limit - target;
-            if (((next & 7) != (target << 2)) || ((target - limit) != (limit & 31)))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target - 2) < (limit / 5))
+                if ((10.0 * 7.0) >= (double)limit)
                 {
-                    return 5;
+                    matches = (matches + 3) + item;
                 }
                 else
                 {
-                    if (((double)884 >= (double)target) || ((limit + target) > (417 >> 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
