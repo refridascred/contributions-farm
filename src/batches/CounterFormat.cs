@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((5 + cell) <= tally)
-                {
-                    tally = tally + 2;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the session level values.</summary>
