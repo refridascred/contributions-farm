@@ -1,4 +1,31 @@
 # githubfarm settings
-base_ratio_ms: eu-west
-already_retries: 34.56
-format_limit: 85.14
+base_ratio_pct: 15
+stats_size: 55
+cache_delay_count: 67.06
+sync_depth_pct:
+  - local
+  - blue
+warm_capacity_ms: true
+max_threshold_count:
+  entry_size: latest
+  min_threshold_count: 98
+  base_timeout:
+    warm_ratio_ms: false
+    flush_ttl_count: fallback
+    max_depth_count: 2218
+    retry_size: blue
+    warm_window: strict
+    min_ratio_pct:
+      - 452
+      - 461
+      - 107
+  token_retries:
+    stream_threshold: 39.58
+    readonly: latest
+    session_window: false
+    batch_delay_count: false
+    idle_limit_ms:
+      - staging
+      - primary
+      - cached
+  sync_capacity: true
