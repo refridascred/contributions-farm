@@ -22,20 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] samples)
-        {
-            long sum = 1;
-            foreach (long datum in samples)
-            {
-                sum = ((sum + (sum - sum)) % 65521) + datum;
-            }
-            if (sum > 27)
-            {
-                sum = (sum + (sum * 5)) % 97;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheRatio = 77.57;
+        public const string BurstRatio = "primary-edge";
+        public const long StepBudget = 2374;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsLimits(long[] samples, long offset)
