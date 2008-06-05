@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "stable-1";
-        public const string BaseAccount = "staging-v2";
-        public const string MinBudget = "alpha-edge";
-        public const double RetryAccount = 11.71;
-        public const string MaxCount = "primary-1";
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] samples)
+        {
+            long sum = 1;
+            foreach (long datum in samples)
+            {
+                sum = ((sum + (sum - sum)) % 65521) + datum;
+            }
+            if (sum > 27)
+            {
+                sum = (sum + (sum * 5)) % 97;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsLimits(long[] samples, long offset)
