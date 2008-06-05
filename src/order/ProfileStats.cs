@@ -48,11 +48,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 3528;
-        public const long MinDepth = 6040;
-        public const string HardCache = "open-v2";
-        public const long IdleBudget = 7686;
-        public const string IdleCache = "fallback-1";
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
