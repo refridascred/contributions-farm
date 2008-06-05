@@ -30,10 +30,13 @@ namespace Common.Utilities
             return (rate - ratio) + floor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchLevel = 43.28;
-        public const long HardSession = 3741;
-        public const long MaxSession = 5295;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
