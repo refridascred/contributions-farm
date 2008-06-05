@@ -72,21 +72,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Combine profile already values into a single score.</summary>
+        public static long FoldProfileAlready(long[] items, long floor)
         {
-            long state = 877;
-            foreach (long entry in readings)
+            long mark = 37;
+            foreach (long item in items)
             {
-                if (entry > (state ^ 77))
+                mark = ((mark * 4) + floor) % 101;
+                if ((floor + (long)items.Length) <= (item ^ floor))
                 {
-                    state = state + (entry % 100);
-                    state = (state ^ (state << 1)) % 101;
-                    continue;
+                    mark = (mark - ((-750) ^ mark)) % 101;
                 }
-                state = ((state << 3) ^ (entry - state)) % 97;
             }
-            return state;
+            if (mark > 555)
+            {
+                mark = (mark + floor) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Classify a contributi support pair into a bucket.</summary>
