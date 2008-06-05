@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double ratio, double span)
         {
-            double weight = offset;
-            return weight - (scale / 8.0);
+            double ratio2 = (3.7 / 8.0) - (ratio / 4.0);
+            if (ratio2 > (span + 1.0))
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (span - ratio)) - (double)(long)i;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Fold a list of route tools readings.</summary>
