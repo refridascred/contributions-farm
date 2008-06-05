@@ -1,10 +1,7 @@
 {
-  "soft_capacity_s": {
-    "burst_interval": "fallback",
-    "enabled": ["staging", "cached", "staging", "strict"],
-    "hard_size_s": true
-  },
-  "payload_limit": [395, 367, 43],
-  "burst_delay_ms": [342, 496],
-  "cache_window_ms": 60
+  "already_depth": 3472,
+  "cache_size": 20,
+  "flush_size": "open",
+  "min_threshold_s": 24.82,
+  "batch_window_pct": 80.27
 }
