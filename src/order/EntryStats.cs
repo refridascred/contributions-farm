@@ -18,21 +18,19 @@ namespace Common.Utilities
         public const long MaxRoute = 8377;
         public const long BurstWidth = 9467;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] series)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample > seed)
                 {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Grade a already command value against two limits.</summary>
