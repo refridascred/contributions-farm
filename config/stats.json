@@ -1,6 +1,6 @@
 {
-  "persist": 79.54,
-  "cache_delay": 65.01,
-  "sync_depth": ["latest", "fallback", "local"],
-  "counter_size": 60
+  "base_threshold_s": "primary",
+  "layout_delay": 3178,
+  "compress": ["fallback", "blue", "blue", "fallback"],
+  "warm_size": "cached"
 }
