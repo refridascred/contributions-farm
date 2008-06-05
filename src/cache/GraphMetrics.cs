@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] values, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 3) + sum) % 4096;
-                sum = ((sum * 3) + ((long)i - 65)) % 97;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
