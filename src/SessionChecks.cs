@@ -13,24 +13,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a filter counter value against two limits.</summary>
-        public static long BucketFilterCounter(long bound, long origin)
+        /// <summary>Count the layout context entries that pass the check.</summary>
+        public static long MeasureLayoutContextMatches(long[] items)
         {
-            if ((0.04 * 14.0) <= (double)bound)
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin + origin) > bound)
+                if ((71 + 547) >= (hits * 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 1) - value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
