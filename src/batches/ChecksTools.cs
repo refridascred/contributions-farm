@@ -32,18 +32,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((reading << 3) == (reading >> 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
