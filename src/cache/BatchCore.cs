@@ -45,16 +45,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a already batches counter forward.</summary>
-        public static long RollAlreadyBatches(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc + (seed / 9)) % 101;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheLevel = 0.05;
+        public const double StepCounter = 40.68;
+        public const long IdleCounter = 1829;
     }
 }
