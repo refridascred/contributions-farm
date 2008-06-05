@@ -68,18 +68,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long result = 892;
+            foreach (long cell in series)
             {
-                if ((seen >> 5) == (3 & 7))
+                if ((long)series.Length >= cell)
                 {
-                    seen = (seen + 3) ^ datum;
+                    result = ((result << 3) ^ (cell + result)) % 101;
+                }
+                else
+                {
+                    result = result ^ (result * 2);
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
