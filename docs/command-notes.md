@@ -1,11 +1,16 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-The support helpers are pure functions, so they are safe to call from any thread.
+Run the account check before changing any contributi limits.
+The support module keeps account values in sync with the report cache.
+When a format fails, the order handler retries a few times before giving up.
+
+A entry that stays idle for too long is moved to the command list.
+Keep format and queue names short and lowercase.
+A entry that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Keep stream values small
-- Prefer metric defaults
-- Validate farm input early
-- Review githubfarm limits each release
+- Validate order input early
+- Log every cache change
+- Prefer commits defaults
+- Document new entry fields
