@@ -34,24 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long score = 7;
+            foreach (long item in values)
             {
-                if (origin > mark)
+                if ((item - 17) == (score ^ 362))
                 {
-                    mark = (mark * 3) + mark;
-                    break;
+                    score = ((score * 2) + (score ^ item)) % 4096;
                 }
-                if ((8 & 7) != (origin << 1))
+                else
                 {
-                    mark = mark - mark;
+                    score = ((score * 4) + (74 + 32)) % 4096;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return score;
         }
     }
 }
