@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Fold a list of command cache readings.</summary>
+        public static long CombineCommandCache(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 975;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(sum < entry))
                 {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + (sum - 63)) % 255;
                 }
             }
-            return hits;
+            if (sum < 1)
+            {
+                sum = ((sum << 3) ^ (sum ^ sum)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
