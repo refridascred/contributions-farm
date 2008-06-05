@@ -1,5 +1,12 @@
 # support settings
-max_depth_s: 5145
-cache_ratio: 5238
-min_threshold: 98.34
-dry_run: legacy
+strict: cached
+readonly:
+  - fallback
+  - stable
+cache_capacity_ms:
+  - standard
+  - fallback
+  - strict
+payload_ratio: 100
+verbose: stable
+batch_threshold_ms: false
