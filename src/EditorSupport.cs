@@ -46,12 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Locked,
-            Failed,
-            Active,
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
