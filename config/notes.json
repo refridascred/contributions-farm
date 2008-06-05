@@ -1,7 +1,15 @@
 {
-  "compress": ["fallback", "blue", "strict", "green"],
-  "layout_ttl": 20.77,
-  "stats_capacity": ["primary", "open", "open"],
-  "order_retries": 91.38,
-  "sync_threshold_count": 250
+  "soft_depth_ms": "staging",
+  "retry_size_pct": "staging",
+  "poll_capacity_ms": ["stable", "primary", "stable", "latest"],
+  "counter_size": "cached",
+  "already_capacity": {
+    "readonly": "standard",
+    "session_capacity": 69.01,
+    "poll_limit_count": "cached",
+    "flush_delay_s": false,
+    "commits_window": "strict",
+    "soft_ttl_ms": "green"
+  },
+  "compress": "primary"
 }
