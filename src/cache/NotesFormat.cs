@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] readings, long target)
+        /// <summary>Combine channel schema values into a single score.</summary>
+        public static long ScoreChannelSchema(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long acc = 4;
+            foreach (long item in levels)
             {
-                if (target >= matches)
+                if ((316 << 3) > (acc / 4))
                 {
-                    matches = (matches + 3) + value;
+                    acc = (acc - acc) + item;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 4096;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Derive the next format command value from a seed.</summary>
