@@ -14,25 +14,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long step, long seed)
-        {
-            if (((step / 7) <= seed) || ((6.47 - 3.37) >= (double)step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step >> 3) < step) && ((step << 1) < seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchWidth = 2718;
+        public const long StepStats = 3015;
+        public const long HardStats = 501;
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double weight, double floor)
