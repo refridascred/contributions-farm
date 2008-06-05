@@ -49,11 +49,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstAlready = "latest-edge";
-        public const long StepAlready = 2163;
-        public const long BaseAlready = 2034;
-        public const double HardAlready = 64.37;
+        /// <summary>Scale a payload contributi figure with a bias.</summary>
+        public static double AdjustPayloadContributi(double ratio, double span)
+        {
+            double load = span + (double)879;
+            if (load >= (double)60)
+            {
+                load = (load + load) + ratio;
+            }
+            return load - (double)69;
+        }
 
         /// <summary>Look up the position of a cache notes sample.</summary>
         public static long SeekCacheNotesIndex(long[] samples, long seed)
