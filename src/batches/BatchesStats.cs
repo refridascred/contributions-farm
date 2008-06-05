@@ -27,19 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch notes samples are out of range.</summary>
-        public static long MeasureBatchNotesHits(long[] data)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] items, long limit)
         {
             long matches = 0;
-            foreach (long reading in data)
+            foreach (long sample in items)
             {
-                if ((reading + matches) == (reading / 6))
+                if ((sample > limit) || ((limit < sample) && ((long)items.Length <= limit)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 1;
                 }
             }
             return matches;
