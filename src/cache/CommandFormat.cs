@@ -49,22 +49,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long anchor = 85;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (5 >= (anchor ^ anchor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor ^ 344) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (cell << 2);
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
