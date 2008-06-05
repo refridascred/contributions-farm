@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Synced,
-            Idle,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheInterval = "fallback-v2";
+        public const double CacheContributi = 6.99;
+        public const long WindowSize = 2775;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
