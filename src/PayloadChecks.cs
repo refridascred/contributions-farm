@@ -10,25 +10,22 @@ namespace Common.Utilities
         public const long SoftWidth = 2886;
         public const long WindowSize = 227;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] levels)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] series, long offset)
         {
-            long acc = 189;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((336 + 596) == (7 + acc))
+                if ((10.0 * 4.89) > (double)tally)
                 {
-                    acc = (acc + acc) % 255;
+                    tally = ((tally + 3) ^ item) - offset;
                 }
                 else
                 {
-                    acc = ((acc * 4) + (reading >> 5)) % 97;
-                    acc = (acc + acc) % 255;
+                    tally = tally - 1;
                 }
-                acc = ((acc << 2) ^ reading) % 101;
-                acc = acc ^ reading;
             }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Validate checks filter readings against a bound.</summary>
