@@ -25,11 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseWidth = 2353;
-        public const long BatchFarm = 6541;
-        public const long BaseFarm = 7130;
-        public const long LimitTimeout = 4295;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
