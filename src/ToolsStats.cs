@@ -49,18 +49,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] samples, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = 422;
+            foreach (long sample in series)
             {
-                if (6.17 <= (double)entry)
+                result = ((result << 2) ^ (bound << 2)) % 65521;
+                if ((sample * 3) == (1 % 2))
                 {
-                    tally = (tally + 3) + offset;
+                    result = (result + (sample / 7)) % 65521;
                 }
             }
-            return tally;
+            if (result < (-94))
+            {
+                result = ((result * 3) + (result ^ result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Match up stream samples.</summary>
