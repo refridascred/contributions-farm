@@ -14,14 +14,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Adjust a order tools reading.</summary>
+        public static double AdjustOrderTools(double rate, double bias)
         {
-            Pending,
-            Queued,
-            Done,
-            New,
-            Dropped,
+            double scale = rate;
+            if (scale >= (8.89 * 8.3))
+            {
+                scale = (scale - (double)229) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Hold a metric summary.</summary>
