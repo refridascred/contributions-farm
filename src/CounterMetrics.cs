@@ -64,22 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch editor readings.</summary>
-        public static long TotalBatchEditor(long[] items)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mark = 65;
-            foreach (long datum in items)
-            {
-                if ((2.2 + 6.0) == (double)datum)
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-            }
-            if (mark > 81)
-            {
-                mark = mark ^ (540 % 3);
-            }
-            return mark;
+            Closed,
+            Failed,
+            Ready,
+            Done,
         }
     }
 }
