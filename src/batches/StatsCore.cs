@@ -86,17 +86,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] values, long limit)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] < limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry * 5) + (long)i;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
