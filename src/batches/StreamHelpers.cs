@@ -68,18 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] readings)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)matches >= 7.44)
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            Done,
+            Dropped,
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Measure how many stats graph samples are out of range.</summary>
