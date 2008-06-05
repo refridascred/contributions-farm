@@ -1,19 +1,12 @@
 {
-  "burst_delay_count": 23,
-  "payload_ttl": 82,
-  "hard_timeout": {
-    "min_retries_count": 93.6,
-    "cache_size": 44,
-    "readonly": {
-      "metric_delay": 5490,
-      "compress": 20,
-      "hard_delay_count": 1141,
-      "base_window_s": false,
-      "default_window_pct": [138, 472, 107],
-      "metrics_depth": "local"
-    }
-  },
-  "compress": "eu-west",
-  "poll_capacity": false,
-  "max_threshold_pct": 28
+  "flush_size_s": false,
+  "batch_threshold_count": 250,
+  "cache_window_ms": 9.07,
+  "strict": ["eu-west", "eu-west", "latest"],
+  "metric_window": {
+    "base_delay_s": 60,
+    "report_timeout": 80.76,
+    "profile_delay": "legacy",
+    "audit": "standard"
+  }
 }
