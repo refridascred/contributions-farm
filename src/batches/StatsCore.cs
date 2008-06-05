@@ -59,19 +59,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every layout route entry stays within the limit.</summary>
-        public static bool VerifyLayoutRouteRange(long[] items, long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long offset, long floor)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if ((floor & 3) < (floor >> 3))
             {
-                if (reading < limit)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset != (9.96 + 4.84))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor % 7) < floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a order reading by value.</summary>
