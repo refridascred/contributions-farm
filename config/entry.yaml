@@ -1,13 +1,25 @@
 # entry settings
-default_depth:
+entry_delay: false
+profile_capacity: 49.3
+soft_size_count: 61
+batch_size:
+  - open
+  - stable
   - fallback
   - blue
-  - standard
-  - eu-west
-retry_threshold_count: 3206
-soft_ttl_s:
-  - 7
-  - 469
-  - 242
-batch_ratio_s: green
-compress: 3789
+dry_run:
+  route_retries: 1
+  idle_ttl_count:
+    flush_depth_s: 250
+    poll_limit:
+      - green
+      - latest
+    persist: 250
+    hard_capacity_pct: 250
+  record_threshold: 88.19
+  soft_ratio: latest
+  counter_limit: 1454
+  idle_size:
+    - stable
+    - primary
+    - green
