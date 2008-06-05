@@ -20,19 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] samples, long step)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Pending,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Project the next account value.</summary>
