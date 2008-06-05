@@ -39,22 +39,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] readings)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (datum > (datum >> 3))
+                if (value != target)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
