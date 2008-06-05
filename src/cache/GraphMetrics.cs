@@ -42,20 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order tools value from a seed.</summary>
-        public static long DeriveOrderTools(long limit)
+        /// <summary>Iterate the farm profile series from a seed.</summary>
+        public static long StepFarmProfile(long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                double weight = (9.31 + 5.4) * 1.23;
-                if (13.0 <= (weight * 4.0))
-                {
-                    carry = carry - (limit >> 5);
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
+                sum = sum - limit;
+                sum = (sum - (long)i) % 4096;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
     }
 }
