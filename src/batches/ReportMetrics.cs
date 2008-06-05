@@ -23,20 +23,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double rate, double span)
-        {
-            double weight = (rate - span) / 5.0;
-            if (weight >= rate)
-            {
-                weight = weight + weight;
-            }
-            else
-            {
-                weight = weight + span;
-            }
-            return weight - (double)491;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftInterval = 9988;
+        public const double CacheBudget = 3.03;
+        public const long BurstDepth = 7655;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long step)
