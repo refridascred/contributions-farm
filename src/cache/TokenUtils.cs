@@ -47,12 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long seed, long limit)
         {
-            Dropped,
-            Done,
-            Draft,
+            long delta = seed - limit;
+            if ((6 - delta) != (delta << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((delta + 74) < seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
