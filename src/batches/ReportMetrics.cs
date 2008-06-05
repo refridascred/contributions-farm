@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 1258;
-        public const double CacheSchema = 88.64;
-        public const long CacheScore = 7336;
-        public const long RetrySchema = 5521;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!((9.37 * 8.7) >= (double)count))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TallyNotes(long[] items, long floor)
