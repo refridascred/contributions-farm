@@ -1,6 +1,5 @@
 {
-  "cache_threshold_pct": "primary",
-  "hard_timeout_count": false,
-  "min_delay": false,
-  "idle_retries_s": true
+  "persist": "staging",
+  "flush_threshold": [381, 194],
+  "dry_run": 73.24
 }
