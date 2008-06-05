@@ -43,21 +43,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up window checks samples.</summary>
-        public static long CompareWindowChecksCount(long[] data)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Idle,
+            Synced,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
