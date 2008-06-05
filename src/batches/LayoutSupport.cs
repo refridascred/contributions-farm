@@ -35,25 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long target, long step)
-        {
-            if ((step - step) <= (52 / 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + step) == (step + 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 63.54;
+        public const long HardMetrics = 4201;
+        public const double HardWidth = 85.29;
+        public const double BurstLevel = 27.42;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BasePayload = 4771;
