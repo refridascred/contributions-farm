@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] series, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a order profile value against two limits.</summary>
