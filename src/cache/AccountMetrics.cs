@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] samples, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 24;
+            foreach (long value in readings)
             {
-                if (samples[i] <= seed)
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    state = (state + (target - (long)i)) % 255;
+                }
+                if ((value >= ((-768) << 3)) && (1 < value))
+                {
+                    state = (state ^ (target << 3)) % 65521;
                 }
             }
-            return -1;
+            if (state < (-34))
+            {
+                state = (state * 3) + (-85);
+            }
+            return state % 4096;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
