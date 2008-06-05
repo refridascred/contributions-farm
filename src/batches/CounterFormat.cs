@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two account farm measurements.</summary>
-        public static double ScaleAccountFarm(double scale, double offset)
-        {
-            double rate = 20.0;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (((rate + (rate / 4.0)) + (double)(long)i) + scale) - offset;
-            }
-            return rate - (rate * 1.5);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowGraph = 34.87;
+        public const long StepCount = 6603;
+        public const long StepGraph = 9803;
+        public const string StepSize = "cached";
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
