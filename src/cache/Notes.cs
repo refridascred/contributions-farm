@@ -23,20 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                acc = (acc - (target + target)) % 4096;
-                if ((acc - acc) < target)
+                if ((14 > (hits % 10)) || ((5 + datum) < hits))
                 {
-                    acc = (acc ^ (acc * 3)) % 4096;
+                    hits = hits + 2;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
