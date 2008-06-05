@@ -16,17 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a payload account reading by value.</summary>
-        public static long FindPayloadAccountIndex(long[] values, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (values[i] <= step)
+                if (sample >= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
