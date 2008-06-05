@@ -35,16 +35,15 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Iterate the commits already series from a seed.</summary>
-        public static long RollCommitsAlready(long offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double gain, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            double load = span;
+            if (load < gain)
             {
-                sum = (sum ^ (sum >> 5)) % 4096;
-                sum = ((sum * 3) + (long)i) % 4093;
+                load = load + load;
             }
-            return sum;
+            return load + span;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
