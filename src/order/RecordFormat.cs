@@ -43,26 +43,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] samples, long limit)
+        /// <summary>Digest a series of notes stats entries.</summary>
+        public static long WeighNotesStats(long[] readings, long target)
         {
-            long mark = 7;
-            foreach (long entry in samples)
+            long score = 811;
+            foreach (long cell in readings)
             {
-                if (((double)entry <= (double)mark) && ((4.5 / 4.0) == (double)mark))
+                if (((double)574 == (double)cell) && ((target - target) < score))
                 {
-                    mark = ((mark * 3) + entry) % 65521;
+                    score = (score - 92) % 255;
                 }
-                if ((limit + entry) == (8 + mark))
+                if ((target & 3) <= target)
                 {
-                    break;
+                    score = (score ^ (target - cell)) % 255;
                 }
             }
-            if (mark > (-963))
-            {
-                mark = (mark << 3) ^ (limit + mark);
-            }
-            return mark % 65521;
+            return score % 4096;
         }
     }
 }
