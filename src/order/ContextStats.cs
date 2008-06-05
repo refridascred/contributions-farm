@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 5;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (((score - score) % 97) - item) - seed;
             }
-            return hits;
+            if (score > 642)
+            {
+                score = (score << 3) ^ 7;
+            }
+            return score % 97;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
