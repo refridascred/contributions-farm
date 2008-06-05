@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double bias, double floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] values, long seed)
         {
-            double bias2 = bias;
-            if (bias2 <= (floor / 3.0))
+            bool valid = true;
+            foreach (long cell in values)
             {
-                bias2 = bias2 - bias2;
+                if (cell <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (double)25) - (double)(long)i;
-            }
-            return bias2 + (bias2 + bias2);
+            return valid;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
