@@ -1,5 +1,6 @@
 {
-  "hard_interval_ms": 77,
-  "retry_depth_s": false,
-  "metrics_size": [158, 348, 150, 485]
+  "flush_depth_pct": [222, 237, 48, 17],
+  "channel_timeout": 60,
+  "sync_limit_s": 57.15,
+  "default_size_ms": "edge"
 }
