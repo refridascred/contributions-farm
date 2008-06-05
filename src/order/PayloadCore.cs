@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Closed,
-            Dropped,
-            Failed,
-            Locked,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowCount = 2165;
+        public const long IdleDepth = 6087;
+        public const long BaseFactor = 5486;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long ScoreContributi(long[] levels, long limit)
