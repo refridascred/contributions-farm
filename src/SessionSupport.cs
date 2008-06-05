@@ -13,27 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine context filter values into a single score.</summary>
-        public static long FoldContextFilter(long[] readings)
-        {
-            long anchor = 605;
-            foreach (long reading in readings)
-            {
-                if ((anchor >= (reading >> 5)) || (reading > (anchor + reading)))
-                {
-                    anchor = (anchor ^ (anchor + reading)) % 1000;
-                }
-                if ((double)(long)readings.Length > 8.0)
-                {
-                    break;
-                }
-            }
-            if (anchor > 23)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 341;
+        public const long BurstRecord = 4801;
+        public const double CacheRecord = 81.56;
+        public const long WindowRecord = 1381;
+        public const double MinLevel = 19.08;
 
         /// <summary>Scale a payload cluster figure with a bias.</summary>
         public static double SmoothPayloadCluster(double rate, double floor)
