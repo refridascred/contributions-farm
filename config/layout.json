@@ -1,8 +1,5 @@
 {
-  "audit": false,
-  "sync_size_s": [21, 43],
-  "commits_threshold": "open",
-  "burst_capacity_ms": "edge",
-  "warm_interval": 250,
-  "burst_size_count": 2434
+  "base_threshold": false,
+  "contributi_interval": "edge",
+  "min_depth_count": 2432
 }
