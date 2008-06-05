@@ -47,16 +47,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry ^ (offset - offset)) % 97;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
