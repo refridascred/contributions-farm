@@ -35,12 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long step)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            long mix = step;
+            for (int i = 0; i < 5; i++)
+            {
+                long span = ((long)i / 9) / 7;
+                if (span < (span / 4))
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
