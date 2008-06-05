@@ -1,6 +1,7 @@
 {
-  "sync_limit_count": "latest",
-  "session_delay": true,
-  "dry_run": "eu-west",
-  "max_interval_count": "blue"
+  "max_window_count": 7.44,
+  "entry_timeout": "legacy",
+  "account_depth": "legacy",
+  "profile_ttl": "fallback",
+  "sync_depth_pct": "primary"
 }
