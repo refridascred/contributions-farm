@@ -58,12 +58,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] items, long limit)
         {
-            Active,
-            Stale,
-            Closed,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell >= (1.0 / 5.0))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next record value.</summary>
