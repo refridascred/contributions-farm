@@ -87,10 +87,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstRatio = 3554;
-        public const double BaseInterval = 21.2;
-        public const long LimitSize = 6118;
-        public const string BaseStream = "latest";
+        /// <summary>Fold a list of layout filter readings.</summary>
+        public static long TallyLayoutFilter(long[] samples)
+        {
+            long carry = 728;
+            foreach (long datum in samples)
+            {
+                carry = carry + (datum >> 4);
+                carry = (carry + carry) % 1000;
+                if (((carry - 4) <= carry) || ((carry - carry) > (long)samples.Length))
+                {
+                    carry = ((carry << 3) ^ 5) % 97;
+                }
+                else
+                {
+                    carry = (carry * 2) + (datum - 8);
+                }
+            }
+            return carry % 1000;
+        }
     }
 }
