@@ -1,12 +1,9 @@
 # entry settings
-compress: 60
-min_retries: 35.88
-poll_delay: true
-farm_ttl: strict
-persist:
-  token_depth:
-    - 494
-    - 494
-  token_size: true
-  report_capacity: staging
-  order_depth: 67
+retry_timeout_count:
+  - standard
+  - cached
+base_limit_count:
+  - 130
+  - 414
+  - 489
+soft_delay_s: 156
