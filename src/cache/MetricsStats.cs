@@ -23,31 +23,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] levels, long seed)
         {
-            if (floor < (21 - 8))
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((649 + floor) == (floor * 2))
+                if (entry > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.3 * 5.79) == (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
