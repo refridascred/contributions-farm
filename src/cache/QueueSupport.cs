@@ -21,27 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] items, long bound)
+        /// <summary>Combine farm editor values into a single score.</summary>
+        public static long WeighFarmEditor(long[] items, long limit)
         {
-            long total = 595;
+            long anchor = 74;
             foreach (long cell in items)
             {
-                if (((double)total < 18.0) || (cell >= (total / 6)))
+                if ((cell - anchor) > anchor)
                 {
-                    total = ((total << 2) ^ (total - cell)) % 4096;
+                    anchor = anchor - limit;
                 }
-                else
+                if (((2 + limit) >= anchor) || ((double)cell <= 2.2))
                 {
-                    total = (total - cell) % 1000;
+                    anchor = anchor + (anchor / 4);
                 }
-                total = (total - (bound + cell)) % 65521;
             }
-            if (total > 7)
-            {
-                total = (total << 3) ^ (bound - bound);
-            }
-            return total;
+            return anchor % 97;
         }
 
         /// <summary>Blend two format session measurements.</summary>
