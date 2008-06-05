@@ -34,11 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheScore = 6255;
-        public const long CacheCommand = 1403;
-        public const string IdleCommand = "stable-v2";
-        public const long WindowLevel = 3119;
-        public const long BaseFactor = 893;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] data, long origin)
+        {
+            long sum = 417;
+            foreach (long value in data)
+            {
+                if ((value * 4) <= sum)
+                {
+                    sum = sum ^ (sum / 8);
+                }
+            }
+            if (sum > 429)
+            {
+                sum = (sum - (sum + origin)) % 101;
+            }
+            return sum;
+        }
     }
 }
