@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] items)
-        {
-            long score = 70;
-            foreach (long entry in items)
-            {
-                if ((double)entry > (double)431)
-                {
-                    score = (score - entry) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinCount = 829;
+        public const long HardFactor = 6054;
+        public const string IdleWindow = "local-edge";
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesMatches(long[] items, long offset)
