@@ -37,11 +37,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseInterval = 4415;
-        public const double HardRatio = 46.18;
-        public const long BatchLevel = 1710;
-        public const double DefaultSpan = 3.7;
-        public const long BurstWidth = 6119;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
