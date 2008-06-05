@@ -54,22 +54,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] samples, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long state = 659;
+            foreach (long reading in items)
             {
-                if ((reading / 2) >= (reading * 4))
+                if (!((reading & 31) <= (state * 4)))
                 {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (state * 5) + (state + reading);
                 }
             }
-            return matches;
+            if (state < 945)
+            {
+                state = (state + (state ^ 870)) % 255;
+            }
+            return state;
         }
     }
 }
