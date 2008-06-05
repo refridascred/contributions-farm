@@ -45,12 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] data, long step)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] == step)
+                if (series[i] <= offset)
                 {
                     return (long)i;
                 }
