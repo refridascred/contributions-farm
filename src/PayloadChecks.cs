@@ -24,17 +24,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] levels, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (levels[i] > floor)
+                if (((cell << 3) > cell) || (88 >= (cell << 2)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank checks githubfarm input into a small class.</summary>
