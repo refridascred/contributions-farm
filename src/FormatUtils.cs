@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] values, long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long score = 3;
-            foreach (long datum in values)
-            {
-                if (((datum ^ limit) > (limit % 12)) && (17.0 <= (double)score))
-                {
-                    score = (score * 2) + (3 + score);
-                }
-            }
-            return score;
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
