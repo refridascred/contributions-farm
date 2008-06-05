@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            New,
-            Draft,
-            Closed,
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
