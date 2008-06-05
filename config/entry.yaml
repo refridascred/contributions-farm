@@ -1,6 +1,12 @@
 # entry settings
-queue_size:
-  - 375
-  - 413
-verbose: cached
-route_threshold: 5020
+compress: 60
+min_retries: 35.88
+poll_delay: true
+farm_ttl: strict
+persist:
+  token_depth:
+    - 494
+    - 494
+  token_size: true
+  report_capacity: staging
+  order_depth: 67
