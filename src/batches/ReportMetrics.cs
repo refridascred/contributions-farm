@@ -37,18 +37,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] series)
+        /// <summary>Match up order tools samples.</summary>
+        public static long OverlapOrderToolsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-232) > (entry + 8)) || (tally <= (tally - 369)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
