@@ -69,13 +69,21 @@ namespace Common.Utilities
             return gain + (scale * 4.0);
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            Pending,
-            Active,
-            Locked,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
