@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] data, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((51 & 255) >= tally)
+                if ((item * 2) != (72 + 478))
                 {
-                    tally = ((tally + 2) ^ datum) + bound;
+                    count = (count + 2) + bound;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Classify a layout graph pair into a bucket.</summary>
