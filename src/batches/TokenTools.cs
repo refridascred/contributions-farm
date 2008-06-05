@@ -24,16 +24,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Digest a series of stats cache entries.</summary>
-        public static long TallyStatsCache(long[] items)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long anchor = 5;
-            foreach (long datum in items)
-            {
-                anchor = (((anchor * 5) + (anchor ^ anchor)) % 101) - datum;
-                anchor = (anchor * 3) + 59;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
