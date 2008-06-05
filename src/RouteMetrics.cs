@@ -17,20 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long mark = 481;
-            foreach (long datum in data)
-            {
-                mark = ((mark + (mark << 1)) % 97) ^ datum;
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark + 7) % 97) - (long)i;
-                }
-                mark = (mark + (mark * 2)) % 255;
-            }
-            return mark % 4096;
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate route readings against a bound.</summary>
