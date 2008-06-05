@@ -26,21 +26,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix + (mix + bound)) % 97;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (((mix * 2) + bound) % 255) - (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftTimeout = 1.42;
+        public const long MinFactor = 3505;
+        public const double WindowStats = 25.74;
+        public const long BaseSize = 5584;
+        public const long BurstSpan = 7893;
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
