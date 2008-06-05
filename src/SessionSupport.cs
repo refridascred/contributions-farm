@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long total = 41;
-            foreach (long datum in levels)
+            long state = 3;
+            foreach (long cell in samples)
             {
-                if (!(total <= (total + datum)))
+                if ((state & 3) <= state)
                 {
-                    total = (total << 3) ^ (datum % 10);
+                    state = (((state * 3) + (state ^ state)) % 101) + cell;
                 }
-                total = (total ^ (datum - total)) % 97;
-                total = (total - (datum >> 3)) % 97;
+                else
+                {
+                    state = state + (state << 1);
+                }
             }
-            if (total > (-5))
-            {
-                total = total + (total + total);
-            }
-            return total % 1000;
+            return state;
         }
 
         /// <summary>Digest a series of account entries.</summary>
