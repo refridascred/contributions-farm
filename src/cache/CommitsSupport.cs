@@ -39,13 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Paused,
-            Failed,
-            New,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "stable-v2";
+        public const double DefaultBatch = 34.67;
+        public const long IdleBatch = 9926;
+        public const string MaxBatch = "alpha";
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long CountCacheOutliers(long[] samples, long step)
