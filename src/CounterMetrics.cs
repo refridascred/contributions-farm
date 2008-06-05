@@ -30,12 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitInterval = 43.9;
-        public const double HardStats = 97.81;
-        public const long StepScore = 3640;
-        public const long CacheBudget = 6362;
-        public const long HardRatio = 1358;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long origin, long step)
+        {
+            if ((step + step) < (3 % 60))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(origin < (origin * 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2 % 64) >= (step ^ 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)step == (double)origin) || ((step >> 3) <= (origin * 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of batch editor readings.</summary>
         public static long TotalBatchEditor(long[] items)
