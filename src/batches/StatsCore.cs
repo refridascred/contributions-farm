@@ -26,22 +26,19 @@ namespace Common.Utilities
         public const double RetryAccount = 11.71;
         public const string MaxCount = "primary-1";
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] readings)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (hits >= (sample & 3))
+                if (datum <= offset)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Iterate the buffer support series from a seed.</summary>
