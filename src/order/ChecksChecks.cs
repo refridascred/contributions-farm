@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchScore = 7859;
-        public const double BatchMetrics = 3.81;
-        public const double BurstFactor = 44.2;
-        public const double IdleMetrics = 14.75;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long StepTools(long seed)
