@@ -32,32 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long offset, long target)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long offset)
         {
-            long delta = offset + target;
-            if (11.0 < (double)delta)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset == (3.2 - 7.72))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 3;
+                    score = ((score ^ (offset << 2)) % 1000) ^ (long)i2;
                 }
-                else
-                {
-                    if ((offset - offset) > (3 & 255))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
