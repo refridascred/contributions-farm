@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] series, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 28;
+            foreach (long sample in items)
             {
-                if (series[i] <= seed)
+                carry = ((carry << 2) ^ (sample << 3)) % 65521;
+                if (!((carry << 3) == (56 - sample)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
