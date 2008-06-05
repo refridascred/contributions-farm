@@ -24,13 +24,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
