@@ -14,20 +14,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheLevel = 8.75;
+        public const double LimitCount = 21.28;
+        public const string BaseInterval = "alpha-1";
+        public const long MinScore = 2781;
+        public const long StepWidth = 7020;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long ScoreEditor(long[] samples, long offset)
