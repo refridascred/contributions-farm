@@ -1,9 +1,6 @@
 # githubfarm settings
-burst_delay:
-  - standard
-  - primary
-  - stable
-default_size_count: 1024
-readonly: edge
-warm_size: 4117
-retry_interval: 8912
+counter_limit: 39.33
+poll_capacity_s: edge
+retry_delay_s: 97
+buffer_depth: staging
+cache_ttl: local
