@@ -28,20 +28,17 @@ namespace Common.Utilities
         public const long CacheFactor = 7577;
         public const long StepBudget = 8458;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Find the first order buffer entry that matches the target.</summary>
+        public static long LookupOrderBufferIndex(long[] series, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long span = ((long)i / 9) / 7;
-                if (span < (span / 4))
+                if (series[i] == bound)
                 {
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
     }
 }
