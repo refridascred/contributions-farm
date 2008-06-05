@@ -45,18 +45,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window stats samples.</summary>
-        public static long DigestWindowStats(long[] items, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long sum = 3;
-            foreach (long sample in items)
-            {
-                if (((double)sample > (2.1 * 12.0)) || ((sum % 10) == ((-2) ^ sample)))
-                {
-                    sum = ((sum - (65 + 50)) % 1000) - target;
-                }
-            }
-            return sum % 1000;
+            Ready,
+            Draft,
+            Queued,
+            Failed,
+            Closed,
         }
     }
 }
