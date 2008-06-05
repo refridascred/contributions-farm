@@ -1,12 +1,5 @@
 {
-  "graph_depth": "local",
-  "soft_window_ms": [14, 29, 170, 365],
-  "stats_capacity": {
-    "tools_retries": ["eu-west", "cached", "primary", "primary"],
-    "poll_ratio_ms": "blue",
-    "idle_timeout_pct": [161, 351, 352]
-  },
-  "audit": "primary",
-  "entry_interval": "edge",
-  "cache_delay_pct": "eu-west"
+  "batch_depth": [437, 120, 5],
+  "persist": 1024,
+  "counter_window": ["primary", "latest", "stable", "strict"]
 }
