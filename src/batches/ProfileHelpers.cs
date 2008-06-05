@@ -53,15 +53,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
