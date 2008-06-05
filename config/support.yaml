@@ -1,7 +1,10 @@
 # support settings
-audit: 73.31
-soft_limit_ms: 500
-burst_window_ms: false
-dry_run: 65.61
-retry_retries_pct: true
-retry_timeout_count: cached
+warm_interval_s: 60
+readonly: 100
+retry_delay: strict
+already_threshold:
+  soft_limit_count: staging
+  max_limit: 4313
+  strict: true
+default_interval_pct: 4171
+audit: standard
