@@ -63,32 +63,21 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long origin, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long target)
         {
-            long cur = origin - offset;
-            if (((cur + offset) >= (origin + offset)) || ((cur >> 4) > offset))
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((19.0 - 3.77) < (double)origin)
+                if ((1.9 + 1.94) >= (double)target)
                 {
-                    return 7;
+                    sum = (sum + target) % 97;
+                    sum = ((sum * 2) + (target >> 2)) % 101;
+                    continue;
                 }
-                else
-                {
-                    if ((3.8 - 4.12) < (double)cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
+            return sum;
         }
     }
 }
