@@ -20,17 +20,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] samples, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 851;
+            foreach (long item in levels)
             {
-                if (samples[i] == limit)
+                if (7.4 > (double)sum)
                 {
-                    return (long)i;
+                    sum = (sum * 2) + (sum + 85);
+                }
+                else
+                {
+                    sum = sum + (sum >> 3);
+                }
+                if ((item / 7) < (item * 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 358)
+            {
+                sum = (sum + (sum + 71)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a report reading.</summary>
