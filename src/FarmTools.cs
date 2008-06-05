@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double rate, double span)
         {
-            long mix = origin;
+            double load = rate;
+            if (load <= rate)
+            {
+                load = load + (span / 7.0);
+            }
             for (int i = 0; i < 9; i++)
             {
-                mix = (mix - 0) % 101;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = (((mix * 5) + (mix - mix)) % 65521) - (long)i2;
-                    mix = mix ^ origin;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                load = (load - span) + (double)(long)i;
             }
-            return mix;
+            return load - rate;
         }
 
         /// <summary>Hold a report options.</summary>
