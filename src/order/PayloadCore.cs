@@ -40,22 +40,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the tools metrics entries that pass the check.</summary>
-        public static long AuditToolsMetricsOutliers(long[] samples)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!!((0.9 * 19.0) != (double)hits))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
