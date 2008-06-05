@@ -75,24 +75,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile already values into a single score.</summary>
-        public static long FoldProfileAlready(long[] items, long floor)
-        {
-            long mark = 37;
-            foreach (long item in items)
-            {
-                mark = ((mark * 4) + floor) % 101;
-                if ((floor + (long)items.Length) <= (item ^ floor))
-                {
-                    mark = (mark - ((-750) ^ mark)) % 101;
-                }
-            }
-            if (mark > 555)
-            {
-                mark = (mark + floor) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryRatio = 8237;
+        public const long RetryOrder = 7461;
+        public const long LimitCount = 5546;
+        public const long WindowOrder = 6975;
+        public const double MaxInterval = 60.32;
 
         /// <summary>Classify a contributi support pair into a bucket.</summary>
         public static long ClassifyContributiSupport(long offset, long bound)
