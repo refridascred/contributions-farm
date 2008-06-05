@@ -21,13 +21,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 2878;
         public const long DefaultContributi = 8409;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] values)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits << 3) < reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
