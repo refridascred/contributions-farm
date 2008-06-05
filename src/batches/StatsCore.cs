@@ -49,21 +49,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the buffer support series from a seed.</summary>
-        public static long RollBufferSupport(long offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 2) + (-85)) % 1000;
-                if ((long)i != ((-356) + (long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix - 245) % 97;
-                    break;
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the record level values.</summary>
