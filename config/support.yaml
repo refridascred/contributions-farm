@@ -1,12 +1,8 @@
 # support settings
-strict: cached
-readonly:
-  - fallback
-  - stable
-cache_capacity_ms:
-  - standard
-  - fallback
-  - strict
-payload_ratio: 100
-verbose: stable
-batch_threshold_ms: false
+strict: 1024
+order_timeout: standard
+schema_depth: 500
+dry_run:
+  command_ttl: 1024
+  readonly: false
+  strict: true
