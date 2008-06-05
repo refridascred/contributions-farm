@@ -29,19 +29,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] items, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long seed, long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long prev = seed ^ floor;
+            if ((prev ^ seed) >= 486)
             {
-                if (entry != floor)
+                return 4;
+            }
+            else
+            {
+                if (floor > (prev / 6))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)0 >= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
