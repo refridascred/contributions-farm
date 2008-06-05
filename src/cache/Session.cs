@@ -32,34 +32,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long floor, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long limit, long floor)
         {
-            if ((4.66 - 7.8) > (double)origin)
+            long step = limit ^ floor;
+            if ((limit <= step) || ((limit & 63) < (limit * 2)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (2.5 < (double)floor)
+                if ((double)473 <= (double)floor)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if (!((double)origin < (2.1 / 6.0)))
+                    if ((38 / 5) > limit)
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        if ((origin - floor) <= (floor - 3))
+                        if (!((step * 4) == (floor - limit)))
                         {
-                            return 1;
+                            return 0;
                         }
                         else
                         {
-                            return 5;
+                            return 8;
                         }
                     }
                 }
