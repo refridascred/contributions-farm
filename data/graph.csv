@@ -1,8 +1,8 @@
-id,label,score
-1,blue,stable
-2,622,53.76
-3,fallback,fallback
-4,stable,353
-5,967,latest
-6,69,76.9
-7,906,59.39
+id,label,active,weight
+1,open,103,strict
+2,350,81.75,standard
+3,457,892,9.17
+4,primary,stable,414
+5,20.75,29.29,118
+6,679,fallback,green
+7,435,blue,9.95
