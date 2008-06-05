@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] items, long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long limit, long target)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long offset = limit - target;
+            if ((5.0 * 11.0) > (double)target)
             {
-                if ((double)matches > (7.2 * 7.05))
+                return 8;
+            }
+            else
+            {
+                if (((target - 359) > (target + offset)) || ((double)target == (6.5 * 0.39)))
                 {
-                    matches = ((matches + 3) - item) - origin;
+                    return 7;
+                }
+                else
+                {
+                    if ((target / 9) == (target - limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the tools phase values.</summary>
