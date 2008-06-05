@@ -1,7 +1,12 @@
 {
-  "base_interval_s": ["standard", "legacy"],
-  "soft_threshold_s": "green",
-  "channel_retries": "primary",
-  "persist": ["cached", "latest"],
-  "cache_interval_s": 500
+  "sync_retries": "open",
+  "flush_window_ms": true,
+  "flush_timeout": {
+    "idle_interval_s": 4232,
+    "burst_ttl_count": false,
+    "base_limit": true,
+    "min_retries_s": "cached",
+    "metric_limit": "open"
+  },
+  "entry_capacity": "eu-west"
 }
