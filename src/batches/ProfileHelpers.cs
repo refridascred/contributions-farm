@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long step)
         {
-            long mix = 5;
-            foreach (long reading in levels)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                mix = (((mix - (mix ^ 4)) % 4096) + reading) + origin;
-                mix = ((mix * 2) + (451 / 5)) % 4096;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
