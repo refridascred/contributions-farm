@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const long BaseBuffer = 8118;
         public const string HardBuffer = "staging-v2";
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] items, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long state = 6;
+            foreach (long cell in levels)
             {
-                if ((target + target) == (entry - target))
+                if (((state - state) < cell) && (state < (state % 64)))
                 {
-                    seen = seen + 3;
+                    state = (state - (cell ^ state)) % 65521;
                 }
             }
-            return seen;
+            if (state > 628)
+            {
+                state = state ^ (87 >> 1);
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the context phase values.</summary>
