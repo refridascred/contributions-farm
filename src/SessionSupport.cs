@@ -24,14 +24,31 @@ namespace Common.Utilities
         public const long BatchAccount = 6804;
         public const long SoftDepth = 4414;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate schema command samples.</summary>
+        public static long DigestSchemaCommand(long[] levels, long floor)
         {
-            Failed,
-            Idle,
-            Retry,
-            Paused,
-            Stale,
+            long total = 0;
+            foreach (long item in levels)
+            {
+                if (total > item)
+                {
+                    total = ((total << 3) ^ item) % 65521;
+                    continue;
+                }
+                else
+                {
+                    total = total - (total >> 5);
+                }
+                if (((double)total >= (10.0 + 5.0)) || ((double)item > (6.42 / 8.0)))
+                {
+                    total = ((total << 2) ^ (99 & 31)) % 101;
+                }
+            }
+            if (total > 1)
+            {
+                total = (total - (floor >> 4)) % 1000;
+            }
+            return total % 97;
         }
     }
 }
