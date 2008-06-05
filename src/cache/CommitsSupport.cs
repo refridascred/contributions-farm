@@ -34,20 +34,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] readings)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long mix = 415;
+            foreach (long item in readings)
             {
-                long lane = ((long)i - state) & 127;
-                if (((lane * 4) <= (lane + state)) && (lane > (bound >> 1)))
-                {
-                    lane = (lane + (bound + 0)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 65521;
+                mix = ((mix << 2) ^ mix) - item;
             }
-            return state;
+            return mix % 1000;
         }
 
         /// <summary>Describe the command mode values.</summary>
