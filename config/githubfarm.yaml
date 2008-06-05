@@ -1,4 +1,10 @@
 # githubfarm settings
-retry_threshold_s: 60
-persist: edge
-retry_timeout: 500
+retry_threshold_ms:
+  - 146
+  - 216
+editor_ratio: standard
+hard_size: 37.76
+min_threshold_pct:
+  - latest
+  - blue
+poll_ttl_s: 95
