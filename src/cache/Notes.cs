@@ -34,18 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of payload editor readings.</summary>
-        public static long ScorePayloadEditor(long[] values)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] levels, long floor)
         {
-            long state = 34;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (state <= (state / 8))
+                if (levels[i] <= floor)
                 {
-                    state = (((state << 2) ^ (state - state)) % 65521) - item;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
