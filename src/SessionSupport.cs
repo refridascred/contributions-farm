@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] samples)
-        {
-            long state = 3;
-            foreach (long cell in samples)
-            {
-                if ((state & 3) <= state)
-                {
-                    state = (((state * 3) + (state ^ state)) % 101) + cell;
-                }
-                else
-                {
-                    state = state + (state << 1);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 5170;
+        public const long IdleCommits = 5015;
+        public const double RetryCommits = 75.8;
 
         /// <summary>Combine context filter values into a single score.</summary>
         public static long FoldContextFilter(long[] readings)
