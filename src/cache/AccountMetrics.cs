@@ -42,21 +42,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long floor, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor % 64) == (seed + floor))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((seed & 7) != (seed + floor)))
                 {
-                    if ((readings[i] + readings[j]) > 5)
+                    return 4;
+                }
+                else
+                {
+                    if ((923 < floor) || (2 <= (seed - seed)))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
