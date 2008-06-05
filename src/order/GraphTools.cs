@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = target - offset;
+            if ((offset >= (span + span)) && ((span << 1) < offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)offset <= (4.8 - 4.7))
                 {
-                    if ((samples[i] ^ samples[j]) != 14)
+                    return 3;
+                }
+                else
+                {
+                    if (9 >= (offset + offset))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a context header.</summary>
