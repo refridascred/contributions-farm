@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 2217;
-        public const long IdleSupport = 9185;
-        public const double LimitCount = 4.37;
-        public const double BaseSupport = 70.37;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardWidth = 90.01;
+        public const long RetryFilter = 9412;
+        public const long MaxTimeout = 745;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] levels)
