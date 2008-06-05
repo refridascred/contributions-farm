@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] series)
+        /// <summary>Digest a series of format order entries.</summary>
+        public static long DigestFormatOrder(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -3;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 12; i++)
                 {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry - (411 + carry)) + (long)i) - reading;
                 }
+                carry = ((carry << 3) ^ (carry / 2)) % 65521;
+                carry = (carry - carry) % 1000;
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Iterate the contributi counter series from a seed.</summary>
