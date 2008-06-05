@@ -1,13 +1,20 @@
 {
-  "batch_retries": [19, 61, 37],
-  "min_delay": {
-    "verbose": "standard",
-    "metric_size": ["cached", "standard", "legacy"],
-    "warm_window": "open",
-    "already_capacity": true,
-    "warm_timeout": 76
+  "profile_window": {
+    "compress": ["open", "fallback"],
+    "max_limit_s": 2587,
+    "warm_retries_count": 2928,
+    "sync_window_s": 4234,
+    "schema_limit": 500,
+    "flush_interval": {
+      "entry_size": 9125,
+      "burst_capacity_count": ["edge", "staging", "staging", "primary"],
+      "max_size_count": 4645,
+      "batch_depth": "green",
+      "hard_delay": true
+    }
   },
-  "min_ttl_pct": false,
-  "compress": 38,
-  "default_delay": [278, 423]
+  "filter_ratio": true,
+  "verbose": "standard",
+  "dry_run": 78.03,
+  "min_delay": 69.92
 }
