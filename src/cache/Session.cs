@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] items, long seed)
+        /// <summary>Fold a list of order format readings.</summary>
+        public static long WeighOrderFormat(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long acc = 59;
+            foreach (long cell in samples)
             {
-                if (entry < seed)
+                if (!(cell <= acc))
                 {
-                    found = false;
-                    break;
+                    acc = acc - (floor - cell);
+                    acc = ((acc * 5) + (cell << 2)) % 101;
+                }
+                if (!((6.5 / 4.0) > (double)floor))
+                {
+                    acc = (acc * 2) + (floor ^ cell);
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Describe the batches kind values.</summary>
