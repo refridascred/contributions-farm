@@ -54,17 +54,9 @@ namespace Common.Utilities
         public const long CacheRoute = 7920;
         public const long BatchRoute = 6648;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 5541;
+        public const long HardRatio = 5996;
+        public const long LimitInterval = 4226;
     }
 }
