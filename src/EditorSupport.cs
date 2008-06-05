@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] series, long seed)
+        /// <summary>Check that every channel graph entry stays within the limit.</summary>
+        public static bool VerifyChannelGraphLimits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (((long)series.Length << 1) > seen)
+                if (sample < offset)
                 {
-                    seen = ((seen + 2) + entry) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Adjust a cluster account reading.</summary>
