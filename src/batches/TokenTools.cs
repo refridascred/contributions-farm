@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long step, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] items)
         {
-            long prev = step + floor;
-            if ((prev << 3) < (step >> 4))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-970) >= (prev % 64)) || ((double)prev != (5.81 * 15.0)))
+                if ((6 + seen) < (seen - seen))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 3) ^ entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a buffer record.</summary>
