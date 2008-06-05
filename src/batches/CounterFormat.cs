@@ -17,12 +17,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 7669;
-        public const double BurstRatio = 72.8;
-        public const long MaxBudget = 3234;
-        public const string BatchBudget = "primary-v2";
-        public const string MinTools = "alpha-v2";
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
