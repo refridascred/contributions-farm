@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 1268;
         public const long BaseGithubfarm = 1282;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long result = 817;
-            foreach (long entry in items)
-            {
-                result = (result + (result + result)) % 97;
-                if (entry <= (result ^ entry))
-                {
-                    result = ((result * 2) + (result ^ result)) % 65521;
-                }
-            }
-            return result % 1000;
+            Idle,
+            Closed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Derive the next counter account value from a seed.</summary>
