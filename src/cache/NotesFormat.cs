@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Synced,
-            Locked,
-            Stale,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftDepth = 4.73;
+        public const long BaseFarm = 7970;
+        public const double CacheTimeout = 74.51;
+        public const string WindowSize = "primary-edge";
+        public const double MinRatio = 92.5;
 
         /// <summary>Classify a layout graph pair into a bucket.</summary>
         public static long SortLayoutGraph(long target, long target2)
