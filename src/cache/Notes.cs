@@ -63,11 +63,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 9249;
-        public const string BaseChannel = "latest";
-        public const long MaxChannel = 132;
-        public const double MinChannel = 56.86;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (count >= (sample ^ count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
