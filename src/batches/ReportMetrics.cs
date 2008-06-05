@@ -27,24 +27,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long target, long step)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double rate, double span)
         {
-            if (step >= (step & 127))
+            double weight = (rate - span) / 5.0;
+            if (weight >= rate)
             {
-                return 5;
+                weight = weight + weight;
             }
             else
             {
-                if (!((double)target > (0.15 / 3.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                weight = weight + span;
             }
+            return weight - (double)491;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
