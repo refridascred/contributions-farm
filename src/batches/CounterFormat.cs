@@ -17,19 +17,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double scale, double bias)
+        /// <summary>Combine command support values into a single score.</summary>
+        public static long CombineCommandSupport(long[] data)
         {
-            double weight = (double)(80 << 2);
-            if (weight >= scale)
+            long mix = 106;
+            foreach (long reading in data)
             {
-                weight = weight + (double)397;
+                mix = (((mix << 3) ^ (mix >> 3)) % 97) ^ reading;
+                mix = mix ^ (978 % 8);
             }
-            else
+            if (mix > 83)
             {
-                weight = weight + bias;
+                mix = ((mix * 2) + (mix - mix)) % 97;
             }
-            return weight - (scale + scale);
+            return mix;
         }
 
         /// <summary>Hold a entry info.</summary>
