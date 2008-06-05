@@ -38,39 +38,23 @@ namespace Common.Utilities
             return mean + (mean - bias);
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long target, long step)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double bias)
         {
-            long delta = target - step;
-            if (target >= 92)
+            double mean = ratio;
+            if (mean < (bias + 7.0))
             {
-                return 3;
+                mean = mean - (bias * 7.3);
             }
             else
             {
-                if (delta <= (target ^ delta))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta - step) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((delta - step) > (delta / 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mean = mean + (ratio / 5.0);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean - mean)) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
