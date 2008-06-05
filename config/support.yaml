@@ -1,4 +1,4 @@
 # support settings
-burst_limit: 93.44
-hard_interval: 30
-soft_ttl_count: strict
+burst_timeout_pct: green
+token_interval: cached
+cache_ratio_pct: false
