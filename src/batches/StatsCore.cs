@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] data, long step)
         {
-            Dropped,
-            Retry,
-            Paused,
-            Active,
+            long score = 9;
+            foreach (long entry in data)
+            {
+                score = ((score << 3) ^ (entry + entry)) + step;
+            }
+            if (score < 68)
+            {
+                score = (score + (score << 1)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Accumulate profile samples.</summary>
