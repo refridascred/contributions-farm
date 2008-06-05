@@ -37,15 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] values, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((double)matches >= (double)step)
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
