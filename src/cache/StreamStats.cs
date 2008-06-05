@@ -22,11 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleFactor = 8211;
-        public const double HardLevel = 55.18;
-        public const double BatchPayload = 87.77;
-        public const long HardPayload = 7558;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Locked,
+            Stale,
+            Dropped,
+            New,
+            Synced,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftScore = 3279;
