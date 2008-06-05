@@ -51,13 +51,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] samples, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            long mix = -560;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                mix = ((mix - (bound / 7)) % 255) ^ datum;
+            }
+            if (mix > 275)
+            {
+                mix = (mix - 679) % 97;
             }
             return mix;
         }
