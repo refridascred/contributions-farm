@@ -25,31 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session stats input into a small class.</summary>
-        public static long BucketSessionStats(long step, long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] samples, long seed)
         {
-            if (((seed >> 5) != (seed * 5)) || (seed <= (seed + seed)))
+            long carry = 15;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)93 == (double)seed)
+                if ((seed >= (cell - carry)) || (7.0 <= (double)cell))
                 {
-                    return 6;
+                    carry = carry + (seed + (-9));
                 }
                 else
                 {
-                    if ((step <= (seed ^ seed)) && ((double)seed > (8.8 - 2.4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    carry = carry - (seed + carry);
                 }
             }
+            return carry;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
