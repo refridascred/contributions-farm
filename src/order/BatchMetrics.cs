@@ -77,11 +77,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Draft,
+            Idle,
+            Active,
+            Ready,
         }
     }
 }
