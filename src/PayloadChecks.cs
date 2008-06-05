@@ -74,18 +74,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] values, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long total = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (6 < (matches / 3))
+                if ((15.0 - 3.9) == (double)target)
                 {
-                    matches = ((matches + 2) + entry) - origin;
+                    total = ((total << 3) ^ (551 ^ target)) % 1000;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
     }
 }
