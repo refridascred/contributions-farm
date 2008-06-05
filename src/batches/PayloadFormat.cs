@@ -20,21 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Combine channel cache values into a single score.</summary>
+        public static long ScoreChannelCache(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 75;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (acc ^ (9 % 2)) - seed;
+                if ((acc >= (acc + item)) && ((double)item > (11.0 / 8.0)))
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc << 3) ^ (item / 3);
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
