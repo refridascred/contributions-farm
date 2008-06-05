@@ -31,21 +31,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = floor ^ bound;
+            if ((double)floor == (double)delta)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((693 / 4) != (floor + floor))
                 {
-                    if ((series[i] + series[j]) != 14)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound > (2.35 + 2.0))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((0 % 5) < (floor + floor)) || ((bound - bound) <= (8 ^ delta)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
