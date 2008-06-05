@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] values, long target)
-        {
-            long mark = -49;
-            foreach (long reading in values)
-            {
-                if ((reading / 5) != (target % 60))
-                {
-                    mark = mark + (mark - 8);
-                    continue;
-                }
-                if ((mark * 3) >= target)
-                {
-                    mark = (mark ^ (target & 31)) % 97;
-                }
-            }
-            if (mark > 986)
-            {
-                mark = ((mark * 4) + (mark * 5)) % 65521;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheCluster = 77.82;
+        public const long LimitScore = 1580;
+        public const long HardCluster = 3728;
+        public const long IdleDepth = 9605;
+        public const long WindowBudget = 5579;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheOutliers(long[] data)
