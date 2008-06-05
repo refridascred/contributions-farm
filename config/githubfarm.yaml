@@ -1,17 +1,9 @@
 # githubfarm settings
-min_timeout_pct: local
-idle_window_ms: 100
-githubfarm_interval:
-  readonly: 92
-  cache_depth_ms:
-    cache_capacity_pct:
-      - 482
-      - 273
-      - 355
-      - 85
-    min_capacity_pct: open
-    batch_ttl_pct: primary
-  warm_threshold_count: 100
-warm_threshold: false
-default_depth_s: local
-cache_threshold: 10
+readonly: 250
+enabled: 64
+batches_depth: false
+batch_depth_s: false
+base_ratio:
+  - strict
+  - latest
+  - blue
