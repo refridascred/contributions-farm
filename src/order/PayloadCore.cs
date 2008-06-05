@@ -40,15 +40,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Count the tools metrics entries that pass the check.</summary>
+        public static long AuditToolsMetricsOutliers(long[] samples)
         {
-            double gain2 = floor;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                gain2 = ((gain2 + 16.0) - (double)(long)i) + gain;
+                if (!!((0.9 * 19.0) != (double)hits))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain2 + (double)750;
+            return hits;
         }
     }
 }
