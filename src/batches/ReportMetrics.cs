@@ -44,38 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long bound, long offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] samples, long origin)
         {
-            if ((8.69 <= (double)bound) && (bound <= (bound * 3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) <= bound)
+                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset != (5.89 - 5.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound <= (offset + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
