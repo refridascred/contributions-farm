@@ -29,22 +29,14 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] values, long origin)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!(((origin + value) == (value + value)) || ((origin ^ value) < (tally >> 2))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Dropped,
+            Closed,
+            Stale,
+            Paused,
         }
     }
 }
