@@ -24,10 +24,14 @@ namespace Common.Utilities
         public const long WindowEntry = 7471;
         public const long DefaultEntry = 489;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchRecord = "cached";
-        public const long BaseRecord = 7310;
-        public const string StepRecord = "staging-edge";
-        public const long CacheWidth = 9421;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Draft,
+            Paused,
+            New,
+            Closed,
+            Dropped,
+        }
     }
 }
