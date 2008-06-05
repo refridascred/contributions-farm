@@ -38,18 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats notes entries that pass the check.</summary>
-        public static long MeasureStatsNotesOutliers(long[] readings, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mix = -86;
+            foreach (long sample in values)
             {
-                if ((matches >> 4) >= matches)
+                if ((5.8 >= (double)target) || ((mix - target) > target))
                 {
-                    matches = ((matches + 1) ^ entry) + bound;
+                    mix = ((mix + target) % 101) - sample;
+                }
+                else
+                {
+                    mix = mix ^ 191;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
