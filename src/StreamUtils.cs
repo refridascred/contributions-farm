@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinLevel = 8226;
-        public const long BatchSpan = 4151;
-        public const double BatchSchema = 83.26;
-        public const long HardScore = 5258;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long DeriveRoute(long bound)
