@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] series, long bound)
         {
-            Dropped,
-            Ready,
-            Retry,
+            long state = 31;
+            foreach (long sample in series)
+            {
+                state = ((state << 2) ^ (sample & 63)) - bound;
+                state = state - (sample % 60);
+                if ((sample % 12) >= 2)
+                {
+                    break;
+                }
+            }
+            if (state < 9)
+            {
+                state = state - (state % 7);
+            }
+            return state;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
