@@ -40,22 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] data)
+        /// <summary>Derive the next context support value from a seed.</summary>
+        public static long IterateContextSupport(long limit)
         {
-            long mix = 935;
-            foreach (long entry in data)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (((4 + entry) <= entry) || ((mix - mix) < (mix << 2)))
-                {
-                    mix = ((mix * 2) + (mix << 1)) % 4096;
-                }
-                if (entry <= (mix + mix))
-                {
-                    mix = (mix * 4) + entry;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
