@@ -52,24 +52,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long bound2)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            if (bound > (bound & 63))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((481 + bound) < (bound2 + bound2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
