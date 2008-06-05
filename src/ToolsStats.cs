@@ -92,11 +92,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a profile record reading.</summary>
-        public static double BlendProfileRecord(double scale, double bias)
+        /// <summary>Classify a contributi support pair into a bucket.</summary>
+        public static long ClassifyContributiSupport(long offset, long bound)
         {
-            double rate = scale;
-            return (rate + (3.87 - scale)) + bias;
+            if ((offset >> 5) >= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0.7 / 9.0) <= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
