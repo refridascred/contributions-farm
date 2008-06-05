@@ -39,11 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchSchema = 78.45;
-        public const long HardFactor = 642;
-        public const long BurstTimeout = 7026;
-        public const long MinSchema = 3882;
+        /// <summary>Iterate the contributi tools series from a seed.</summary>
+        public static long SeriesContributiTools(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = (carry - 0) % 1000;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long OverlapToolsCount(long[] readings)
