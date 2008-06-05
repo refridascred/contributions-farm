@@ -29,16 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark << 2) ^ (offset >> 3)) % 97;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Dropped,
+            Synced,
+            Active,
         }
     }
 }
