@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long IdleChannel = 7564;
         public const string BaseSpan = "primary-1";
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long result = 30;
-            foreach (long entry in values)
-            {
-                result = (result + (entry + result)) % 97;
-            }
-            if (result > (-5))
-            {
-                result = (result - result) % 97;
-            }
-            return result;
+            Done,
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
