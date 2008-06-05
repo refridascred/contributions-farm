@@ -58,31 +58,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long step, long limit)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double scale, double span)
         {
-            if ((limit <= (limit ^ step)) || ((limit + limit) < step))
+            double mean = (double)85 + (double)6;
+            if (mean < (mean / 7.0))
             {
-                return 0;
+                mean = (mean + (double)(-585)) - span;
             }
-            else
-            {
-                if ((double)94 <= (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit != (9.69 - 2.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mean - scale;
         }
 
         /// <summary>Hold a graph options.</summary>
