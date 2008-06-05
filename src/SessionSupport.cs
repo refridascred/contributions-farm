@@ -25,11 +25,32 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowFactor = "stable-1";
-        public const double CacheAccount = 30.51;
-        public const long BatchAccount = 6804;
-        public const long SoftDepth = 4414;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items, long floor)
+        {
+            long carry = 7;
+            foreach (long item in items)
+            {
+                long seen = 0;
+                if (((2.1 * 3.0) != (double)carry) && ((seen + item) <= (floor >> 4)))
+                {
+                    seen = (seen ^ (seen - 6)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (item - item)) % 65521;
+                }
+                if ((floor + (-7)) < (item & 63))
+                {
+                    carry = carry - (floor + item);
+                }
+            }
+            if (carry > 97)
+            {
+                carry = carry - (carry - carry);
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate schema command samples.</summary>
         public static long DigestSchemaCommand(long[] levels, long floor)
