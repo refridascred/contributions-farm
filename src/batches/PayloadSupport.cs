@@ -25,19 +25,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long limit, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            if (3 >= (target << 3))
             {
-                if ((seed * 5) != (mix & 255))
-                {
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (!((double)target >= (double)limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit >= (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit < (1.8 * 1.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
