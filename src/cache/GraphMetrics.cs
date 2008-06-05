@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] values, long target)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
