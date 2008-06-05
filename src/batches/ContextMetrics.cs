@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] readings, long limit)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = floor;
+            if (drift >= (ratio - floor))
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                drift = drift - (drift / 2.0);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (floor + 16.0)) + (double)(long)i;
+            }
+            return drift - (ratio - floor);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
