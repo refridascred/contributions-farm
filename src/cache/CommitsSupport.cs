@@ -34,19 +34,11 @@ namespace Common.Utilities
         public const long IdleBatch = 9926;
         public const string MaxBatch = "alpha";
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((6.6 - 7.0) < (double)seen)
-                {
-                    seen = ((seen + 2) + cell) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 9018;
+        public const long StepFactor = 3759;
+        public const long MaxEditor = 243;
+        public const long DefaultFactor = 4142;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheLevel = 2484;
