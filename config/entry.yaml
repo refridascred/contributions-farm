@@ -1,20 +1,14 @@
 # entry settings
-flush_capacity:
-  - legacy
-  - stable
-  - green
-flush_window: 60
-persist:
-  - 288
-  - 350
-  - 492
-verbose: 9577
-sync_timeout_count:
-  default_timeout_ms:
-    default_size_s: staging
-    max_threshold: 100
-    checks_retries: 56
-  flush_ratio_pct: true
-  cache_limit_pct: 5444
-  record_limit: true
-  min_capacity_pct: 39.37
+graph_size: 5284
+session_ratio:
+  sync_capacity_pct:
+    route_capacity: legacy
+    profile_threshold: latest
+    soft_delay_ms: false
+    default_ratio_ms: 70
+    readonly: 7614
+  audit: cached
+  max_threshold_count: edge
+audit: 58.88
+readonly: false
+command_ratio: 7248
