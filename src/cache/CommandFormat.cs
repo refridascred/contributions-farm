@@ -14,13 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] data, long bound)
         {
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
