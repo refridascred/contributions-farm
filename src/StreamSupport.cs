@@ -38,16 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] series, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                mark = ((mark << 3) ^ (mark ^ mark)) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
     }
 }
