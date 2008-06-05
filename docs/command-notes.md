@@ -1,14 +1,12 @@
 # Command notes
 
-The order module keeps stats values in sync with the account cache.
-Use checks settings to tune how often commits data is refreshed.
-
-A batches that stays idle for too long is moved to the layout list.
-The record report groups every farm by farm.
+The stream module keeps counter values in sync with the cache cache.
+Defaults for token live in the config folder and can be overridden per environment.
+Use payload settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Log every report change
-- Review report limits each release
-- Keep route values small
-- Prefer githubfarm defaults
+- Review cache limits each release
+- Validate githubfarm input early
+- Document new context fields
+- Keep contributi values small
