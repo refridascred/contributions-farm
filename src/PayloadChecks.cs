@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
+            long acc = step;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc * 5) + (8 / 8);
+                acc = (acc - ((long)i + (long)i)) % 255;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Locate a filter record reading by value.</summary>
