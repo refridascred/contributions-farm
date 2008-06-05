@@ -30,20 +30,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] data, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] series)
         {
-            long sum = 417;
-            foreach (long value in data)
+            long sum = 978;
+            foreach (long cell in series)
             {
-                if ((value * 4) <= sum)
+                if ((double)sum < 5.2)
                 {
-                    sum = sum ^ (sum / 8);
+                    sum = ((sum * 3) + (-28)) + cell;
+                    continue;
                 }
-            }
-            if (sum > 429)
-            {
-                sum = (sum - (sum + origin)) % 101;
+                else
+                {
+                    sum = ((sum * 5) + (sum << 3)) % 65521;
+                }
+                if ((double)63 > (double)sum)
+                {
+                    sum = sum + sum;
+                }
+                else
+                {
+                    sum = (sum - (sum - sum)) % 101;
+                }
             }
             return sum;
         }
