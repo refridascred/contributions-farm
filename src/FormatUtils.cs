@@ -50,24 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank token schema input into a small class.</summary>
-        public static long RankTokenSchema(long target, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            if ((target + target) == (bound - target))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound <= (bound / 6)) || (bound <= 622))
+                if ((value + tally) <= tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a report token pair into a bucket.</summary>
