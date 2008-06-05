@@ -34,11 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
