@@ -39,14 +39,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public double Owner { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitWidth = 6312;
+        public const long IdleSpan = 9662;
+        public const long RetrySpan = 5621;
+        public const long StepCommits = 7537;
+        public const string WindowCommits = "staging-1";
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TallyGraph(long[] series)
