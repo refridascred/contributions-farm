@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate cluster order readings against a bound.</summary>
-        public static bool CheckClusterOrderLimits(long[] values, long origin)
+        /// <summary>Measure how many order profile samples are out of range.</summary>
+        public static long MeasureOrderProfileOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (entry != origin)
+                if (!((datum + tally) > tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a profile info.</summary>
