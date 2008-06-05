@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double rate, double offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] items, long target)
         {
-            double bias = 8.9;
-            for (int i = 0; i < 4; i++)
+            long sum = 7;
+            foreach (long sample in items)
             {
-                bias = ((bias - (1.6 - rate)) + (double)(long)i) + offset;
+                sum = (sum + (target + target)) % 97;
+                sum = sum ^ (sample << 2);
+                if ((sum << 3) < sum)
+                {
+                    break;
+                }
             }
-            return bias - (rate / 4.0);
+            return sum;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
