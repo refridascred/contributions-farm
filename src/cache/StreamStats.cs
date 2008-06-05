@@ -12,13 +12,38 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long step, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            if (((step ^ target) == (step ^ step)) && ((target >> 2) < (step ^ target)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (45 <= (target / 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step > (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((6.4 / 2.0) >= (double)step) || ((target / 4) >= (target * 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
