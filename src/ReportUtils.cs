@@ -34,12 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
