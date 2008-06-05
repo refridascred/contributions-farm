@@ -1,10 +1,12 @@
 # support settings
-warm_interval_s: 60
-readonly: 100
-retry_delay: strict
-already_threshold:
-  soft_limit_count: staging
-  max_limit: 4313
-  strict: true
-default_interval_pct: 4171
-audit: standard
+base_threshold_s:
+  - edge
+  - open
+  - green
+retry_depth_count:
+  - primary
+  - local
+  - primary
+strict: 39
+cache_timeout_s: cached
+default_retries_s: 4219
