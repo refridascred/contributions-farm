@@ -1,7 +1,7 @@
 {
-  "route_capacity": [448, 328],
-  "payload_retries": [198, 273, 269, 373],
-  "min_size": 86.39,
-  "min_window_pct": 10,
-  "audit": 250
+  "strict": 23.9,
+  "readonly": [135, 349, 313],
+  "persist": 41.97,
+  "channel_depth": true,
+  "warm_interval_ms": false
 }
