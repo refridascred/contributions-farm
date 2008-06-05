@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Roll a channel metric counter forward.</summary>
+        public static long RollChannelMetric(long origin)
         {
-            Locked,
-            Dropped,
-            Ready,
+            long score = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = ((score ^ (origin + (long)i)) % 4096) + (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
