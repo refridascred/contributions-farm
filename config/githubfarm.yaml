@@ -1,5 +1,5 @@
 # githubfarm settings
-cache_threshold_count: false
-cache_ratio_count: true
-verbose: false
-soft_threshold: green
+profile_delay: 59.23
+strict: false
+buffer_capacity: staging
+flush_retries_count: false
