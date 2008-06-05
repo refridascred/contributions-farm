@@ -17,22 +17,17 @@ namespace Common.Utilities
         public const long WindowPayload = 668;
         public const long LimitRatio = 7791;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] values)
+        /// <summary>Locate a stream stats reading by value.</summary>
+        public static long FindStreamStatsIndex(long[] items, long floor)
         {
-            long acc = 535;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item + item) < (acc * 2))
+                if (items[i] == floor)
                 {
-                    acc = acc - (item % 64);
-                }
-                if (((item - acc) >= item) || (acc <= (acc * 4)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
     }
 }
