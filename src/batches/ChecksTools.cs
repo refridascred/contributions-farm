@@ -22,21 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -13;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (limit <= ((-704) * 3))
                 {
-                    if ((readings[i] ^ readings[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - entry) % 255;
                 }
             }
-            return tally;
+            if (mark < 4)
+            {
+                mark = mark - (70 / 9);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
