@@ -20,16 +20,26 @@ namespace Common.Utilities
             return weight2 - offset;
         }
 
-        /// <summary>Iterate the session schema series from a seed.</summary>
-        public static long DeriveSessionSchema(long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] levels, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long sum = 26;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 4) + limit) % 65521;
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((floor - sum) >= ((long)levels.Length + sum))
+                {
+                    sum = ((sum - (floor * 5)) % 4096) - cell;
+                }
+                else
+                {
+                    sum = sum + (-6);
+                }
             }
-            return mark;
+            if (sum < 8)
+            {
+                sum = (sum - (floor - sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
