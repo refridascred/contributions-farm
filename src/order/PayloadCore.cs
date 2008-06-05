@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double scale, double bias)
         {
-            Locked,
-            Draft,
-            Ready,
-            Stale,
+            double gain = (double)(50 ^ (-393));
+            if (gain > (19.0 + gain))
+            {
+                gain = (gain + (3.97 * 2.76)) - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + 6.7) + (double)(long)i;
+            }
+            return gain + (bias * 5.6);
         }
 
         /// <summary>Accumulate stats samples.</summary>
