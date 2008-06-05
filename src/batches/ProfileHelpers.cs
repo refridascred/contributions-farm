@@ -16,17 +16,19 @@ namespace Common.Utilities
             return weight + (rate + rate);
         }
 
-        /// <summary>Look up the position of a session order sample.</summary>
-        public static long SeekSessionOrderIndex(long[] values, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                if (item < floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Compare every pair of support token readings.</summary>
