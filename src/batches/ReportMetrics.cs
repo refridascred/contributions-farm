@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (!(hits <= (reading << 2)))
+                if (((double)item == (1.0 + 3.79)) || ((seen >> 4) < seen))
                 {
-                    hits = hits + 2;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
