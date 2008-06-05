@@ -1,14 +1,17 @@
 {
-  "retry_limit_ms": {
-    "persist": 7928,
-    "cache_delay_count": "strict",
-    "graph_retries": 33.56,
-    "batch_size_pct": "blue",
-    "audit": [441, 123, 370, 276],
-    "cache_ttl": 2.18
+  "retry_depth_s": 10.19,
+  "graph_timeout": {
+    "max_depth_pct": "open",
+    "githubfarm_ttl": [379, 212],
+    "context_retries": 54
   },
-  "already_depth": true,
-  "warm_threshold": 11.33,
-  "sync_size": 20.88,
-  "base_limit_ms": "strict"
+  "default_limit_count": {
+    "context_window": "edge",
+    "compress": true,
+    "enabled": [206, 414],
+    "dry_run": 72,
+    "soft_ttl_pct": "eu-west",
+    "poll_size_s": true
+  },
+  "audit": false
 }
