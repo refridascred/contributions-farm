@@ -81,17 +81,9 @@ namespace Common.Utilities
             return load + (weight + load);
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseScore = 9029;
+        public const long BatchNotes = 9247;
+        public const string RetrySize = "legacy-edge";
     }
 }
