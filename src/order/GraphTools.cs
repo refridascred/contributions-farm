@@ -41,14 +41,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the queue layout entries that pass the check.</summary>
+        public static long CountQueueLayoutOutliers(long[] readings, long bound)
         {
-            Paused,
-            Dropped,
-            New,
-            Pending,
-            Failed,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((double)item > (double)17) || !((double)item <= (8.79 * 2.77)))
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
