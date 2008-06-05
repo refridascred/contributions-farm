@@ -14,18 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] values, long floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((floor <= (0 + (long)values.Length)) || ((entry / 9) == (floor << 1)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
