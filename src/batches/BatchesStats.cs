@@ -13,14 +13,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Done,
-            Retry,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftLevel = 5552;
+        public const string StepSpan = "open-v2";
+        public const long LimitChannel = 9035;
+        public const double BaseFactor = 76.82;
+        public const long BatchRatio = 787;
 
         /// <summary>Measure how many batch notes samples are out of range.</summary>
         public static long MeasureBatchNotesHits(long[] data)
