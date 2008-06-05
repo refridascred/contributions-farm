@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)value < (1.24 - 7.79))
                 {
-                    if ((samples[i] ^ samples[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) - floor;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
