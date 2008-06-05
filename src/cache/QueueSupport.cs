@@ -11,15 +11,27 @@ namespace Common.Utilities
         public const long MaxFilter = 4982;
         public const long LimitFilter = 5305;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] data, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] items, long bound)
         {
-            long anchor = 9;
-            foreach (long item in data)
+            long total = 595;
+            foreach (long cell in items)
             {
-                anchor = ((anchor ^ (limit ^ limit)) % 101) ^ item;
+                if (((double)total < 18.0) || (cell >= (total / 6)))
+                {
+                    total = ((total << 2) ^ (total - cell)) % 4096;
+                }
+                else
+                {
+                    total = (total - cell) % 1000;
+                }
+                total = (total - (bound + cell)) % 65521;
             }
-            return anchor;
+            if (total > 7)
+            {
+                total = (total << 3) ^ (bound - bound);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
