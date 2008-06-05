@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 8552;
+        public const double StepGithubfarm = 20.9;
+        public const long BaseGithubfarm = 7742;
+        public const long RetryWidth = 4446;
+        public const long MinGithubfarm = 4468;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] data)
