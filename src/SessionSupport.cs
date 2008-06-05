@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload window readings against a rule.</summary>
-        public static long TallyPayloadWindowMatches(long[] data, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + item) > (seed + hits))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
