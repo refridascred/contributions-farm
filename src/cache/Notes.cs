@@ -18,13 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long target)
         {
-            Dropped,
-            Active,
-            Failed,
-            New,
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = (acc - (target + target)) % 4096;
+                if ((acc - acc) < target)
+                {
+                    acc = (acc ^ (acc * 3)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of payload editor readings.</summary>
