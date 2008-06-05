@@ -1,8 +1,5 @@
 {
-  "min_window": 82,
-  "hard_limit_s": 2935,
-  "min_window_ms": 1901,
-  "report_window": 33,
-  "max_capacity_ms": 7798,
-  "min_interval_count": false
+  "queue_ttl": "blue",
+  "max_ratio": "standard",
+  "flush_delay_s": 63.66
 }
