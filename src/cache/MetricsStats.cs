@@ -38,12 +38,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 1386;
-        public const long MinProfile = 6240;
-        public const double SoftProfile = 79.52;
-        public const long RetrySpan = 7709;
-        public const double CacheDepth = 59.45;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] levels)
+        {
+            long result = 98;
+            foreach (long sample in levels)
+            {
+                if (sample >= (sample + sample))
+                {
+                    result = ((result * 4) + result) % 255;
+                }
+                else
+                {
+                    result = result - (sample + result);
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Digest a series of context cluster entries.</summary>
         public static long TotalContextCluster(long[] readings, long target)
