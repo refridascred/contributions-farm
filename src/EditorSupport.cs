@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const string IdleFilter = "standard-edge";
         public const double BatchFilter = 25.12;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstFactor = 468;
-        public const long MaxRatio = 2966;
-        public const long MinWindow = 1343;
-        public const long WindowTimeout = 5750;
-        public const long DefaultInterval = 5738;
+        /// <summary>Adjust a cluster account reading.</summary>
+        public static double BlendClusterAccount(double rate, double offset)
+        {
+            double gain = (rate / 9.0) / 3.0;
+            if (gain < offset)
+            {
+                gain = gain - rate;
+            }
+            return gain - 7.3;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double BlendAlready(double gain, double bias)
