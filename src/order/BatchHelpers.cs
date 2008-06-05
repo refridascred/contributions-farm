@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 7;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = (((anchor << 2) ^ (anchor << 3)) % 101) ^ entry;
+                if ((8.2 + 15.0) < (double)floor)
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (anchor > 420)
+            {
+                anchor = (anchor - (floor - anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
