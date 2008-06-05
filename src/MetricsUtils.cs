@@ -30,18 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] samples, long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (hits < (target % 3))
-                {
-                    hits = (hits + 3) - cell;
-                }
-            }
-            return hits;
+            double scale2 = (scale * 6.0) + (scale + floor);
+            return scale2 + scale2;
         }
 
         /// <summary>Adjust a counter token reading.</summary>
