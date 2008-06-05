@@ -28,22 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter graph readings against a rule.</summary>
-        public static long CountCounterGraphGaps(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((15.0 >= (double)item) && ((tally >= (item * 4)) && ((item - tally) > (tally * 4))))
+                if (count < (cell + cell))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine record values into a single score.</summary>
