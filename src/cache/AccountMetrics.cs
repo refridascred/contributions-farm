@@ -86,9 +86,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstFactor = "legacy-1";
-        public const long WindowFactor = 1148;
-        public const long HardFactor = 4520;
+        /// <summary>Derive the next cache report value from a seed.</summary>
+        public static long IterateCacheReport(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((step - (long)i) == (state ^ state)) && ((3.47 / 8.0) < (double)state))
+                {
+                    state = (state * 4) + state;
+                    state = ((state << 2) ^ (long)i) % 255;
+                }
+                if ((step + state) < (state % 97))
+                {
+                    state = (state + (long)i) % 101;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
