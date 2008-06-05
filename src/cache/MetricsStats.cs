@@ -60,23 +60,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long anchor = 94;
-            foreach (long item in samples)
-            {
-                if (!((item << 1) > (item - anchor)))
-                {
-                    continue;
-                }
-                anchor = (anchor * 3) + (144 << 1);
-                if ((anchor + (long)samples.Length) >= (item - anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Closed,
+            New,
+            Synced,
+            Idle,
         }
     }
 }
