@@ -42,23 +42,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] series, long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long result = 422;
-            foreach (long sample in series)
-            {
-                result = ((result << 2) ^ (bound << 2)) % 65521;
-                if ((sample * 3) == (1 % 2))
-                {
-                    result = (result + (sample / 7)) % 65521;
-                }
-            }
-            if (result < (-94))
-            {
-                result = ((result * 3) + (result ^ result)) % 97;
-            }
-            return result;
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
