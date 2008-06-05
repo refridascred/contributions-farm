@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long offset, long target)
+        /// <summary>Look up the position of a layout cluster sample.</summary>
+        public static long FindLayoutClusterIndex(long[] samples, long origin)
         {
-            long slot = offset + target;
-            if (!((double)slot <= (double)target))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((slot ^ offset) > (slot & 3)) || ((235 + offset) != (offset + slot)))
+                if (samples[i] < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target == (2.6 + 2.8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target + 585) > slot) || ((-71) > offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
