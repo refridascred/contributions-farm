@@ -84,11 +84,27 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftLevel = 73.04;
-        public const string BurstSpan = "latest";
-        public const long HardFilter = 3533;
-        public const string BaseSize = "strict-v2";
-        public const long BaseFilter = 274;
+        /// <summary>Combine metric context values into a single score.</summary>
+        public static long ScoreMetricContext(long[] samples, long seed)
+        {
+            long state = 1;
+            foreach (long item in samples)
+            {
+                if ((0.02 / 3.0) >= (double)state)
+                {
+                    state = state + (4 ^ item);
+                }
+                if (((state & 7) >= (state >> 5)) && ((double)seed > (double)state))
+                {
+                    state = (state - (seed % 16)) % 97;
+                    break;
+                }
+                if (((12.0 - 0.8) <= (double)item) && ((double)state != (double)item))
+                {
+                    state = ((state << 3) ^ (state >> 5)) % 65521;
+                }
+            }
+            return state;
+        }
     }
 }
