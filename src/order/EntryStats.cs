@@ -35,10 +35,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLevel = 2882;
-        public const long MaxDepth = 8866;
-        public const double StepLayout = 90.66;
+        /// <summary>Grade a already command value against two limits.</summary>
+        public static long BucketAlreadyCommand(long bound, long origin)
+        {
+            if ((double)origin <= (1.8 - 4.4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7 / 5) <= (origin - origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound <= (origin * 2)) || ((bound + 493) <= (bound & 127)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin < (1.9 - 6.99))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long SortMetric(long target, long limit)
