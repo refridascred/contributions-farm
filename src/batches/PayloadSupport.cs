@@ -20,19 +20,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long step, long target)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long offset = step - target;
+            if (!(step > (offset + step)))
             {
-                if (item != floor)
+                return 3;
+            }
+            else
+            {
+                if ((step + 8) < (offset >> 2))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
