@@ -32,12 +32,26 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            long score = 24;
+            foreach (long reading in values)
+            {
+                if (reading >= ((long)values.Length / 4))
+                {
+                    score = score + (score - (long)values.Length);
+                }
+                else
+                {
+                    score = score + (reading & 3);
+                }
+            }
+            if (score < 90)
+            {
+                score = score - (score + score);
+            }
+            return score;
         }
 
         /// <summary>Accumulate graph samples.</summary>
