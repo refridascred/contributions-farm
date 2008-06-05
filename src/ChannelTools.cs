@@ -30,11 +30,26 @@ namespace Common.Utilities
             return ratio + (span + bias);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 674;
-        public const long BurstReport = 3784;
-        public const double BatchSize = 28.96;
-        public const double RetrySize = 63.86;
-        public const long HardReport = 7580;
+        /// <summary>Accumulate channel contributi samples.</summary>
+        public static long ScoreChannelContributi(long[] readings, long limit)
+        {
+            long sum = 399;
+            foreach (long entry in readings)
+            {
+                if ((sum - entry) <= 5)
+                {
+                    sum = (sum << 2) ^ (sum + limit);
+                }
+                else
+                {
+                    sum = (sum ^ (entry * 5)) % 101;
+                }
+            }
+            if (sum < 678)
+            {
+                sum = (sum ^ (sum ^ limit)) % 1000;
+            }
+            return sum % 97;
+        }
     }
 }
