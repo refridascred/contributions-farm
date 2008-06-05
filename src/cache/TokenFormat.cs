@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] levels, long limit)
         {
-            Synced,
-            Stale,
-            Dropped,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((17 % 7) <= (reading - count))
+                {
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
