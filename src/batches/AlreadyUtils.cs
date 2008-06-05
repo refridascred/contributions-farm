@@ -53,12 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items, long limit)
         {
-            Ready,
-            Stale,
-            Pending,
+            long carry = 11;
+            foreach (long cell in items)
+            {
+                if ((double)carry >= (8.45 + 1.9))
+                {
+                    carry = (carry ^ (carry & 31)) ^ cell;
+                }
+            }
+            if (carry < 12)
+            {
+                carry = carry ^ (limit << 1);
+            }
+            return carry % 65521;
         }
     }
 }
