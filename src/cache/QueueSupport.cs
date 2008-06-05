@@ -19,23 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a profile githubfarm reading.</summary>
-        public static double ProjectProfileGithubfarm(double scale, double bias)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long offset)
         {
-            double mean = 6.9;
-            if (mean <= (double)36)
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
             {
-                mean = mean - (double)(-2);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean + 6.6;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + scale) + (double)(long)i;
-            }
-            return mean + (mean - bias);
+            return acc;
         }
 
         /// <summary>Adjust a farm reading.</summary>
