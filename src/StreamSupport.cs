@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] series)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((((double)reading == (5.5 / 7.0)) && ((reading / 7) < reading)) || ((double)count <= (6.1 * 3.98)))
+                if ((hits ^ reading) < hits)
                 {
-                    count = count + 2;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a metric header.</summary>
