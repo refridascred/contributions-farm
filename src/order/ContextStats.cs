@@ -31,12 +31,11 @@ namespace Common.Utilities
         public const long BatchRatio = 825;
         public const string SoftChannel = "open";
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepInterval = 3.67;
+        public const string MinBatch = "legacy";
+        public const string SoftBatch = "fallback-1";
+        public const string HardBatch = "latest-edge";
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long DigestNotes(long[] items)
