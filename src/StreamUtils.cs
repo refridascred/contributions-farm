@@ -45,22 +45,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many queue graph samples are out of range.</summary>
-        public static long MeasureQueueGraphGaps(long[] series, long offset)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((15.0 + 3.0) <= (double)seen) || ((0.5 + 2.0) >= (double)datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
