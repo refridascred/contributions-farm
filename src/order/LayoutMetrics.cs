@@ -19,18 +19,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a profile batches reading by value.</summary>
-        public static long LocateProfileBatchesIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTools = "staging-v2";
+        public const long HardCount = 9872;
+        public const long MaxTools = 956;
+        public const long BurstFactor = 543;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string DefaultCount = "alpha-edge";
