@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((double)item == (1.0 + 3.79)) || ((seen >> 4) < seen))
+                if (((7 >> 1) != (entry * 2)) || ((entry - hits) != (hits - entry)))
                 {
-                    seen = seen + 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
