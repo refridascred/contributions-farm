@@ -80,11 +80,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] readings)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item + item) < (item << 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
