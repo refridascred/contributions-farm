@@ -29,12 +29,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            Failed,
-            Ready,
-            Closed,
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix + (mix + bound)) % 97;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = (((mix * 2) + bound) % 255) - (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stats header.</summary>
