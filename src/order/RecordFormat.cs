@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of format order entries.</summary>
-        public static long DigestFormatOrder(long[] levels)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long carry = -3;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = ((carry - (411 + carry)) + (long)i) - reading;
-                }
-                carry = ((carry << 3) ^ (carry / 2)) % 65521;
-                carry = (carry - carry) % 1000;
-            }
-            return carry % 4096;
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Iterate the contributi counter series from a seed.</summary>
