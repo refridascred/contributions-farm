@@ -90,18 +90,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context githubfarm entries that pass the check.</summary>
-        public static long CountContextGithubfarmGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((((4.1 + 3.7) == (double)value) && (5.06 >= (double)matches)) && (((7.0 + 9.0) == (double)value) && ((4.7 + 4.58) <= (double)matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchSize = 54.94;
+        public const string CacheTools = "open-edge";
+        public const long MaxTools = 232;
+        public const long HardWidth = 4559;
+        public const long DefaultTools = 2248;
     }
 }
