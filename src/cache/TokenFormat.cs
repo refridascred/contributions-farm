@@ -39,23 +39,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next schema checks value from a seed.</summary>
-        public static long IterateSchemaChecks(long bound)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((14.0 / 7.0) == (double)bound)
-                {
-                    score = (score - (bound / 8)) % 1000;
-                    score = ((score * 3) + (bound + (long)i)) % 4096;
-                }
-                else
-                {
-                    score = (score << 2) ^ bound;
-                    score = ((score << 3) ^ (score & 127)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                score = ((score * 4) + (long)i) % 101;
             }
             return score;
         }
