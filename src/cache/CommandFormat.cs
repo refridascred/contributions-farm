@@ -45,9 +45,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 2460;
-        public const string MaxDepth = "cached";
-        public const double MinWidth = 60.93;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
