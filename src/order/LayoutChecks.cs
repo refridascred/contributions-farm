@@ -87,12 +87,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 17;
-        public const long RetryContributi = 2586;
-        public const string LimitInterval = "cached";
-        public const long DefaultScore = 9848;
-        public const long StepContributi = 2925;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Paused,
+            Done,
+            Dropped,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyMatches(long[] samples, long target)
