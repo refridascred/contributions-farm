@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftScore = 8540;
-        public const long IdleChannel = 7564;
-        public const string BaseSpan = "primary-1";
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
