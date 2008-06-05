@@ -23,13 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long target, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            if ((double)683 == (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.8 * 14.0) < (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
