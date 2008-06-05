@@ -1,14 +1,7 @@
 {
-  "layout_capacity": 67.22,
-  "strict": "local",
-  "cache_window_ms": 78.21,
-  "audit": [107, 48, 48, 207],
-  "default_ttl_pct": {
-    "format_interval": 5532,
-    "default_ratio": "local",
-    "already_limit": "local",
-    "default_ratio_ms": "edge",
-    "idle_capacity": false,
-    "min_threshold_s": false
-  }
+  "max_threshold": ["green", "strict", "eu-west", "latest"],
+  "base_window_pct": false,
+  "hard_interval": true,
+  "metric_retries": "strict",
+  "cache_capacity": "standard"
 }
