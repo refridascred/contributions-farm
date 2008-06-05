@@ -1,5 +1,8 @@
 {
-  "flush_timeout_count": true,
-  "enabled": "edge",
-  "cache_depth_count": 90
+  "token_interval": 60,
+  "notes_threshold": "edge",
+  "audit": ["legacy", "local"],
+  "burst_threshold_s": [493, 491, 485],
+  "burst_capacity_count": "eu-west",
+  "retry_size": "strict"
 }
