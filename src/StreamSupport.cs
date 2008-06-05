@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long SoftBudget = 8705;
         public const long MaxFactor = 1018;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] series)
         {
-            long total = 450;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                total = ((total * 3) + total) + limit;
-                if ((total - reading) < (379 << 1))
+                if (!((item + 63) > (hits / 2)))
                 {
-                    total = (total + total) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
