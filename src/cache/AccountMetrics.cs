@@ -70,19 +70,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (entry <= step)
+                if (!(((sample & 127) <= seed) && ((count + count) != (count % 60))))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
