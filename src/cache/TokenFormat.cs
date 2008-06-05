@@ -27,10 +27,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstRatio = 76.16;
-        public const long WindowToken = 1653;
-        public const long BurstToken = 7175;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long seed)
