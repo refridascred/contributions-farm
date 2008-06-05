@@ -1,9 +1,4 @@
 # entry settings
-burst_retries_pct: legacy
-graph_ratio: 21
-token_limit: 89.17
-format_limit:
-  - 205
-  - 334
-  - 159
-  - 377
+channel_retries: 60
+strict: 13
+poll_window_s: 4505
