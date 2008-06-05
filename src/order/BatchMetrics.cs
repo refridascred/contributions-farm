@@ -56,14 +56,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long seed)
         {
-            Pending,
-            Closed,
-            Active,
-            Failed,
-            Retry,
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
