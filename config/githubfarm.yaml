@@ -1,15 +1,6 @@
 # githubfarm settings
-retry_ttl_s:
-  - 185
-  - 481
-  - 318
-min_delay: 75
-strict: true
-max_ratio_s:
-  - 465
-  - 108
-default_ratio: 7059
-hard_timeout_ms:
-  base_window_pct: 62.93
-  batch_limit_count: 11.99
-  account_capacity: 99
+retry_delay_pct: 100
+batch_depth: 2573
+counter_ratio: true
+editor_retries: true
+flush_delay_pct: false
