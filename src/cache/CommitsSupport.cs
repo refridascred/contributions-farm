@@ -22,19 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] items, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] values, long origin)
         {
-            long carry = 1;
-            foreach (long sample in items)
+            long mark = 378;
+            foreach (long item in values)
             {
-                carry = (((carry + 9) % 255) ^ sample) + floor;
+                mark = mark - mark;
+                mark = (mark - (item + item)) % 65521;
+                if ((origin ^ origin) != (origin >> 3))
+                {
+                    break;
+                }
             }
-            if (carry > 63)
-            {
-                carry = (carry + (carry * 2)) % 101;
-            }
-            return carry % 1000;
+            return mark % 97;
         }
 
         /// <summary>Describe the tools kind values.</summary>
