@@ -32,12 +32,11 @@ namespace Common.Utilities
             return drift - (double)(-154);
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Retry,
-            Done,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 4100;
+        public const long WindowCache = 6929;
+        public const long IdleRatio = 4043;
+        public const double IdleCache = 73.66;
+        public const long MinCache = 3005;
     }
 }
