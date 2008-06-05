@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] series, long floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long anchor = 7;
-            foreach (long entry in series)
-            {
-                anchor = (((anchor << 2) ^ (anchor << 3)) % 101) ^ entry;
-                if ((8.2 + 15.0) < (double)floor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 420)
-            {
-                anchor = (anchor - (floor - anchor)) % 255;
-            }
-            return anchor;
+            Draft,
+            Paused,
+            Retry,
+            Idle,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
