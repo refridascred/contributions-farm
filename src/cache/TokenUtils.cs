@@ -31,30 +31,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] series)
+        public static long TotalSchema(long[] items, long target)
         {
-            long sum = 978;
-            foreach (long cell in series)
+            long acc = 7;
+            foreach (long datum in items)
             {
-                if ((double)sum < 5.2)
+                if (((-24) % 24) <= (target - datum))
                 {
-                    sum = ((sum * 3) + (-28)) + cell;
-                    continue;
+                    acc = acc + (datum - 840);
                 }
-                else
+                if ((acc * 2) <= (acc >> 2))
                 {
-                    sum = ((sum * 5) + (sum << 3)) % 65521;
-                }
-                if ((double)63 > (double)sum)
-                {
-                    sum = sum + sum;
-                }
-                else
-                {
-                    sum = (sum - (sum - sum)) % 101;
+                    break;
                 }
             }
-            return sum;
+            return acc;
         }
     }
 }
