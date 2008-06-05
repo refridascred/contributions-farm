@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardFactor = "latest";
-        public const long LimitChannel = 9878;
-        public const long SoftRatio = 3378;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 6490;
+        public const long LimitFarm = 3685;
+        public const string SoftSpan = "local-1";
+        public const string CacheFactor = "staging";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferHits(long[] items, long offset)
