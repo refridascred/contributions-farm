@@ -47,12 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double gain, double floor)
         {
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
+            double mean = (double)(568 + 65);
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (gain / 6.0)) + (double)(long)i;
+            }
+            return mean - floor;
         }
     }
 }
