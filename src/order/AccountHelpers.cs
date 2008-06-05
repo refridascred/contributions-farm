@@ -60,16 +60,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a already batches counter forward.</summary>
-        public static long StepAlreadyBatches(long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                score = score + target;
-                score = ((score * 2) + (long)i) % 1000;
+                if (!(((seen % 8) >= (seen + 17)) || ((2 - seen) <= (entry - seen))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
