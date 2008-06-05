@@ -24,13 +24,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Roll a stream metric counter forward.</summary>
+        public static long RollStreamMetric(long limit)
         {
-            Closed,
-            Draft,
-            Active,
-            Ready,
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
