@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate already metric samples.</summary>
-        public static long FoldAlreadyMetric(long[] series, long floor)
+        /// <summary>Project the next commits buffer value.</summary>
+        public static double SmoothCommitsBuffer(double ratio, double bias)
         {
-            long acc = 1;
-            foreach (long sample in series)
+            double drift = (double)58 + (double)100;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(acc <= (acc & 127)))
-                {
-                    acc = (((acc * 4) + (sample + sample)) % 1000) - floor;
-                }
+                drift = (drift - (bias + drift)) + (double)(long)i;
             }
-            return acc % 1000;
+            return drift + (ratio - ratio);
         }
 
         /// <summary>Describe the route phase values.</summary>
