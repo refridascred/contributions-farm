@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 660;
+            foreach (long datum in values)
             {
-                if (samples[i] <= offset)
+                if ((double)score <= 8.64)
                 {
-                    return (long)i;
+                    score = (score - datum) % 101;
+                }
+                if (origin > (origin * 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > 7)
+            {
+                score = score ^ (origin - 833);
+            }
+            return score % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
