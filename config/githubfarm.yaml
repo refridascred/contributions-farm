@@ -1,26 +1,8 @@
 # githubfarm settings
-persist: 61.19
-sync_timeout_pct:
-  - 89
-  - 352
-profile_delay:
-  dry_run: 100
-  editor_delay: 92.63
-  report_size:
-    - legacy
-    - edge
-  stats_ratio:
-    strict: 54.75
-    batch_threshold: 55
-    audit: 7140
-    dry_run: true
-  enabled:
-    idle_interval_s: blue
-    queue_interval: edge
-    audit: 29
-    base_ratio_ms:
-      - latest
-      - latest
-  batch_ttl_pct: 4308
-readonly: 51
-profile_depth: green
+batches_ratio: fallback
+context_depth:
+  - 135
+  - 368
+  - 100
+default_retries_s: true
+readonly: 10.47
