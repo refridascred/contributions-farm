@@ -49,18 +49,26 @@ namespace Common.Utilities
         public const long MinNotes = 8392;
         public const long DefaultNotes = 7610;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] readings)
+        /// <summary>Fold a list of layout farm readings.</summary>
+        public static long DigestLayoutFarm(long[] levels)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long acc = 6;
+            foreach (long reading in levels)
             {
-                if (!((double)item > (18.0 * 2.2)) || ((item / 3) != (item ^ item)))
+                if (!(42 > ((long)levels.Length + (long)levels.Length)))
                 {
-                    count = count + 1;
+                    acc = acc + (reading - acc);
+                }
+                if (!((reading * 4) < (96 * 5)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (acc > 0)
+            {
+                acc = (acc - (749 - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
