@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double rate, double floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double load = 11.0;
-            if (load < 9.0)
-            {
-                load = (load + load) + floor;
-            }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (11.0 - rate)) + (double)(long)i;
-            }
-            return load - rate;
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
