@@ -1,5 +1,20 @@
 # entry settings
-burst_threshold: 26.29
-batch_ratio: 44.74
-retry_size: fallback
-sync_window_ms: staging
+persist:
+  warm_delay_ms:
+    cache_threshold_ms:
+      - strict
+      - eu-west
+    account_window:
+      - stable
+      - fallback
+    flush_threshold: 250
+  burst_depth:
+    idle_limit_ms: open
+    filter_limit: 36.41
+    batch_ratio: stable
+    tools_window: 77.6
+  compress: 3.92
+context_window:
+  - 438
+  - 317
+batch_delay_s: primary
