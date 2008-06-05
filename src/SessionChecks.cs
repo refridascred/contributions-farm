@@ -27,11 +27,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long seed, long seed2)
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long edge = seed - seed2;
+            if (seed2 < (seed2 ^ (-5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed2 >> 3) >= (edge ^ seed2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed2 >> 2) <= edge) && ((double)edge > (15.0 * 1.5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed != (3.8 * 11.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
