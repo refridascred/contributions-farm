@@ -70,18 +70,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (((value ^ matches) >= (1 % 60)) && ((value % 64) >= (matches / 6)))
+                if (entry <= step)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
