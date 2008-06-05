@@ -35,19 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] samples, long origin)
         {
-            long result = 1;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result ^ sample) % 4096;
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 8)
-            {
-                result = (result ^ (result % 10)) % 97;
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
