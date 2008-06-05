@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] values, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long sum = -60;
+            foreach (long datum in samples)
             {
-                if (cell <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum - (sum << 1)) % 65521) - datum;
             }
-            return valid;
+            return sum % 65521;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
