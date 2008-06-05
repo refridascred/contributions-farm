@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const long HardCount = 7398;
         public const long LimitLevel = 4609;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            double gain = floor;
-            if (gain < ratio)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (9.28 * 0.22)) + (double)(long)i;
-            }
-            return gain - (0.89 * 0.58);
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
