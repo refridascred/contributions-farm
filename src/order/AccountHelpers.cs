@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] series, long step)
+        /// <summary>Rank stream account input into a small class.</summary>
+        public static long GradeStreamAccount(long bound, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long prev = bound + offset;
+            if ((bound & 7) >= (prev / 6))
             {
-                if ((series[i] == step) && ((series[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((prev << 1) >= (5 - 4))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound >> 3) <= (prev >> 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two account measurements.</summary>
