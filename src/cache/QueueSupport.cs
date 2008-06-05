@@ -34,19 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two format session measurements.</summary>
-        public static double SmoothFormatSession(double scale, double span)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long limit)
         {
-            double mean = scale;
-            if (mean < span)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                mean = mean - (double)84;
+                total = (total + 2) % 101;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + span;
+            return total;
         }
     }
 }
