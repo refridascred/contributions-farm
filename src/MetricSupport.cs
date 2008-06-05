@@ -17,39 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long step, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            long offset = step + target;
-            if (0.93 < (double)step)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (33 < offset)
+                if (sample > (hits % 10))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)target <= 6.7) && ((offset + target) < (offset - 344)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset / 8) > (151 + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
