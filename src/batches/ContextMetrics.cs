@@ -47,23 +47,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate schema stream samples.</summary>
-        public static long WeighSchemaStream(long[] data)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long sum = 27;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = (sum + 0) - (long)i;
-                }
-                sum = ((sum << 3) ^ (sum - reading)) % 255;
-            }
-            if (sum < 402)
-            {
-                sum = (sum - sum) % 4096;
-            }
-            return sum % 1000;
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
