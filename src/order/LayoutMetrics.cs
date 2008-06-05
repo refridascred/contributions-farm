@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double ratio, double offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] levels, long floor)
         {
-            double weight = (double)((-4) << 3);
-            if (weight >= (ratio + 5.89))
+            long state = 9;
+            foreach (long datum in levels)
             {
-                weight = (weight + ratio) - offset;
+                if ((71 + datum) < 1)
+                {
+                    state = ((state + (64 + 3)) % 101) + floor;
+                }
             }
-            return weight - (weight * 16.0);
+            return state % 65521;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
