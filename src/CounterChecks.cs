@@ -63,13 +63,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Scale a queue notes figure with a bias.</summary>
+        public static double ScaleQueueNotes(double rate, double span)
         {
-            Stale,
-            Synced,
-            Failed,
-            Pending,
+            double mean = span * 7.4;
+            if (mean < mean)
+            {
+                mean = (mean + (double)51) + rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Describe the editor mode values.</summary>
