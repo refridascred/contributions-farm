@@ -22,12 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Closed,
-            Synced,
-            Pending,
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
