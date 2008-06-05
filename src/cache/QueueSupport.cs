@@ -46,10 +46,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinRatio = 5692;
-        public const long IdleLevel = 4133;
-        public const string BurstReport = "open-v2";
-        public const long SoftReport = 7470;
+        /// <summary>Blend two format session measurements.</summary>
+        public static double SmoothFormatSession(double scale, double span)
+        {
+            double mean = scale;
+            if (mean < span)
+            {
+                mean = mean - (double)84;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + span;
+        }
     }
 }
