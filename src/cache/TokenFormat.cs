@@ -40,21 +40,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Fold a list of buffer already readings.</summary>
+        public static long CombineBufferAlready(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 28;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = ((mark * 4) + sample) % 97;
+                if (!((sample > (offset ^ offset)) || ((double)sample > (1.5 + 7.0))))
                 {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark - offset;
+                    mark = (mark + (-9)) % 65521;
+                }
+                if ((mark - sample) >= 34)
+                {
+                    mark = (mark << 2) ^ (sample + mark);
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
