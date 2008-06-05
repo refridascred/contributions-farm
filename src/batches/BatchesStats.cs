@@ -50,32 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long target, long floor)
+        /// <summary>Locate a batches profile reading by value.</summary>
+        public static long FindBatchesProfileIndex(long[] series, long origin)
         {
-            long lane = target + floor;
-            if (lane >= 1)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + 2) >= (target & 31))
+                if ((series[i] > origin) && ((series[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target & 1) != (floor + lane))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
