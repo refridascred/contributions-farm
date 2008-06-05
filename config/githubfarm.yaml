@@ -1,11 +1,19 @@
 # githubfarm settings
-batch_interval: 1421
-idle_delay: 76
-burst_interval_pct:
-  - 108
-  - 130
-poll_size_count: staging
-default_depth:
-  - 165
-  - 8
-hard_ratio_pct: strict
+readonly: fallback
+min_retries: legacy
+audit: 60
+retry_delay:
+  retry_interval_pct: false
+  soft_threshold: cached
+  order_capacity: 7221
+  dry_run:
+    base_limit_pct: local
+    min_timeout_count: eu-west
+    soft_interval_ms: standard
+  command_retries:
+    retry_interval_ms: 30
+    idle_ratio: 4623
+    layout_delay: 42.97
+    poll_ttl: 94
+    min_ttl_s: true
+    base_retries_ms: true
