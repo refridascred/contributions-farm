@@ -26,24 +26,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double bias, double offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            double weight = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)(long)i >= (6.4 + 8.1))
-                {
-                    acc = (acc - (seed - (long)i)) % 255;
-                    break;
-                }
-                else
-                {
-                    acc = (acc - ((long)i ^ seed)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                weight = ((weight + bias) + (double)(long)i) - offset;
             }
-            return acc;
+            return weight + (12.0 / 5.0);
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
