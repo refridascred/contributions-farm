@@ -1,11 +1,5 @@
 {
-  "window_retries": {
-    "retry_ttl_count": 1045,
-    "cache_threshold_ms": "primary",
-    "idle_threshold": ["fallback", "stable"]
-  },
-  "session_interval": "fallback",
-  "poll_window": 100,
-  "hard_size_pct": 500,
-  "hard_ttl": 12
+  "strict": [384, 291, 238, 127],
+  "batches_window": 77.41,
+  "sync_depth": ["legacy", "primary"]
 }
