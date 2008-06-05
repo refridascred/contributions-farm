@@ -51,18 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer tools readings against a rule.</summary>
-        public static long AuditBufferToolsHits(long[] items, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((bound & 7) < cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
