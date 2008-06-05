@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] samples)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((hits ^ reading) < hits)
+                if (datum >= step)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
