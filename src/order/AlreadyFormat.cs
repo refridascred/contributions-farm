@@ -24,21 +24,13 @@ namespace Common.Utilities
         public const double SoftBatches = 13.5;
         public const long IdleBatches = 944;
 
-        /// <summary>Compare every pair of context order readings.</summary>
-        public static long PairContextOrderCount(long[] series)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the commits state values.</summary>
