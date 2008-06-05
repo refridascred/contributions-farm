@@ -20,21 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the farm order series from a seed.</summary>
-        public static long IterateFarmOrder(long seed)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                long span = mark;
-                if (((seed << 3) > span) && ((span + (long)i) != (mark << 1)))
-                {
-                    mark = ((mark * 4) + (long)i) % 97;
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Match up layout samples.</summary>
