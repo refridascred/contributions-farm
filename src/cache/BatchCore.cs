@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((((long)i - offset) > ((-2) + offset)) || (acc >= (acc + (long)i)))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc + ((long)i + acc)) % 4096;
-                }
-                acc = acc - offset;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
