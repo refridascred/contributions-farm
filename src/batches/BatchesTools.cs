@@ -42,24 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a notes checks value against two limits.</summary>
-        public static long ClassifyNotesChecks(long seed, long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            if (((limit % 12) >= (limit - seed)) && (limit <= (seed / 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((seed % 12) != (limit / 8)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Stale,
+            Dropped,
         }
     }
 }
