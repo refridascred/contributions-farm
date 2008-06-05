@@ -32,21 +32,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)(long)i >= (6.4 + 8.1))
                 {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - (seed - (long)i)) % 255;
+                    break;
                 }
+                else
+                {
+                    acc = (acc - ((long)i ^ seed)) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the record mode values.</summary>
