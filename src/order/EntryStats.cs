@@ -22,17 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state << 2) ^ (floor * 2)) % 255;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "standard";
+        public const string MinRoute = "fallback-v2";
+        public const long DefaultRoute = 3838;
+        public const long HardSize = 6170;
+        public const long MaxRoute = 8864;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long RollMetric(long limit)
