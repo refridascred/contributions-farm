@@ -1,5 +1,6 @@
 # entry settings
-verbose: 96
-min_delay: true
-cluster_capacity: local
-strict: 88.39
+stream_delay: false
+session_capacity: 22.35
+warm_window_ms: 29
+queue_threshold: open
+burst_threshold_pct: 6363
