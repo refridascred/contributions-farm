@@ -30,23 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!!((reading + reading) >= 259))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleRatio = 4.08;
+        public const double MaxCommand = 60.68;
+        public const long SoftScore = 147;
+        public const long LimitCommand = 2317;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool GuardSessionLimits(long[] readings, long floor)
