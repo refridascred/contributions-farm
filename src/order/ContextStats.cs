@@ -31,31 +31,11 @@ namespace Common.Utilities
         public const long BatchRatio = 825;
         public const string SoftChannel = "open";
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long target, long seed)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            if (target < (seed ^ target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + target) == (target + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((target ^ target) <= 928) && ((target + seed) < (target + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of notes entries.</summary>
