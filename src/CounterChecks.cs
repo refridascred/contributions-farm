@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinInterval = 0.54;
-        public const long CacheBudget = 6751;
-        public const long BurstQueue = 831;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksMatches(long[] samples, long origin)
