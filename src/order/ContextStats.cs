@@ -56,13 +56,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] values, long origin)
         {
-            Draft,
-            Locked,
-            Idle,
-            Active,
+            long mix = -4;
+            foreach (long value in values)
+            {
+                if ((value - value) == (mix - mix))
+                {
+                    mix = (mix - origin) % 65521;
+                }
+            }
+            if (mix > (-79))
+            {
+                mix = (mix ^ mix) % 1000;
+            }
+            return mix;
         }
     }
 }
