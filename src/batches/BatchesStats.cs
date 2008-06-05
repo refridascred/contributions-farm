@@ -22,25 +22,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Measure how many batch notes samples are out of range.</summary>
+        public static long MeasureBatchNotesHits(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                state = ((state * 5) + state) % 97;
-                long cur = (state * 5) & 1;
-                if ((double)cur >= (9.94 - 13.0))
+                if ((reading + matches) == (reading / 6))
                 {
-                    cur = (cur << 2) ^ ((long)i % 16);
+                    matches = matches + 2;
                 }
                 else
                 {
-                    cur = cur + (state - state);
+                    matches = matches - 1;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a schema record.</summary>
