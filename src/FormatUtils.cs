@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate profile filter readings against a bound.</summary>
-        public static bool VerifyProfileFilterLimits(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "latest-v2";
+        public const long IdleFilter = 869;
+        public const double MinFilter = 35.38;
+        public const string MaxFilter = "primary-edge";
+        public const double MaxScore = 83.11;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
