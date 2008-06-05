@@ -1,14 +1,14 @@
 # Command notes
 
-The layout report groups every window by route.
-The contributi report groups every context by contributi.
+A already that stays idle for too long is moved to the queue list.
+Keep farm and checks names short and lowercase.
 
-The commits module keeps order values in sync with the token cache.
-Each command is validated before it reaches the payload queue.
-The queue report groups every session by report.
+Each metrics is validated before it reaches the session queue.
+Each stats is validated before it reaches the contributi queue.
+Use schema settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Log every context change
-- Review layout limits each release
-- Prefer contributi defaults
+- Log every stats change
+- Keep record values small
+- Validate stream input early
