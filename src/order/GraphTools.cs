@@ -20,19 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] samples, long limit)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
