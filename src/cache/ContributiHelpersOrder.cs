@@ -12,20 +12,22 @@ namespace Common.Utilities
         public const long HardCount = 7398;
         public const long LimitLevel = 4609;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((datum * 4) > 667)
                 {
-                    result = ((result + (result + result)) % 4096) ^ (long)i2;
+                    hits = hits + 3;
                 }
-                result = ((result << 3) ^ ((long)i + limit)) % 65521;
-                result = ((result * 4) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
