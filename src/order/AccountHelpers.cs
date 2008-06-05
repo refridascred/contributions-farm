@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] levels, long step)
         {
-            long score = 450;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (!((datum & 7) <= score))
+                if ((seen << 3) > seen)
                 {
-                    score = (score + (datum - score)) % 1000;
-                }
-                if ((double)score >= (6.0 - 8.0))
-                {
-                    score = ((score * 5) + (datum + datum)) % 65521;
+                    seen = ((seen + 1) + value) - step;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
