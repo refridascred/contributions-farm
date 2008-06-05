@@ -53,20 +53,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a schema filter counter forward.</summary>
-        public static long DeriveSchemaFilter(long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long mix = 60;
+            foreach (long item in series)
             {
-                total = (total - total) % 1000;
-                if (!((total ^ target) >= total))
-                {
-                    total = ((total * 4) + target) % 101;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                mix = ((mix + (mix - 90)) % 65521) + item;
             }
-            return total;
+            if (mix < (-730))
+            {
+                mix = mix ^ (mix << 1);
+            }
+            return mix;
         }
     }
 }
