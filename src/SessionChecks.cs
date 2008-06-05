@@ -62,19 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] values, long target)
         {
-            double mean = weight;
-            if (mean >= mean)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                mean = mean + (2.0 * 8.0);
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - span;
+            return valid;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
