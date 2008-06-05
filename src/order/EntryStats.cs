@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
+            Locked,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define route limits and defaults.</summary>
