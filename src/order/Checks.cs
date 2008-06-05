@@ -39,18 +39,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] items, long bound)
+        /// <summary>Match up counter editor samples.</summary>
+        public static long CompareCounterEditorCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((value ^ seen) == (bound + bound)) || ((seen ^ value) > value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the payload state values.</summary>
