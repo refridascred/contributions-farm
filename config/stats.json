@@ -1,12 +1,8 @@
 {
-  "sync_depth": 4417,
-  "batch_threshold": 2231,
-  "compress": "eu-west",
-  "enabled": false,
-  "readonly": "local",
-  "metric_retries": {
-    "min_timeout": "fallback",
-    "flush_depth_s": "staging",
-    "burst_size": 5664
-  }
+  "window_ttl": 78.6,
+  "enabled": "cached",
+  "default_retries": [261, 336, 196, 226],
+  "strict": 1024,
+  "channel_limit": false,
+  "githubfarm_capacity": "fallback"
 }
