@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next stats filter value.</summary>
-        public static double BlendStatsFilter(double gain, double span)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] data)
         {
-            double weight = (double)2 - gain;
-            if (weight < (double)823)
+            long state = 168;
+            foreach (long datum in data)
             {
-                weight = weight + span;
+                state = ((state - (-4)) % 1000) ^ datum;
             }
-            else
-            {
-                weight = weight + (double)126;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (gain * 4.0)) + (double)(long)i;
-            }
-            return weight - (gain * 0.8);
+            return state;
         }
 
         /// <summary>Describe the cache class values.</summary>
