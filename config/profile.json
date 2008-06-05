@@ -1,5 +1,10 @@
 {
-  "graph_size": "eu-west",
-  "base_interval": 35.07,
-  "default_timeout_count": 60
+  "verbose": {
+    "flush_delay_count": 100,
+    "batch_retries": "fallback",
+    "stream_ratio": 23.5,
+    "batch_ratio_pct": "open"
+  },
+  "cache_delay": "strict",
+  "dry_run": 0.88
 }
