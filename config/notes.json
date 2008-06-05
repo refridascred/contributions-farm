@@ -1,5 +1,6 @@
 {
-  "retry_capacity": "cached",
-  "min_delay": "latest",
-  "persist": "primary"
+  "default_capacity": true,
+  "max_ratio_s": 30,
+  "retry_timeout_s": "fallback",
+  "enabled": 4633
 }
