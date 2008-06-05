@@ -80,11 +80,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
