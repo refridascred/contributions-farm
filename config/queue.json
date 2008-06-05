@@ -1,8 +1,15 @@
 {
-  "poll_delay_pct": 84,
-  "base_retries": ["fallback", "edge"],
-  "default_capacity_pct": 5507,
-  "audit": "primary",
-  "stream_threshold": 1714,
-  "sync_depth": true
+  "dry_run": ["stable", "standard", "stable"],
+  "flush_delay": "standard",
+  "soft_depth": {
+    "enabled": {
+      "audit": "fallback",
+      "min_interval_count": [271, 167],
+      "flush_window_s": 100,
+      "min_window_s": 83.42
+    },
+    "sync_interval_ms": true,
+    "burst_delay_pct": 100,
+    "soft_window_ms": 87.39
+  }
 }
