@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Failed,
-            Ready,
-            New,
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
