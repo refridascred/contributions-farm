@@ -25,14 +25,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Done,
-            Locked,
-            Failed,
-            Active,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxLevel = 17.9;
+        public const long MinTimeout = 447;
+        public const long StepProfile = 275;
     }
 }
