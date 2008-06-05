@@ -1,7 +1,4 @@
 # githubfarm settings
-readonly: green
-burst_window_pct: strict
-metric_retries: 8348
-sync_ttl: standard
-persist: 89
-order_capacity: 5442
+retry_threshold_s: 60
+persist: edge
+retry_timeout: 500
