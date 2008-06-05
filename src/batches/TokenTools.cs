@@ -26,13 +26,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] series, long origin)
         {
-            Synced,
-            Paused,
-            Ready,
-            Draft,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
