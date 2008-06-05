@@ -28,18 +28,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many schema window samples are out of range.</summary>
-        public static long MeasureSchemaWindowHits(long[] levels, long offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (67 >= (count & 15))
-                {
-                    count = ((count + 3) + datum) + offset;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
