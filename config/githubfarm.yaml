@@ -1,6 +1,21 @@
 # githubfarm settings
-hard_ttl_ms: green
-hard_limit_s:
-  - 83
-  - 2
-compress: false
+filter_capacity: 60
+order_timeout:
+  batch_depth:
+    - standard
+    - green
+    - cached
+  persist: false
+  burst_interval_ms: stable
+  compress: fallback
+flush_timeout_count:
+  audit: primary
+  checks_timeout: true
+  hard_size: 79.44
+  profile_ttl:
+    - 239
+    - 375
+    - 167
+    - 205
+  enabled: 9455
+dry_run: 78
