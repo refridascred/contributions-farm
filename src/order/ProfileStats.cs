@@ -13,30 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] samples, long target)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long score = 3;
-            foreach (long cell in samples)
-            {
-                if ((double)cell >= (0.58 - 1.72))
-                {
-                    score = (score << 3) ^ (target / 2);
-                }
-                if ((target - score) >= score)
-                {
-                    score = score ^ 8;
-                }
-                else
-                {
-                    score = (score << 3) ^ (cell << 1);
-                }
-                if (cell < (8 / 4))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the profile status values.</summary>
