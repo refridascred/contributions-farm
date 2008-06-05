@@ -30,11 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public double Total { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
