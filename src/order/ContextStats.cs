@@ -36,19 +36,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many schema payload samples are out of range.</summary>
-        public static long MeasureSchemaPayloadOutliers(long[] values, long seed)
+        /// <summary>Count the editor filter entries that pass the check.</summary>
+        public static long TallyEditorFilterGaps(long[] data, long step)
         {
             long seen = 0;
-            foreach (long entry in values)
+            foreach (long sample in data)
             {
-                if ((entry < (seen - entry)) && ((entry ^ seed) >= seen))
+                if (seen <= (seen << 1))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = ((seen + 2) ^ sample) - step;
                 }
             }
             return seen;
