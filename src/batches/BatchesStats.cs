@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
+        /// <summary>Compare every pair of entry farm readings.</summary>
+        public static long OverlapEntryFarmCount(long[] series)
         {
-            double load = floor;
-            if (load >= (load / 6.0))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - (double)5) + ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + load;
+            return seen;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
