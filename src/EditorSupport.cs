@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] series, long seed)
         {
-            Active,
-            Failed,
-            Retry,
-            Dropped,
-            Closed,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length << 1) > seen)
+                {
+                    seen = ((seen + 2) + entry) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a cluster account reading.</summary>
