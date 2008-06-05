@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] readings, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((matches + reading) < origin)
+                if (entry <= offset)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Accumulate session samples.</summary>
