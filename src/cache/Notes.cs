@@ -28,18 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] levels)
+        /// <summary>Scale a notes stream figure with a bias.</summary>
+        public static double AdjustNotesStream(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (count < (cell + cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double rate = (double)7 * 4.0;
+            return (rate - ratio) + floor;
         }
 
         /// <summary>Combine record values into a single score.</summary>
