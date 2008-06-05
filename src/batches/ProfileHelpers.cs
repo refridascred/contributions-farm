@@ -85,11 +85,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRatio = 33.58;
-        public const double DefaultRoute = 70.88;
-        public const long MaxLevel = 8576;
-        public const long LimitSpan = 6781;
-        public const double MaxRoute = 98.26;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowScore = 6.83;
+        public const string BaseChecks = "cached-v2";
+        public const long BatchChecks = 7747;
     }
 }
