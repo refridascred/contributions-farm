@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((4.6 - 19.0) != (double)tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Blend two buffer notes measurements.</summary>
