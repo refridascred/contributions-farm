@@ -1,4 +1,13 @@
 # support settings
-payload_depth: local
-base_retries: 9691
-contributi_threshold: 91.14
+retry_interval: 88.4
+retry_retries_count: 40
+flush_ttl_ms:
+  min_retries:
+    - 87
+    - 25
+  readonly: fallback
+  metric_capacity: 7979
+verbose: true
+stats_window:
+  - 56
+  - 471
