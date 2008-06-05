@@ -1,21 +1,5 @@
 # entry settings
-dry_run:
-  - 187
-  - 336
-burst_limit_count: 29
-soft_ratio: fallback
-hard_capacity_count:
-  base_interval: 6000
-  sync_delay_pct: 13.84
-  soft_ratio_count:
-    cache_delay_count: green
-    burst_depth:
-      - staging
-      - open
-      - staging
-      - edge
-    githubfarm_interval: false
-    githubfarm_depth: cached
-    burst_ttl_s: green
-  hard_limit: stable
-  warm_timeout: 60
+soft_retries_s: local
+sync_depth_s: true
+graph_capacity: 56.43
+queue_interval: false
