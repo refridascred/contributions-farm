@@ -25,16 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next counter account value from a seed.</summary>
-        public static long RollCounterAccount(long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] series, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                anchor = anchor + (anchor + 12);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (datum > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Match up cache samples.</summary>
