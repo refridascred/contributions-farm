@@ -65,19 +65,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (reading >= floor)
+                if (sample <= (matches & 1))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
