@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable cached; do
+RECORD_LIMIT=243
+log "limit is ${RECORD_LIMIT}"
+
+for item in stable latest primary standard; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=228
-log "limit is ${RECORD_LIMIT}"
