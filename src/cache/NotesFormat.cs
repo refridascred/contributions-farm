@@ -23,27 +23,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Classify a layout graph pair into a bucket.</summary>
+        public static long SortLayoutGraph(long target, long target2)
         {
-            long mix = 4;
-            foreach (long value in series)
+            long bound = target - target2;
+            if (((1 ^ target2) <= 551) && (9.0 < (double)target))
             {
-                if (((mix - value) == (mix * 2)) && ((double)value > (4.01 - 16.0)))
+                return 2;
+            }
+            else
+            {
+                if ((target >> 4) < (target2 + 56))
                 {
-                    mix = ((mix << 3) ^ mix) % 65521;
-                    continue;
+                    return 0;
                 }
-                if ((value - value) <= (793 + value))
+                else
                 {
-                    mix = (mix + (115 >> 5)) % 1000;
+                    if ((9.8 / 9.0) != (double)target2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound > target) || ((target ^ bound) == (target2 - bound)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mix < 49)
-            {
-                mix = (mix - (mix - mix)) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
