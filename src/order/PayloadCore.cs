@@ -28,10 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftInterval = 4505;
-        public const string WindowSpan = "cached-v2";
-        public const long RetryStream = 1639;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] items, long offset)
+        {
+            long anchor = 9;
+            foreach (long entry in items)
+            {
+                if ((anchor << 2) < entry)
+                {
+                    anchor = ((anchor * 3) + (offset >> 3)) % 97;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double AdjustCommits(double weight, double span)
