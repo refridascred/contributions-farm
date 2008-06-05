@@ -62,19 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long carry = 35;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((sample + sample) < (sample / 8))
                 {
-                    state = (((state << 3) ^ (long)i) % 101) - (long)i2;
+                    carry = ((carry << 2) ^ (0 >> 2)) % 101;
                 }
-                state = ((state * 5) + (long)i) % 65521;
+                carry = carry + (sample % 10);
             }
-            return state;
+            if (carry < 4)
+            {
+                carry = ((carry << 2) ^ ((-87) + carry)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the channel mode values.</summary>
