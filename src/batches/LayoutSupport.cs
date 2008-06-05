@@ -47,28 +47,18 @@ namespace Common.Utilities
         public const long MinPayload = 3086;
         public const string StepCount = "strict-edge";
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] samples)
         {
-            long total = 82;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                total = total ^ total;
-                if (!((entry * 5) >= (entry - total)))
+                if ((((matches - matches) <= (matches & 1)) || ((matches + item) <= item)) || ((double)item >= (double)matches))
                 {
-                    total = (total + (9 * 5)) % 1000;
-                }
-                total = (total ^ (entry - total)) % 101;
-                if ((486 - (-572)) != (entry >> 3))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (total < 90)
-            {
-                total = ((total << 2) ^ (356 & 3)) % 255;
-            }
-            return total % 97;
+            return matches;
         }
     }
 }
