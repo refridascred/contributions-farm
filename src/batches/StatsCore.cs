@@ -67,26 +67,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels, long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] values, long offset)
         {
-            long total = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((37 >= seed) && (item >= (seed - 0)))
+                if (cell > offset)
                 {
-                    total = ((total << 3) ^ (seed & 127)) % 97;
-                }
-                else
-                {
-                    total = (total - (item << 2)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (total > 3)
-            {
-                total = total + (seed ^ 14);
-            }
-            return total;
+            return ready;
         }
     }
 }
