@@ -46,11 +46,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Derive the next githubfarm order value from a seed.</summary>
+        public static long StepGithubfarmOrder(long limit)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry << 3) ^ (limit >> 1);
+                carry = (carry + (carry - carry)) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metrics header.</summary>
