@@ -48,32 +48,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long seed, long floor)
-        {
-            long prev = seed ^ floor;
-            if ((prev ^ seed) >= 486)
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor > (prev / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)0 >= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 3528;
+        public const long MinDepth = 6040;
+        public const string HardCache = "open-v2";
+        public const long IdleBudget = 7686;
+        public const string IdleCache = "fallback-1";
     }
 }
