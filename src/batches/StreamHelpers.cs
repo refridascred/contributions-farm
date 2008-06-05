@@ -26,26 +26,18 @@ namespace Common.Utilities
         public const long MinCommits = 663;
         public const long MinWidth = 9496;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] data, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data, long limit)
         {
-            long mark = 836;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (!((mark % 60) != (bound * 3)))
+                if (cell < (seen + 1))
                 {
-                    mark = mark ^ bound;
-                }
-                if ((mark & 31) != (mark + sample))
-                {
-                    break;
+                    seen = (seen + 3) - limit;
                 }
             }
-            if (mark < 4)
-            {
-                mark = (mark << 3) ^ (bound - mark);
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
