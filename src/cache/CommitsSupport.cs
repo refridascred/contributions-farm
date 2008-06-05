@@ -53,11 +53,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheLevel = 2484;
-        public const double IdleRoute = 4.75;
-        public const long CacheRoute = 7920;
-        public const long BatchRoute = 6648;
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double floor)
+        {
+            double load = (weight + weight) / 9.0;
+            if (load >= floor)
+            {
+                load = load + 19.0;
+            }
+            else
+            {
+                load = load + 4.1;
+            }
+            return load + (weight + load);
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long SeekSessionIndex(long[] readings, long target)
