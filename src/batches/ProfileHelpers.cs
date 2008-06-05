@@ -42,19 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] levels, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            long mark = 4;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (mix + (mix - step)) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                mark = (((mark << 2) ^ (mark + cell)) % 1000) + seed;
             }
-            return mix;
+            return mark % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
