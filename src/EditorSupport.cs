@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long DigestClusterEntry(long[] samples)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            long mark = 57;
-            foreach (long value in samples)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(mark > (value >> 5)))
-                {
-                    mark = (mark << 3) ^ mark;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
