@@ -16,18 +16,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] samples, long offset)
+        /// <summary>Rank payload layout input into a small class.</summary>
+        public static long BucketPayloadLayout(long limit, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            if (!((limit % 2) > (80 + target)))
             {
-                if ((seen / 7) <= (datum - seen))
+                return 7;
+            }
+            else
+            {
+                if (!((target >> 1) > (limit << 3)))
                 {
-                    seen = (seen + 1) - offset;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target <= (19.0 * 20.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
