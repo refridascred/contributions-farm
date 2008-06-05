@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine stream graph values into a single score.</summary>
-        public static long CombineStreamGraph(long[] levels)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double weight, double offset)
         {
-            long sum = 8;
-            foreach (long value in levels)
+            double weight2 = offset - (weight - weight);
+            if (weight2 >= (double)18)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = (sum ^ (value + (long)i)) % 97;
-                }
-                if (sum >= (value + sum))
-                {
-                    sum = ((sum * 2) + (value - 281)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (value + value)) % 97;
-                }
+                weight2 = weight2 - 1.5;
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - (weight + offset)) + (double)(long)i;
+            }
+            return weight2 - offset;
         }
 
         /// <summary>Iterate the session schema series from a seed.</summary>
