@@ -28,18 +28,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mix = 51;
+            foreach (long entry in items)
             {
-                if (4.6 > (double)seen)
+                if ((entry - (long)items.Length) >= 9)
                 {
-                    seen = (seen + 2) + entry;
+                    mix = mix - mix;
                 }
             }
-            return seen;
+            if (mix < (-2))
+            {
+                mix = (mix ^ (9 * 5)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
