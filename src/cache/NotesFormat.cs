@@ -13,12 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Derive the next format command value from a seed.</summary>
+        public static long StepFormatCommand(long step)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long carry = step;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a commits record.</summary>
