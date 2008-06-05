@@ -48,38 +48,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long bound, long step)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            if (!(step <= (bound % 3)))
+            long anchor = 910;
+            foreach (long datum in samples)
             {
-                return 2;
+                anchor = (anchor + (datum + datum)) % 97;
             }
-            else
-            {
-                if ((bound - step) <= (-233))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((6 + bound) >= (step & 15)) && (step <= (bound & 127)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step * 4) == (step + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return anchor % 97;
         }
     }
 }
