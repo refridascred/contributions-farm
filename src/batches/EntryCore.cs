@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] levels, long bound)
+        /// <summary>Blend two metrics metric measurements.</summary>
+        public static double SmoothMetricsMetric(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = (double)(16 ^ 12);
+            if (bias2 >= (double)7)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 - weight) - bias;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - weight) + (double)(long)i;
+            }
+            return bias2 - (double)8;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
