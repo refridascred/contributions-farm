@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor metrics readings.</summary>
-        public static long TotalEditorMetrics(long[] series, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] series, long step)
         {
-            long sum = 56;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (!((double)sample < (double)320))
+                if (entry <= step)
                 {
-                    sum = ((sum + (sum ^ sample)) % 1000) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Describe the channel state values.</summary>
