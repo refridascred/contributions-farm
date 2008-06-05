@@ -71,12 +71,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] data, long step)
         {
-            Active,
-            Queued,
-            Stale,
+            long acc = 18;
+            foreach (long cell in data)
+            {
+                if ((acc - step) > (90 / 2))
+                {
+                    continue;
+                }
+                if (76 < (cell + acc))
+                {
+                    acc = (acc - acc) % 255;
+                }
+            }
+            if (acc < 429)
+            {
+                acc = ((acc * 3) + (649 - 1)) % 1000;
+            }
+            return acc;
         }
     }
 }
