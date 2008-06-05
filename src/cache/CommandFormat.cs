@@ -44,18 +44,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit stats format readings against a rule.</summary>
-        public static long TallyStatsFormatHits(long[] items)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum % 5) == (datum + datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            New,
+            Paused,
+            Idle,
+            Retry,
         }
     }
 }
