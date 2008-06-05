@@ -77,22 +77,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] values)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((long)values.Length == (cell / 7))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Done,
+            Pending,
         }
     }
 }
