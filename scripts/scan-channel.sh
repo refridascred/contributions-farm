@@ -6,17 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-staging}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=259
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for item in latest strict cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
