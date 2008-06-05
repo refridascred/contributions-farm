@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long CacheBudget = 6751;
         public const long BurstQueue = 831;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(step <= ((-273) - 75)))
-                {
-                    acc = (acc + (155 - step)) % 65521;
-                }
-                else
-                {
-                    acc = (acc * 3) + step;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
