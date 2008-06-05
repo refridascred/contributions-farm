@@ -23,14 +23,31 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long step)
         {
-            Idle,
-            Failed,
-            Done,
-            Active,
-            Locked,
+            if (floor < (21 - 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((649 + floor) == (floor * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((0.3 * 5.79) == (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
