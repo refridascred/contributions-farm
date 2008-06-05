@@ -53,10 +53,20 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchBudget = 9996;
-        public const long CacheCount = 8790;
-        public const long MaxCount = 2066;
-        public const long HardSchema = 9692;
+        /// <summary>Roll a schema filter counter forward.</summary>
+        public static long DeriveSchemaFilter(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 4; i++)
+            {
+                total = (total - total) % 1000;
+                if (!((total ^ target) >= total))
+                {
+                    total = ((total * 4) + target) % 101;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
