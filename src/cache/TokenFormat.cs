@@ -20,21 +20,19 @@ namespace Common.Utilities
             return weight2 - offset;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value < step)
                 {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
