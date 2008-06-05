@@ -16,13 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Ready,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardRatio = 3218;
+        public const double CacheWindow = 32.84;
+        public const string RetryWindow = "fallback";
+        public const long RetryDepth = 4193;
+        public const long SoftFactor = 4306;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
