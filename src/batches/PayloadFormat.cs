@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many support editor samples are out of range.</summary>
-        public static long TallySupportEditorGaps(long[] readings, long target)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)item != (3.27 + 11.0)))
-                {
-                    count = (count + 3) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
