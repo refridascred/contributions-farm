@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseInterval = 56.23;
-        public const long IdleStream = 8759;
-        public const double HardStream = 96.43;
-        public const long DefaultLevel = 5984;
-        public const long LimitStream = 8858;
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double scale, double span)
+        {
+            double load = scale;
+            if (load > scale)
+            {
+                load = load - (double)72;
+            }
+            else
+            {
+                load = load - (span - span);
+            }
+            return load + (double)567;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long limit)
