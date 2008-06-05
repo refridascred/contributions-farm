@@ -29,13 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] samples, long offset)
         {
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = 517;
+            foreach (long value in samples)
+            {
+                if ((value + mark) == (mark / 3))
+                {
+                    mark = ((mark * 2) + (value / 4)) % 1000;
+                }
+            }
+            if (mark < 712)
+            {
+                mark = mark + (offset - offset);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
