@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count checks counter pairs that satisfy a relation.</summary>
-        public static long CompareChecksCounterCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 3252;
+        public const double DefaultSchema = 33.56;
+        public const double LimitSchema = 22.98;
+        public const long SoftSchema = 9584;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
