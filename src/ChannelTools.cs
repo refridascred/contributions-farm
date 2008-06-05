@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] values, long limit)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
