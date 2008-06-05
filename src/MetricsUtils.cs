@@ -52,12 +52,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Roll a record githubfarm counter forward.</summary>
+        public static long StepRecordGithubfarm(long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long state = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                state = (state ^ (state - 164)) % 1000;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
