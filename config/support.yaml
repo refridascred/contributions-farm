@@ -1,12 +1,27 @@
 # support settings
-enabled: 500
-warm_delay_ms:
-  - cached
-  - cached
-  - standard
-  - staging
-channel_capacity:
-  - 255
-  - 30
-base_ratio_ms: legacy
-min_interval: 10.77
+readonly:
+  flush_delay: 78.36
+  compress: 4740
+  strict: 24.78
+  retry_ratio_count: 7698
+  command_timeout:
+    - primary
+    - cached
+    - legacy
+    - standard
+  soft_ratio: false
+retry_timeout: false
+burst_ratio_count:
+  session_capacity:
+    - 18
+    - 150
+    - 109
+  cache_delay_ms: fallback
+  retry_delay_s:
+    hard_ttl_count: 42
+    burst_retries_pct: 250
+    retry_ttl_ms: 21.84
+    sync_threshold_count: 500
+    flush_interval_count: 90.17
+    hard_interval: edge
+  hard_timeout_pct: 58.52
