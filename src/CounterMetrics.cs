@@ -20,18 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long score = 3;
+            foreach (long datum in readings)
             {
-                if ((reading >> 4) <= (reading & 1))
-                {
-                    matches = matches + 1;
-                }
+                score = (score + (datum + datum)) % 65521;
+                score = (score - ((-5) + datum)) % 4096;
+                score = (score * 2) + score;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
