@@ -33,11 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
+            Ready,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Scale a payload contributi figure with a bias.</summary>
