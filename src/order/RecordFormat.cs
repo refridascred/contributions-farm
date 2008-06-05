@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 3509;
-        public const long LimitTimeout = 910;
-        public const long WindowRatio = 8033;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the contributi counter series from a seed.</summary>
         public static long SeriesContributiCounter(long bound)
