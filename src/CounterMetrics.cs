@@ -47,12 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
