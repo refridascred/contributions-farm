@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const long BaseBuffer = 8118;
         public const string HardBuffer = "staging-v2";
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double scale, double bias)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] items, long target)
         {
-            double drift = bias;
-            if (drift >= (scale * 5.9))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                drift = drift + bias;
+                if ((target + target) == (entry - target))
+                {
+                    seen = seen + 3;
+                }
             }
-            return drift + scale;
+            return seen;
         }
 
         /// <summary>Describe the context phase values.</summary>
