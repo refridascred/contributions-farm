@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] values, long seed)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            long carry = 5;
-            foreach (long entry in values)
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                carry = (carry << 2) ^ seed;
-                if ((entry << 1) != (entry - (long)values.Length))
-                {
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Scale a channel commits figure with a bias.</summary>
