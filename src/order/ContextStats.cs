@@ -60,11 +60,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            Draft,
+            Locked,
+            Idle,
+            Active,
         }
     }
 }
