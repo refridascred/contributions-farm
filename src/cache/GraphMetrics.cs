@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] values, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (value < target)
+                if (sample != origin)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Describe the command kind values.</summary>
