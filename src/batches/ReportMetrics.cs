@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] readings)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (((7 >> 1) != (entry * 2)) || ((entry - hits) != (hits - entry)))
+                if ((matches % 24) >= (entry << 3))
                 {
-                    hits = hits + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate cache samples.</summary>
