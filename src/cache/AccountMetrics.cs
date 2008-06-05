@@ -91,11 +91,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 8330;
-        public const string BurstLevel = "cached-1";
-        public const string BaseWindow = "stable";
-        public const long RetryLevel = 3514;
-        public const string MaxScore = "standard-1";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxCount = "cached";
+        public const double MaxChecks = 65.01;
+        public const double DefaultChecks = 41.2;
+        public const long CacheChecks = 371;
     }
 }
