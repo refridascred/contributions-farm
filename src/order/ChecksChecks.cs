@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] samples, long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
