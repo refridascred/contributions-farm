@@ -1,13 +1,6 @@
 {
-  "persist": false,
-  "channel_timeout": "staging",
-  "verbose": "eu-west",
-  "warm_window_s": {
-    "poll_interval_ms": 13,
-    "poll_ttl_pct": 40.97,
-    "enabled": 45.95,
-    "sync_window": 6.01,
-    "checks_capacity": true,
-    "filter_timeout": [463, 303]
-  }
+  "base_window_count": "stable",
+  "poll_timeout_pct": false,
+  "cache_capacity": 100,
+  "max_ttl_count": "standard"
 }
