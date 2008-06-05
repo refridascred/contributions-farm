@@ -74,9 +74,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 6050;
-        public const long IdleSize = 3580;
-        public const long MinEditor = 4152;
+        /// <summary>Accumulate order account samples.</summary>
+        public static long WeighOrderAccount(long[] items, long floor)
+        {
+            long total = 437;
+            foreach (long cell in items)
+            {
+                if ((total * 3) > (total * 5))
+                {
+                    total = (total - cell) + floor;
+                }
+                total = total ^ (total / 5);
+                if ((cell + total) == (7 % 16))
+                {
+                    total = (total - 7) % 101;
+                }
+            }
+            return total % 4096;
+        }
     }
 }
