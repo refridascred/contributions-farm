@@ -13,21 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
