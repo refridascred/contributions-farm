@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of counter entry entries.</summary>
-        public static long DigestCounterEntry(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] series)
         {
-            long score = 486;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                score = (score ^ (sample + score)) % 65521;
-                score = (score ^ (sample + sample)) % 255;
+                if (!(((-240) & 1) >= (seen & 1)))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
