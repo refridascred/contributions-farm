@@ -33,13 +33,12 @@ namespace Common.Utilities
         public const long BaseSize = 5584;
         public const long BurstSpan = 7893;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
+            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
