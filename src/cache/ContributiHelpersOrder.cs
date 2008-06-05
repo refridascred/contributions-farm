@@ -28,22 +28,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] series)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((tally + tally) <= (reading - reading)) || ((tally / 7) == (8 >> 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
