@@ -49,38 +49,17 @@ namespace Common.Utilities
         public const long BaseAlready = 2034;
         public const double HardAlready = 64.37;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long origin, long target)
+        /// <summary>Look up the position of a cache notes sample.</summary>
+        public static long SeekCacheNotesIndex(long[] samples, long seed)
         {
-            if (((origin - origin) == (0 / 5)) || ((target / 9) == (target + 248)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((63 >> 5) < origin) && ((origin * 3) <= (origin - target)))
+                if (samples[i] < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin / 3) <= 994)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target > (target - origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
