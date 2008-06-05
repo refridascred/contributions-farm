@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Draft,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "alpha-edge";
+        public const long DefaultTimeout = 3547;
+        public const long BatchWidth = 690;
+        public const double SoftBatch = 13.98;
+        public const long MaxBatch = 3974;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long ClassifyToken(long limit, long offset)
