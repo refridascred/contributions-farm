@@ -44,16 +44,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total - offset) % 4096;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 6595;
+        public const long StepSize = 1048;
+        public const long DefaultFactor = 3743;
     }
 }
