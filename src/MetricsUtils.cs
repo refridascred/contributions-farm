@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] series, long seed)
         {
-            Pending,
-            New,
-            Ready,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a report metrics reading.</summary>
