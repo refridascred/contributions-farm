@@ -1,13 +1,6 @@
 # githubfarm settings
-retry_depth_pct:
-  - 31
-  - 466
-base_retries:
-  schema_capacity: legacy
-  burst_threshold_s: 60.79
-  cache_timeout: primary
-  commits_size: 2956
-  graph_capacity: eu-west
-persist: 8608
-strict: blue
-dry_run: local
+sync_size_s:
+  - latest
+  - standard
+sync_window_s: latest
+cache_capacity_s: 2984
