@@ -31,18 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double rate = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if (value < (matches * 3))
-                {
-                    matches = matches + 1;
-                }
+                rate = ((rate + (scale / 8.0)) + (double)(long)i) - offset;
             }
-            return matches;
+            return rate - scale;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
