@@ -43,11 +43,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 191;
-        public const string BurstProfile = "strict";
-        public const double BurstScore = 19.78;
-        public const long MinFactor = 3996;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] values)
