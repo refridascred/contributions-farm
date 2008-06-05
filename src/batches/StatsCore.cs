@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((step % 100) == (610 * 5))
                 {
-                    if ((samples[i] + samples[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a commits info.</summary>
