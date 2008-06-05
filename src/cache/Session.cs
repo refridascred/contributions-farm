@@ -32,24 +32,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                total = total + 715;
-                if ((bound << 3) == (bound & 63))
-                {
-                    total = total - bound;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = (total - ((long)i2 % 2)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
