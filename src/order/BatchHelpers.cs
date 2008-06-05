@@ -31,17 +31,19 @@ namespace Common.Utilities
         public const long CacheFactor = 7577;
         public const long StepBudget = 8458;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] values, long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (values[i] <= step)
+                if (reading < floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
