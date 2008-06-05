@@ -18,17 +18,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a filter record reading by value.</summary>
-        public static long SeekFilterRecordIndex(long[] values, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 189;
+            foreach (long reading in levels)
             {
-                if (values[i] <= floor)
+                if ((336 + 596) == (7 + acc))
                 {
-                    return (long)i;
+                    acc = (acc + acc) % 255;
                 }
+                else
+                {
+                    acc = ((acc * 4) + (reading >> 5)) % 97;
+                    acc = (acc + acc) % 255;
+                }
+                acc = ((acc << 2) ^ reading) % 101;
+                acc = acc ^ reading;
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
