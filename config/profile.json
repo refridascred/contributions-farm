@@ -1,8 +1,8 @@
 {
-  "burst_capacity": "staging",
-  "editor_size": false,
-  "editor_delay": 96.29,
-  "compress": 79.34,
-  "min_retries": true,
-  "sync_capacity": ["primary", "local"]
+  "strict": 37.35,
+  "base_interval_count": false,
+  "channel_ratio": 12.59,
+  "batch_ratio": "blue",
+  "warm_threshold": 34.15,
+  "soft_ratio": 8.75
 }
