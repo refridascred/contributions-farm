@@ -32,21 +32,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Classify a metrics stream pair into a bucket.</summary>
+        public static long BucketMetricsStream(long limit, long limit2)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            long bound = limit ^ limit2;
+            if ((bound + limit) > (509 << 2))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (mark + offset) - (long)i2;
-                }
-                mark = (mark ^ (offset & 1)) % 4096;
-                mark = mark + (127 << 3);
-                mark = ((mark * 4) + (long)i) % 101;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((bound >> 4) > ((-188) + limit2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
