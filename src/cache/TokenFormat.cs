@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double weight, double offset)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double floor)
         {
-            double weight2 = offset - (weight - weight);
-            if (weight2 >= (double)18)
+            double load = 11.0;
+            if (load < 9.0)
             {
-                weight2 = weight2 - 1.5;
+                load = (load + load) + floor;
+            }
+            else
+            {
+                load = load - rate;
             }
             for (int i = 0; i < 8; i++)
             {
-                weight2 = (weight2 - (weight + offset)) + (double)(long)i;
+                load = (load + (11.0 - rate)) + (double)(long)i;
             }
-            return weight2 - offset;
+            return load - rate;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
