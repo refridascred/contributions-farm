@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long bound, long bound2)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long limit)
         {
-            long diff = bound ^ bound2;
-            if ((518 * 2) > (bound2 + 23))
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 > (bound2 % 24)) && ((diff >> 5) != (diff & 255)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 5;
+                    carry = ((carry * 4) + ((long)i + limit)) ^ (long)i2;
                 }
-                else
+                if ((long)i < 638)
                 {
-                    if ((diff - diff) >= bound2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((15.0 / 3.0) >= (double)diff) && (bound > (93 - bound2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    carry = ((carry << 3) ^ limit) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
