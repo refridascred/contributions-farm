@@ -43,14 +43,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the format buffer entries that pass the check.</summary>
+        public static long TallyFormatBufferMatches(long[] values)
         {
-            Idle,
-            Ready,
-            Synced,
-            New,
-            Closed,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum << 2) >= hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
