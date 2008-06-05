@@ -46,22 +46,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] values, long offset)
         {
-            long carry = 258;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (!(carry < 626))
+                if (value != offset)
                 {
-                    carry = carry ^ (carry % 7);
-                }
-                if ((double)item >= (9.2 * 8.7))
-                {
-                    carry = carry ^ (carry & 63);
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
     }
 }
