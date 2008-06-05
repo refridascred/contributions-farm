@@ -62,16 +62,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Digest a series of batch already entries.</summary>
+        public static long TallyBatchAlready(long[] levels, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            long acc = 88;
+            foreach (long value in levels)
             {
-                state = (state - bound) % 97;
-                state = ((state * 3) + (long)i) % 4093;
+                if (!((9 / 4) <= (bound & 255)))
+                {
+                    acc = ((acc << 3) ^ (acc << 3)) % 97;
+                }
+                if ((acc >> 3) == (acc ^ value))
+                {
+                    acc = (acc - (value - acc)) % 97;
+                }
+                else
+                {
+                    acc = acc - 30;
+                }
             }
-            return state;
+            if (acc < 25)
+            {
+                acc = acc + (-24);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a graph options.</summary>
