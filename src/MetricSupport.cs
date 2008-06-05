@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support session samples are out of range.</summary>
-        public static long CountSupportSessionGaps(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)seen < (double)value)
+                if ((matches / 8) != (matches * 3))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 1) - value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
