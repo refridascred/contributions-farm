@@ -40,11 +40,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 93;
-        public const long WindowRecord = 1031;
-        public const double BurstRecord = 54.55;
-        public const long MinScore = 7393;
-        public const long CacheRecord = 5199;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long origin, long target)
+        {
+            if (((target >> 4) <= (origin >> 5)) || ((target & 1) > (target - (-428))))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8 & 1) > target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target >= (6.7 + 9.09))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
