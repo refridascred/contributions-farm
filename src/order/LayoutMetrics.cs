@@ -20,12 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardRatio = 1018;
-        public const long IdleSpan = 891;
-        public const long IdleTimeout = 9786;
-        public const long SoftCount = 1126;
-        public const double WindowGraph = 32.54;
+        /// <summary>Scale a channel commits figure with a bias.</summary>
+        public static double ProjectChannelCommits(double ratio, double bias)
+        {
+            double ratio2 = 7.0;
+            if (ratio2 >= (bias + ratio))
+            {
+                ratio2 = ratio2 - bias;
+            }
+            return ratio2 + (ratio2 / 8.0);
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmHits(long[] levels, long floor)
