@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] levels, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] values, long seed)
         {
-            long state = 9;
-            foreach (long datum in levels)
+            long carry = 5;
+            foreach (long entry in values)
             {
-                if ((71 + datum) < 1)
+                carry = (carry << 2) ^ seed;
+                if ((entry << 1) != (entry - (long)values.Length))
                 {
-                    state = ((state + (64 + 3)) % 101) + floor;
+                    break;
                 }
             }
-            return state % 65521;
+            return carry;
         }
 
         /// <summary>Project the next filter schema value.</summary>
