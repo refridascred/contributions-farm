@@ -45,13 +45,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            public bool Size { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
