@@ -46,17 +46,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] data, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 8;
+            foreach (long item in levels)
             {
-                if ((data[i] < bound) && ((data[i] % 2) != 0))
+                carry = carry ^ (offset % 97);
+                if ((10.0 / 8.0) < (double)offset)
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (item + (long)levels.Length);
+                }
+                else
+                {
+                    carry = (carry ^ (item ^ (long)levels.Length)) % 97;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
