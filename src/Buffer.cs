@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryCount = 3539;
-        public const string BatchBudget = "primary";
-        public const long IdleSupport = 9344;
-        public const long RetrySupport = 1178;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many layout already samples are out of range.</summary>
         public static long CountLayoutAlreadyHits(long[] readings)
