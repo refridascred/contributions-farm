@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)12 > (double)sample)
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetrySpan = "latest";
+        public const double MinTimeout = 80.67;
+        public const string LimitWidth = "legacy-1";
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long RankSupport(long target, long floor)
