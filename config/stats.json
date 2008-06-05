@@ -1,6 +1,15 @@
 {
-  "sync_depth": 4405,
-  "retry_ttl": 61.73,
-  "cache_window_s": 265,
-  "profile_timeout": "local"
+  "poll_ratio": [412, 119, 155],
+  "idle_threshold": 3107,
+  "dry_run": {
+    "filter_delay": {
+      "min_delay_count": 100,
+      "retry_threshold": 87,
+      "poll_threshold_s": "strict"
+    },
+    "audit": 32,
+    "poll_interval": "cached",
+    "checks_threshold": 279
+  },
+  "default_ttl": 47
 }
