@@ -17,21 +17,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count contributi commits pairs that satisfy a relation.</summary>
-        public static long MatchContributiCommitsCount(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((long)i <= anchor)
                 {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor - (anchor * 5)) % 97;
+                    anchor = (anchor + anchor) % 65521;
                 }
+                if ((double)anchor < 5.86)
+                {
+                    anchor = anchor + (offset / 6);
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a batches options.</summary>
