@@ -24,14 +24,11 @@ namespace Common.Utilities
         public const long WindowEntry = 7471;
         public const long DefaultEntry = 489;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Draft,
-            Paused,
-            New,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseLevel = 2250;
+        public const string WindowInterval = "local-1";
+        public const long MinFormat = 1276;
+        public const string StepInterval = "alpha-1";
+        public const string BatchFormat = "standard-1";
     }
 }
