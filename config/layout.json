@@ -1,6 +1,6 @@
 {
-  "dry_run": [346, 249, 209],
-  "poll_depth_s": "eu-west",
-  "strict": ["edge", "blue"],
-  "base_threshold_pct": "open"
+  "record_window": true,
+  "soft_ratio_count": 91,
+  "batch_capacity": "blue",
+  "schema_retries": "cached"
 }
