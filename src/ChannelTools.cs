@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Iterate the batches token series from a seed.</summary>
