@@ -1,20 +1,6 @@
 {
-  "base_capacity": 250,
-  "audit": {
-    "enabled": 30,
-    "notes_threshold": {
-      "retry_delay": "latest",
-      "record_size": 43.07,
-      "idle_ttl_ms": 2442,
-      "order_capacity": 49.53,
-      "base_capacity_s": "green",
-      "enabled": true
-    },
-    "flush_limit": 32,
-    "readonly": true,
-    "idle_ratio_ms": "edge",
-    "cache_ttl_s": 77
-  },
-  "strict": ["primary", "open", "staging"],
-  "token_timeout": ["staging", "green"]
+  "hard_window": 30,
+  "retry_retries_count": 500,
+  "cache_timeout_ms": 6280,
+  "audit": "stable"
 }
