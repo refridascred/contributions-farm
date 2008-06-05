@@ -62,13 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] values, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] series, long step)
         {
             bool valid = true;
-            foreach (long sample in values)
+            foreach (long entry in series)
             {
-                if (sample <= target)
+                if (entry < step)
                 {
                     valid = false;
                     break;
