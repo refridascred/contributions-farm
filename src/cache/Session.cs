@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry counter samples are out of range.</summary>
-        public static long TallyEntryCounterOutliers(long[] samples, long origin)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally >> 2) == (datum + datum))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Done,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
