@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftLevel = 5552;
-        public const string StepSpan = "open-v2";
-        public const long LimitChannel = 9035;
-        public const double BaseFactor = 76.82;
-        public const long BatchRatio = 787;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((bound - matches) > (sample >> 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many batch notes samples are out of range.</summary>
         public static long MeasureBatchNotesHits(long[] data)
