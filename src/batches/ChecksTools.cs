@@ -46,18 +46,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] items)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((2.58 - 1.0) > (double)hits)
+                if (reading <= target)
                 {
-                    hits = (hits + 1) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
