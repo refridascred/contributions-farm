@@ -31,19 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches token series from a seed.</summary>
-        public static long StepBatchesToken(long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] levels, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
                 {
-                    anchor = (anchor ^ (1 / 5)) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
     }
 }
