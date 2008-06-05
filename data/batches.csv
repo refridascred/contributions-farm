@@ -1,10 +1,6 @@
-id,score,token,state
-1,76.27,65.34,685
-2,494,eu-west,21.89
-3,cached,eu-west,primary
-4,48.16,533,493
-5,48.63,81.89,7.67
-6,standard,98.79,19
-7,primary,497,standard
-8,10.45,797,119
-9,539,cached,11.37
+id,ratio,weight,count,level
+1,28.18,eu-west,33.57,open
+2,186,72.11,edge,3.66
+3,strict,20,75.36,21.88
+4,746,cached,880,primary
+5,881,49.05,blue,27.63
