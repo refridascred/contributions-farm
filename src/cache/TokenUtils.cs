@@ -32,17 +32,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                long diff = (anchor ^ offset) % 3;
+                anchor = (anchor << 3) ^ (diff + offset);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
     }
 }
