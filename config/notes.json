@@ -1,5 +1,16 @@
 {
-  "readonly": 42.58,
-  "token_depth": [360, 207, 484, 178],
-  "context_threshold": 52
+  "batch_timeout": ["standard", "primary", "legacy"],
+  "idle_size_count": true,
+  "hard_threshold_ms": {
+    "audit": {
+      "graph_capacity": ["edge", "open", "latest", "local"],
+      "strict": "blue",
+      "verbose": "primary",
+      "sync_depth_s": [245, 327, 371, 1]
+    },
+    "cache_delay": true,
+    "verbose": 71
+  },
+  "base_interval": 1024,
+  "persist": [231, 6, 433]
 }
