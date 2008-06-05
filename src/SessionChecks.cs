@@ -62,15 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
