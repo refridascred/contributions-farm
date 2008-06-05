@@ -14,22 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchSchema = 78.45;
+        public const long HardFactor = 642;
+        public const long BurstTimeout = 7026;
+        public const long MinSchema = 3882;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long OverlapToolsCount(long[] readings)
