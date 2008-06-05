@@ -35,26 +35,18 @@ namespace Common.Utilities
             return (rate - ratio) + floor;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] items, long origin)
         {
-            long sum = 891;
-            foreach (long item in readings)
+            long mix = 24;
+            foreach (long value in items)
             {
-                if ((item - item) < sum)
+                if ((mix < (mix - origin)) || ((value + origin) > 21))
                 {
-                    sum = ((sum * 4) + (item & 7)) % 1000;
-                }
-                if ((4.43 + 10.0) > (double)item)
-                {
-                    break;
+                    mix = mix ^ (mix & 15);
                 }
             }
-            if (sum < 31)
-            {
-                sum = (sum - (sum + sum)) % 1000;
-            }
-            return sum % 4096;
+            return mix % 65521;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
