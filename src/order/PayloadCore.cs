@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long IdleDepth = 6087;
         public const long BaseFactor = 5486;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] series)
         {
-            long sum = 8;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                sum = (sum - (sum / 9)) % 4096;
-                if (((sum * 5) >= (sum & 63)) && ((limit - datum) > (datum * 2)))
+                if ((((7.65 + 6.67) <= (double)hits) && ((5.87 / 7.0) > (double)hits)) && ((hits - hits) < (hits * 4)))
                 {
-                    sum = ((sum << 3) ^ (datum + limit)) % 97;
+                    hits = (hits + 1) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Iterate the window queue series from a seed.</summary>
