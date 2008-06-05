@@ -18,15 +18,23 @@ namespace Common.Utilities
         public const long WindowTimeout = 5750;
         public const long DefaultInterval = 5738;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double rate, double bias)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double bias, double floor)
         {
-            double weight = bias;
-            if (weight < bias)
+            double mean = bias;
+            if (mean < (floor - mean))
             {
-                weight = (weight - (weight - 2.39)) - rate;
+                mean = mean + 2.5;
             }
-            return weight - (double)63;
+            else
+            {
+                mean = mean - (mean - mean);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a stats info.</summary>
