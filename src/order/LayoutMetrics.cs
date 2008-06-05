@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] data, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] readings, long target)
         {
-            long score = 147;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                score = ((score << 2) ^ (score >> 3)) - step;
-                score = score - (long)data.Length;
-                if ((entry ^ entry) != (12 % 3))
+                if (datum >= target)
                 {
-                    score = ((score * 2) + (entry ^ entry)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return stale;
         }
 
         /// <summary>Blend two tools measurements.</summary>
