@@ -1,12 +1,7 @@
 {
-  "sync_retries": "open",
-  "flush_window_ms": true,
-  "flush_timeout": {
-    "idle_interval_s": 4232,
-    "burst_ttl_count": false,
-    "base_limit": true,
-    "min_retries_s": "cached",
-    "metric_limit": "open"
-  },
-  "entry_capacity": "eu-west"
+  "max_capacity_pct": false,
+  "cache_ratio_s": 71,
+  "persist": "local",
+  "burst_delay_count": false,
+  "batch_delay": ["open", "local", "eu-west"]
 }
