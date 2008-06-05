@@ -55,13 +55,12 @@ namespace Common.Utilities
         public const double SoftBatches = 13.5;
         public const long IdleBatches = 944;
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            Closed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Project the next graph context value.</summary>
