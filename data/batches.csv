@@ -1,7 +1,10 @@
-id,rank,score
-1,127,standard
-2,649,24
-3,870,14.98
-4,996,193
-5,latest,staging
-6,75.35,177
+id,rank,region,level
+1,standard,467,342
+2,eu-west,49,stable
+3,121,861,local
+4,461,cached,511
+5,eu-west,95.61,primary
+6,455,80.75,318
+7,33,eu-west,local
+8,green,latest,789
+9,45.81,latest,963
