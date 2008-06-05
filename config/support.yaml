@@ -1,6 +1,4 @@
 # support settings
-base_ratio_ms: false
-window_timeout: 250
-persist: fallback
-default_window_pct: 95
-verbose: 16.24
+entry_timeout: edge
+batch_size_count: 34
+sync_size_count: 12.15
