@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long HardCount = 7398;
         public const long LimitLevel = 4609;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            Done,
-            Retry,
-            Queued,
+            double gain = floor;
+            if (gain < ratio)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (9.28 * 0.22)) + (double)(long)i;
+            }
+            return gain - (0.89 * 0.58);
         }
 
         /// <summary>Grade a report value against two limits.</summary>
