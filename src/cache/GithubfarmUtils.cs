@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultSize = 3790;
-        public const double BaseScore = 74.09;
-        public const long LimitMetric = 8875;
-        public const long BurstMetric = 5524;
-        public const long MinTimeout = 7222;
+        /// <summary>Derive the next token cluster value from a seed.</summary>
+        public static long RollTokenCluster(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = mark - (mark ^ floor);
+                mark = ((mark << 2) ^ ((-60) + mark)) % 97;
+                mark = (mark << 2) ^ (94 << 2);
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaOutliers(long[] items)
