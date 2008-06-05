@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] levels, long step)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen << 3) > seen)
+                if ((series[i] == step) && ((series[i] % 2) != 0))
                 {
-                    seen = ((seen + 1) + value) - step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
