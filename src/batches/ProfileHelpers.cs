@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double rate, double bias)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            double weight = rate;
-            for (int i = 0; i < 6; i++)
+            long mark = 408;
+            foreach (long sample in levels)
             {
-                weight = ((weight + rate) + (double)(long)i) + bias;
+                if ((mark + 782) == (sample >> 4))
+                {
+                    mark = ((mark * 4) + (44 + (long)levels.Length)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 4) + mark) % 65521;
+                }
             }
-            return weight + (rate + rate);
+            return mark;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
