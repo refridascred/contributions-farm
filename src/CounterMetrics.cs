@@ -20,11 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] items)
         {
-            public bool Level { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading >> 4) <= (reading & 1))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
