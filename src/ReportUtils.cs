@@ -34,12 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            Paused,
-            Active,
-            Ready,
+            long anchor = 19;
+            foreach (long item in readings)
+            {
+                anchor = ((anchor * 5) + (item - anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
