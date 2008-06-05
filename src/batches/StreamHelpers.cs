@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] data, long seed)
+        /// <summary>Validate commits record readings against a bound.</summary>
+        public static bool CheckCommitsRecordBounds(long[] series, long seed)
         {
-            long anchor = 545;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (((reading + seed) == (anchor >> 3)) && ((double)reading < (double)anchor))
+                if (item > seed)
                 {
-                    anchor = (anchor - ((long)data.Length % 64)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + (reading - anchor)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
