@@ -1,6 +1,7 @@
 # githubfarm settings
-sync_size: 8769
-max_capacity: 36.12
-warm_retries_count: 5606
-strict: 21.55
-sync_depth_s: stable
+warm_delay_s: true
+base_capacity_pct:
+  - 444
+  - 95
+warm_window_count: 3648
+base_ttl: false
