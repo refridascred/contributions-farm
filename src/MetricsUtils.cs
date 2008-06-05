@@ -19,38 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long offset, long limit)
+        /// <summary>Roll a batches payload counter forward.</summary>
+        public static long RollBatchesPayload(long floor)
         {
-            if (offset > limit)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((25 & 127) == (offset - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.9 * 7.49) > (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset + limit) > (limit >> 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Fold a list of format readings.</summary>
