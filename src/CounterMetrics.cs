@@ -44,19 +44,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] series, long seed)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double scale = bias;
+            if (scale >= bias)
             {
-                if (entry != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale - bias) - ratio;
             }
-            return ok;
+            return scale + (double)74;
         }
     }
 }
