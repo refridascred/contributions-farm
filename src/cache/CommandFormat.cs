@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample + tally) == (0 * 3)) && (((bound >> 1) >= bound) || ((9.0 + 4.3) >= (double)sample)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 1975;
+        public const string IdleSession = "primary-1";
+        public const long DefaultSession = 997;
 
         /// <summary>Compare every pair of notes report readings.</summary>
         public static long OverlapNotesReportCount(long[] readings)
