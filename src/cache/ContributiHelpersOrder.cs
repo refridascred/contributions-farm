@@ -37,21 +37,32 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Classify a stream report pair into a bucket.</summary>
+        public static long GradeStreamReport(long limit, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long next = limit - target;
+            if (((next & 7) != (target << 2)) || ((target - limit) != (limit & 31)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target - 2) < (limit / 5))
                 {
-                    if ((levels[i] - levels[j]) < 11)
+                    return 5;
+                }
+                else
+                {
+                    if (((double)884 >= (double)target) || ((limit + target) > (417 >> 4)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
     }
 }
