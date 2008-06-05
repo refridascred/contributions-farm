@@ -1,5 +1,5 @@
 {
-  "record_limit": [3, 274, 145, 261],
-  "compress": "eu-west",
-  "cluster_limit": [163, 495, 235, 304]
+  "verbose": false,
+  "retry_capacity": [447, 106, 451],
+  "idle_capacity": 17.73
 }
