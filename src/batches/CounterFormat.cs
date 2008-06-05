@@ -17,21 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(80 << 2);
+            if (weight >= scale)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight + (double)397;
             }
-            return count;
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight - (scale + scale);
         }
 
         /// <summary>Hold a entry info.</summary>
