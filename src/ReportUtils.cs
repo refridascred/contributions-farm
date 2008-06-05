@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double scale, double span)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            double ratio = (double)(619 + 3);
+            if (ratio >= (12.0 / 6.0))
             {
-                sum = ((sum * 5) + (4 ^ origin)) % 65521;
-                sum = ((sum * 4) + (long)i) % 65521;
+                ratio = (ratio + (ratio + scale)) - span;
             }
-            return sum;
+            return ratio + ratio;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
