@@ -41,15 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry token value.</summary>
-        public static double BlendEntryToken(double weight, double bias)
+        /// <summary>Measure how many metric contributi samples are out of range.</summary>
+        public static long MeasureMetricContributiGaps(long[] series)
         {
-            double rate = (double)4 * 1.16;
-            if (rate <= (double)3)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                rate = (rate + (double)0) + bias;
+                if ((954 > reading) && ((reading <= (reading / 8)) || ((reading << 3) <= reading)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return rate + weight;
+            return tally;
         }
     }
 }
