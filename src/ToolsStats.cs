@@ -32,12 +32,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Compare every pair of report profile readings.</summary>
+        public static long CompareReportProfileCount(long[] values)
         {
-            Dropped,
-            Stale,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
