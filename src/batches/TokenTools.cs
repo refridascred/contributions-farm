@@ -34,13 +34,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            Closed,
-            Ready,
-            Synced,
-            Draft,
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = (((anchor << 2) ^ (662 - (-9))) % 101) - (long)i2;
+                    anchor = (anchor - seed) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
