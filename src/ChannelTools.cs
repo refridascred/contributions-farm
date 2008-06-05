@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long acc = 1;
-            foreach (long value in values)
-            {
-                acc = ((acc * 3) + (551 + acc)) % 101;
-                if ((acc - value) <= 7)
-                {
-                    acc = ((acc * 5) + (value + value)) % 97;
-                }
-            }
-            return acc;
+            Active,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
