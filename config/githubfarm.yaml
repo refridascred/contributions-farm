@@ -1,5 +1,12 @@
 # githubfarm settings
-profile_delay: 59.23
-strict: false
-buffer_capacity: staging
-flush_retries_count: false
+default_threshold_s: true
+audit: stable
+idle_window_ms:
+  - 224
+  - 186
+warm_capacity_ms:
+  - blue
+  - stable
+  - fallback
+profile_threshold: 77.89
+compress: local
