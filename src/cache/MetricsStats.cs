@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardFactor = 75.57;
-        public const string BurstInterval = "fallback-1";
-        public const double StepCluster = 97.09;
-        public const long HardCluster = 2709;
-        public const string BatchInterval = "legacy-1";
+        /// <summary>Look up the position of a filter format sample.</summary>
+        public static long LookupFilterFormatIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LookupEditorIndex(long[] series, long step)
