@@ -19,13 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
