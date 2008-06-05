@@ -100,19 +100,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] series, long floor)
+        /// <summary>Count layout farm pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutFarmCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
