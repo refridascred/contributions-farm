@@ -32,15 +32,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double scale, double span)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] series)
         {
-            double mean = (double)(0 / 7);
-            for (int i = 0; i < 3; i++)
+            long state = 547;
+            foreach (long datum in series)
             {
-                mean = ((mean - 7.6) + (double)(long)i) - scale;
+                state = state + (datum + 63);
             }
-            return mean - (span * 16.0);
+            return state % 4096;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
