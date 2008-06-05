@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit stream checks readings against a rule.</summary>
-        public static long AuditStreamChecksMatches(long[] values)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long seed, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if ((limit ^ seed) > (seed + limit))
             {
-                if ((datum - count) != (datum / 7))
+                return 8;
+            }
+            else
+            {
+                if ((double)204 == (double)limit)
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit > (0.96 / 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a batches payload counter forward.</summary>
