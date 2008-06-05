@@ -1,17 +1,7 @@
 {
-  "account_depth": "primary",
-  "warm_ttl": 8196,
-  "max_limit": {
-    "poll_interval_pct": true,
-    "batch_interval": ["blue", "latest"],
-    "default_retries_pct": {
-      "batch_depth_pct": 65.28,
-      "hard_capacity": "edge",
-      "soft_window_ms": [351, 302, 288, 38],
-      "sync_interval": [461, 323]
-    },
-    "soft_retries_pct": 49.75,
-    "poll_limit": "legacy"
-  },
-  "base_threshold": "edge"
+  "warm_ratio_count": [292, 100, 393],
+  "tools_capacity": true,
+  "editor_delay": "standard",
+  "persist": false,
+  "soft_ratio": 84.05
 }
