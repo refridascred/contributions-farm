@@ -47,25 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long seed, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] series, long offset)
         {
-            long delta = seed - limit;
-            if ((6 - delta) != (delta << 1))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((delta + 74) < seed)
+                if (datum != offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
