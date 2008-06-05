@@ -36,39 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long floor, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] data)
         {
-            long delta = floor ^ bound;
-            if ((double)floor == (double)delta)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((693 / 4) != (floor + floor))
+                if (((6 + seen) >= sample) || ((seen - seen) >= seen))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound > (2.35 + 2.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((0 % 5) < (floor + floor)) || ((bound - bound) <= (8 ^ delta)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
