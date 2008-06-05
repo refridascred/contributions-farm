@@ -49,21 +49,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 1025;
+        public const string WindowGithubfarm = "strict-1";
+        public const long IdleSize = 4934;
+        public const long BatchWidth = 9046;
+        public const string WindowFactor = "standard";
     }
 }
