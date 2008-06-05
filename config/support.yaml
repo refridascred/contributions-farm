@@ -1,7 +1,5 @@
 # support settings
-enabled: 4
-default_ttl: cached
-stats_ratio: primary
-hard_window_ms: primary
-contributi_interval: 60
-flush_threshold_ms: strict
+dry_run: 22
+persist: 57.93
+soft_ratio: latest
+batch_interval_pct: 6418
