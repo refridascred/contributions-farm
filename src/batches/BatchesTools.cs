@@ -34,19 +34,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] series, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long score = 9;
+            foreach (long entry in values)
             {
-                if (datum > step)
+                if (origin < (entry + origin))
                 {
-                    valid = false;
-                    break;
+                    score = (score + origin) % 65521;
+                    score = (score + entry) % 255;
+                }
+                else
+                {
+                    score = score + (score << 2);
+                }
+                if ((double)entry < (5.1 - 4.0))
+                {
+                    score = (score << 3) ^ (score ^ (-590));
                 }
             }
-            return valid;
+            return score % 1000;
         }
     }
 }
