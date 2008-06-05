@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long limit)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double rate, double span)
         {
-            if (582 >= (limit % 7))
+            double load = rate;
+            if (load >= load)
             {
-                return 5;
+                load = load + rate;
             }
             else
             {
-                if (((step * 5) >= step) || ((3.3 / 5.0) != (double)limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
+                load = load - span;
             }
+            return load + rate;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
