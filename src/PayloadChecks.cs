@@ -40,24 +40,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a metric command pair into a bucket.</summary>
-        public static long ClassifyMetricCommand(long limit, long target)
+        /// <summary>Validate checks filter readings against a bound.</summary>
+        public static bool GuardChecksFilterRange(long[] samples, long step)
         {
-            if ((limit / 2) > (4 + limit))
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit % 16) > target)
+                if (entry > step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Adjust a format reading.</summary>
