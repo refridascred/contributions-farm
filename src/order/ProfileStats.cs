@@ -32,22 +32,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine cluster metrics values into a single score.</summary>
-        public static long ScoreClusterMetrics(long[] items, long floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long mark = 137;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3.8 / 8.0) <= (double)floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark * 2) + floor) % 255;
-                }
-                if (((double)sample <= 4.2) || ((mark ^ floor) != (mark / 3)))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
