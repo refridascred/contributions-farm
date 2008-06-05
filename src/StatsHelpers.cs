@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSize = 5678;
-        public const string BatchEntry = "alpha-1";
-        public const long LimitEntry = 8516;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSize = 44.57;
+        public const double MaxSession = 66.86;
+        public const long MinSession = 4390;
+        public const long LimitWidth = 6341;
+        public const long BatchLevel = 3410;
 
         /// <summary>Iterate the editor schema series from a seed.</summary>
         public static long StepEditorSchema(long offset)
