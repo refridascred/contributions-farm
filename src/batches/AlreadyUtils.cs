@@ -33,13 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
             Ready,
-            Active,
-            Idle,
-            Pending,
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
