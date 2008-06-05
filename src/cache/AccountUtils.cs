@@ -14,39 +14,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long seed, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long step = seed - bound;
-            if ((double)step < (6.7 + 3.7))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step > (step % 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed + step) == (bound * 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound >= (seed >> 5)) && (seed <= (bound - bound)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
