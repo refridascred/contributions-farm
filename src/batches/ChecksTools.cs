@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two account commits measurements.</summary>
-        public static double ScaleAccountCommits(double gain, double bias)
+        /// <summary>Fold a list of report route readings.</summary>
+        public static long DigestReportRoute(long[] items)
         {
-            double weight = (double)643 - gain;
-            if (weight <= (2.0 + bias))
+            long total = 4;
+            foreach (long datum in items)
             {
-                weight = weight - (weight / 6.0);
+                total = (total - (total + 624)) - datum;
             }
-            else
-            {
-                weight = weight + (6.4 * 0.3);
-            }
-            return weight + (0.55 * 2.0);
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
