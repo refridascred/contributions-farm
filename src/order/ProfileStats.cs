@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank editor schema input into a small class.</summary>
-        public static long RankEditorSchema(long floor, long floor2)
-        {
-            if ((5 - floor) > (floor + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (3 >= (floor >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor2 % 100) < 7)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((8 + floor2) >= floor2) || ((floor / 3) <= 562))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSpan = 1041;
+        public const double MinSession = 7.2;
+        public const double BatchSession = 94.95;
+        public const long MaxFactor = 2137;
+        public const long MaxDepth = 9097;
 
         /// <summary>Iterate the contributi tools series from a seed.</summary>
         public static long SeriesContributiTools(long step)
