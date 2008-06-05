@@ -70,12 +70,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            New,
+            Stale,
+            Synced,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
