@@ -35,31 +35,12 @@ namespace Common.Utilities
         public const long HardSession = 3741;
         public const long MaxSession = 5295;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long bound, long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            if ((983 % 3) <= (bound + 9))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target > (1.0 + 3.9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound >= (target + bound)) || (target >= (394 << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Retry,
         }
     }
 }
