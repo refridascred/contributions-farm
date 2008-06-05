@@ -1,8 +1,12 @@
 {
-  "profile_window": ["cached", "cached"],
-  "base_ratio_pct": false,
-  "cache_ttl_s": ["legacy", "primary", "fallback"],
-  "dry_run": false,
-  "strict": false,
-  "retry_window_ms": false
+  "payload_interval": 7893,
+  "flush_ttl": 86,
+  "support_depth": {
+    "stream_threshold": 9188,
+    "batch_ratio_s": 65.92,
+    "poll_window_pct": 27.16
+  },
+  "min_size_count": ["staging", "edge", "edge", "legacy"],
+  "verbose": true,
+  "tools_retries": 80.43
 }
