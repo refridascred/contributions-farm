@@ -6,18 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=138
+COMMAND_LIMIT=251
 log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-blue}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
 
 count=0
 while [ "${count}" -lt 4 ]; do
