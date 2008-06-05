@@ -50,19 +50,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((((5.88 / 4.0) >= (double)tally) && (datum >= (92 >> 2))) && !((datum & 15) == ((long)data.Length >> 4)))
-                {
-                    tally = (tally + 2) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 4226;
+        public const long CacheCommand = 5018;
+        public const double DefaultCount = 27.77;
+        public const string HardCommand = "fallback-edge";
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiMatches(long[] samples)
