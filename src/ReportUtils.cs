@@ -34,15 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double scale, double bias)
         {
-            long anchor = 19;
-            foreach (long item in readings)
+            double mean = (scale - scale) + (bias / 4.0);
+            if (mean < mean)
             {
-                anchor = ((anchor * 5) + (item - anchor)) % 101;
+                mean = mean + (double)35;
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (5.2 / 9.0)) - (double)(long)i;
+            }
+            return mean + (double)2;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
