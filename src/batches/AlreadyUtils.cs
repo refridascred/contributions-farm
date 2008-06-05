@@ -39,15 +39,18 @@ namespace Common.Utilities
         public const long SoftProfile = 8301;
         public const long HardSize = 4195;
 
-        /// <summary>Derive the next layout queue value from a seed.</summary>
-        public static long StepLayoutQueue(long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] items, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((origin - 928) < (seen << 2))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the record phase values.</summary>
