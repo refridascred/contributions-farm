@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double StepCount = 14.01;
         public const long LimitScore = 4603;
 
-        /// <summary>Audit githubfarm cache readings against a rule.</summary>
-        public static long CountGithubfarmCacheMatches(long[] items, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long total = 151;
+            foreach (long value in items)
             {
-                if ((1 << 1) > (item ^ item))
-                {
-                    tally = (tally + 3) + seed;
-                }
+                total = (total + (floor + floor)) - value;
             }
-            return tally;
+            if (total < 86)
+            {
+                total = ((total << 3) ^ (total + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
