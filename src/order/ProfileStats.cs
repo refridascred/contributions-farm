@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
