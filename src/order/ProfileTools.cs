@@ -29,10 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardBuffer = "local-1";
-        public const double CacheFactor = 64.41;
-        public const long BatchBuffer = 5093;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Locked,
+            Done,
+            Paused,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] series)
