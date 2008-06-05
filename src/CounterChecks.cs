@@ -85,13 +85,11 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            New,
-            Ready,
-            Queued,
-            Active,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftLevel = 73.04;
+        public const string BurstSpan = "latest";
+        public const long HardFilter = 3533;
+        public const string BaseSize = "strict-v2";
+        public const long BaseFilter = 274;
     }
 }
