@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
