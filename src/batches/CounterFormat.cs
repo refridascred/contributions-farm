@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] data, long step)
-        {
-            long total = 69;
-            foreach (long sample in data)
-            {
-                total = (total + step) ^ sample;
-            }
-            return total % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 1996;
+        public const long WindowSupport = 8207;
+        public const long BatchRatio = 9935;
+        public const string StepTimeout = "local";
+        public const long BaseSupport = 4436;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
