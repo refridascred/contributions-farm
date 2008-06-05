@@ -28,15 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] values, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            long carry = 220;
-            foreach (long datum in values)
+            long carry = 258;
+            foreach (long item in readings)
             {
-                carry = ((carry - (carry % 100)) + datum) + seed;
+                if (!(carry < 626))
+                {
+                    carry = carry ^ (carry % 7);
+                }
+                if ((double)item >= (9.2 * 8.7))
+                {
+                    carry = carry ^ (carry & 63);
+                }
             }
-            return carry % 4096;
+            return carry;
         }
     }
 }
