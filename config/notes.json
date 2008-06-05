@@ -1,15 +1,7 @@
 {
-  "base_limit_count": 16.82,
-  "batch_limit": 80.42,
-  "soft_delay": {
-    "flush_retries": {
-      "flush_capacity_pct": "blue",
-      "command_ttl": 5327,
-      "hard_interval": "green",
-      "batch_retries_ms": 500
-    },
-    "poll_limit_count": true,
-    "soft_interval_count": 4426,
-    "hard_threshold_count": 15
-  }
+  "retry_size": 4103,
+  "max_limit_ms": ["latest", "open"],
+  "profile_window": 98.55,
+  "metric_size": [391, 157, 187, 349],
+  "verbose": "standard"
 }
