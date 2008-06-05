@@ -27,23 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] samples, long bound)
-        {
-            long total = 16;
-            foreach (long entry in samples)
-            {
-                if ((bound - bound) <= total)
-                {
-                    total = (total + (total >> 3)) ^ entry;
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 65521;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultInterval = 26.35;
+        public const long StepBudget = 8869;
+        public const long DefaultProfile = 7391;
+        public const long MinProfile = 7951;
+        public const long RetryProfile = 6303;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
