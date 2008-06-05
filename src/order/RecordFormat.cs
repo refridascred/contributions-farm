@@ -58,19 +58,34 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] values, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long state = 713;
+            foreach (long value in items)
             {
-                if (reading >= bound)
+                if (value <= (82 + state))
                 {
-                    stale = false;
+                    state = ((state * 5) + (value >> 5)) % 255;
+                }
+                if (state <= (value >> 3))
+                {
+                    state = (state + (state - value)) % 255;
+                }
+                else
+                {
+                    state = (state ^ (state % 8)) % 4096;
+                }
+                if (((double)value > (double)863) && ((state % 16) < state))
+                {
                     break;
                 }
             }
-            return stale;
+            if (state > 8)
+            {
+                state = (state * 5) + (state * 3);
+            }
+            return state;
         }
     }
 }
