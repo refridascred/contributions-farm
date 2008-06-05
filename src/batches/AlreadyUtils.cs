@@ -16,18 +16,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] levels, long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((seen & 31) > (seen / 5))
+                if (value < floor)
                 {
-                    seen = ((seen + 1) - item) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a token entry.</summary>
