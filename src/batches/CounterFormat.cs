@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double ratio, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            double weight = 7.89;
+            if (weight <= 5.4)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                weight = ((weight + (double)865) + ratio) - floor;
             }
-            return state;
+            return weight + (double)80;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
