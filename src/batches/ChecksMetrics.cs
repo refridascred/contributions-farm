@@ -64,14 +64,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long step, long floor)
         {
-            New,
-            Stale,
-            Synced,
-            Locked,
-            Queued,
+            long lane = step - floor;
+            if ((floor % 7) < lane)
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor <= (step + lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((lane - step) == (step >> 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
