@@ -66,12 +66,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long offset, long target)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            if ((target % 7) == (target - target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2 & 63) == (target & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.68 * 3.24) < (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target > (7.67 + 18.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
