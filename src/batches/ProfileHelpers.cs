@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double scale, double floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double rate, double bias)
         {
-            double bias = floor;
-            if (bias >= 7.7)
+            double weight = rate;
+            for (int i = 0; i < 6; i++)
             {
-                bias = bias + (scale + scale);
+                weight = ((weight + rate) + (double)(long)i) + bias;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (scale / 7.0)) + (double)(long)i;
-            }
-            return bias + 2.8;
+            return weight + (rate + rate);
         }
 
         /// <summary>Look up the position of a session order sample.</summary>
