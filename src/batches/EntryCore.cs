@@ -61,11 +61,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long floor)
         {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long state = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
