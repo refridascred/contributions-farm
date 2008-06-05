@@ -38,12 +38,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Pending,
-            Closed,
-            Queued,
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
