@@ -30,15 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] readings)
         {
-            long score = 7;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                score = (((score << 3) ^ score) % 1000) ^ sample;
+                if (!!((reading + reading) >= 259))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
