@@ -32,15 +32,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double rate, double offset)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long seed)
         {
-            double ratio = (rate - offset) + rate;
-            if (ratio <= offset)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - rate;
+                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + ratio;
+            return -1;
         }
     }
 }
