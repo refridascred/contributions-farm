@@ -47,17 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] series, long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = bias - (floor + bias);
+            if (mean <= (bias * 8.2))
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                mean = mean + floor;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (bias * 5.3);
         }
 
         /// <summary>Describe the support kind values.</summary>
