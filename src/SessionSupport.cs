@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] readings, long offset)
         {
-            long sum = -73;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum ^ (reading + sum);
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 9)
-            {
-                sum = (sum + (sum ^ sum)) % 97;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
