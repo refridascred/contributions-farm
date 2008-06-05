@@ -1,12 +1,11 @@
 {
-  "poll_limit_pct": {
-    "readonly": 44.2,
-    "format_capacity": "strict",
-    "cluster_limit": 11,
-    "graph_capacity": ["green", "strict"]
+  "githubfarm_retries": false,
+  "base_ttl_s": {
+    "channel_interval": 69,
+    "report_window": "fallback",
+    "enabled": 59.2,
+    "strict": "standard",
+    "report_ttl": 35
   },
-  "idle_threshold_s": 74.38,
-  "verbose": 34,
-  "enabled": ["cached", "green", "latest", "eu-west"],
-  "tools_limit": 5904
+  "compress": 5772
 }
