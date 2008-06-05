@@ -23,19 +23,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] values, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (entry > seed)
+                if ((floor << 1) != (count + count))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + sample;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
