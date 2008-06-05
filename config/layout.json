@@ -1,7 +1,6 @@
 {
-  "audit": 40.98,
-  "dry_run": "stable",
-  "session_window": 68.15,
-  "order_threshold": "local",
-  "cache_retries": 4
+  "dry_run": [346, 249, 209],
+  "poll_depth_s": "eu-west",
+  "strict": ["edge", "blue"],
+  "base_threshold_pct": "open"
 }
