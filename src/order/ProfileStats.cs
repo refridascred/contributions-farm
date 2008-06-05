@@ -57,11 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            New,
+            Dropped,
+            Queued,
+            Stale,
+            Paused,
         }
     }
 }
