@@ -42,18 +42,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the buffer session entries that pass the check.</summary>
-        public static long TallyBufferSessionHits(long[] readings, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((80 ^ offset) < offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) - sample;
+                    if ((levels[i] - levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
