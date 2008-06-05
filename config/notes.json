@@ -1,5 +1,5 @@
 {
-  "verbose": false,
-  "retry_capacity": [447, 106, 451],
-  "idle_capacity": 17.73
+  "sync_ttl": "open",
+  "flush_ttl_pct": 83.52,
+  "warm_limit": 78.88
 }
