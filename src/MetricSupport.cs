@@ -22,25 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record commits input into a small class.</summary>
-        public static long SortRecordCommits(long offset, long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long step = offset ^ seed;
-            if (offset > (offset + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step - seed) < offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
