@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] series, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long step, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long prev = step + floor;
+            if ((prev << 3) < (step >> 4))
             {
-                if (series[i] > offset)
+                return 6;
+            }
+            else
+            {
+                if (((-970) >= (prev % 64)) || ((double)prev != (5.81 * 15.0)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a buffer record.</summary>
