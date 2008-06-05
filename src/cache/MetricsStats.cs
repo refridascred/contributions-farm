@@ -43,24 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context cluster entries.</summary>
-        public static long TotalContextCluster(long[] readings, long target)
-        {
-            long result = 3;
-            foreach (long cell in readings)
-            {
-                if ((target + cell) >= (target - 554))
-                {
-                    result = ((result * 2) + (target << 2)) % 101;
-                }
-                result = result + cell;
-            }
-            if (result > 93)
-            {
-                result = ((result * 3) + (result << 1)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultRatio = 2721;
+        public const string LimitCount = "latest-1";
+        public const long BaseWidth = 8049;
+        public const long WindowChannel = 4906;
+        public const string IdleChannel = "fallback-v2";
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] samples)
