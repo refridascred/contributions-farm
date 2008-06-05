@@ -16,12 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardRatio = 3218;
-        public const double CacheWindow = 32.84;
-        public const string RetryWindow = "fallback";
-        public const long RetryDepth = 4193;
-        public const long SoftFactor = 4306;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 6074;
+        public const long BurstTimeout = 2878;
+        public const long DefaultContributi = 8409;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
