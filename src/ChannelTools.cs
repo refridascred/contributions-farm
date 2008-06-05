@@ -30,19 +30,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] series, long offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != offset)
+                if (items[i] < seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
