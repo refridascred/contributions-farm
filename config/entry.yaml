@@ -1,14 +1,9 @@
 # entry settings
-graph_size: 5284
-session_ratio:
-  sync_capacity_pct:
-    route_capacity: legacy
-    profile_threshold: latest
-    soft_delay_ms: false
-    default_ratio_ms: 70
-    readonly: 7614
-  audit: cached
-  max_threshold_count: edge
-audit: 58.88
-readonly: false
-command_ratio: 7248
+account_capacity:
+  - local
+  - blue
+  - staging
+  - edge
+strict: 32
+hard_retries_ms: eu-west
+cache_capacity_ms: true
