@@ -1,6 +1,5 @@
 {
-  "enabled": 3295,
-  "warm_capacity_s": "blue",
-  "verbose": "blue",
-  "window_timeout": false
+  "batch_ratio_ms": 500,
+  "strict": false,
+  "already_ratio": 6.13
 }
