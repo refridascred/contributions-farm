@@ -27,19 +27,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] data, long offset)
+        /// <summary>Fold a list of payload editor readings.</summary>
+        public static long ScorePayloadEditor(long[] values)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long state = 34;
+            foreach (long item in values)
             {
-                if (cell != offset)
+                if (state <= (state / 8))
                 {
-                    found = false;
-                    break;
+                    state = (((state << 2) ^ (state - state)) % 65521) - item;
                 }
             }
-            return found;
+            return state % 97;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
