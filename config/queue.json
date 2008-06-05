@@ -1,14 +1,11 @@
 {
-  "hard_limit_count": [160, 100, 187, 251],
-  "sync_size_ms": "eu-west",
-  "burst_timeout_s": true,
-  "warm_window": {
-    "hard_delay_s": 30,
-    "sync_ratio_s": 63,
-    "cache_timeout": true,
-    "persist": true,
-    "stats_delay": "blue"
-  },
-  "counter_retries": ["eu-west", "stable", "strict", "blue"],
-  "cache_ratio_count": "blue"
+  "profile_capacity": "blue",
+  "dry_run": [61, 162],
+  "hard_timeout_pct": 93.1,
+  "sync_capacity_count": {
+    "cache_threshold_pct": false,
+    "burst_interval": 37,
+    "graph_ttl": 2623,
+    "hard_capacity_s": 250
+  }
 }
