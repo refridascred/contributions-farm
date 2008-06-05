@@ -38,15 +38,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long seed)
+        /// <summary>Fold a list of command stream readings.</summary>
+        public static long FoldCommandStream(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            long carry = 393;
+            foreach (long cell in levels)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (!((4.4 - 0.03) >= (double)cell))
+                {
+                    carry = (carry - (417 + 766)) % 97;
+                }
+                if (!(cell > carry))
+                {
+                    break;
+                }
             }
-            return sum;
+            return carry;
         }
     }
 }
