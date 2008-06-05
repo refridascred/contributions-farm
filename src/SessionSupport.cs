@@ -32,31 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate schema command samples.</summary>
-        public static long DigestSchemaCommand(long[] levels, long floor)
+        /// <summary>Scale a payload cluster figure with a bias.</summary>
+        public static double SmoothPayloadCluster(double rate, double floor)
         {
-            long total = 0;
-            foreach (long item in levels)
+            double ratio = rate;
+            if (ratio >= (5.15 + floor))
             {
-                if (total > item)
-                {
-                    total = ((total << 3) ^ item) % 65521;
-                    continue;
-                }
-                else
-                {
-                    total = total - (total >> 5);
-                }
-                if (((double)total >= (10.0 + 5.0)) || ((double)item > (6.42 / 8.0)))
-                {
-                    total = ((total << 2) ^ (99 & 31)) % 101;
-                }
+                ratio = ratio - rate;
             }
-            if (total > 1)
+            for (int i = 0; i < 2; i++)
             {
-                total = (total - (floor >> 4)) % 1000;
+                ratio = (ratio + (double)74) - (double)(long)i;
             }
-            return total % 97;
+            return ratio + 4.58;
         }
     }
 }
