@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] samples, long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = -91;
-            foreach (long cell in samples)
-            {
-                if ((cell + 64) > (cell ^ total))
-                {
-                    total = (((total << 3) ^ (total ^ total)) % 65521) - floor;
-                }
-            }
-            return total;
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
