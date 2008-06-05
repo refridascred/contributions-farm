@@ -41,10 +41,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftScore = 3279;
-        public const string BurstAlready = "standard-edge";
-        public const long MaxAlready = 6638;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Locked,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Rank layout order input into a small class.</summary>
         public static long RankLayoutOrder(long seed, long bound)
