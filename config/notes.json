@@ -1,24 +1,15 @@
 {
-  "route_timeout": "cached",
-  "retry_retries_pct": {
-    "counter_ttl": false,
-    "sync_capacity": 100,
-    "soft_delay_pct": false,
-    "batch_timeout": true
-  },
-  "cache_capacity_ms": true,
-  "cache_depth_count": {
-    "readonly": [387, 192, 338],
-    "min_capacity_pct": {
-      "flush_ratio": false,
-      "sync_size": 63.22,
-      "retry_window_pct": false,
-      "warm_retries_count": false,
-      "base_ttl_pct": false
+  "persist": 7909,
+  "soft_size": false,
+  "layout_threshold": {
+    "hard_ratio_s": {
+      "base_interval_s": 2697,
+      "soft_ttl": true,
+      "hard_window_ms": false
     },
-    "retry_depth_pct": 52.42,
-    "dry_run": true,
-    "base_ttl_s": "stable"
+    "flush_size": 30,
+    "payload_delay": "latest"
   },
-  "default_ratio_pct": "cached"
+  "soft_limit_ms": false,
+  "warm_retries_count": "blue"
 }
