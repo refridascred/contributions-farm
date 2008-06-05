@@ -41,12 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Done,
-            Pending,
-            Dropped,
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
