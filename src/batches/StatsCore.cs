@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] data, long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            bool found = true;
-            foreach (long value in data)
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (value <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Accumulate profile samples.</summary>
