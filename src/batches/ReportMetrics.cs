@@ -44,17 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] samples, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
+                if (value < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
