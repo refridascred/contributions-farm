@@ -59,20 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double rate, double bias)
-        {
-            double rate2 = rate;
-            if (rate2 <= (double)87)
-            {
-                rate2 = rate2 + rate2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + (bias * 3.0)) + (double)(long)i;
-            }
-            return rate2 - (double)4;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheLevel = 2484;
+        public const double IdleRoute = 4.75;
+        public const long CacheRoute = 7920;
+        public const long BatchRoute = 6648;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardSpan = 5451;
