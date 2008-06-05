@@ -20,19 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every format notes entry stays within the limit.</summary>
-        public static bool GuardFormatNotesBounds(long[] values, long target)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
