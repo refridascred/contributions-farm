@@ -41,13 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double scale, double span)
         {
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            double gain = (6.5 * 14.0) * 7.95;
+            if (gain <= span)
+            {
+                gain = (gain + (double)559) - scale;
+            }
+            else
+            {
+                gain = gain + (gain - span);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
