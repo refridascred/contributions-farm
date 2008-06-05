@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] values, long target)
         {
-            Retry,
-            Queued,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the batches token series from a seed.</summary>
