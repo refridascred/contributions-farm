@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double ratio, double span)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long origin)
         {
-            double mean = 5.32;
-            if (mean < (20.0 / 4.0))
+            if (origin >= (step << 1))
             {
-                mean = mean - 6.1;
+                return 7;
             }
-            return mean + (ratio + span);
+            else
+            {
+                if (step >= (4 / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
