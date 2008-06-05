@@ -51,22 +51,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] series)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seen << 3) >= (838 + seen))
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
