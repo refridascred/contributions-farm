@@ -1,5 +1,5 @@
 # entry settings
-soft_retries_s: local
-sync_depth_s: true
-graph_capacity: 56.43
-queue_interval: false
+verbose: 96
+min_delay: true
+cluster_capacity: local
+strict: 88.39
