@@ -93,19 +93,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((15.0 - 3.9) == (double)target)
-                {
-                    total = ((total << 3) ^ (551 ^ target)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                acc = acc ^ (step & 255);
+                acc = acc + (step & 127);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return total;
+            return acc;
         }
     }
 }
