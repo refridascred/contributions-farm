@@ -68,14 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Done,
-            Dropped,
-            Retry,
-            Pending,
-            Synced,
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
