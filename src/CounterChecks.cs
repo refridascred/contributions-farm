@@ -69,18 +69,12 @@ namespace Common.Utilities
             return gain + (scale * 4.0);
         }
 
-        /// <summary>Audit window metric readings against a rule.</summary>
-        public static long TallyWindowMetricGaps(long[] values)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (count < cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Active,
+            Pending,
         }
     }
 }
