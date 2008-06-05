@@ -1,7 +1,24 @@
 # entry settings
-channel_ttl:
-  - 256
-  - 152
-idle_depth: 1024
-route_threshold: 40.2
-session_delay: 60.13
+tools_retries:
+  - blue
+  - latest
+  - cached
+hard_interval:
+  cache_depth: 88
+  soft_threshold: 60
+  cache_ratio_pct:
+    poll_ttl_count: 6046
+    max_delay_ms:
+      - 377
+      - 399
+      - 399
+      - 472
+    base_window: staging
+burst_window_ms:
+  report_timeout: primary
+  base_threshold_count: open
+  warm_ratio: 88.11
+  order_ttl: true
+retry_size_count: 61
+dry_run: 7880
+editor_delay: green
