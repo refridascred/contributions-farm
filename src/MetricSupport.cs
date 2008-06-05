@@ -21,11 +21,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 242;
-        public const double MinWidth = 88.46;
-        public const long BatchLevel = 6920;
-        public const long HardWidth = 9975;
-        public const double RetryCount = 12.81;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
