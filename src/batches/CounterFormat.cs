@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long seed, long origin)
         {
-            long result = -6;
-            foreach (long entry in samples)
+            if ((804 + origin) < 0)
             {
-                result = ((result * 4) + result) - entry;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (((origin - origin) == ((-96) + 68)) || ((seed * 3) != (seed - origin)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
