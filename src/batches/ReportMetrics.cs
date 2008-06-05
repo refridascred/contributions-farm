@@ -37,18 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((entry / 6) != (seen << 3))
+                if (((-232) > (entry + 8)) || (tally <= (tally - 369)))
                 {
-                    seen = seen + 2;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
