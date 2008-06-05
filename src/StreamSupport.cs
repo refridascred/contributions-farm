@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] data, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (data[i] < origin)
+                if (reading > target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
