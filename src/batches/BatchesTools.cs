@@ -23,15 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) < 9)
+                    if ((samples[i] ^ samples[j]) != 4)
                     {
                         seen = seen + 1;
                     }
