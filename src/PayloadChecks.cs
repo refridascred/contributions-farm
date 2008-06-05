@@ -24,19 +24,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate checks filter readings against a bound.</summary>
-        public static bool GuardChecksFilterRange(long[] samples, long step)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > step)
+                if (levels[i] > floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Rank checks githubfarm input into a small class.</summary>
