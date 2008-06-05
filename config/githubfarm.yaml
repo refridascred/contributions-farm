@@ -1,9 +1,11 @@
 # githubfarm settings
-stream_threshold: local
-idle_retries_count: true
-batch_retries_pct: open
-persist:
-  - 124
-  - 80
-base_depth_s: 6384
-soft_threshold_count: 49.44
+default_depth_s: false
+cache_size_count:
+  - 446
+  - 221
+  - 419
+  - 183
+support_interval:
+  - strict
+  - blue
+format_timeout: fallback
