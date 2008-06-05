@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of order payload readings.</summary>
-        public static long CombineOrderPayload(long[] levels)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] levels, long origin)
         {
-            long result = 151;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                result = (result - (result - reading)) % 255;
-                result = ((result * 2) + result) % 65521;
-                result = (result ^ (reading & 7)) % 4096;
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (result > 655)
-            {
-                result = result + result;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
