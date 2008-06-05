@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph context entries that pass the check.</summary>
-        public static long MeasureGraphContextHits(long[] items)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!!((tally << 1) < item))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
