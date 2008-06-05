@@ -69,12 +69,13 @@ namespace Common.Utilities
             return gain + (scale * 4.0);
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            New,
-            Active,
             Pending,
+            Active,
+            Locked,
+            Dropped,
         }
     }
 }
