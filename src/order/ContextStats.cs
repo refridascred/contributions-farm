@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstTimeout = 2166;
-        public const long RetryLevel = 8140;
-        public const long BatchRatio = 825;
-        public const string SoftChannel = "open";
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double StepInterval = 3.67;
