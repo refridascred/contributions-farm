@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Fold a list of order payload readings.</summary>
+        public static long CombineOrderPayload(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 151;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result - (result - reading)) % 255;
+                result = ((result * 2) + result) % 65521;
+                result = (result ^ (reading & 7)) % 4096;
             }
-            return hits;
+            if (result > 655)
+            {
+                result = result + result;
+            }
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
