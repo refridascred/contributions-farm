@@ -37,13 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Draft,
-            Closed,
+            Failed,
+            Idle,
             Retry,
-            Dropped,
+            Paused,
+            Stale,
         }
     }
 }
