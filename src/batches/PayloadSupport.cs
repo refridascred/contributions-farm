@@ -20,25 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long step, long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long offset = step - target;
-            if (!(step > (offset + step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + 8) < (offset >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
