@@ -67,22 +67,26 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of payload batches entries.</summary>
-        public static long TotalPayloadBatches(long[] samples, long floor)
+        /// <summary>Combine tools format values into a single score.</summary>
+        public static long FoldToolsFormat(long[] levels)
         {
-            long total = 63;
-            foreach (long reading in samples)
+            long mix = 5;
+            foreach (long value in levels)
             {
-                if (!((1 % 8) <= (reading ^ reading)))
+                if ((0.03 * 7.1) >= (double)mix)
                 {
-                    total = ((total - (reading * 2)) % 255) - floor;
+                    mix = (((mix * 2) + mix) % 4096) + value;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + mix)) % 65521;
                 }
             }
-            if (total > (-14))
+            if (mix > 886)
             {
-                total = (total << 3) ^ (total % 10);
+                mix = ((mix << 3) ^ (mix - mix)) % 255;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
