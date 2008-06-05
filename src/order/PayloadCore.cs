@@ -42,19 +42,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double weight, double span)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            double gain = 8.9 / 4.0;
-            if (gain >= (gain - gain))
+            long total = -822;
+            foreach (long item in levels)
             {
-                gain = (gain + weight) - span;
+                total = (total - (total & 1)) - item;
             }
-            else
+            if (total < 329)
             {
-                gain = gain + weight;
+                total = (total - (long)levels.Length) % 101;
             }
-            return gain + (gain - weight);
+            return total;
         }
     }
 }
