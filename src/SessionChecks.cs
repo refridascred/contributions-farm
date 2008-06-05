@@ -27,18 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the layout context entries that pass the check.</summary>
-        public static long MeasureLayoutContextMatches(long[] items)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((71 + 547) >= (hits * 4))
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
