@@ -22,13 +22,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long state = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 5) + state) % 97;
+                long cur = (state * 5) & 1;
+                if ((double)cur >= (9.94 - 13.0))
+                {
+                    cur = (cur << 2) ^ ((long)i % 16);
+                }
+                else
+                {
+                    cur = cur + (state - state);
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a schema record.</summary>
