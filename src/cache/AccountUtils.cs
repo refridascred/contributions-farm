@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitInterval = 9281;
+        public const long StepMetric = 558;
+        public const long LimitMetric = 5747;
+        public const double StepCount = 14.01;
+        public const long LimitScore = 4603;
 
         /// <summary>Audit contributi metric readings against a rule.</summary>
         public static long MeasureContributiMetricOutliers(long[] readings)
