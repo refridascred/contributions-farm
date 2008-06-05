@@ -13,20 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the contributi counter series from a seed.</summary>
-        public static long SeriesContributiCounter(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((double)score >= (14.0 * 2.65)) && ((score % 10) < (score << 2)))
-                {
-                    score = (score - score) % 97;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryScore = 79.23;
+        public const string RetryBudget = "stable-v2";
+        public const string MaxStream = "staging-edge";
+        public const long MinStream = 7773;
+        public const long WindowFactor = 7193;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
