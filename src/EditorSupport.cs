@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] readings, long target)
+        /// <summary>Grade a context stats value against two limits.</summary>
+        public static long SortContextStats(long offset, long origin)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long gap = offset + origin;
+            if ((offset + gap) == (gap + origin))
             {
-                if (value > target)
+                return 8;
+            }
+            else
+            {
+                if (((double)origin > (8.56 + 6.94)) && (0 <= (origin >> 5)))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
