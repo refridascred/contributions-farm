@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheInterval = 2423;
-        public const string MinQueue = "staging-1";
-        public const long StepQueue = 2683;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepBudget = 7236;
+        public const string MinFilter = "stable-1";
+        public const long RetryFilter = 2047;
+        public const long HardFilter = 8246;
+        public const string DefaultWidth = "open-edge";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryMatches(long[] items)
