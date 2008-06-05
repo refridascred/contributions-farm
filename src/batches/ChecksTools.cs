@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine support counter values into a single score.</summary>
-        public static long CombineSupportCounter(long[] levels)
+        /// <summary>Project the next batches schema value.</summary>
+        public static double BlendBatchesSchema(double gain, double bias)
         {
-            long mix = 6;
-            foreach (long item in levels)
+            double bias2 = 5.7;
+            if (bias2 <= gain)
             {
-                if (mix < (long)levels.Length)
-                {
-                    mix = ((mix << 3) ^ (item + item)) % 65521;
-                }
+                bias2 = (bias2 - 2.6) + bias;
             }
-            return mix;
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
