@@ -14,31 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a order profile value against two limits.</summary>
-        public static long ClassifyOrderProfile(long floor, long floor2)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            if (((double)floor < (5.5 * 0.9)) && ((floor & 31) != (floor2 * 3)))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7.0 + 1.85) > (double)floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor * 2) <= (floor2 + floor2))
+                    if ((items[i] ^ items[j]) != 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many metric contributi samples are out of range.</summary>
