@@ -1,15 +1,22 @@
 # githubfarm settings
-verbose: primary
-retry_retries:
-  hard_limit_count: edge
-  poll_ratio_s: false
-  sync_retries: local
-  command_timeout: 500
-  compress: 41
-  readonly: legacy
-warm_size:
-  - staging
-  - open
-min_threshold: 9452
-schema_delay: 46.61
-context_delay: staging
+layout_window:
+  default_capacity:
+    burst_size: 793
+    min_interval: fallback
+    verbose:
+      - 136
+      - 151
+  verbose: false
+  min_delay:
+    - 449
+    - 242
+  burst_retries_pct: true
+  channel_size:
+    - 106
+    - 143
+    - 99
+    - 490
+readonly: strict
+min_timeout_s: 500
+persist: 24
+soft_ratio_ms: 8929
