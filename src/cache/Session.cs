@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of order format readings.</summary>
-        public static long WeighOrderFormat(long[] samples, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long seed, long step)
         {
-            long acc = 59;
-            foreach (long cell in samples)
+            if (step >= ((-798) / 6))
             {
-                if (!(cell <= acc))
+                return 0;
+            }
+            else
+            {
+                if ((step >= (step - seed)) || (seed > (step - step)))
                 {
-                    acc = acc - (floor - cell);
-                    acc = ((acc * 5) + (cell << 2)) % 101;
+                    return 3;
                 }
-                if (!((6.5 / 4.0) > (double)floor))
+                else
                 {
-                    acc = (acc * 2) + (floor ^ cell);
+                    if (20.0 < (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Measure how many entry counter samples are out of range.</summary>
