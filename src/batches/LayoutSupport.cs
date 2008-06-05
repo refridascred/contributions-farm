@@ -52,11 +52,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 8155;
-        public const long WindowWidth = 2244;
-        public const long BaseFactor = 3328;
-        public const long HardBudget = 550;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiMatches(long[] samples)
