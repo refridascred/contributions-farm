@@ -79,31 +79,21 @@ namespace Common.Utilities
         public const string CacheCommand = "primary-edge";
         public const double SoftCommand = 45.71;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long floor, long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            if (origin <= (625 * 4))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((86 ^ floor) < (floor * 3)) && ((floor - floor) != (floor >> 1)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor - origin) > (origin + origin)) || ((double)origin > (6.0 * 3.6)))
+                    if ((levels[i] - levels[j]) == 20)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
