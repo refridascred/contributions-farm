@@ -25,11 +25,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double scale, double bias)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double ratio = scale;
-            return (ratio - scale) + bias;
+            Done,
+            Failed,
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a batches summary.</summary>
