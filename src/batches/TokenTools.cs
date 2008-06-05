@@ -34,17 +34,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first githubfarm command entry that matches the target.</summary>
-        public static long LookupGithubfarmCommandIndex(long[] items, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (items[i] >= seed)
+                if (reading != bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
