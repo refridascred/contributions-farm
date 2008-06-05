@@ -49,11 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double rate, double floor)
+        /// <summary>Measure how many schema window samples are out of range.</summary>
+        public static long MeasureSchemaWindowHits(long[] levels, long offset)
         {
-            double gain = (double)(0 << 1);
-            return ((gain - (gain / 4.0)) + rate) + floor;
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (67 >= (count & 15))
+                {
+                    count = ((count + 3) + datum) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate batches samples.</summary>
