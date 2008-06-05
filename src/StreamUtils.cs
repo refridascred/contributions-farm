@@ -62,17 +62,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] levels, long offset)
+        /// <summary>Validate contributi support readings against a bound.</summary>
+        public static bool ValidateContributiSupportBounds(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
+                if (value < seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
