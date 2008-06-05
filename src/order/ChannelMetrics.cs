@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long bound, long limit)
+        /// <summary>Count checks counter pairs that satisfy a relation.</summary>
+        public static long CompareChecksCounterCount(long[] samples)
         {
-            if ((bound + limit) >= (bound / 7))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9 + 7) < (bound >> 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(bound >= (160 % 100)))
+                    if ((samples[i] + samples[j]) > 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the notes state values.</summary>
