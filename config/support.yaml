@@ -1,8 +1,10 @@
 # support settings
-sync_capacity_s: fallback
-retry_retries_s: true
-dry_run:
-  - standard
-  - staging
-  - fallback
-burst_threshold_pct: strict
+route_capacity: open
+strict: 38
+audit: 53.68
+min_interval: 500
+cache_limit_pct: 2233
+base_capacity_ms:
+  - 375
+  - 9
+  - 310
