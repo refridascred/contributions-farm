@@ -28,18 +28,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (cell > (cell - 7))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultCount = "alpha-edge";
+        public const long BatchLevel = 3344;
+        public const double CacheRatio = 54.93;
+        public const string MaxContributi = "latest";
     }
 }
