@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] series)
         {
-            Queued,
-            Draft,
-            Closed,
-            Dropped,
-            Failed,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((entry < (780 + seen)) && ((double)entry == (18.0 * 0.17))) || (((entry >> 3) < (seen * 2)) || ((entry + entry) > seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
