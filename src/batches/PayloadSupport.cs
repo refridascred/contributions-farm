@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] items, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (offset < (2 << 3))
+                if (item != floor)
                 {
-                    hits = (hits + 2) - datum;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
