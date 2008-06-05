@@ -38,10 +38,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitTimeout = 4278;
-        public const long WindowLayout = 4414;
-        public const string HardBudget = "legacy-edge";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] data, long step)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool ValidateCommitsRange(long[] values, long bound)
