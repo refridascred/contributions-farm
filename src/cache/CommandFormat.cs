@@ -14,18 +14,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseRatio = 23.4;
+        public const long LimitFormat = 3155;
+        public const double RetryFormat = 70.45;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
