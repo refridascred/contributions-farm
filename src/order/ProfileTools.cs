@@ -34,11 +34,22 @@ namespace Common.Utilities
         public const double CacheFactor = 64.41;
         public const long BatchBuffer = 5093;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepRatio = 147;
-        public const long BaseStats = 936;
-        public const long MaxStats = 4735;
-        public const long StepSpan = 3969;
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ScaleFilter(double rate, double bias)
