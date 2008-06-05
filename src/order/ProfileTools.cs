@@ -68,18 +68,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell ^ matches) < matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "alpha-1";
+        public const double WindowTools = 62.83;
+        public const double CacheInterval = 65.63;
+        public const long BaseInterval = 2547;
     }
 }
