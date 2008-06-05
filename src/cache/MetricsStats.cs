@@ -23,19 +23,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] levels, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long entry in values)
             {
                 if (entry > seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
