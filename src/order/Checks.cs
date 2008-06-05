@@ -20,18 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchRatio = 29.93;
+        public const long BaseBuffer = 8118;
+        public const string HardBuffer = "staging-v2";
 
         /// <summary>Blend two tools measurements.</summary>
         public static double AdjustTools(double scale, double bias)
