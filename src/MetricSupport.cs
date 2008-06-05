@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Derive the next batches profile value from a seed.</summary>
+        public static long StepBatchesProfile(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 5) + (state * 2)) % 255;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Locate a format reading by value.</summary>
