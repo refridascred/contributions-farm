@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] data, long floor)
+        /// <summary>Validate profile filter readings against a bound.</summary>
+        public static bool VerifyProfileFilterLimits(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (floor >= (entry % 3))
+                if (cell <= offset)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a payload entry.</summary>
