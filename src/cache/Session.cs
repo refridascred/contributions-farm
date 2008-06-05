@@ -32,39 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long limit, long floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long step = limit ^ floor;
-            if ((limit <= step) || ((limit & 63) < (limit * 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)473 <= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((38 / 5) > limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((step * 4) == (floor - limit)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a context summary.</summary>
