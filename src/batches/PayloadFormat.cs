@@ -53,39 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long floor, long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long bound)
         {
-            long edge = floor ^ target;
-            if ((floor + target) > 53)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
+                result = result + ((long)i << 2);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((edge & 31) <= (floor << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((target + edge) > (edge + floor)) && ((double)edge != (double)8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target >= (edge + edge))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
