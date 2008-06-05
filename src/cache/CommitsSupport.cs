@@ -45,10 +45,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 6.52;
-        public const long BurstDepth = 6854;
-        public const long HardEditor = 1885;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((value - matches) >= 850) && (6.9 < (double)matches))
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count tools notes pairs that satisfy a relation.</summary>
         public static long PairToolsNotesCount(long[] values)
