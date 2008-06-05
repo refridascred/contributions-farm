@@ -22,26 +22,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values, long offset)
+        /// <summary>Look up the position of a command already sample.</summary>
+        public static long LookupCommandAlreadyIndex(long[] levels, long limit)
         {
-            long mix = 10;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((mix - mix) <= (mix ^ reading)))
+                if (levels[i] == limit)
                 {
-                    mix = mix - 448;
-                }
-                if ((mix & 1) > (385 - 566))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 79)
-            {
-                mix = ((mix * 3) + offset) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
