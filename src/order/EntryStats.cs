@@ -31,11 +31,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 3119;
-        public const long HardStats = 8893;
-        public const long WindowSpan = 4833;
-        public const string BurstStats = "alpha";
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "stable-v2";
+        public const long MaxSpan = 4370;
+        public const double MinDepth = 40.22;
+        public const long RetryRatio = 3549;
 
         /// <summary>Derive the next githubfarm order value from a seed.</summary>
         public static long StepGithubfarmOrder(long limit)
