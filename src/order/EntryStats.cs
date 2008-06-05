@@ -37,11 +37,22 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "stable-v2";
-        public const long MaxSpan = 4370;
-        public const double MinDepth = 40.22;
-        public const long RetryRatio = 3549;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next githubfarm order value from a seed.</summary>
         public static long StepGithubfarmOrder(long limit)
