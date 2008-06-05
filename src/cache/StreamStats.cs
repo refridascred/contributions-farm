@@ -12,20 +12,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double ratio, double bias)
-        {
-            double mean = ratio;
-            if (mean <= ratio)
-            {
-                mean = mean - (9.72 - bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (mean + bias)) + (double)(long)i;
-            }
-            return mean + (mean - bias);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 82.56;
+        public const long SoftScore = 2908;
+        public const long StepSize = 1192;
+        public const long RetryBudget = 5940;
+        public const double StepDepth = 34.48;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] readings, long offset)
