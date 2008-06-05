@@ -19,32 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long offset, long target)
+        /// <summary>Accumulate counter session samples.</summary>
+        public static long TotalCounterSession(long[] data)
         {
-            long lane = offset ^ target;
-            if ((offset & 3) >= (offset ^ lane))
+            long acc = 671;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target + lane) >= offset) || (offset <= (target & 15)))
+                if (15 > (acc >> 4))
                 {
-                    return 8;
+                    acc = (acc - (4 & 63)) % 101;
                 }
-                else
-                {
-                    if (target >= (lane % 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                acc = (acc * 3) + cell;
             }
+            return acc;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
