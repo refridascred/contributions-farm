@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            Paused,
-            Retry,
-            Failed,
-            Closed,
-            Locked,
+            long acc = 36;
+            foreach (long reading in levels)
+            {
+                if ((669 ^ reading) == (reading + acc))
+                {
+                    acc = (acc ^ (reading >> 1)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 5) + reading) % 97;
+                }
+            }
+            if (acc > 20)
+            {
+                acc = (acc + (acc >> 3)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the account state values.</summary>
