@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Stale,
-            Done,
-            Dropped,
-            Failed,
-            Active,
+            public double Count { get; set; }
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
