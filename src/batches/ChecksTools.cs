@@ -33,9 +33,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 9870;
-        public const string HardBuffer = "open-1";
-        public const string MinBuffer = "open-1";
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc - (acc % 97)) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
