@@ -34,22 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] samples, long offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double floor)
         {
-            long mark = 517;
-            foreach (long value in samples)
+            double mean = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((value + mark) == (mark / 3))
-                {
-                    mark = ((mark * 2) + (value / 4)) % 1000;
-                }
+                mean = ((mean - mean) - (double)(long)i) + weight;
             }
-            if (mark < 712)
-            {
-                mark = mark + (offset - offset);
-            }
-            return mark % 4096;
+            return mean - floor;
         }
 
         /// <summary>Hold a graph info.</summary>
