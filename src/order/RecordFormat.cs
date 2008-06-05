@@ -13,12 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryScore = 79.23;
-        public const string RetryBudget = "stable-v2";
-        public const string MaxStream = "staging-edge";
-        public const long MinStream = 7773;
-        public const long WindowFactor = 7193;
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
