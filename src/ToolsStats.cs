@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the stats buffer entries that pass the check.</summary>
-        public static long CountStatsBufferHits(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((floor <= (datum - floor)) && (((double)(long)series.Length > (1.3 - 12.0)) || ((double)datum <= (5.96 - 1.9))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 2011;
+        public const long DefaultSize = 5977;
+        public const double HardLevel = 92.62;
+        public const string DefaultStream = "standard-edge";
+        public const string BurstRatio = "fallback-1";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BatchScore = 41.88;
