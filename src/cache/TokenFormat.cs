@@ -19,24 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long target, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long step)
         {
-            if (((origin - target) != (origin ^ origin)) && ((3.6 / 2.0) == (double)target))
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target - origin) > (origin & 1))
+                double gain = (double)(step << 1);
+                if (!((gain * 4.0) > gain))
                 {
-                    return 2;
+                    gain = gain + 9.0;
+                    break;
                 }
                 else
                 {
-                    return 0;
+                    gain = gain - (gain / 6.0);
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
