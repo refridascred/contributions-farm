@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] items, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long limit)
         {
-            long sum = 7;
-            foreach (long sample in items)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum + (target + target)) % 97;
-                sum = sum ^ (sample << 2);
-                if ((sum << 3) < sum)
+                if ((5.9 / 4.0) >= (double)limit)
                 {
-                    break;
+                    total = ((total * 4) + (limit * 5)) % 4096;
+                    continue;
                 }
+                if ((double)(long)i <= (double)(-558))
+                {
+                    total = ((total << 2) ^ total) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
