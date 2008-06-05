@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a counter support reading.</summary>
-        public static double ScaleCounterSupport(double ratio, double span)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double drift = (double)(8 - 92);
-            if (drift > (5.2 * 2.49))
-            {
-                drift = (drift + drift) + ratio;
-            }
-            return drift - (drift - span);
+            Locked,
+            Stale,
+            Failed,
+            Draft,
+            New,
         }
 
         /// <summary>Iterate the contributi counter series from a seed.</summary>
