@@ -53,19 +53,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two graph entry measurements.</summary>
-        public static double AdjustGraphEntry(double bias, double offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] data, long seed)
         {
-            double mean = 6.0;
-            if (mean <= offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (mean / 5.0)) + bias;
+                if ((data[i] > seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (double)1;
-            }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
