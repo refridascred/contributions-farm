@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 1996;
-        public const long WindowSupport = 8207;
-        public const long BatchRatio = 9935;
-        public const string StepTimeout = "local";
-        public const long BaseSupport = 4436;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Synced,
+            Idle,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
