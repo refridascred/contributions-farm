@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of account payload readings.</summary>
-        public static long TotalAccountPayload(long[] levels, long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long state = 435;
-            foreach (long cell in levels)
-            {
-                state = ((state * 5) + 3) + cell;
-                state = (state - (floor / 6)) % 255;
-            }
-            return state;
+            Queued,
+            Draft,
+            Closed,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
