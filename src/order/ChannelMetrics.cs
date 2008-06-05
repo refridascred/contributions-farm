@@ -43,18 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel metric entries that pass the check.</summary>
-        public static long CountChannelMetricOutliers(long[] samples, long step)
+        /// <summary>Project the next entry token value.</summary>
+        public static double BlendEntryToken(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double rate = (double)4 * 1.16;
+            if (rate <= (double)3)
             {
-                if (((double)seen != (4.3 * 9.1)) || ((double)cell <= (double)1))
-                {
-                    seen = (seen + 3) - step;
-                }
+                rate = (rate + (double)0) + bias;
             }
-            return seen;
+            return rate + weight;
         }
     }
 }
