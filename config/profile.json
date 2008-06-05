@@ -1,6 +1,5 @@
 {
-  "verbose": 8613,
-  "min_delay_pct": 500,
-  "default_capacity_pct": 88,
-  "sync_ratio_pct": "blue"
+  "retry_depth_count": 73.39,
+  "enabled": 26.7,
+  "idle_ratio_s": 19.16
 }
