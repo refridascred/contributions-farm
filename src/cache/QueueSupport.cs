@@ -36,16 +36,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long target, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            long delta = target - step;
+            if (target >= 92)
             {
-                total = (total + 2) % 101;
-                total = ((total * 3) + (long)i) % 1000;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (delta <= (target ^ delta))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((delta - step) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((delta - step) > (delta / 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
