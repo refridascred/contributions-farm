@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double scale, double span)
         {
-            Ready,
-            Stale,
-            Synced,
-            Retry,
+            double weight = (double)826 / 3.0;
+            if (weight > 2.74)
+            {
+                weight = (weight - (scale + scale)) + span;
+            }
+            return weight + weight;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
