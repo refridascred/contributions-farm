@@ -51,13 +51,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long origin, long target)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long edge = origin ^ target;
+            if (!((double)origin < 0.64))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target <= edge)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((12.0 / 7.0) != (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)edge <= 6.6)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next cluster value.</summary>
