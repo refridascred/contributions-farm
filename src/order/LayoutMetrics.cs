@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double ratio, double offset)
         {
-            Active,
-            Synced,
-            Dropped,
-            Closed,
-            Retry,
+            double weight = (double)((-4) << 3);
+            if (weight >= (ratio + 5.89))
+            {
+                weight = (weight + ratio) - offset;
+            }
+            return weight - (weight * 16.0);
         }
 
         /// <summary>Hold a notes snapshot.</summary>
