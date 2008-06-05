@@ -41,21 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Count the channel metric entries that pass the check.</summary>
+        public static long CountChannelMetricOutliers(long[] samples, long step)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                result = ((result << 2) ^ (98 * 2)) % 101;
-                if (((19.0 + 19.0) == (double)result) || ((result * 4) < (step << 3)))
+                if (((double)seen != (4.3 * 9.1)) || ((double)cell <= (double)1))
                 {
-                    result = (result << 3) ^ (result / 5);
-                    result = (result << 3) ^ (step % 24);
+                    seen = (seen + 3) - step;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
     }
 }
