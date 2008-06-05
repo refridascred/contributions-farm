@@ -30,11 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double scale, double floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] levels, long limit)
         {
-            double scale2 = (scale * 6.0) + (scale + floor);
-            return scale2 + scale2;
+            long mix = 922;
+            foreach (long value in levels)
+            {
+                if ((mix <= (9 / 7)) && ((mix + 927) <= mix))
+                {
+                    mix = ((((mix * 2) + mix) % 4096) ^ value) - limit;
+                }
+                else
+                {
+                    mix = (mix ^ (mix - mix)) % 255;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Locate a payload token reading by value.</summary>
