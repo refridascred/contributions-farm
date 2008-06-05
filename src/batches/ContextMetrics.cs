@@ -64,25 +64,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long slot = floor ^ target;
-            if (!((floor - 29) >= slot))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target - slot) != (floor % 3)) || ((0 + floor) <= slot))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Retry,
+            Dropped,
+            Paused,
         }
     }
 }
