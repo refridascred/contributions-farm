@@ -1,10 +1,5 @@
 # support settings
-route_capacity: open
-strict: 38
-audit: 53.68
-min_interval: 500
-cache_limit_pct: 2233
-base_capacity_ms:
-  - 375
-  - 9
-  - 310
+max_depth_s: 5145
+cache_ratio: 5238
+min_threshold: 98.34
+dry_run: legacy
