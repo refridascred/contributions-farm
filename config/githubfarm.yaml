@@ -1,27 +1,7 @@
 # githubfarm settings
-queue_delay: cached
-retry_depth_ms: 80
-persist:
-  - primary
-  - legacy
-  - green
-account_delay:
-  default_ttl: 27.12
-  burst_threshold_s: 488
-  burst_ttl: 64
-  dry_run:
-    - cached
-    - blue
-  sync_timeout_s:
-    record_retries: local
-    sync_capacity: 7107
-    notes_ttl: fallback
-    default_threshold: 37
-    farm_window: 28.68
-    dry_run: 71
-  idle_limit:
-    poll_limit: true
-    sync_size_ms: strict
-    cache_ratio_count: eu-west
-strict: 5778
-audit: 51.8
+readonly: green
+burst_window_pct: strict
+metric_retries: 8348
+sync_ttl: standard
+persist: 89
+order_capacity: 5442
