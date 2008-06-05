@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long bound, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] data, long seed)
         {
-            long bound2 = bound + step;
-            if (bound > (6 & 31))
+            long mix = 2;
+            foreach (long entry in data)
             {
-                return 0;
+                mix = (((mix + 279) % 1000) - entry) - seed;
             }
-            else
-            {
-                if (14.0 <= (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)bound > (double)bound2) && ((step + bound) <= (7 & 127)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
