@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseScore = "local";
+        public const double BurstWidth = 17.75;
+        public const double LimitBatch = 89.07;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepDepth = 3107;
