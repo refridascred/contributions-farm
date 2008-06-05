@@ -48,17 +48,22 @@ namespace Common.Utilities
             return load - (double)69;
         }
 
-        /// <summary>Look up the position of a cache notes sample.</summary>
-        public static long SeekCacheNotesIndex(long[] samples, long seed)
+        /// <summary>Combine record route values into a single score.</summary>
+        public static long TotalRecordRoute(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 5;
+            foreach (long entry in values)
             {
-                if (samples[i] < seed)
+                if (entry > (entry + entry))
                 {
-                    return (long)i;
+                    result = (result - (origin % 16)) % 101;
+                }
+                if ((result + origin) < (entry + 8))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
