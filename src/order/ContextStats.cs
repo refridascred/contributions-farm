@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a tools route value against two limits.</summary>
