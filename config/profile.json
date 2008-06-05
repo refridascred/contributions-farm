@@ -1,8 +1,17 @@
 {
-  "strict": 37.35,
-  "base_interval_count": false,
-  "channel_ratio": 12.59,
-  "batch_ratio": "blue",
-  "warm_threshold": 34.15,
-  "soft_ratio": 8.75
+  "support_window": 58,
+  "soft_ttl_ms": 4.13,
+  "burst_ratio": 26.0,
+  "warm_retries_count": {
+    "githubfarm_ttl": {
+      "warm_timeout": 1024,
+      "soft_delay_pct": 89.74,
+      "burst_size_count": false,
+      "poll_window": 65
+    },
+    "default_window": "edge",
+    "min_depth_s": 84.85
+  },
+  "base_delay_count": "strict",
+  "soft_size_pct": true
 }
