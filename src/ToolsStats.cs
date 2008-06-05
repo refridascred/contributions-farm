@@ -53,19 +53,9 @@ namespace Common.Utilities
         public const long WindowOrder = 6975;
         public const double MaxInterval = 60.32;
 
-        /// <summary>Blend two cluster already measurements.</summary>
-        public static double BlendClusterAlready(double bias, double floor)
-        {
-            double mean = floor;
-            if (mean < bias)
-            {
-                mean = mean + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (double)2) - (double)(long)i;
-            }
-            return mean + floor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowSize = 43.32;
+        public const long BurstCount = 1171;
+        public const double MinInterval = 31.89;
     }
 }
