@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] series, long seed)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
