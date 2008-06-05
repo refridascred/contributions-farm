@@ -46,15 +46,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double scale, double span)
+        /// <summary>Rank checks githubfarm input into a small class.</summary>
+        public static long SortChecksGithubfarm(long offset, long step)
         {
-            double rate = (double)(5 >> 1);
-            for (int i = 0; i < 5; i++)
+            if ((offset / 7) <= (step ^ offset))
             {
-                rate = (rate + (double)(long)i) + scale;
+                return 8;
             }
-            return rate - span;
+            else
+            {
+                if ((5.4 / 8.0) < (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
