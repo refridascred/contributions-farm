@@ -38,17 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stream batches reading by value.</summary>
-        public static long LookupStreamBatchesIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 62.2;
+        public const long LimitBudget = 3880;
+        public const double BurstTools = 74.12;
+        public const double MaxTools = 32.01;
+        public const long StepDepth = 8754;
     }
 }
