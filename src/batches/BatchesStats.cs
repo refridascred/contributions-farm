@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long origin)
         {
-            Dropped,
-            New,
-            Ready,
-            Draft,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next record value.</summary>
