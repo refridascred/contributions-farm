@@ -33,11 +33,22 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] readings, long seed)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item ^ item) > (tally + item))
+                {
+                    tally = (tally + 3) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
