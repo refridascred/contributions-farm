@@ -1,13 +1,5 @@
 # entry settings
-burst_limit_ms:
-  dry_run: open
-  default_size_ms: 52.22
-  idle_threshold_count: 100
-  flush_threshold_ms:
-    - 122
-    - 285
-    - 451
-  stream_retries: true
-  entry_timeout: true
-min_ttl: 30
-verbose: eu-west
+warm_size: 79.87
+idle_depth: 4580
+poll_ratio_count: false
+retry_size_count: 1024
