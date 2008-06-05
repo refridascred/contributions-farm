@@ -1,11 +1,12 @@
 # support settings
-notes_ratio:
-  - 179
-  - 12
-  - 203
-idle_size_pct: 5
-retry_capacity_pct: false
-enabled:
-  - 153
-  - 262
-  - 341
+warm_interval_count:
+  - 380
+  - 305
+cache_interval_pct: 4990
+hard_size_count:
+  retry_ttl: 19.52
+  context_threshold: legacy
+  soft_timeout_pct: 1131
+  hard_interval: false
+  sync_ratio: true
+  token_interval: false
