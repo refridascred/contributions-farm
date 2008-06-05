@@ -32,21 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
     }
 }
