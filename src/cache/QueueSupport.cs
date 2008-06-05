@@ -25,21 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Adjust a profile githubfarm reading.</summary>
+        public static double ProjectProfileGithubfarm(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = 6.9;
+            if (mean <= (double)36)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - (double)(-2);
             }
-            return tally;
+            else
+            {
+                mean = mean + 6.6;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + scale) + (double)(long)i;
+            }
+            return mean + (mean - bias);
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
