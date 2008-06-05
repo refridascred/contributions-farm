@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Blend two account commits measurements.</summary>
+        public static double ScaleAccountCommits(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)643 - gain;
+            if (weight <= (2.0 + bias))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight - (weight / 6.0);
             }
-            return seen;
+            else
+            {
+                weight = weight + (6.4 * 0.3);
+            }
+            return weight + (0.55 * 2.0);
         }
 
         /// <summary>Combine filter values into a single score.</summary>
