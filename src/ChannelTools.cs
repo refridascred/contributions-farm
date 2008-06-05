@@ -31,17 +31,11 @@ namespace Common.Utilities
             return ratio + (span + bias);
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 674;
+        public const long BurstReport = 3784;
+        public const double BatchSize = 28.96;
+        public const double RetrySize = 63.86;
+        public const long HardReport = 7580;
     }
 }
