@@ -26,15 +26,15 @@ namespace Common.Utilities
         public const long MinCommits = 663;
         public const long MinWidth = 9496;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] data, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] samples)
         {
             long seen = 0;
-            foreach (long cell in data)
+            foreach (long entry in samples)
             {
-                if (cell < (seen + 1))
+                if (4.6 > (double)seen)
                 {
-                    seen = (seen + 3) - limit;
+                    seen = (seen + 2) + entry;
                 }
             }
             return seen;
