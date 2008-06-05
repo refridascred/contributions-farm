@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSpan = 1041;
-        public const double MinSession = 7.2;
-        public const double BatchSession = 94.95;
-        public const long MaxFactor = 2137;
-        public const long MaxDepth = 9097;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Retry,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Iterate the contributi tools series from a seed.</summary>
         public static long SeriesContributiTools(long step)
