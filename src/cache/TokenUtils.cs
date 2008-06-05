@@ -40,13 +40,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many payload batch samples are out of range.</summary>
+        public static long TallyPayloadBatchMatches(long[] data)
         {
-            Done,
-            Paused,
-            Active,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((sample >= (sample / 3)) || ((sample / 6) >= (tally + 5)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
