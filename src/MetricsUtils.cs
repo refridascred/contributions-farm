@@ -77,17 +77,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Locate a payload token reading by value.</summary>
-        public static long FindPayloadTokenIndex(long[] series, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a record githubfarm counter forward.</summary>
