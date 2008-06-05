@@ -32,19 +32,9 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate session editor readings against a bound.</summary>
-        public static bool GuardSessionEditorLimits(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 9870;
+        public const string HardBuffer = "open-1";
+        public const string MinBuffer = "open-1";
     }
 }
