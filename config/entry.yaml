@@ -1,9 +1,16 @@
 # entry settings
-retry_timeout_count:
-  - standard
-  - cached
-base_limit_count:
-  - 130
-  - 414
-  - 489
-soft_delay_s: 156
+hard_limit: 992
+sync_interval_count: 39.06
+readonly:
+  hard_ttl_s: 61.58
+  idle_threshold:
+    readonly: staging
+    burst_interval: 34
+    enabled: 98.19
+    dry_run: eu-west
+  max_ttl_pct: edge
+warm_window_count:
+  - legacy
+  - stable
+  - staging
+default_timeout_ms: 7791
