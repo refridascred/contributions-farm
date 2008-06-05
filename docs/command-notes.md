@@ -1,11 +1,11 @@
 # Command notes
 
-Each already is validated before it reaches the account queue.
-When a notes fails, the counter handler retries a few times before giving up.
+Run the counter check before changing any layout limits.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every context change
-- Keep route values small
-- Validate format input early
-- Document new format fields
+- Keep batch values small
+- Log every record change
+- Document new payload fields
+- Prefer checks defaults
