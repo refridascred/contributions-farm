@@ -1,5 +1,6 @@
 # entry settings
-warm_size: 79.87
-idle_depth: 4580
-poll_ratio_count: false
-retry_size_count: 1024
+queue_size:
+  - 375
+  - 413
+verbose: cached
+route_threshold: 5020
