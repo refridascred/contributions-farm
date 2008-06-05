@@ -67,19 +67,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] series, long seed)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            bool found = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
