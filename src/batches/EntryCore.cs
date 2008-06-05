@@ -20,12 +20,22 @@ namespace Common.Utilities
             return bias2 - (double)8;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 7707;
-        public const long BatchFarm = 6658;
-        public const double BurstBudget = 22.53;
-        public const long IdleCount = 5956;
-        public const long MaxFarm = 3247;
+        /// <summary>Compare every pair of counter already readings.</summary>
+        public static long CompareCounterAlreadyCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LookupEntryIndex(long[] levels, long bound)
