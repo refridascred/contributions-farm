@@ -1,16 +1,12 @@
 {
-  "batch_timeout": ["standard", "primary", "legacy"],
-  "idle_size_count": true,
-  "hard_threshold_ms": {
-    "audit": {
-      "graph_capacity": ["edge", "open", "latest", "local"],
-      "strict": "blue",
-      "verbose": "primary",
-      "sync_depth_s": [245, 327, 371, 1]
-    },
-    "cache_delay": true,
-    "verbose": 71
+  "report_window": {
+    "strict": 48,
+    "audit": 35.97,
+    "batch_ratio_pct": [75, 73, 293, 185],
+    "enabled": true
   },
-  "base_interval": 1024,
-  "persist": [231, 6, 433]
+  "readonly": false,
+  "soft_ttl": 16,
+  "audit": "latest",
+  "retry_ratio_s": 6420
 }
