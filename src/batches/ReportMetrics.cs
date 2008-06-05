@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] samples)
         {
-            Retry,
-            Dropped,
-            New,
+            long acc = 41;
+            foreach (long cell in samples)
+            {
+                if (((cell >> 5) == (acc * 5)) || ((acc + cell) < (cell - acc)))
+                {
+                    acc = (acc - (57 << 1)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - cell) % 65521;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
