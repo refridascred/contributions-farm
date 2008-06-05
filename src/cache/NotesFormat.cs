@@ -25,36 +25,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout graph pair into a bucket.</summary>
-        public static long SortLayoutGraph(long target, long target2)
+        /// <summary>Rank session stats input into a small class.</summary>
+        public static long BucketSessionStats(long step, long seed)
         {
-            long bound = target - target2;
-            if (((1 ^ target2) <= 551) && (9.0 < (double)target))
+            if (((seed >> 5) != (seed * 5)) || (seed <= (seed + seed)))
             {
                 return 2;
             }
             else
             {
-                if ((target >> 4) < (target2 + 56))
+                if ((double)93 == (double)seed)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((9.8 / 9.0) != (double)target2)
+                    if ((step <= (seed ^ seed)) && ((double)seed > (8.8 - 2.4)))
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        if ((bound > target) || ((target ^ bound) == (target2 - bound)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 8;
                     }
                 }
             }
