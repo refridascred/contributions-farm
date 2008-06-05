@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] values, long bound)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            if (((double)limit != (double)bound) && ((3 ^ limit) >= (limit / 6)))
             {
-                if ((double)bound == (5.55 + 5.0))
+                return 4;
+            }
+            else
+            {
+                if ((12.0 + 13.0) < (double)bound)
                 {
-                    tally = (tally + 1) + sample;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)limit < (9.97 / 6.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit + limit) > (limit / 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate entry account readings against a bound.</summary>
