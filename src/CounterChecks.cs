@@ -34,19 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] samples, long origin)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double drift = (double)(542 << 1);
+            return ((drift + drift) + scale) + floor;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
