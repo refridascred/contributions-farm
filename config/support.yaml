@@ -1,4 +1,4 @@
 # support settings
-default_threshold_s: true
-audit: stable
-flush_delay_s: fallback
+burst_limit: 93.44
+hard_interval: 30
+soft_ttl_count: strict
