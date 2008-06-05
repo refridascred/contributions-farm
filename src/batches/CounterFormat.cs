@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheInterval = "fallback-v2";
-        public const double CacheContributi = 6.99;
-        public const long WindowSize = 2775;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
