@@ -53,11 +53,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheScore = "standard-1";
-        public const double WindowFarm = 41.32;
-        public const long BatchScore = 3233;
-        public const long HardFarm = 2519;
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double weight, double offset)
+        {
+            double rate = (double)454 / 3.0;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (weight + offset)) + (double)(long)i;
+            }
+            return rate + offset;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterGaps(long[] samples)
