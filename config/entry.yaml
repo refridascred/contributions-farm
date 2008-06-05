@@ -1,4 +1,13 @@
 # entry settings
-channel_retries: 60
-strict: 13
-poll_window_s: 4505
+default_depth:
+  - fallback
+  - blue
+  - standard
+  - eu-west
+retry_threshold_count: 3206
+soft_ttl_s:
+  - 7
+  - 469
+  - 242
+batch_ratio_s: green
+compress: 3789
