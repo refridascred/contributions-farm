@@ -1,16 +1,6 @@
 # entry settings
-hard_limit: 992
-sync_interval_count: 39.06
-readonly:
-  hard_ttl_s: 61.58
-  idle_threshold:
-    readonly: staging
-    burst_interval: 34
-    enabled: 98.19
-    dry_run: eu-west
-  max_ttl_pct: edge
-warm_window_count:
-  - legacy
-  - stable
-  - staging
-default_timeout_ms: 7791
+poll_timeout: 74
+cache_interval_count: 9100
+warm_threshold_count: 6739
+dry_run: stable
+record_depth: 1024
