@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a format batches value against two limits.</summary>
-        public static long RankFormatBatches(long seed, long offset)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double ratio, double floor)
         {
-            if ((offset - offset) < offset)
+            double gain = (floor - 5.8) + (double)81;
+            if (gain >= (floor / 4.0))
             {
-                return 7;
+                gain = gain + 1.13;
             }
             else
             {
-                if ((double)offset >= (double)633)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + 793) < offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset >> 1) <= offset) && ((offset + offset) >= (offset & 31)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                gain = gain + (ratio + gain);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (2.1 / 9.0)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Digest a series of stats cache entries.</summary>
