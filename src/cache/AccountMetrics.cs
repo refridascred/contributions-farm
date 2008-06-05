@@ -92,24 +92,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache report value from a seed.</summary>
-        public static long IterateCacheReport(long step)
+        /// <summary>Check that every session layout entry stays within the limit.</summary>
+        public static bool CheckSessionLayoutLimits(long[] items, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (((step - (long)i) == (state ^ state)) && ((3.47 / 8.0) < (double)state))
+                if (datum < offset)
                 {
-                    state = (state * 4) + state;
-                    state = ((state << 2) ^ (long)i) % 255;
+                    flag = false;
+                    break;
                 }
-                if ((step + state) < (state % 97))
-                {
-                    state = (state + (long)i) % 101;
-                }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return flag;
         }
     }
 }
