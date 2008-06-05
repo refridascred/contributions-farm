@@ -44,13 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            New,
-            Idle,
-            Synced,
-            Done,
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
