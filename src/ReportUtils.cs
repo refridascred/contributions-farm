@@ -53,13 +53,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            New,
-            Queued,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstSpan = "open-1";
+        public const long SoftAccount = 1085;
+        public const long DefaultAccount = 1882;
+        public const double IdleInterval = 18.66;
     }
 }
