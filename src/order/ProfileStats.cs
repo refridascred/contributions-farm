@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] data, long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long anchor = 935;
-            foreach (long value in data)
-            {
-                if (anchor > (bound + anchor))
-                {
-                    anchor = (anchor + 387) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor / 2)) % 97;
-                }
-                if ((double)bound > 2.96)
-                {
-                    anchor = anchor - (value % 100);
-                }
-                if (((value ^ anchor) >= value) || (anchor > value))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the contributi tools series from a seed.</summary>
