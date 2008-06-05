@@ -16,31 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank payload layout input into a small class.</summary>
-        public static long BucketPayloadLayout(long limit, long target)
+        /// <summary>Count the graph context entries that pass the check.</summary>
+        public static long MeasureGraphContextHits(long[] items)
         {
-            if (!((limit % 2) > (80 + target)))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((target >> 1) > (limit << 3)))
+                if (!!((tally << 1) < item))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target <= (19.0 * 20.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
