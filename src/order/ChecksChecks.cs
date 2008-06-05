@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] data, long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long bound, long step)
         {
-            bool found = true;
-            foreach (long value in data)
+            long bound2 = bound + step;
+            if (bound > (6 & 31))
             {
-                if (value >= bound)
+                return 0;
+            }
+            else
+            {
+                if (14.0 <= (double)step)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)bound > (double)bound2) && ((step + bound) <= (7 & 127)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
