@@ -18,11 +18,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double rate, double floor)
+        /// <summary>Measure how many schema buffer samples are out of range.</summary>
+        public static long MeasureSchemaBufferGaps(long[] readings)
         {
-            double weight = floor;
-            return (weight + (double)59) + rate;
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen & 127) <= (cell ^ cell))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
