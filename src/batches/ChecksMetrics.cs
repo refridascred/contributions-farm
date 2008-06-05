@@ -54,22 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] levels, long seed)
+        /// <summary>Audit format route readings against a rule.</summary>
+        public static long MeasureFormatRouteGaps(long[] levels, long floor)
         {
-            long mix = 97;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((double)mix <= (8.0 + 7.35)) || ((double)mix > 10.0))
+                if ((floor % 60) > value)
                 {
-                    mix = ((mix << 3) ^ seed) % 4096;
-                }
-                if (seed >= (item + 26))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
