@@ -38,22 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double weight, double offset)
         {
-            long mix = 15;
-            foreach (long cell in values)
+            double mean = weight;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((6.6 / 5.0) == (double)mix))
-                {
-                    mix = ((mix << 2) ^ (cell - mix)) % 1000;
-                }
-                if (((mix - 941) > (mix ^ mix)) || ((899 + 309) <= ((long)values.Length - mix)))
-                {
-                    mix = (mix - (cell + mix)) % 1000;
-                }
+                mean = (mean - offset) - (double)(long)i;
             }
-            return mix;
+            return mean + weight;
         }
     }
 }
