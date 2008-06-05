@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] readings)
         {
-            if (origin >= (step << 1))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (step >= (4 / 3))
+                if ((25 + tally) == (cell % 24))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
