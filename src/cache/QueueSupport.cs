@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Iterate the metric checks series from a seed.</summary>
+        public static long SeriesMetricChecks(long limit)
         {
-            long sum = 43;
-            foreach (long datum in values)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum + sum) > 0)
+                if (((limit << 2) <= anchor) && (anchor < (anchor / 7)))
                 {
-                    sum = ((sum * 4) + (sum << 1)) % 4096;
+                    anchor = ((anchor * 5) + (anchor + anchor)) % 4096;
                 }
-                if ((sum - 9) == ((-974) + sum))
-                {
-                    break;
-                }
+                anchor = (anchor ^ ((long)i + anchor)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Accumulate filter samples.</summary>
