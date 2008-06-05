@@ -15,10 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 8630;
-        public const long MinRatio = 6021;
-        public const string DefaultRatio = "staging-edge";
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsRange(long[] values, long bound)
