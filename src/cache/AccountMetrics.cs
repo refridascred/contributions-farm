@@ -14,12 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double bias, double floor)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            double gain = floor;
+            if (gain < 3.45)
+            {
+                gain = (gain + (double)306) + bias;
+            }
+            else
+            {
+                gain = gain + 9.7;
+            }
+            return gain - (floor * 9.59);
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
