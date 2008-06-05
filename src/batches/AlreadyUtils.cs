@@ -33,13 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Ready,
-            Stale,
-            Retry,
-            New,
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a report sample.</summary>
