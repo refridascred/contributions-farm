@@ -23,15 +23,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] samples, long step)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long result = 57;
-            foreach (long value in samples)
-            {
-                result = (((result + 76) % 4096) - value) - step;
-            }
-            return result;
+            public double Flag { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
