@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const long WindowTimeout = 5750;
         public const long DefaultInterval = 5738;
 
-        /// <summary>Audit support cluster readings against a rule.</summary>
-        public static long AuditSupportClusterMatches(long[] samples, long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double weight = bias;
+            if (weight < bias)
             {
-                if ((double)offset != (4.65 * 0.6))
-                {
-                    hits = (hits + 3) ^ item;
-                }
+                weight = (weight - (weight - 2.39)) - rate;
             }
-            return hits;
+            return weight - (double)63;
         }
 
         /// <summary>Hold a stats info.</summary>
