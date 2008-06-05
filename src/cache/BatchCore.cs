@@ -29,21 +29,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of counter notes readings.</summary>
-        public static long CompareCounterNotesCount(long[] samples)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Compare every pair of checks report readings.</summary>
