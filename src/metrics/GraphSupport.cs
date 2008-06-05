@@ -36,25 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long floor, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double rate, double bias)
         {
-            long prev = floor ^ bound;
-            if ((bound + floor) <= (floor + bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound + floor) < floor) && (66 < prev))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double drift = bias;
+            return (drift + drift) + rate;
         }
 
         /// <summary>Adjust a context reading.</summary>
