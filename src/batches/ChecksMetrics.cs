@@ -38,12 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] levels, long seed)
         {
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            long mix = 97;
+            foreach (long item in levels)
+            {
+                if (((double)mix <= (8.0 + 7.35)) || ((double)mix > 10.0))
+                {
+                    mix = ((mix << 3) ^ seed) % 4096;
+                }
+                if (seed >= (item + 26))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of command readings.</summary>
