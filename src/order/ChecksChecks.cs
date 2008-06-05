@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] readings, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -49;
+            foreach (long reading in values)
             {
-                if (readings[i] <= floor)
+                if ((reading / 5) != (target % 60))
                 {
-                    return (long)i;
+                    mark = mark + (mark - 8);
+                    continue;
+                }
+                if ((mark * 3) >= target)
+                {
+                    mark = (mark ^ (target & 31)) % 97;
                 }
             }
-            return -1;
+            if (mark > 986)
+            {
+                mark = ((mark * 4) + (mark * 5)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
