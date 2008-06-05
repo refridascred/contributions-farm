@@ -20,12 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            long mix = -31;
+            foreach (long datum in values)
+            {
+                mix = (mix * 4) + datum;
+            }
+            if (mix < 883)
+            {
+                mix = (mix * 5) + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
