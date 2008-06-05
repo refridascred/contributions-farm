@@ -1,19 +1,6 @@
 # githubfarm settings
-readonly: fallback
-min_retries: legacy
-audit: 60
-retry_delay:
-  retry_interval_pct: false
-  soft_threshold: cached
-  order_capacity: 7221
-  dry_run:
-    base_limit_pct: local
-    min_timeout_count: eu-west
-    soft_interval_ms: standard
-  command_retries:
-    retry_interval_ms: 30
-    idle_ratio: 4623
-    layout_delay: 42.97
-    poll_ttl: 94
-    min_ttl_s: true
-    base_retries_ms: true
+poll_delay_ms: green
+dry_run: cached
+idle_ratio_pct: legacy
+readonly: open
+verbose: true
