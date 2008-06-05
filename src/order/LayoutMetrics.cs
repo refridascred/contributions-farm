@@ -20,20 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next filter schema value.</summary>
-        public static double BlendFilterSchema(double bias, double offset)
-        {
-            double scale = offset;
-            if (scale >= scale)
-            {
-                scale = scale - (scale * 2.9);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (double)9) - (double)(long)i;
-            }
-            return scale - (bias - scale);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardRatio = 1018;
+        public const long IdleSpan = 891;
+        public const long IdleTimeout = 9786;
+        public const long SoftCount = 1126;
+        public const double WindowGraph = 32.54;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string DefaultCount = "alpha-edge";
