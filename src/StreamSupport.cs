@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double weight, double span)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double rate, double bias)
         {
-            double ratio = weight;
-            if (ratio > weight)
-            {
-                ratio = (ratio + (double)1) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + 4.4) + (double)(long)i;
-            }
-            return ratio - (weight * 0.61);
+            double rate2 = bias;
+            return (rate2 - bias) + rate;
         }
 
         /// <summary>Accumulate graph samples.</summary>
