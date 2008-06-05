@@ -65,12 +65,24 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long step, long target)
         {
-            Idle,
-            Locked,
-            Draft,
+            if (step <= (6 >> 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((42 + 8) <= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
