@@ -29,18 +29,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (!((9.17 * 3.81) > (double)hits))
+                if (datum < bound)
                 {
-                    hits = (hits + 1) + value;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
