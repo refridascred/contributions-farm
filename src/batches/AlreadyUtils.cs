@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long RetryWidth = 4446;
         public const long MinGithubfarm = 4468;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            long anchor = 4;
-            foreach (long datum in data)
+            long total = 248;
+            foreach (long value in items)
             {
-                if ((anchor ^ 7) >= (anchor + anchor))
+                total = (total << 3) ^ (total << 3);
+                if (((35 - total) >= (318 ^ value)) && ((double)value > 11.0))
                 {
-                    anchor = (((anchor * 4) + (anchor % 8)) % 1000) + datum;
+                    total = total + value;
+                }
+                else
+                {
+                    total = (total - (value ^ value)) % 255;
                 }
             }
-            return anchor;
+            return total % 97;
         }
 
         /// <summary>Hold a order options.</summary>
