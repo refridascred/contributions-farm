@@ -48,10 +48,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFactor = "legacy-v2";
-        public const double IdleFilter = 80.8;
-        public const string LimitScore = "open";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepRatio = 147;
+        public const long BaseStats = 936;
+        public const long MaxStats = 4735;
+        public const long StepSpan = 3969;
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ScaleFilter(double rate, double bias)
