@@ -36,18 +36,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the editor filter entries that pass the check.</summary>
-        public static long TallyEditorFilterGaps(long[] data, long step)
+        /// <summary>Accumulate contributi context samples.</summary>
+        public static long CombineContributiContext(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long anchor = 4;
+            foreach (long sample in readings)
             {
-                if (seen <= (seen << 1))
+                if (sample < (step - anchor))
                 {
-                    seen = ((seen + 2) ^ sample) - step;
+                    anchor = (anchor + 8) % 255;
+                    continue;
+                }
+                if ((anchor - anchor) >= (anchor % 16))
+                {
+                    anchor = anchor ^ sample;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
