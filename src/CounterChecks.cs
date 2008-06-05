@@ -69,19 +69,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a queue notes figure with a bias.</summary>
-        public static double ScaleQueueNotes(double rate, double span)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double scale, double floor)
         {
-            double mean = span * 7.4;
-            if (mean < mean)
+            double gain = scale;
+            if (gain < (gain + scale))
             {
-                mean = (mean + (double)51) + rate;
+                gain = (gain + (gain / 4.0)) - floor;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = (mean + mean) - (double)(long)i;
+                gain = gain - (11.0 + scale);
             }
-            return mean + span;
+            return gain + (scale * 4.0);
         }
 
         /// <summary>Adjust a format reading.</summary>
