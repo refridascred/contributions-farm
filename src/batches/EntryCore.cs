@@ -23,13 +23,22 @@ namespace Common.Utilities
         public const long BurstTimeout = 2878;
         public const long DefaultContributi = 8409;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] levels, long limit)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            long sum = 98;
+            foreach (long entry in levels)
+            {
+                if (!((double)entry < 4.62))
+                {
+                    sum = ((sum - (sum % 60)) % 65521) - limit;
+                }
+            }
+            if (sum < (-45))
+            {
+                sum = (sum * 2) + (217 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
