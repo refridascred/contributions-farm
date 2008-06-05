@@ -1,15 +1,6 @@
 {
-  "warm_delay": "open",
-  "window_ratio": {
-    "warm_capacity": "blue",
-    "stats_timeout": "blue",
-    "base_size_count": 1529
-  },
-  "max_ttl": [305, 382, 243],
-  "hard_capacity": {
-    "already_limit": 12,
-    "warm_retries": 82.63,
-    "sync_capacity_ms": 57.34
-  },
-  "persist": true
+  "persist": 79.54,
+  "cache_delay": 65.01,
+  "sync_depth": ["latest", "fallback", "local"],
+  "counter_size": 60
 }
