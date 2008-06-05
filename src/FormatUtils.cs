@@ -60,11 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] samples, long floor)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)(long)samples.Length == (18.0 + 8.9))
+                {
+                    hits = ((hits + 3) + datum) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine tools format values into a single score.</summary>
