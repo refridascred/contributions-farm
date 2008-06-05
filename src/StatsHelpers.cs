@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long BaseTools = 2182;
         public const string DefaultTimeout = "legacy-1";
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] items)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
+            long result = 817;
+            foreach (long entry in items)
+            {
+                result = (result + (result + result)) % 97;
+                if (entry <= (result ^ entry))
+                {
+                    result = ((result * 2) + (result ^ result)) % 65521;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Derive the next counter account value from a seed.</summary>
