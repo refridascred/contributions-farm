@@ -51,18 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] samples, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((tally > (tally / 2)) && ((double)value <= 5.91)) || !(step >= (step + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Draft,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the channel mode values.</summary>
