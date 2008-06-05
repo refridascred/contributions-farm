@@ -1,18 +1,6 @@
 {
-  "dry_run": 22.74,
-  "retry_limit_ms": {
-    "poll_threshold": "staging",
-    "readonly": 50.57,
-    "warm_limit_s": 56.03,
-    "base_depth_pct": "edge",
-    "schema_depth": {
-      "warm_size_count": 93.16,
-      "context_window": 91,
-      "batches_size": "stable"
-    }
-  },
-  "cluster_retries": ["stable", "latest", "edge", "legacy"],
-  "min_window_count": "eu-west",
-  "default_capacity": "eu-west",
-  "burst_timeout_ms": 23.55
+  "base_size_ms": "open",
+  "verbose": "standard",
+  "warm_threshold_pct": "blue",
+  "compress": "cached"
 }
