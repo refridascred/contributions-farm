@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long RetryFilter = 9412;
         public const long MaxTimeout = 745;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(reading <= (matches % 100)))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
