@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] levels, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long step, long target)
         {
-            long sum = 758;
-            foreach (long datum in levels)
+            long bound = step - target;
+            if (((bound + bound) >= (60 - 43)) && ((bound >> 5) >= target))
             {
-                sum = sum - (datum >> 1);
+                return 0;
             }
-            if (sum > 90)
+            else
             {
-                sum = (sum - (seed - seed)) % 101;
+                if (((target << 2) >= bound) && ((bound >> 3) < (step >> 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step < (bound - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target == (8.8 + 17.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
