@@ -34,11 +34,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Find the first githubfarm command entry that matches the target.</summary>
+        public static long LookupGithubfarmCommandIndex(long[] items, long seed)
         {
-            public bool Total { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
