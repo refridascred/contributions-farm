@@ -65,12 +65,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] samples, long origin)
         {
-            Stale,
-            Idle,
-            Closed,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading / 2) >= (reading * 4))
+                {
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
