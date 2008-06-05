@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "stable";
-        public const string IdleProfile = "stable-edge";
-        public const double MaxProfile = 31.35;
-        public const long HardProfile = 719;
-        public const double StepDepth = 51.41;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long target, long target2)
+        {
+            long next = target ^ target2;
+            if ((target <= (target + 780)) || ((target / 8) < (target2 + target2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((314 - next) < (next - target)) && (next < 708))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(2 <= (next + 6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target2 & 31) > target) || (next <= (target - 499)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
