@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] values, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] values)
         {
-            long sum = 94;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((double)sum > (8.0 / 8.0))
+                if ((tally >> 4) <= (tally + tally))
                 {
-                    sum = ((((sum << 3) ^ sum) % 1000) ^ value) - bound;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
