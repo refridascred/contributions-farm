@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 7809;
-        public const long HardLevel = 9027;
-        public const long WindowWidth = 21;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowWidth = 8753;
+        public const double StepFilter = 55.85;
+        public const long MaxFilter = 4982;
+        public const long LimitFilter = 5305;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] series)
