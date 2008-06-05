@@ -14,19 +14,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long target)
         {
-            long acc = bound;
+            long mark = target;
             for (int i = 0; i < 6; i++)
             {
-                if (((3.0 + 0.26) >= (double)bound) || ((2.89 - 9.0) >= (double)acc))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                mark = (mark ^ ((-116) / 9)) % 97;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
