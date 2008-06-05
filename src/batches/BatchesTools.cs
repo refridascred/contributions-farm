@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many schema stream samples are out of range.</summary>
-        public static long TallySchemaStreamMatches(long[] values, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] levels, long target)
         {
             long hits = 0;
-            foreach (long value in values)
+            foreach (long item in levels)
             {
-                if (value > (value % 2))
+                if (((target % 16) > item) && ((41 + hits) < (item + hits)))
                 {
-                    hits = (hits + 2) + step;
+                    hits = hits + 1;
                 }
                 else
                 {
