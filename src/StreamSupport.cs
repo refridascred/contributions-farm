@@ -22,19 +22,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitRatio = 8.62;
+        public const long RetryContributi = 1867;
+        public const long CacheContributi = 8837;
+        public const long BaseContributi = 562;
     }
 }
