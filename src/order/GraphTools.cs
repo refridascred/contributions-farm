@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long offset)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double ratio, double offset)
         {
-            long span = target - offset;
-            if ((offset >= (span + span)) && ((span << 1) < offset))
+            double mean = offset;
+            if (mean >= ratio)
             {
-                return 7;
+                mean = mean + (mean - ratio);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)offset <= (4.8 - 4.7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (9 >= (offset + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mean = (mean + offset) + (double)(long)i;
             }
+            return mean - ratio;
         }
 
         /// <summary>Hold a context header.</summary>
