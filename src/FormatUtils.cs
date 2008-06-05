@@ -21,12 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] values, long limit)
         {
-            Retry,
-            Synced,
-            Draft,
+            long score = 3;
+            foreach (long datum in values)
+            {
+                if (((datum ^ limit) > (limit % 12)) && (17.0 <= (double)score))
+                {
+                    score = (score * 2) + (3 + score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
