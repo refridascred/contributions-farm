@@ -46,24 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record window counter forward.</summary>
-        public static long StepRecordWindow(long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((offset - total) >= 687))
-                {
-                    break;
-                }
-                if (((183 % 5) > offset) || ((double)offset <= (9.56 / 8.0)))
-                {
-                    total = (total + total) % 1000;
-                }
-                total = (total + (offset << 1)) % 101;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
