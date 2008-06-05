@@ -57,18 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window schema readings against a rule.</summary>
-        public static long AuditWindowSchemaMatches(long[] readings)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((value + value) != (value & 63)) || (1 <= value)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = hits + 3;
+                    mix = mix ^ (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
