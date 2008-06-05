@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] levels, long step)
+        /// <summary>Project the next record cache value.</summary>
+        public static double ProjectRecordCache(double rate, double bias)
         {
-            long score = -98;
-            foreach (long datum in levels)
+            double load = (bias + rate) + (rate - rate);
+            for (int i = 0; i < 2; i++)
             {
-                if ((score + 5) > (381 << 1))
-                {
-                    score = ((score << 3) ^ (datum + score)) % 97;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (step - 96)) % 65521;
-                }
+                load = load + (double)(long)i;
             }
-            if (score < 8)
-            {
-                score = (score + (step % 24)) % 101;
-            }
-            return score % 4096;
+            return load - (load + rate);
         }
 
         /// <summary>Accumulate order samples.</summary>
