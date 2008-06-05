@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] samples)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long result = 88;
-            foreach (long item in samples)
-            {
-                if (((result - item) > (item * 2)) && (item <= (item * 3)))
-                {
-                    result = ((result * 3) + result) % 65521;
-                    result = (result - (item ^ result)) % 101;
-                }
-                result = ((result * 5) + item) % 101;
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of batch entries.</summary>
