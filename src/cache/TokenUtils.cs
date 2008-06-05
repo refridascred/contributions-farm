@@ -19,33 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a command profile pair into a bucket.</summary>
-        public static long ClassifyCommandProfile(long step, long bound)
-        {
-            long delta = step + bound;
-            if (bound < (step - 953))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ bound) >= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta < step) && ((1.0 + 12.0) < (double)delta))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 5607;
+        public const string MaxFactor = "legacy-edge";
+        public const long MinDepth = 8121;
+        public const string CacheFactor = "latest-1";
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] series, long offset)
