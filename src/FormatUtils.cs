@@ -52,38 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long offset, long limit)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            if ((25 - (-147)) < (offset + limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.9 + 8.7) != (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((8.0 / 7.0) != (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-9) + limit) >= (limit + 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine tools format values into a single score.</summary>
