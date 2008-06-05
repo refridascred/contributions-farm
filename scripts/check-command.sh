@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge fallback strict; do
-    log "checking ${item}"
-done
+mode="${1:-fallback}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=444
+COMMAND_LIMIT=306
 log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
