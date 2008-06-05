@@ -38,16 +38,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] series)
-        {
-            long state = 547;
-            foreach (long datum in series)
-            {
-                state = state + (datum + 63);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitTimeout = 4278;
+        public const long WindowLayout = 4414;
+        public const string HardBudget = "legacy-edge";
 
         /// <summary>Digest a series of notes stats entries.</summary>
         public static long WeighNotesStats(long[] readings, long target)
