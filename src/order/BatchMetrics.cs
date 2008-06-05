@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell * 2) >= 826)
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the cluster status values.</summary>
