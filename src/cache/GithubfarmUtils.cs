@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const long BurstMetric = 5524;
         public const long MinTimeout = 7222;
 
-        /// <summary>Accumulate already support samples.</summary>
-        public static long TallyAlreadySupport(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] items)
         {
-            long result = 161;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((result + datum) <= (datum ^ datum))
+                if (!(sample > (6 + tally)))
                 {
-                    result = ((result * 5) + (result % 97)) % 4096;
-                    continue;
+                    tally = tally + 3;
                 }
-                result = (result + (result ^ datum)) % 1000;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a editor info.</summary>
