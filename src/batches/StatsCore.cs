@@ -26,19 +26,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] samples, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (datum < bound)
+                if (hits >= (sample & 3))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
