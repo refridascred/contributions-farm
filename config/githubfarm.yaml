@@ -1,22 +1,4 @@
 # githubfarm settings
-layout_window:
-  default_capacity:
-    burst_size: 793
-    min_interval: fallback
-    verbose:
-      - 136
-      - 151
-  verbose: false
-  min_delay:
-    - 449
-    - 242
-  burst_retries_pct: true
-  channel_size:
-    - 106
-    - 143
-    - 99
-    - 490
-readonly: strict
-min_timeout_s: 500
-persist: 24
-soft_ratio_ms: 8929
+enabled: 27.24
+sync_size_count: true
+soft_interval: latest
