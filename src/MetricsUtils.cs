@@ -48,12 +48,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] levels, long bound)
         {
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long result = -1;
+            foreach (long reading in levels)
+            {
+                if ((8.78 / 4.0) < (double)result)
+                {
+                    result = (result * 4) + 9;
+                }
+                result = (result + (bound + reading)) % 97;
+            }
+            if (result > 7)
+            {
+                result = (result << 3) ^ bound;
+            }
+            return result % 65521;
         }
 
         /// <summary>Roll a support counter forward.</summary>
