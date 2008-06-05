@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long SoftWidth = 2886;
         public const long WindowSize = 227;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] series, long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((10.0 * 4.89) > (double)tally)
+                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
                 {
-                    tally = ((tally + 3) ^ item) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate checks filter readings against a bound.</summary>
