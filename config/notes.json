@@ -1,12 +1,7 @@
 {
-  "report_window": {
-    "strict": 48,
-    "audit": 35.97,
-    "batch_ratio_pct": [75, 73, 293, 185],
-    "enabled": true
-  },
-  "readonly": false,
-  "soft_ttl": 16,
-  "audit": "latest",
-  "retry_ratio_s": 6420
+  "persist": "local",
+  "default_capacity_count": ["latest", "cached"],
+  "max_capacity": 9270,
+  "cache_ratio_pct": 14,
+  "max_capacity_ms": 63
 }
