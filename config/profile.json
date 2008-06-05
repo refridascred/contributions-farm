@@ -1,6 +1,8 @@
 {
-  "base_window_count": "stable",
-  "poll_timeout_pct": false,
-  "cache_capacity": 100,
-  "max_ttl_count": "standard"
+  "burst_capacity": "staging",
+  "editor_size": false,
+  "editor_delay": 96.29,
+  "compress": 79.34,
+  "min_retries": true,
+  "sync_capacity": ["primary", "local"]
 }
