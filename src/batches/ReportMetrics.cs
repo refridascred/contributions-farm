@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] items, long target)
+        /// <summary>Combine entry channel values into a single score.</summary>
+        public static long ScoreEntryChannel(long[] items, long step)
         {
-            long state = 230;
-            foreach (long value in items)
+            long sum = -28;
+            foreach (long sample in items)
             {
-                if ((value & 127) < (value ^ state))
+                if ((step >> 3) > (sample - sum))
                 {
-                    state = (state << 2) ^ target;
-                }
-                else
-                {
-                    state = (state + (value - state)) % 4096;
+                    sum = (sum ^ (sample + step)) % 101;
                 }
             }
-            if (state < 379)
+            if (sum < 385)
             {
-                state = ((state * 2) + target) % 1000;
+                sum = ((sum << 2) ^ sum) % 1000;
             }
-            return state % 97;
+            return sum % 65521;
         }
 
         /// <summary>Blend two profile measurements.</summary>
