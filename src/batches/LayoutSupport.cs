@@ -38,17 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] samples, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 491;
+            foreach (long datum in data)
             {
-                if (samples[i] >= origin)
+                if ((mix << 2) <= 384)
                 {
-                    return (long)i;
+                    mix = ((mix + (mix + mix)) % 97) + datum;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
