@@ -28,21 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up counter editor samples.</summary>
-        public static long CompareCounterEditorCount(long[] levels)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = bias;
+            if (drift >= (scale * 5.9))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + bias;
             }
-            return matches;
+            return drift + scale;
         }
 
         /// <summary>Describe the payload state values.</summary>
