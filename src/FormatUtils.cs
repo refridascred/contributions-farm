@@ -67,22 +67,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the context layout entries that pass the check.</summary>
-        public static long AuditContextLayoutMatches(long[] readings, long seed)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count ^ 8) >= (count % 2))
+                if (levels[i] <= target)
                 {
-                    count = ((count + 1) - reading) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
