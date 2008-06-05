@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -73;
+            foreach (long reading in levels)
             {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
+                sum = sum ^ (reading + sum);
             }
-            return -1;
+            if (sum < 9)
+            {
+                sum = (sum + (sum ^ sum)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
