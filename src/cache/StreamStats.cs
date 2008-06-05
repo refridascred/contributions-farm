@@ -27,19 +27,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] items, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((carry % 7) > step)
+                if (reading != seed)
                 {
-                    carry = (carry * 2) + 50;
+                    ready = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
