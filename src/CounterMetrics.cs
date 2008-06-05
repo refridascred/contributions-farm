@@ -20,18 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit graph checks readings against a rule.</summary>
-        public static long TallyGraphChecksHits(long[] items, long bound)
+        /// <summary>Count the command schema entries that pass the check.</summary>
+        public static long MeasureCommandSchemaOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((matches + matches) < (bound + bound)) || ((matches ^ matches) > (long)items.Length))
+                if (!!((seen % 5) == (value + value)))
                 {
-                    matches = (matches + 2) + value;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a session entry.</summary>
