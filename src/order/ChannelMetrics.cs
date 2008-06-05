@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Paused,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Grade a order profile value against two limits.</summary>
