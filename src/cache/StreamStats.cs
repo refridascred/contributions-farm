@@ -31,20 +31,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            long sum = 420;
-            foreach (long reading in items)
+            long carry = step;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum * 2) + (reading % 60);
-                sum = sum - reading;
+                if ((carry % 7) > step)
+                {
+                    carry = (carry * 2) + 50;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            if (sum > 1)
-            {
-                sum = ((sum << 2) ^ (33 / 4)) % 101;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Rank layout order input into a small class.</summary>
