@@ -66,19 +66,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double gain, double floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] readings, long origin)
         {
-            double gain2 = floor;
-            if (gain2 < floor)
+            long sum = 736;
+            foreach (long datum in readings)
             {
-                gain2 = (gain2 - (gain2 + gain2)) - gain;
+                sum = ((sum ^ (sum * 4)) % 65521) ^ datum;
+                sum = (sum * 4) + (origin / 6);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - (1.04 / 5.0)) + (double)(long)i;
-            }
-            return gain2 + (double)(-508);
+            return sum;
         }
     }
 }
