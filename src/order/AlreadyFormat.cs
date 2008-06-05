@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "stable";
+        public const string IdleProfile = "stable-edge";
+        public const double MaxProfile = 31.35;
+        public const long HardProfile = 719;
+        public const double StepDepth = 51.41;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepWidth = 7827;
