@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] samples, long origin)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((-1) > (seen & 31))
-                {
-                    seen = ((seen + 3) - value) - origin;
-                }
-            }
-            return seen;
+            Active,
+            Synced,
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
