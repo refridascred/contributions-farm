@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepBudget = 7236;
-        public const string MinFilter = "stable-1";
-        public const long RetryFilter = 2047;
-        public const long HardFilter = 8246;
-        public const string DefaultWidth = "open-edge";
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long seed, long target)
+        {
+            if (seed >= (target ^ seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed + 453) <= seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BurstTimeout = 2166;
