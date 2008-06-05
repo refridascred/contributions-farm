@@ -59,21 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count tools notes pairs that satisfy a relation.</summary>
-        public static long PairToolsNotesCount(long[] values)
+        /// <summary>Fold a list of window command readings.</summary>
+        public static long ScoreWindowCommand(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 1;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum >= (score + score))
                 {
-                    if ((values[i] - values[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    score = score ^ (datum & 31);
+                }
+                else
+                {
+                    score = (score ^ (datum + 968)) % 65521;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
