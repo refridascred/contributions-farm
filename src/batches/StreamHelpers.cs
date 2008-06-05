@@ -33,39 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long limit, long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long gap = limit - offset;
-            if ((offset % 7) <= (264 + 84))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset < (double)gap)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset + offset) < (offset & 1)) || ((double)gap >= (5.6 - 4.62)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset % 24) > (gap + limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            New,
+            Idle,
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a window summary.</summary>
