@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double bias, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] values, long floor)
         {
-            double drift = bias;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                drift = ((drift - drift) + (double)(long)i) + span;
+                if ((floor <= (0 + (long)values.Length)) || ((entry / 9) == (floor << 1)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return drift - (double)(-154);
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
