@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] series, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] levels, long origin)
         {
-            long state = 31;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                state = ((state << 2) ^ (sample & 63)) - bound;
-                state = state - (sample % 60);
-                if ((sample % 12) >= 2)
+                if (cell < origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (state < 9)
-            {
-                state = state - (state % 7);
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
