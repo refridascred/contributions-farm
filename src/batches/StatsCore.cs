@@ -14,23 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double bias, double bias2)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] samples, long offset)
         {
-            double weight = (double)(-30) / 2.0;
-            if (weight >= weight)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                weight = weight + (5.7 * 2.2);
+                if (((hits & 7) < (offset * 2)) || (((hits * 2) <= hits) && (11.0 < (double)offset)))
+                {
+                    hits = (hits + 2) - datum;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (double)(-1)) + (double)(long)i;
-            }
-            return weight - (bias + bias2);
+            return hits;
         }
 
         /// <summary>Validate already notes readings against a bound.</summary>
