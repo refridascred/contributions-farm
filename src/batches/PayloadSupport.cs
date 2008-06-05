@@ -25,17 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state - (target - target)) % 97;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 7402;
+        public const long LimitSpan = 6141;
+        public const long StepSchema = 8548;
+        public const long DefaultFactor = 2258;
+        public const string IdleSchema = "alpha-1";
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long OverlapBatchesCount(long[] items)
