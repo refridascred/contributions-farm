@@ -13,12 +13,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long limit, long offset)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            long lane = limit - offset;
+            if ((6.1 * 3.0) == (double)lane)
+            {
+                return 5;
+            }
+            else
+            {
+                if (lane <= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset << 3) <= (lane ^ limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile status values.</summary>
