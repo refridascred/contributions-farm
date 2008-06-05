@@ -49,11 +49,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
+            Pending,
+            Closed,
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Find the first queue filter entry that matches the target.</summary>
