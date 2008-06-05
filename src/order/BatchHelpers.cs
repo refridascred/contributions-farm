@@ -28,17 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] values, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
