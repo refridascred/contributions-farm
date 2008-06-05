@@ -36,12 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] samples, long floor)
         {
-            Locked,
-            Draft,
-            Ready,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
