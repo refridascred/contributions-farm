@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long LimitWidth = 6341;
         public const long BatchLevel = 3410;
 
-        /// <summary>Iterate the editor schema series from a seed.</summary>
-        public static long StepEditorSchema(long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] items, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((long)i % 5) != (offset - (long)i)) || ((carry + carry) != (offset & 127)))
+                if (items[i] <= offset)
                 {
-                    carry = ((carry << 3) ^ (long)i) % 1000;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate context tools readings against a bound.</summary>
