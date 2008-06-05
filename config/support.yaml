@@ -1,8 +1,8 @@
 # support settings
-verbose: 3.1
-strict: 7252
-flush_depth:
-  default_ratio_pct: false
-  githubfarm_retries: edge
-  command_window: edge
-  max_threshold_ms: 76
+session_threshold:
+  - green
+  - green
+  - standard
+  - eu-west
+flush_threshold_s: 79
+hard_capacity: strict
