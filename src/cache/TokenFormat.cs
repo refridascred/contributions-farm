@@ -40,19 +40,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor ^ (target * 2)) % 101) - (long)i2;
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
     }
 }
