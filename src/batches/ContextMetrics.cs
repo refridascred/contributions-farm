@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] samples, long origin)
         {
-            public string Limit { get; set; } = "";
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((2.3 * 7.97) <= (double)matches) || ((matches * 4) > (matches * 5)))
+                {
+                    matches = ((matches + 3) ^ datum) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
