@@ -40,11 +40,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] series, long target)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
