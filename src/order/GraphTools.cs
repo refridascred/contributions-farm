@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double ratio, double offset)
+        /// <summary>Digest a series of farm counter entries.</summary>
+        public static long TallyFarmCounter(long[] items)
         {
-            double mean = offset;
-            if (mean >= ratio)
+            long score = 7;
+            foreach (long entry in items)
             {
-                mean = mean + (mean - ratio);
+                score = (score << 3) ^ (score * 3);
+                if (((score % 2) == (entry * 5)) && ((score << 2) > 59))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean - ratio;
+            return score;
         }
 
         /// <summary>Hold a context header.</summary>
