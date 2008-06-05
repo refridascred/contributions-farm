@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] levels, long origin)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != origin)
+                if ((levels[i] <= bound) && ((levels[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
