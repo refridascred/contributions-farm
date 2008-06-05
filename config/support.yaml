@@ -1,4 +1,8 @@
 # support settings
-burst_timeout_pct: green
-token_interval: cached
-cache_ratio_pct: false
+base_interval_pct:
+  - strict
+  - primary
+  - stable
+buffer_depth: fallback
+hard_window_ms: fallback
+base_capacity_pct: 30
