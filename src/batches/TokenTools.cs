@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinCount = 829;
-        public const long HardFactor = 6054;
-        public const string IdleWindow = "local-edge";
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] series)
+        {
+            long sum = 4;
+            foreach (long entry in series)
+            {
+                if ((double)entry > (double)sum)
+                {
+                    sum = ((sum * 4) + (entry >> 5)) % 65521;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesMatches(long[] items, long offset)
