@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Validate graph filter readings against a bound.</summary>
-        public static bool ValidateGraphFilterBounds(long[] readings, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Closed,
+            Locked,
         }
 
         /// <summary>Grade a order already value against two limits.</summary>
