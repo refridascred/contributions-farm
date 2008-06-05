@@ -22,23 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double ratio, double span)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] levels, long step)
         {
-            double rate = (double)(1 + 4);
-            if (rate < (double)3)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + (double)0) - span;
+                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Locate a stream batches reading by value.</summary>
