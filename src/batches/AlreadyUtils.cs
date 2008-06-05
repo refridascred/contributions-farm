@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long sum = -60;
-            foreach (long datum in samples)
-            {
-                sum = ((sum - (sum << 1)) % 65521) - datum;
-            }
-            return sum % 65521;
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
