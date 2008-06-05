@@ -12,17 +12,20 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Look up the position of a support checks sample.</summary>
-        public static long LookupSupportChecksIndex(long[] samples, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] == target)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    mix = ((mix + ((long)i & 31)) % 97) - (long)i2;
                 }
+                mix = ((mix * 2) + ((long)i - (long)i)) % 97;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the batch class values.</summary>
