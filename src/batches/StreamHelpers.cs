@@ -68,31 +68,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long seed, long seed2)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            if ((8.08 - 2.76) > (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed2 ^ seed2) < seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(0 >= seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
