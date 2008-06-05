@@ -48,10 +48,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftSize = 1813;
-        public const long HardEditor = 7617;
-        public const long CacheScore = 1432;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelRange(long[] series, long floor)
