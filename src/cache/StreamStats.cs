@@ -42,32 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank layout order input into a small class.</summary>
-        public static long RankLayoutOrder(long seed, long bound)
+        /// <summary>Count the buffer session entries that pass the check.</summary>
+        public static long TallyBufferSessionHits(long[] readings, long offset)
         {
-            long span = seed ^ bound;
-            if (((-2) & 7) != (span >> 2))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed < bound)
+                if ((80 ^ offset) < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((span % 10) < bound) || ((span - seed) < (bound + seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 2) - sample;
                 }
             }
+            return count;
         }
     }
 }
