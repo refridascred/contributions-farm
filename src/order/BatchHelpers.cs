@@ -5,19 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long state = 7;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                state = state ^ (17 * 3);
+                if ((reading + reading) >= (0 + reading))
                 {
-                    score = (((score << 2) ^ (target % 7)) % 65521) - (long)i2;
+                    state = state + (reading & 127);
+                    state = (state << 3) ^ state;
                 }
-                score = ((score * 5) + (long)i) % 97;
+                else
+                {
+                    state = state + (state - 9);
+                    state = (state ^ (state & 255)) % 97;
+                }
+                if ((state % 10) == (state + 74))
+                {
+                    state = (state << 3) ^ (reading << 3);
+                }
+                if ((reading << 1) >= (reading % 24))
+                {
+                    break;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
