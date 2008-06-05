@@ -1,4 +1,16 @@
 # support settings
-queue_ratio: 93
-persist: standard
-sync_delay: true
+queue_threshold:
+  max_window_s: true
+  soft_depth:
+    - 12
+    - 265
+    - 91
+  dry_run: standard
+  hard_size: legacy
+verbose: true
+soft_limit: false
+strict:
+  - green
+  - latest
+  - standard
+sync_capacity: 2158
