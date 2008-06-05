@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long SoftLevel = 3261;
         public const long IdleSession = 4510;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] items)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long mix = 8;
+            foreach (long reading in items)
             {
-                if (!((item + 63) > (hits / 2)))
+                if ((0.42 / 8.0) >= (double)reading)
                 {
-                    hits = hits + 2;
+                    mix = (mix + mix) % 4096;
                 }
             }
-            return hits;
+            if (mix > (-10))
+            {
+                mix = mix + ((-403) % 60);
+            }
+            return mix;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
