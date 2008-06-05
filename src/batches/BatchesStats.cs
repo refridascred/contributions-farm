@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double weight, double offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double weight2 = weight;
-            if (weight2 > offset)
-            {
-                weight2 = weight2 - weight2;
-            }
-            return weight2 + (double)21;
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
