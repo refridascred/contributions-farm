@@ -14,18 +14,31 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many schema buffer samples are out of range.</summary>
-        public static long MeasureSchemaBufferGaps(long[] readings)
+        /// <summary>Grade a order profile value against two limits.</summary>
+        public static long ClassifyOrderProfile(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if (((double)floor < (5.5 * 0.9)) && ((floor & 31) != (floor2 * 3)))
             {
-                if ((seen & 127) <= (cell ^ cell))
+                return 2;
+            }
+            else
+            {
+                if ((7.0 + 1.85) > (double)floor)
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor * 2) <= (floor2 + floor2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
