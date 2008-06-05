@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] series, long floor)
+        /// <summary>Combine batch graph values into a single score.</summary>
+        public static long CombineBatchGraph(long[] values, long origin)
         {
-            long sum = 179;
-            foreach (long entry in series)
+            long sum = 2;
+            foreach (long value in values)
             {
-                sum = (sum - floor) - entry;
-                if ((double)floor < (double)6)
-                {
-                    sum = ((sum * 2) + (sum & 15)) % 101;
-                }
+                sum = ((sum << 2) ^ (origin * 2)) ^ value;
             }
-            return sum;
+            return sum % 4096;
         }
 
         /// <summary>Count the command schema entries that pass the check.</summary>
