@@ -40,31 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long limit, long step)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] levels, long floor)
         {
-            if ((19 * 5) > (step + limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(limit < (limit / 3)))
+                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - limit) == (step & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank order input into a small class.</summary>
