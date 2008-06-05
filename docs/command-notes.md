@@ -1,16 +1,12 @@
 # Command notes
 
-Run the format check before changing any token limits.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Run the buffer check before changing any token limits.
-
-Each githubfarm is validated before it reaches the window queue.
-Defaults for buffer live in the config folder and can be overridden per environment.
-Use cache settings to tune how often notes data is refreshed.
+Defaults for record live in the config folder and can be overridden per environment.
+Run the checks check before changing any command limits.
+Use profile settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every record change
-- Keep payload values small
-- Prefer editor defaults
+- Prefer farm defaults
+- Validate report input early
+- Log every token change
+- Review entry limits each release
