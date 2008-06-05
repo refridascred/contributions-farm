@@ -22,29 +22,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] data, long origin)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long mix = 85;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = mix ^ ((long)i ^ entry);
-                    mix = mix ^ (581 - 2);
-                }
-                if ((17.0 / 9.0) >= (double)origin)
-                {
-                    mix = (mix - (mix << 3)) % 97;
-                    break;
-                }
-                mix = mix - (entry & 31);
-            }
-            if (mix < 288)
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix;
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
