@@ -22,18 +22,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a command already sample.</summary>
-        public static long LookupCommandAlreadyIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 1185;
+        public const long RetryCommits = 5433;
+        public const long CacheFactor = 7577;
+        public const long StepBudget = 8458;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long DeriveContributi(long step)
