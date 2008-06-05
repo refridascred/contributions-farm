@@ -41,10 +41,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWidth = 5943;
-        public const long RetryWindow = 3018;
-        public const long IdleRatio = 6651;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Iterate the farm profile series from a seed.</summary>
         public static long StepFarmProfile(long limit)
