@@ -41,22 +41,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of record schema readings.</summary>
-        public static long CompareRecordSchemaCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstLayout = "alpha-1";
+        public const long WindowWidth = 3316;
+        public const long WindowDepth = 2478;
+        public const string MaxLevel = "cached-edge";
+        public const long HardLevel = 9632;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long SeekCacheIndex(long[] series, long step)
