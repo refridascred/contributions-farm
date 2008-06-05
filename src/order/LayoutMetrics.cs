@@ -32,19 +32,12 @@ namespace Common.Utilities
             return rate - (rate / 4.0);
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((state / 7) <= state) || ((double)state <= (2.38 + 8.65)))
-                {
-                    state = (state + (target + target)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Retry,
+            Done,
+            Closed,
         }
     }
 }
