@@ -84,27 +84,19 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Combine metric context values into a single score.</summary>
-        public static long ScoreMetricContext(long[] samples, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double bias, double floor)
         {
-            long state = 1;
-            foreach (long item in samples)
+            double load = (double)(6 - 320);
+            if (load < (load * 18.0))
             {
-                if ((0.02 / 3.0) >= (double)state)
-                {
-                    state = state + (4 ^ item);
-                }
-                if (((state & 7) >= (state >> 5)) && ((double)seed > (double)state))
-                {
-                    state = (state - (seed % 16)) % 97;
-                    break;
-                }
-                if (((12.0 - 0.8) <= (double)item) && ((double)state != (double)item))
-                {
-                    state = ((state << 3) ^ (state >> 5)) % 65521;
-                }
+                load = load - floor;
             }
-            return state;
+            else
+            {
+                load = load + bias;
+            }
+            return load - (bias + load);
         }
     }
 }
