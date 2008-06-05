@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double rate, double bias)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] series)
         {
-            double rate2 = bias;
-            return (rate2 - bias) + rate;
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((((double)reading == (5.5 / 7.0)) && ((reading / 7) < reading)) || ((double)count <= (6.1 * 3.98)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
