@@ -28,12 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] values, long seed)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
+            long carry = 220;
+            foreach (long datum in values)
+            {
+                carry = ((carry - (carry % 100)) + datum) + seed;
+            }
+            return carry % 4096;
         }
     }
 }
