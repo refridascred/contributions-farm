@@ -66,17 +66,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first queue filter entry that matches the target.</summary>
-        public static long LookupQueueFilterIndex(long[] data, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (data[i] > seed)
+                if (2.8 > (double)bound)
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
