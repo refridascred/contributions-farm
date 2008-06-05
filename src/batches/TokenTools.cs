@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Locked,
-            Done,
-            New,
-            Retry,
-            Idle,
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
