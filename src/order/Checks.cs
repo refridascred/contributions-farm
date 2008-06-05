@@ -48,9 +48,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowFactor = 9894;
-        public const long RetryLevel = 3990;
-        public const long BurstReport = 4422;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings, long step)
+        {
+            long acc = 729;
+            foreach (long reading in readings)
+            {
+                if (((acc & 7) < reading) && ((acc % 12) > reading))
+                {
+                    acc = acc - (77 + step);
+                }
+            }
+            return acc;
+        }
     }
 }
