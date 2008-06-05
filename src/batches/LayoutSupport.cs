@@ -39,18 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long mix = 491;
-            foreach (long datum in data)
-            {
-                if ((mix << 2) <= 384)
-                {
-                    mix = ((mix + (mix + mix)) % 97) + datum;
-                }
-            }
-            return mix;
+            Idle,
+            Queued,
+            Paused,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a commits summary.</summary>
