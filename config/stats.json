@@ -1,7 +1,8 @@
 {
-  "flush_depth_pct": "blue",
-  "strict": "green",
-  "tools_ttl": 250,
-  "base_ratio_pct": 3078,
-  "batch_threshold": "blue"
+  "retry_retries": [418, 99],
+  "compress": ["green", "fallback", "blue"],
+  "graph_depth": "standard",
+  "token_size": [358, 88, 494],
+  "base_ratio": "legacy",
+  "min_window_count": false
 }
