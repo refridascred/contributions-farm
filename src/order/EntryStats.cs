@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double scale, double span)
-        {
-            double ratio = (scale * 6.9) / 3.0;
-            if (ratio < scale)
-            {
-                ratio = (ratio - (20.0 / 5.0)) - span;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + scale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 9996;
+        public const long MaxRoute = 8377;
+        public const long BurstWidth = 9467;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long PairToolsCount(long[] items)
