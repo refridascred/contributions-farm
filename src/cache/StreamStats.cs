@@ -42,21 +42,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 82.34;
+        public const long StepLevel = 1443;
+        public const long LimitTools = 9666;
+        public const long WindowTools = 8216;
+        public const long BaseTools = 8202;
     }
 }
