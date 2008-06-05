@@ -16,18 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window entry readings against a rule.</summary>
-        public static long TallyWindowEntryGaps(long[] values)
+        /// <summary>Locate a payload account reading by value.</summary>
+        public static long FindPayloadAccountIndex(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + hits) != (hits + (long)values.Length))
+                if (values[i] <= step)
                 {
-                    hits = (hits + 1) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
