@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the metric checks series from a seed.</summary>
-        public static long SeriesMetricChecks(long limit)
+        /// <summary>Fold a list of account payload readings.</summary>
+        public static long TotalAccountPayload(long[] levels, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            long state = 435;
+            foreach (long cell in levels)
             {
-                if (((limit << 2) <= anchor) && (anchor < (anchor / 7)))
-                {
-                    anchor = ((anchor * 5) + (anchor + anchor)) % 4096;
-                }
-                anchor = (anchor ^ ((long)i + anchor)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                state = ((state * 5) + 3) + cell;
+                state = (state - (floor / 6)) % 255;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
