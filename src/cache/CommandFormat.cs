@@ -54,11 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            Pending,
+            Dropped,
+            Queued,
         }
     }
 }
