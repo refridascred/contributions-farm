@@ -69,18 +69,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] samples, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (2.8 > (double)bound)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
