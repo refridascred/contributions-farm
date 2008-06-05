@@ -33,18 +33,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((count * 3) != (sample - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
