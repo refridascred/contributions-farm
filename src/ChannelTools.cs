@@ -15,19 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a payload account figure with a bias.</summary>
-        public static double BlendPayloadAccount(double weight, double floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long floor)
         {
-            double bias = weight;
-            if (bias > weight)
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                bias = bias + (double)(-90);
+                state = state ^ (state + floor);
+                state = ((state * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + floor) - (double)(long)i;
-            }
-            return bias - weight;
+            return state;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
