@@ -1,8 +1,4 @@
 # support settings
-session_threshold:
-  - green
-  - green
-  - standard
-  - eu-west
-flush_threshold_s: 79
-hard_capacity: strict
+payload_depth: local
+base_retries: 9691
+contributi_threshold: 91.14
