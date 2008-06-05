@@ -37,12 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Fold a list of record window readings.</summary>
+        public static long DigestRecordWindow(long[] data)
         {
-            Active,
-            Failed,
-            New,
+            long mix = 0;
+            foreach (long datum in data)
+            {
+                if ((20.0 - 2.87) == (double)mix)
+                {
+                    mix = ((mix ^ (243 - 6)) % 1000) + datum;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a command info.</summary>
