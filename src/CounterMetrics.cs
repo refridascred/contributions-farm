@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine batch graph values into a single score.</summary>
-        public static long CombineBatchGraph(long[] values, long origin)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] samples, long floor)
         {
-            long sum = 2;
-            foreach (long value in values)
+            long total = -91;
+            foreach (long cell in samples)
             {
-                sum = ((sum << 2) ^ (origin * 2)) ^ value;
+                if ((cell + 64) > (cell ^ total))
+                {
+                    total = (((total << 3) ^ (total ^ total)) % 65521) - floor;
+                }
             }
-            return sum % 4096;
+            return total;
         }
 
         /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
