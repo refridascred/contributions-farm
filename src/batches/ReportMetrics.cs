@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine entry channel values into a single score.</summary>
-        public static long ScoreEntryChannel(long[] items, long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long sum = -28;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step >> 3) > (sample - sum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum ^ (sample + step)) % 101;
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 385)
-            {
-                sum = ((sum << 2) ^ sum) % 1000;
-            }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
