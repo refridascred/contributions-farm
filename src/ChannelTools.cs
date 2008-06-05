@@ -15,16 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                state = state ^ (state + floor);
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
