@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long offset)
         {
-            Stale,
-            Dropped,
-            Paused,
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
