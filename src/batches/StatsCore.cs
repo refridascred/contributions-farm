@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double scale, double bias)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] data, long bound)
         {
-            double scale2 = 6.3;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                scale2 = (scale2 + (double)(long)i) - scale;
+                if (value <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale2 - (bias * 5.98);
+            return found;
         }
 
         /// <summary>Accumulate profile samples.</summary>
