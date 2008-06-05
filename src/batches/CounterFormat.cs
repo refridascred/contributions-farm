@@ -46,11 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double scale, double bias)
         {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = scale;
+            if (drift >= (double)(-542))
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (drift + drift)) + (double)(long)i;
+            }
+            return drift - (drift + scale);
         }
     }
 }
