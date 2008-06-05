@@ -19,11 +19,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchSize = "latest-v2";
-        public const long HardRatio = 1657;
-        public const double CacheCount = 48.99;
-        public const long WindowOrder = 8052;
+        /// <summary>Project the next filter schema value.</summary>
+        public static double BlendFilterSchema(double bias, double offset)
+        {
+            double scale = offset;
+            if (scale >= scale)
+            {
+                scale = scale - (scale * 2.9);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (double)9) - (double)(long)i;
+            }
+            return scale - (bias - scale);
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string DefaultCount = "alpha-edge";
