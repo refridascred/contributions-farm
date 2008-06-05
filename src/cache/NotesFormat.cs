@@ -30,12 +30,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            Pending,
+            Failed,
+            Dropped,
+            Done,
+            Queued,
         }
     }
 }
