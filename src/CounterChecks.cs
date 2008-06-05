@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long CacheBudget = 6751;
         public const long BurstQueue = 831;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] samples, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (sample >= tally)
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
