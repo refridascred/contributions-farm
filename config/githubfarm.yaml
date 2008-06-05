@@ -1,21 +1,4 @@
 # githubfarm settings
-filter_capacity: 60
-order_timeout:
-  batch_depth:
-    - standard
-    - green
-    - cached
-  persist: false
-  burst_interval_ms: stable
-  compress: fallback
-flush_timeout_count:
-  audit: primary
-  checks_timeout: true
-  hard_size: 79.44
-  profile_ttl:
-    - 239
-    - 375
-    - 167
-    - 205
-  enabled: 9455
-dry_run: 78
+flush_timeout: 100
+retry_delay: true
+default_retries_count: standard
