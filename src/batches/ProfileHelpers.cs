@@ -16,26 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Look up the position of a session order sample.</summary>
+        public static long SeekSessionOrderIndex(long[] values, long origin)
         {
-            long anchor = 670;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-80) - 4) < (cell >> 2))
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
                 {
-                    anchor = (anchor * 2) + (cell - cell);
-                }
-                else
-                {
-                    anchor = (anchor - (anchor % 7)) % 97;
-                }
-                if ((cell - 35) != (anchor / 7))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
