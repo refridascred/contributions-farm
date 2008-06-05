@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 6604;
-        public const double WindowEditor = 85.41;
-        public const string HardBudget = "alpha-v2";
-        public const long SoftEditor = 7806;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Active,
+            Ready,
+            Paused,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
