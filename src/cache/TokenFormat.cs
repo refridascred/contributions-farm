@@ -19,25 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] levels, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                double gain = (double)(step << 1);
-                if (!((gain * 4.0) > gain))
+                if (datum < (datum * 5))
                 {
-                    gain = gain + 9.0;
-                    break;
+                    count = (count + 1) + target;
                 }
                 else
                 {
-                    gain = gain - (gain / 6.0);
+                    count = count - 1;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
