@@ -27,16 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long sum = 87;
-            foreach (long reading in items)
-            {
-                sum = (((sum * 5) + sum) % 65521) + reading;
-                sum = (sum - (sum ^ 5)) % 4096;
-            }
-            return sum;
+            Queued,
+            Stale,
+            Failed,
         }
     }
 }
