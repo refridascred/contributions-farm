@@ -19,21 +19,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] samples)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
