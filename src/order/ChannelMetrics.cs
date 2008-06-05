@@ -40,12 +40,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] series, long bound)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] == bound)
+                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
