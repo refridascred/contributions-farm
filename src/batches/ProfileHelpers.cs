@@ -59,9 +59,12 @@ namespace Common.Utilities
         public const long BatchScore = 3233;
         public const long HardFarm = 2519;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowScore = 6.83;
-        public const string BaseChecks = "cached-v2";
-        public const long BatchChecks = 7747;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Paused,
+            Draft,
+            Closed,
+        }
     }
 }
