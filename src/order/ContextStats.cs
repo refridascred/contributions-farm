@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseScore = "local-1";
-        public const double IdleInterval = 44.84;
-        public const long WindowFarm = 5182;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double bias, double floor)
+        {
+            double scale = (double)(761 ^ 6);
+            if (scale >= (floor + scale))
+            {
+                scale = scale + (floor + bias);
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale - floor;
+        }
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
