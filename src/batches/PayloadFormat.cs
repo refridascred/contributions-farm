@@ -48,19 +48,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two metric profile measurements.</summary>
-        public static double ScaleMetricProfile(double gain, double floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long floor)
         {
-            double gain2 = (double)(299 >> 2);
-            if (gain2 > (gain2 / 7.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = ((gain2 + (double)704) - gain) + floor;
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - 16.0) + (double)(long)i;
-            }
-            return gain2 - (double)580;
+            return -1;
         }
     }
 }
