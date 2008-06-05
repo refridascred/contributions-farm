@@ -1,7 +1,6 @@
 {
-  "strict": 23.9,
-  "readonly": [135, 349, 313],
-  "persist": 41.97,
-  "channel_depth": true,
-  "warm_interval_ms": false
+  "verbose": 8613,
+  "min_delay_pct": 500,
+  "default_capacity_pct": 88,
+  "sync_ratio_pct": "blue"
 }
