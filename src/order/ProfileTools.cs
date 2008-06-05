@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] readings, long limit)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((7 / 8) >= (hits & 127)) && ((3.0 + 6.1) > (double)limit))
-                {
-                    hits = (hits + 1) - reading;
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Count the graph context entries that pass the check.</summary>
