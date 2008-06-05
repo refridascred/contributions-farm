@@ -54,16 +54,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long floor, long target)
         {
-            long acc = 335;
-            foreach (long value in series)
+            long slot = floor ^ target;
+            if (!((floor - 29) >= slot))
             {
-                acc = acc + (acc + value);
-                acc = ((acc << 2) ^ (acc - 756)) % 255;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (((target - slot) != (floor % 3)) || ((0 + floor) <= slot))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
