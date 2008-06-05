@@ -25,14 +25,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            Pending,
-            Failed,
-            Dropped,
-            Done,
-            Queued,
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc ^ (72 % 3)) % 101;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
