@@ -54,12 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] items)
         {
-            Done,
-            Active,
-            Ready,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((2.58 - 1.0) > (double)hits)
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
         }
     }
 }
