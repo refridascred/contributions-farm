@@ -92,11 +92,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchSize = 54.94;
-        public const string CacheTools = "open-edge";
-        public const long MaxTools = 232;
-        public const long HardWidth = 4559;
-        public const long DefaultTools = 2248;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((627 + hits) < step)
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
+        }
     }
 }
