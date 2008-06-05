@@ -58,23 +58,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double gain, double span)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] series, long step)
         {
-            double drift = 1.0;
-            if (drift < (drift - span))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - gain;
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (gain / 6.0)) + (double)(long)i;
-            }
-            return drift + drift;
+            return -1;
         }
     }
 }
