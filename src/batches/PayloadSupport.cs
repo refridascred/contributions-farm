@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((5.9 / 4.0) >= (double)limit)
-                {
-                    total = ((total * 4) + (limit * 5)) % 4096;
-                    continue;
-                }
-                if ((double)(long)i <= (double)(-558))
-                {
-                    total = ((total << 2) ^ total) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardFactor = "latest";
+        public const long LimitChannel = 9878;
+        public const long SoftRatio = 3378;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterOutliers(long[] levels, long bound)
