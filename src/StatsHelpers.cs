@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long IdleBudget = 4577;
         public const double RetryAlready = 53.08;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] items, long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
