@@ -1,6 +1,10 @@
-id,ratio,weight,count,level
-1,28.18,eu-west,33.57,open
-2,186,72.11,edge,3.66
-3,strict,20,75.36,21.88
-4,746,cached,880,primary
-5,881,49.05,blue,27.63
+id,token,region,owner,ratio
+1,legacy,865,stable,fallback
+2,76.34,511,41,48.58
+3,41.38,stable,81.83,local
+4,77.47,standard,blue,blue
+5,970,488,28.85,230
+6,168,fallback,3.52,24.78
+7,297,7.69,open,staging
+8,cached,37.96,157,open
+9,9,65.5,primary,119
