@@ -38,18 +38,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the already cluster entries that pass the check.</summary>
-        public static long CountAlreadyClusterGaps(long[] readings)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading < (7 + reading)) && ((double)reading == (double)7)) && ((reading <= (tally >> 1)) || ((reading + reading) != (tally * 2))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
