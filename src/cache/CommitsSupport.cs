@@ -59,38 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry support pair into a bucket.</summary>
-        public static long BucketEntrySupport(long origin, long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double rate, double bias)
         {
-            if ((6.0 - 20.0) > (double)origin)
+            double rate2 = rate;
+            if (rate2 <= (double)87)
             {
-                return 1;
+                rate2 = rate2 + rate2;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin + limit) <= (253 % 24))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit << 1) == (limit << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin == (3.0 - 19.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                rate2 = (rate2 + (bias * 3.0)) + (double)(long)i;
             }
+            return rate2 - (double)4;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
