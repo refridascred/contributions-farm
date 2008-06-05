@@ -31,12 +31,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            Locked,
-            Paused,
-            Retry,
+            long sum = 420;
+            foreach (long reading in items)
+            {
+                sum = (sum * 2) + (reading % 60);
+                sum = sum - reading;
+            }
+            if (sum > 1)
+            {
+                sum = ((sum << 2) ^ (33 / 4)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Rank layout order input into a small class.</summary>
