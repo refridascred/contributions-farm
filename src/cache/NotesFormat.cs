@@ -31,16 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] series, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                acc = (acc ^ (72 % 3)) % 101;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (cell > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
     }
 }
