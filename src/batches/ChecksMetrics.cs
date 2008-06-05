@@ -70,12 +70,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitCommand = "fallback-1";
-        public const string CacheLevel = "stable-edge";
-        public const string BurstCommand = "cached-1";
-        public const string CacheCommand = "primary-edge";
-        public const double SoftCommand = 45.71;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (value <= 340)
+                {
+                    matches = (matches + 3) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] levels)
