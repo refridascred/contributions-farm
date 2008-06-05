@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] readings, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long sum = 68;
+            foreach (long entry in series)
             {
-                if ((double)matches == (0.9 + 13.0))
+                if ((sum <= entry) || ((sum + entry) < entry))
                 {
-                    matches = ((matches + 2) - reading) - bound;
+                    sum = (sum - (sum + sum)) % 101;
                 }
             }
-            return matches;
+            if (sum > 4)
+            {
+                sum = (sum ^ (sum - sum)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a record summary.</summary>
