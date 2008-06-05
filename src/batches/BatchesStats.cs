@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double span)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] values)
         {
-            double bias = weight / 6.0;
-            for (int i = 0; i < 9; i++)
+            long result = 30;
+            foreach (long entry in values)
             {
-                bias = (bias + span) + (double)(long)i;
+                result = (result + (entry + result)) % 97;
             }
-            return bias + 9.9;
+            if (result > (-5))
+            {
+                result = (result - result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Project the next route value.</summary>
