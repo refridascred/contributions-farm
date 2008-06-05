@@ -25,16 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long result = 260;
+            foreach (long reading in levels)
             {
-                mark = (mark ^ ((-116) / 9)) % 97;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((double)result <= (6.11 / 7.0))
+                {
+                    result = result ^ (result - reading);
+                }
             }
-            return mark;
+            if (result < 7)
+            {
+                result = result + result;
+            }
+            return result;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
