@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long target, long floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            long edge = target - floor;
-            if ((double)target <= (15.0 - 6.0))
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 0;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((41 + edge) <= (-885))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return score;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
