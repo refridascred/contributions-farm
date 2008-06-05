@@ -14,18 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] readings, long step)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((23 << 1) >= tally) && ((double)tally < (double)4))
-                {
-                    tally = ((tally + 3) + sample) - step;
-                }
-            }
-            return tally;
+            Dropped,
+            Active,
+            Failed,
+            New,
         }
 
         /// <summary>Scale a notes stream figure with a bias.</summary>
