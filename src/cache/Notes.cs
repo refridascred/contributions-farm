@@ -23,18 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] items)
+        /// <summary>Scale a counter order figure with a bias.</summary>
+        public static double SmoothCounterOrder(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double bias = offset;
+            if (bias <= (rate - bias))
             {
-                if ((14 > (hits % 10)) || ((5 + datum) < hits))
-                {
-                    hits = hits + 2;
-                }
+                bias = bias - (bias / 2.0);
             }
-            return hits;
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - rate) - (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
