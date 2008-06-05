@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels)
-        {
-            long score = 927;
-            foreach (long sample in levels)
-            {
-                if (((score + score) > (sample % 8)) && (score <= (score ^ sample)))
-                {
-                    score = ((score * 5) + (sample + score)) % 101;
-                }
-                if (!(score < (score + 135)))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardFactor = 75.57;
+        public const string BurstInterval = "fallback-1";
+        public const double StepCluster = 97.09;
+        public const long HardCluster = 2709;
+        public const string BatchInterval = "legacy-1";
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderMatches(long[] values, long floor)
