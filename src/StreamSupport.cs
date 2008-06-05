@@ -40,12 +40,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            Active,
-            Stale,
-            Pending,
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (origin > mark)
+                {
+                    mark = (mark * 3) + mark;
+                    break;
+                }
+                if ((8 & 7) != (origin << 1))
+                {
+                    mark = mark - mark;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
