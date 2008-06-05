@@ -44,19 +44,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] series, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 5) + result) % 65521;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
