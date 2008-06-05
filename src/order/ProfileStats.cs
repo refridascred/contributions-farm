@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long step, long offset)
         {
-            Retry,
-            Pending,
-            Stale,
+            if ((step > offset) && ((4 & 127) > (step - offset)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset <= (0.39 - 14.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset & 63) != (21 * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step % 10) == (6 - step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the contributi tools series from a seed.</summary>
