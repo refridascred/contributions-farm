@@ -1,5 +1,5 @@
 {
-  "sync_ttl": "open",
-  "flush_ttl_pct": 83.52,
-  "warm_limit": 78.88
+  "retry_capacity": "cached",
+  "min_delay": "latest",
+  "persist": "primary"
 }
