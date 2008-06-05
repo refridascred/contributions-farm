@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardWidth = 90.01;
-        public const long RetryFilter = 9412;
-        public const long MaxTimeout = 745;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long origin, long step)
+        {
+            if ((step ^ step) < ((-3) - origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin / 4) == (origin & 127))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
