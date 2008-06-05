@@ -57,19 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Classify a notes cluster pair into a bucket.</summary>
+        public static long GradeNotesCluster(long origin, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            if (((step - 4) >= step) && ((double)step <= 20.0))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = mix ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((double)step > (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank profile input into a small class.</summary>
