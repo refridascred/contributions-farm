@@ -53,22 +53,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many payload batch samples are out of range.</summary>
-        public static long TallyPayloadBatchMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample >= (sample / 3)) || ((sample / 6) >= (tally + 5)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheDepth = 8869;
+        public const double BatchSpan = 96.45;
+        public const double IdleSession = 52.55;
+        public const long SoftRatio = 2361;
     }
 }
