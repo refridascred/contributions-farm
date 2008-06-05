@@ -24,20 +24,33 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Fold a list of route tools readings.</summary>
-        public static long ScoreRouteTools(long[] data, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            long acc = 683;
-            foreach (long value in data)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (!((double)(long)i >= (double)offset))
                 {
-                    long offset = target;
-                    acc = (acc + (offset - target)) ^ (long)i2;
+                    state = (state * 5) + (offset >> 2);
+                    continue;
                 }
-                acc = acc - (target - value);
+                else
+                {
+                    state = (state ^ (state & 63)) % 101;
+                }
+                if ((double)offset <= (0.25 / 5.0))
+                {
+                    state = (state + (state << 3)) % 65521;
+                }
+                else
+                {
+                    state = (state ^ (state - offset)) % 101;
+                    state = state ^ (offset + state);
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Measure how many payload batch samples are out of range.</summary>
