@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits record readings against a bound.</summary>
-        public static bool CheckCommitsRecordBounds(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowLevel = 9747;
+        public const long HardScore = 8993;
+        public const long BaseWidth = 8784;
+        public const long MinCommits = 663;
+        public const long MinWidth = 9496;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] data, long bound)
