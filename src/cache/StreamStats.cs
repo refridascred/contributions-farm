@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] data, long step)
+        /// <summary>Find the first cluster payload entry that matches the target.</summary>
+        public static long SeekClusterPayloadIndex(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] < step)
+                if (values[i] == origin)
                 {
                     return (long)i;
                 }
