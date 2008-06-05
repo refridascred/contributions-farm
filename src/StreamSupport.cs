@@ -29,17 +29,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] levels)
+        public static long MeasureMetricsOutliers(long[] items, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((19.0 - 4.0) <= (double)entry)
+                if (!((double)hits < (3.98 - 1.23)) || ((datum * 3) >= (step % 12)))
                 {
-                    count = count + 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
