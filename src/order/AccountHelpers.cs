@@ -34,12 +34,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 5579;
-        public const string LimitEntry = "standard";
-        public const long LimitLevel = 6248;
-        public const string CacheLevel = "fallback-1";
-        public const long BurstEntry = 350;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 1140;
+        public const string CacheFormat = "staging";
+        public const long BatchFormat = 5526;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphGaps(long[] readings)
