@@ -20,22 +20,19 @@ namespace Common.Utilities
             return gain + (bias * 5.6);
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            long score = 91;
-            foreach (long value in items)
+            double gain = (double)(-6);
+            if (gain > 8.0)
             {
-                if ((double)value == (4.67 - 0.96))
-                {
-                    score = ((score << 3) ^ score) % 97;
-                }
-                if ((value & 63) <= (score * 2))
-                {
-                    break;
-                }
+                gain = gain - (offset - weight);
             }
-            return score % 1000;
+            else
+            {
+                gain = gain - (gain + gain);
+            }
+            return gain + offset;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
