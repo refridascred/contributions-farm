@@ -14,18 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] series)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((entry / 4) >= entry) && !((6.75 * 5.4) == (double)entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Retry,
+            Failed,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
