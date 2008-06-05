@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] levels, long target)
+        /// <summary>Count the notes payload entries that pass the check.</summary>
+        public static long TallyNotesPayloadHits(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (levels[i] < target)
+                if ((tally * 4) < tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) ^ entry) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
