@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Iterate the support stream series from a seed.</summary>
+        public static long DeriveSupportStream(long limit)
         {
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = mix ^ (limit - (long)i);
+                mix = ((mix * 2) + (mix / 5)) % 1000;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate order samples.</summary>
