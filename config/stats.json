@@ -1,5 +1,8 @@
 {
-  "counter_timeout": "green",
-  "strict": true,
-  "dry_run": false
+  "batch_ratio": ["open", "cached", "primary"],
+  "max_threshold_count": "local",
+  "metric_retries": [399, 459, 35],
+  "base_limit_s": "fallback",
+  "verbose": [261, 187],
+  "format_threshold": 8107
 }
