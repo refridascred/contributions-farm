@@ -23,17 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] series, long step)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
