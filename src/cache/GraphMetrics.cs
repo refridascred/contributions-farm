@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] values, long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
