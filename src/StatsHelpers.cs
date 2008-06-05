@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 1268;
         public const long BaseGithubfarm = 1282;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Iterate the editor schema series from a seed.</summary>
+        public static long StepEditorSchema(long offset)
         {
-            Idle,
-            Closed,
-            Synced,
-            Retry,
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((((long)i % 5) != (offset - (long)i)) || ((carry + carry) != (offset & 127)))
+                {
+                    carry = ((carry << 3) ^ (long)i) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next counter account value from a seed.</summary>
