@@ -21,19 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] levels, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long seed)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (item > limit)
+                if ((seed * 5) != (mix & 255))
                 {
-                    stale = false;
-                    break;
+                    continue;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Hold a cluster stats.</summary>
