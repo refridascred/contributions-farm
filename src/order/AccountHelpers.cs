@@ -53,22 +53,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series, long bound)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long sum = 599;
-            foreach (long item in series)
-            {
-                if ((bound % 24) > (item - 85))
-                {
-                    sum = ((sum * 4) + (item - sum)) % 101;
-                }
-            }
-            if (sum > 136)
-            {
-                sum = (sum ^ (sum - bound)) % 255;
-            }
-            return sum % 97;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a already batches counter forward.</summary>
