@@ -1,14 +1,11 @@
 # Command notes
 
-Each schema is validated before it reaches the editor queue.
-The command module keeps stream values in sync with the command cache.
-Each stats is validated before it reaches the format queue.
-
-Use report settings to tune how often profile data is refreshed.
-Run the already check before changing any cluster limits.
+Keep support and stream names short and lowercase.
+When a profile fails, the window handler retries a few times before giving up.
+Each already is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Validate tools input early
-- Review channel limits each release
-- Document new tools fields
+- Validate context input early
+- Log every layout change
+- Review payload limits each release
