@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftDepth = "latest-edge";
-        public const long IdleEntry = 9072;
-        public const long WindowEntry = 7471;
-        public const long DefaultEntry = 489;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)matches < (5.66 * 3.4))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the tools cluster series from a seed.</summary>
         public static long RollToolsCluster(long seed)
