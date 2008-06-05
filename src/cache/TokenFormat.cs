@@ -40,11 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 3333;
-        public const long MinScore = 1387;
-        public const long MinCounter = 4557;
-        public const long StepWidth = 8831;
-        public const long StepCounter = 3509;
+        /// <summary>Rank record format input into a small class.</summary>
+        public static long GradeRecordFormat(long offset, long floor)
+        {
+            if (12.0 < (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - offset) == (floor & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset < (447 + offset)) || ((floor - offset) != (floor >> 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
