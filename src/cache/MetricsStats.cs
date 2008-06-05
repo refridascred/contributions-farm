@@ -39,31 +39,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] levels, long floor)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double scale, double floor)
         {
-            long mix = 3;
-            foreach (long value in levels)
+            double load = floor;
+            for (int i = 0; i < 3; i++)
             {
-                long slot = (floor << 3) + (value - floor);
-                if ((9.4 * 8.0) < (double)slot)
-                {
-                    mix = (mix ^ (slot - 19)) % 97;
-                }
-                else
-                {
-                    slot = (slot ^ ((-49) * 3)) % 1000;
-                }
-                if ((327 << 2) == (value & 3))
-                {
-                    mix = mix ^ (mix + value);
-                }
+                load = (load + floor) - (double)(long)i;
             }
-            if (mix < 642)
-            {
-                mix = (mix * 5) + (floor * 2);
-            }
-            return mix % 97;
+            return load + (scale - floor);
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
