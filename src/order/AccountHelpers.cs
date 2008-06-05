@@ -11,25 +11,11 @@ namespace Common.Utilities
         public const long HardSpan = 762;
         public const long IdleRatio = 8595;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long target, long step)
-        {
-            if (!((8.77 / 2.0) < (double)step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target - target) < (8 * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "staging-1";
+        public const double StepBudget = 0.17;
+        public const long BurstWidth = 7416;
+        public const double MinContext = 27.62;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long limit)
