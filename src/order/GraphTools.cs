@@ -63,11 +63,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] samples)
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((8.3 / 7.0) <= (double)tally)
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
         }
     }
 }
