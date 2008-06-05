@@ -23,22 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long acc = -382;
-            foreach (long cell in series)
-            {
-                if ((double)cell <= 3.0)
-                {
-                    acc = acc ^ (acc * 3);
-                }
-            }
-            if (acc > 0)
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc % 1000;
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the contributi level values.</summary>
