@@ -94,19 +94,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] values, long offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
