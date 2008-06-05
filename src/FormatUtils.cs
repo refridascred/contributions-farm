@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (!((long)values.Length > item) || ((long)values.Length == (tally - item)))
+                if (floor >= (entry % 3))
                 {
-                    tally = tally + 3;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a payload entry.</summary>
