@@ -12,32 +12,21 @@ namespace Common.Utilities
         public const double SoftBatch = 13.98;
         public const long MaxBatch = 3974;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long limit, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            long lane = limit - offset;
-            if ((6.1 * 3.0) == (double)lane)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (lane <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset << 3) <= (lane ^ limit))
+                    if ((readings[i] ^ readings[j]) > 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a cache options.</summary>
