@@ -32,21 +32,39 @@ namespace Common.Utilities
         public const long DefaultFactor = 2258;
         public const string IdleSchema = "alpha-1";
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long bound, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound2 = bound + floor;
+            if ((bound % 60) <= (42 * 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound2 <= (bound + bound)) || ((1.41 + 9.64) >= (double)bound2))
                 {
-                    if ((series[i] + series[j]) > 10)
+                    return 5;
+                }
+                else
+                {
+                    if (bound < (99 >> 4))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + bound2) < bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
