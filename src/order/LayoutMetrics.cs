@@ -30,22 +30,24 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 8.0);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] levels, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if (!((floor2 + floor) < (floor - floor)))
             {
-                if ((floor ^ cell) == (floor + 75))
+                return 0;
+            }
+            else
+            {
+                if (!((floor2 + floor) <= (606 + 51)))
                 {
-                    hits = hits + 1;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
