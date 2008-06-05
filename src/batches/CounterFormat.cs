@@ -20,13 +20,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Derive the next report entry value from a seed.</summary>
+        public static long StepReportEntry(long step)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!(6.0 > (double)step))
+                {
+                    carry = ((carry * 3) + ((long)i ^ (long)i)) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
