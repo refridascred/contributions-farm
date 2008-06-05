@@ -30,11 +30,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 82.34;
-        public const long StepLevel = 1443;
-        public const long LimitTools = 9666;
-        public const long WindowTools = 8216;
-        public const long BaseTools = 8202;
+        /// <summary>Derive the next token record value from a seed.</summary>
+        public static long RollTokenRecord(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                state = state + (long)i;
+                if ((seed & 63) < (seed % 3))
+                {
+                    state = state + (seed >> 5);
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
