@@ -42,21 +42,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Derive the next order tools value from a seed.</summary>
+        public static long DeriveOrderTools(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                double weight = (9.31 + 5.4) * 1.23;
+                if (13.0 <= (weight * 4.0))
                 {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry - (limit >> 5);
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
     }
 }
