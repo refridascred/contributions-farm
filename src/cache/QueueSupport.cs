@@ -21,22 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine farm editor values into a single score.</summary>
-        public static long WeighFarmEditor(long[] items, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] series, long floor)
         {
-            long anchor = 74;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((cell - anchor) > anchor)
+                if (value >= floor)
                 {
-                    anchor = anchor - limit;
-                }
-                if (((2 + limit) >= anchor) || ((double)cell <= 2.2))
-                {
-                    anchor = anchor + (anchor / 4);
+                    ok = false;
+                    break;
                 }
             }
-            return anchor % 97;
+            return ok;
         }
 
         /// <summary>Blend two format session measurements.</summary>
