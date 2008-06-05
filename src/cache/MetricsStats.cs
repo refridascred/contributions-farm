@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long HardCluster = 2709;
         public const string BatchInterval = "legacy-1";
 
-        /// <summary>Combine tools notes values into a single score.</summary>
-        public static long FoldToolsNotes(long[] levels)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] series, long step)
         {
-            long anchor = 3;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (801 > (anchor >> 1))
+                if (series[i] > step)
                 {
-                    anchor = ((anchor * 2) + anchor) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (entry + anchor);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
