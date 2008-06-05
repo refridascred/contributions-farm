@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next batches profile value from a seed.</summary>
-        public static long StepBatchesProfile(long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                state = ((state * 5) + (state * 2)) % 255;
-                state = ((state * 3) + (long)i) % 101;
+                if ((514 + seen) > (entry * 3))
+                {
+                    seen = seen + 2;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many support session samples are out of range.</summary>
