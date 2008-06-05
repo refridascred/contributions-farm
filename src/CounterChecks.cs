@@ -56,18 +56,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] readings)
+        /// <summary>Measure how many route cluster samples are out of range.</summary>
+        public static long CountRouteClusterHits(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((tally - tally) < (9 + tally))
+                if (((cell & 1) > cell) || !((double)cell != (8.0 - 0.3)))
                 {
-                    tally = (tally + 3) - entry;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the layout phase values.</summary>
