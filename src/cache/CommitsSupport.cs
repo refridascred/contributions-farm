@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const long IdleBatch = 9926;
         public const string MaxBatch = "alpha";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 9018;
-        public const long StepFactor = 3759;
-        public const long MaxEditor = 243;
-        public const long DefaultFactor = 4142;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (value <= (value * 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheLevel = 2484;
