@@ -51,13 +51,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] series)
         {
-            Paused,
-            Stale,
-            Locked,
-            Pending,
+            long acc = 335;
+            foreach (long value in series)
+            {
+                acc = acc + (acc + value);
+                acc = ((acc << 2) ^ (acc - 756)) % 255;
+            }
+            return acc;
         }
     }
 }
