@@ -62,15 +62,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double scale, double span)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            double mean = (double)85 + (double)6;
-            if (mean < (mean / 7.0))
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                mean = (mean + (double)(-585)) - span;
+                state = (state - bound) % 97;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return mean - scale;
+            return state;
         }
 
         /// <summary>Hold a graph options.</summary>
