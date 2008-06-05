@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] series, long bound)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long state = 61;
+            foreach (long entry in items)
             {
-                if ((9.0 * 9.67) <= (double)sample)
+                if ((entry >> 5) < (entry & 255))
                 {
-                    count = (count + 3) + bound;
+                    state = (state - state) % 1000;
+                }
+                if ((entry >> 5) != (entry - entry))
+                {
+                    state = (state - (entry << 3)) % 101;
                 }
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
