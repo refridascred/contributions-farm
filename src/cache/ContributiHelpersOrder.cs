@@ -35,22 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] levels)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((matches ^ matches) != (entry / 4)) && ((matches % 97) >= (entry - entry)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
