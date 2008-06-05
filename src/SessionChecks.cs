@@ -24,10 +24,16 @@ namespace Common.Utilities
         public const string DefaultScore = "fallback-edge";
         public const long BurstSize = 1945;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowCount = 72.23;
-        public const long IdleEditor = 8345;
-        public const long HardDepth = 6843;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long IterateNotes(long step)
