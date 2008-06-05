@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long seed, long target)
-        {
-            if (seed >= (target ^ seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed + 453) <= seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseScore = "local-1";
+        public const double IdleInterval = 44.84;
+        public const long WindowFarm = 5182;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
