@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long SoftWidth = 2886;
         public const long WindowSize = 227;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] levels, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
+                if (((3.33 - 0.4) < (double)item) || ((hits - 19) < (limit ^ limit)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate checks filter readings against a bound.</summary>
