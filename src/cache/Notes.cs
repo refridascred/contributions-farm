@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long step, long step2)
         {
-            Done,
-            Active,
-            Paused,
-            New,
-            Synced,
+            if ((step << 3) == (step2 ^ step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step + step) >= (step2 << 3)) && ((step2 + step) < step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step + step) >= step2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step2 & 1) > step2) && (step2 > (step + step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the command phase values.</summary>
