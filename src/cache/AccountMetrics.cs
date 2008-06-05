@@ -57,21 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Validate queue metrics readings against a bound.</summary>
+        public static bool GuardQueueMetricsLimits(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value <= origin)
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
