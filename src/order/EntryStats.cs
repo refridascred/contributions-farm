@@ -17,11 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 8300;
-        public const string StepInterval = "standard-v2";
-        public const long HardFactor = 487;
-        public const double StepSize = 45.78;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] readings)
