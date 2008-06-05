@@ -33,20 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardBuffer = "local-1";
+        public const double CacheFactor = 64.41;
+        public const long BatchBuffer = 5093;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepRatio = 147;
