@@ -28,15 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] levels, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
