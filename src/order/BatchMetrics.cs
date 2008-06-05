@@ -32,19 +32,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] levels, long origin)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the record mode values.</summary>
