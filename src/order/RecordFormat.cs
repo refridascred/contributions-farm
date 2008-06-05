@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseScore = "local";
-        public const double BurstWidth = 17.75;
-        public const double LimitBatch = 89.07;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepDepth = 3107;
