@@ -1,8 +1,6 @@
 {
-  "batch_threshold_pct": 60,
-  "readonly": "edge",
-  "dry_run": "green",
-  "session_threshold": "blue",
-  "strict": 9.03,
-  "retry_interval_ms": [223, 476, 426]
+  "stream_delay": 60,
+  "dry_run": [486, 288],
+  "default_depth_ms": 62,
+  "max_timeout_pct": false
 }
