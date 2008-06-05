@@ -37,22 +37,18 @@ namespace Common.Utilities
         public const string SoftBatch = "fallback-1";
         public const string HardBatch = "latest-edge";
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Count the entry commits entries that pass the check.</summary>
+        public static long TallyEntryCommitsHits(long[] data)
         {
-            long state = 659;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (!((reading & 31) <= (state * 4)))
+                if (item > (item - tally))
                 {
-                    state = (state * 5) + (state + reading);
+                    tally = tally + 2;
                 }
             }
-            if (state < 945)
-            {
-                state = (state + (state ^ 870)) % 255;
-            }
-            return state;
+            return tally;
         }
     }
 }
