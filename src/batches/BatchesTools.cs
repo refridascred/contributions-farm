@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of command metrics entries.</summary>
-        public static long WeighCommandMetrics(long[] readings)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long step, long limit)
         {
-            long carry = 2;
-            foreach (long item in readings)
+            if (582 >= (limit % 7))
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                return 5;
+            }
+            else
+            {
+                if (((step * 5) >= step) || ((3.3 / 5.0) != (double)limit))
                 {
-                    carry = (carry + (431 - item)) - (long)i2;
+                    return 3;
                 }
-                if ((950 - carry) <= (item >> 5))
+                else
                 {
-                    carry = ((carry * 2) + (item - carry)) % 65521;
+                    return 4;
                 }
             }
-            return carry;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
