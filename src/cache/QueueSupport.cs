@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const long MaxFilter = 4982;
         public const long LimitFilter = 5305;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 9;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor ^ (limit ^ limit)) % 101) ^ item;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
