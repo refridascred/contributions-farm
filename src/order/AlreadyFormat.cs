@@ -45,13 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] values, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
