@@ -27,14 +27,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] series)
         {
-            Queued,
-            New,
-            Paused,
-            Idle,
-            Retry,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!((tally ^ tally) >= sample))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
