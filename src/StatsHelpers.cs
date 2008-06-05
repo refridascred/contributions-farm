@@ -25,19 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context tools readings against a bound.</summary>
-        public static bool VerifyContextToolsRange(long[] data, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            New,
+            Retry,
+            Active,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
