@@ -21,20 +21,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "fallback-v2";
+        public const double LimitInterval = 93.87;
+        public const long BurstSpan = 5686;
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] series)
