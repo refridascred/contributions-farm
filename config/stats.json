@@ -1,5 +1,7 @@
 {
-  "verbose": "standard",
-  "idle_interval": "legacy",
-  "min_timeout_ms": true
+  "base_interval_s": ["standard", "legacy"],
+  "soft_threshold_s": "green",
+  "channel_retries": "primary",
+  "persist": ["cached", "latest"],
+  "cache_interval_s": 500
 }
