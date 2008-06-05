@@ -21,10 +21,18 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitRatio = 8.62;
-        public const long RetryContributi = 1867;
-        public const long CacheContributi = 8837;
-        public const long BaseContributi = 562;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((78 + reading) < (reading + 29))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
