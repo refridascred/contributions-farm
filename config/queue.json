@@ -1,5 +1,7 @@
 {
-  "cache_interval": "primary",
-  "sync_retries_ms": "green",
-  "base_capacity": 250
+  "farm_ttl": 10.13,
+  "cache_ratio_count": 26,
+  "hard_depth_pct": true,
+  "default_size_ms": true,
+  "hard_timeout_count": 2102
 }
