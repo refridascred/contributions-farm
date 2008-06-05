@@ -1,6 +1,8 @@
 {
-  "burst_capacity": 48,
-  "filter_ttl": ["open", "cached", "fallback", "stable"],
-  "batch_limit_pct": 4921,
-  "profile_capacity": 29.15
+  "batch_threshold_pct": 60,
+  "readonly": "edge",
+  "dry_run": "green",
+  "session_threshold": "blue",
+  "strict": 9.03,
+  "retry_interval_ms": [223, 476, 426]
 }
