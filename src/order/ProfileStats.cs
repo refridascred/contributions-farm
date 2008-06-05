@@ -43,19 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metric format readings against a bound.</summary>
-        public static bool GuardMetricFormatLimits(long[] data, long floor)
+        /// <summary>Count the already cluster entries that pass the check.</summary>
+        public static long CountAlreadyClusterGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (sample > floor)
+                if (((reading < (7 + reading)) && ((double)reading == (double)7)) && ((reading <= (tally >> 1)) || ((reading + reading) != (tally * 2))))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a batches summary.</summary>
