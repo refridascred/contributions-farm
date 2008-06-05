@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] series)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((-240) & 1) >= (seen & 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) ^ entry;
+                    if ((readings[i] - readings[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
