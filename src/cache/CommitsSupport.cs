@@ -65,11 +65,17 @@ namespace Common.Utilities
         public const long CacheRoute = 7920;
         public const long BatchRoute = 6648;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardSpan = 5451;
-        public const double CacheMetrics = 35.67;
-        public const double BatchMetrics = 94.73;
-        public const long IdleMetrics = 6852;
-        public const long BatchBudget = 6731;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
