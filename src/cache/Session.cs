@@ -48,13 +48,15 @@ namespace Common.Utilities
         public const string MaxLevel = "cached-edge";
         public const long HardLevel = 9632;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long target)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long sum = target;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
