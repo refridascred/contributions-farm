@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (datum > origin)
+                if (!(hits <= (reading << 2)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
