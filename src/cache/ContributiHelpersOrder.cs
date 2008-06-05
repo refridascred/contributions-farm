@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long HardCount = 7398;
         public const long LimitLevel = 4609;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Done,
+            Retry,
+            Queued,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
