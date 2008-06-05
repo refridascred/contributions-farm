@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 5170;
-        public const long IdleCommits = 5015;
-        public const double RetryCommits = 75.8;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Failed,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Combine context filter values into a single score.</summary>
         public static long FoldContextFilter(long[] readings)
