@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] series, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long bound)
         {
-            long anchor = 40;
-            foreach (long item in series)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = anchor + (origin + origin);
-                anchor = ((anchor << 3) ^ (anchor + origin)) % 4096;
-                anchor = (anchor - ((long)series.Length >> 1)) % 4096;
-                if (((item + 790) <= 7) && ((anchor - 7) != ((long)series.Length >> 3)))
+                if (((total ^ bound) < bound) && ((bound & 7) <= bound))
                 {
-                    break;
+                    continue;
                 }
+                else
+                {
+                    total = (total - (-447)) % 255;
+                    total = (total ^ (8 + total)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
