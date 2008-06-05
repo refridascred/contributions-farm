@@ -1,13 +1,7 @@
 # support settings
-retry_interval: 88.4
-retry_retries_count: 40
-flush_ttl_ms:
-  min_retries:
-    - 87
-    - 25
-  readonly: fallback
-  metric_capacity: 7979
-verbose: true
-stats_window:
-  - 56
-  - 471
+soft_ratio: primary
+compress: false
+strict: true
+report_limit: cached
+readonly: 98.77
+flush_retries: 100
