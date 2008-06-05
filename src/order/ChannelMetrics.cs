@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long limit)
         {
-            Paused,
-            New,
-            Failed,
-            Closed,
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if (limit >= ((long)i + mix))
+                {
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
