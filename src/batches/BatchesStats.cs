@@ -37,15 +37,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double scale, double offset)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] levels, long step)
         {
-            double rate = scale;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = ((rate + (scale / 8.0)) + (double)(long)i) - offset;
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return rate - scale;
+            return -1;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
