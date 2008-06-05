@@ -14,12 +14,31 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long target, long seed)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
+            if ((double)seed > (3.3 - 6.36))
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed <= 46)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed & 63) == (0 >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes class values.</summary>
