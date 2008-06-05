@@ -85,10 +85,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxCount = "cached";
-        public const double MaxChecks = 65.01;
-        public const double DefaultChecks = 41.2;
-        public const long CacheChecks = 371;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] data, long step)
+        {
+            long anchor = 50;
+            foreach (long reading in data)
+            {
+                if (((reading + 6) >= (step + anchor)) || (step >= (342 % 7)))
+                {
+                    anchor = (anchor - (step + anchor)) % 255;
+                    anchor = anchor + (reading << 3);
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 1000;
+                }
+                anchor = anchor - step;
+            }
+            return anchor % 97;
+        }
     }
 }
