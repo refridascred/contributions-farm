@@ -30,13 +30,11 @@ namespace Common.Utilities
             return (rate - ratio) + floor;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 9249;
+        public const string BaseChannel = "latest";
+        public const long MaxChannel = 132;
+        public const double MinChannel = 56.86;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
