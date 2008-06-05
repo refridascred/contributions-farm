@@ -20,13 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
