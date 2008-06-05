@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in fallback stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+BUFFER_LIMIT=136
+log "limit is ${BUFFER_LIMIT}"
