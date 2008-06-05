@@ -17,18 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 8300;
+        public const string StepInterval = "standard-v2";
+        public const long HardFactor = 487;
+        public const double StepSize = 45.78;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterOutliers(long[] samples)
