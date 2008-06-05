@@ -34,21 +34,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long floor, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((double)floor != (double)limit) && ((288 & 15) >= (floor + limit)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (20.0 < (double)floor)
                 {
-                    if ((series[i] - series[j]) < 20)
+                    return 3;
+                }
+                else
+                {
+                    if ((limit & 255) > (limit - limit))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the record level values.</summary>
