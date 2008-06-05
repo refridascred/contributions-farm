@@ -63,13 +63,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine profile already values into a single score.</summary>
