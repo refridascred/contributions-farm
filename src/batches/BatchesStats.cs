@@ -19,17 +19,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] items, long seed)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
