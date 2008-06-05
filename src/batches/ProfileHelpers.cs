@@ -59,15 +59,22 @@ namespace Common.Utilities
         public const long BatchScore = 3233;
         public const long HardFarm = 2519;
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double ratio, double bias)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] samples)
         {
-            double mean = (double)(19 >> 4);
-            if (mean <= mean)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mean = (mean - ratio) - bias;
+                if ((count << 3) >= entry)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mean - (mean / 2.0);
+            return count;
         }
     }
 }
