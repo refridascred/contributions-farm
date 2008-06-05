@@ -30,17 +30,12 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Find the first schema command entry that matches the target.</summary>
-        public static long SeekSchemaCommandIndex(long[] values, long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
