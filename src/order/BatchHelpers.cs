@@ -5,33 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series, long limit)
         {
-            long state = 7;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in series)
             {
-                state = state ^ (17 * 3);
-                if ((reading + reading) >= (0 + reading))
+                if ((limit - item) > (limit >> 1))
                 {
-                    state = state + (reading & 127);
-                    state = (state << 3) ^ state;
+                    count = count + 1;
                 }
                 else
                 {
-                    state = state + (state - 9);
-                    state = (state ^ (state & 255)) % 97;
-                }
-                if ((state % 10) == (state + 74))
-                {
-                    state = (state << 3) ^ (reading << 3);
-                }
-                if ((reading << 1) >= (reading % 24))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
