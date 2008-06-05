@@ -39,32 +39,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a account editor pair into a bucket.</summary>
-        public static long ClassifyAccountEditor(long floor, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] readings)
         {
-            long slot = floor - target;
-            if (((471 - target) != (floor - slot)) || ((9.0 + 6.0) != (double)target))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor >= (floor - slot)) || ((slot / 4) > (target / 4)))
+                if (datum > (datum >> 3))
                 {
-                    return 2;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((4.0 - 4.84) < (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
