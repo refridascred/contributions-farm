@@ -47,18 +47,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] samples, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if ((25 - (-147)) < (offset + limit))
             {
-                if ((double)(long)samples.Length == (18.0 + 8.9))
+                return 5;
+            }
+            else
+            {
+                if ((1.9 + 8.7) != (double)offset)
                 {
-                    hits = ((hits + 3) + datum) + floor;
+                    return 1;
+                }
+                else
+                {
+                    if (!((8.0 / 7.0) != (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-9) + limit) >= (limit + 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine tools format values into a single score.</summary>
