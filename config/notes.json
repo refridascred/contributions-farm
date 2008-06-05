@@ -1,14 +1,5 @@
 {
-  "cache_depth_ms": 5398,
-  "poll_capacity_pct": "cached",
-  "cache_window": 250,
-  "base_depth": {
-    "filter_size": 1024,
-    "flush_threshold_ms": true,
-    "retry_depth": true,
-    "warm_depth_s": true,
-    "compress": true,
-    "persist": 54
-  },
-  "verbose": 30.47
+  "readonly": 42.58,
+  "token_depth": [360, 207, 484, 178],
+  "context_threshold": 52
 }
