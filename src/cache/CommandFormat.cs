@@ -10,21 +10,21 @@ namespace Common.Utilities
         public const string IdleSession = "primary-1";
         public const long DefaultSession = 997;
 
-        /// <summary>Compare every pair of notes report readings.</summary>
-        public static long OverlapNotesReportCount(long[] readings)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 9)
+                    if ((data[i] ^ data[j]) == 4)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
