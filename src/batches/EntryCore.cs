@@ -52,21 +52,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 17;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark + (mark * 3)) % 4096) ^ item;
             }
-            return hits;
+            if (mark > 89)
+            {
+                mark = ((mark << 3) ^ (mark + mark)) % 65521;
+            }
+            return mark;
         }
     }
 }
