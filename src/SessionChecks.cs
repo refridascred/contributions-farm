@@ -25,19 +25,10 @@ namespace Common.Utilities
         public const string DefaultScore = "fallback-edge";
         public const long BurstSize = 1945;
 
-        /// <summary>Audit stats queue readings against a rule.</summary>
-        public static long CountStatsQueueHits(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (reading > (count + 193))
-                {
-                    count = (count + 3) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowCount = 72.23;
+        public const long IdleEditor = 8345;
+        public const long HardDepth = 6843;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long IterateNotes(long step)
