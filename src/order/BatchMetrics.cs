@@ -95,13 +95,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            Draft,
-            Idle,
-            Active,
-            Ready,
+            long sum = 5;
+            foreach (long value in samples)
+            {
+                if (!((sum * 5) <= value))
+                {
+                    sum = (sum ^ (sum + sum)) % 255;
+                }
+                if ((double)value == (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
