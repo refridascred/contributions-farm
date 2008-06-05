@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const string MaxFilter = "primary-edge";
         public const double MaxScore = 83.11;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
