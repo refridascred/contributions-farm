@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowCount = 2165;
-        public const long IdleDepth = 6087;
-        public const long BaseFactor = 5486;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 6789;
+        public const long BaseScore = 2085;
+        public const double BurstRecord = 89.43;
+        public const double RetryLevel = 26.07;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] series)
