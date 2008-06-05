@@ -80,12 +80,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Project the next batches payload value.</summary>
+        public static double SmoothBatchesPayload(double weight, double span)
         {
-            Stale,
-            New,
-            Active,
+            double scale = weight + 2.1;
+            return (scale + weight) + span;
         }
     }
 }
