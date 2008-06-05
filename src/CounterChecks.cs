@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long step)
         {
-            long score = offset;
+            long total = step;
             for (int i = 0; i < 7; i++)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((((long)i + (long)i) < step) || (step >= (total << 3)))
+                {
+                    total = ((total * 2) + ((long)i >> 5)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
