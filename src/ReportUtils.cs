@@ -34,19 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double scale, double bias)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            double mean = (scale - scale) + (bias / 4.0);
-            if (mean < mean)
-            {
-                mean = mean + (double)35;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (5.2 / 9.0)) - (double)(long)i;
-            }
-            return mean + (double)2;
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
