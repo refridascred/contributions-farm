@@ -44,15 +44,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the filter record series from a seed.</summary>
-        public static long IterateFilterRecord(long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Active,
+            Dropped,
+            Synced,
+            Failed,
         }
     }
 }
