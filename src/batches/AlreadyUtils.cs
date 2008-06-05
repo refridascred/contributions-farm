@@ -51,22 +51,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine record route values into a single score.</summary>
-        public static long TotalRecordRoute(long[] values, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] levels, long limit)
         {
-            long result = 5;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (entry > (entry + entry))
+                if (!((double)hits != (double)limit))
                 {
-                    result = (result - (origin % 16)) % 101;
-                }
-                if ((result + origin) < (entry + 8))
-                {
-                    break;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
