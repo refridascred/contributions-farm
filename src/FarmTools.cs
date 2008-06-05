@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many tools filter samples are out of range.</summary>
-        public static long AuditToolsFilterOutliers(long[] values, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((count - entry) == (9 << 2))
+                mix = (mix - 0) % 101;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    count = (count + 1) - step;
+                    mix = (((mix * 5) + (mix - mix)) % 65521) - (long)i2;
+                    mix = mix ^ origin;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the commits mode values.</summary>
