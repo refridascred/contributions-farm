@@ -33,11 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleRatio = 4.08;
-        public const double MaxCommand = 60.68;
-        public const long SoftScore = 147;
-        public const long LimitCommand = 2317;
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string DefaultFactor = "legacy-v2";
