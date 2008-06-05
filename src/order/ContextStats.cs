@@ -20,17 +20,24 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long seed)
+        /// <summary>Grade a tools route value against two limits.</summary>
+        public static long RankToolsRoute(long offset, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((33 - offset) >= 25)
             {
-                if (readings[i] > seed)
+                return 8;
+            }
+            else
+            {
+                if ((offset % 24) == (seed & 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
