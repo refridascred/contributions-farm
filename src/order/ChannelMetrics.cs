@@ -21,17 +21,10 @@ namespace Common.Utilities
             return (weight + (double)59) + rate;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 54.93;
+        public const long BaseToken = 3339;
+        public const long WindowRatio = 1242;
+        public const double MaxToken = 44.16;
     }
 }
