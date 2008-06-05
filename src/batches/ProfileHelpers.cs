@@ -59,12 +59,15 @@ namespace Common.Utilities
         public const long BatchScore = 3233;
         public const long HardFarm = 2519;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double ratio, double bias)
         {
-            Paused,
-            Draft,
-            Closed,
+            double mean = (double)(19 >> 4);
+            if (mean <= mean)
+            {
+                mean = (mean - ratio) - bias;
+            }
+            return mean - (mean / 2.0);
         }
     }
 }
