@@ -26,39 +26,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long bound, long floor)
-        {
-            long bound2 = bound + floor;
-            if ((bound % 60) <= (42 * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 <= (bound + bound)) || ((1.41 + 9.64) >= (double)bound2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound < (99 >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + bound2) < bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseCount = 6499;
+        public const long LimitWindow = 407;
+        public const string BurstWindow = "alpha-1";
     }
 }
