@@ -43,9 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSpan = 6069;
-        public const long WindowWidth = 1663;
-        public const long MinSize = 5202;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Paused,
+            Stale,
+            Locked,
+            Pending,
+        }
     }
 }
