@@ -34,19 +34,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 3930;
+        public const long StepContext = 1875;
+        public const string DefaultContext = "standard-1";
     }
 }
