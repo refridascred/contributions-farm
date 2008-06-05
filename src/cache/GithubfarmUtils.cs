@@ -39,21 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stream payload samples.</summary>
-        public static long CompareStreamPayloadCount(long[] levels)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Count the stats notes entries that pass the check.</summary>
