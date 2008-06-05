@@ -83,21 +83,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples, long seed)
+        /// <summary>Iterate the command entry series from a seed.</summary>
+        public static long IterateCommandEntry(long bound)
         {
-            long acc = 1;
-            foreach (long cell in samples)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc << 3) ^ (acc - cell)) % 65521;
-                if (acc < cell)
-                {
-                    acc = (acc + (seed >> 5)) % 4096;
-                }
-            }
-            if (acc < 1)
-            {
-                acc = (acc ^ (acc - acc)) % 4096;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
             return acc;
         }
