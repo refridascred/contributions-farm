@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] samples, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the layout context entries that pass the check.</summary>
