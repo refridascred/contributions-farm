@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a context stats value against two limits.</summary>
-        public static long SortContextStats(long offset, long origin)
-        {
-            long gap = offset + origin;
-            if ((offset + gap) == (gap + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)origin > (8.56 + 6.94)) && (0 <= (origin >> 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 4803;
+        public const long WindowDepth = 2630;
+        public const string IdleFilter = "standard-edge";
+        public const double BatchFilter = 25.12;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstFactor = 468;
