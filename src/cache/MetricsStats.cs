@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Active,
-            Ready,
-            Paused,
-            Retry,
-            Idle,
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
