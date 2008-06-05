@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] samples, long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (value < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Combine format values into a single score.</summary>
