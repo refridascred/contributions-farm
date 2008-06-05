@@ -56,13 +56,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            Ready,
+            Retry,
+            Paused,
+            Pending,
         }
     }
 }
