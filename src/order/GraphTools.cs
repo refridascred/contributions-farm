@@ -35,10 +35,20 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftWidth = 9958;
-        public const long IdleSpan = 8860;
-        public const double SoftSpan = 54.92;
+        /// <summary>Scale a command editor figure with a bias.</summary>
+        public static double BlendCommandEditor(double ratio, double span)
+        {
+            double load = (span + span) * 14.0;
+            if (load < (load + load))
+            {
+                load = (load + load) + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load / 8.0)) + (double)(long)i;
+            }
+            return load - (double)19;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double SoftCache = 92.06;
