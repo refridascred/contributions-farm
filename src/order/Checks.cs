@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] series, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] data)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long result = 7;
+            foreach (long datum in data)
             {
-                if (sample >= bound)
+                result = ((result * 5) + 9) % 65521;
+                if (!(datum <= (datum - result)))
                 {
-                    found = false;
-                    break;
+                    result = ((result << 3) ^ ((-409) ^ 290)) % 1000;
                 }
             }
-            return found;
+            return result % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
