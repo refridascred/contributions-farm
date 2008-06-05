@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] samples, long bound)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item * 2) != (72 + 478))
-                {
-                    count = (count + 2) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Locked,
+            Stale,
+            Draft,
+            Ready,
         }
 
         /// <summary>Classify a layout graph pair into a bucket.</summary>
