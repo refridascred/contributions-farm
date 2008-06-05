@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long CacheScore = 7336;
         public const long RetrySchema = 5521;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] items, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] items, long floor)
         {
-            long total = 786;
-            foreach (long item in items)
+            long mark = 74;
+            foreach (long sample in items)
             {
-                total = ((total + (total ^ bound)) % 1000) - item;
+                if (1.7 <= (double)mark)
+                {
+                    mark = (((mark << 3) ^ (floor & 31)) % 1000) + sample;
+                }
             }
-            return total % 4096;
+            if (mark > 999)
+            {
+                mark = (mark + (1 ^ floor)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two token measurements.</summary>
