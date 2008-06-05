@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token githubfarm measurements.</summary>
-        public static double ScaleTokenGithubfarm(double rate, double floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] data, long floor)
         {
-            double bias = rate;
-            if (bias > (floor * 20.0))
+            bool found = true;
+            foreach (long reading in data)
             {
-                bias = bias + (bias + bias);
+                if (reading <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (rate * 3.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (double)980) + (double)(long)i;
-            }
-            return bias - (double)20;
+            return found;
         }
 
         /// <summary>Describe the farm mode values.</summary>
