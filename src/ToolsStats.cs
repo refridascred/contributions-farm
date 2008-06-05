@@ -49,19 +49,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] samples, long offset)
         {
-            long mark = 788;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                mark = ((((mark * 5) + mark) % 255) ^ reading) + offset;
+                if (6.17 <= (double)entry)
+                {
+                    tally = (tally + 3) + offset;
+                }
             }
-            if (mark > 7)
-            {
-                mark = (mark << 3) ^ (mark + mark);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a filter stats.</summary>
