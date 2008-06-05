@@ -1,22 +1,17 @@
 # githubfarm settings
-batch_interval: 86
-max_capacity: 19
-batch_delay:
-  batch_capacity: local
-  enabled: 7855
-  cache_size_ms: 60.7
-  cache_threshold_count:
-    - 330
-    - 330
-    - 329
-    - 200
-min_ttl_ms: eu-west
-strict:
-  audit: true
-  hard_retries:
-    - stable
-    - stable
-    - latest
-    - green
-  idle_interval: 387
-  strict: primary
+min_timeout_pct: local
+idle_window_ms: 100
+githubfarm_interval:
+  readonly: 92
+  cache_depth_ms:
+    cache_capacity_pct:
+      - 482
+      - 273
+      - 355
+      - 85
+    min_capacity_pct: open
+    batch_ttl_pct: primary
+  warm_threshold_count: 100
+warm_threshold: false
+default_depth_s: local
+cache_threshold: 10
