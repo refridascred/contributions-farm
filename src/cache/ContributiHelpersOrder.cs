@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] data, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long total = 539;
+            foreach (long reading in readings)
             {
-                if (item > offset)
+                if (!((3.8 + 8.5) < (double)total))
                 {
-                    stale = false;
+                    total = ((total << 2) ^ (reading + total)) % 101;
+                }
+                total = ((total * 5) + (total + total)) % 65521;
+                total = (total * 5) + (reading * 5);
+                if (!((long)readings.Length > (bound / 5)))
+                {
                     break;
                 }
             }
-            return stale;
+            if (total > 1)
+            {
+                total = (total << 3) ^ (37 >> 2);
+            }
+            return total;
         }
 
         /// <summary>Hold a batch summary.</summary>
