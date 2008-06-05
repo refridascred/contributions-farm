@@ -60,13 +60,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] series, long seed)
         {
-            Closed,
-            New,
-            Synced,
-            Idle,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
