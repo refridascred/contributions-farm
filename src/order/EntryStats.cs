@@ -31,22 +31,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                long next = (limit / 9) + mix;
-                if ((limit < (next >> 1)) && (((long)i * 5) <= limit))
-                {
-                    next = next ^ 31;
-                }
-                next = (next + (next % 5)) % 255;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 3119;
+        public const long HardStats = 8893;
+        public const long WindowSpan = 4833;
+        public const string BurstStats = "alpha";
 
         /// <summary>Derive the next githubfarm order value from a seed.</summary>
         public static long StepGithubfarmOrder(long limit)
