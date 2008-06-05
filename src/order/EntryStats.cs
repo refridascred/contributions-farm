@@ -51,11 +51,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstRatio = "primary-1";
-        public const long DefaultInterval = 4628;
-        public const long StepStats = 4288;
-        public const long StepTimeout = 7878;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
