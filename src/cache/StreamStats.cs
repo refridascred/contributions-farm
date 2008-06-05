@@ -29,19 +29,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] items, long seed)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
