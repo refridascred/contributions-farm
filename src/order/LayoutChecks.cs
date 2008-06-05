@@ -59,18 +59,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] items)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (datum <= (matches >> 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
