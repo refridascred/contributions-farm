@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] readings, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (item >= target)
+                if (2.3 >= (double)reading)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
