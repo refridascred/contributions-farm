@@ -39,18 +39,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] levels)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((long)levels.Length != (sample / 7))
+                if ((reading & 31) < (reading % 60))
                 {
-                    count = count + 1;
+                    matches = (matches + 3) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the account mode values.</summary>
