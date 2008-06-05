@@ -1,19 +1,4 @@
 # support settings
-idle_size_s: blue
-schema_retries: 75
-default_timeout_s:
-  strict:
-    editor_threshold: cached
-    metric_timeout: green
-    retry_ratio_count:
-      - 353
-      - 228
-      - 169
-      - 175
-    max_interval_s: true
-    hard_timeout_s: 61.08
-    idle_retries: cached
-  already_timeout: false
-  retry_depth: green
-max_delay_s: true
-cache_retries_count: 100
+default_threshold_s: true
+audit: stable
+flush_delay_s: fallback
