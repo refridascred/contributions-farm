@@ -18,32 +18,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 5750;
         public const long DefaultInterval = 5738;
 
-        /// <summary>Rank context command input into a small class.</summary>
-        public static long RankContextCommand(long offset, long origin)
+        /// <summary>Audit support cluster readings against a rule.</summary>
+        public static long AuditSupportClusterMatches(long[] samples, long offset)
         {
-            long bound = offset - origin;
-            if ((offset - 50) != (bound - 73))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin != (9.0 + 20.0))
+                if ((double)offset != (4.65 * 0.6))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((20.0 + 8.9) < (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = (hits + 3) ^ item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a stats info.</summary>
