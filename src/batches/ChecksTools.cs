@@ -26,12 +26,24 @@ namespace Common.Utilities
         public const long IdleBatch = 7910;
         public const long StepBudget = 3440;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Classify a support session pair into a bucket.</summary>
+        public static long SortSupportSession(long limit, long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public double Score { get; set; }
+            if (limit > (637 % 12))
+            {
+                return 2;
+            }
+            else
+            {
+                if (8.79 <= (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a record window counter forward.</summary>
