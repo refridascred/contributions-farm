@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((((long)i + (long)i) < step) || (step >= (total << 3)))
-                {
-                    total = ((total * 2) + ((long)i >> 5)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinInterval = 0.54;
+        public const long CacheBudget = 6751;
+        public const long BurstQueue = 831;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricGaps(long[] samples, long limit)
