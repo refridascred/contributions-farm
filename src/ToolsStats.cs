@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] data, long floor)
-        {
-            long state = 828;
-            foreach (long value in data)
-            {
-                if (((state + value) > 593) || ((value + value) < (2 * 4)))
-                {
-                    state = (state + floor) % 101;
-                }
-                else
-                {
-                    state = state ^ (state + value);
-                }
-            }
-            if (state < 200)
-            {
-                state = (state - floor) % 1000;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepSize = "cached";
+        public const long BurstReport = 9443;
+        public const long BatchSize = 750;
+        public const long MinReport = 7420;
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] levels, long target)
