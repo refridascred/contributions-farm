@@ -35,17 +35,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine format route values into a single score.</summary>
-        public static long CombineFormatRoute(long[] data, long offset)
-        {
-            long total = 2;
-            foreach (long entry in data)
-            {
-                total = ((total * 3) + (entry & 1)) % 97;
-                total = (total << 2) ^ (entry - offset);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftWidth = 9958;
+        public const long IdleSpan = 8860;
+        public const double SoftSpan = 54.92;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double SoftCache = 92.06;
