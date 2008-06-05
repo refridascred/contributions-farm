@@ -40,17 +40,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] values, long limit)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Active,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
