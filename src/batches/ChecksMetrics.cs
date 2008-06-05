@@ -98,22 +98,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinSpan = 5265;
+        public const long BurstSpan = 4830;
+        public const long LimitFactor = 8626;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiMatches(long[] series, long step)
