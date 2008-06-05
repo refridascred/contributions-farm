@@ -42,12 +42,24 @@ namespace Common.Utilities
             return bias - (double)6;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Grade a payload command value against two limits.</summary>
+        public static long BucketPayloadCommand(long origin, long offset)
         {
-            Pending,
-            Retry,
-            Synced,
+            if ((2 + origin) > offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin & 63) == (origin / 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
