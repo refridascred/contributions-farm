@@ -50,11 +50,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 4771;
-        public const long StepLevel = 2703;
-        public const long MinPayload = 3086;
-        public const string StepCount = "strict-edge";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((((5.88 / 4.0) >= (double)tally) && (datum >= (92 >> 2))) && !((datum & 15) == ((long)data.Length >> 4)))
+                {
+                    tally = (tally + 2) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiMatches(long[] samples)
