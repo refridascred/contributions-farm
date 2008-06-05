@@ -54,18 +54,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((((matches - matches) <= (matches & 1)) || ((matches + item) <= item)) || ((double)item >= (double)matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchBudget = 9996;
+        public const long CacheCount = 8790;
+        public const long MaxCount = 2066;
+        public const long HardSchema = 9692;
     }
 }
