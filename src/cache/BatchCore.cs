@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 4394;
+        public const long BatchCommits = 9225;
+        public const long MinCommits = 9662;
+        public const string DefaultFactor = "cached-v2";
 
         /// <summary>Fold a list of session readings.</summary>
         public static long FoldSession(long[] items)
