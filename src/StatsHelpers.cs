@@ -34,18 +34,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 9326;
+        public const long BatchRatio = 5638;
+        public const string MinStream = "alpha-edge";
+        public const string CacheFactor = "staging-v2";
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
