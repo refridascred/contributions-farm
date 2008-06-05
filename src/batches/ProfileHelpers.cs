@@ -86,16 +86,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double weight, double offset)
-        {
-            double rate = (double)454 / 3.0;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (weight + offset)) + (double)(long)i;
-            }
-            return rate + offset;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitTimeout = 39.28;
+        public const long HardSpan = 387;
+        public const double BaseTimeout = 13.09;
+        public const double StepDepth = 72.81;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterGaps(long[] samples)
