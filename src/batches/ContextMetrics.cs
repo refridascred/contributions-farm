@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] samples, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((2.3 * 7.97) <= (double)matches) || ((matches * 4) > (matches * 5)))
+                if (readings[i] == limit)
                 {
-                    matches = ((matches + 3) ^ datum) + origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
