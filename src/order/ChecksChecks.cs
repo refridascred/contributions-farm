@@ -24,19 +24,29 @@ namespace Common.Utilities
         public const long WindowEntry = 7471;
         public const long DefaultEntry = 489;
 
-        /// <summary>Validate token window readings against a bound.</summary>
-        public static bool GuardTokenWindowRange(long[] samples, long offset)
+        /// <summary>Iterate the tools cluster series from a seed.</summary>
+        public static long RollToolsCluster(long seed)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (item < offset)
+                if ((acc - (long)i) != (long)i)
                 {
-                    flag = false;
+                    acc = acc - 91;
+                }
+                acc = ((acc * 2) + ((long)i + seed)) % 101;
+                if ((acc / 5) > acc)
+                {
+                    acc = (acc + (46 >> 5)) % 97;
                     break;
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ ((long)i + seed)) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
     }
 }
