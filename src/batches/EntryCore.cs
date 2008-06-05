@@ -23,22 +23,21 @@ namespace Common.Utilities
         public const long BurstTimeout = 2878;
         public const long DefaultContributi = 8409;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] levels, long limit)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            long sum = 98;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)entry < 4.62))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum - (sum % 60)) % 65521) - limit;
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < (-45))
-            {
-                sum = (sum * 2) + (217 + sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
