@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a batch profile sample.</summary>
-        public static long LookupBatchProfileIndex(long[] series, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= target)
+                if (samples[i] >= bound)
                 {
                     return (long)i;
                 }
