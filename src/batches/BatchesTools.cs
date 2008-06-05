@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] readings)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)346 >= (double)matches))
-                {
-                    matches = (matches + 1) + value;
-                }
+                mark = (mark + (mark + mark)) % 97;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
