@@ -32,15 +32,25 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double rate, double floor)
+        /// <summary>Classify a queue route pair into a bucket.</summary>
+        public static long SortQueueRoute(long origin, long seed)
         {
-            double drift = (double)8 / 4.0;
-            if (drift >= rate)
+            long gap = origin ^ seed;
+            if (6 < (seed << 2))
             {
-                drift = drift + (rate - floor);
+                return 8;
             }
-            return drift + (rate * 8.85);
+            else
+            {
+                if ((gap + 7) < (seed ^ gap))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
