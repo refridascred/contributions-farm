@@ -14,12 +14,25 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheLevel = 8.75;
-        public const double LimitCount = 21.28;
-        public const string BaseInterval = "alpha-1";
-        public const long MinScore = 2781;
-        public const long StepWidth = 7020;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long step, long seed)
+        {
+            if (((step / 7) <= seed) || ((6.47 - 3.37) >= (double)step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step >> 3) < step) && ((step << 1) < seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long ScoreEditor(long[] samples, long offset)
