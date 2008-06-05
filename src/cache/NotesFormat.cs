@@ -25,22 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] samples, long seed)
+        /// <summary>Roll a already cluster counter forward.</summary>
+        public static long RollAlreadyCluster(long origin)
         {
-            long carry = 15;
-            foreach (long cell in samples)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seed >= (cell - carry)) || (7.0 <= (double)cell))
-                {
-                    carry = carry + (seed + (-9));
-                }
-                else
-                {
-                    carry = carry - (seed + carry);
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
