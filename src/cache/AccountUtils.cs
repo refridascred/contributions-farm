@@ -29,11 +29,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] values, long origin)
         {
-            public double Flag { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!(((origin + value) == (value + value)) || ((origin ^ value) < (tally >> 2))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
