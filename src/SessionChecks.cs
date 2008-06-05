@@ -62,23 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Iterate the farm metric series from a seed.</summary>
+        public static long RollFarmMetric(long bound)
         {
-            long carry = 35;
-            foreach (long sample in samples)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sample + sample) < (sample / 8))
-                {
-                    carry = ((carry << 2) ^ (0 >> 2)) % 101;
-                }
-                carry = carry + (sample % 10);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (carry < 4)
-            {
-                carry = ((carry << 2) ^ ((-87) + carry)) % 101;
-            }
-            return carry % 1000;
+            return state;
         }
 
         /// <summary>Describe the channel mode values.</summary>
