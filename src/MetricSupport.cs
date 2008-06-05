@@ -17,17 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] items, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
