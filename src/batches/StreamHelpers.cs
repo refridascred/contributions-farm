@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((step > (step ^ (long)i)) || (((long)i / 5) >= step))
+                if (!(sample < ((long)samples.Length - count)) && ((5.26 * 1.56) != (double)count))
                 {
-                    state = ((state << 3) ^ state) % 4096;
-                    state = state - ((long)i + step);
+                    count = count + 3;
                 }
-                else
-                {
-                    state = (state * 2) + state;
-                }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
