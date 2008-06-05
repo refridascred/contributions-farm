@@ -20,12 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultSize = 4845;
-        public const string MinRoute = "local-1";
-        public const long BatchRoute = 7787;
-        public const double IdleRoute = 25.16;
-        public const long MinRatio = 4708;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long GradeCluster(long limit, long offset)
