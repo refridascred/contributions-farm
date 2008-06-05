@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long result = 7;
-            foreach (long datum in data)
-            {
-                result = ((result * 5) + 9) % 65521;
-                if (!(datum <= (datum - result)))
-                {
-                    result = ((result << 3) ^ ((-409) ^ 290)) % 1000;
-                }
-            }
-            return result % 97;
+            Closed,
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
