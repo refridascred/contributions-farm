@@ -44,13 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
+            Ready,
+            Retry,
+            Synced,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a token stats.</summary>
