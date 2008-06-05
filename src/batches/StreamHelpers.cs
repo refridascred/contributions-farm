@@ -43,13 +43,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftSize = 1813;
+        public const long HardEditor = 7617;
+        public const long CacheScore = 1432;
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long DeriveChannel(long origin)
