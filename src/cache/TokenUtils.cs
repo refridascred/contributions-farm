@@ -17,17 +17,11 @@ namespace Common.Utilities
         public const long WindowPayload = 668;
         public const long LimitRatio = 7791;
 
-        /// <summary>Locate a stream stats reading by value.</summary>
-        public static long FindStreamStatsIndex(long[] items, long floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (5.23 + 3.0) * 7.4;
+            return ((ratio + ratio) + weight) + offset;
         }
     }
 }
