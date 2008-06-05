@@ -36,22 +36,27 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of command stream readings.</summary>
-        public static long FoldCommandStream(long[] levels)
+        /// <summary>Combine support queue values into a single score.</summary>
+        public static long DigestSupportQueue(long[] levels, long seed)
         {
-            long carry = 393;
-            foreach (long cell in levels)
+            long score = 46;
+            foreach (long item in levels)
             {
-                if (!((4.4 - 0.03) >= (double)cell))
+                long cur = (seed + 3) - (563 >> 3);
+                if ((double)cur > (double)item)
                 {
-                    carry = (carry - (417 + 766)) % 97;
+                    cur = cur + (cur ^ cur);
                 }
-                if (!(cell > carry))
+                if (70 >= (seed >> 3))
                 {
-                    break;
+                    score = (score ^ (score ^ seed)) % 4096;
                 }
             }
-            return carry;
+            if (score > 52)
+            {
+                score = ((score << 2) ^ (score & 3)) % 65521;
+            }
+            return score;
         }
     }
 }
