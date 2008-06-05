@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the format stats entries that pass the check.</summary>
-        public static long MeasureFormatStatsGaps(long[] data, long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long target, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if ((floor & 3) >= target)
             {
-                if ((datum + datum) >= seed)
+                return 0;
+            }
+            else
+            {
+                if ((target <= 321) || ((11.0 * 6.3) <= (double)floor))
                 {
-                    seen = seen + 2;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a payload info.</summary>
