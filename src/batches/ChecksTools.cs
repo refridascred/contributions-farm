@@ -38,18 +38,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many metrics queue samples are out of range.</summary>
-        public static long CountMetricsQueueHits(long[] levels)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (item <= (5 + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
