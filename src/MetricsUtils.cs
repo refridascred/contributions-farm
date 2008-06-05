@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] readings)
+        /// <summary>Audit stream checks readings against a rule.</summary>
+        public static long AuditStreamChecksMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((25 + tally) == (cell % 24))
+                if ((datum - count) != (datum / 7))
                 {
-                    tally = tally + 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
