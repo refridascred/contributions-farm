@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] readings)
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!((double)346 >= (double)matches))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
