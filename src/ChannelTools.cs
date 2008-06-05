@@ -13,11 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double bias, double span)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double rate, double span)
         {
-            double ratio = bias;
-            return ratio + (span + bias);
+            double mean = span;
+            if (mean > rate)
+            {
+                mean = mean + mean;
+            }
+            return mean - (span * 3.0);
         }
 
         /// <summary>Hold a editor snapshot.</summary>
