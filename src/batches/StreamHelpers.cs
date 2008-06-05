@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] readings, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (((datum / 3) > matches) || (datum < (matches & 127)))
+                if ((step > (step ^ (long)i)) || (((long)i / 5) >= step))
                 {
-                    matches = (matches + 3) + limit;
+                    state = ((state << 3) ^ state) % 4096;
+                    state = state - ((long)i + step);
                 }
+                else
+                {
+                    state = (state * 2) + state;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Accumulate layout samples.</summary>
