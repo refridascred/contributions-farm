@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many batch stats samples are out of range.</summary>
-        public static long MeasureBatchStatsHits(long[] items, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (!(limit <= (limit - seen)))
+                if ((sample ^ sample) < (matches + sample))
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
