@@ -1,6 +1,11 @@
-id,region,weight,label
-1,479,cached,58.71
-2,325,97.91,47.29
-3,84.94,latest,stable
-4,896,726,local
-5,33.22,standard,blue
+id,owner,state,level
+1,44,477,139
+2,open,989,435
+3,70.42,primary,standard
+4,268,70,760
+5,green,49,15.86
+6,standard,42,blue
+7,latest,green,74
+8,open,fallback,391
+9,blue,94.14,94
+10,529,94.39,primary
