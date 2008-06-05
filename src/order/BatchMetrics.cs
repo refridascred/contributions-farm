@@ -49,13 +49,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long floor)
         {
-            Done,
-            Active,
-            New,
-            Dropped,
+            long next = limit ^ floor;
+            if (4.8 <= (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((next - limit) < (394 % 60))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((next % 100) >= (-85))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (20.0 > (double)floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
