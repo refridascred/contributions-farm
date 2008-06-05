@@ -35,23 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long mix = 935;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (((4 + entry) <= entry) || ((mix - mix) < (mix << 2)))
                 {
-                    result = ((result << 3) ^ ((long)i2 ^ result)) % 65521;
+                    mix = ((mix * 2) + (mix << 1)) % 4096;
                 }
-                if (!(result <= (step + (long)i)))
+                if (entry <= (mix + mix))
                 {
-                    result = (result * 4) + step;
+                    mix = (mix * 4) + entry;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of already entries.</summary>
