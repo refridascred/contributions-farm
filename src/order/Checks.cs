@@ -48,18 +48,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings, long step)
+        /// <summary>Iterate the filter record series from a seed.</summary>
+        public static long IterateFilterRecord(long seed)
         {
-            long acc = 729;
-            foreach (long reading in readings)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((acc & 7) < reading) && ((acc % 12) > reading))
-                {
-                    acc = acc - (77 + step);
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return acc;
+            return mix;
         }
     }
 }
