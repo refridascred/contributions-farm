@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryFactor = 59.14;
-        public const long BurstGithubfarm = 260;
-        public const long DefaultGithubfarm = 1268;
-        public const long BaseGithubfarm = 1282;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseSize = 5678;
+        public const string BatchEntry = "alpha-1";
+        public const long LimitEntry = 8516;
 
         /// <summary>Iterate the editor schema series from a seed.</summary>
         public static long StepEditorSchema(long offset)
