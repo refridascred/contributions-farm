@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] data, long step)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long score = 9;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score << 3) ^ (entry + entry)) + step;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score < 68)
-            {
-                score = (score + (score << 1)) % 65521;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Accumulate profile samples.</summary>
