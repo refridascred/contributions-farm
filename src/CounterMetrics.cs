@@ -20,13 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Audit graph checks readings against a rule.</summary>
+        public static long TallyGraphChecksHits(long[] items, long bound)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public bool Size { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (((matches + matches) < (bound + bound)) || ((matches ^ matches) > (long)items.Length))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session entry.</summary>
