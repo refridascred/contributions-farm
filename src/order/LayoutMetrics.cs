@@ -24,9 +24,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 5774;
-        public const double LimitBudget = 74.31;
-        public const long WindowSupport = 6211;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (cell > (cell - 7))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
