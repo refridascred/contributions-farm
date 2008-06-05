@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] series, long target)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (matches < (sample & 31))
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
