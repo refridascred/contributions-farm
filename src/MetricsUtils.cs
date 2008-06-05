@@ -43,22 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] levels, long limit)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long mix = 922;
-            foreach (long value in levels)
-            {
-                if ((mix <= (9 / 7)) && ((mix + 927) <= mix))
-                {
-                    mix = ((((mix * 2) + mix) % 4096) ^ value) - limit;
-                }
-                else
-                {
-                    mix = (mix ^ (mix - mix)) % 255;
-                }
-            }
-            return mix % 97;
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Blend two graph entry measurements.</summary>
