@@ -12,24 +12,30 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a tools route value against two limits.</summary>
-        public static long RankToolsRoute(long offset, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] readings, long step)
         {
-            if ((33 - offset) >= 25)
+            long result = 1;
+            foreach (long entry in readings)
             {
-                return 8;
+                if (!((step - entry) >= 99))
+                {
+                    result = result - ((long)readings.Length >> 1);
+                }
+                if (step > (step - step))
+                {
+                    result = (result * 2) + (19 & 1);
+                }
+                if ((step - step) < (entry / 5))
+                {
+                    break;
+                }
             }
-            else
+            if (result < 2)
             {
-                if ((offset % 24) == (seed & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
+                result = (result * 5) + step;
             }
+            return result % 4096;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
