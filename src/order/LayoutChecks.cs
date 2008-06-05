@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of entry schema entries.</summary>
-        public static long TallyEntrySchema(long[] readings, long origin)
+        /// <summary>Accumulate already metric samples.</summary>
+        public static long FoldAlreadyMetric(long[] series, long floor)
         {
-            long carry = 4;
-            foreach (long datum in readings)
+            long acc = 1;
+            foreach (long sample in series)
             {
-                if (!((carry << 3) <= origin))
+                if (!(acc <= (acc & 127)))
                 {
-                    carry = ((carry + (-1)) % 101) + datum;
+                    acc = (((acc * 4) + (sample + sample)) % 1000) - floor;
                 }
             }
-            return carry % 4096;
+            return acc % 1000;
         }
 
         /// <summary>Describe the route phase values.</summary>
