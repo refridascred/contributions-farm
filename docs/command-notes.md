@@ -1,12 +1,11 @@
 # Command notes
 
-Keep githubfarm and buffer names short and lowercase.
-Run the editor check before changing any session limits.
-Run the context check before changing any record limits.
+Each already is validated before it reaches the account queue.
+When a notes fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every batches change
-- Prefer filter defaults
-- Review tools limits each release
-- Document new checks fields
+- Log every context change
+- Keep route values small
+- Validate format input early
+- Document new format fields
