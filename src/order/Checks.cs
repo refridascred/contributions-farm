@@ -44,15 +44,15 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] levels, long origin)
         {
-            long anchor = 6;
-            foreach (long item in data)
+            long state = 2;
+            foreach (long reading in levels)
             {
-                anchor = (anchor * 2) + item;
+                state = (((state << 3) ^ (state - 11)) - reading) - origin;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
