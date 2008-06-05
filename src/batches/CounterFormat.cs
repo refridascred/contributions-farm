@@ -29,14 +29,11 @@ namespace Common.Utilities
         public const string BatchBudget = "primary-v2";
         public const string MinTools = "alpha-v2";
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Idle,
-            Draft,
-            Retry,
-            Paused,
-            Dropped,
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
