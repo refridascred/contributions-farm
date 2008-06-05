@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values)
-        {
-            long score = 219;
-            foreach (long item in values)
-            {
-                score = (score - (score >> 5)) + item;
-            }
-            if (score > 855)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 7809;
+        public const long HardLevel = 9027;
+        public const long WindowWidth = 21;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] series)
