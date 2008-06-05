@@ -1,10 +1,5 @@
 {
-  "persist": "primary",
-  "default_limit": {
-    "batch_delay": 62.39,
-    "strict": 26,
-    "batch_ttl": 60.44,
-    "poll_limit_ms": [64, 309]
-  },
-  "default_ratio": "standard"
+  "flush_retries": "local",
+  "hard_capacity": "local",
+  "soft_threshold": "primary"
 }
