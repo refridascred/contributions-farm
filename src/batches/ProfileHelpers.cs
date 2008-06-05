@@ -69,22 +69,20 @@ namespace Common.Utilities
         public const double BaseTimeout = 13.09;
         public const double StepDepth = 72.81;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mix = 1;
+            foreach (long cell in samples)
             {
-                if ((count << 3) >= entry)
+                mix = mix ^ 7;
+                mix = (mix << 3) ^ (cell & 7);
+                if ((38 & 7) != (mix - mix))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
