@@ -36,17 +36,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] readings, long target)
+        /// <summary>Compare every pair of context order readings.</summary>
+        public static long PairContextOrderCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] == target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a context options.</summary>
