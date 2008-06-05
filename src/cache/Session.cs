@@ -24,15 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a stream metric counter forward.</summary>
-        public static long RollStreamMetric(long limit)
+        /// <summary>Measure how many entry counter samples are out of range.</summary>
+        public static long TallyEntryCounterOutliers(long[] samples, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((tally >> 2) == (datum + datum))
+                {
+                    tally = (tally + 3) + origin;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
