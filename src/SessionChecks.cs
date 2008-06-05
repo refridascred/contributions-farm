@@ -62,19 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] series, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry < step)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    valid = false;
-                    break;
+                    state = (((state << 3) ^ (long)i) % 101) - (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Describe the channel mode values.</summary>
