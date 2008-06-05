@@ -40,31 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record format input into a small class.</summary>
-        public static long GradeRecordFormat(long offset, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            if (12.0 < (double)offset)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - offset) == (floor & 15))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 1;
+                    anchor = ((anchor ^ (target * 2)) % 101) - (long)i2;
                 }
-                else
-                {
-                    if ((offset < (447 + offset)) || ((floor - offset) != (floor >> 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
+            return anchor;
         }
     }
 }
