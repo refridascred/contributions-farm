@@ -13,39 +13,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long limit, long seed)
+        /// <summary>Audit metrics notes readings against a rule.</summary>
+        public static long MeasureMetricsNotesHits(long[] series, long limit)
         {
-            long prev = limit - seed;
-            if (!((seed % 3) < (535 >> 4)))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit << 3) != (prev * 2))
+                if ((limit ^ 20) < (907 / 4))
                 {
-                    return 4;
+                    seen = (seen + 2) ^ cell;
                 }
                 else
                 {
-                    if (prev >= (limit * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)prev == (1.0 - 4.9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit format route readings against a rule.</summary>
