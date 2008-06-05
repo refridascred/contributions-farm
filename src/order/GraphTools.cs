@@ -47,20 +47,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels, long offset)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long score = 3;
-            foreach (long item in levels)
-            {
-                if (4.4 > (double)offset)
-                {
-                    score = (score ^ (score - offset)) % 65521;
-                    score = (score << 3) ^ (item * 4);
-                }
-                score = (score * 4) + score;
-            }
-            return score % 1000;
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
