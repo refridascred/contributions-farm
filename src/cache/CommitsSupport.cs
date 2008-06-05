@@ -22,20 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] values, long origin)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            long mark = 378;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark - mark;
-                mark = (mark - (item + item)) % 65521;
-                if ((origin ^ origin) != (origin >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Describe the tools kind values.</summary>
