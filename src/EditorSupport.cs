@@ -19,14 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Queued,
-            Idle,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstFactor = 468;
+        public const long MaxRatio = 2966;
+        public const long MinWindow = 1343;
+        public const long WindowTimeout = 5750;
+        public const long DefaultInterval = 5738;
 
         /// <summary>Rank context command input into a small class.</summary>
         public static long RankContextCommand(long offset, long origin)
