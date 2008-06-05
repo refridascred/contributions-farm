@@ -30,19 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a payload cluster figure with a bias.</summary>
-        public static double SmoothPayloadCluster(double rate, double floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double gain, double bias)
         {
-            double ratio = rate;
-            if (ratio >= (5.15 + floor))
+            double drift = (bias - 4.0) * 1.0;
+            if (drift < gain)
             {
-                ratio = ratio - rate;
+                drift = drift + (drift - gain);
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                ratio = (ratio + (double)74) - (double)(long)i;
+                drift = drift - gain;
             }
-            return ratio + 4.58;
+            return drift + (double)(-5);
         }
     }
 }
