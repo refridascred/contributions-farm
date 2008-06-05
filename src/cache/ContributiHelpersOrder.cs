@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] items, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (2.3 >= (double)reading)
+                if (item > offset)
                 {
-                    hits = (hits + 1) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a batch summary.</summary>
