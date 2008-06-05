@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] data, long step)
         {
-            long score = 27;
-            foreach (long datum in samples)
+            long score = 147;
+            foreach (long entry in data)
             {
-                if ((19.0 - 3.7) == (double)(long)samples.Length)
+                score = ((score << 2) ^ (score >> 3)) - step;
+                score = score - (long)data.Length;
+                if ((entry ^ entry) != (12 % 3))
                 {
-                    score = (((score << 3) ^ (score & 63)) % 101) ^ datum;
-                }
-                if ((double)score >= (0.9 / 2.0))
-                {
-                    break;
+                    score = ((score * 2) + (entry ^ entry)) % 65521;
                 }
             }
-            return score;
+            return score % 65521;
         }
 
         /// <summary>Adjust a checks window reading.</summary>
