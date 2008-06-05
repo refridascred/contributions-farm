@@ -19,19 +19,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next report entry value from a seed.</summary>
-        public static long StepReportEntry(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(6.0 > (double)step))
-                {
-                    carry = ((carry * 3) + ((long)i ^ (long)i)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultCount = 87.54;
+        public const double MaxFarm = 15.68;
+        public const string IdleFarm = "latest";
+        public const string LimitFarm = "latest-v2";
+        public const double LimitSpan = 90.12;
     }
 }
