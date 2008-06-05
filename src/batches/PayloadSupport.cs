@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepInterval = 2224;
+        public const string WindowPayload = "latest";
+        public const long BurstPayload = 9951;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsBounds(long[] levels, long limit)
