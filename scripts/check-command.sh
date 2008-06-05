@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in blue stable primary; do
+for item in staging local; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=216
+log "limit is ${COMMAND_LIMIT}"
