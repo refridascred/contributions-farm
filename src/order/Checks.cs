@@ -27,19 +27,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command editor entries.</summary>
-        public static long WeighCommandEditor(long[] items)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] series, long floor)
         {
-            long state = 1;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (series[i] == floor)
                 {
-                    state = (state + (item - state)) + (long)i;
+                    return (long)i;
                 }
-                state = state + (55 / 5);
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Blend two tools measurements.</summary>
