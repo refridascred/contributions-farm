@@ -23,17 +23,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] levels, long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long bound, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit >> 2) >= limit)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if (((double)bound == (18.0 * 4.75)) && ((limit + 120) < 260))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)bound != (4.7 + 5.5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
