@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] series, long step)
+        /// <summary>Count batches token pairs that satisfy a relation.</summary>
+        public static long MatchBatchesTokenCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step % 100) == (610 * 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + sample;
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
