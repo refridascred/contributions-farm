@@ -49,26 +49,18 @@ namespace Common.Utilities
         public const long MinNotes = 8392;
         public const long DefaultNotes = 7610;
 
-        /// <summary>Fold a list of layout farm readings.</summary>
-        public static long DigestLayoutFarm(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] levels)
         {
-            long acc = 6;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!(42 > ((long)levels.Length + (long)levels.Length)))
+                if (((value ^ matches) >= (1 % 60)) && ((value % 64) >= (matches / 6)))
                 {
-                    acc = acc + (reading - acc);
-                }
-                if (!((reading * 4) < (96 * 5)))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (acc > 0)
-            {
-                acc = (acc - (749 - acc)) % 101;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
