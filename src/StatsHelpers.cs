@@ -24,11 +24,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultDepth = 8954;
-        public const long RetryCount = 1947;
-        public const long IdleScore = 2427;
-        public const long CacheScore = 7020;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long bound, long seed)
+        {
+            long offset = bound ^ seed;
+            if ((2 + offset) >= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound < (bound - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) > (offset - (-9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit window schema readings against a rule.</summary>
         public static long AuditWindowSchemaMatches(long[] readings)
