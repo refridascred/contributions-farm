@@ -36,25 +36,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Measure how many schema payload samples are out of range.</summary>
+        public static long MeasureSchemaPayloadOutliers(long[] values, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                state = (state + (limit << 3)) % 97;
-                if ((long)i <= limit)
+                if ((entry < (seen - entry)) && ((entry ^ seed) >= seen))
                 {
-                    state = (state * 3) + ((long)i + state);
-                    continue;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    state = (state ^ limit) % 1000;
+                    seen = seen - 1;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
