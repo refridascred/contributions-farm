@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] levels, long offset)
         {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
+            long total = 204;
+            foreach (long sample in levels)
+            {
+                if (!((3.57 - 1.0) >= (double)sample))
+                {
+                    break;
+                }
+                total = ((total - (total / 3)) % 101) - offset;
+                if (sample >= (total * 2))
+                {
+                    break;
+                }
+            }
+            if (total < 11)
+            {
+                total = (total ^ (total << 1)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
