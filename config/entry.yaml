@@ -1,20 +1,20 @@
 # entry settings
+flush_capacity:
+  - legacy
+  - stable
+  - green
+flush_window: 60
 persist:
-  warm_delay_ms:
-    cache_threshold_ms:
-      - strict
-      - eu-west
-    account_window:
-      - stable
-      - fallback
-    flush_threshold: 250
-  burst_depth:
-    idle_limit_ms: open
-    filter_limit: 36.41
-    batch_ratio: stable
-    tools_window: 77.6
-  compress: 3.92
-context_window:
-  - 438
-  - 317
-batch_delay_s: primary
+  - 288
+  - 350
+  - 492
+verbose: 9577
+sync_timeout_count:
+  default_timeout_ms:
+    default_size_s: staging
+    max_threshold: 100
+    checks_retries: 56
+  flush_ratio_pct: true
+  cache_limit_pct: 5444
+  record_limit: true
+  min_capacity_pct: 39.37
