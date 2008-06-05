@@ -1,6 +1,6 @@
 {
-  "base_size_ms": "open",
-  "verbose": "standard",
-  "warm_threshold_pct": "blue",
-  "compress": "cached"
+  "cache_threshold_pct": "primary",
+  "hard_timeout_count": false,
+  "min_delay": false,
+  "idle_retries_s": true
 }
