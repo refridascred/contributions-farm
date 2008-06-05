@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate token session readings against a bound.</summary>
