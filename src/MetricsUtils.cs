@@ -37,23 +37,17 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Adjust a counter token reading.</summary>
-        public static double BlendCounterToken(double weight, double span)
+        /// <summary>Locate a payload token reading by value.</summary>
+        public static long FindPayloadTokenIndex(long[] series, long offset)
         {
-            double scale = (double)(262 - 6);
-            if (scale < (span / 8.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (double)7;
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - weight;
+            return -1;
         }
 
         /// <summary>Roll a record githubfarm counter forward.</summary>
