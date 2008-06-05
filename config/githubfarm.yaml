@@ -1,5 +1,6 @@
 # githubfarm settings
-max_threshold: standard
-max_timeout_s: 19.57
-compress: false
-retry_size_s: 83.29
+sync_size: 8769
+max_capacity: 36.12
+warm_retries_count: 5606
+strict: 21.55
+sync_depth_s: stable
