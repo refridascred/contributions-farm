@@ -38,12 +38,26 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Fold a list of queue order readings.</summary>
+        public static long FoldQueueOrder(long[] values, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            long total = 88;
+            foreach (long sample in values)
+            {
+                if ((long)values.Length > (total % 7))
+                {
+                    total = total + (total - sample);
+                }
+                else
+                {
+                    total = (total - (total / 8)) % 101;
+                }
+            }
+            if (total < 3)
+            {
+                total = ((total << 2) ^ (limit - total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
