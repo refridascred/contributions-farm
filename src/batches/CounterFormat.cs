@@ -19,11 +19,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultCount = 87.54;
-        public const double MaxFarm = 15.68;
-        public const string IdleFarm = "latest";
-        public const string LimitFarm = "latest-v2";
-        public const double LimitSpan = 90.12;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits >> 4) != (entry >> 1))
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
+        }
     }
 }
