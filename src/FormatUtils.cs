@@ -57,31 +57,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report token pair into a bucket.</summary>
-        public static long BucketReportToken(long bound, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long target)
         {
-            if (!((bound << 3) <= target))
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + 200) > 4)
+                anchor = (anchor << 2) ^ (target << 3);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 3;
+                    anchor = ((anchor * 3) + (38 + anchor)) ^ (long)i2;
                 }
-                else
-                {
-                    if (653 < bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Count the context layout entries that pass the check.</summary>
