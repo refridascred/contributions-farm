@@ -59,9 +59,17 @@ namespace Common.Utilities
         public const long CacheRoute = 7920;
         public const long BatchRoute = 6648;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 5541;
-        public const long HardRatio = 5996;
-        public const long LimitInterval = 4226;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
