@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long MinCommits = 9662;
         public const string DefaultFactor = "cached-v2";
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] items)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            long anchor = 9;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (352 + 669)) % 255;
-                if (((entry * 4) >= (anchor - anchor)) && ((anchor - entry) >= (anchor % 12)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
