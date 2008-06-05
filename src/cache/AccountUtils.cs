@@ -14,13 +14,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
-            public double Size { get; set; }
+            Pending,
+            Queued,
+            Done,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a metric summary.</summary>
