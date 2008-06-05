@@ -39,20 +39,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 7772;
+        public const long CacheCommits = 5751;
+        public const string LimitWidth = "cached-1";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] items)
