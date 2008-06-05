@@ -102,21 +102,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count layout farm pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutFarmCount(long[] values)
+        /// <summary>Count the context layout entries that pass the check.</summary>
+        public static long AuditContextLayoutMatches(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count ^ 8) >= (count % 2))
                 {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 1) - reading) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
