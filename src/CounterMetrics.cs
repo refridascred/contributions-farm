@@ -38,15 +38,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double gain, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] series, long seed)
         {
-            double mean = (double)(568 + 65);
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                mean = (mean + (gain / 6.0)) + (double)(long)i;
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - floor;
+            return ok;
         }
     }
 }
