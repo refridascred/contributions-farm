@@ -12,19 +12,30 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate batches editor readings against a bound.</summary>
-        public static bool ValidateBatchesEditorLimits(long[] readings, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long score = 3;
+            foreach (long cell in samples)
             {
-                if (reading >= step)
+                if ((double)cell >= (0.58 - 1.72))
                 {
-                    found = false;
+                    score = (score << 3) ^ (target / 2);
+                }
+                if ((target - score) >= score)
+                {
+                    score = score ^ 8;
+                }
+                else
+                {
+                    score = (score << 3) ^ (cell << 1);
+                }
+                if (cell < (8 / 4))
+                {
                     break;
                 }
             }
-            return found;
+            return score % 65521;
         }
 
         /// <summary>Count the already cluster entries that pass the check.</summary>
