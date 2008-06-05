@@ -1,6 +1,7 @@
 {
-  "format_size": "primary",
-  "metric_retries": [185, 393],
-  "warm_ttl_s": 250,
-  "cache_threshold": 55
+  "cache_threshold": "strict",
+  "sync_timeout": "eu-west",
+  "flush_retries_ms": "eu-west",
+  "strict": "fallback",
+  "channel_size": "edge"
 }
