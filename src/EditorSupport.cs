@@ -87,15 +87,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the command entry series from a seed.</summary>
-        public static long IterateCommandEntry(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstRatio = 3554;
+        public const double BaseInterval = 21.2;
+        public const long LimitSize = 6118;
+        public const string BaseStream = "latest";
     }
 }
