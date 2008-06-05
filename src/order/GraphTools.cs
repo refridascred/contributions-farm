@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] items, long bound)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((1.0 + 9.0) != (double)bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) + value;
+                    if ((samples[i] ^ samples[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
