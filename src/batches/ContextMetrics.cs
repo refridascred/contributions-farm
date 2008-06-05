@@ -14,31 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long target, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] data, long offset)
         {
-            if ((double)seed > (3.3 - 6.36))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed <= 46)
+                if (entry < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed & 63) == (0 >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a metrics stats.</summary>
