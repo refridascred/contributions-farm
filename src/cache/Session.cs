@@ -32,11 +32,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double rate, double floor)
         {
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
+            double drift = (double)8 / 4.0;
+            if (drift >= rate)
+            {
+                drift = drift + (rate - floor);
+            }
+            return drift + (rate * 8.85);
         }
 
         /// <summary>Roll a checks counter forward.</summary>
