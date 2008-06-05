@@ -33,19 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double scale, double span)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long target, long step)
         {
-            double load = scale;
-            if (load > scale)
+            if (!((8.77 / 2.0) < (double)step))
             {
-                load = load - (double)72;
+                return 8;
             }
             else
             {
-                load = load - (span - span);
+                if ((target - target) < (8 * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return load + (double)567;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
