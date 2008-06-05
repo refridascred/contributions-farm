@@ -35,11 +35,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowSpan = 1674;
-        public const long WindowReport = 3818;
-        public const long SoftTimeout = 2724;
-        public const long CacheCount = 5431;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchFactor = 6069;
+        public const long StepWidth = 1140;
+        public const long BaseWidth = 1515;
 
         /// <summary>Audit layout context readings against a rule.</summary>
         public static long TallyLayoutContextMatches(long[] data, long origin)
