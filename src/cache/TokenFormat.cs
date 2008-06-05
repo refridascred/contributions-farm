@@ -23,19 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] readings, long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long target, long origin)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            if (((origin - target) != (origin ^ origin)) && ((3.6 / 2.0) == (double)target))
             {
-                if (value < step)
+                return 1;
+            }
+            else
+            {
+                if ((target - origin) > (origin & 1))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
 
         /// <summary>Match up filter samples.</summary>
