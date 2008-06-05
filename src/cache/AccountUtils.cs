@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] items, long floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long total = 151;
-            foreach (long value in items)
-            {
-                total = (total + (floor + floor)) - value;
-            }
-            if (total < 86)
-            {
-                total = ((total << 3) ^ (total + total)) % 1000;
-            }
-            return total;
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
