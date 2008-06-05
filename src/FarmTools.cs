@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the account record series from a seed.</summary>
-        public static long RollAccountRecord(long bound)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (anchor <= (bound << 1))
-                {
-                    anchor = (anchor + (bound ^ anchor)) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the commits mode values.</summary>
