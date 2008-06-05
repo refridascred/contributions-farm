@@ -14,16 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] series, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                acc = acc - ((long)i + (long)i);
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((9.0 * 9.67) <= (double)sample)
+                {
+                    count = (count + 3) + bound;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
