@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            Draft,
+            Queued,
+            Synced,
         }
 
         /// <summary>Accumulate cache samples.</summary>
