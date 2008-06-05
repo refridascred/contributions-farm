@@ -25,18 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if (offset > limit)
             {
-                if ((hits - hits) >= reading)
+                return 0;
+            }
+            else
+            {
+                if ((25 & 127) == (offset - offset))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((3.9 * 7.49) > (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset + limit) > (limit >> 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of format readings.</summary>
