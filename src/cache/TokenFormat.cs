@@ -39,25 +39,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine support queue values into a single score.</summary>
-        public static long DigestSupportQueue(long[] levels, long seed)
+        /// <summary>Derive the next schema checks value from a seed.</summary>
+        public static long IterateSchemaChecks(long bound)
         {
-            long score = 46;
-            foreach (long item in levels)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                long cur = (seed + 3) - (563 >> 3);
-                if ((double)cur > (double)item)
+                if ((14.0 / 7.0) == (double)bound)
                 {
-                    cur = cur + (cur ^ cur);
+                    score = (score - (bound / 8)) % 1000;
+                    score = ((score * 3) + (bound + (long)i)) % 4096;
                 }
-                if (70 >= (seed >> 3))
+                else
                 {
-                    score = (score ^ (score ^ seed)) % 4096;
+                    score = (score << 2) ^ bound;
+                    score = ((score << 3) ^ (score & 127)) % 65521;
                 }
-            }
-            if (score > 52)
-            {
-                score = ((score << 2) ^ (score & 3)) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
             }
             return score;
         }
