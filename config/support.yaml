@@ -1,27 +1,19 @@
 # support settings
-readonly:
-  flush_delay: 78.36
-  compress: 4740
-  strict: 24.78
-  retry_ratio_count: 7698
-  command_timeout:
-    - primary
-    - cached
-    - legacy
-    - standard
-  soft_ratio: false
-retry_timeout: false
-burst_ratio_count:
-  session_capacity:
-    - 18
-    - 150
-    - 109
-  cache_delay_ms: fallback
-  retry_delay_s:
-    hard_ttl_count: 42
-    burst_retries_pct: 250
-    retry_ttl_ms: 21.84
-    sync_threshold_count: 500
-    flush_interval_count: 90.17
-    hard_interval: edge
-  hard_timeout_pct: 58.52
+idle_size_s: blue
+schema_retries: 75
+default_timeout_s:
+  strict:
+    editor_threshold: cached
+    metric_timeout: green
+    retry_ratio_count:
+      - 353
+      - 228
+      - 169
+      - 175
+    max_interval_s: true
+    hard_timeout_s: 61.08
+    idle_retries: cached
+  already_timeout: false
+  retry_depth: green
+max_delay_s: true
+cache_retries_count: 100
