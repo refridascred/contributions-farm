@@ -20,17 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Audit schema command readings against a rule.</summary>
+        public static long MeasureSchemaCommandHits(long[] data, long limit)
         {
-            long score = 3;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                score = (score + (datum + datum)) % 65521;
-                score = (score - ((-5) + datum)) % 4096;
-                score = (score * 2) + score;
+                if ((((sample % 3) <= (limit + sample)) && (limit < (limit + matches))) || ((limit ^ sample) == (sample >> 3)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a counter record.</summary>
