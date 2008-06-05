@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheRatio = 30.31;
-        public const string MaxCount = "alpha";
-        public const long SoftLevel = 3261;
-        public const long IdleSession = 4510;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double weight, double span)
+        {
+            double ratio = weight;
+            if (ratio > weight)
+            {
+                ratio = (ratio + (double)1) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + 4.4) + (double)(long)i;
+            }
+            return ratio - (weight * 0.61);
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] items)
