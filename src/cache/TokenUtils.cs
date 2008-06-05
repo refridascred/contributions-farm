@@ -40,17 +40,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] readings, long offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Active,
+            Dropped,
         }
     }
 }
