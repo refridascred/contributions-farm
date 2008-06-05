@@ -34,11 +34,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 9326;
-        public const long BatchRatio = 5638;
-        public const string MinStream = "alpha-edge";
-        public const string CacheFactor = "staging-v2";
+        /// <summary>Audit window schema readings against a rule.</summary>
+        public static long AuditWindowSchemaMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (!(((value + value) != (value & 63)) || (1 <= value)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
