@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long HardFilter = 8246;
         public const string DefaultWidth = "open-edge";
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)matches != (2.87 - 5.0))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstTimeout = 2166;
+        public const long RetryLevel = 8140;
+        public const long BatchRatio = 825;
+        public const string SoftChannel = "open";
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long ClassifyTools(long target, long seed)
