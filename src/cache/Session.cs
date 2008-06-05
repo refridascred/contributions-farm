@@ -20,17 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a command batch sample.</summary>
-        public static long LocateCommandBatchIndex(long[] data, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Define report limits and defaults.</summary>
