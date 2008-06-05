@@ -44,12 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardRatio = 7320;
-        public const long WindowContributi = 9853;
-        public const long SoftTimeout = 3631;
-        public const string RetryContributi = "alpha-1";
-        public const long MinContributi = 4337;
+        /// <summary>Iterate the buffer support series from a seed.</summary>
+        public static long RollBufferSupport(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 2) + (-85)) % 1000;
+                if ((long)i != ((-356) + (long)i))
+                {
+                    mix = (mix - 245) % 97;
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
