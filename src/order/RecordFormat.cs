@@ -43,17 +43,26 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] data, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 7;
+            foreach (long entry in samples)
             {
-                if (data[i] >= seed)
+                if (((double)entry <= (double)mark) && ((4.5 / 4.0) == (double)mark))
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + entry) % 65521;
+                }
+                if ((limit + entry) == (8 + mark))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark > (-963))
+            {
+                mark = (mark << 3) ^ (limit + mark);
+            }
+            return mark % 65521;
         }
     }
 }
