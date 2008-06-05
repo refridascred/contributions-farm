@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] series, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (sample < offset)
+                if ((19.0 - 4.0) <= (double)entry)
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
