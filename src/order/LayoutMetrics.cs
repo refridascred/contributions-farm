@@ -31,9 +31,9 @@ namespace Common.Utilities
             return drift - (double)(-154);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryWidth = 8003;
-        public const string HardAlready = "open-v2";
-        public const long BatchAlready = 6513;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSpan = 71.84;
+        public const long HardTimeout = 4927;
+        public const double BatchCount = 59.35;
     }
 }
