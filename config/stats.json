@@ -1,10 +1,6 @@
 {
-  "route_interval": {
-    "idle_ttl_ms": 82.1,
-    "min_timeout_count": 10,
-    "sync_capacity_count": false
-  },
-  "flush_interval_s": "fallback",
-  "dry_run": 5293,
-  "soft_depth": true
+  "format_size": "primary",
+  "metric_retries": [185, 393],
+  "warm_ttl_s": 250,
+  "cache_threshold": 55
 }
