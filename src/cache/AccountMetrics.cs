@@ -79,18 +79,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] values, long seed)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((sample & 127) <= seed) && ((count + count) != (count % 60))))
+                if (series[i] >= offset)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next cache report value from a seed.</summary>
