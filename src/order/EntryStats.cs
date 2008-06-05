@@ -22,12 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "standard";
-        public const string MinRoute = "fallback-v2";
-        public const long DefaultRoute = 3838;
-        public const long HardSize = 6170;
-        public const long MaxRoute = 8864;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Dropped,
+            Retry,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long RollMetric(long limit)
