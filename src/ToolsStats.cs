@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] samples, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = -98;
+            foreach (long datum in levels)
             {
-                if (samples[i] > origin)
+                if ((score + 5) > (381 << 1))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (datum + score)) % 97;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (step - 96)) % 65521;
                 }
             }
-            return -1;
+            if (score < 8)
+            {
+                score = (score + (step % 24)) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Accumulate order samples.</summary>
