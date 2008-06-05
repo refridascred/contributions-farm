@@ -29,15 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] data, long limit)
+        /// <summary>Compare every pair of support token readings.</summary>
+        public static long MatchSupportTokenCount(long[] levels)
         {
-            long carry = 72;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry - (8 - reading)) % 255) - limit;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate layout samples.</summary>
