@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Digest a series of command metrics entries.</summary>
+        public static long WeighCommandMetrics(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long carry = 2;
+            foreach (long item in readings)
             {
-                if (result < ((long)i * 3))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    result = (result ^ (result - origin)) % 97;
+                    carry = (carry + (431 - item)) - (long)i2;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((950 - carry) <= (item >> 5))
                 {
-                    result = ((result * 5) + (result + origin)) % 97;
-                    result = ((result * 3) + ((-746) + (long)i2)) % 101;
+                    carry = ((carry * 2) + (item - carry)) % 65521;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
