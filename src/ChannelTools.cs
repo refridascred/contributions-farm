@@ -13,15 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double rate, double span)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double weight, double bias)
         {
-            double mean = span;
-            if (mean > rate)
-            {
-                mean = mean + mean;
-            }
-            return mean - (span * 3.0);
+            double bias2 = weight;
+            return (bias2 - (double)35) + bias;
         }
 
         /// <summary>Audit session githubfarm readings against a rule.</summary>
