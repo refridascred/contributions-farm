@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long anchor = 545;
+            foreach (long reading in data)
             {
-                if ((tally >> 4) <= (tally + tally))
+                if (((reading + seed) == (anchor >> 3)) && ((double)reading < (double)anchor))
                 {
-                    tally = (tally + 3) ^ reading;
+                    anchor = (anchor - ((long)data.Length % 64)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + (reading - anchor)) % 65521;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
