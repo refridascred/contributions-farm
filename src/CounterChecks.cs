@@ -72,14 +72,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Pending,
-            Closed,
-            Done,
+            New,
+            Ready,
             Queued,
-            Failed,
+            Active,
         }
     }
 }
