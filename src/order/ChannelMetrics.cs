@@ -23,13 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] readings, long seed)
         {
-            long state = -623;
-            foreach (long item in levels)
+            long state = -43;
+            foreach (long item in readings)
             {
-                state = (((state << 3) ^ (461 - state)) % 97) ^ item;
+                state = (state * 2) + item;
+                state = (state + seed) % 4096;
             }
             return state;
         }
