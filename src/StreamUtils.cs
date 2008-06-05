@@ -36,13 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 191;
+        public const string BurstProfile = "strict";
+        public const double BurstScore = 19.78;
+        public const long MinFactor = 3996;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] values)
