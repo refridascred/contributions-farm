@@ -40,35 +40,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] levels, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] levels, long seed)
         {
-            long acc = 71;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (value <= (acc + target))
+                if ((cell >> 3) != (868 << 2))
                 {
-                    acc = (acc * 4) + (332 & 1);
-                }
-                else
-                {
-                    acc = (acc ^ (acc - target)) % 101;
-                    acc = ((acc << 3) ^ (acc >> 4)) % 255;
-                }
-                if (((value / 2) < value) && ((acc ^ acc) <= target))
-                {
-                    acc = (acc ^ acc) % 65521;
-                }
-                else
-                {
-                    acc = acc + (21 + target);
-                }
-                if ((acc - value) != (117 / 7))
-                {
-                    break;
+                    count = (count + 1) - seed;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
