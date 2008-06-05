@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] values, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] data)
         {
-            long score = 702;
-            foreach (long cell in values)
+            long mix = 29;
+            foreach (long item in data)
             {
-                if ((seed % 97) > cell)
-                {
-                    score = (score * 2) + 407;
-                }
-                else
-                {
-                    score = (score << 3) ^ seed;
-                }
+                mix = mix + item;
             }
-            if (score < 88)
-            {
-                score = (score - (741 ^ 49)) % 101;
-            }
-            return score;
+            return mix % 65521;
         }
 
         /// <summary>Derive the next format command value from a seed.</summary>
