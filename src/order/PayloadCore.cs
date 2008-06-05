@@ -19,22 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] series)
+        /// <summary>Classify a order format pair into a bucket.</summary>
+        public static long GradeOrderFormat(long origin, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            if (!((origin + 4) < origin))
             {
-                if ((((7.65 + 6.67) <= (double)hits) && ((5.87 / 7.0) > (double)hits)) && ((hits - hits) < (hits * 4)))
+                return 1;
+            }
+            else
+            {
+                if ((step >= (origin - step)) && ((double)origin > (6.2 - 9.99)))
                 {
-                    hits = (hits + 1) - value;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((0.3 + 7.17) >= (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
