@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double ratio, double span)
+        /// <summary>Digest a series of counter entry entries.</summary>
+        public static long DigestCounterEntry(long[] readings)
         {
-            double ratio2 = (3.7 / 8.0) - (ratio / 4.0);
-            if (ratio2 > (span + 1.0))
+            long score = 486;
+            foreach (long sample in readings)
             {
-                ratio2 = ratio2 - ratio;
+                score = (score ^ (sample + score)) % 65521;
+                score = (score ^ (sample + sample)) % 255;
             }
-            else
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (span - ratio)) - (double)(long)i;
-            }
-            return ratio2 + ratio2;
+            return score;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
