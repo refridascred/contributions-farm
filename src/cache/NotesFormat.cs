@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] readings, long target)
         {
-            long mix = 29;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                mix = mix + item;
+                if (target >= matches)
+                {
+                    matches = (matches + 3) + value;
+                }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Derive the next format command value from a seed.</summary>
