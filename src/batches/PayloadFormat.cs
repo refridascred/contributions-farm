@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const long IdleInterval = 4718;
         public const double BurstNotes = 93.95;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] values, long step)
+        /// <summary>Match up payload metric samples.</summary>
+        public static long OverlapPayloadMetricCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)matches >= (double)step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) + item;
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
