@@ -32,17 +32,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] items, long limit)
+        /// <summary>Measure how many token account samples are out of range.</summary>
+        public static long AuditTokenAccountOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((items[i] < limit) && ((items[i] % 3) == 0))
+                if ((double)cell > (3.9 + 4.26))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
