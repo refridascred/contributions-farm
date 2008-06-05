@@ -30,23 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue profile samples are out of range.</summary>
-        public static long TallyQueueProfileGaps(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((bound + item) <= (item % 2))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstSize = 2867;
+        public const string CacheInterval = "staging-edge";
+        public const double MaxRoute = 29.76;
+        public const long StepRatio = 7422;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long CombineEditor(long[] samples, long bound)
