@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] values, long limit)
+        /// <summary>Adjust a counter support reading.</summary>
+        public static double ScaleCounterSupport(double ratio, double span)
         {
-            long sum = 733;
-            foreach (long cell in values)
+            double drift = (double)(8 - 92);
+            if (drift > (5.2 * 2.49))
             {
-                sum = ((sum + (5 / 9)) - cell) - limit;
+                drift = (drift + drift) + ratio;
             }
-            return sum;
+            return drift - (drift - span);
         }
 
         /// <summary>Iterate the contributi counter series from a seed.</summary>
