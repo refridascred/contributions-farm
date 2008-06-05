@@ -41,18 +41,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] readings, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)tally < (1.0 * 5.1))
                 {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 3) ^ entry) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
