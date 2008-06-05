@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] data, long seed)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long mix = 2;
-            foreach (long entry in data)
-            {
-                mix = (((mix + 279) % 1000) - entry) - seed;
-            }
-            return mix;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
