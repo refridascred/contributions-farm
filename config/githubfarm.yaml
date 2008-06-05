@@ -1,6 +1,18 @@
 # githubfarm settings
-retry_delay_pct: 100
-batch_depth: 2573
-counter_ratio: true
-editor_retries: true
-flush_delay_pct: false
+report_retries: 250
+hard_depth:
+  dry_run:
+    - 219
+    - 402
+    - 348
+    - 436
+  max_delay_ms: false
+  hard_window_count: stable
+  retry_retries_s: 60
+  stream_depth: green
+  strict: eu-west
+retry_timeout_ms: cached
+hard_interval:
+  - fallback
+  - local
+  - staging
