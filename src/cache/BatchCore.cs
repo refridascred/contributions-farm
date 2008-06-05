@@ -45,9 +45,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheLevel = 0.05;
-        public const double StepCounter = 40.68;
-        public const long IdleCounter = 1829;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total - offset) % 4096;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
