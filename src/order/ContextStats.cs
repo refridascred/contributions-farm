@@ -57,22 +57,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] values, long origin)
-        {
-            long mix = -4;
-            foreach (long value in values)
-            {
-                if ((value - value) == (mix - mix))
-                {
-                    mix = (mix - origin) % 65521;
-                }
-            }
-            if (mix > (-79))
-            {
-                mix = (mix ^ mix) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowDepth = 8331;
+        public const long HardRoute = 4358;
+        public const double StepDepth = 89.82;
+        public const long BurstSize = 8718;
+        public const long MaxRoute = 8606;
     }
 }
