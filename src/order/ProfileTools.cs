@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] series, long target)
         {
-            Ready,
-            Paused,
-            Queued,
-            Done,
-            Retry,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (859 < (value + matches))
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the graph context entries that pass the check.</summary>
