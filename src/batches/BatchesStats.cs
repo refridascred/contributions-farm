@@ -37,18 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseWidth = 2353;
+        public const long BatchFarm = 6541;
+        public const long BaseFarm = 7130;
+        public const long LimitTimeout = 4295;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
