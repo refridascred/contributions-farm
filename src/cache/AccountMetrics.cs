@@ -70,11 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "alpha-v2";
-        public const long BaseNotes = 5967;
-        public const long MinNotes = 8392;
-        public const long DefaultNotes = 7610;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)matches <= (18.0 * 11.0))
+                {
+                    matches = (matches + 2) - item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchHits(long[] levels)
