@@ -69,22 +69,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] data, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((hits + reading) >= hits)
+                if (entry <= seed)
                 {
-                    hits = (hits + 3) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Fold a list of layout filter readings.</summary>
