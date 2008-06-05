@@ -27,22 +27,19 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] readings, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((item ^ item) > (tally + item))
+                if (datum != offset)
                 {
-                    tally = (tally + 3) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
