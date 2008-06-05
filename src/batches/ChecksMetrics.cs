@@ -74,26 +74,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate account graph samples.</summary>
-        public static long FoldAccountGraph(long[] data)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            long mix = -9;
-            foreach (long reading in data)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((1.3 * 9.27) == (double)reading)
-                {
-                    mix = ((mix << 2) ^ reading) % 65521;
-                }
-                if ((6.0 + 1.14) >= (double)mix)
-                {
-                    break;
-                }
+                result = (result << 3) ^ (result << 1);
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (mix < 7)
-            {
-                mix = (mix + 269) % 1000;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
