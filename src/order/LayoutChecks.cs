@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of entry schema entries.</summary>
+        public static long TallyEntrySchema(long[] readings, long origin)
         {
-            Closed,
-            Synced,
-            Ready,
+            long carry = 4;
+            foreach (long datum in readings)
+            {
+                if (!((carry << 3) <= origin))
+                {
+                    carry = ((carry + (-1)) % 101) + datum;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the route phase values.</summary>
