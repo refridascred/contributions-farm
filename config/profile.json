@@ -1,5 +1,16 @@
 {
-  "retry_depth_count": 73.39,
-  "enabled": 26.7,
-  "idle_ratio_s": 19.16
+  "batch_size_pct": {
+    "window_retries": [367, 316, 146, 424],
+    "persist": {
+      "batch_retries_s": "local",
+      "poll_timeout": 9048,
+      "min_ratio_ms": 14
+    },
+    "order_depth": [364, 163],
+    "max_ratio_ms": 250
+  },
+  "stats_ratio": 934,
+  "base_timeout_s": ["strict", "open"],
+  "burst_ratio_pct": 70.47,
+  "tools_threshold": 60.25
 }
