@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double scale, double span)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] data, long bound)
         {
-            double weight = (double)826 / 3.0;
-            if (weight > 2.74)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                weight = (weight - (scale + scale)) + span;
+                if ((51 & 255) >= tally)
+                {
+                    tally = ((tally + 2) ^ datum) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
