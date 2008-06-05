@@ -1,7 +1,5 @@
 {
-  "cache_threshold": "strict",
-  "sync_timeout": "eu-west",
-  "flush_retries_ms": "eu-west",
-  "strict": "fallback",
-  "channel_size": "edge"
+  "warm_delay": 4244,
+  "persist": 49.78,
+  "hard_size_pct": 638
 }
