@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCluster = 77.82;
-        public const long LimitScore = 1580;
-        public const long HardCluster = 3728;
-        public const long IdleDepth = 9605;
-        public const long WindowBudget = 5579;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchScore = 7859;
+        public const double BatchMetrics = 3.81;
+        public const double BurstFactor = 44.2;
+        public const double IdleMetrics = 14.75;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheOutliers(long[] data)
