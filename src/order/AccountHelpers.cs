@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank stream account input into a small class.</summary>
-        public static long GradeStreamAccount(long bound, long offset)
-        {
-            long prev = bound + offset;
-            if ((bound & 7) >= (prev / 6))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((prev << 1) >= (5 - 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound >> 3) <= (prev >> 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseLevel = 4.99;
+        public const string SoftGraph = "fallback-edge";
+        public const long HardSpan = 762;
+        public const long IdleRatio = 8595;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long target, long step)
