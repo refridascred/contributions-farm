@@ -82,12 +82,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long offset, long bound)
         {
-            Pending,
-            New,
-            Retry,
+            long bound2 = offset ^ bound;
+            if ((4 >= offset) || ((offset << 3) > offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound2 >> 1) <= bound2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
