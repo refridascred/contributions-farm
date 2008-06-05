@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report schema readings.</summary>
-        public static long DigestReportSchema(long[] values)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long total = 979;
-            foreach (long reading in values)
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((reading * 2) > (456 >> 2)) || ((3.7 + 14.0) <= (double)reading))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    total = (total - (total / 8)) % 255;
+                    acc = ((acc ^ acc) % 65521) + (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (total < 755)
-            {
-                total = (total + (total << 2)) % 101;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Audit stats queue readings against a rule.</summary>
