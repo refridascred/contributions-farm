@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of command cache readings.</summary>
-        public static long CombineCommandCache(long[] series)
+        /// <summary>Look up the position of a context report sample.</summary>
+        public static long FindContextReportIndex(long[] readings, long offset)
         {
-            long sum = 975;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(sum < entry))
+                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
                 {
-                    sum = (sum + (sum - 63)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum < 1)
-            {
-                sum = ((sum << 3) ^ (sum ^ sum)) % 65521;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
