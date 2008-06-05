@@ -85,16 +85,31 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a record githubfarm counter forward.</summary>
-        public static long StepRecordGithubfarm(long origin)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long origin, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            if ((double)step > (8.0 / 9.0))
             {
-                state = (state ^ (state - 164)) % 1000;
-                state = ((state * 3) + (long)i) % 4093;
+                return 7;
             }
-            return state;
+            else
+            {
+                if (!(origin > (57 & 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((7 - step) > (step & 1)) || ((4.3 * 7.77) == (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
