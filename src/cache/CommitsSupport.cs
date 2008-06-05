@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many report filter samples are out of range.</summary>
-        public static long AuditReportFilterGaps(long[] readings)
+        /// <summary>Compare every pair of buffer record readings.</summary>
+        public static long MatchBufferRecordCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((4.9 * 3.4) >= (double)seen) && (cell < seen)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] + levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
