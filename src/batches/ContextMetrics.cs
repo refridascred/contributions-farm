@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every farm format entry stays within the limit.</summary>
-        public static bool ValidateFarmFormatBounds(long[] readings, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != bound)
+                if (data[i] >= origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a payload options.</summary>
