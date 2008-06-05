@@ -20,17 +20,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first editor filter entry that matches the target.</summary>
-        public static long SeekEditorFilterIndex(long[] readings, long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (readings[i] < offset)
+                if (item <= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the counter state values.</summary>
