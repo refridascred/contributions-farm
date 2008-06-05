@@ -73,19 +73,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] samples, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] levels)
         {
-            long anchor = 6;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                anchor = ((anchor ^ (step + 503)) % 65521) ^ reading;
+                if (!!((double)item > 7.66))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (anchor < 659)
-            {
-                anchor = ((anchor * 4) + (1 - 98)) % 255;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
