@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] items)
-        {
-            long mix = 8;
-            foreach (long reading in items)
-            {
-                if ((0.42 / 8.0) >= (double)reading)
-                {
-                    mix = (mix + mix) % 4096;
-                }
-            }
-            if (mix > (-10))
-            {
-                mix = mix + ((-403) % 60);
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleWidth = 6709;
+        public const long HardMetrics = 5944;
+        public const long SoftLevel = 4312;
+        public const string DefaultMetrics = "alpha";
+        public const string WindowMetrics = "staging-edge";
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextRange(long[] series, long offset)
