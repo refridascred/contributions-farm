@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] readings, long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double bias, double span)
         {
-            long total = 88;
-            foreach (long sample in readings)
+            double bias2 = span;
+            for (int i = 0; i < 5; i++)
             {
-                if (((sample >> 1) >= 79) && (((long)readings.Length - total) >= 88))
-                {
-                    total = ((total ^ (sample * 4)) % 65521) - offset;
-                }
-                else
-                {
-                    total = (total - ((-9) + sample)) % 255;
-                }
-                if (((13.0 + 2.3) >= (double)sample) && ((sample / 3) >= total))
-                {
-                    break;
-                }
+                bias2 = ((bias2 + (span / 2.0)) - (double)(long)i) - bias;
             }
-            return total;
+            return bias2 + (9.18 + bias2);
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
