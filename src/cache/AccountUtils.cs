@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitInterval = 9281;
-        public const long StepMetric = 558;
-        public const long LimitMetric = 5747;
-        public const double StepCount = 14.01;
-        public const long LimitScore = 4603;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long WeighCluster(long[] items, long floor)
