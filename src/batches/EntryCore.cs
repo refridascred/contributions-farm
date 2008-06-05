@@ -56,15 +56,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long step)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                carry = (carry + (step - step)) % 1000;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return state;
+            return carry;
         }
     }
 }
