@@ -37,19 +37,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] items, long limit)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double bias = offset;
+            if (bias >= offset)
             {
-                if (value < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias - offset;
             }
-            return ok;
+            else
+            {
+                bias = bias - gain;
+            }
+            return bias + (7.58 + offset);
         }
     }
 }
