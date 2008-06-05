@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 88;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((sample >> 1) >= 79) && (((long)readings.Length - total) >= 88))
                 {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total ^ (sample * 4)) % 65521) - offset;
+                }
+                else
+                {
+                    total = (total - ((-9) + sample)) % 255;
+                }
+                if (((13.0 + 2.3) >= (double)sample) && ((sample / 3) >= total))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the layout context entries that pass the check.</summary>
