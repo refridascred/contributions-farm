@@ -27,11 +27,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "stable-v2";
-        public const double DefaultBatch = 34.67;
-        public const long IdleBatch = 9926;
-        public const string MaxBatch = "alpha";
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandMatches(long[] values)
