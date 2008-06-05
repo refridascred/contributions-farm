@@ -34,25 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long bound, long target)
-        {
-            if ((double)bound > 8.31)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - bound) > (bound - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 5579;
+        public const string LimitEntry = "standard";
+        public const long LimitLevel = 6248;
+        public const string CacheLevel = "fallback-1";
+        public const long BurstEntry = 350;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphGaps(long[] readings)
