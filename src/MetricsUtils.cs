@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long seed, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] levels, long seed)
         {
-            if ((limit ^ seed) > (seed + limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)204 == (double)limit)
+                if (levels[i] == seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit > (0.96 / 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a report metrics reading.</summary>
