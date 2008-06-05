@@ -67,17 +67,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long sum = step;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (acc * 2) + (acc - acc);
-                acc = acc - (8 + acc);
-                acc = ((acc * 4) + (long)i) % 65521;
+                sum = (sum - (step & 63)) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return acc;
+            return sum;
         }
     }
 }
