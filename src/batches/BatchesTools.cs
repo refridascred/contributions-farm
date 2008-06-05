@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6.39 / 2.0) <= (double)seen)
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
             return seen;
