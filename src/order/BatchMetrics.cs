@@ -22,14 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Validate token session readings against a bound.</summary>
+        public static bool VerifyTokenSessionBounds(long[] levels, long step)
         {
-            Retry,
-            Synced,
-            Failed,
-            Paused,
-            Closed,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
