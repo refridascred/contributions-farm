@@ -55,18 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches cache readings against a rule.</summary>
-        public static long TallyBatchesCacheOutliers(long[] data)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count / 5) != (entry >> 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
     }
 }
