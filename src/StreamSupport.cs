@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "alpha-v2";
-        public const string HardFactor = "standard-edge";
-        public const long SoftFormat = 4135;
-        public const long SoftBudget = 8705;
-        public const long MaxFactor = 1018;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheRatio = 30.31;
+        public const string MaxCount = "alpha";
+        public const long SoftLevel = 3261;
+        public const long IdleSession = 4510;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatOutliers(long[] series)
