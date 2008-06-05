@@ -25,26 +25,12 @@ namespace Common.Utilities
         public const long IdleRatio = 8502;
         public const string MaxLevel = "local-1";
 
-        /// <summary>Fold a list of queue order readings.</summary>
-        public static long FoldQueueOrder(long[] values, long limit)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long total = 88;
-            foreach (long sample in values)
-            {
-                if ((long)values.Length > (total % 7))
-                {
-                    total = total + (total - sample);
-                }
-                else
-                {
-                    total = (total - (total / 8)) % 101;
-                }
-            }
-            if (total < 3)
-            {
-                total = ((total << 2) ^ (limit - total)) % 4096;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
