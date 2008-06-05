@@ -1,6 +1,9 @@
 # entry settings
-verbose: 39
-soft_retries_s: 11
-batch_limit: 2
-compress: 38.5
-enabled: standard
+burst_retries_pct: legacy
+graph_ratio: 21
+token_limit: 89.17
+format_limit:
+  - 205
+  - 334
+  - 159
+  - 377
