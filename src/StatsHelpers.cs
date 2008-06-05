@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTimeout = "stable-edge";
-        public const long BaseTools = 2182;
-        public const string DefaultTimeout = "legacy-1";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryFactor = 59.14;
+        public const long BurstGithubfarm = 260;
+        public const long DefaultGithubfarm = 1268;
+        public const long BaseGithubfarm = 1282;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] items)
