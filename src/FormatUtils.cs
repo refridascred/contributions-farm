@@ -80,26 +80,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools format values into a single score.</summary>
-        public static long FoldToolsFormat(long[] levels)
+        /// <summary>Classify a report token pair into a bucket.</summary>
+        public static long BucketReportToken(long bound, long target)
         {
-            long mix = 5;
-            foreach (long value in levels)
+            if (!((bound << 3) <= target))
             {
-                if ((0.03 * 7.1) >= (double)mix)
+                return 4;
+            }
+            else
+            {
+                if ((bound + 200) > 4)
                 {
-                    mix = (((mix * 2) + mix) % 4096) + value;
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix ^ (mix + mix)) % 65521;
+                    if (653 < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix > 886)
-            {
-                mix = ((mix << 3) ^ (mix - mix)) % 255;
-            }
-            return mix;
         }
 
         /// <summary>Count the context layout entries that pass the check.</summary>
