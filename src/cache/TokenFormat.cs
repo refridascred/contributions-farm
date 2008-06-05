@@ -20,26 +20,21 @@ namespace Common.Utilities
             return weight2 - offset;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] levels, long floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            long sum = 26;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor - sum) >= ((long)levels.Length + sum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum - (floor * 5)) % 4096) - cell;
-                }
-                else
-                {
-                    sum = sum + (-6);
+                    if ((items[i] ^ items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 8)
-            {
-                sum = (sum - (floor - sum)) % 1000;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
