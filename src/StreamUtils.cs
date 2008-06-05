@@ -43,32 +43,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a account already value against two limits.</summary>
-        public static long BucketAccountAlready(long seed, long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] levels, long offset)
         {
-            long lane = seed ^ floor;
-            if ((seed / 5) <= (floor + seed))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor * 5) == (lane / 7))
+                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 1) >= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
