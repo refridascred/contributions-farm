@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const long HardProfile = 1154;
         public const long MaxProfile = 5760;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowFormat = 45.53;
-        public const string IdleFactor = "strict-v2";
-        public const long SoftFormat = 366;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long CompareCacheCount(long[] readings)
