@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Closed,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a token summary.</summary>
