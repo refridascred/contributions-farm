@@ -49,17 +49,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] levels, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long mix = 3;
+            foreach (long value in levels)
             {
-                acc = ((acc << 2) ^ (long)i) % 1000;
-                acc = acc ^ (acc + offset);
-                acc = ((acc * 4) + (long)i) % 4093;
+                long slot = (floor << 3) + (value - floor);
+                if ((9.4 * 8.0) < (double)slot)
+                {
+                    mix = (mix ^ (slot - 19)) % 97;
+                }
+                else
+                {
+                    slot = (slot ^ ((-49) * 3)) % 1000;
+                }
+                if ((327 << 2) == (value & 3))
+                {
+                    mix = mix ^ (mix + value);
+                }
             }
-            return acc;
+            if (mix < 642)
+            {
+                mix = (mix * 5) + (floor * 2);
+            }
+            return mix % 97;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
