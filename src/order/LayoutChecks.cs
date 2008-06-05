@@ -50,22 +50,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 22;
+        public const long MaxFilter = 3550;
+        public const double HardTimeout = 5.86;
+        public const long BurstFilter = 1302;
+        public const string CacheTimeout = "strict-1";
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
