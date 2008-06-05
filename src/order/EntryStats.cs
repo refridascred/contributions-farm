@@ -44,38 +44,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a already command value against two limits.</summary>
-        public static long BucketAlreadyCommand(long bound, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            if ((double)origin <= (1.8 - 4.4))
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7 / 5) <= (origin - origin))
+                mix = (mix - (78 + (long)i)) % 255;
+                if (((7 + target) <= (95 / 4)) && (((long)i >> 4) >= (target / 9)))
                 {
-                    return 1;
+                    mix = (mix * 5) + (target + (long)i);
                 }
-                else
-                {
-                    if ((bound <= (origin * 2)) || ((bound + 493) <= (bound & 127)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin < (1.9 - 6.99))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
