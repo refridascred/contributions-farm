@@ -72,19 +72,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] values, long step)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            long total = 6;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total + step) % 101) ^ datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total > 69)
-            {
-                total = ((total * 5) + total) % 4096;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a already summary.</summary>
