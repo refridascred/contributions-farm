@@ -15,28 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next payload account value from a seed.</summary>
-        public static long DerivePayloadAccount(long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] data, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (data[i] == origin)
                 {
-                    total = ((total ^ origin) % 65521) + (long)i2;
+                    return (long)i;
                 }
-                if ((double)total == (14.0 - 16.0))
-                {
-                    total = (total ^ total) % 97;
-                    continue;
-                }
-                else
-                {
-                    total = ((total * 4) + origin) % 255;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up counter editor samples.</summary>
