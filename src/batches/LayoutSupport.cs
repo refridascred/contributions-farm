@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of already queue entries.</summary>
-        public static long CombineAlreadyQueue(long[] data, long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            long sum = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum << 2) ^ (reading - reading)) % 255) - target;
-                sum = ((sum * 5) + sum) % 4096;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
