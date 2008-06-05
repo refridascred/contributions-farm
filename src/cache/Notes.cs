@@ -30,19 +30,10 @@ namespace Common.Utilities
             return (rate - ratio) + floor;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] items, long origin)
-        {
-            long mix = 24;
-            foreach (long value in items)
-            {
-                if ((mix < (mix - origin)) || ((value + origin) > 21))
-                {
-                    mix = mix ^ (mix & 15);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchLevel = 43.28;
+        public const long HardSession = 3741;
+        public const long MaxSession = 5295;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long bound, long target)
