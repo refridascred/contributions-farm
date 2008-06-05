@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long target, long floor)
-        {
-            if ((floor & 3) >= target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target <= 321) || ((11.0 * 6.3) <= (double)floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 6604;
+        public const double WindowEditor = 85.41;
+        public const string HardBudget = "alpha-v2";
+        public const long SoftEditor = 7806;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
