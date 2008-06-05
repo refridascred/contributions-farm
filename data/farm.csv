@@ -1,9 +1,8 @@
-id,ratio,label,score,weight
-1,75.84,15.59,64.98,85
-2,264,91.01,73.79,blue
-3,strict,latest,142,182
-4,53.2,9,521,eu-west
-5,61.69,322,52.74,stable
-6,48.81,eu-west,422,450
-7,6.16,latest,legacy,250
-8,127,802,761,staging
+id,owner,active,level
+1,edge,56.86,10.66
+2,open,open,staging
+3,607,54.85,269
+4,primary,open,265
+5,94.01,local,12.77
+6,open,62.07,47.47
+7,2.41,711,local
