@@ -90,18 +90,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] items, long offset)
+        /// <summary>Count the context githubfarm entries that pass the check.</summary>
+        public static long CountContextGithubfarmGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((20.0 + 6.2) >= (double)value)
+                if ((((4.1 + 3.7) == (double)value) && (5.06 >= (double)matches)) && (((7.0 + 9.0) == (double)value) && ((4.7 + 4.58) <= (double)matches)))
                 {
-                    tally = (tally + 1) + offset;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
