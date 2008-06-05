@@ -41,18 +41,31 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] levels)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long limit, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if (limit < step)
             {
-                if (count >= (sample ^ count))
+                return 0;
+            }
+            else
+            {
+                if (((8.0 - 1.8) > (double)limit) || ((4.3 / 2.0) < (double)step))
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit == (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the batches status values.</summary>
