@@ -1,12 +1,5 @@
 {
-  "verbose": 28,
-  "min_depth_pct": "staging",
-  "readonly": {
-    "persist": "staging",
-    "verbose": "legacy",
-    "default_retries_ms": 1024,
-    "min_window_s": [132, 484],
-    "base_interval_s": [414, 14, 446, 163],
-    "checks_capacity": 98
-  }
+  "strict": ["standard", "green", "fallback"],
+  "session_ttl": 26,
+  "layout_ttl": "open"
 }
