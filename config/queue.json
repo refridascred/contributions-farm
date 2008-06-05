@@ -1,5 +1,15 @@
 {
-  "queue_ttl": "blue",
-  "max_ratio": "standard",
-  "flush_delay_s": 63.66
+  "strict": "edge",
+  "sync_retries": true,
+  "cache_capacity_pct": 500,
+  "support_delay": 53.36,
+  "base_limit_count": 20,
+  "record_interval": {
+    "soft_ratio": "blue",
+    "channel_ttl": false,
+    "max_retries_count": 73.76,
+    "warm_timeout_pct": 500,
+    "verbose": "blue",
+    "hard_ttl": true
+  }
 }
