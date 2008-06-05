@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftDepth = "latest-edge";
+        public const long IdleEntry = 9072;
+        public const long WindowEntry = 7471;
+        public const long DefaultEntry = 489;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string BatchRecord = "cached";
