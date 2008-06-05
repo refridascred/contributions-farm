@@ -28,18 +28,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] items, long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!((double)hits < (3.98 - 1.23)) || ((datum * 3) >= (step % 12)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Stale,
+            Pending,
         }
     }
 }
