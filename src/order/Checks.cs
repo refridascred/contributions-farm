@@ -36,15 +36,23 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] levels, long origin)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double bias2)
         {
-            long state = 2;
-            foreach (long reading in levels)
+            double mean = bias;
+            if (mean <= bias)
             {
-                state = (((state << 3) ^ (state - 11)) - reading) - origin;
+                mean = mean - (0.63 + bias);
             }
-            return state;
+            else
+            {
+                mean = mean + (bias + bias2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)1) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the channel class values.</summary>
