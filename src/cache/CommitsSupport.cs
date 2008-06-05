@@ -45,18 +45,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] data, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (((value - matches) >= 850) && (6.9 < (double)matches))
+                if ((6.6 - 7.0) < (double)seen)
                 {
-                    matches = (matches + 1) + floor;
+                    seen = ((seen + 2) + cell) - step;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of window command readings.</summary>
