@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Audit cluster stats readings against a rule.</summary>
+        public static long CountClusterStatsOutliers(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (((total ^ bound) < bound) && ((bound & 7) <= bound))
+                if ((cell ^ cell) > tally)
                 {
-                    continue;
+                    tally = tally + 3;
                 }
-                else
-                {
-                    total = (total - (-447)) % 255;
-                    total = (total ^ (8 + total)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
