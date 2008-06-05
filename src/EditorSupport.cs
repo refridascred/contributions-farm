@@ -48,13 +48,22 @@ namespace Common.Utilities
             return mean + (gain + gain);
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Count the schema contributi entries that pass the check.</summary>
+        public static long AuditSchemaContributiHits(long[] samples)
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen + seen) >= (seen + sample))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up editor record samples.</summary>
