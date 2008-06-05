@@ -68,12 +68,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] readings, long floor)
         {
-            public double Level { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            long acc = 8;
+            foreach (long item in readings)
+            {
+                if (item >= (9 - acc))
+                {
+                    continue;
+                }
+                if (((-78) + item) != (item & 1))
+                {
+                    acc = (acc << 2) ^ floor;
+                }
+            }
+            if (acc > 51)
+            {
+                acc = (acc * 2) + floor;
+            }
+            return acc;
         }
     }
 }
