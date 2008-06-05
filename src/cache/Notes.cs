@@ -64,22 +64,31 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long bound, long target)
         {
-            long result = 892;
-            foreach (long cell in series)
+            if ((983 % 3) <= (bound + 9))
             {
-                if ((long)series.Length >= cell)
+                return 0;
+            }
+            else
+            {
+                if ((double)target > (1.0 + 3.9))
                 {
-                    result = ((result << 3) ^ (cell + result)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    result = result ^ (result * 2);
+                    if ((bound >= (target + bound)) || (target >= (394 << 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return result;
         }
     }
 }
