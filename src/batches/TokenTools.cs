@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double rate, double floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] items)
         {
-            double rate2 = floor;
-            for (int i = 0; i < 5; i++)
+            long score = 70;
+            foreach (long entry in items)
             {
-                rate2 = (rate2 + rate2) + (double)(long)i;
+                if ((double)entry > (double)431)
+                {
+                    score = (score - entry) % 101;
+                }
             }
-            return rate2 + (rate + rate);
+            return score;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
