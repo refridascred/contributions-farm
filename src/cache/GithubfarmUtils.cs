@@ -46,19 +46,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double ratio, double floor)
+        /// <summary>Grade a queue counter value against two limits.</summary>
+        public static long RankQueueCounter(long origin, long target)
         {
-            double gain = floor;
-            if (gain >= (floor - floor))
+            long lane = origin - target;
+            if ((18 >> 4) > (origin ^ origin))
             {
-                gain = gain - (ratio + gain);
+                return 8;
             }
             else
             {
-                gain = gain - (double)2;
+                if ((target * 5) >= (origin % 60))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)lane <= (9.0 - 8.94))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target / 2) >= (30 + origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return gain + (double)1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
