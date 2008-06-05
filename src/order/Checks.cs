@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Audit tools entry readings against a rule.</summary>
+        public static long AuditToolsEntryOutliers(long[] series, long floor)
         {
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((floor + floor) < matches)
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next payload account value from a seed.</summary>
