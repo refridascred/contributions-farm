@@ -48,13 +48,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Blend two graph entry measurements.</summary>
+        public static double AdjustGraphEntry(double bias, double offset)
         {
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            double mean = 6.0;
+            if (mean <= offset)
+            {
+                mean = (mean - (mean / 5.0)) + bias;
+            }
+            else
+            {
+                mean = mean - (double)1;
+            }
+            return mean - mean;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
