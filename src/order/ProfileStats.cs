@@ -5,38 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long step, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] data, long bound)
         {
-            if ((step > offset) && ((4 & 127) > (step - offset)))
+            long anchor = 935;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset <= (0.39 - 14.0))
+                if (anchor > (bound + anchor))
                 {
-                    return 1;
+                    anchor = (anchor + 387) % 255;
                 }
                 else
                 {
-                    if ((offset & 63) != (21 * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step % 10) == (6 - step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = (anchor + (anchor / 2)) % 97;
+                }
+                if ((double)bound > 2.96)
+                {
+                    anchor = anchor - (value % 100);
+                }
+                if (((value ^ anchor) >= value) || (anchor > value))
+                {
+                    break;
                 }
             }
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the contributi tools series from a seed.</summary>
