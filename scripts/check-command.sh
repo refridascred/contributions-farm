@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable legacy green; do
+COMMAND_LIMIT=28
+log "limit is ${COMMAND_LIMIT}"
+
+for item in primary edge fallback; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=251
-log "limit is ${COMMAND_LIMIT}"
