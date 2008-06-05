@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] series, long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Audit window entry readings against a rule.</summary>
