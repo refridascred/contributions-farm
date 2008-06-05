@@ -1,10 +1,22 @@
 # githubfarm settings
-retry_threshold_ms:
-  - 146
-  - 216
-editor_ratio: standard
-hard_size: 37.76
-min_threshold_pct:
-  - latest
-  - blue
-poll_ttl_s: 95
+batch_interval: 86
+max_capacity: 19
+batch_delay:
+  batch_capacity: local
+  enabled: 7855
+  cache_size_ms: 60.7
+  cache_threshold_count:
+    - 330
+    - 330
+    - 329
+    - 200
+min_ttl_ms: eu-west
+strict:
+  audit: true
+  hard_retries:
+    - stable
+    - stable
+    - latest
+    - green
+  idle_interval: 387
+  strict: primary
