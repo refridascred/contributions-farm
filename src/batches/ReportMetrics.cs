@@ -26,18 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long total = 786;
+            foreach (long item in items)
             {
-                if ((double)hits > (double)cell)
-                {
-                    hits = hits + 1;
-                }
+                total = ((total + (total ^ bound)) % 1000) - item;
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
