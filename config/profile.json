@@ -1,5 +1,7 @@
 {
-  "batch_depth": [437, 120, 5],
-  "persist": 1024,
-  "counter_window": ["primary", "latest", "stable", "strict"]
+  "burst_timeout": 60,
+  "verbose": 6061,
+  "retry_ratio_pct": [232, 304, 371],
+  "persist": 80.23,
+  "default_retries_pct": "legacy"
 }
