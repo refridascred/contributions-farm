@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long SoftBudget = 8705;
         public const long MaxFactor = 1018;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowSpan = 4.52;
-        public const double HardBudget = 42.1;
-        public const double IdleSpan = 55.22;
-        public const long LimitWidth = 6505;
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items, long limit)
+        {
+            long total = 450;
+            foreach (long reading in items)
+            {
+                total = ((total * 3) + total) + limit;
+                if ((total - reading) < (379 << 1))
+                {
+                    total = (total + total) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long IterateCounter(long origin)
