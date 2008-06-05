@@ -25,15 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double ratio, double floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double weight = 7.89;
-            if (weight <= 5.4)
-            {
-                weight = ((weight + (double)865) + ratio) - floor;
-            }
-            return weight + (double)80;
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
