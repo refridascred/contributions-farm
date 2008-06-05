@@ -41,18 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] levels, long seed)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 3) != (868 << 2))
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
