@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] series, long origin)
         {
-            long count = 0;
+            long anchor = 40;
             foreach (long item in series)
             {
-                if ((limit - item) > (limit >> 1))
+                anchor = anchor + (origin + origin);
+                anchor = ((anchor << 3) ^ (anchor + origin)) % 4096;
+                anchor = (anchor - ((long)series.Length >> 1)) % 4096;
+                if (((item + 790) <= 7) && ((anchor - 7) != ((long)series.Length >> 3)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Accumulate entry samples.</summary>
