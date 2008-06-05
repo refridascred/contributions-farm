@@ -14,10 +14,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchWidth = 2718;
-        public const long StepStats = 3015;
-        public const long HardStats = 501;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 9056;
+        public const double LimitFarm = 12.39;
+        public const long WindowDepth = 6928;
+        public const double BaseRatio = 10.52;
+        public const long BaseFarm = 287;
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double weight, double floor)
