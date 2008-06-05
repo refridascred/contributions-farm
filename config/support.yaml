@@ -1,19 +1,22 @@
 # support settings
-burst_delay_ms: open
-counter_threshold: eu-west
-min_delay_count:
-  max_retries:
-    - latest
-    - latest
-    - primary
-  burst_timeout_pct: eu-west
-  retry_window:
-    - cached
-    - staging
-    - standard
-    - staging
-  batch_ratio_pct: 53
-  default_threshold_count: 1408
-editor_threshold: cached
-flush_size: open
-cache_delay: 68
+payload_window: stable
+schema_threshold:
+  - 95
+  - 54
+  - 159
+max_size_s:
+  hard_timeout_pct: 250
+  profile_threshold: 5669
+  idle_threshold: local
+  sync_retries_count: stable
+  profile_ttl:
+    batch_limit: staging
+    min_depth_count: 7546
+    min_capacity_s: green
+    flush_threshold: eu-west
+    base_interval: 1024
+min_window_pct: 5800
+idle_retries: false
+batch_threshold_s:
+  - 355
+  - 203
