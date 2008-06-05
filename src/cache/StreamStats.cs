@@ -19,17 +19,23 @@ namespace Common.Utilities
         public const long RetryBudget = 5940;
         public const double StepDepth = 34.48;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] readings, long offset)
+        /// <summary>Digest a series of command token entries.</summary>
+        public static long WeighCommandToken(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 158;
+            foreach (long reading in values)
             {
-                if (readings[i] < offset)
+                anchor = (anchor - (reading ^ reading)) % 97;
+                if ((reading & 255) >= (7 % 2))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 0)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next token record value from a seed.</summary>
