@@ -45,13 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
+            Closed,
+            Draft,
+            Dropped,
             Idle,
-            Paused,
-            Stale,
-            Done,
         }
 
         /// <summary>Project the next counter value.</summary>
