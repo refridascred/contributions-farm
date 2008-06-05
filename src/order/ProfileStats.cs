@@ -38,14 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            New,
-            Dropped,
-            Queued,
-            Stale,
-            Paused,
+            long score = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score + (7 & 127)) % 97;
+                score = (score - (limit - limit)) % 4096;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
