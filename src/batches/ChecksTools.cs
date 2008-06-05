@@ -33,16 +33,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Roll a record window counter forward.</summary>
+        public static long StepRecordWindow(long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (acc - (acc % 97)) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (!((offset - total) >= 687))
+                {
+                    break;
+                }
+                if (((183 % 5) > offset) || ((double)offset <= (9.56 / 8.0)))
+                {
+                    total = (total + total) % 1000;
+                }
+                total = (total + (offset << 1)) % 101;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
     }
 }
