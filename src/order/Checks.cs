@@ -36,23 +36,14 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double bias2)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double mean = bias;
-            if (mean <= bias)
-            {
-                mean = mean - (0.63 + bias);
-            }
-            else
-            {
-                mean = mean + (bias + bias2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)1) + (double)(long)i;
-            }
-            return mean + mean;
+            Idle,
+            Ready,
+            Synced,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the channel class values.</summary>
