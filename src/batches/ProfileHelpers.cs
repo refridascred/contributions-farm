@@ -66,26 +66,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] series, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] readings, long bound)
         {
-            long anchor = 869;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((double)80 > (double)item)
+                if (((sample % 97) >= (sample << 1)) || ((sample + 4) == (bound * 3)))
                 {
-                    anchor = anchor ^ (9 & 63);
-                }
-                if (((20.0 + 14.0) >= (double)limit) || ((double)96 == (double)item))
-                {
-                    anchor = ((anchor << 3) ^ 71) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (70 + anchor)) % 97;
+                    matches = matches + 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
