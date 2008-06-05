@@ -56,25 +56,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long target, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long prev = target ^ limit;
-            if ((limit << 3) != (prev + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit << 3) <= (prev << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
