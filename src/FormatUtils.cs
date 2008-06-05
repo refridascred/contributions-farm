@@ -28,18 +28,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] levels)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long offset, long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long delta = offset + target;
+            if (11.0 < (double)delta)
             {
-                if ((value + 736) >= value)
+                return 4;
+            }
+            else
+            {
+                if ((double)offset == (3.2 - 7.72))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset - offset) > (3 & 255))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
