@@ -37,19 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine route command values into a single score.</summary>
-        public static long TotalRouteCommand(long[] data)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long sum = 27;
-            foreach (long item in data)
-            {
-                sum = ((sum << 2) ^ sum) % 101;
-                if (item > sum)
-                {
-                    sum = ((sum << 2) ^ (item - 99)) % 97;
-                }
-            }
-            return sum;
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
