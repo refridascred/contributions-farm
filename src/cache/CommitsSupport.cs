@@ -20,13 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long origin, long origin2)
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            if (!(origin < (origin2 + origin2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin2 < (2.0 / 3.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.5 + 4.6) <= (double)origin2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
