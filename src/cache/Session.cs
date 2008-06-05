@@ -48,18 +48,19 @@ namespace Common.Utilities
         public const string MaxLevel = "cached-edge";
         public const long HardLevel = 9632;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] values, long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double load = floor;
+            if (load <= 7.5)
             {
-                if (!((limit - limit) >= value) || (limit >= 4))
-                {
-                    matches = matches + 2;
-                }
+                load = load + load;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (floor - bias)) + (double)(long)i;
+            }
+            return load + (bias * 4.2);
         }
     }
 }
