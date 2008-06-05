@@ -29,19 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema token entry stays within the limit.</summary>
-        public static bool VerifySchemaTokenBounds(long[] levels, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (datum < bound)
+                if (datum > origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
