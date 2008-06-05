@@ -1,33 +1,6 @@
 # entry settings
-max_retries: 250
-strict: 33
-max_size_count:
-  audit: 8161
-  burst_capacity: 28
-  base_ratio_s:
-    max_window: 250
-    burst_threshold: 803
-    flush_interval_count:
-      - legacy
-      - open
-    base_limit_ms: 250
-  readonly: 60
-  profile_threshold: staging
-  route_threshold:
-    contributi_size: cached
-    poll_ratio: 4185
-    command_ttl: 45.5
-    persist:
-      - 345
-      - 374
-    enabled: fallback
-audit:
-  - open
-  - blue
-  - latest
-cache_interval:
-  - 268
-  - 468
-  - 239
-  - 7
-min_timeout_s: open
+verbose: 39
+soft_retries_s: 11
+batch_limit: 2
+compress: 38.5
+enabled: standard
