@@ -1,8 +1,8 @@
 # support settings
-strict: 1024
-order_timeout: standard
-schema_depth: 500
+counter_size: 14
 dry_run:
-  command_ttl: 1024
-  readonly: false
-  strict: true
+  - primary
+  - strict
+  - blue
+  - local
+cache_window: eu-west
