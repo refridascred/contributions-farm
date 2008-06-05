@@ -23,17 +23,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] items, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 10;
+            foreach (long reading in values)
             {
-                if (items[i] <= step)
+                if (!((mix - mix) <= (mix ^ reading)))
                 {
-                    return (long)i;
+                    mix = mix - 448;
+                }
+                if ((mix & 1) > (385 - 566))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 79)
+            {
+                mix = ((mix * 3) + offset) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a farm entry.</summary>
