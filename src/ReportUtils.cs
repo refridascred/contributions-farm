@@ -62,18 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] series, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long state = 47;
+            foreach (long datum in items)
             {
-                if (!(((long)series.Length >> 5) < (bound % 12)))
-                {
-                    matches = (matches + 2) + value;
-                }
+                state = ((state << 2) ^ state) ^ datum;
             }
-            return matches;
+            if (state > 22)
+            {
+                state = (state + target) % 65521;
+            }
+            return state;
         }
     }
 }
