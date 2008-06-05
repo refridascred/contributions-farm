@@ -51,15 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm metric series from a seed.</summary>
-        public static long RollFarmMetric(long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] samples, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (((tally > (tally / 2)) && ((double)value <= 5.91)) || !(step >= (step + tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the channel mode values.</summary>
