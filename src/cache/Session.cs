@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long seed, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] readings, long bound)
         {
-            if (step >= ((-798) / 6))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step >= (step - seed)) || (seed > (step - step)))
+                if ((double)matches == (0.9 + 13.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (20.0 < (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = ((matches + 2) - reading) - bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a record summary.</summary>
