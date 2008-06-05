@@ -1,14 +1,16 @@
 # support settings
-default_retries_pct: 42
-max_threshold_count: latest
-counter_timeout: true
-poll_limit_pct:
-  base_threshold_count:
-    - 414
-    - 469
-    - 232
-  graph_capacity:
-    - 28
-    - 438
-    - 407
-  flush_threshold_s: staging
+route_ratio: 80
+verbose:
+  cache_size: 56.01
+  dry_run: fallback
+  readonly: strict
+batch_capacity_pct: true
+warm_window_pct: edge
+batch_threshold: latest
+soft_ratio_count:
+  retry_depth: 1024
+  min_interval_pct: 100
+  default_depth_pct: 30
+  strict: legacy
+  stream_ttl: 19.87
+  channel_ttl: false
