@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] values, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long acc = 1;
+            foreach (long value in values)
             {
-                if ((double)tally <= 15.0)
+                acc = ((acc * 3) + (551 + acc)) % 101;
+                if ((acc - value) <= 7)
                 {
-                    tally = ((tally + 3) + reading) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = ((acc * 5) + (value + value)) % 97;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
