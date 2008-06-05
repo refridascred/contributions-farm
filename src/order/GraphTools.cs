@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 7814;
-        public const double MinBatches = 97.99;
-        public const long LimitBatches = 3842;
-        public const long RetryCount = 5056;
-        public const long RetryBatches = 6325;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
