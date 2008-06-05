@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many order profile samples are out of range.</summary>
-        public static long MeasureOrderProfileOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!((datum + tally) > tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinLevel = 8226;
+        public const long BatchSpan = 4151;
+        public const double BatchSchema = 83.26;
+        public const long HardScore = 5258;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
