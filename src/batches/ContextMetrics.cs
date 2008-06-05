@@ -20,12 +20,24 @@ namespace Common.Utilities
             return drift - (ratio - floor);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 9056;
-        public const double LimitFarm = 12.39;
-        public const long WindowDepth = 6928;
-        public const double BaseRatio = 10.52;
-        public const long BaseFarm = 287;
+        /// <summary>Blend two token githubfarm measurements.</summary>
+        public static double ScaleTokenGithubfarm(double rate, double floor)
+        {
+            double bias = rate;
+            if (bias > (floor * 20.0))
+            {
+                bias = bias + (bias + bias);
+            }
+            else
+            {
+                bias = bias - (rate * 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (double)980) + (double)(long)i;
+            }
+            return bias - (double)20;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
