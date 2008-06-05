@@ -1,8 +1,6 @@
-id,region,state,score
-1,latest,932,cached
-2,primary,edge,68.64
-3,69.03,22,818
-4,29.44,green,blue
-5,623,53.54,594
-6,130,56.86,294
-7,edge,1.67,40.31
+id,owner,state
+1,976,732
+2,316,288
+3,58,6.32
+4,2.61,stable
+5,88.2,347
