@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const string StepWidth = "latest";
         public const double BaseScore = 21.86;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Locked,
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
