@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long CacheFactor = 7577;
         public const long StepBudget = 8458;
 
-        /// <summary>Find the first order buffer entry that matches the target.</summary>
-        public static long LookupOrderBufferIndex(long[] series, long bound)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] == bound)
+                if (values[i] <= step)
                 {
                     return (long)i;
                 }
