@@ -16,25 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long seed, long seed2)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] samples)
         {
-            long next = seed + seed2;
-            if (((6.2 - 5.5) != (double)seed2) && ((double)next < (0.9 + 0.4)))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed * 3) != (next + seed2))
+                if ((5 + cell) <= tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next route value.</summary>
