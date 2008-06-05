@@ -1,9 +1,7 @@
 # entry settings
-account_capacity:
-  - local
-  - blue
-  - staging
-  - edge
-strict: 32
-hard_retries_ms: eu-west
-cache_capacity_ms: true
+channel_ttl:
+  - 256
+  - 152
+idle_depth: 1024
+route_threshold: 40.2
+session_delay: 60.13
