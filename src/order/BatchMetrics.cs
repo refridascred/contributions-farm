@@ -32,12 +32,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] levels, long origin)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the record mode values.</summary>
