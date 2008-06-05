@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a filter record reading by value.</summary>
