@@ -45,13 +45,9 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Draft,
-            Ready,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 2460;
+        public const string MaxDepth = "cached";
+        public const double MinWidth = 60.93;
     }
 }
