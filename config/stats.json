@@ -1,8 +1,10 @@
 {
-  "flush_depth_s": "cached",
-  "profile_threshold": 93.58,
-  "flush_timeout_s": true,
-  "burst_ratio": "legacy",
-  "burst_timeout_pct": false,
-  "soft_delay_count": 570
+  "route_interval": {
+    "idle_ttl_ms": 82.1,
+    "min_timeout_count": 10,
+    "sync_capacity_count": false
+  },
+  "flush_interval_s": "fallback",
+  "dry_run": 5293,
+  "soft_depth": true
 }
