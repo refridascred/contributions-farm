@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] items, long floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] samples, long step)
         {
-            long mark = 54;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark ^ ((long)items.Length + cell)) - floor;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 911)
-            {
-                mark = ((mark << 3) ^ (mark << 1)) % 1000;
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Audit contributi metric readings against a rule.</summary>
