@@ -14,12 +14,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public double Offset { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 8929;
+        public const long CacheGraph = 5673;
+        public const string BaseInterval = "standard-edge";
+        public const string WindowSize = "staging";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MaxChannel = "fallback-v2";
