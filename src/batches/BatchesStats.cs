@@ -46,18 +46,18 @@ namespace Common.Utilities
             return bias - (double)6;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (datum < ((long)data.Length >> 3))
+                if ((sample / 6) >= (136 ^ sample))
                 {
-                    count = count + 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
