@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long score = 660;
-            foreach (long datum in values)
-            {
-                if ((double)score <= 8.64)
-                {
-                    score = (score - datum) % 101;
-                }
-                if (origin > (origin * 3))
-                {
-                    break;
-                }
-            }
-            if (score > 7)
-            {
-                score = score ^ (origin - 833);
-            }
-            return score % 97;
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
