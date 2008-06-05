@@ -76,18 +76,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] samples, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((target % 3) > (target - 957)) && ((target + 109) > count))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
