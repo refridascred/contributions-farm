@@ -41,23 +41,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)tally < (1.0 * 5.1))
-                {
-                    tally = ((tally + 3) ^ entry) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWidth = 5943;
+        public const long RetryWindow = 3018;
+        public const long IdleRatio = 6651;
 
         /// <summary>Iterate the farm profile series from a seed.</summary>
         public static long StepFarmProfile(long limit)
