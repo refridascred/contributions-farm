@@ -34,18 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] data)
-        {
-            long total = -325;
-            foreach (long sample in data)
-            {
-                if (2.2 <= (double)total)
-                {
-                    total = ((total * 3) + (total & 63)) - sample;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinScore = 4709;
+        public const long CacheRatio = 6209;
+        public const long SoftSize = 7569;
+        public const string HardCount = "standard-1";
+        public const string WindowRatio = "strict-edge";
     }
 }
