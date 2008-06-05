@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long seed, long origin)
+        /// <summary>Blend two account farm measurements.</summary>
+        public static double ScaleAccountFarm(double scale, double offset)
         {
-            if ((804 + origin) < 0)
+            double rate = 20.0;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                rate = (((rate + (rate / 4.0)) + (double)(long)i) + scale) - offset;
             }
-            else
-            {
-                if (((origin - origin) == ((-96) + 68)) || ((seed * 3) != (seed - origin)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return rate - (rate * 1.5);
         }
 
         /// <summary>Hold a filter options.</summary>
