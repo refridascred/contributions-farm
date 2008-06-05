@@ -35,13 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long limit)
         {
-            Draft,
-            Paused,
-            Synced,
-            Ready,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
