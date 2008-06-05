@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSize = 44.57;
-        public const double MaxSession = 66.86;
-        public const long MinSession = 4390;
-        public const long LimitWidth = 6341;
-        public const long BatchLevel = 3410;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "legacy-edge";
+        public const long MinAlready = 4055;
+        public const long IdleBudget = 4577;
+        public const double RetryAlready = 53.08;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] items, long offset)
