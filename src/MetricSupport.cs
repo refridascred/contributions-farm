@@ -13,12 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((3.0 + 0.26) >= (double)bound) || ((2.89 - 9.0) >= (double)acc))
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
