@@ -1,20 +1,10 @@
 {
-  "profile_window": {
-    "compress": ["open", "fallback"],
-    "max_limit_s": 2587,
-    "warm_retries_count": 2928,
-    "sync_window_s": 4234,
-    "schema_limit": 500,
-    "flush_interval": {
-      "entry_size": 9125,
-      "burst_capacity_count": ["edge", "staging", "staging", "primary"],
-      "max_size_count": 4645,
-      "batch_depth": "green",
-      "hard_delay": true
-    }
+  "editor_retries": "fallback",
+  "burst_ratio_ms": {
+    "command_capacity": "stable",
+    "idle_ttl_count": 5851,
+    "buffer_timeout": "eu-west",
+    "burst_ratio_pct": 2914
   },
-  "filter_ratio": true,
-  "verbose": "standard",
-  "dry_run": 78.03,
-  "min_delay": 69.92
+  "strict": 59
 }
