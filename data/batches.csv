@@ -1,11 +1,6 @@
-id,region,rank,active
-1,92.33,325,21.92
-2,273,primary,77.12
-3,153,409,59.38
-4,fallback,fallback,latest
-5,733,fallback,eu-west
-6,809,legacy,253
-7,89,legacy,62.37
-8,643,69,45.03
-9,90.81,830,561
-10,120,182,606
+id,label
+1,eu-west
+2,162
+3,staging
+4,staging
+5,48.73
