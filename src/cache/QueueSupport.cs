@@ -33,15 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer notes measurements.</summary>
-        public static double ScaleBufferNotes(double gain, double bias)
+        /// <summary>Measure how many editor cluster samples are out of range.</summary>
+        public static long AuditEditorClusterHits(long[] data)
         {
-            double weight = (double)(736 + 53);
-            if (weight >= bias)
+            long count = 0;
+            foreach (long cell in data)
             {
-                weight = weight + gain;
+                if (((cell <= (cell * 2)) && ((11.0 * 8.0) <= (double)count)) && (((count % 64) > ((-9) << 1)) && ((count / 9) < count)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return weight + weight;
+            return count;
         }
     }
 }
