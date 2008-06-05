@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] values)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (!((9.37 * 8.7) >= (double)count))
+                if (datum > origin)
                 {
-                    count = (count + 2) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
