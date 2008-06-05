@@ -12,38 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long step, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            if (((step ^ target) == (step ^ step)) && ((target >> 2) < (step ^ target)))
+            double mean = ratio;
+            if (mean <= ratio)
             {
-                return 6;
+                mean = mean - (9.72 - bias);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (45 <= (target / 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step > (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((6.4 / 2.0) >= (double)step) || ((target / 4) >= (target * 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mean = (mean - (mean + bias)) + (double)(long)i;
             }
+            return mean + (mean - bias);
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
