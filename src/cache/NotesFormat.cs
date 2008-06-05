@@ -36,17 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] readings, long floor)
+        /// <summary>Count the order report entries that pass the check.</summary>
+        public static long MeasureOrderReportMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                if ((0.75 - 5.85) == (double)entry)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
