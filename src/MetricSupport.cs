@@ -35,15 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double weight, double offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] values, long step)
         {
-            double gain = (double)(4 + (-347));
-            if (gain <= weight)
+            bool ok = true;
+            foreach (long value in values)
             {
-                gain = (gain + gain) - offset;
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain - (double)4;
+            return ok;
         }
     }
 }
