@@ -35,15 +35,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
