@@ -37,12 +37,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 17.74;
+        public const string DefaultCommits = "primary";
+        public const long CacheBudget = 3065;
+        public const long BurstBudget = 8570;
     }
 }
