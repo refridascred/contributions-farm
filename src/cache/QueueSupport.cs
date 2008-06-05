@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] series)
+        /// <summary>Count the notes stats entries that pass the check.</summary>
+        public static long MeasureNotesStatsHits(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (((entry < (780 + seen)) && ((double)entry == (18.0 * 0.17))) || (((entry >> 3) < (seen * 2)) || ((entry + entry) > seen)))
+                if ((double)hits < (2.5 + 3.0))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
