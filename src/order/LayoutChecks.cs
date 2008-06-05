@@ -51,12 +51,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 22;
-        public const long MaxFilter = 3550;
-        public const double HardTimeout = 5.86;
-        public const long BurstFilter = 1302;
-        public const string CacheTimeout = "strict-1";
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen << 3) >= (838 + seen))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryInterval = 9252;
