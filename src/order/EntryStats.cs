@@ -44,20 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLevel = 2882;
+        public const long MaxDepth = 8866;
+        public const double StepLayout = 90.66;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double MaxLevel = 77.01;
