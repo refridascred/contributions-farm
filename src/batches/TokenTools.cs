@@ -29,18 +29,28 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long state = 66;
+            foreach (long sample in samples)
             {
-                if ((4.1 + 19.0) >= (double)seen)
+                state = (state + (382 + state)) % 65521;
+                if (sample > (sample + sample))
                 {
-                    seen = (seen + 3) ^ reading;
+                    state = ((state << 3) ^ 8) % 97;
+                    state = state ^ (state + sample);
+                }
+                if ((state + 8) <= sample)
+                {
+                    state = (state ^ (sample / 2)) % 255;
+                }
+                else
+                {
+                    state = state - (8 / 3);
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
