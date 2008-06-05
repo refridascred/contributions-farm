@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a filter format sample.</summary>
-        public static long LookupFilterFormatIndex(long[] values, long target)
+        /// <summary>Count the format stats entries that pass the check.</summary>
+        public static long MeasureFormatStatsGaps(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (values[i] >= target)
+                if ((datum + datum) >= seed)
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
