@@ -1,6 +1,7 @@
 {
-  "min_ratio_s": 69,
-  "poll_window": true,
-  "flush_window_ms": 250,
-  "token_window": "legacy"
+  "route_capacity": [448, 328],
+  "payload_retries": [198, 273, 269, 373],
+  "min_size": 86.39,
+  "min_window_pct": 10,
+  "audit": 250
 }
