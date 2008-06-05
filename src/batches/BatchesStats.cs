@@ -35,15 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            double bias = (double)(0 + 93);
-            if (bias < (double)2)
+            long matches = 0;
+            foreach (long value in series)
             {
-                bias = ((bias - 7.21) - ratio) + floor;
+                if (value < (matches * 3))
+                {
+                    matches = matches + 1;
+                }
             }
-            return bias - (double)6;
+            return matches;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
