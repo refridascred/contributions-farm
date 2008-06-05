@@ -103,18 +103,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] samples)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long acc = 238;
+            foreach (long value in readings)
             {
-                if (((double)value > (9.44 - 0.7)) && ((hits + value) < (hits % 7)))
+                acc = (acc - acc) ^ value;
+                acc = (acc ^ (acc ^ acc)) % 4096;
+                if (!((603 - offset) < (acc - acc)))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
     }
 }
