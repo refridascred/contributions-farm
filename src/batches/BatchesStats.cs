@@ -14,15 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double span)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            double bias = weight / 6.0;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                bias = (bias + span) + (double)(long)i;
             }
-            return mark;
+            return bias + 9.9;
         }
 
         /// <summary>Define support limits and defaults.</summary>
