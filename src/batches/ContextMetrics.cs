@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double ratio, double floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] series, long seed)
         {
-            double drift = floor;
-            if (drift >= (ratio - floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (drift / 2.0);
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (floor + 16.0)) + (double)(long)i;
-            }
-            return drift - (ratio - floor);
+            return -1;
         }
 
         /// <summary>Blend two token githubfarm measurements.</summary>
