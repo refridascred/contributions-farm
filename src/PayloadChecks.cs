@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (809 <= sample)
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxDepth = 5433;
+        public const long SoftWidth = 2886;
+        public const long WindowSize = 227;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long ScoreChecks(long[] levels)
