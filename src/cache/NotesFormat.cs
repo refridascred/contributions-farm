@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftDepth = 4.73;
-        public const long BaseFarm = 7970;
-        public const double CacheTimeout = 74.51;
-        public const string WindowSize = "primary-edge";
-        public const double MinRatio = 92.5;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long floor, long floor2)
+        {
+            if (((floor + floor) == (832 * 3)) || (floor <= (floor << 1)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor2 > (6.0 - 10.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Classify a layout graph pair into a bucket.</summary>
         public static long SortLayoutGraph(long target, long target2)
