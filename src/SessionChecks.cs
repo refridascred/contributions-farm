@@ -13,11 +13,25 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 4211;
-        public const string BaseCache = "staging";
-        public const string DefaultScore = "fallback-edge";
-        public const long BurstSize = 1945;
+        /// <summary>Grade a filter counter value against two limits.</summary>
+        public static long BucketFilterCounter(long bound, long origin)
+        {
+            if ((0.04 * 14.0) <= (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + origin) > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long SeriesAlready(long seed)
