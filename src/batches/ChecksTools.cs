@@ -36,24 +36,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a support session pair into a bucket.</summary>
-        public static long SortSupportSession(long limit, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if (limit > (637 % 12))
-            {
-                return 2;
-            }
-            else
-            {
-                if (8.79 <= (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a command info.</summary>
