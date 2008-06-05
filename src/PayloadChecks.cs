@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] items, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                acc = (acc * 5) + (8 / 8);
-                acc = (acc - ((long)i + (long)i)) % 255;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (809 <= sample)
+                {
+                    seen = (seen + 1) - limit;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
