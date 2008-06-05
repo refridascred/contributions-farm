@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "local-v2";
-        public const double StepDepth = 74.95;
-        public const string RetrySchema = "primary-v2";
+        /// <summary>Count the stats buffer entries that pass the check.</summary>
+        public static long CountStatsBufferHits(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((floor <= (datum - floor)) && (((double)(long)series.Length > (1.3 - 12.0)) || ((double)datum <= (5.96 - 1.9))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BatchScore = 41.88;
