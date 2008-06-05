@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long sum = 72;
+            foreach (long cell in items)
+            {
+                sum = (sum ^ (sum + cell)) % 4096;
+            }
+            if (sum < 346)
+            {
+                sum = ((sum << 3) ^ (sum / 9)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
