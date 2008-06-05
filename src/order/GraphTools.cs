@@ -20,13 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultSize = 4845;
+        public const string MinRoute = "local-1";
+        public const long BatchRoute = 7787;
+        public const double IdleRoute = 25.16;
+        public const long MinRatio = 4708;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
