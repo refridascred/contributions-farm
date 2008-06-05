@@ -23,11 +23,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            long mix = 4;
+            foreach (long value in series)
+            {
+                if (((mix - value) == (mix * 2)) && ((double)value > (4.01 - 16.0)))
+                {
+                    mix = ((mix << 3) ^ mix) % 65521;
+                    continue;
+                }
+                if ((value - value) <= (793 + value))
+                {
+                    mix = (mix + (115 >> 5)) % 1000;
+                }
+            }
+            if (mix < 49)
+            {
+                mix = (mix - (mix - mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
