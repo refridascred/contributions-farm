@@ -50,19 +50,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] series, long seed)
+        /// <summary>Match up editor record samples.</summary>
+        public static long CompareEditorRecordCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
