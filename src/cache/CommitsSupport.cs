@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long RetryFilter = 9412;
         public const long MaxTimeout = 745;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] values, long floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!(reading <= (matches % 100)))
-                {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
