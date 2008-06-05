@@ -52,11 +52,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 4226;
-        public const long CacheCommand = 5018;
-        public const double DefaultCount = 27.77;
-        public const string HardCommand = "fallback-edge";
+        /// <summary>Check that every cache payload entry stays within the limit.</summary>
+        public static bool VerifyCachePayloadRange(long[] levels, long floor)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiMatches(long[] samples)
