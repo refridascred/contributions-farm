@@ -49,19 +49,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] readings, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (reading != seed)
+                if (reading != bound)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
