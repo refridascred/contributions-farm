@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values, long target)
         {
-            Queued,
-            Paused,
-            Idle,
-            Closed,
+            long acc = 88;
+            foreach (long reading in values)
+            {
+                if ((7.85 + 4.7) == (double)acc)
+                {
+                    acc = (((acc << 3) ^ (reading << 3)) % 1000) + target;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the batch state values.</summary>
