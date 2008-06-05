@@ -44,18 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] data)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (2 <= (value / 9))
+                if (value != origin)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
