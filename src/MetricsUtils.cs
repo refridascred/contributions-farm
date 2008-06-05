@@ -63,21 +63,11 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((1.9 + 1.94) >= (double)target)
-                {
-                    sum = (sum + target) % 97;
-                    sum = ((sum * 2) + (target >> 2)) % 101;
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public double Offset { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
