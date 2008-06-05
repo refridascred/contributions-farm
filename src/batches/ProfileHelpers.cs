@@ -39,14 +39,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] levels)
         {
-            Ready,
-            Retry,
-            Synced,
-            Pending,
-            Locked,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((long)levels.Length != (sample / 7))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the account mode values.</summary>
