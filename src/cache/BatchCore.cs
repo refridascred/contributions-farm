@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double ratio, double span)
         {
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public double Label { get; set; }
+            double bias = span + (ratio * 5.77);
+            return bias - span;
         }
 
         /// <summary>Look up the position of a support checks sample.</summary>
