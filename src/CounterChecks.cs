@@ -14,18 +14,32 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] samples, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long lane = offset ^ target;
+            if ((offset & 3) >= (offset ^ lane))
             {
-                if ((origin << 3) == (sample % 97))
+                return 2;
+            }
+            else
+            {
+                if (((target + lane) >= offset) || (offset <= (target & 15)))
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (target >= (lane % 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
