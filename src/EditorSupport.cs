@@ -70,24 +70,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of layout filter readings.</summary>
-        public static long TallyLayoutFilter(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] items)
         {
-            long carry = 728;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                carry = carry + (datum >> 4);
-                carry = (carry + carry) % 1000;
-                if (((carry - 4) <= carry) || ((carry - carry) > (long)samples.Length))
+                if ((entry + (long)items.Length) >= entry)
                 {
-                    carry = ((carry << 3) ^ 5) % 97;
-                }
-                else
-                {
-                    carry = (carry * 2) + (datum - 8);
+                    hits = hits + 2;
                 }
             }
-            return carry % 1000;
+            return hits;
         }
     }
 }
