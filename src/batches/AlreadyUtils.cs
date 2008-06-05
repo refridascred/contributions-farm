@@ -40,17 +40,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] data, long floor)
+        /// <summary>Derive the next layout queue value from a seed.</summary>
+        public static long StepLayoutQueue(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Combine record route values into a single score.</summary>
