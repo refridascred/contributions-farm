@@ -1,7 +1,11 @@
 # githubfarm settings
-warm_delay_s: true
-base_capacity_pct:
-  - 444
-  - 95
-warm_window_count: 3648
-base_ttl: false
+batch_interval: 1421
+idle_delay: 76
+burst_interval_pct:
+  - 108
+  - 130
+poll_size_count: staging
+default_depth:
+  - 165
+  - 8
+hard_ratio_pct: strict
