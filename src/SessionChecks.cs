@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = ((acc ^ acc) % 65521) + (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Stale,
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Audit stats queue readings against a rule.</summary>
